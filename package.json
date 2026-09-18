@@ -1,0 +1,74 @@
+{
+    "name": "simplified-mojang-JSONs",
+    "version": "0.0.1",
+    "description": "An API in TypeScript for creating and managing the JSON configuration of vanilla and custom Minecraft Bedrock entities using type system support, OOP, and a more organized and reusable structure.",
+    "type": "module",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "exports": {
+        ".": {
+            "import": "./dist/index.js",
+            "types": "./dist/index.d.ts"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/HaJuegos/simplified-mojang-JSONs.git"
+    },
+    "bugs": {
+        "url": "https://github.com/HaJuegos/simplified-mojang-JSONs/issues"
+    },
+    "homepage": "https://github.com/HaJuegos/simplified-mojang-JSONs#readme",
+    "files": [
+        "dist",
+        "structures"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "prepare": "tsc"
+    },
+    "author": "HaJuegos",
+    "license": "MIT",
+    "keywords": [
+        "minecraft",
+        "bedrock",
+        "scripting",
+        "addon",
+        "api",
+        "events",
+        "wrapper",
+        "mojang"
+    ],
+    "devDependencies": {
+        "@types/node": "^25.4.0",
+        "adm-zip": "^0.6.1",
+        "chokidar": "^5.0.0",
+        "esbuild": "^0.28.2",
+        "nodemon": "^3.1.14",
+        "typescript": "^5.9.3",
+
+        "@minecraft/debug-utilities": "1.0.0-beta.1.26.50-stable",
+        "@minecraft/gameplay-utilities": "1.3.0",
+        "@minecraft/server": "2.11.0-beta.1.26.50-stable",
+        "@minecraft/server-gametest": "1.0.0-beta.1.26.50-stable",
+        "@minecraft/server-graphics": "1.1.0-beta.1.26.50-stable",
+        "@minecraft/server-net": "1.0.0-beta.1.26.50-stable",
+        "@minecraft/server-ui": "2.3.0-beta.1.26.50-stable",
+        "@minecraft/vanilla-data": "1.26.50",
+        "simplified-mojang-api": "0.0.67"
+    },
+    "peerDependencies": {
+        "@minecraft/debug-utilities": "1.0.0-beta.1.26.50-stable",
+        "@minecraft/gameplay-utilities": "1.3.0",
+        "@minecraft/server": "2.11.0-beta.1.26.50-stable",
+        "@minecraft/server-gametest": "1.0.0-beta.1.26.50-stable",
+        "@minecraft/server-graphics": "1.1.0-beta.1.26.50-stable",
+        "@minecraft/server-net": "1.0.0-beta.1.26.50-stable",
+        "@minecraft/server-ui": "2.3.0-beta.1.26.50-stable",
+        "@minecraft/vanilla-data": "1.26.50",
+        "simplified-mojang-api": "0.0.67"
+    },
+    "allowScripts": {
+        "esbuild@0.28.1": true
+    }
+}
