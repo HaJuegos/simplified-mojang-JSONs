@@ -189,12 +189,3 @@ export class BehaviorEntityBuilder {
         return stringify ? JSONtxt : finalObj;
     }
 }
-
-const zombie = new BehaviorEntityBuilder(vanilla.MinecraftEntityTypes.Zombie);
-
-zombie.setAnimationScripts({
-    "regeneration": {
-        idAnimation: 'animation.zombie.test',
-        molangCondition: `${MoLang.markVariant()} == 1 && ${MoLang.getEquippedItemName()}`
-    }
-});
