@@ -1,9 +1,8 @@
 import * as vanilla from '@minecraft/vanilla-data';
 
-import { BehaviorAnimationScript, BehaviorEntityOptionalParams, FormatVersionEntities, SpawnCategoryEntities } from "../types/BPEntitiesEnums";
-import { MoLangValue } from '../types/MoLang';
-import { MoLang } from '../utils/MoLang';
-import { afterEventsSimplified } from 'simplified-mojang-api';
+import { BPAnimationScriptEntities, BPEntityOptionalParams, BPPropertiesEntities, FormatVersionEntities, SpawnCategoryEntities } from "../../types/behaviors/EntitiesEnums";
+import { MoLangValue } from '../../types/MoLang';
+import { BPComponent, BPCompsGroups } from '../../types/behaviors/EntitiesComps';
 
 /**
  * Clase abstracta de base para la creacion de una entidad con todos los parametros requeridos y una estructura fija.
@@ -84,7 +83,17 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 16-09-2026
      * @private
      */
-    private animations?: Record<string, BehaviorAnimationScript>;
+    private animations?: Record<string, BPAnimationScriptEntities>;
+
+    /**
+     * (Opcional) Las propiedades dinamicas custom de la entidad en cuestion.
+     * @type {?Record<string, BPPropertiesEntities>}
+     * @author HaJuegos - 20-09-2026
+     * @private
+     */
+    private properties?: Record<string, BPPropertiesEntities>;
+
+    private groupComps?: Record<string, BPComponent[]>;
 
     /**
      * Eventos y parametros iniciales de la clase cuando es llamada o inicializada.
@@ -115,7 +124,7 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 16-09-2026
      * @public
      */
-    public setOtherParams(otherParams: BehaviorEntityOptionalParams): this {
+    public setOtherParams(otherParams: BPEntityOptionalParams): this {
         Object.assign(this, otherParams);
 
         return this;
@@ -128,8 +137,39 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 16-09-2026
      * @public
      */
-    public setAnimationScripts(anims: Record<string, BehaviorAnimationScript>): this {
+    public setAnimationScripts(anims: Record<string, BPAnimationScriptEntities>): this {
         this.animations = anims;
+
+        return this;
+    }
+
+    /**
+     * Metodo principal que asigna propiedades custom a la entidad.
+     * @param {Record<string, BPPropertiesEntities>} properties La lista de propiedades a asignar.
+     * @returns {this} 
+     * @author HaJuegos - 20-09-2026
+     * @public
+     */
+    public setProperties(properties: Record<string, BPPropertiesEntities>): this {
+        this.properties = properties;
+
+        return this;
+    }
+
+    public setComponentGroups(groups: BPCompsGroups[]): this {
+        for (const [id, components] of Object.entries(groups)) {
+
+        }
+
+        return this;
+    }
+
+    public setComponents(): this {
+
+        return this;
+    }
+
+    public setEvents(): this {
 
         return this;
     }
@@ -174,6 +214,30 @@ export class BehaviorEntityBuilder {
             description.scripts = {
                 animate: animsScriptsList
             };
+        }
+
+        if (this.properties && Object.keys(this.properties).length > 0) {
+            const formattedProperties: Record<string, any> = {};
+
+            for (const [propKey, propData] of Object.entries(this.properties)) {
+                const baseProp: Record<string, any> = {
+                    client_sync: propData.clientSync,
+                    type: propData.type,
+                    default: propData.default
+                };
+
+                if (propData.type == 'enum' && 'values' in propData) {
+                    baseProp.values = propData.values;
+                }
+
+                if ((propData.type == 'float' || propData.type == 'int') && 'range' in propData) {
+                    baseProp.range = propData.range;
+                }
+
+                formattedProperties[propKey] = baseProp;
+            }
+
+            description.properties = formattedProperties;
         }
 
         const finalObj = Object.freeze({

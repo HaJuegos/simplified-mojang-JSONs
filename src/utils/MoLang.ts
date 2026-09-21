@@ -7,6 +7,8 @@ import { MoLangValue } from "../types/MoLang";
  * @export
  */
 export class MoLang {
+    private constructor () { }
+
     /**
      * PI! Que mas puedo decir?
      * @type {number}
