@@ -9,6 +9,10 @@ export {
     EntityFilter,
     EntityAbility,
     EntityDamageType,
+    EntityBiomeType,
+    EntityPaletteColor,
+    EntityDifficultyType,
+    TemperatureCategory,
 };
 
 /**
@@ -54,6 +58,35 @@ type EntityAbility = | "flySpeed" | "flying" | "instabuild" | "invulnerable" | "
 type EntityDamageType = | "anvil" | "attack" | "block_explosion" | "contact" | "drowning" | "entity_explosion" | "fall" | "falling_block" | "fatal" | "fire" | "fire_tick" | "fly_into_wall" | "lava" | "magic" | "none" | "override" | "piston" | "projectile" | "self_destruct" | "sonic_boom" | "stalactite" | "stalagmite" | "starve" | "suffocation" | "thorns" | "void" | "wither";
 
 /**
+ * Lista de todos los biomas disponibles en un filtro de entidad.
+ * @typedef {EntityBiomeType}
+ * @author HaJuegos - 21-09-2026
+ */
+type EntityBiomeType = | "beach" | "desert" | "extreme_hills" | "flat" | "forest" | "ice" | "jungle" | "mesa" | "mushroom_island" | "ocean" | "plain" | "river" | "savanna" | "stone_beach" | "swamp" | "taiga" | "the_end" | "the_nether";
+
+/**
+ * Lista de colores de la paleta de minecraft para comprobar en filtros de entidades.
+ * @typedef {EntityPaletteColor}
+ * @author HaJuegos - 21-09-2026
+ */
+type EntityPaletteColor = | "black" | "blue" | "brown" | "cyan" | "gray" | "green" | "light_blue" | "light_green" | "magenta" | "orange" | "pink" | "purple" | "red" | "silver" | "white" | "yellow";
+
+/**
+ * Lista de dificultades que hay en el juego disponibles en filtros de entidades.
+ * @typedef {EntityPaletteColor}
+ * @author HaJuegos - 21-09-2026
+ */
+type EntityDifficultyType = "easy" | "hard" | "normal" | "peaceful";
+
+/**
+ * Lista disponibles de temperaturas a evaluar en los filtros de entidades.
+ * @typedef {TemperatureCategory}
+ * @author HaJuegos - 21-09-2026
+ */
+type TemperatureCategory = "cold" | "mild" | "ocean" | "warm";
+
+
+/**
  * Lista de comprobaciones en los filtros de entidades.
  * @enum {number}
  * @author HaJuegos - 20-09-2026
@@ -89,6 +122,86 @@ enum EntityFilterTest {
     homeDistance = "home_distance",
     hourlyClockTime = "hourly_clock_time",
     inBlock = "in_block",
+    inCaravan = "in_caravan",
+    inClouds = "in_clouds",
+    inContactWithWater = "in_contact_with_water",
+    inLava = "in_lava",
+    inNether = "in_nether",
+    inOverworld = "in_overworld",
+    inWater = "in_water",
+    inWaterOrRain = "in_water_or_rain",
+    inactivityTimer = "inactivity_timer",
+    intProperty = "int_property",
+    isAltitude = "is_altitude",
+    isAvoidingMobs = "is_avoiding_mobs",
+    isBaby = "is_baby",
+    isBiome = "is_biome",
+    isBlock = "is_block",
+    isBoundToCreakingHeart = "is_bound_to_creaking_heart",
+    isBrightness = "is_brightness",
+    isClimbing = "is_climbing",
+    isColor = "is_color",
+    isControllingPassengerFamily = "is_controlling_passenger_family",
+    isDaytime = "is_daytime",
+    isDifficulty = "is_difficulty",
+    isFamily = "is_family",
+    isGameRule = "is_game_rule",
+    isHumid = "is_humid",
+    isImmobile = "is_immobile",
+    isInSameVehicle = "is_in_same_vehicle",
+    isInVillage = "is_in_village",
+    isLeashed = "is_leashed",
+    isLeashedTo = "is_leashed_to",
+    isMarkVariant = "is_mark_variant",
+    isMissingHealth = "is_missing_health",
+    isMoving = "is_moving",
+    isNavigating = "is_navigating",
+    isOwner = "is_owner",
+    isPanicking = "is_panicking",
+    isPersistent = "is_persistent",
+    isRaider = "is_raider",
+    isRiding = "is_riding",
+    isRidingSelf = "is_riding_self",
+    isSitting = "is_sitting",
+    isSkinId = "is_skin_id",
+    isSleeping = "is_sleeping",
+    isSneakHeld = "is_sneak_held",
+    isSneaking = "is_sneaking",
+    isSnowCovered = "is_snow_covered",
+    isSprinting = "is_sprinting",
+    isTamed = "is_tamed",
+    isTarget = "is_target",
+    isTemperatureType = "is_temperature_type",
+    isTemperatureValue = "is_temperature_value",
+    isUnderground = "is_underground",
+    isUnderwater = "is_underwater",
+    isVariant = "is_variant",
+    isVehicleFamily = "is_vehicle_family",
+    isVisible = "is_visible",
+    isWaterlogged = "is_waterlogged",
+    /**
+     * @deprecated - Ya no funciona en versiones actuales. Usa {@link EntityFilterTest.weather} o {@link EntityFilterTest.weatherAtPosition}.
+    */
+    isWeather = "is_weather",
+    lightLevel = "light_level",
+    moonIntensity = "moon_intensity",
+    moonPhase = "moon_phase",
+    onFire = "on_fire",
+    onGround = "on_ground",
+    onHotBlock = "on_hot_block",
+    onLadder = "on_ladder",
+    ownerDistance = "owner_distance",
+    randomChance = "random_chance",
+    redstoneStrengthAtPosition = "redstone_strength_at_position",
+    riderCount = "rider_count",
+    surfaceMob = "surface_mob",
+    takingFireDamage = "taking_fire_damage",
+    targetDistance = "target_distance",
+    trusts = "trusts",
+    wasLastHurtBy = "was_last_hurt_by",
+    weather = "weather",
+    weatherAtPosition = "weather_at_position",
+    yRotation = "y_rotation",
 }
 
 /**

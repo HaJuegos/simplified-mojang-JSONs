@@ -601,9 +601,1408 @@ export class EntityFilters {
         });
     }
 
+    /**
+     * Método principal que comprueba si la entidad forma parte de una caravana. Ole!
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static inCaravan(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.inCaravan, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra a la altura de las nubes.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static inClouds(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.inClouds, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está en contacto con cualquier tipo de agua.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static inContactWithWater(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.inContactWithWater, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra dentro de lava.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static inLava(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.inLava, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra en la dimensión del Nether.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static inNether(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.inNether, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra en la dimensión del Overworld.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static inOverworld(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.inOverworld, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra dentro del agua.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static inWater(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.inWater, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra en agua o bajo la lluvia.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static inWaterOrRain(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.inWaterOrRain, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si se ha alcanzado la duración especificada en segundos de inactividad para el despawn.
+     * @param {number} value Duracion en segundos de inactividad a evaluar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static inactivityTimer(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.inactivityTimer, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si una propiedad de tipo int de la entidad coincide con el valor indicado.
+     * @param {string} domain Nombre de la propiedad a evaluar.
+     * @param {number} value Valor a evaluar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static intProperty(domain: string, value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.intProperty, {
+            domain,
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba la altitud actual de la entidad en comparación con el valor proporcionado (donde 0 es la altura de la bedrock).
+     * @param {number} value Valor a evaluar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isAltitude(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isAltitude, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra huyendo de otros mobs.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isAvoidingMobs(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isAvoidingMobs, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad evaluada es un bebé.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isBaby(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isBaby, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra actualmente en el bioma especificado.
+     * @param {types.EntityBiomeType} value 
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isBiome(value: types.EntityBiomeType, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isBiome, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si el bloque involucrado coincide con el nombre dado.
+     * @param {string} value Nombre del bloque a evaluar (ej. "minecraft:stone").
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isBlock(value: string, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isBlock, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si el Creaking Heart que engendró al Creaking actual todavía existe.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isBoundToCreakingHeart(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isBoundToCreakingHeart, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba el nivel de brillo actual en la posición de la entidad comparado con un valor decimal en el rango [0,1].
+     * @param {number} value Valor decimal de brillo a comparar entre 0 a 1.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isBrightness(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isBrightness, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra escalando.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isClimbing(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isClimbing, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad es del color de la paleta especificado.
+     * @param {types.EntityPaletteColor} value Nombre del color a evaluar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isColor(value: types.EntityPaletteColor, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isColor, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si el pasajero que controla a la entidad pertenece a la familia especificada.
+     * @param {string} value Nombre de la familia a evaluar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isControllingPassengerFamily(value: string, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isControllingPassengerFamily, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si el juego se encuentra de día.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isDaytime(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isDaytime, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba el nivel de dificultad actual del juego.
+     * @param {types.EntityDifficultyType} value Nivel de dificultad a evaluar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isDifficulty(value: types.EntityDifficultyType, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isDifficulty, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad pertenece a la familia indicada.
+     * @param {string} value Nombre de la familia a evaluar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isFamily(value: string, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isFamily, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si un Game Rule específicado se encuentra activo o coincide con el valor indicado.
+     * @param {string} domain Nombre del game rule a comprobar.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isGameRule(domain: string, value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isGameRule, {
+            domain,
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra en un área con humedad.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isHumid(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isHumid, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está inmóvil (sin IA, cambiando de dimensión o sin salud).
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isImmobile(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isImmobile, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está montada en el mismo vehículo que la entidad emisora.
+     * @param {boolean} value Estado a validar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isInSameVehicle(value: boolean, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isInSameVehicle, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está dentro de los límites de una aldea.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isInVillage(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isInVillage, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad sujeto está atada a otra.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isLeashed(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isLeashed, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad sujeto está atada a la entidad emisora/que ejecuta el test.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isLeashedTo(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isLeashedTo, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad coincide con el número de variante de mark_variant especificado.
+     * @param {number} value Número correspondiente a la variante.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isMarkVariant(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isMarkVariant, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si el la entidad no se encuentra con la vida al máximo.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isMissingHealth(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isMissingHealth, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra en movimiento.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isMoving(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isMoving, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si el sujeto está ejecutando navegación/pathfinding activo (requiere "minecraft:navigation").
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isNavigating(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isNavigating, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad es el dueño de la entidad que realiza la llamada.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isOwner(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isOwner, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra en estado de pánico.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isPanicking(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isPanicking, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la persistencia de la entidad coincide con el valor indicado.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isPersistent(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isPersistent, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad es un raider.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isRaider(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isRaider, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está montada en otra entidad.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isRiding(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isRiding, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está montada específicamente sobre la entidad emisora que ejecuta el test.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isRidingSelf(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isRidingSelf, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra sentado.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isSitting(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isSitting, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si el skin id de la entidad coincide con el valor indicado.
+     * @param {number} value Numero correspondiente al ID de la skin.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isSkinId(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isSkinId, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra durmiendo.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isSleeping(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isSleeping, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si el jugador esta manteniendo presionada la tecla/botón de agacharse.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isSneakHeld(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isSneakHeld, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra agachada.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isSneaking(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isSneaking, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está en una zona cubierta de nieve.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isSnowCovered(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isSnowCovered, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra corriendo.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isSprinting(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isSprinting, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está domesticada.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isTamed(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isTamed, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad es el target de la entidad emisora.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isTarget(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isTarget, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la categoría de temperatura del bioma coincide con el tipo especificado.
+     * @param {types.TemperatureCategory} value Categoría de temperatura del bioma.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isTemperatureType(value: types.TemperatureCategory, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isTemperatureType, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba el valor de la temperatura actual del bioma entre [0,1].
+     * @param {types.TemperatureCategory} value Valor de temperatura a comparar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isTemperatureValue(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isTemperatureValue, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad se encuentra bajo tierra (bloques sólidos sobre ella).
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isUnderground(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isUnderground, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está completamente sumergida bajo el agua.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isUnderwater(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isUnderwater, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si el variant ID de la entidad coincide con el valor indicado.
+     * @param {number} value Número de la variante a comparar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isVariant(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isVariant, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si el vehículo de la entidad pertenece a la familia indicada.
+     * @param {number} value  Nombre de la familia a verificar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isVehicleFamily(value: string, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isVehicleFamily, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad sujeto es visible.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isVisible(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isVisible, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si el bloque sujeto se encuentra waterlogeado.
+     * @param {boolean} value Estado a validar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isWaterlogged(value: boolean, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isWaterlogged, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba el clima actual.
+     * @param {string} value Nombre del clima a verificar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @deprecated - Ya no funciona en las versiones actuales. Usa {@link EntityFilters.weather} o {@link EntityFilters.weatherAtPosition} en su lugar.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static isWeather(value: string, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.isWeather, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está en un nivel de luz dentro del rango [0,16].
+     * @param {number} value Nivel de luz entero a comparar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static lightLevel(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.lightLevel, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que compara la intensidad actual de la luna con un valor flotante en el rango [0,1].
+     * @param {boolean} value Valor de intensidad lunar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static moonIntensity(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.moonIntensity, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que compara la fase lunar actual con un valor entero en el rango [0,7].
+     * @param {boolean} value Valor correspondiente a la fase lunar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static moonPhase(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.moonPhase, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está prendido en fuego.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static onFire(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.onFire, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está tocando el suelo.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static onGround(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.onGround, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está sobre un bloque caliente.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static onHotBlock(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.onHotBlock, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está escalando o sobre una escalera.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static onLadder(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.onLadder, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Metodo principal que comprueba la distancia entre la entidad y su dueño.
+     * @param {number} value Distancia a verificar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static ownerDistance(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.ownerDistance, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Metodo principal que funciona como cálculo probabilístico al azar obtiene 0 de un rango máximo especificado.
+     * @param {number} value Valor que define el rango máximo de probabilidad.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static randomChance(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.randomChance, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Metodo publico que comprueba la intensidad de la señal de redstone en la posición actual de la entidad.
+     * @param {number} value Intensidad de redstone esperada.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static redstoneStrengthAtPosition(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.redstoneStrengthAtPosition, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Metodo publico que comprueba el número de pasajeros montados sobre esta entidad.
+     * @param {number} value Cantidad de pasajeros a comparar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static riderCount(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.riderCount, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad es clasificado como un surface mob.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static surfaceMob(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.surfaceMob, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad está recibiendo daño por fuego.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static takingFireDamage(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.takingFireDamage, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba la distancia entre la entidad y su target.
+     * @param {number} value Valor de distancia a evaluar.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static targetDistance(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.targetDistance, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad confía en el target.
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static trusts(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.trusts, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba si la entidad fue atacado en los últimos 400 segundos (si fue un jugador) o 60 segundos (si fue un mob).
+     * @param {boolean} [value] (Opcional) Estado a validar. Por defecto, es true.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static wasLastHurtBy(value: boolean = true, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.wasLastHurtBy, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba el clima actual en la dimensión contra un valor especificado.
+     * @param {string} value Nombre del clima a validar
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static weather(value: string, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.weather, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba el clima actual específicamente en la posición de la entidad contra un valor dado.
+     * @param {string} value Nombre del clima a validar en la posición.
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static weatherAtPosition(value: string, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.weatherAtPosition, {
+            subject,
+            operator,
+            value
+        });
+    }
+
+    /**
+     * Método principal que comprueba la rotación en el eje Y (guiñada/yaw) de la entidad.
+     * @param {string} value 
+     * @param {types.EntityFilterSubject} [subject] (Opcional) Target de entidad a considerar. Por defecto es "self".
+     * @param {types.EntityFilterOperator} [operator] (Opcional) Operación o comparación a aplicar. Por defecto es "equals".
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @public
+     * @static
+     */
+    public static yRotation(value: number, subject: types.EntityFilterSubject = "self", operator: types.EntityFilterOperator = "equals"): types.BaseEntityFilter {
+        return this.create(types.EntityFilterTest.yRotation, {
+            subject,
+            operator,
+            value
+        });
+    }
 
     // Privados
 
+    /**
+     * Metodo auxiliar que crea el formateo de un filtro con sus respectivos parametros.
+     * @param {string} test Nombre del filtro en cuestion.
+     * @param {Partial<Omit<types.BaseEntityFilter, "test">>} [params] (Opcional) Sus respectivos parametros como el subject, domain, operator y value. En caso de asignarse. Sino sera un {}.
+     * @returns {types.BaseEntityFilter} Devuelve el grupo de entidades formateado y listo para usarse.
+     * @author HaJuegos - 21-09-2026
+     * @private
+     * @static
+     */
     private static create(test: string, params: Partial<Omit<types.BaseEntityFilter, "test">> = {}): types.BaseEntityFilter {
         return { test, ...params };
     }
