@@ -13,6 +13,7 @@ export {
     EntityPaletteColor,
     EntityDifficultyType,
     TemperatureCategory,
+    EntityFilterTrigger,
 };
 
 /**
@@ -73,7 +74,7 @@ type EntityPaletteColor = | "black" | "blue" | "brown" | "cyan" | "gray" | "gree
 
 /**
  * Lista de dificultades que hay en el juego disponibles en filtros de entidades.
- * @typedef {EntityPaletteColor}
+ * @typedef {EntityDifficultyType}
  * @author HaJuegos - 21-09-2026
  */
 type EntityDifficultyType = "easy" | "hard" | "normal" | "peaceful";
@@ -88,7 +89,7 @@ type TemperatureCategory = "cold" | "mild" | "ocean" | "warm";
 
 /**
  * Lista de comprobaciones en los filtros de entidades.
- * @enum {number}
+ * @enum {string}
  * @author HaJuegos - 20-09-2026
  */
 enum EntityFilterTest {
@@ -264,6 +265,31 @@ interface EntityFilterGroup {
      * @type {?EntityFilter[]}
      */
     none_of?: EntityFilter[];
+}
+
+/**
+ * Lista de eventos con filtros y targets para condiciones mas especificas.
+ * @interface EntityGrowTrigger
+ * @author HaJuegos - 21-09-2026
+ */
+interface EntityFilterTrigger {
+    /**
+     * (Opcional) Lista de filtros condicionales a cumplir.
+     * @type {?EntityFilter}
+     */
+    filters?: EntityFilter;
+
+    /**
+     * Evento en concreto a ejecutar cuando la condicion se cumpla.
+     * @type {string}
+     */
+    event: string;
+
+    /**
+     * Target en concreto a seleccionar cuando el evento se cumpla.
+     * @type {EntityFilterSubject}
+     */
+    target: EntityFilterSubject;
 }
 
 /**

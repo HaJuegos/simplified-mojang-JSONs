@@ -1,39 +1,45 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
+/**
+ * Parametros del metodo principal.
+ * @interface AbsorptionComponentData
+ * @extends {BPComponent}
+ * @author HaJuegos - 21-09-2026
+ */
 interface AbsorptionComponentData extends BPComponent {
+    /**
+     * Vida fija a asignar a la entidad. Por defecto sera el valor 1.
+     * @type {number}
+     */
     value: number;
+
+    /**
+     * Vida maxima a asignar a la entidad. Por defecto sera el valor 1.
+     * @type {number}
+     */
     max: number;
+
+    /**
+     * (Opcional) Vida minima a asignar a la entidad.
+     * @type {?number}
+     */
     min?: number;
 }
 
 export class SetAbsorption extends BehaviorEntityComponentBuilder<AbsorptionComponentData> {
-    private readonly minH?: number;
-    private readonly maxH: number = 20;
-    private readonly setH: number = 0;
-
     /**
      * Metodo principal que asigna absorcion a una entidad en concreto.
-     * @param {number} setHealth Vida fija a asignar a la entidad.
-     * @param {number} maxHealth Vida maxima a asignar a la entidad.
-     * @param {?number} [minHealth] (Opcional) Vida minima a asignar a la entidad.
+     * @param {AbsorptionComponentData} params Parametros del metodo principal.
      * @author HaJuegos - 20-09-2026 
      * @constructor
      * @public
      */
-    public constructor (setHealth: number, maxHealth: number, minHealth?: number) {
-        super("minecraft:absorption");
-
-        this.minH = minHealth;
-        this.maxH = maxHealth;
-        this.setH = setHealth;
-    }
-
-    protected override getComponentData(): AbsorptionComponentData {
-        return {
-            value: this.setH,
-            max: this.maxH,
-            min: this.minH,
-        };
+    public constructor (params: AbsorptionComponentData) {
+        super("minecraft:absorption", {
+            value: params.value ?? 1,
+            max: params.max ?? 1,
+            min: params.min
+        });
     }
 }
