@@ -1,4 +1,4 @@
-import { BPComponent } from "../../types/behaviors/EntitiesComps";
+import { BPComponent, BuiltComponent } from "../../types/behaviors/EntitiesComps";
 
 /**
  * Clase plantilla builder para la creacion de un componente de entidades en un behavior.
@@ -52,11 +52,11 @@ export abstract class BehaviorEntityComponentBuilder<Component extends BPCompone
 
     /**
      * Metodo principal que construye el componente a JSON.
-     * @returns {Record<string, Record<string, unknown>>} El componente en concreto buildeado.
+     * @returns {BuiltComponent} El componente en concreto buildeado.
      * @author HaJuegos - 20-09-2026
      * @public
      */
-    public build(): Record<string, Record<string, unknown>> {
+    public build(): BuiltComponent {
         return {
             [this.idComponent]: this.deepSnakeCase(this.getComponentData()) as Record<string, unknown>
         };

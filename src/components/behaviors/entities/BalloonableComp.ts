@@ -10,7 +10,7 @@ interface BalloonableData extends BPComponent {
 }
 
 export class SetBalloonable extends BehaviorEntityComponentBuilder<BalloonableData> {
-    public constructor (params?: BalloonableData) {
+    public constructor (params: BalloonableData) {
         super("minecraft:balloonable", params);
     }
 }

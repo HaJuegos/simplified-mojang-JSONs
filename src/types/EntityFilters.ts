@@ -16,81 +16,73 @@ export {
     EntityFilterTrigger,
     EntityEffectTypes,
     EntityFiltersTarget,
+    EntityAttackableTargetFilters,
+    EntityAttackableTargetPriorityFilters,
 };
 
 /**
  * Lista de targets disponibles en los filtros de entidades.
- * @typedef {EntityFilterSubject}
  * @author HaJuegos - 20-09-2026
  */
 type EntityFilterSubject = "block" | "damager" | "other" | "parent" | "player" | "self" | "target";
 
 /**
  * Lista de operadores disponibles en los filtros de entidades.
- * @typedef {EntityFilterOperator}
  * @author HaJuegos - 20-09-2026
  */
 type EntityFilterOperator = "==" | "!=" | ">" | ">=" | "<" | "<=" | "equals" | "not";
 
 /**
  * Lista de slots o ubicaciones de equipamiento para filtros de ítems.
- * @typedef {EntityFilterDomain}
  * @author HaJuegos - 20-09-2026
  */
 type EntityFilterDomain = | "any" | "armor" | "body" | "feet" | "hand" | "head" | "inventory" | "leg" | "main_hand" | "torso";
 
 /**
  * Lista de valores permitidos en los filtros de entidades.
- * @typedef {EntityFilterValue}
  * @author HaJuegos - 20-09-2026
  */
 type EntityFilterValue = string | number | boolean | null;
 
 /**
  * Lista de habilidades disponibles para comprobar en entidades.
- * @typedef {EntityAbility}
  * @author HaJuegos - 21-09-2026
  */
 type EntityAbility = | "flySpeed" | "flying" | "instabuild" | "invulnerable" | "lightning" | "mayfly" | "mute" | "noclip" | "verticalFlySpeed" | "walkSpeed" | "worldbuilder";
 
 /**
  * Lista de todos los tipos de daños que puede sufrir una entidad.
- * @typedef {EntityDamageType}
  * @author HaJuegos - 21-09-2026
  */
 type EntityDamageType = "all" | "anvil" | "attack" | "block_explosion" | "contact" | "drowning" | "entity_explosion" | "fall" | "falling_block" | "fatal" | "fire" | "fire_tick" | "fly_into_wall" | "lava" | "magic" | "none" | "override" | "piston" | "projectile" | "self_destruct" | "sonic_boom" | "stalactite" | "stalagmite" | "starve" | "suffocation" | "thorns" | "void" | "wither";
 
 /**
  * Lista de todos los biomas disponibles en un filtro de entidad.
- * @typedef {EntityBiomeType}
  * @author HaJuegos - 21-09-2026
  */
 type EntityBiomeType = | "beach" | "desert" | "extreme_hills" | "flat" | "forest" | "ice" | "jungle" | "mesa" | "mushroom_island" | "ocean" | "plain" | "river" | "savanna" | "stone_beach" | "swamp" | "taiga" | "the_end" | "the_nether";
 
 /**
  * Lista de colores de la paleta de minecraft para comprobar en filtros de entidades.
- * @typedef {EntityPaletteColor}
  * @author HaJuegos - 21-09-2026
  */
 type EntityPaletteColor = | "black" | "blue" | "brown" | "cyan" | "gray" | "green" | "light_blue" | "light_green" | "magenta" | "orange" | "pink" | "purple" | "red" | "silver" | "white" | "yellow";
 
 /**
  * Lista de dificultades que hay en el juego disponibles en filtros de entidades.
- * @typedef {EntityDifficultyType}
  * @author HaJuegos - 21-09-2026
  */
 type EntityDifficultyType = "easy" | "hard" | "normal" | "peaceful";
 
 /**
  * Lista disponibles de temperaturas a evaluar en los filtros de entidades.
- * @typedef {TemperatureCategory}
  * @author HaJuegos - 21-09-2026
  */
 type TemperatureCategory = "cold" | "mild" | "ocean" | "warm";
 
 /**
  * Lista disponibles de efectos a evaluar en los filtros de entidades.
- * @typedef {EntityEffectTypes}
+ * @author HaJuegos - 21-09-2026
  */
 type EntityEffectTypes = "absorption" | "bad_omen" | "blindness" | "conduit_power" | "darkness" | "fatal_poison" | "fire_resistance" | "haste" | "health_boost" | "hunger" | "infested" | "instant_damage" | "instant_health" | "invisibility" | "jump_boost" | "levitation" | "mining_fatigue" | "nausea" | "night_vision" | "oozing" | "poison" | "raid_omen" | "regeneration" | "resistance" | "saturation" | "slow_falling" | "slowness" | "speed" | "strength" | "trial_omen" | "village_hero" | "water_breathing" | "weakness" | "weaving" | "wind_charged" | "wither";
 
@@ -319,8 +311,100 @@ interface EntityFiltersTarget {
 }
 
 /**
+ * Lista de parametros para seleccionar targets en componentes que lo requieran.
+ * @interface EntityAttackableTargetFilters
+ * @author HaJuegos - 23-09-2026
+ */
+interface EntityAttackableTargetFilters {
+    /**
+     * Filtros condicionales a cumplir para seleccionar las entidades.
+     * @type {EntityFilter}
+     */
+    filters: EntityFilter;
+
+    /**
+     * (Opcional) Revisar si los targets estan sin grupo o con menor cantidad de grupo.
+     * @type {?boolean}
+     */
+    checkIfOutnumbered?: boolean;
+
+    /**
+     * (Opcional) Tiempo en segundos para volver a seleccionar otro target.
+     * @type {?number}
+     */
+    cooldown?: number;
+
+    /**
+     * (Opcional) Distancia maxima a considerar para obtener un target.
+     * @type {?number}
+     */
+    maxDist?: number;
+
+    /**
+     * (Opcional) Maxima distancia en altura para considerar el target.
+     * @type {?number}
+     */
+    maxFlee?: number;
+
+    /**
+     * (Opcional) Maxima distancia en altura para considerar el target.
+     * @type {?number}
+     */
+    maxHeight?: number;
+
+    /**
+     * (Opcional) ¿Se puede hacer target a las entidades a travez de bloques?
+     * @type {?boolean}
+     */
+    mustSee?: boolean;
+
+    /**
+     * (Opcional) Duracion en segundos para que la entidad busque un nuevo target antes de olvidarse de el y buscar otro nuevo cuando ya no sea visible.
+     * @type {?number}
+     */
+    mustSeeForgetDuration?: number;
+
+    /**
+     * (Opcional) El mob dejara de ser el target si deja de cumplir con alguna de las condiciones puestas en los filtros.
+     * @type {?boolean}
+     */
+    reevaluateDescription?: boolean;
+
+    /**
+     * Velocidad del mob multiplicado cuando corre.
+     * @type {?number}
+     */
+    sprintSpeedMultiplier?: number;
+
+    /**
+     * Velocidad del mob multiplicado cuando camina.
+     * @type {?number}
+     */
+    walkSpeedMultiplier?: number;
+
+    /**
+     * (Opcional) Rango por defecto para poder detectar a un target con los filtros.
+     * @type {?number}
+     */
+    withinDefault?: number;
+}
+
+/**
+ * Lista de parametros para seleccionar targets en componentes que lo requieran, pero con orden de prioridades.
+ * @interface EntityAttackableTargetPriorityFilters
+ * @extends {EntityAttackableTargetFilters}
+ * @author HaJuegos - 23-09-2026
+ */
+interface EntityAttackableTargetPriorityFilters extends EntityAttackableTargetFilters {
+    /**
+     * Orden de tracks por filtro de entidades, si es menor o igual a 0, es el primero a considerar, si es mayor o igual a 1, es el despues a considerar. 
+     * @type {?number}
+     */
+    priority: number;
+}
+
+/**
  * Lista de filtros que se pueden usar en filtros de entidades.
- * @typedef {EntityFilter}
  * @author HaJuegos - 20-09-2026
  */
 type EntityFilter = BaseEntityFilter | EntityFilterGroup;

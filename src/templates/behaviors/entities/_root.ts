@@ -1,0 +1,1 @@
+export { AllayVanillaTemplate } from "./AllayTemplate";

@@ -16,7 +16,7 @@ interface BehaviorAquaticChargeAttackData extends BPComponent {
 }
 
 export class SetBehaviorAquaticChargeAttack extends BehaviorEntityComponentBuilder<BehaviorAquaticChargeAttackData> {
-    public constructor (params?: BehaviorAquaticChargeAttackData) {
+    public constructor (params: BehaviorAquaticChargeAttackData) {
         super("minecraft:behavior.aquatic_charge_attack", params);
     }
 }

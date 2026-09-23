@@ -90,13 +90,6 @@ interface BPAnimationScriptEntities {
 }
 
 /**
- * Tipos de propiedades disponibles.
- * @typedef {PropertyTypes}
- * @author HaJuegos - 20-09-2026
- */
-type PropertyTypes = 'bool' | 'enum' | 'float' | 'int';
-
-/**
  * Plantilla base para la creacion de una propiedad dinamica.
  * @interface BPBaseProperty
  * @author HaJuegos - 20-09-2026
@@ -215,7 +208,6 @@ interface BPIntPropertyEntity extends BPBaseProperty {
 
 /**
  * Todos los tipos de propiedades dinamicas y sus valores disponibles.
- * @typedef {BPPropertiesEntities}
  * @author HaJuegos - 20-09-2026
  */
 type BPPropertiesEntities = BPBoolPropertyEntity | BPEnumPropertyEntity | BPFloatPropertyEntity | BPIntPropertyEntity;

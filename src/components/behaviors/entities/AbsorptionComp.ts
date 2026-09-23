@@ -27,10 +27,17 @@ interface AbsorptionComponentData extends BPComponent {
     min?: number;
 }
 
+/**
+ * Componente que asigna y establece absorcion a una entidad en concreto.
+ * @class SetAbsorption
+ * @extends {BehaviorEntityComponentBuilder<AbsorptionComponentData>}
+ * @author HaJuegos - 22-09-2026
+ * @export
+ */
 export class SetAbsorption extends BehaviorEntityComponentBuilder<AbsorptionComponentData> {
     /**
-     * Metodo principal que asigna absorcion a una entidad en concreto.
-     * @param {AbsorptionComponentData} params Parametros del metodo principal.
+     * Componente que asigna y establece absorcion a una entidad en concreto.
+     * @param {AbsorptionComponentData} params Parametros del componente.
      * @author HaJuegos - 20-09-2026 
      * @constructor
      * @public

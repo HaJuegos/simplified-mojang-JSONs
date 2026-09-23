@@ -3,6 +3,7 @@ import * as vanilla from '@minecraft/vanilla-data';
 import { BPAnimationScriptEntities, BPEntityOptionalParams, BPPropertiesEntities, FormatVersionEntities, SpawnCategoryEntities } from "../../types/behaviors/EntitiesEnums";
 import { MoLangValue } from '../../types/MoLang';
 import { BPComponent, BPCompsGroups } from '../../types/behaviors/EntitiesComps';
+import { BehaviorEntityComponentBuilder } from './EntityCompsBuilder';
 
 /**
  * Clase abstracta de base para la creacion de una entidad con todos los parametros requeridos y una estructura fija.
@@ -93,7 +94,29 @@ export class BehaviorEntityBuilder {
      */
     private properties?: Record<string, BPPropertiesEntities>;
 
-    private groupComps?: Record<string, BPComponent[]>;
+    /**
+     * (Opcional) Componentes estaticos de la entidad a crear en cuestion.
+     * @type {?BehaviorEntityComponentBuilder<any>[]}
+     * @author HaJuegos - 23-09-2026
+     * @private
+     */
+    private components?: BehaviorEntityComponentBuilder<any>[];
+
+    /**
+     * (Opcional) Grupo de componentes dinamicos de la entidad a crear en cuestion.
+     * @type {?Record<string, BehaviorEntityComponentBuilder<any>[]>}
+     * @author HaJuegos - 23-09-2026
+     * @private
+     */
+    private componentGroups?: Record<string, BehaviorEntityComponentBuilder<any>[]>;
+
+    /**
+     * (Opcional) Lista de grupos de eventos de la entidad a crear en cuestion.
+     * @type {?Record<string, unknown>}
+     * @author HaJuegos - 23-09-2026
+     * @private
+     */
+    private events?: Record<string, unknown>;
 
     /**
      * Eventos y parametros iniciales de la clase cuando es llamada o inicializada.
@@ -124,7 +147,7 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 16-09-2026
      * @public
      */
-    public setOtherParams(otherParams: BPEntityOptionalParams): this {
+    public setDescParams(otherParams: BPEntityOptionalParams): this {
         Object.assign(this, otherParams);
 
         return this;
@@ -156,21 +179,38 @@ export class BehaviorEntityBuilder {
         return this;
     }
 
-    public setComponentGroups(groups: BPCompsGroups[]): this {
-        for (const [id, components] of Object.entries(groups)) {
-
-        }
-
+    /**
+     * Metodo principal que registra la lista de componentes dinamicos de la entidad.
+     * @param {Record<string, BehaviorEntityComponentBuilder<any>[]>} groups Grupos de componentes en cuestion basado por un ID. Por ej: `"ha:test": {}`.
+     * @returns {this}
+     * @author HaJuegos - 23-09-2026 
+     * @public
+     */
+    public setComponentGroups(groups: Record<string, BehaviorEntityComponentBuilder<any>[]>): this {
+        this.componentGroups = groups;
         return this;
     }
 
-    public setComponents(): this {
-
+    /**
+     * Metodo principal que registra los componentes estaticos de la entidad.
+     * @param {BehaviorEntityComponentBuilder<any>[]} comps Componentes estaticos en cuestion.
+     * @returns {this} 
+     * @author HaJuegos - 23-09-2026 
+     * @public
+     */
+    public setComponents(comps: BehaviorEntityComponentBuilder<any>[]): this {
+        this.components = comps;
         return this;
     }
 
-    public setEvents(): this {
-
+    /**
+     * Metodo principal que registra la lista de grupos de eventos de la entidad.
+     * @param {Record<string, unknown>} events Lista de eventos en cuestion a registrar por su ID. Por ej: `"minecraft:entity_spawned": {}`.
+     * @returns {this} 
+     * @public
+     */
+    public setEvents(events: Record<string, unknown>): this {
+        this.events = events;
         return this;
     }
 
@@ -240,16 +280,33 @@ export class BehaviorEntityBuilder {
             description.properties = formattedProperties;
         }
 
+        const componentsObj = this.components ? this.converComps(this.components) : undefined;
+        const componentGroupsObj = this.componentGroups ? Object.fromEntries(Object.entries(this.componentGroups).map(([id, comps]) => [id, this.converComps(comps)])) : undefined;
+
         const finalObj = Object.freeze({
             format_version: this.version,
             ...(this.useBetaFeatures != undefined && { use_beta_features: this.useBetaFeatures }),
             'minecraft:entity': {
-                description
+                description,
+                ...(componentGroupsObj && Object.keys(componentGroupsObj).length > 0 && { component_groups: componentGroupsObj }),
+                ...(componentsObj && Object.keys(componentsObj).length > 0 && { components: componentsObj }),
+                ...(this.events && Object.keys(this.events).length > 0 && { events: this.events })
             }
         });
 
         const JSONtxt = JSON.stringify(finalObj);
 
         return stringify ? JSONtxt : finalObj;
+    }
+
+    /**
+     * Metodo auxiliar que convierte la lista de componentes a un estilo plano para el formato JSON.
+     * @param {BehaviorEntityComponentBuilder<any>[]} list La lista de componentes a considerar.
+     * @returns {Record<string, unknown>} Devuelve un formato mas legible y adaptado al esquema.
+     * @author HaJuegos - 23-09-2026
+     * @private
+     */
+    private converComps(list: BehaviorEntityComponentBuilder<any>[]): Record<string, unknown> {
+        return list.reduce((acc, comp) => ({ ...acc, ...comp.build() }), {});
     }
 }

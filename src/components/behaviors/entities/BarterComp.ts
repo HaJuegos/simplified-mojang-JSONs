@@ -7,7 +7,7 @@ interface BarterData extends BPComponent {
 }
 
 export class SetBarter extends BehaviorEntityComponentBuilder<BarterData> {
-    public constructor (params?: BarterData) {
+    public constructor (params: BarterData) {
         super("minecraft:barter", params);
     }
 }

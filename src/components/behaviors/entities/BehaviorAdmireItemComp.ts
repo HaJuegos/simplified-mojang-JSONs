@@ -13,7 +13,7 @@ interface BehaviorAdmireItemData extends BPComponent {
 }
 
 export class SetBehaviorAdmireItem extends BehaviorEntityComponentBuilder<BehaviorAdmireItemData> {
-    public constructor (params?: BehaviorAdmireItemData) {
+    public constructor (params: BehaviorAdmireItemData) {
         super("minecraft:behavior.admire_item", params);
     }
 }

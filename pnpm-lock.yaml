@@ -33,7 +33,7 @@ importers:
         specifier: 1.26.50
         version: 1.26.50
       '@types/node':
-        specifier: ^25.4.0
+        specifier: ^25.9.1
         version: 25.9.1
       adm-zip:
         specifier: ^0.6.1
@@ -50,6 +50,9 @@ importers:
       simplified-mojang-api:
         specifier: 0.0.67
         version: 0.0.67(392000e4b6dff473dc9b3a00bb842fc6)
+      tsx:
+        specifier: ^4.23.15
+        version: 4.23.15
       typescript:
         specifier: ^5.9.3
         version: 5.9.3
@@ -412,6 +415,11 @@ packages:
     resolution: {integrity: sha512-r0eojU4bI8MnHr8c5bNo7lJDdI2qXlWWJk6a9EAFG7vbhTjElYhBVS3/miuE0uOuoLdb8Mc/rVfsmm6eo5o9GA==}
     hasBin: true
 
+  tsx@4.23.15:
+    resolution: {integrity: sha512-Yiex1Ovn8z2xPpOWckIiysV1SSyRMY9BkLF++q0yKiDxCqRhosKfMg3janKkiLBwZ5c/YryloKwGZcrEmtwxKw==}
+    engines: {node: '>=18.0.0'}
+    hasBin: true
+
   typescript@5.9.3:
     resolution: {integrity: sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw==}
     engines: {node: '>=14.17'}
@@ -702,6 +710,12 @@ snapshots:
       is-number: 7.0.0
 
   touch@3.1.1: {}
+
+  tsx@4.23.15:
+    dependencies:
+      esbuild: 0.28.2
+    optionalDependencies:
+      fsevents: 2.3.3
 
   typescript@5.9.3: {}
 
