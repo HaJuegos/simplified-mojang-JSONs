@@ -24,7 +24,7 @@ export abstract class BehaviorEntityComponentBuilder<Component extends BPCompone
      * @author HaJuegos- 21-09-2026
      * @protected
      */
-    protected data: Component;
+    protected data?: Component;
 
     /**
      * Eventos y parametros iniciales de la clase cuando es llamada o inicializada.
@@ -34,19 +34,19 @@ export abstract class BehaviorEntityComponentBuilder<Component extends BPCompone
      * @constructor
      * @public
      */
-    public constructor (idComponent: string, data: Component) {
+    public constructor (idComponent: string, data?: Component) {
         this.idComponent = idComponent;
         this.data = data;
     }
 
     /**
      * Metodo principal que obtiene todos los datos y parametros de los componentes en concreto.
-     * @returns {Component} Componente en concreto.
+     * @returns {Component | undefined} Componente en concreto.
      * @author HaJuegos - 20-09-2026
      * @protected
      * @abstract
      */
-    protected getComponentData(): Component {
+    protected getComponentData(): Component | undefined {
         return this.data;
     }
 

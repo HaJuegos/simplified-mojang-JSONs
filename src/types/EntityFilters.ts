@@ -14,6 +14,8 @@ export {
     EntityDifficultyType,
     TemperatureCategory,
     EntityFilterTrigger,
+    EntityEffectTypes,
+    EntityFiltersTarget,
 };
 
 /**
@@ -56,7 +58,7 @@ type EntityAbility = | "flySpeed" | "flying" | "instabuild" | "invulnerable" | "
  * @typedef {EntityDamageType}
  * @author HaJuegos - 21-09-2026
  */
-type EntityDamageType = | "anvil" | "attack" | "block_explosion" | "contact" | "drowning" | "entity_explosion" | "fall" | "falling_block" | "fatal" | "fire" | "fire_tick" | "fly_into_wall" | "lava" | "magic" | "none" | "override" | "piston" | "projectile" | "self_destruct" | "sonic_boom" | "stalactite" | "stalagmite" | "starve" | "suffocation" | "thorns" | "void" | "wither";
+type EntityDamageType = "all" | "anvil" | "attack" | "block_explosion" | "contact" | "drowning" | "entity_explosion" | "fall" | "falling_block" | "fatal" | "fire" | "fire_tick" | "fly_into_wall" | "lava" | "magic" | "none" | "override" | "piston" | "projectile" | "self_destruct" | "sonic_boom" | "stalactite" | "stalagmite" | "starve" | "suffocation" | "thorns" | "void" | "wither";
 
 /**
  * Lista de todos los biomas disponibles en un filtro de entidad.
@@ -86,6 +88,11 @@ type EntityDifficultyType = "easy" | "hard" | "normal" | "peaceful";
  */
 type TemperatureCategory = "cold" | "mild" | "ocean" | "warm";
 
+/**
+ * Lista disponibles de efectos a evaluar en los filtros de entidades.
+ * @typedef {EntityEffectTypes}
+ */
+type EntityEffectTypes = "absorption" | "bad_omen" | "blindness" | "conduit_power" | "darkness" | "fatal_poison" | "fire_resistance" | "haste" | "health_boost" | "hunger" | "infested" | "instant_damage" | "instant_health" | "invisibility" | "jump_boost" | "levitation" | "mining_fatigue" | "nausea" | "night_vision" | "oozing" | "poison" | "raid_omen" | "regeneration" | "resistance" | "saturation" | "slow_falling" | "slowness" | "speed" | "strength" | "trial_omen" | "village_hero" | "water_breathing" | "weakness" | "weaving" | "wind_charged" | "wither";
 
 /**
  * Lista de comprobaciones en los filtros de entidades.
@@ -283,6 +290,25 @@ interface EntityFilterTrigger {
      * Evento en concreto a ejecutar cuando la condicion se cumpla.
      * @type {string}
      */
+    event: string;
+
+    /**
+     * Target en concreto a seleccionar cuando el evento se cumpla.
+     * @type {EntityFilterSubject}
+     */
+    target: EntityFilterSubject;
+}
+
+/**
+ * Lista de eventos y targets para condiciones mas especificas.
+ * @interface EntityGrowTrigger
+ * @author HaJuegos - 21-09-2026
+ */
+interface EntityFiltersTarget {
+    /**
+    * Evento en concreto a ejecutar cuando la condicion se cumpla.
+    * @type {string}
+    */
     event: string;
 
     /**

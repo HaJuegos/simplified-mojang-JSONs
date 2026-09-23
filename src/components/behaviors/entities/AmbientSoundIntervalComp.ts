@@ -42,7 +42,7 @@ interface EventsNameAmbientSound {
     soundID: string;
 
     /**
-     * (Opcional) Condicion {@link MoLang} a cumplirse antes de ejecutar el sonido.
+     * Condicion {@link MoLang} a cumplirse antes de ejecutar el sonido.
      * @type {MoLangValue}
      */
     condition: MoLangValue;
