@@ -1,10 +1,11 @@
 import { BehaviorEntityBuilder } from "../../../builders/behaviors/EntityBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
+import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 
 export class AllayVanillaTemplate extends BehaviorEntityBuilder {
     constructor () {
-        super('minecraft:allay');
+        super(MinecraftEntityTypes.Allay);
 
         this.setVersion(FormatVersionEntities.MostRecent);
 
@@ -18,8 +19,6 @@ export class AllayVanillaTemplate extends BehaviorEntityBuilder {
         this.setComponents(this.vanillaStaticComps());
 
         this.setEvents(this.vanillaEvents());
-
-        this.toJSON(true);
     }
 
     private vanillaDynamicComps(): Record<string, BehaviorEntityComponentBuilder<any>[]> {
@@ -34,4 +33,3 @@ export class AllayVanillaTemplate extends BehaviorEntityBuilder {
         return {};
     }
 }
-

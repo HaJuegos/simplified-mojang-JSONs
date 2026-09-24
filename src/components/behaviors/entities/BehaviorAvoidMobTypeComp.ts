@@ -17,7 +17,7 @@ interface BehaviorAvoidMobTypeData extends BPComponent {
     sprintDistance?: number;
     sprintSpeedMultiplier?: number;
     walkSpeedMultiplier?: number;
-    entityTypes?: EntityAttackableTargetFilters;
+    entityTypes?: EntityAttackableTargetFilters | EntityAttackableTargetFilters[];
     onEscapeEvent?: string | EntityFiltersTarget;
     soundInterval?: SoundIntervalTypes;
 }

@@ -10,7 +10,7 @@ interface BehaviorDefendTrustedTargetData extends BPComponent {
     mustSeeForgetDuration?: number;
     onDefendStart?: "string" | EntityFiltersTarget;
     withinRadius?: number;
-    entityTypes?: EntityAttackableTargetFilters[];
+    entityTypes?: EntityAttackableTargetFilters | EntityAttackableTargetFilters[];
     soundChance?: number;
 }
 

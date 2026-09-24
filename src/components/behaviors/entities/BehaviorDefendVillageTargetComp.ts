@@ -4,7 +4,7 @@ import { EntityAttackableTargetFilters } from "../../../types/EntityFilters";
 
 interface BehaviorDefendVillageTargetData extends BPComponent {
     priority: number;
-    entityTypes?: EntityAttackableTargetFilters[];
+    entityTypes?: EntityAttackableTargetFilters | EntityAttackableTargetFilters[];
     attackOwner?: boolean;
     attackChance?: number;
     mustReach?: boolean;
