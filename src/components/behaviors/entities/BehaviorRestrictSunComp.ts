@@ -2,7 +2,7 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
 interface BehaviorRestrictSunData extends BPComponent {
-    priority: unknown;
+    priority: number;
 }
 
 export class SetBehaviorRestrictSun extends BehaviorEntityComponentBuilder<BehaviorRestrictSunData> {

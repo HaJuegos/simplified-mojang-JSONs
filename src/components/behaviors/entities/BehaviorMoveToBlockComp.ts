@@ -1,7 +1,7 @@
 import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, TargetItemsTypes } from "../../../types/EntityFilters";
 import { MoLangValue } from "../../../types/MoLang";
 
 interface BehaviorMoveToBlockData extends BPComponent {
@@ -15,15 +15,9 @@ interface BehaviorMoveToBlockData extends BPComponent {
     stayDuration?: number;
     targetSelectionMethod?: "random" | "nearest";
     targetOffset?: [number, number, number];
-    targetBlocks?: (string | TargetBlocksTypes)[];
+    targetBlocks?: (string | TargetItemsTypes)[];
     targetBlockFilters?: EntityFilter[];
     tickInterval?: number;
-}
-
-interface TargetBlocksTypes {
-    item: string | MinecraftItemTypes;
-    itemTag: string;
-    tags: MoLangValue;
 }
 
 export class SetBehaviorMoveToBlock extends BehaviorEntityComponentBuilder<BehaviorMoveToBlockData> {

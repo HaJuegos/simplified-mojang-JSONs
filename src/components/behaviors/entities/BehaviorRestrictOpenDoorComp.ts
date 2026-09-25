@@ -2,7 +2,7 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
 interface BehaviorRestrictOpenDoorData extends BPComponent {
-    priority: unknown;
+    priority: number;
 }
 
 export class SetBehaviorRestrictOpenDoor extends BehaviorEntityComponentBuilder<BehaviorRestrictOpenDoorData> {

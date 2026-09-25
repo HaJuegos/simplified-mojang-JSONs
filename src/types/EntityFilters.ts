@@ -1,3 +1,6 @@
+import { MinecraftItemTypes } from "@minecraft/vanilla-data";
+import { MoLangValue } from "./MoLang";
+
 export {
     EntityFilterSubject,
     EntityFilterOperator,
@@ -18,6 +21,7 @@ export {
     EntityFiltersTarget,
     EntityAttackableTargetFilters,
     EntityAttackableTargetPriorityFilters,
+    TargetItemsTypes,
 };
 
 /**
@@ -401,6 +405,17 @@ interface EntityAttackableTargetPriorityFilters extends EntityAttackableTargetFi
      * @type {?number}
      */
     priority: number;
+}
+
+/**
+ * Lista de parametros para seleccionar items o grupos de items que lo requieran.
+ * @interface TargetItemsTypes
+ * @author HaJuegos - 24-09-2026
+ */
+interface TargetItemsTypes {
+    item: string | MinecraftItemTypes;
+    itemTag: string;
+    tags: MoLangValue;
 }
 
 /**

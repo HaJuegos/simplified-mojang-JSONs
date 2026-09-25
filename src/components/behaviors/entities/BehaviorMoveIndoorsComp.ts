@@ -2,8 +2,8 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
 interface BehaviorMoveIndoorsData extends BPComponent {
-    priority: unknown;
-    speedMultiplier?: unknown;
+    priority: number;
+    speedMultiplier?: number;
     timeoutCooldown?: number;
 }
 

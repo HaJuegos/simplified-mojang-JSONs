@@ -2,13 +2,13 @@ import { MinecraftBlockTypes, MinecraftItemTypes } from "@minecraft/vanilla-data
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { MoLangValue } from "../../../types/MoLang";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorLayEggData extends BPComponent {
     priority: number;
     speedMultiplier?: number;
     allowLayingFromBelow?: boolean;
-    eggType?: string | TargetBlocksTypes;
+    eggType?: string | TargetItemsTypes;
     goalRadius?: number;
     layEggSound?: string;
     laySeconds?: number;
@@ -18,12 +18,6 @@ interface BehaviorLayEggData extends BPComponent {
     targetBlocks?: (string | MinecraftBlockTypes)[];
     targetMaterialsAboveBlock?: ("Air" | "Any" | "Lava" | "Water")[];
     useDefaultAnimation?: boolean;
-}
-
-interface TargetBlocksTypes {
-    item: string | MinecraftItemTypes;
-    itemTag: string;
-    tags: MoLangValue;
 }
 
 export class SetBehaviorLayEgg extends BehaviorEntityComponentBuilder<BehaviorLayEggData> {

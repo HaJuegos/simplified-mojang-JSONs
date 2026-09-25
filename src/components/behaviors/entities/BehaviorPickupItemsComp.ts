@@ -2,7 +2,7 @@ import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { MoLangValue } from "../../../types/MoLang";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorPickupItemsData extends BPComponent {
     priority: number;
@@ -10,7 +10,7 @@ interface BehaviorPickupItemsData extends BPComponent {
     canPickupAnyItem?: boolean;
     canPickupToHandOrEquipment?: boolean;
     cooldownAfterBeingAttacked?: number;
-    excludedItems?: (string | TargetBlocksTypes)[];
+    excludedItems?: (string | TargetItemsTypes)[];
     goalRadius?: number;
     maxDist?: number;
     searchHeight?: number;
@@ -20,12 +20,6 @@ interface BehaviorPickupItemsData extends BPComponent {
     trackTarget?: boolean;
     onPickupItemStart?: string | EntityFilter | EntityFilter[];
     onPickupItemEnd?: string | EntityFilter | EntityFilter[];
-}
-
-interface TargetBlocksTypes {
-    item: string | MinecraftItemTypes;
-    itemTag: string;
-    tags: MoLangValue;
 }
 
 export class SetBehaviorPickupItems extends BehaviorEntityComponentBuilder<BehaviorPickupItemsData> {

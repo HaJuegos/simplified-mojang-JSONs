@@ -2,6 +2,7 @@ import { MinecraftBlockTypes, MinecraftItemTypes } from "@minecraft/vanilla-data
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { MoLangValue } from "../../../types/MoLang";
+import { TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorJumpToBlockData extends BPComponent {
     priority: number;
@@ -9,21 +10,15 @@ interface BehaviorJumpToBlockData extends BPComponent {
         min: number,
         max: number;
     };
-    forbiddenBlocks?: string[] | MinecraftBlockTypes[] | TargetBlocksTypes[];
+    forbiddenBlocks?: string[] | MinecraftBlockTypes[] | TargetItemsTypes[];
     maxVelocity?: number;
     minimumDistance?: number;
     minimumPathLength?: number;
-    preferredBlocks?: string[] | MinecraftBlockTypes[] | TargetBlocksTypes[];
+    preferredBlocks?: string[] | MinecraftBlockTypes[] | TargetItemsTypes[];
     preferredBlocksChance?: number;
     scaleFactor?: number;
     searchHeight?: number;
     searchWidth?: number;
-}
-
-interface TargetBlocksTypes {
-    item: string | MinecraftItemTypes;
-    itemTag: string;
-    tags: MoLangValue;
 }
 
 export class SetBehaviorJumpToBlock extends BehaviorEntityComponentBuilder<BehaviorJumpToBlockData> {

@@ -4,7 +4,7 @@ import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityFilter } from "../../../types/EntityFilters";
 
 interface BehaviorFollowMobData extends BPComponent {
-    priority: unknown;
+    priority: number;
     filters?: EntityFilter | EntityFilter[];
     preferredActorType?: string | MinecraftEntityTypes;
     speedMultiplier?: number;

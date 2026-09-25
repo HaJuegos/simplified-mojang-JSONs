@@ -2,8 +2,8 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
 interface BehaviorMoveToLavaData extends BPComponent {
-    priority: unknown;
-    speedMultiplier?: unknown;
+    priority: number;
+    speedMultiplier?: number;
     goalRadius?: number;
     searchCount?: number;
     searchHeight?: number;

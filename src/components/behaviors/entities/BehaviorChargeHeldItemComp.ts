@@ -2,16 +2,11 @@ import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { MoLangValue } from "../../../types/MoLang";
+import { TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorChargeHeldItemData extends BPComponent {
     priority: number;
-    items?: TargetBlocksTypes[];
-}
-
-interface TargetBlocksTypes {
-    item: string | MinecraftItemTypes;
-    itemTag: string;
-    tags: MoLangValue;
+    items?: TargetItemsTypes[];
 }
 
 export class SetBehaviorChargeHeldItem extends BehaviorEntityComponentBuilder<BehaviorChargeHeldItemData> {
