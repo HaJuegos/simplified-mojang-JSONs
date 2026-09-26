@@ -1,0 +1,25 @@
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+
+interface BehaviorStompTurtleEggData extends BPComponent {
+    priority: number;
+    speedMultiplier?: number;
+    goalRadius?: number;
+    interval?: number;
+    searchCount?: number;
+    searchHeight?: number;
+    searchRange?: number;
+}
+
+export class SetBehaviorStompTurtleEgg extends BehaviorEntityComponentBuilder<BehaviorStompTurtleEggData> {
+    /**
+     * 
+     * @param {BehaviorStompTurtleEggData} params Parametros del componente.
+     * @author HaJuegos - 26-09-2026
+     * @constructor
+     * @public
+     */
+    public constructor (params: BehaviorStompTurtleEggData) {
+        super("minecraft:behavior.stomp_turtle_egg", params);
+    }
+}

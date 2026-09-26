@@ -1,0 +1,21 @@
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { EntityAttackableTargetFilters } from "../../../types/EntityFilters";
+
+interface BehaviorWitherTargetHighestDamageData extends BPComponent {
+    priority: unknown;
+    entityTypes?: EntityAttackableTargetFilters | EntityAttackableTargetFilters[];
+}
+
+export class SetBehaviorWitherTargetHighestDamage extends BehaviorEntityComponentBuilder<BehaviorWitherTargetHighestDamageData> {
+    /**
+     * 
+     * @param {BehaviorWitherTargetHighestDamageData} params Parametros del componente.
+     * @author HaJuegos - 26-09-2026
+     * @constructor
+     * @public
+     */
+    public constructor (params: BehaviorWitherTargetHighestDamageData) {
+        super("minecraft:behavior.wither_target_highest_damage", params);
+    }
+}

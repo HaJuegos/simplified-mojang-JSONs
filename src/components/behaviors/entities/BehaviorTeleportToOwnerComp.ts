@@ -1,0 +1,22 @@
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { EntityFilter } from "../../../types/EntityFilters";
+
+interface BehaviorTeleportToOwnerData extends BPComponent {
+    priority: number;
+    cooldown?: number;
+    filters?: EntityFilter | EntityFilter[];
+}
+
+export class SetBehaviorTeleportToOwner extends BehaviorEntityComponentBuilder<BehaviorTeleportToOwnerData> {
+    /**
+     * 
+     * @param {BehaviorTeleportToOwnerData} params Parametros del componente.
+     * @author HaJuegos - 26-09-2026
+     * @constructor
+     * @public
+     */
+    public constructor (params: BehaviorTeleportToOwnerData) {
+        super("minecraft:behavior.teleport_to_owner", params);
+    }
+}

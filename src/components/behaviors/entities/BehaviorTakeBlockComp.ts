@@ -1,0 +1,35 @@
+import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { EntityFilter, EntityFiltersTarget } from "../../../types/EntityFilters";
+
+interface BehaviorTakeBlockData extends BPComponent {
+    priority: number;
+    affectedByGriefingRule?: boolean;
+    blocks?: (string | MinecraftBlockTypes)[];
+    canTake?: EntityFilter | EntityFilter[];
+    chance?: number;
+    onTake?: string | EntityFiltersTarget | EntityFiltersTarget[];
+    requiresLineOfSight?: boolean;
+    xzRange?: {
+        min: number;
+        max: number;
+    };
+    yRange?: {
+        min: number;
+        max: number;
+    };
+}
+
+export class SetBehaviorTakeBlock extends BehaviorEntityComponentBuilder<BehaviorTakeBlockData> {
+    /**
+     * 
+     * @param {BehaviorTakeBlockData} params Parametros del componente.
+     * @author HaJuegos - 26-09-2026
+     * @constructor
+     * @public
+     */
+    public constructor (params: BehaviorTakeBlockData) {
+        super("minecraft:behavior.take_block", params);
+    }
+}
