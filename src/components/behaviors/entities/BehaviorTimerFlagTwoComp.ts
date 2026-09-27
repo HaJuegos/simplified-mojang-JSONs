@@ -2,7 +2,7 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityFilterTrigger } from "../../../types/EntityFilters";
 
-interface BehaviorTimerFlagOneData extends BPComponent {
+interface BehaviorTimerFlagTwoData extends BPComponent {
     priority: number;
     cooldownRange?: number | {
         min: number;
@@ -16,15 +16,15 @@ interface BehaviorTimerFlagOneData extends BPComponent {
     onStart?: string | EntityFilterTrigger | EntityFilterTrigger[];
 }
 
-export class SetBehaviorTimerFlagOne extends BehaviorEntityComponentBuilder<BehaviorTimerFlagOneData> {
+export class SetBehaviorTimerFlagTwo extends BehaviorEntityComponentBuilder<BehaviorTimerFlagTwoData> {
     /**
      * 
-     * @param {BehaviorTimerFlagOneData} params Parametros del componente.
+     * @param {BehaviorTimerFlagTwoData} params Parametros del componente.
      * @author HaJuegos - 26-09-2026
      * @constructor
      * @public
      */
-    public constructor (params: BehaviorTimerFlagOneData) {
+    public constructor (params: BehaviorTimerFlagTwoData) {
         super("minecraft:behavior.timer_flag_2", params);
     }
 }

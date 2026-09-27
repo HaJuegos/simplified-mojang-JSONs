@@ -22,6 +22,7 @@ export {
     EntityAttackableTargetFilters,
     EntityAttackableTargetPriorityFilters,
     TargetItemsTypes,
+    EntitySlotsArmor,
 };
 
 /**
@@ -58,7 +59,7 @@ type EntityAbility = | "flySpeed" | "flying" | "instabuild" | "invulnerable" | "
  * Lista de todos los tipos de daños que puede sufrir una entidad.
  * @author HaJuegos - 21-09-2026
  */
-type EntityDamageType = "all" | "anvil" | "attack" | "block_explosion" | "contact" | "drowning" | "entity_explosion" | "fall" | "falling_block" | "fatal" | "fire" | "fire_tick" | "fly_into_wall" | "lava" | "magic" | "none" | "override" | "piston" | "projectile" | "self_destruct" | "sonic_boom" | "stalactite" | "stalagmite" | "starve" | "suffocation" | "thorns" | "void" | "wither";
+type EntityDamageType = "all" | "anvil" | "attack" | "block_explosion" | "campfire" | "charging" | "contact" | "drowning" | "entity_attack" | "entity_explosion" | "fall" | "falling_block" | "fatal" | "fire" | "fire_tick" | "fireworks" | "fly_into_wall" | "freezing" | "lava" | "lightning" | "magic" | "magma" | "none" | "override" | "piston" | "projectile" | "ram_attack" | "self_destruct" | "sonic_boom" | "soul_campfire" | "stalactite" | "stalagmite" | "starve" | "suffocation" | "temperature" | "thorns" | "void" | "wither";
 
 /**
  * Lista de todos los biomas disponibles en un filtro de entidad.
@@ -89,6 +90,12 @@ type TemperatureCategory = "cold" | "mild" | "ocean" | "warm";
  * @author HaJuegos - 21-09-2026
  */
 type EntityEffectTypes = "absorption" | "bad_omen" | "blindness" | "conduit_power" | "darkness" | "fatal_poison" | "fire_resistance" | "haste" | "health_boost" | "hunger" | "infested" | "instant_damage" | "instant_health" | "invisibility" | "jump_boost" | "levitation" | "mining_fatigue" | "nausea" | "night_vision" | "oozing" | "poison" | "raid_omen" | "regeneration" | "resistance" | "saturation" | "slow_falling" | "slowness" | "speed" | "strength" | "trial_omen" | "village_hero" | "water_breathing" | "weakness" | "weaving" | "wind_charged" | "wither";
+
+/**
+ * Lista de slots de armadura disponibles a usar en los componentes de entidades.
+ * @author HaJuegos - 21-09-2026
+ */
+type EntitySlotsArmor = 'slot.armor.head' | 'slot.armor.chest' | 'slot.armor.legs' | 'slot.armor.feet' | 'slot.armor.body' | 'slot.weapon.mainhand' | 'slot.weapon.offhand';
 
 /**
  * Lista de comprobaciones en los filtros de entidades.

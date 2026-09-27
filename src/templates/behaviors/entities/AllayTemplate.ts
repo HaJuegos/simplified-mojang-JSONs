@@ -2,6 +2,7 @@ import { BehaviorEntityBuilder } from "../../../builders/behaviors/EntityBuilder
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { BPEntityComponents } from "../../../components/behaviors/entities";
 
 export class AllayVanillaTemplate extends BehaviorEntityBuilder {
     constructor () {
@@ -19,6 +20,8 @@ export class AllayVanillaTemplate extends BehaviorEntityBuilder {
         this.setComponents(this.vanillaStaticComps());
 
         this.setEvents(this.vanillaEvents());
+
+        this.toJSON(true);
     }
 
     private vanillaDynamicComps(): Record<string, BehaviorEntityComponentBuilder<any>[]> {
@@ -26,10 +29,27 @@ export class AllayVanillaTemplate extends BehaviorEntityBuilder {
     }
 
     private vanillaStaticComps(): BehaviorEntityComponentBuilder<any>[] {
-        return [];
+        return [
+            new BPEntityComponents.SetBehaviorMoveToRandomBlock({
+                priority: 0
+            })
+        ];
     }
 
     private vanillaEvents(): Record<string, unknown> {
         return {};
     }
 }
+
+const finalJSON = new AllayVanillaTemplate()
+    .setComponentGroups({
+        "ha:pruebas": [
+            new BPEntityComponents.SetAreaAttack({
+                cause: 'attack',
+                damagePerTick: 1,
+                damageRange: 10
+            })
+        ]
+    });
+
+console.log(finalJSON);
