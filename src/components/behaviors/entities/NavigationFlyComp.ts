@@ -1,0 +1,19 @@
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { GlobalNavigationParams } from "../../../types/EntityFilters";
+
+interface NavigationFlyData extends BPComponent, GlobalNavigationParams {
+}
+
+export class SetNavigationFly extends BehaviorEntityComponentBuilder<NavigationFlyData> {
+    /**
+     * 
+     * @param {NavigationFlyData} params Parametros del componente.
+     * @author HaJuegos - 27-09-2026
+     * @constructor
+     * @public
+     */
+    public constructor (params: NavigationFlyData) {
+        super("minecraft:navigation.fly", params);
+    }
+}
