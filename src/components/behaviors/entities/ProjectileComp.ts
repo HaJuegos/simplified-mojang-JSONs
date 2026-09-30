@@ -1,7 +1,7 @@
-import { MinecraftEffectTypes, MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
+import { EntityEffectTypes, EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface ProjectileData extends BPComponent {
     onHit?: OnHitTypes;
@@ -110,7 +110,7 @@ interface MobEffectTypes {
 }
 
 interface EffectsTypes {
-    effect: string | MinecraftEffectTypes,
+    effect: string | EntityEffectTypes,
     amplifier: number,
     durationeasy: number | 'infinite',
     durationnormal: number | 'infinite';

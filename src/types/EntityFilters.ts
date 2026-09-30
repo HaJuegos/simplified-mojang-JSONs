@@ -24,6 +24,7 @@ export {
     TargetItemsTypes,
     EntitySlotsArmor,
     GlobalNavigationParams,
+    VanillaEntityFamilies,
 };
 
 /**
@@ -97,6 +98,12 @@ type EntityEffectTypes = "absorption" | "bad_omen" | "blindness" | "conduit_powe
  * @author HaJuegos - 21-09-2026
  */
 type EntitySlotsArmor = 'slot.armor.head' | 'slot.armor.chest' | 'slot.armor.legs' | 'slot.armor.feet' | 'slot.armor.body' | 'slot.weapon.mainhand' | 'slot.weapon.offhand';
+
+/**
+ * Lista de todas las familias vanillas encontradas en los archivos JSON que se pueden usar.
+ * @author HaJuegos - 29-09-2026
+ */
+type VanillaEntityFamilies = "actor" | "adult_piglin" | "allay" | "animal" | "aquatic" | "armadillo" | "armor_stand" | "armorer" | "arrow" | "arthropod" | "artisan" | "axolotl" | "baby_piglin" | "baby_turtle" | "baby_undead" | "baby_zombie_pigman" | "bat" | "bee" | "blacksmith" | "blaze" | "boat" | "bogged" | "breeze" | "breeze_wind_charge_projectile" | "butcher" | "camel" | "camel_husk" | "cartographer" | "cat" | "cavespider" | "chicken" | "cleric" | "cod" | "copper_golem" | "cow" | "creaking" | "creeper" | "cushion" | "dolphin" | "donkey" | "dragon" | "dragon_fireball" | "drowned" | "egg" | "ender_pearl" | "enderman" | "endermite" | "evocation_illager" | "farmer" | "fireball" | "fireworks_rocket" | "fish" | "fisherman" | "fishing_hook" | "fletcher" | "fox" | "frog" | "ghast" | "goat" | "guardian" | "guardian_elder" | "happy_ghast" | "hoglin" | "hoglin_adult" | "hoglin_baby" | "hoglin_huntable" | "horse" | "husk" | "husk_rider" | "illager" | "inanimate" | "irongolem" | "leatherworker" | "librarian" | "lightning" | "lingering_potion" | "llama" | "llama_spit" | "magmacube" | "minecart" | "mob" | "monster" | "mule" | "mushroomcow" | "nautilus" | "nitwit" | "npc" | "ocelot" | "pacified" | "panda" | "panda_aggressive" | "parched" | "parrot_tame" | "parrot_wild" | "peasant" | "phantom" | "pig" | "piglin" | "piglin_brute" | "piglin_hunter" | "pillager" | "player" | "polarbear" | "priest" | "projectile" | "pufferfish" | "rabbit" | "ravager" | "salmon" | "sheep" | "shepherd" | "shulker" | "shulker_bullet" | "silverfish" | "skeleton" | "skeletonhorse" | "slime" | "small_fireball" | "sniffer" | "snowball" | "snowgolem" | "spider" | "splash_potion" | "squid" | "stone_mason" | "stray" | "strider" | "strider_adult" | "strider_baby" | "sulfur_cube" | "tadpole" | "thrown_trident" | "tnt" | "toolsmith" | "trader_llama" | "tripodcamera" | "tropicalfish" | "turtle" | "undead" | "unskilled" | "vex" | "villager" | "vindicator" | "wandering_trader" | "wandering_trader_despawning" | "warden" | "weaponsmith" | "wind_charge" | "wind_charge_projectile" | "witch" | "wither" | "wither_skull" | "wither_skull_dangerous" | "wolf" | "xp_bottle" | "zoglin" | "zoglin_adult" | "zoglin_baby" | "zombie" | "zombie_nautilus" | "zombie_pigman" | "zombie_rider" | "zombie_villager" | "zombiehorse";
 
 /**
  * Lista de comprobaciones en los filtros de entidades.
