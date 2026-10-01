@@ -287,7 +287,7 @@ interface EntityFilterGroup {
 
 /**
  * Lista de eventos con filtros y targets para condiciones mas especificas.
- * @interface EntityGrowTrigger
+ * @interface EntityFilterTrigger
  * @author HaJuegos - 21-09-2026
  */
 interface EntityFilterTrigger {
@@ -301,13 +301,13 @@ interface EntityFilterTrigger {
      * Evento en concreto a ejecutar cuando la condicion se cumpla.
      * @type {string}
      */
-    event: string;
+    event?: string;
 
     /**
      * Target en concreto a seleccionar cuando el evento se cumpla.
      * @type {EntityFilterSubject}
      */
-    target: EntityFilterSubject;
+    target?: EntityFilterSubject;
 }
 
 /**
@@ -443,115 +443,115 @@ interface GlobalNavigationParams {
      * Indica a la IA si debe esquivar bloques que hacen daño (como cactus o fuego).
      * @type {?boolean}
      */
-    avoid_damage_blocks?: boolean;
+    avoidDamageBlocks?: boolean;
 
     /**
      * Indica a la IA si debe pasar de largo de los portales (como los del Nether) al buscar camino.
      * @type {?boolean}
      */
-    avoid_portals?: boolean;
+    avoidPortals?: boolean;
 
     /**
      * Define si la IA intenta evitar los bloques que están expuestos directamente al sol.
      * @type {?boolean}
      */
-    avoid_sun?: boolean;
+    avoidSun?: boolean;
 
     /**
      * Indica si la IA debe evitar meterse en el agua al calcular rutas
      * @type {?boolean}
      */
-    avoid_water?: boolean;
+    avoidWater?: boolean;
 
     /**
      * Lista de bloques específicos que la IA debe evitar pisar o cruzar al calcular su camino.
      * @type {?(string | MinecraftBlockTypes)[]}
      */
-    blocks_to_avoid?: (string | MinecraftBlockTypes)[];
+    blocksToAvoid?: (string | MinecraftBlockTypes)[];
 
     /**
      * Le dice a la IA si puede saltar y salir impulsado del agua (tipo delfín).
      * @type {?boolean}
      */
-    can_breach?: boolean;
+    canBreach?: boolean;
 
     /**
      * Le indica a la IA que puede planificar rutas a través de puertas cerradas y romperlas para pasar.
      * @type {?boolean}
      */
-    can_break_doors?: boolean;
+    canBreakDoors?: boolean;
 
     /**
      * Define si la IA tiene permitido saltar sobre los bloques.
      * @type {?boolean}
      */
-    can_jump?: boolean;
+    canJump?: boolean;
 
     /**
      * Le indica a la IA que puede pasar por puertas cerradas asumiendo se encargará de abrirlas.
      * @type {?boolean}
      */
-    can_open_doors?: boolean;
+    canOpenDoors?: boolean;
 
     /**
      * Le indica a la IA que puede pasar por puertas cerradas asumiendo se encargará de abrirlas. Pero ahora para las puertas de hierro!
      * @type {?boolean}
      */
-    can_open_iron_doors?: boolean;
+    canOpenIronDoors?: boolean;
 
     /**
      * Indica si la IA se puede trazar una ruta que atraviese una puerta.
      * @type {?boolean}
      */
-    can_pass_doors?: boolean;
+    canPassDoors?: boolean;
 
     /**
      * Le permite a la IA empezar a calcular rutas y moverse incluso si está suspendido en el aire.
      * @type {?boolean}
      */
-    can_path_from_air?: boolean;
+    canPathFromAir?: boolean;
 
     /**
      * Indica a la IA si la entidad puede caminar o desplazarse por la superficie de la lava.
      * @type {?boolean}
      */
-    can_path_over_lava?: boolean;
+    canPathOverLava?: boolean;
 
     /**
      * Indica a la IA si puede desplazarse por la superficie del agua.
      * @type {?boolean}
      */
-    can_path_over_water?: boolean;
+    canPathOverWater?: boolean;
 
     /**
      * Define si la IA, la gravedad le afecta y lo arrastra hacia el fondo cuando está en el agua.
      * @type {?boolean}
      */
-    can_sink?: boolean;
+    canSink?: boolean;
 
     /**
      * Permite a la IA que trace rutas libremente por debajo del agua y reproduzca la animación de nado.
      * @type {?boolean}
      */
-    can_swim?: boolean;
+    canSwim?: boolean;
 
     /**
      * Indica a la IA si puede caminar normalmente por tierra firme fuera del agua.
      * @type {?boolean}
      */
-    can_walk?: boolean;
+    canWalk?: boolean;
 
     /**
      * Le permite a la IA moverse por dentro de la lava como si estuviera caminando por el suelo normal.
      * @type {?boolean}
      */
-    can_walk_in_lava?: boolean;
+    canWalkInLava?: boolean;
 
     /**
      * Indica a la IA si la entidad es capaz de caminar por el suelo de los estanques o mares bajo el agua.
      * @type {?boolean}
      */
-    is_amphibious?: boolean;
+    isAmphibious?: boolean;
 }
 
 /**

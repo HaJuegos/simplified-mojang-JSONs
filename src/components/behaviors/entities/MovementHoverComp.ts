@@ -14,7 +14,7 @@ export class SetMovementHover extends BehaviorEntityComponentBuilder<MovementHov
      * @constructor
      * @public
      */
-    public constructor (params: MovementHoverData) {
+    public constructor (params?: MovementHoverData) {
         super("minecraft:movement.hover", params);
     }
 }

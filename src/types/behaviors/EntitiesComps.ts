@@ -1,7 +1,8 @@
 export {
     BPComponent,
     BPCompsGroups,
-    BuiltComponent
+    BuiltComponent,
+    BPEntityFile,
 };
 
 /**
@@ -15,6 +16,12 @@ type BPComponent = Record<string, unknown>;
  * @author HaJuegos - 23-09-2026
  */
 type BuiltComponent = Record<string, Record<string, unknown>>;
+
+/**
+ * Forma final del JSON de una entidad ya compilada.
+ * @author HaJuegos - 29-09-2026
+ */
+type BPEntityFile = Readonly<Record<string, unknown>>;
 
 /**
  * Plantilla generica para la creacion de un grupo de componentes.

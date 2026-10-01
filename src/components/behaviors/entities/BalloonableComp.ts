@@ -4,8 +4,8 @@ import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 interface BalloonableData extends BPComponent {
     onBalloon?: string;
     onUnballoon?: string;
-    softDistance: number;
-    maxDistance: number;
+    softDistance?: number;
+    maxDistance?: number;
     mass: number;
 }
 

@@ -13,7 +13,7 @@ export class SetJumpStatic extends BehaviorEntityComponentBuilder<JumpStaticData
      * @constructor
      * @public
      */
-    public constructor (params: JumpStaticData) {
+    public constructor (params?: JumpStaticData) {
         super("minecraft:jump.static", params);
     }
 }

@@ -4,8 +4,8 @@ import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 interface InventoryData extends BPComponent {
     additionalSlotsPerStrength?: number;
     canBeSiphonedFrom?: boolean;
-    containerType: "horse" | "minecart_chest" | "chest_boat" | "minecart_hopper" | "inventory" | "container" | "hopper";
-    inventorySize: number;
+    containerType?: "horse" | "minecart_chest" | "chest_boat" | "minecart_hopper" | "inventory" | "container" | "hopper";
+    inventorySize?: number;
     private?: boolean;
     restrictToOwner?: boolean;
 }

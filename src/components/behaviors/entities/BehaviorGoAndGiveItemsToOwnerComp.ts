@@ -1,10 +1,10 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface BehaviorGoAndGiveItemsToOwnerData extends BPComponent {
     priority: number;
-    onItemThrow?: string | EntityFilter | EntityFilter[];
+    onItemThrow?: string | EntityFilterTrigger | EntityFilterTrigger[];
     reachMobDistance?: number;
     runSpeed?: number;
     throwForce?: number;

@@ -2,9 +2,9 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
 interface FollowRangeData extends BPComponent {
-    max: number,
-    min: number,
-    value: number | [number, number];
+    max?: number,
+    min?: number,
+    value?: number | [number, number];
 }
 
 export class SetFollowRange extends BehaviorEntityComponentBuilder<FollowRangeData> {

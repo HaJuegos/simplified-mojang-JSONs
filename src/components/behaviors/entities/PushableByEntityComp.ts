@@ -32,7 +32,7 @@ export class SetPushableByEntity extends BehaviorEntityComponentBuilder<Pushable
      * @constructor
      * @public
      */
-    public constructor (params: PushableByEntityData) {
+    public constructor (params?: PushableByEntityData) {
         super("minecraft:pushable_by_entity", params);
     }
 }

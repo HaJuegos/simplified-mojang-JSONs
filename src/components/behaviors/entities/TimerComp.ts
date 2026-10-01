@@ -1,12 +1,12 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface TimerData extends BPComponent {
     looping?: boolean;
     randomInterval?: boolean;
     time?: [number, number] | number;
-    timeDownEvent?: EntityFilter;
+    timeDownEvent?: EntityFilterTrigger;
     randomTimeChoices?: RandomTimeRypes[];
 }
 

@@ -22,7 +22,7 @@ export class SetNameable extends BehaviorEntityComponentBuilder<NameableData> {
      * @constructor
      * @public
      */
-    public constructor (params: NameableData) {
+    public constructor (params?: NameableData) {
         super("minecraft:nameable", params);
     }
 }

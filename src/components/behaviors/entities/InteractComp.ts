@@ -1,6 +1,6 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter, EntitySlotsArmor } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger, EntitySlotsArmor } from "../../../types/EntityFilters";
 
 interface InteractData extends BPComponent {
     interactions: InteractionsTypes[];
@@ -21,17 +21,17 @@ interface InteractionsTypes {
     healthAmount?: number;
     hurtItem?: number;
     interactText?: string;
-    onInteract?: string | EntityFilter | EntityFilter[];
+    onInteract?: string | EntityFilterTrigger | EntityFilterTrigger[];
     particleOnStart?: ParticleOnStartTypes;
     playSounds?: string;
     repairEntityItem?: RepairItemsTypes;
     spawnEntities?: string;
     spawnItems?: SpawnItemsTypes;
-    swing: boolean,
-    takeItem: boolean,
-    transformToItem: string,
-    useItem: boolean,
-    vibration: "entity_act" | 'entity_die' | 'entity_interact' | 'none' | 'shear';
+    swing?: boolean,
+    takeItem?: boolean,
+    transformToItem?: string,
+    useItem?: boolean,
+    vibration?: "entity_act" | 'entity_die' | 'entity_interact' | 'none' | 'shear';
 }
 
 interface ParticleOnStartTypes {

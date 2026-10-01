@@ -1,1 +1,1 @@
-export { AllayVanillaTemplate } from "./AllayTemplate";
+

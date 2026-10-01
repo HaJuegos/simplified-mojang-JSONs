@@ -8,7 +8,7 @@ import { BPComponent, BuiltComponent } from "../../types/behaviors/EntitiesComps
  * @abstract
  * @export
  */
-export abstract class BehaviorEntityComponentBuilder<Component extends BPComponent> {
+export abstract class BehaviorEntityComponentBuilder<Component extends BPComponent, ID extends string = string> {
     /**
      * ID del componente a construir.
      * @type {string}
@@ -16,7 +16,7 @@ export abstract class BehaviorEntityComponentBuilder<Component extends BPCompone
      * @protected
      * @readonly
      */
-    protected readonly idComponent: string;
+    protected readonly idComponent: ID;
 
     /**
      * Datos del componente en concreto a construir.
@@ -28,15 +28,25 @@ export abstract class BehaviorEntityComponentBuilder<Component extends BPCompone
 
     /**
      * Eventos y parametros iniciales de la clase cuando es llamada o inicializada.
-     * @param {string} idComponent ID del componente en concreto a crear.
-     * @param {string} data Datos del componente en concreto a crear. 
+     * @param {ID} idComponent ID del componente en concreto a crear.
+     * @param {Component} data Datos del componente en concreto a crear. 
      * @author HaJuegos - 20-09-2026
      * @constructor
      * @public
      */
-    public constructor (idComponent: string, data?: Component) {
+    public constructor (idComponent: ID, data?: Component) {
         this.idComponent = idComponent;
         this.data = data;
+    }
+
+    /**
+     * Metodo principal de tipo get que obtiene el ID del componente en cuestion.
+     * @returns {ID} ID del componente.
+     * @author HaJuegos - 30-09-2026
+     * @public
+     */
+    public get idComp(): ID {
+        return this.idComponent;
     }
 
     /**
@@ -58,7 +68,7 @@ export abstract class BehaviorEntityComponentBuilder<Component extends BPCompone
      */
     public build(): BuiltComponent {
         return {
-            [this.idComponent]: this.deepSnakeCase(this.getComponentData()) as Record<string, unknown>
+            [this.idComponent]: (this.deepSnakeCase(this.getComponentData()) ?? {}) as Record<string, unknown>
         };
     }
 

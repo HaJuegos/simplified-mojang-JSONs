@@ -14,7 +14,7 @@ export class SetLeashableTo extends BehaviorEntityComponentBuilder<LeashableToDa
      * @constructor
      * @public
      */
-    public constructor (params: LeashableToData) {
+    public constructor (params?: LeashableToData) {
         super("minecraft:leashable_to", params);
     }
 }

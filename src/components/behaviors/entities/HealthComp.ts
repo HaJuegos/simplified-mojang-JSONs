@@ -2,9 +2,9 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
 interface HealthData extends BPComponent {
-    max: number,
-    min: number,
-    value: number | [number, number] | {
+    max?: number,
+    min?: number,
+    value?: number | [number, number] | {
         min?: number;
         max?: number;
         rangeMax?: number;

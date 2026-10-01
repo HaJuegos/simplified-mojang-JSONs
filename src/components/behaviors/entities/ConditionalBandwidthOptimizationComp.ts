@@ -25,7 +25,7 @@ export class SetConditionalBandwidthOptimization extends BehaviorEntityComponent
      * @constructor
      * @public
      */
-    public constructor (params: ConditionalBandwidthOptimizationData) {
+    public constructor (params?: ConditionalBandwidthOptimizationData) {
         super("minecraft:conditional_bandwidth_optimization", params);
     }
 }

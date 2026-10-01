@@ -1,8 +1,8 @@
 import * as vanilla from '@minecraft/vanilla-data';
 
-import { BPAnimationScriptEntities, BPEntityOptionalParams, BPPropertiesEntities, FormatVersionEntities, SpawnCategoryEntities } from "../../types/behaviors/EntitiesEnums";
+import { BPAnimationScriptEntities, BPEntityEvents, BPEntityOptionalParams, BPPropertiesEntities, FormatVersionEntities, SpawnCategoryEntities } from "../../types/behaviors/EntitiesEnums";
 import { MoLangValue } from '../../types/MoLang';
-import { BPComponent, BPCompsGroups } from '../../types/behaviors/EntitiesComps';
+import { BPEntityFile } from '../../types/behaviors/EntitiesComps';
 import { BehaviorEntityComponentBuilder } from './EntityCompsBuilder';
 
 /**
@@ -112,11 +112,11 @@ export class BehaviorEntityBuilder {
 
     /**
      * (Opcional) Lista de grupos de eventos de la entidad a crear en cuestion.
-     * @type {?Record<string, unknown>}
+     * @type {?Record<string, BPEntityEvents>}
      * @author HaJuegos - 23-09-2026
      * @private
      */
-    private events?: Record<string, unknown>;
+    private events?: Record<string, BPEntityEvents>;
 
     /**
      * Eventos y parametros iniciales de la clase cuando es llamada o inicializada.
@@ -134,7 +134,7 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 16-09-2026 
      * @public
      */
-    public setVersion(version: FormatVersionEntities | string): this {
+    protected setDefaultVersion(version: FormatVersionEntities | string): this {
         this.version = version;
 
         return this;
@@ -147,7 +147,7 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 16-09-2026
      * @public
      */
-    public setDescParams(otherParams: BPEntityOptionalParams): this {
+    protected setDefaultDescParams(otherParams: BPEntityOptionalParams): this {
         Object.assign(this, otherParams);
 
         return this;
@@ -160,7 +160,7 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 16-09-2026
      * @public
      */
-    public setAnimationScripts(anims: Record<string, BPAnimationScriptEntities>): this {
+    protected setDefaultAnimationScripts(anims: Record<string, BPAnimationScriptEntities>): this {
         this.animations = anims;
 
         return this;
@@ -173,7 +173,7 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 20-09-2026
      * @public
      */
-    public setProperties(properties: Record<string, BPPropertiesEntities>): this {
+    protected setDefaultProperties(properties: Record<string, BPPropertiesEntities>): this {
         this.properties = properties;
 
         return this;
@@ -186,7 +186,7 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 23-09-2026 
      * @public
      */
-    public setComponentGroups(groups: Record<string, BehaviorEntityComponentBuilder<any>[]>): this {
+    protected setDefaultComponentGroups(groups: Record<string, BehaviorEntityComponentBuilder<any>[]>): this {
         this.componentGroups = groups;
         return this;
     }
@@ -198,18 +198,18 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 23-09-2026 
      * @public
      */
-    public setComponents(comps: BehaviorEntityComponentBuilder<any>[]): this {
+    protected setDefaultComponents(comps: BehaviorEntityComponentBuilder<any>[]): this {
         this.components = comps;
         return this;
     }
 
     /**
      * Metodo principal que registra la lista de grupos de eventos de la entidad.
-     * @param {Record<string, unknown>} events Lista de eventos en cuestion a registrar por su ID. Por ej: `"minecraft:entity_spawned": {}`.
+     * @param {Record<string, BPEntityEvents>} events Lista de eventos en cuestion a registrar por su ID. Por ej: `"minecraft:entity_spawned": {}`.
      * @returns {this} 
      * @public
      */
-    public setEvents(events: Record<string, unknown>): this {
+    protected setDefaultEvents(events: Record<string, BPEntityEvents>): this {
         this.events = events;
         return this;
     }
@@ -221,7 +221,9 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 16-09-2026 
      * @public
      */
-    public toJSON(stringify?: boolean) {
+    protected convertToJSON(stringify: true): string;
+    protected convertToJSON(stringify?: false): BPEntityFile;
+    protected convertToJSON(stringify?: boolean): BPEntityFile | string {
         const planeAnimations: Record<string, string> = {};
         const animsScriptsList: (string | Record<string, MoLangValue>)[] = [];
 
@@ -280,8 +282,8 @@ export class BehaviorEntityBuilder {
             description.properties = formattedProperties;
         }
 
-        const componentsObj = this.components ? this.converComps(this.components) : undefined;
-        const componentGroupsObj = this.componentGroups ? Object.fromEntries(Object.entries(this.componentGroups).map(([id, comps]) => [id, this.converComps(comps)])) : undefined;
+        const componentsObj = this.components ? this.convertComps(this.components) : undefined;
+        const componentGroupsObj = this.componentGroups ? Object.fromEntries(Object.entries(this.componentGroups).map(([id, comps]) => [id, this.convertComps(comps)])) : undefined;
 
         const finalObj = Object.freeze({
             format_version: this.version,
@@ -306,7 +308,7 @@ export class BehaviorEntityBuilder {
      * @author HaJuegos - 23-09-2026
      * @private
      */
-    private converComps(list: BehaviorEntityComponentBuilder<any>[]): Record<string, unknown> {
+    private convertComps(list: BehaviorEntityComponentBuilder<any>[]): Record<string, unknown> {
         return list.reduce((acc, comp) => ({ ...acc, ...comp.build() }), {});
     }
 }
