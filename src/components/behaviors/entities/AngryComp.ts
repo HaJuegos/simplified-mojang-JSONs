@@ -90,7 +90,7 @@ interface AngryData extends BPComponent {
     soundInterval?: SoundIntervalOption;
 }
 
-export class SetAngry extends BehaviorEntityComponentBuilder<Record<string, unknown>, 'minecraft:angry'> {
+export class SetAngry extends BehaviorEntityComponentBuilder<Record<string, unknown>, "minecraft:angry"> {
     /**
      * Componente que define el estado de "enojado" de la entidad mediante un temporizador con sus respetivos parametros.
      * @param {AngryData} params Parametros del componente.
