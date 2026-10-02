@@ -14,7 +14,7 @@ interface BehaviorDefendVillageTargetData extends BPComponent {
     withinRadius?: number;
 }
 
-export class SetBehaviorDefendVillageTarget extends BehaviorEntityComponentBuilder<BehaviorDefendVillageTargetData> {
+export class SetBehaviorDefendVillageTarget extends BehaviorEntityComponentBuilder<BehaviorDefendVillageTargetData, "minecraft:behavior.defend_village_target"> {
     /**
      * 
      * @param {BehaviorDefendVillageTargetData} params Parametros del componente.

@@ -10,7 +10,7 @@ interface InventoryData extends BPComponent {
     restrictToOwner?: boolean;
 }
 
-export class SetInventory extends BehaviorEntityComponentBuilder<InventoryData> {
+export class SetInventory extends BehaviorEntityComponentBuilder<InventoryData, "minecraft:inventory"> {
     /**
      * 
      * @param {InventoryData} params Parametros del componente.

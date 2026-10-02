@@ -10,7 +10,7 @@ interface DryingOutTimerData extends BPComponent {
     waterBottleRefillTime?: number;
 }
 
-export class SetDryingOutTimer extends BehaviorEntityComponentBuilder<DryingOutTimerData> {
+export class SetDryingOutTimer extends BehaviorEntityComponentBuilder<DryingOutTimerData, "minecraft:drying_out_timer"> {
     /**
      * 
      * @param {DryingOutTimerData} params Parametros del componente.

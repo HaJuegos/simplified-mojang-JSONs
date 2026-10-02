@@ -7,7 +7,7 @@ interface PhysicsData extends BPComponent {
     pushTowardsClosestSpace?: boolean;
 }
 
-export class SetPhysics extends BehaviorEntityComponentBuilder<PhysicsData> {
+export class SetPhysics extends BehaviorEntityComponentBuilder<PhysicsData, "minecraft:physics"> {
     /**
      * 
      * @param {PhysicsData} params Parametros del componente.

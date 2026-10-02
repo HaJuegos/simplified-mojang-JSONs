@@ -12,7 +12,7 @@ interface HealthData extends BPComponent {
     };
 }
 
-export class SetHealth extends BehaviorEntityComponentBuilder<HealthData> {
+export class SetHealth extends BehaviorEntityComponentBuilder<HealthData, "minecraft:health"> {
     /**
      * 
      * @param {HealthData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface BehaviorStayWhileSittingData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorStayWhileSitting extends BehaviorEntityComponentBuilder<BehaviorStayWhileSittingData> {
+export class SetBehaviorStayWhileSitting extends BehaviorEntityComponentBuilder<BehaviorStayWhileSittingData, "minecraft:behavior.stay_while_sitting"> {
     /**
      * 
      * @param {BehaviorStayWhileSittingData} params Parametros del componente.

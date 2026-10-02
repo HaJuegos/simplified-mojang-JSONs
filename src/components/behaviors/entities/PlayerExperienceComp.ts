@@ -6,7 +6,7 @@ interface PlayerExperienceData extends BPComponent {
     max?: number;
 }
 
-export class SetPlayerExperience extends BehaviorEntityComponentBuilder<PlayerExperienceData> {
+export class SetPlayerExperience extends BehaviorEntityComponentBuilder<PlayerExperienceData, "minecraft:player.experience"> {
     /**
      * 
      * @param {PlayerExperienceData} params Parametros del componente.

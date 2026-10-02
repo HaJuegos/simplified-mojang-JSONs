@@ -7,7 +7,7 @@ interface BehaviorMoveIndoorsData extends BPComponent {
     timeoutCooldown?: number;
 }
 
-export class SetBehaviorMoveIndoors extends BehaviorEntityComponentBuilder<BehaviorMoveIndoorsData> {
+export class SetBehaviorMoveIndoors extends BehaviorEntityComponentBuilder<BehaviorMoveIndoorsData, "minecraft:behavior.move_indoors"> {
     /**
      * 
      * @param {BehaviorMoveIndoorsData} params Parametros del componente.

@@ -28,7 +28,7 @@ interface GeneticVariantsTypes {
     mutationRate: number;
 }
 
-export class SetGenetics extends BehaviorEntityComponentBuilder<GeneticsData> {
+export class SetGenetics extends BehaviorEntityComponentBuilder<GeneticsData, "minecraft:genetics"> {
     /**
      * 
      * @param {GeneticsData} params Parametros del componente.

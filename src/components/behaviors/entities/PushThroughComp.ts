@@ -5,7 +5,7 @@ interface PushThroughData extends BPComponent {
     value?: number;
 }
 
-export class SetPushThrough extends BehaviorEntityComponentBuilder<PushThroughData> {
+export class SetPushThrough extends BehaviorEntityComponentBuilder<PushThroughData, "minecraft:push_through"> {
     /**
      * 
      * @param {PushThroughData} params Parametros del componente.

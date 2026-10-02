@@ -5,7 +5,7 @@ interface CanFlyData extends BPComponent {
 
 }
 
-export class SetCanFly extends BehaviorEntityComponentBuilder<CanFlyData> {
+export class SetCanFly extends BehaviorEntityComponentBuilder<CanFlyData, "minecraft:can_fly"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

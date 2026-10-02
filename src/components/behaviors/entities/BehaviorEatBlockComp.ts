@@ -16,7 +16,7 @@ interface ItemEatTypes {
     replaceBlock: string | MinecraftItemTypes;
 }
 
-export class SetBehaviorEatBlock extends BehaviorEntityComponentBuilder<BehaviorEatBlockData> {
+export class SetBehaviorEatBlock extends BehaviorEntityComponentBuilder<BehaviorEatBlockData, "minecraft:behavior.eat_block"> {
     /**
      * 
      * @param {BehaviorEatBlockData} params Parametros del componente.

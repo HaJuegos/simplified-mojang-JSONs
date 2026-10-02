@@ -5,7 +5,7 @@ interface FlyingSpeedData extends BPComponent {
     value?: number;
 }
 
-export class SetFlyingSpeed extends BehaviorEntityComponentBuilder<FlyingSpeedData> {
+export class SetFlyingSpeed extends BehaviorEntityComponentBuilder<FlyingSpeedData, "minecraft:flying_speed"> {
     /**
      * 
      * @param {FlyingSpeedData} params Parametros del componente.

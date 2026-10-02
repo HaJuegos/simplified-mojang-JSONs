@@ -6,7 +6,7 @@ interface BehaviorRunAroundLikeCrazyData extends BPComponent {
     speedMultiplier?: number;
 }
 
-export class SetBehaviorRunAroundLikeCrazy extends BehaviorEntityComponentBuilder<BehaviorRunAroundLikeCrazyData> {
+export class SetBehaviorRunAroundLikeCrazy extends BehaviorEntityComponentBuilder<BehaviorRunAroundLikeCrazyData, "minecraft:behavior.run_around_like_crazy"> {
     /**
      * 
      * @param {BehaviorRunAroundLikeCrazyData} params Parametros del componente.

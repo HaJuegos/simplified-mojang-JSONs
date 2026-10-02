@@ -6,7 +6,7 @@ interface BehaviorBreakDoorData extends BPComponent {
     speedMultiplier?: number;
 }
 
-export class SetBehaviorBreakDoor extends BehaviorEntityComponentBuilder<BehaviorBreakDoorData> {
+export class SetBehaviorBreakDoor extends BehaviorEntityComponentBuilder<BehaviorBreakDoorData, "minecraft:behavior.break_door"> {
     /**
      * 
      * @param {BehaviorBreakDoorData} params Parametros del componente.

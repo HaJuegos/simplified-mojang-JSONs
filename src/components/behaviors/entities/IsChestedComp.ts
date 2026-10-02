@@ -5,7 +5,7 @@ interface IsChestedData extends BPComponent {
 
 }
 
-export class SetIsChested extends BehaviorEntityComponentBuilder<IsChestedData> {
+export class SetIsChested extends BehaviorEntityComponentBuilder<IsChestedData, "minecraft:is_chested"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

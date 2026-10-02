@@ -10,7 +10,7 @@ interface BehaviorSnackingData extends BPComponent {
     snackingStopChance?: number;
 }
 
-export class SetBehaviorSnacking extends BehaviorEntityComponentBuilder<BehaviorSnackingData> {
+export class SetBehaviorSnacking extends BehaviorEntityComponentBuilder<BehaviorSnackingData, "minecraft:behavior.snacking"> {
     /**
      * 
      * @param {BehaviorSnackingData} params Parametros del componente.

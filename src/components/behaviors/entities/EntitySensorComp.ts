@@ -18,7 +18,7 @@ interface SubsensorsTypes {
     yOffset: number;
 }
 
-export class SetEntitySensor extends BehaviorEntityComponentBuilder<EntitySensorData> {
+export class SetEntitySensor extends BehaviorEntityComponentBuilder<EntitySensorData, "minecraft:entity_sensor"> {
     /**
      * 
      * @param {EntitySensorData} params Parametros del componente.

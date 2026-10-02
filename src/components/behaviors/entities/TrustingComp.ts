@@ -9,7 +9,7 @@ interface TrustingData extends BPComponent {
     trustItems?: (string | MinecraftEntityTypes)[];
 }
 
-export class SetTrusting extends BehaviorEntityComponentBuilder<TrustingData> {
+export class SetTrusting extends BehaviorEntityComponentBuilder<TrustingData, "minecraft:trusting"> {
     /**
      * 
      * @param {TrustingData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface FireImmuneData extends BPComponent {
 
 }
 
-export class SetFireImmune extends BehaviorEntityComponentBuilder<FireImmuneData> {
+export class SetFireImmune extends BehaviorEntityComponentBuilder<FireImmuneData, "minecraft:fire_immune"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

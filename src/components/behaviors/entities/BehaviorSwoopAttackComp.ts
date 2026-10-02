@@ -11,7 +11,7 @@ interface BehaviorSwoopAttackData extends BPComponent {
     };
 }
 
-export class SetBehaviorSwoopAttack extends BehaviorEntityComponentBuilder<BehaviorSwoopAttackData> {
+export class SetBehaviorSwoopAttack extends BehaviorEntityComponentBuilder<BehaviorSwoopAttackData, "minecraft:behavior.swoop_attack"> {
     /**
      * 
      * @param {BehaviorSwoopAttackData} params Parametros del componente.

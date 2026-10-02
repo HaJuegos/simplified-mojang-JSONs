@@ -6,7 +6,7 @@ interface FreeCameraControlledData extends BPComponent {
     strafeSpeedModifier?: number;
 }
 
-export class SetFreeCameraControlled extends BehaviorEntityComponentBuilder<FreeCameraControlledData> {
+export class SetFreeCameraControlled extends BehaviorEntityComponentBuilder<FreeCameraControlledData, "minecraft:free_camera_controlled"> {
     /**
      * 
      * @param {FreeCameraControlledData} params Parametros del componente.

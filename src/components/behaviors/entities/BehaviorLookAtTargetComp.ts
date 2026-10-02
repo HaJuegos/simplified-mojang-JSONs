@@ -13,7 +13,7 @@ interface BehaviorLookAtTargetData extends BPComponent {
     angleOfViewHorizontal?: number;
 }
 
-export class SetBehaviorLookAtTarget extends BehaviorEntityComponentBuilder<BehaviorLookAtTargetData> {
+export class SetBehaviorLookAtTarget extends BehaviorEntityComponentBuilder<BehaviorLookAtTargetData, "minecraft:behavior.look_at_target"> {
     /**
      * 
      * @param {BehaviorLookAtTargetData} params Parametros del componente.

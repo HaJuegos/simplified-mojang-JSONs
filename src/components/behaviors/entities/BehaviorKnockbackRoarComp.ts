@@ -19,7 +19,7 @@ interface BehaviorKnockbackRoarData extends BPComponent {
     onRoarEnd?: string | EntityFiltersTarget;
 }
 
-export class SetBehaviorKnockbackRoar extends BehaviorEntityComponentBuilder<BehaviorKnockbackRoarData> {
+export class SetBehaviorKnockbackRoar extends BehaviorEntityComponentBuilder<BehaviorKnockbackRoarData, "minecraft:behavior.knockback_roar"> {
     /**
      * 
      * @param {BehaviorKnockbackRoarData} params Parametros del componente.

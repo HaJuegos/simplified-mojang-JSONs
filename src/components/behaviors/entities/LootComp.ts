@@ -5,7 +5,7 @@ interface LootData extends BPComponent {
     table: string;
 }
 
-export class SetLoot extends BehaviorEntityComponentBuilder<LootData> {
+export class SetLoot extends BehaviorEntityComponentBuilder<LootData, "minecraft:loot"> {
     /**
      * 
      * @param {LootData} params Parametros del componente.

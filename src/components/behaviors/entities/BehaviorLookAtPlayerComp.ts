@@ -14,7 +14,7 @@ interface BehaviorLookAtPlayerData extends BPComponent {
     targetDistance?: number;
 }
 
-export class SetBehaviorLookAtPlayer extends BehaviorEntityComponentBuilder<BehaviorLookAtPlayerData> {
+export class SetBehaviorLookAtPlayer extends BehaviorEntityComponentBuilder<BehaviorLookAtPlayerData, "minecraft:behavior.look_at_player"> {
     /**
      * 
      * @param {BehaviorLookAtPlayerData} params Parametros del componente.

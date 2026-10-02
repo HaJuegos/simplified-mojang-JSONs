@@ -15,7 +15,7 @@ interface BehaviorAquaticChargeAttackData extends BPComponent {
     maxChargeDistance?: number;
 }
 
-export class SetBehaviorAquaticChargeAttack extends BehaviorEntityComponentBuilder<BehaviorAquaticChargeAttackData> {
+export class SetBehaviorAquaticChargeAttack extends BehaviorEntityComponentBuilder<BehaviorAquaticChargeAttackData, "minecraft:behavior.aquatic_charge_attack"> {
     public constructor (params: BehaviorAquaticChargeAttackData) {
         super("minecraft:behavior.aquatic_charge_attack", params);
     }

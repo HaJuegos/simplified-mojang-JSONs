@@ -5,7 +5,7 @@ interface CanClimbData extends BPComponent {
 
 }
 
-export class SetCanClimb extends BehaviorEntityComponentBuilder<CanClimbData> {
+export class SetCanClimb extends BehaviorEntityComponentBuilder<CanClimbData, "minecraft:can_climb"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

@@ -16,7 +16,7 @@ interface BreathableData extends BPComponent {
     nonBreatheBlocks?: (string | MinecraftBlockTypes)[];
 }
 
-export class SetBreathable extends BehaviorEntityComponentBuilder<BreathableData> {
+export class SetBreathable extends BehaviorEntityComponentBuilder<BreathableData, "minecraft:breathable"> {
     /**
      * 
      * @param {BreathableData} params Parametros del componente.

@@ -11,7 +11,7 @@ interface HitboxesTypes {
     width: number;
 }
 
-export class SetCustomHitTest extends BehaviorEntityComponentBuilder<CustomHitTestData> {
+export class SetCustomHitTest extends BehaviorEntityComponentBuilder<CustomHitTestData, "minecraft:custom_hit_test"> {
     /**
      * 
      * @param {CustomHitTestData} params Parametros del componente.

@@ -15,7 +15,7 @@ interface BehaviorSneezeData extends BPComponent {
     withinRadius?: number;
 }
 
-export class SetBehaviorSneeze extends BehaviorEntityComponentBuilder<BehaviorSneezeData> {
+export class SetBehaviorSneeze extends BehaviorEntityComponentBuilder<BehaviorSneezeData, "minecraft:behavior.sneeze"> {
     /**
      * 
      * @param {BehaviorSneezeData} params Parametros del componente.

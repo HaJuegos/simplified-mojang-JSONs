@@ -13,7 +13,7 @@ interface BehaviorSleepData extends BPComponent {
     goalRadius?: number;
 }
 
-export class SetBehaviorSleep extends BehaviorEntityComponentBuilder<BehaviorSleepData> {
+export class SetBehaviorSleep extends BehaviorEntityComponentBuilder<BehaviorSleepData, "minecraft:behavior.sleep"> {
     /**
      * 
      * @param {BehaviorSleepData} params Parametros del componente.

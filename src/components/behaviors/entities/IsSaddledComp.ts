@@ -5,7 +5,7 @@ interface IsSaddledData extends BPComponent {
 
 }
 
-export class SetIsSaddled extends BehaviorEntityComponentBuilder<IsSaddledData> {
+export class SetIsSaddled extends BehaviorEntityComponentBuilder<IsSaddledData, "minecraft:is_saddled"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

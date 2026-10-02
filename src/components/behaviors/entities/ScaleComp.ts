@@ -5,7 +5,7 @@ interface ScaleData extends BPComponent {
     value?: number;
 }
 
-export class SetScale extends BehaviorEntityComponentBuilder<ScaleData> {
+export class SetScale extends BehaviorEntityComponentBuilder<ScaleData, "minecraft:scale"> {
     /**
      * 
      * @param {ScaleData} params Parametros del componente.

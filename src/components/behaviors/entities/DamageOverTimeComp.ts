@@ -6,7 +6,7 @@ interface DamageOverTimeData extends BPComponent {
     timeBetweenHurt?: number;
 }
 
-export class SetDamageOverTime extends BehaviorEntityComponentBuilder<DamageOverTimeData> {
+export class SetDamageOverTime extends BehaviorEntityComponentBuilder<DamageOverTimeData, "minecraft:damage_over_time"> {
     /**
      * 
      * @param {DamageOverTimeData} params Parametros del componente.

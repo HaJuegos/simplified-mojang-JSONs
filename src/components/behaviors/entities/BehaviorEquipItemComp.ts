@@ -5,7 +5,7 @@ interface BehaviorEquipItemData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorEquipItem extends BehaviorEntityComponentBuilder<BehaviorEquipItemData> {
+export class SetBehaviorEquipItem extends BehaviorEntityComponentBuilder<BehaviorEquipItemData, "minecraft:behavior.equip_item"> {
     /**
      * 
      * @param {BehaviorEquipItemData} params Parametros del componente.

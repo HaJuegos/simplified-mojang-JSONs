@@ -36,7 +36,7 @@ interface AttackData extends BPComponent {
     effectName?: EntityEffectTypes;
 }
 
-export class SetAttack extends BehaviorEntityComponentBuilder<AttackData> {
+export class SetAttack extends BehaviorEntityComponentBuilder<AttackData, "minecraft:attack"> {
     /**
      * Componente que define el ataque cuerpo a cuerpo de una entidad y cualquier efecto adiccional que se le aplique.
      * @param {AttackData} params Parametros del componente.

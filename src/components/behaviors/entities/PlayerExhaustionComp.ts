@@ -6,7 +6,7 @@ interface PlayerExhaustionData extends BPComponent {
     max?: number;
 }
 
-export class SetPlayerExhaustion extends BehaviorEntityComponentBuilder<PlayerExhaustionData> {
+export class SetPlayerExhaustion extends BehaviorEntityComponentBuilder<PlayerExhaustionData, "minecraft:player.exhaustion"> {
     /**
      * 
      * @param {PlayerExhaustionData} params Parametros del componente.

@@ -14,7 +14,7 @@ interface BoostableItems {
     replaceItem: string | TargetItemsTypes;
 }
 
-export class SetBoostable extends BehaviorEntityComponentBuilder<BoostableData> {
+export class SetBoostable extends BehaviorEntityComponentBuilder<BoostableData, "minecraft:boostable"> {
     /**
      * 
      * @param {BoostableData} params Parametros del componente.

@@ -18,7 +18,7 @@ interface BehaviorFloatTemptData extends BPComponent {
     onEnd?: string | EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorFloatTempt extends BehaviorEntityComponentBuilder<BehaviorFloatTemptData> {
+export class SetBehaviorFloatTempt extends BehaviorEntityComponentBuilder<BehaviorFloatTemptData, "minecraft:behavior.float_tempt"> {
     /**
      * 
      * @param {BehaviorFloatTemptData} params Parametros del componente.

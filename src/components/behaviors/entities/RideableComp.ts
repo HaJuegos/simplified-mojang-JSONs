@@ -28,7 +28,7 @@ interface SeatsTypes {
     thirdPersonCameraRadius?: number;
 }
 
-export class SetRideable extends BehaviorEntityComponentBuilder<RideableData> {
+export class SetRideable extends BehaviorEntityComponentBuilder<RideableData, "minecraft:rideable"> {
     /**
      * 
      * @param {RideableData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface BehaviorPlayerRideTamedData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorPlayerRideTamed extends BehaviorEntityComponentBuilder<BehaviorPlayerRideTamedData> {
+export class SetBehaviorPlayerRideTamed extends BehaviorEntityComponentBuilder<BehaviorPlayerRideTamedData, "minecraft:behavior.player_ride_tamed"> {
     /**
      * 
      * @param {BehaviorPlayerRideTamedData} params Parametros del componente.

@@ -9,7 +9,7 @@ interface HealableData extends BPComponent {
     items?: (string | MinecraftItemTypes | TargetItemsTypes)[];
 }
 
-export class SetHealable extends BehaviorEntityComponentBuilder<HealableData> {
+export class SetHealable extends BehaviorEntityComponentBuilder<HealableData, "minecraft:healable"> {
     /**
      * 
      * @param {HealableData} params Parametros del componente.

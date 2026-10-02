@@ -6,7 +6,7 @@ interface BehaviorEatCarriedItemData extends BPComponent {
     delayBeforeEating?: number;
 }
 
-export class SetBehaviorEatCarriedItem extends BehaviorEntityComponentBuilder<BehaviorEatCarriedItemData> {
+export class SetBehaviorEatCarriedItem extends BehaviorEntityComponentBuilder<BehaviorEatCarriedItemData, "minecraft:behavior.eat_carried_item"> {
     /**
      * 
      * @param {BehaviorEatCarriedItemData} params Parametros del componente.

@@ -14,7 +14,7 @@ interface TameItemTypes {
     resultItem: string | MinecraftItemTypes | TargetItemsTypes;
 }
 
-export class SetTameable extends BehaviorEntityComponentBuilder<TameableData> {
+export class SetTameable extends BehaviorEntityComponentBuilder<TameableData, "minecraft:tameable"> {
     /**
      * 
      * @param {TameableData} params Parametros del componente.

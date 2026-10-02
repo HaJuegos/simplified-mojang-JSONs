@@ -11,7 +11,7 @@ interface BehaviorMoveOutdoorsData extends BPComponent {
     timeoutCooldown?: number;
 }
 
-export class SetBehaviorMoveOutdoors extends BehaviorEntityComponentBuilder<BehaviorMoveOutdoorsData> {
+export class SetBehaviorMoveOutdoors extends BehaviorEntityComponentBuilder<BehaviorMoveOutdoorsData, "minecraft:behavior.move_outdoors"> {
     /**
      * 
      * @param {BehaviorMoveOutdoorsData} params Parametros del componente.

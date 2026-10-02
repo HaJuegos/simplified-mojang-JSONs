@@ -19,7 +19,7 @@ interface ExplodeData extends BPComponent {
     togglesBlocks?: boolean;
 }
 
-export class SetExplode extends BehaviorEntityComponentBuilder<ExplodeData> {
+export class SetExplode extends BehaviorEntityComponentBuilder<ExplodeData, "minecraft:explode"> {
     /**
      * 
      * @param {ExplodeData} params Parametros del componente.

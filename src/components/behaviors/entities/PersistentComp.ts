@@ -5,7 +5,7 @@ interface PersistentData extends BPComponent {
 
 }
 
-export class SetPersistent extends BehaviorEntityComponentBuilder<PersistentData> {
+export class SetPersistent extends BehaviorEntityComponentBuilder<PersistentData, "minecraft:persistent"> {
     /**
      * 
      * @author HaJuegos - 28-09-2026

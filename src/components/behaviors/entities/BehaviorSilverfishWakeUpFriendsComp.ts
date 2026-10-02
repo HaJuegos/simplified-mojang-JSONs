@@ -5,7 +5,7 @@ interface BehaviorSilverfishWakeUpFriendsData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorSilverfishWakeUpFriends extends BehaviorEntityComponentBuilder<BehaviorSilverfishWakeUpFriendsData> {
+export class SetBehaviorSilverfishWakeUpFriends extends BehaviorEntityComponentBuilder<BehaviorSilverfishWakeUpFriendsData, "minecraft:behavior.silverfish_wake_up_friends"> {
     /**
      * 
      * @param {BehaviorSilverfishWakeUpFriendsData} params Parametros del componente.

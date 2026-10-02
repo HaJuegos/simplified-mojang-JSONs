@@ -6,7 +6,7 @@ interface OnIgniteData extends BPComponent, EntityFilterTrigger {
 
 }
 
-export class SetOnIgnite extends BehaviorEntityComponentBuilder<OnIgniteData> {
+export class SetOnIgnite extends BehaviorEntityComponentBuilder<OnIgniteData, "minecraft:on_ignite"> {
     /**
      * 
      * @param {OnIgniteData} params Parametros del componente.

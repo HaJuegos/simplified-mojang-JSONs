@@ -5,7 +5,7 @@ interface BehaviorSilverfishMergeWithStoneData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorSilverfishMergeWithStone extends BehaviorEntityComponentBuilder<BehaviorSilverfishMergeWithStoneData> {
+export class SetBehaviorSilverfishMergeWithStone extends BehaviorEntityComponentBuilder<BehaviorSilverfishMergeWithStoneData, "minecraft:behavior.silverfish_merge_with_stone"> {
     /**
      * 
      * @param {BehaviorSilverfishMergeWithStoneData} params Parametros del componente.

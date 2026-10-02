@@ -6,7 +6,7 @@ interface OnTargetAcquiredData extends BPComponent, EntityFilterTrigger {
 
 }
 
-export class SetOnTargetAcquired extends BehaviorEntityComponentBuilder<OnTargetAcquiredData> {
+export class SetOnTargetAcquired extends BehaviorEntityComponentBuilder<OnTargetAcquiredData, "minecraft:on_target_acquired"> {
     /**
      * 
      * @param {OnTargetAcquiredData} params Parametros del componente.

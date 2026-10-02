@@ -7,7 +7,7 @@ interface BehaviorFindCoverData extends BPComponent {
     cooldownTime?: number;
 }
 
-export class SetBehaviorFindCover extends BehaviorEntityComponentBuilder<BehaviorFindCoverData> {
+export class SetBehaviorFindCover extends BehaviorEntityComponentBuilder<BehaviorFindCoverData, "minecraft:behavior.find_cover"> {
     /**
      * 
      * @param {BehaviorFindCoverData} params Parametros del componente.

@@ -7,7 +7,7 @@ interface BehaviorWitherTargetHighestDamageData extends BPComponent {
     entityTypes?: EntityAttackableTargetFilters | EntityAttackableTargetFilters[];
 }
 
-export class SetBehaviorWitherTargetHighestDamage extends BehaviorEntityComponentBuilder<BehaviorWitherTargetHighestDamageData> {
+export class SetBehaviorWitherTargetHighestDamage extends BehaviorEntityComponentBuilder<BehaviorWitherTargetHighestDamageData, "minecraft:behavior.wither_target_highest_damage"> {
     /**
      * 
      * @param {BehaviorWitherTargetHighestDamageData} params Parametros del componente.

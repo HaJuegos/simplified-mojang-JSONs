@@ -7,7 +7,7 @@ interface BehaviorMoveThroughVillageData extends BPComponent {
     onlyAtNight?: boolean;
 }
 
-export class SetBehaviorMoveThroughVillage extends BehaviorEntityComponentBuilder<BehaviorMoveThroughVillageData> {
+export class SetBehaviorMoveThroughVillage extends BehaviorEntityComponentBuilder<BehaviorMoveThroughVillageData, "minecraft:behavior.move_through_village"> {
     /**
      * 
      * @param {BehaviorMoveThroughVillageData} params Parametros del componente.

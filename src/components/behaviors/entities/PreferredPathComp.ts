@@ -14,7 +14,7 @@ interface PathBlocksTypes {
     cost: number;
 }
 
-export class SetPreferredPath extends BehaviorEntityComponentBuilder<PreferredPathData> {
+export class SetPreferredPath extends BehaviorEntityComponentBuilder<PreferredPathData, "minecraft:preferred_path"> {
     /**
      * 
      * @param {PreferredPathData} params Parametros del componente.

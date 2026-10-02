@@ -7,7 +7,7 @@ interface MovementGlideData extends BPComponent {
     speedWhenTurning?: number;
 }
 
-export class SetMovementGlide extends BehaviorEntityComponentBuilder<MovementGlideData> {
+export class SetMovementGlide extends BehaviorEntityComponentBuilder<MovementGlideData, "minecraft:movement.glide"> {
     /**
      * 
      * @param {MovementGlideData} params Parametros del componente.

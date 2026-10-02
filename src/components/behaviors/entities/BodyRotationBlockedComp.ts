@@ -5,7 +5,7 @@ interface BodyRotationBlockedData extends BPComponent {
 
 }
 
-export class SetBodyRotationBlocked extends BehaviorEntityComponentBuilder<BodyRotationBlockedData> {
+export class SetBodyRotationBlocked extends BehaviorEntityComponentBuilder<BodyRotationBlockedData, "minecraft:body_rotation_blocked"> {
     /**
      * 
      * @author HaJuegos - 26-09-2026

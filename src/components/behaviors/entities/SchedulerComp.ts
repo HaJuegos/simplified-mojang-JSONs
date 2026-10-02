@@ -13,7 +13,7 @@ interface ScheduledTypes {
     filters: EntityFilter | EntityFilter[];
 }
 
-export class SetScheduler extends BehaviorEntityComponentBuilder<SchedulerData> {
+export class SetScheduler extends BehaviorEntityComponentBuilder<SchedulerData, "minecraft:scheduler"> {
     /**
      * 
      * @param {SchedulerData} params Parametros del componente.

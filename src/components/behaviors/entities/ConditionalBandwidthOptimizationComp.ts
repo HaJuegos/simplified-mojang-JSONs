@@ -17,7 +17,7 @@ interface DefaultValuesConditional {
     useMotionPredictionHints?: boolean;
 }
 
-export class SetConditionalBandwidthOptimization extends BehaviorEntityComponentBuilder<ConditionalBandwidthOptimizationData> {
+export class SetConditionalBandwidthOptimization extends BehaviorEntityComponentBuilder<ConditionalBandwidthOptimizationData, "minecraft:conditional_bandwidth_optimization"> {
     /**
      * 
      * @param {ConditionalBandwidthOptimizationData} params Parametros del componente.

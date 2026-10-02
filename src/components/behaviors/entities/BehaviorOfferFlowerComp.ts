@@ -12,7 +12,7 @@ interface BehaviorOfferFlowerData extends BPComponent {
     searchArea?: [number, number, number];
 }
 
-export class SetBehaviorOfferFlower extends BehaviorEntityComponentBuilder<BehaviorOfferFlowerData> {
+export class SetBehaviorOfferFlower extends BehaviorEntityComponentBuilder<BehaviorOfferFlowerData, "minecraft:behavior.offer_flower"> {
     /**
      * 
      * @param {BehaviorOfferFlowerData} params Parametros del componente.

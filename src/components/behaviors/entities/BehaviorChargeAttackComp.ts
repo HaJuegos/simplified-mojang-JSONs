@@ -9,7 +9,7 @@ interface BehaviorChargeAttackData extends BPComponent {
     successRate?: number;
 }
 
-export class SetBehaviorChargeAttack extends BehaviorEntityComponentBuilder<BehaviorChargeAttackData> {
+export class SetBehaviorChargeAttack extends BehaviorEntityComponentBuilder<BehaviorChargeAttackData, "minecraft:behavior.charge_attack"> {
     /**
      * 
      * @param {BehaviorChargeAttackData} params Parametros del componente.

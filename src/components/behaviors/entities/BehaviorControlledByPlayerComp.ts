@@ -8,7 +8,7 @@ interface BehaviorControlledByPlayerData extends BPComponent {
     mountSpeedMultiplier?: number;
 }
 
-export class SetBehaviorControlledByPlayer extends BehaviorEntityComponentBuilder<BehaviorControlledByPlayerData> {
+export class SetBehaviorControlledByPlayer extends BehaviorEntityComponentBuilder<BehaviorControlledByPlayerData, "minecraft:behavior.controlled_by_player"> {
     /**
      * 
      * @param {BehaviorControlledByPlayerData} params Parametros del componente.

@@ -26,7 +26,7 @@ interface BehaviorDropItemForData extends BPComponent {
     };
 }
 
-export class SetBehaviorDropItemFor extends BehaviorEntityComponentBuilder<BehaviorDropItemForData> {
+export class SetBehaviorDropItemFor extends BehaviorEntityComponentBuilder<BehaviorDropItemForData, "minecraft:behavior.drop_item_for"> {
     /**
      * 
      * @param {BehaviorDropItemForData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface RendersWhenInvisibleData extends BPComponent {
 
 }
 
-export class SetRendersWhenInvisible extends BehaviorEntityComponentBuilder<RendersWhenInvisibleData> {
+export class SetRendersWhenInvisible extends BehaviorEntityComponentBuilder<RendersWhenInvisibleData, "minecraft:renders_when_invisible"> {
     /**
      * 
      * @author HaJuegos - 29-09-2026

@@ -31,7 +31,7 @@ interface BehaviorRandomSearchAndDigData extends BPComponent {
     targetDigPositionOffset?: number;
 }
 
-export class SetBehaviorRandomSearchAndDig extends BehaviorEntityComponentBuilder<BehaviorRandomSearchAndDigData> {
+export class SetBehaviorRandomSearchAndDig extends BehaviorEntityComponentBuilder<BehaviorRandomSearchAndDigData, "minecraft:behavior.random_search_and_dig"> {
     /**
      * 
      * @param {BehaviorRandomSearchAndDigData} params Parametros del componente.

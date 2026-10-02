@@ -5,7 +5,7 @@ interface BodyRotationAlwaysFollowsHeadData extends BPComponent {
 
 }
 
-export class SetBodyRotationAlwaysFollowsHead extends BehaviorEntityComponentBuilder<BodyRotationAlwaysFollowsHeadData> {
+export class SetBodyRotationAlwaysFollowsHead extends BehaviorEntityComponentBuilder<BodyRotationAlwaysFollowsHeadData, "minecraft:body_rotation_always_follows_head"> {
     /**
      * 
      * @author HaJuegos - 26-09-2026

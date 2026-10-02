@@ -6,7 +6,7 @@ interface OnFriendlyAngerData extends BPComponent, EntityFilterTrigger {
 
 }
 
-export class SetOnFriendlyAnger extends BehaviorEntityComponentBuilder<OnFriendlyAngerData> {
+export class SetOnFriendlyAnger extends BehaviorEntityComponentBuilder<OnFriendlyAngerData, "minecraft:on_friendly_anger"> {
     /**
      * 
      * @param {OnFriendlyAngerData} params Parametros del componente.

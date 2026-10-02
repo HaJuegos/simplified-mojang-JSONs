@@ -6,7 +6,7 @@ interface ScaleByAgeData extends BPComponent {
     startScale?: number;
 }
 
-export class SetScaleByAge extends BehaviorEntityComponentBuilder<ScaleByAgeData> {
+export class SetScaleByAge extends BehaviorEntityComponentBuilder<ScaleByAgeData, "minecraft:scale_by_age"> {
     /**
      * 
      * @param {ScaleByAgeData} params Parametros del componente.

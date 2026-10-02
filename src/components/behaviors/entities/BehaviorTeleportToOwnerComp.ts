@@ -8,7 +8,7 @@ interface BehaviorTeleportToOwnerData extends BPComponent {
     filters?: EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorTeleportToOwner extends BehaviorEntityComponentBuilder<BehaviorTeleportToOwnerData> {
+export class SetBehaviorTeleportToOwner extends BehaviorEntityComponentBuilder<BehaviorTeleportToOwnerData, "minecraft:behavior.teleport_to_owner"> {
     /**
      * 
      * @param {BehaviorTeleportToOwnerData} params Parametros del componente.

@@ -14,7 +14,7 @@ interface BlockListSensor {
     onBlockBroken: string;
 }
 
-export class SetBlockSensor extends BehaviorEntityComponentBuilder<BlockSensorData> {
+export class SetBlockSensor extends BehaviorEntityComponentBuilder<BlockSensorData, "minecraft:block_sensor"> {
     /**
      * 
      * @param {BlockSensorData} params Parametros del componente.

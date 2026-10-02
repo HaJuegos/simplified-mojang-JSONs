@@ -9,7 +9,7 @@ interface DashActionData extends BPComponent {
     direction?: "entity" | "passenger";
 }
 
-export class SetDashAction extends BehaviorEntityComponentBuilder<DashActionData> {
+export class SetDashAction extends BehaviorEntityComponentBuilder<DashActionData, "minecraft:dash_action"> {
     /**
      * 
      * @param {DashActionData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface CanPowerJumpData extends BPComponent {
 
 }
 
-export class SetCanPowerJump extends BehaviorEntityComponentBuilder<CanPowerJumpData> {
+export class SetCanPowerJump extends BehaviorEntityComponentBuilder<CanPowerJumpData, "minecraft:can_power_jump"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

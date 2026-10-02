@@ -8,7 +8,7 @@ interface BehaviorHurtByTargetData extends BPComponent {
     hurtOwner?: boolean;
 }
 
-export class SetBehaviorHurtByTarget extends BehaviorEntityComponentBuilder<BehaviorHurtByTargetData> {
+export class SetBehaviorHurtByTarget extends BehaviorEntityComponentBuilder<BehaviorHurtByTargetData, "minecraft:behavior.hurt_by_target"> {
     /**
      * 
      * @param {BehaviorHurtByTargetData} params Parametros del componente.

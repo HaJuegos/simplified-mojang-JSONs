@@ -17,7 +17,7 @@ interface BehaviorSonicBoomData extends BPComponent {
     knockbackVerticalStrength?: number;
 }
 
-export class SetBehaviorSonicBoom extends BehaviorEntityComponentBuilder<BehaviorSonicBoomData> {
+export class SetBehaviorSonicBoom extends BehaviorEntityComponentBuilder<BehaviorSonicBoomData, "minecraft:behavior.sonic_boom"> {
     /**
      * 
      * @param {BehaviorSonicBoomData} params Parametros del componente.

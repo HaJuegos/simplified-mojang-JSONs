@@ -12,7 +12,7 @@ interface MovementData extends BPComponent {
     };
 }
 
-export class SetMovement extends BehaviorEntityComponentBuilder<MovementData> {
+export class SetMovement extends BehaviorEntityComponentBuilder<MovementData, "minecraft:movement"> {
     /**
      * 
      * @param {MovementData} params Parametros del componente.

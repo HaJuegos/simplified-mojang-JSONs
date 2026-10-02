@@ -37,7 +37,7 @@ interface SequenceSummonEntityTypes {
     target: 'self' | 'target';
 }
 
-export class SetBehaviorSummonEntity extends BehaviorEntityComponentBuilder<BehaviorSummonEntityData> {
+export class SetBehaviorSummonEntity extends BehaviorEntityComponentBuilder<BehaviorSummonEntityData, "minecraft:behavior.summon_entity"> {
     /**
      * 
      * @param {BehaviorSummonEntityData} params Parametros del componente.

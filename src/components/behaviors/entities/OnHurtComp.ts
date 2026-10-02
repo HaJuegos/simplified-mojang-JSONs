@@ -6,7 +6,7 @@ interface OnHurtData extends BPComponent, EntityFilterTrigger {
 
 }
 
-export class SetOnHurt extends BehaviorEntityComponentBuilder<OnHurtData> {
+export class SetOnHurt extends BehaviorEntityComponentBuilder<OnHurtData, "minecraft:on_hurt"> {
     /**
      * 
      * @param {OnHurtData} params Parametros del componente.

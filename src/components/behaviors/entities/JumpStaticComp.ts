@@ -5,7 +5,7 @@ interface JumpStaticData extends BPComponent {
     jumpPower?: number;
 }
 
-export class SetJumpStatic extends BehaviorEntityComponentBuilder<JumpStaticData> {
+export class SetJumpStatic extends BehaviorEntityComponentBuilder<JumpStaticData, "minecraft:jump.static"> {
     /**
      * 
      * @param {JumpStaticData} params Parametros del componente.

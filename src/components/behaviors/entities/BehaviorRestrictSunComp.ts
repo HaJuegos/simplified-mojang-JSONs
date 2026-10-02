@@ -5,7 +5,7 @@ interface BehaviorRestrictSunData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorRestrictSun extends BehaviorEntityComponentBuilder<BehaviorRestrictSunData> {
+export class SetBehaviorRestrictSun extends BehaviorEntityComponentBuilder<BehaviorRestrictSunData, "minecraft:behavior.restrict_sun"> {
     /**
      * 
      * @param {BehaviorRestrictSunData} params Parametros del componente.

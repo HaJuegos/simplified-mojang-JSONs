@@ -13,7 +13,7 @@ interface BehaviorDigData extends BPComponent {
     onStart?: string | EntityFilterTrigger | EntityFilterTrigger[];
 }
 
-export class SetBehaviorDig extends BehaviorEntityComponentBuilder<BehaviorDigData> {
+export class SetBehaviorDig extends BehaviorEntityComponentBuilder<BehaviorDigData, "minecraft:behavior.dig"> {
     /**
      * 
      * @param {BehaviorDigData} params Parametros del componente.

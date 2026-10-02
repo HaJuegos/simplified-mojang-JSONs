@@ -7,7 +7,7 @@ interface VariableMaxAutoStepData extends BPComponent {
     jumpPreventedValue?: number;
 }
 
-export class SetVariableMaxAutoStep extends BehaviorEntityComponentBuilder<VariableMaxAutoStepData> {
+export class SetVariableMaxAutoStep extends BehaviorEntityComponentBuilder<VariableMaxAutoStepData, "minecraft:variable_max_auto_step"> {
     /**
      * 
      * @param {VariableMaxAutoStepData} params Parametros del componente.

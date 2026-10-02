@@ -21,7 +21,7 @@ interface BehaviorFloatWanderData extends BPComponent {
     };
 }
 
-export class SetBehaviorFloatWander extends BehaviorEntityComponentBuilder<BehaviorFloatWanderData> {
+export class SetBehaviorFloatWander extends BehaviorEntityComponentBuilder<BehaviorFloatWanderData, "minecraft:behavior.float_wander"> {
     /**
      * 
      * @param {BehaviorFloatWanderData} params Parametros del componente.

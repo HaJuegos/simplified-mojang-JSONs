@@ -6,7 +6,7 @@ interface BehaviorFleeSunData extends BPComponent {
     speedMultiplier?: number;
 }
 
-export class SetBehaviorFleeSun extends BehaviorEntityComponentBuilder<BehaviorFleeSunData> {
+export class SetBehaviorFleeSun extends BehaviorEntityComponentBuilder<BehaviorFleeSunData, "minecraft:behavior.flee_sun"> {
     /**
      * 
      * @param {BehaviorFleeSunData} params Parametros del componente.

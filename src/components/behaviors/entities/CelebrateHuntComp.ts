@@ -14,7 +14,7 @@ interface CelebrateHuntData extends BPComponent {
     } | [number, number] | number;
 }
 
-export class SetCelebrateHunt extends BehaviorEntityComponentBuilder<CelebrateHuntData> {
+export class SetCelebrateHunt extends BehaviorEntityComponentBuilder<CelebrateHuntData, "minecraft:celebrate_hunt"> {
     /**
      * 
      * @param {CelebrateHuntData} params Parametros del componente.

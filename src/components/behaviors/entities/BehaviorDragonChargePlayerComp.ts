@@ -13,7 +13,7 @@ interface BehaviorDragonChargePlayerData extends BPComponent {
     turnSpeed?: number;
 }
 
-export class SetBehaviorDragonChargePlayer extends BehaviorEntityComponentBuilder<BehaviorDragonChargePlayerData> {
+export class SetBehaviorDragonChargePlayer extends BehaviorEntityComponentBuilder<BehaviorDragonChargePlayerData, "minecraft:behavior.dragonchargeplayer"> {
     /**
      * 
      * @param {BehaviorDragonChargePlayerData} params Parametros del componente.

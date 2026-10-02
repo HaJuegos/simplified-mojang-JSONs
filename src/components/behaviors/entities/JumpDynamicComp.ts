@@ -13,7 +13,7 @@ interface SkipDataTypes {
     jumpDelay: number;
 }
 
-export class SetJumpDynamic extends BehaviorEntityComponentBuilder<JumpDynamicData> {
+export class SetJumpDynamic extends BehaviorEntityComponentBuilder<JumpDynamicData, "minecraft:jump.dynamic"> {
     /**
      * 
      * @param {JumpDynamicData} params Parametros del componente.

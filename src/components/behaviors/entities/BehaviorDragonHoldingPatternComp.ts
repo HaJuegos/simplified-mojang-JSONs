@@ -5,7 +5,7 @@ interface BehaviorDragonHoldingPatternData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorDragonHoldingPattern extends BehaviorEntityComponentBuilder<BehaviorDragonHoldingPatternData> {
+export class SetBehaviorDragonHoldingPattern extends BehaviorEntityComponentBuilder<BehaviorDragonHoldingPatternData, "minecraft:behavior.dragonholdingpattern"> {
     /**
      * 
      * @param {BehaviorDragonHoldingPatternData} params Parametros del componente.

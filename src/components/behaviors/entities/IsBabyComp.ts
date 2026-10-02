@@ -5,7 +5,7 @@ interface IsBabyData extends BPComponent {
 
 }
 
-export class SetIsBaby extends BehaviorEntityComponentBuilder<IsBabyData> {
+export class SetIsBaby extends BehaviorEntityComponentBuilder<IsBabyData, "minecraft:is_baby"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

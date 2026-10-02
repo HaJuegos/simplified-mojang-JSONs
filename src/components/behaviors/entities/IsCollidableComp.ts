@@ -5,7 +5,7 @@ interface IsCollidableData extends BPComponent {
 
 }
 
-export class SetIsCollidable extends BehaviorEntityComponentBuilder<IsCollidableData> {
+export class SetIsCollidable extends BehaviorEntityComponentBuilder<IsCollidableData, "minecraft:is_collidable"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

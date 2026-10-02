@@ -5,7 +5,7 @@ interface InputGroundControlledData extends BPComponent {
 
 }
 
-export class SetInputGroundControlled extends BehaviorEntityComponentBuilder<InputGroundControlledData> {
+export class SetInputGroundControlled extends BehaviorEntityComponentBuilder<InputGroundControlledData, "minecraft:input_ground_controlled"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

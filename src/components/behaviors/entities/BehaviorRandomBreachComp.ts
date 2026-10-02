@@ -10,7 +10,7 @@ interface BehaviorRandomBreachData extends BPComponent {
     yDist?: number;
 }
 
-export class SetBehaviorRandomBreach extends BehaviorEntityComponentBuilder<BehaviorRandomBreachData> {
+export class SetBehaviorRandomBreach extends BehaviorEntityComponentBuilder<BehaviorRandomBreachData, "minecraft:behavior.random_breach"> {
     /**
      * 
      * @param {BehaviorRandomBreachData} params Parametros del componente.

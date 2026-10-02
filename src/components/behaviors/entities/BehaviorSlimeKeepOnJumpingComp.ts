@@ -6,7 +6,7 @@ interface BehaviorSlimeKeepOnJumpingData extends BPComponent {
     speedMultiplier?: number;
 }
 
-export class SetBehaviorSlimeKeepOnJumping extends BehaviorEntityComponentBuilder<BehaviorSlimeKeepOnJumpingData> {
+export class SetBehaviorSlimeKeepOnJumping extends BehaviorEntityComponentBuilder<BehaviorSlimeKeepOnJumpingData, "minecraft:behavior.slime_keep_on_jumping"> {
     /**
      * 
      * @param {BehaviorSlimeKeepOnJumpingData} params Parametros del componente.

@@ -17,7 +17,7 @@ interface BehaviorCelebrateData extends BPComponent {
     };
 }
 
-export class SetBehaviorCelebrate extends BehaviorEntityComponentBuilder<BehaviorCelebrateData> {
+export class SetBehaviorCelebrate extends BehaviorEntityComponentBuilder<BehaviorCelebrateData, "minecraft:behavior.celebrate"> {
     /**
      * 
      * @param {BehaviorCelebrateData} params Parametros del componente.

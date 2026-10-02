@@ -14,7 +14,7 @@ interface ExhaustionValuesData extends BPComponent {
     walk?: number;
 }
 
-export class SetExhaustionValues extends BehaviorEntityComponentBuilder<ExhaustionValuesData> {
+export class SetExhaustionValues extends BehaviorEntityComponentBuilder<ExhaustionValuesData, "minecraft:exhaustion_values"> {
     /**
      * 
      * @param {ExhaustionValuesData} params Parametros del componente.

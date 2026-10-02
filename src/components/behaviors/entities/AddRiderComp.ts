@@ -36,7 +36,7 @@ interface AddRiderComponentData extends BPComponent {
     riders: RiderComponentData[];
 }
 
-export class SetAddRider extends BehaviorEntityComponentBuilder<AddRiderComponentData> {
+export class SetAddRider extends BehaviorEntityComponentBuilder<AddRiderComponentData, "minecraft:addrider"> {
     /**
      * Componente que añade una o varias entidades que estan montando a la misma.
      * @param {AddRiderComponentData} params Parametros del componente.

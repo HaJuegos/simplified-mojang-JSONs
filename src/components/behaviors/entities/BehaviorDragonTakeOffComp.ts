@@ -5,7 +5,7 @@ interface BehaviorDragonTakeOffData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorDragonTakeOff extends BehaviorEntityComponentBuilder<BehaviorDragonTakeOffData> {
+export class SetBehaviorDragonTakeOff extends BehaviorEntityComponentBuilder<BehaviorDragonTakeOffData, "minecraft:behavior.dragontakeoff"> {
     /**
      * 
      * @param {BehaviorDragonTakeOffData} params Parametros del componente.

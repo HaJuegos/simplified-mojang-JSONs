@@ -5,7 +5,7 @@ interface DefaultLookAngleData extends BPComponent {
     value?: number;
 }
 
-export class SetDefaultLookAngle extends BehaviorEntityComponentBuilder<DefaultLookAngleData> {
+export class SetDefaultLookAngle extends BehaviorEntityComponentBuilder<DefaultLookAngleData, "minecraft:default_look_angle"> {
     /**
      * 
      * @param {DefaultLookAngleData} params Parametros del componente.

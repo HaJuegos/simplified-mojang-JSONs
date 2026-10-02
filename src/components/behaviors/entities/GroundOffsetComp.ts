@@ -5,7 +5,7 @@ interface GroundOffsetData extends BPComponent {
     value?: number;
 }
 
-export class SetGroundOffset extends BehaviorEntityComponentBuilder<GroundOffsetData> {
+export class SetGroundOffset extends BehaviorEntityComponentBuilder<GroundOffsetData, "minecraft:ground_offset"> {
     /**
      * 
      * @param {GroundOffsetData} params Parametros del componente.

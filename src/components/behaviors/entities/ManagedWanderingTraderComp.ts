@@ -5,7 +5,7 @@ interface ManagedWanderingTraderData extends BPComponent {
 
 }
 
-export class SetManagedWanderingTrader extends BehaviorEntityComponentBuilder<ManagedWanderingTraderData> {
+export class SetManagedWanderingTrader extends BehaviorEntityComponentBuilder<ManagedWanderingTraderData, "minecraft:managed_wandering_trader"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

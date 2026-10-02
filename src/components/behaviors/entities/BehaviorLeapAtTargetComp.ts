@@ -8,7 +8,7 @@ interface BehaviorLeapAtTargetData extends BPComponent {
     yd?: number;
 }
 
-export class SetBehaviorLeapAtTarget extends BehaviorEntityComponentBuilder<BehaviorLeapAtTargetData> {
+export class SetBehaviorLeapAtTarget extends BehaviorEntityComponentBuilder<BehaviorLeapAtTargetData, "minecraft:behavior.leap_at_target"> {
     /**
      * 
      * @param {BehaviorLeapAtTargetData} params Parametros del componente.

@@ -7,7 +7,7 @@ interface HeartbeatData extends BPComponent {
     soundEvent?: string;
 }
 
-export class SetHeartbeat extends BehaviorEntityComponentBuilder<HeartbeatData> {
+export class SetHeartbeat extends BehaviorEntityComponentBuilder<HeartbeatData, "minecraft:heartbeat"> {
     /**
      * 
      * @param {HeartbeatData} params Parametros del componente.

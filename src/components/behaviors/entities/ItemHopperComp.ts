@@ -5,7 +5,7 @@ interface ItemHopperData extends BPComponent {
 
 }
 
-export class SetItemHopper extends BehaviorEntityComponentBuilder<ItemHopperData> {
+export class SetItemHopper extends BehaviorEntityComponentBuilder<ItemHopperData, "minecraft:item_hopper"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

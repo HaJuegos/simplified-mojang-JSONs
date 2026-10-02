@@ -22,7 +22,7 @@ interface EntitiesTypes {
     spawnSound?: string;
 }
 
-export class SetSpawnEntity extends BehaviorEntityComponentBuilder<SpawnEntityData> {
+export class SetSpawnEntity extends BehaviorEntityComponentBuilder<SpawnEntityData, "minecraft:spawn_entity"> {
     /**
      * 
      * @param {SpawnEntityData} params Parametros del componente.

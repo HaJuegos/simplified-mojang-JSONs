@@ -11,7 +11,7 @@ interface MobEffectData extends BPComponent {
     mobEffect?: EntityEffectTypes;
 }
 
-export class SetMobEffect extends BehaviorEntityComponentBuilder<MobEffectData> {
+export class SetMobEffect extends BehaviorEntityComponentBuilder<MobEffectData, "minecraft:mob_effect"> {
     /**
      * 
      * @param {MobEffectData} params Parametros del componente.

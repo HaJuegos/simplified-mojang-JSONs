@@ -8,7 +8,7 @@ interface TrailData extends BPComponent {
     spawnOffset?: [number, number, number];
 }
 
-export class SetTrail extends BehaviorEntityComponentBuilder<TrailData> {
+export class SetTrail extends BehaviorEntityComponentBuilder<TrailData, "minecraft:trail"> {
     /**
      * 
      * @param {TrailData} params Parametros del componente.

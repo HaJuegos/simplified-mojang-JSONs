@@ -7,7 +7,7 @@ interface SittableData extends BPComponent {
     standEvent?: EntityFilter;
 }
 
-export class SetSittable extends BehaviorEntityComponentBuilder<SittableData> {
+export class SetSittable extends BehaviorEntityComponentBuilder<SittableData, "minecraft:sittable"> {
     /**
      * 
      * @param {SittableData} params Parametros del componente.

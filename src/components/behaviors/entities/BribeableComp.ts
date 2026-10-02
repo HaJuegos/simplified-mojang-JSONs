@@ -7,7 +7,7 @@ interface BribeableData extends BPComponent {
     bribeItems?: (string | TargetItemsTypes)[];
 }
 
-export class SetBribeable extends BehaviorEntityComponentBuilder<BribeableData> {
+export class SetBribeable extends BehaviorEntityComponentBuilder<BribeableData, "minecraft:bribeable"> {
     /**
      * 
      * @param {BribeableData} params Parametros del componente.

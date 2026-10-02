@@ -12,7 +12,7 @@ interface DamageConditionsTypes {
     filters?: EntityFilter | EntityFilter[];
 }
 
-export class SetHurtOnCondition extends BehaviorEntityComponentBuilder<HurtOnConditionData> {
+export class SetHurtOnCondition extends BehaviorEntityComponentBuilder<HurtOnConditionData, "minecraft:hurt_on_condition"> {
     /**
      * 
      * @param {HurtOnConditionData} params Parametros del componente.

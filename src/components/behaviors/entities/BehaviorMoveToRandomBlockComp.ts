@@ -8,7 +8,7 @@ interface BehaviorMoveToRandomBlockData extends BPComponent {
     withinRadius?: number;
 }
 
-export class SetBehaviorMoveToRandomBlock extends BehaviorEntityComponentBuilder<BehaviorMoveToRandomBlockData> {
+export class SetBehaviorMoveToRandomBlock extends BehaviorEntityComponentBuilder<BehaviorMoveToRandomBlockData, "minecraft:behavior.move_to_random_block"> {
     /**
      * 
      * @param {BehaviorMoveToRandomBlockData} params Parametros del componente.

@@ -6,7 +6,7 @@ interface BehaviorScaredData extends BPComponent {
     soundInterval?: number;
 }
 
-export class SetBehaviorScared extends BehaviorEntityComponentBuilder<BehaviorScaredData> {
+export class SetBehaviorScared extends BehaviorEntityComponentBuilder<BehaviorScaredData, "minecraft:behavior.scared"> {
     /**
      * 
      * @param {BehaviorScaredData} params Parametros del componente.

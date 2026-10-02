@@ -17,7 +17,7 @@ interface BehaviorStalkAndPounceOnTargetData extends BPComponent {
     stuckBlocks?: EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorStalkAndPounceOnTarget extends BehaviorEntityComponentBuilder<BehaviorStalkAndPounceOnTargetData> {
+export class SetBehaviorStalkAndPounceOnTarget extends BehaviorEntityComponentBuilder<BehaviorStalkAndPounceOnTargetData, "minecraft:behavior.stalk_and_pounce_on_target"> {
     /**
      * 
      * @param {BehaviorStalkAndPounceOnTargetData} params Parametros del componente.

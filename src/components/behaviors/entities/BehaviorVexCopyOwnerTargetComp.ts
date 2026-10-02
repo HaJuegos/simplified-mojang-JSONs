@@ -7,7 +7,7 @@ interface BehaviorVexCopyOwnerTargetData extends BPComponent {
     entityTypes?: EntityAttackableTargetFilters | EntityAttackableTargetFilters[];
 }
 
-export class SetBehaviorVexCopyOwnerTarget extends BehaviorEntityComponentBuilder<BehaviorVexCopyOwnerTargetData> {
+export class SetBehaviorVexCopyOwnerTarget extends BehaviorEntityComponentBuilder<BehaviorVexCopyOwnerTargetData, "minecraft:behavior.vex_copy_owner_target"> {
     /**
      * 
      * @param {BehaviorVexCopyOwnerTargetData} params Parametros del componente.

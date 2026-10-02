@@ -22,7 +22,7 @@ interface BehaviorPickupItemsData extends BPComponent {
     onPickupItemEnd?: string | EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorPickupItems extends BehaviorEntityComponentBuilder<BehaviorPickupItemsData> {
+export class SetBehaviorPickupItems extends BehaviorEntityComponentBuilder<BehaviorPickupItemsData, "minecraft:behavior.pickup_items"> {
     /**
      * 
      * @param {BehaviorPickupItemsData} params Parametros del componente.

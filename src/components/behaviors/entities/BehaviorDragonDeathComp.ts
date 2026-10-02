@@ -5,7 +5,7 @@ interface BehaviorDragonDeathData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorDragonDeath extends BehaviorEntityComponentBuilder<BehaviorDragonDeathData> {
+export class SetBehaviorDragonDeath extends BehaviorEntityComponentBuilder<BehaviorDragonDeathData, "minecraft:behavior.dragondeath"> {
     /**
      * 
      * @param {BehaviorDragonDeathData} params Parametros del componente.

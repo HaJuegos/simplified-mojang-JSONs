@@ -6,7 +6,7 @@ interface ItemControllableData extends BPComponent {
     controlItems?: (string | MinecraftItemTypes)[];
 }
 
-export class SetItemControllable extends BehaviorEntityComponentBuilder<ItemControllableData> {
+export class SetItemControllable extends BehaviorEntityComponentBuilder<ItemControllableData, "minecraft:item_controllable"> {
     /**
      * 
      * @param {ItemControllableData} params Parametros del componente.

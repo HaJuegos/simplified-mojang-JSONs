@@ -6,7 +6,7 @@ interface PlayerSaturationData extends BPComponent {
     max?: number;
 }
 
-export class SetPlayerSaturation extends BehaviorEntityComponentBuilder<PlayerSaturationData> {
+export class SetPlayerSaturation extends BehaviorEntityComponentBuilder<PlayerSaturationData, "minecraft:player.saturation"> {
     /**
      * 
      * @param {PlayerSaturationData} params Parametros del componente.

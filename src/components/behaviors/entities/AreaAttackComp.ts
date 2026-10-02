@@ -58,7 +58,7 @@ interface AreaAttackData extends BPComponent {
     useSelfAsDamageSource?: boolean;
 }
 
-export class SetAreaAttack extends BehaviorEntityComponentBuilder<AreaAttackData> {
+export class SetAreaAttack extends BehaviorEntityComponentBuilder<AreaAttackData, "minecraft:area_attack"> {
     /**
      * Componente que inflije daño a las entidades que se acercan a su radio de accion.
      * @param {AreaAttackData} params Parametros del componente.

@@ -6,7 +6,7 @@ interface BehaviorRollData extends BPComponent {
     probability?: number;
 }
 
-export class SetBehaviorRoll extends BehaviorEntityComponentBuilder<BehaviorRollData> {
+export class SetBehaviorRoll extends BehaviorEntityComponentBuilder<BehaviorRollData, "minecraft:behavior.roll"> {
     /**
      * 
      * @param {BehaviorRollData} params Parametros del componente.

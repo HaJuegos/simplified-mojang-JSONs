@@ -13,7 +13,7 @@ interface BehaviorFollowMobData extends BPComponent {
     useHomePositionRestriction?: boolean;
 }
 
-export class SetBehaviorFollowMob extends BehaviorEntityComponentBuilder<BehaviorFollowMobData> {
+export class SetBehaviorFollowMob extends BehaviorEntityComponentBuilder<BehaviorFollowMobData, "minecraft:behavior.follow_mob"> {
     /**
      * 
      * @param {BehaviorFollowMobData} params Parametros del componente.

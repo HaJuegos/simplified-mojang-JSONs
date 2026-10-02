@@ -7,7 +7,7 @@ interface BehaviorOwnerHurtByTargetData extends BPComponent {
     entityTypes?: EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorOwnerHurtByTarget extends BehaviorEntityComponentBuilder<BehaviorOwnerHurtByTargetData> {
+export class SetBehaviorOwnerHurtByTarget extends BehaviorEntityComponentBuilder<BehaviorOwnerHurtByTargetData, "minecraft:behavior.owner_hurt_by_target"> {
     /**
      * 
      * @param {BehaviorOwnerHurtByTargetData} params Parametros del componente.

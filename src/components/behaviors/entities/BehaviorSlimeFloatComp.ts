@@ -7,7 +7,7 @@ interface BehaviorSlimeFloatData extends BPComponent {
     jumpChancePercentage?: number;
 }
 
-export class SetBehaviorSlimeFloat extends BehaviorEntityComponentBuilder<BehaviorSlimeFloatData> {
+export class SetBehaviorSlimeFloat extends BehaviorEntityComponentBuilder<BehaviorSlimeFloatData, "minecraft:behavior.slime_float"> {
     /**
      * 
      * @param {BehaviorSlimeFloatData} params Parametros del componente.

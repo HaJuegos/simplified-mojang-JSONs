@@ -6,7 +6,7 @@ interface LeashableToData extends BPComponent {
     unleashOnRemoval?: boolean;
 }
 
-export class SetLeashableTo extends BehaviorEntityComponentBuilder<LeashableToData> {
+export class SetLeashableTo extends BehaviorEntityComponentBuilder<LeashableToData, "minecraft:leashable_to"> {
     /**
      * 
      * @param {LeashableToData} params Parametros del componente.

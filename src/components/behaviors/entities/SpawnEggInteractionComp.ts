@@ -5,7 +5,7 @@ interface SpawnEggInteractionData extends BPComponent {
 
 }
 
-export class SetSpawnEggInteraction extends BehaviorEntityComponentBuilder<SpawnEggInteractionData> {
+export class SetSpawnEggInteraction extends BehaviorEntityComponentBuilder<SpawnEggInteractionData, "minecraft:spawn_egg_interaction"> {
     /**
      * 
      * @author HaJuegos - 29-09-2026

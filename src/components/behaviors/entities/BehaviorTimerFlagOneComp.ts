@@ -16,7 +16,7 @@ interface BehaviorTimerFlagOneData extends BPComponent {
     onStart?: string | EntityFilterTrigger | EntityFilterTrigger[];
 }
 
-export class SetBehaviorTimerFlagOne extends BehaviorEntityComponentBuilder<BehaviorTimerFlagOneData> {
+export class SetBehaviorTimerFlagOne extends BehaviorEntityComponentBuilder<BehaviorTimerFlagOneData, "minecraft:behavior.timer_flag_1"> {
     /**
      * 
      * @param {BehaviorTimerFlagOneData} params Parametros del componente.

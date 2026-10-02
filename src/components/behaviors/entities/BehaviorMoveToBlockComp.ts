@@ -20,7 +20,7 @@ interface BehaviorMoveToBlockData extends BPComponent {
     tickInterval?: number;
 }
 
-export class SetBehaviorMoveToBlock extends BehaviorEntityComponentBuilder<BehaviorMoveToBlockData> {
+export class SetBehaviorMoveToBlock extends BehaviorEntityComponentBuilder<BehaviorMoveToBlockData, "minecraft:behavior.move_to_block"> {
     /**
      * 
      * @param {BehaviorMoveToBlockData} params Parametros del componente.

@@ -10,7 +10,7 @@ interface BehaviorShareItemsData extends BPComponent {
     maxDist?: number;
 }
 
-export class SetBehaviorShareItems extends BehaviorEntityComponentBuilder<BehaviorShareItemsData> {
+export class SetBehaviorShareItems extends BehaviorEntityComponentBuilder<BehaviorShareItemsData, "minecraft:behavior.share_items"> {
     /**
      * 
      * @param {BehaviorShareItemsData} params Parametros del componente.

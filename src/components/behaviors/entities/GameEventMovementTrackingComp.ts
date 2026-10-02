@@ -7,7 +7,7 @@ interface GameEventMovementTrackingData extends BPComponent {
     emitSwim?: boolean;
 }
 
-export class SetGameEventMovementTracking extends BehaviorEntityComponentBuilder<GameEventMovementTrackingData> {
+export class SetGameEventMovementTracking extends BehaviorEntityComponentBuilder<GameEventMovementTrackingData, "minecraft:game_event_movement_tracking"> {
     /**
      * 
      * @param {GameEventMovementTrackingData} params Parametros del componente.

@@ -8,7 +8,7 @@ interface BehaviorFloatData extends BPComponent {
     timeUnderWaterToDismountPassengers?: number;
 }
 
-export class SetBehaviorFloat extends BehaviorEntityComponentBuilder<BehaviorFloatData> {
+export class SetBehaviorFloat extends BehaviorEntityComponentBuilder<BehaviorFloatData, "minecraft:behavior.float"> {
     /**
      * 
      * @param {BehaviorFloatData} params Parametros del componente.

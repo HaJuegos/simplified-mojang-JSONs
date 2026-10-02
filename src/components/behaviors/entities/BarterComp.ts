@@ -6,7 +6,7 @@ interface BarterData extends BPComponent {
     cooldownAfterBeingAttacked?: number;
 }
 
-export class SetBarter extends BehaviorEntityComponentBuilder<BarterData> {
+export class SetBarter extends BehaviorEntityComponentBuilder<BarterData, "minecraft:barter"> {
     public constructor (params: BarterData) {
         super("minecraft:barter", params);
     }

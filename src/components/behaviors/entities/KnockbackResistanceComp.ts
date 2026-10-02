@@ -12,7 +12,7 @@ interface KnockbackResistanceData extends BPComponent {
     };
 }
 
-export class SetKnockbackResistance extends BehaviorEntityComponentBuilder<KnockbackResistanceData> {
+export class SetKnockbackResistance extends BehaviorEntityComponentBuilder<KnockbackResistanceData, "minecraft:knockback_resistance"> {
     /**
      * 
      * @param {KnockbackResistanceData} params Parametros del componente.

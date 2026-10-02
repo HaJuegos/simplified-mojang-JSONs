@@ -9,7 +9,7 @@ interface BehaviorRandomStrollData extends BPComponent {
     yDist?: number;
 }
 
-export class SetBehaviorRandomStroll extends BehaviorEntityComponentBuilder<BehaviorRandomStrollData> {
+export class SetBehaviorRandomStroll extends BehaviorEntityComponentBuilder<BehaviorRandomStrollData, "minecraft:behavior.random_stroll"> {
     /**
      * 
      * @param {BehaviorRandomStrollData} params Parametros del componente.

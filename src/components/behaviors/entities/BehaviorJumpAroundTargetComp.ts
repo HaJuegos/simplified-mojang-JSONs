@@ -27,7 +27,7 @@ interface BehaviorJumpAroundTargetData extends BPComponent {
     filters?: EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorJumpAroundTarget extends BehaviorEntityComponentBuilder<BehaviorJumpAroundTargetData> {
+export class SetBehaviorJumpAroundTarget extends BehaviorEntityComponentBuilder<BehaviorJumpAroundTargetData, "minecraft:behavior.jump_around_target"> {
     /**
      * 
      * @param {BehaviorJumpAroundTargetData} params Parametros del componente.

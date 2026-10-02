@@ -16,7 +16,7 @@ interface BehaviorDragonStrafePlayerData extends BPComponent {
     viewAngle?: number;
 }
 
-export class SetBehaviorDragonStrafePlayer extends BehaviorEntityComponentBuilder<BehaviorDragonStrafePlayerData> {
+export class SetBehaviorDragonStrafePlayer extends BehaviorEntityComponentBuilder<BehaviorDragonStrafePlayerData, "minecraft:behavior.dragonstrafeplayer"> {
     /**
      * 
      * @param {BehaviorDragonStrafePlayerData} params Parametros del componente.

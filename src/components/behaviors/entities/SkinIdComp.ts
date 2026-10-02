@@ -5,7 +5,7 @@ interface SkinIdData extends BPComponent {
     value?: number;
 }
 
-export class SetSkinId extends BehaviorEntityComponentBuilder<SkinIdData> {
+export class SetSkinId extends BehaviorEntityComponentBuilder<SkinIdData, "minecraft:skin_id"> {
     /**
      * 
      * @param {SkinIdData} params Parametros del componente.

@@ -7,7 +7,7 @@ interface BehaviorSkeletonHorseTrapData extends BPComponent {
     withinRadius?: number;
 }
 
-export class SetBehaviorSkeletonHorseTrap extends BehaviorEntityComponentBuilder<BehaviorSkeletonHorseTrapData> {
+export class SetBehaviorSkeletonHorseTrap extends BehaviorEntityComponentBuilder<BehaviorSkeletonHorseTrapData, "minecraft:behavior.skeleton_horse_trap"> {
     /**
      * 
      * @param {BehaviorSkeletonHorseTrapData} params Parametros del componente.

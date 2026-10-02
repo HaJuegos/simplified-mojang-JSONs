@@ -6,7 +6,7 @@ interface BurnsInDaylightData extends BPComponent {
     protectionSlot: EntitySlotsArmor;
 }
 
-export class SetBurnsInDaylight extends BehaviorEntityComponentBuilder<BurnsInDaylightData> {
+export class SetBurnsInDaylight extends BehaviorEntityComponentBuilder<BurnsInDaylightData, "minecraft:burns_in_daylight"> {
     /**
      * 
      * @param {BurnsInDaylightData} params Parametros del componente.

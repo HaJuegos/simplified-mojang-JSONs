@@ -9,7 +9,7 @@ interface BalloonableData extends BPComponent {
     mass: number;
 }
 
-export class SetBalloonable extends BehaviorEntityComponentBuilder<BalloonableData> {
+export class SetBalloonable extends BehaviorEntityComponentBuilder<BalloonableData, "minecraft:balloonable"> {
     public constructor (params: BalloonableData) {
         super("minecraft:balloonable", params);
     }

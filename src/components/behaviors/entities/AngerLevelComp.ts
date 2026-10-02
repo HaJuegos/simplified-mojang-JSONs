@@ -85,7 +85,7 @@ interface IncreaseEntitySounds {
     condition: MoLangValue;
 }
 
-export class SetAngelevel extends BehaviorEntityComponentBuilder<AngelevelData> {
+export class SetAngelevel extends BehaviorEntityComponentBuilder<AngelevelData, "minecraft:anger_level"> {
     /**
      * Componente que permite que la entidad lleve registro de enojo hacia una serie de molestias.
      * @param {AngelevelData} params Parametros del componente.

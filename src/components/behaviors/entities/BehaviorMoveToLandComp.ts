@@ -10,7 +10,7 @@ interface BehaviorMoveToLandData extends BPComponent {
     searchRange?: number;
 }
 
-export class SetBehaviorMoveToLand extends BehaviorEntityComponentBuilder<BehaviorMoveToLandData> {
+export class SetBehaviorMoveToLand extends BehaviorEntityComponentBuilder<BehaviorMoveToLandData, "minecraft:behavior.move_to_land"> {
     /**
      * 
      * @param {BehaviorMoveToLandData} params Parametros del componente.

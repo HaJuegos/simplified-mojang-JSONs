@@ -5,7 +5,7 @@ interface UsesUniformAirDragData extends BPComponent {
 
 }
 
-export class SetUsesUniformAirDrag extends BehaviorEntityComponentBuilder<UsesUniformAirDragData> {
+export class SetUsesUniformAirDrag extends BehaviorEntityComponentBuilder<UsesUniformAirDragData, "minecraft:uses_uniform_air_drag"> {
     /**
      * 
      * @author HaJuegos - 29-09-2026

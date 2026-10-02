@@ -16,7 +16,7 @@ interface DespawnData extends BPComponent {
     removeChildEntities?: boolean;
 }
 
-export class SetDespawn extends BehaviorEntityComponentBuilder<DespawnData> {
+export class SetDespawn extends BehaviorEntityComponentBuilder<DespawnData, "minecraft:despawn"> {
     /**
      * 
      * @param {DespawnData} params Parametros del componente.

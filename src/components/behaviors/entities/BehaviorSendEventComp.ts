@@ -27,7 +27,7 @@ interface SendEventSequenceType {
     soundEvent: string;
 }
 
-export class SetBehaviorSendEvent extends BehaviorEntityComponentBuilder<BehaviorSendEventData> {
+export class SetBehaviorSendEvent extends BehaviorEntityComponentBuilder<BehaviorSendEventData, "minecraft:behavior.send_event"> {
     /**
      * 
      * @param {BehaviorSendEventData} params Parametros del componente.

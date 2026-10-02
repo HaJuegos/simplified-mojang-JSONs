@@ -6,7 +6,7 @@ interface BehaviorOwnerHurtTargetData extends BPComponent {
     entityTypes?: number;
 }
 
-export class SetBehaviorOwnerHurtTarget extends BehaviorEntityComponentBuilder<BehaviorOwnerHurtTargetData> {
+export class SetBehaviorOwnerHurtTarget extends BehaviorEntityComponentBuilder<BehaviorOwnerHurtTargetData, "minecraft:behavior.owner_hurt_target"> {
     /**
      * 
      * @param {BehaviorOwnerHurtTargetData} params Parametros del componente.

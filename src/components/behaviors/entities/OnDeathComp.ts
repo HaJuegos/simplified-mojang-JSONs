@@ -6,7 +6,7 @@ interface OnDeathData extends BPComponent, EntityFilterTrigger {
 
 }
 
-export class SetOnDeath extends BehaviorEntityComponentBuilder<OnDeathData> {
+export class SetOnDeath extends BehaviorEntityComponentBuilder<OnDeathData, "minecraft:on_death"> {
     /**
      * 
      * @param {OnDeathData} params Parametros del componente.

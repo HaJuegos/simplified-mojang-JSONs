@@ -27,7 +27,7 @@ interface ItemsListTypes {
     wantAmount?: number;
 }
 
-export class SetShareables extends BehaviorEntityComponentBuilder<ShareablesData> {
+export class SetShareables extends BehaviorEntityComponentBuilder<ShareablesData, "minecraft:shareables"> {
     /**
      * 
      * @param {ShareablesData} params Parametros del componente.

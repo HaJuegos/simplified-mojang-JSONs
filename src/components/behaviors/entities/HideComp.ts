@@ -8,7 +8,7 @@ interface HideData extends BPComponent {
     restrictionType?: "none" | "random_movement" | "all_movement";
 }
 
-export class SetHide extends BehaviorEntityComponentBuilder<HideData> {
+export class SetHide extends BehaviorEntityComponentBuilder<HideData, "minecraft:hide"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

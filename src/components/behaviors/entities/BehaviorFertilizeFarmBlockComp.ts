@@ -12,7 +12,7 @@ interface BehaviorFertilizeFarmBlockData extends BPComponent {
     searchRange?: number;
 }
 
-export class SetBehaviorFertilizeFarmBlock extends BehaviorEntityComponentBuilder<BehaviorFertilizeFarmBlockData> {
+export class SetBehaviorFertilizeFarmBlock extends BehaviorEntityComponentBuilder<BehaviorFertilizeFarmBlockData, "minecraft:behavior.fertilize_farm_block"> {
     /**
      * 
      * @param {BehaviorFertilizeFarmBlockData} params Parametros del componente.

@@ -9,7 +9,7 @@ interface BehaviorSwimUpForBreathData extends BPComponent {
     speedMod?: number;
 }
 
-export class SetBehaviorSwimUpForBreath extends BehaviorEntityComponentBuilder<BehaviorSwimUpForBreathData> {
+export class SetBehaviorSwimUpForBreath extends BehaviorEntityComponentBuilder<BehaviorSwimUpForBreathData, "minecraft:behavior.swim_up_for_breath"> {
     /**
      * 
      * @param {BehaviorSwimUpForBreathData} params Parametros del componente.

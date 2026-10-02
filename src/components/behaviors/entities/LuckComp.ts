@@ -12,7 +12,7 @@ interface LuckData extends BPComponent {
     };
 }
 
-export class SetLuck extends BehaviorEntityComponentBuilder<LuckData> {
+export class SetLuck extends BehaviorEntityComponentBuilder<LuckData, "minecraft:luck"> {
     /**
      * 
      * @param {LuckData} params Parametros del componente.

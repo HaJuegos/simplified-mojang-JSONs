@@ -6,7 +6,7 @@ interface MobEffectImmunityData extends BPComponent {
     mobEffects?: EntityEffectTypes[];
 }
 
-export class SetMobEffectImmunity extends BehaviorEntityComponentBuilder<MobEffectImmunityData> {
+export class SetMobEffectImmunity extends BehaviorEntityComponentBuilder<MobEffectImmunityData, "minecraft:mob_effect_immunity"> {
     /**
      * 
      * @param {MobEffectImmunityData} params Parametros del componente.

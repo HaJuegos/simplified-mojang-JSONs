@@ -21,7 +21,7 @@ interface BehaviorJumpToBlockData extends BPComponent {
     searchWidth?: number;
 }
 
-export class SetBehaviorJumpToBlock extends BehaviorEntityComponentBuilder<BehaviorJumpToBlockData> {
+export class SetBehaviorJumpToBlock extends BehaviorEntityComponentBuilder<BehaviorJumpToBlockData, "minecraft:behavior.jump_to_block"> {
     /**
      * 
      * @param {BehaviorJumpToBlockData} params Parametros del componente.

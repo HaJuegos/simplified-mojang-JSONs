@@ -30,7 +30,7 @@ interface BehaviorMeleeAttackData extends BPComponent {
     yMaxHeadRotation?: number;
 }
 
-export class SetBehaviorMeleeAttack extends BehaviorEntityComponentBuilder<BehaviorMeleeAttackData> {
+export class SetBehaviorMeleeAttack extends BehaviorEntityComponentBuilder<BehaviorMeleeAttackData, "minecraft:behavior.melee_attack"> {
     /**
      * 
      * @param {BehaviorMeleeAttackData} params Parametros del componente.

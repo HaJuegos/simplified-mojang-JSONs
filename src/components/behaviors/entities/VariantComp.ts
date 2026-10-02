@@ -5,7 +5,7 @@ interface VariantData extends BPComponent {
     value: number;
 }
 
-export class SetVariant extends BehaviorEntityComponentBuilder<VariantData> {
+export class SetVariant extends BehaviorEntityComponentBuilder<VariantData, "minecraft:variant"> {
     /**
      * 
      * @param {VariantData} params Parametros del componente.

@@ -8,7 +8,7 @@ interface BehaviorTargetWhenPushedData extends BPComponent {
     percentChance?: number;
 }
 
-export class SetBehaviorTargetWhenPushed extends BehaviorEntityComponentBuilder<BehaviorTargetWhenPushedData> {
+export class SetBehaviorTargetWhenPushed extends BehaviorEntityComponentBuilder<BehaviorTargetWhenPushedData, "minecraft:behavior.target_when_pushed"> {
     /**
      * 
      * @param {BehaviorTargetWhenPushedData} params Parametros del componente.

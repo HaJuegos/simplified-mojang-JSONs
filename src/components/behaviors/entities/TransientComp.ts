@@ -5,7 +5,7 @@ interface TransientData extends BPComponent {
 
 }
 
-export class SetTransient extends BehaviorEntityComponentBuilder<TransientData> {
+export class SetTransient extends BehaviorEntityComponentBuilder<TransientData, "minecraft:transient"> {
     /**
      * 
      * @author HaJuegos - 29-09-2026

@@ -12,7 +12,7 @@ interface ReactionEvents {
     value: EntityFilter | string;
 }
 
-export class SetRavagerBlocked extends BehaviorEntityComponentBuilder<RavagerBlockedData> {
+export class SetRavagerBlocked extends BehaviorEntityComponentBuilder<RavagerBlockedData, "minecraft:ravager_blocked"> {
     /**
      * 
      * @param {RavagerBlockedData} params Parametros del componente.

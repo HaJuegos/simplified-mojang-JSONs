@@ -9,7 +9,7 @@ interface TradeTableData extends BPComponent {
     table?: string;
 }
 
-export class SetTradeTable extends BehaviorEntityComponentBuilder<TradeTableData> {
+export class SetTradeTable extends BehaviorEntityComponentBuilder<TradeTableData, "minecraft:trade_table"> {
     /**
      * 
      * @param {TradeTableData} params Parametros del componente.

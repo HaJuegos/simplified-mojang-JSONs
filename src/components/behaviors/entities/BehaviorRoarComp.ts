@@ -6,7 +6,7 @@ interface BehaviorRoarData extends BPComponent {
     duration?: number;
 }
 
-export class SetBehaviorRoar extends BehaviorEntityComponentBuilder<BehaviorRoarData> {
+export class SetBehaviorRoar extends BehaviorEntityComponentBuilder<BehaviorRoarData, "minecraft:behavior.roar"> {
     /**
      * 
      * @param {BehaviorRoarData} params Parametros del componente.

@@ -11,7 +11,7 @@ interface ReflectProjectilesData extends BPComponent {
     reflectionSound?: string;
 }
 
-export class SetReflectProjectiles extends BehaviorEntityComponentBuilder<ReflectProjectilesData> {
+export class SetReflectProjectiles extends BehaviorEntityComponentBuilder<ReflectProjectilesData, "minecraft:reflect_projectiles"> {
     /**
      * 
      * @param {ReflectProjectilesData} params Parametros del componente.

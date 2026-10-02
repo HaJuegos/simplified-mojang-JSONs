@@ -27,7 +27,7 @@ interface LookAtLocsTypes {
     verticalOffset: number;
 }
 
-export class SetLookedAt extends BehaviorEntityComponentBuilder<LookedAtData> {
+export class SetLookedAt extends BehaviorEntityComponentBuilder<LookedAtData, "minecraft:looked_at"> {
     /**
      * 
      * @param {LookedAtData} params Parametros del componente.

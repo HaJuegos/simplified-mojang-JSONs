@@ -21,7 +21,7 @@ interface BehaviorPlaceBlockData extends BPComponent {
     };
 }
 
-export class SetBehaviorPlaceBlock extends BehaviorEntityComponentBuilder<BehaviorPlaceBlockData> {
+export class SetBehaviorPlaceBlock extends BehaviorEntityComponentBuilder<BehaviorPlaceBlockData, "minecraft:behavior.place_block"> {
     /**
      * 
      * @param {BehaviorPlaceBlockData} params Parametros del componente.

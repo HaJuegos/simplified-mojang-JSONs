@@ -11,7 +11,7 @@ interface BehaviorStompTurtleEggData extends BPComponent {
     searchRange?: number;
 }
 
-export class SetBehaviorStompTurtleEgg extends BehaviorEntityComponentBuilder<BehaviorStompTurtleEggData> {
+export class SetBehaviorStompTurtleEgg extends BehaviorEntityComponentBuilder<BehaviorStompTurtleEggData, "minecraft:behavior.stomp_turtle_egg"> {
     /**
      * 
      * @param {BehaviorStompTurtleEggData} params Parametros del componente.

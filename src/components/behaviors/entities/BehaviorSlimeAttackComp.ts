@@ -10,7 +10,7 @@ interface BehaviorSlimeAttackData extends BPComponent {
     yMaxRotation?: number;
 }
 
-export class SetBehaviorSlimeAttack extends BehaviorEntityComponentBuilder<BehaviorSlimeAttackData> {
+export class SetBehaviorSlimeAttack extends BehaviorEntityComponentBuilder<BehaviorSlimeAttackData, "minecraft:behavior.slime_attack"> {
     /**
      * 
      * @param {BehaviorSlimeAttackData} params Parametros del componente.

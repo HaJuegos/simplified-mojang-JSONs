@@ -8,7 +8,7 @@ interface BehaviorDrinkMilkData extends BPComponent {
     filters?: EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorDrinkMilk extends BehaviorEntityComponentBuilder<BehaviorDrinkMilkData> {
+export class SetBehaviorDrinkMilk extends BehaviorEntityComponentBuilder<BehaviorDrinkMilkData, "minecraft:behavior.drink_milk"> {
     /**
      * 
      * @param {BehaviorDrinkMilkData} params Parametros del componente.

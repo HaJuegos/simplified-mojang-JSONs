@@ -5,7 +5,7 @@ interface TrustData extends BPComponent {
 
 }
 
-export class SetTrust extends BehaviorEntityComponentBuilder<TrustData> {
+export class SetTrust extends BehaviorEntityComponentBuilder<TrustData, "minecraft:trust"> {
     /**
      * 
      * @author HaJuegos - 29-09-2026

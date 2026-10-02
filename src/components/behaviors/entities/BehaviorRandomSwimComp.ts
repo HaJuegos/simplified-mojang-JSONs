@@ -10,7 +10,7 @@ interface BehaviorRandomSwimData extends BPComponent {
     yDist?: number;
 }
 
-export class SetBehaviorRandomSwim extends BehaviorEntityComponentBuilder<BehaviorRandomSwimData> {
+export class SetBehaviorRandomSwim extends BehaviorEntityComponentBuilder<BehaviorRandomSwimData, "minecraft:behavior.random_swim"> {
     /**
      * 
      * @param {BehaviorRandomSwimData} params Parametros del componente.

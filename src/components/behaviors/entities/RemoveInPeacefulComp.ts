@@ -5,7 +5,7 @@ interface RemoveInPeacefulData extends BPComponent {
 
 }
 
-export class SetRemoveInPeaceful extends BehaviorEntityComponentBuilder<RemoveInPeacefulData> {
+export class SetRemoveInPeaceful extends BehaviorEntityComponentBuilder<RemoveInPeacefulData, "minecraft:remove_in_peaceful"> {
     /**
      * 
      * @author HaJuegos - 29-09-2026

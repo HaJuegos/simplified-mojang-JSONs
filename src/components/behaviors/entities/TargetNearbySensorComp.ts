@@ -11,7 +11,7 @@ interface TargetNearbySensorData extends BPComponent {
     outsideRange?: number;
 }
 
-export class SetTargetNearbySensor extends BehaviorEntityComponentBuilder<TargetNearbySensorData> {
+export class SetTargetNearbySensor extends BehaviorEntityComponentBuilder<TargetNearbySensorData, "minecraft:target_nearby_sensor"> {
     /**
      * 
      * @param {TargetNearbySensorData} params Parametros del componente.

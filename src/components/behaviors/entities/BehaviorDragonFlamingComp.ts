@@ -9,7 +9,7 @@ interface BehaviorDragonFlamingData extends BPComponent {
     roarTime?: number;
 }
 
-export class SetBehaviorDragonFlaming extends BehaviorEntityComponentBuilder<BehaviorDragonFlamingData> {
+export class SetBehaviorDragonFlaming extends BehaviorEntityComponentBuilder<BehaviorDragonFlamingData, "minecraft:behavior.dragonflaming"> {
     /**
      * 
      * @param {BehaviorDragonFlamingData} params Parametros del componente.

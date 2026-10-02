@@ -16,7 +16,7 @@ interface BehaviorSwimWithEntityData extends BPComponent {
     entityTypes?: EntityAttackableTargetFilters | EntityAttackableTargetFilters[];
 }
 
-export class SetBehaviorSwimWithEntity extends BehaviorEntityComponentBuilder<BehaviorSwimWithEntityData> {
+export class SetBehaviorSwimWithEntity extends BehaviorEntityComponentBuilder<BehaviorSwimWithEntityData, "minecraft:behavior.swim_with_entity"> {
     /**
      * 
      * @param {BehaviorSwimWithEntityData} params Parametros del componente.

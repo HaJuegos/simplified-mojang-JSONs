@@ -7,7 +7,7 @@ interface BehaviorLayDownData extends BPComponent {
     randomStopInterval?: number;
 }
 
-export class SetBehaviorLayDown extends BehaviorEntityComponentBuilder<BehaviorLayDownData> {
+export class SetBehaviorLayDown extends BehaviorEntityComponentBuilder<BehaviorLayDownData, "minecraft:behavior.lay_down"> {
     /**
      * 
      * @param {BehaviorLayDownData} params Parametros del componente.

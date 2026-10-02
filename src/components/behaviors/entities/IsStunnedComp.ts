@@ -5,7 +5,7 @@ interface IsStunnedData extends BPComponent {
 
 }
 
-export class SetIsStunned extends BehaviorEntityComponentBuilder<IsStunnedData> {
+export class SetIsStunned extends BehaviorEntityComponentBuilder<IsStunnedData, "minecraft:is_stunned"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

@@ -10,7 +10,7 @@ interface BehaviorPetSleepWithOwnerData extends BPComponent {
     searchRange?: number;
 }
 
-export class SetBehaviorPetSleepWithOwner extends BehaviorEntityComponentBuilder<BehaviorPetSleepWithOwnerData> {
+export class SetBehaviorPetSleepWithOwner extends BehaviorEntityComponentBuilder<BehaviorPetSleepWithOwnerData, "minecraft:behavior.pet_sleep_with_owner"> {
     /**
      * 
      * @param {BehaviorPetSleepWithOwnerData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface MovementAmphibiousData extends BPComponent {
     maxTurn?: number;
 }
 
-export class SetMovementAmphibious extends BehaviorEntityComponentBuilder<MovementAmphibiousData> {
+export class SetMovementAmphibious extends BehaviorEntityComponentBuilder<MovementAmphibiousData, "minecraft:movement.amphibious"> {
     /**
      * 
      * @param {MovementAmphibiousData} params Parametros del componente.

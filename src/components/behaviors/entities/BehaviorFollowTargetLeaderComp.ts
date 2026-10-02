@@ -12,7 +12,7 @@ interface BehaviorFollowTargetLeaderData extends BPComponent {
     withinRadius?: number;
 }
 
-export class SetBehaviorFollowTargetLeader extends BehaviorEntityComponentBuilder<BehaviorFollowTargetLeaderData> {
+export class SetBehaviorFollowTargetLeader extends BehaviorEntityComponentBuilder<BehaviorFollowTargetLeaderData, "minecraft:behavior.follow_target_leader"> {
     /**
      * 
      * @param {BehaviorFollowTargetLeaderData} params Parametros del componente.

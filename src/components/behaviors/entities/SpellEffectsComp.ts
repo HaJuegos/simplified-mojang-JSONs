@@ -16,7 +16,7 @@ interface ListEffectsTypes {
     visible: boolean;
 }
 
-export class SetSpellEffects extends BehaviorEntityComponentBuilder<SpellEffectsData> {
+export class SetSpellEffects extends BehaviorEntityComponentBuilder<SpellEffectsData, "minecraft:spell_effects"> {
     /**
      * 
      * @param {SpellEffectsData} params Parametros del componente.

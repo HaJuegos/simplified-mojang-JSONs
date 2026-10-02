@@ -9,7 +9,7 @@ interface BehaviorFollowCaravanData extends BPComponent {
     entityCount?: number;
 }
 
-export class SetBehaviorFollowCaravan extends BehaviorEntityComponentBuilder<BehaviorFollowCaravanData> {
+export class SetBehaviorFollowCaravan extends BehaviorEntityComponentBuilder<BehaviorFollowCaravanData, "minecraft:behavior.follow_caravan"> {
     /**
      * 
      * @param {BehaviorFollowCaravanData} params Parametros del componente.

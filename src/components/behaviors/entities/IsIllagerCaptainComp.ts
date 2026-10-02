@@ -5,7 +5,7 @@ interface IsIllagerCaptainData extends BPComponent {
 
 }
 
-export class SetIsIllagerCaptain extends BehaviorEntityComponentBuilder<IsIllagerCaptainData> {
+export class SetIsIllagerCaptain extends BehaviorEntityComponentBuilder<IsIllagerCaptainData, "minecraft:is_illager_captain"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

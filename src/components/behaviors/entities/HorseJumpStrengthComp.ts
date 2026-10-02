@@ -8,7 +8,7 @@ interface HorseJumpStrengthData extends BPComponent {
     };
 }
 
-export class SetHorseJumpStrength extends BehaviorEntityComponentBuilder<HorseJumpStrengthData> {
+export class SetHorseJumpStrength extends BehaviorEntityComponentBuilder<HorseJumpStrengthData, "minecraft:horse.jump_strength"> {
     /**
      * 
      * @param {HorseJumpStrengthData} params Parametros del componente.

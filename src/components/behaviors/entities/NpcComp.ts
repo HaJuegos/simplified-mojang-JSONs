@@ -21,7 +21,7 @@ interface SkinListTypes {
     variant?: number;
 }
 
-export class SetNpc extends BehaviorEntityComponentBuilder<NpcData> {
+export class SetNpc extends BehaviorEntityComponentBuilder<NpcData, "minecraft:npc"> {
     /**
      * 
      * @param {NpcData} params Parametros del componente.

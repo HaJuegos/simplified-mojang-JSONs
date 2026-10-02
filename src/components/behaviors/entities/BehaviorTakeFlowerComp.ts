@@ -15,7 +15,7 @@ interface BehaviorTakeFlowerData extends BPComponent {
     onTakeFlower?: string | EntityFilterTrigger | EntityFilterTrigger[];
 }
 
-export class SetBehaviorTakeFlower extends BehaviorEntityComponentBuilder<BehaviorTakeFlowerData> {
+export class SetBehaviorTakeFlower extends BehaviorEntityComponentBuilder<BehaviorTakeFlowerData, "minecraft:behavior.take_flower"> {
     /**
      * 
      * @param {BehaviorTakeFlowerData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface FallDamageData extends BPComponent {
     value?: number;
 }
 
-export class SetFallDamage extends BehaviorEntityComponentBuilder<FallDamageData> {
+export class SetFallDamage extends BehaviorEntityComponentBuilder<FallDamageData, "minecraft:fall_damage"> {
     /**
      * 
      * @param {FallDamageData} params Parametros del componente.

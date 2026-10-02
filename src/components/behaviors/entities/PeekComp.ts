@@ -8,7 +8,7 @@ interface PeekData extends BPComponent {
     onTargetOpen?: EntityFilterTrigger;
 }
 
-export class SetPeek extends BehaviorEntityComponentBuilder<PeekData> {
+export class SetPeek extends BehaviorEntityComponentBuilder<PeekData, "minecraft:peek"> {
     /**
      * 
      * @param {PeekData} params Parametros del componente.

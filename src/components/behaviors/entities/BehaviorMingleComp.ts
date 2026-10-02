@@ -11,7 +11,7 @@ interface BehaviorMingleData extends BPComponent {
     minglePartnerType?: string[] | MinecraftEntityTypes[];
 }
 
-export class SetBehaviorMingle extends BehaviorEntityComponentBuilder<BehaviorMingleData> {
+export class SetBehaviorMingle extends BehaviorEntityComponentBuilder<BehaviorMingleData, "minecraft:behavior.mingle"> {
     /**
      * 
      * @param {BehaviorMingleData} params Parametros del componente.

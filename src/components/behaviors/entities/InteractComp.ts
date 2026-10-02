@@ -50,7 +50,7 @@ interface SpawnItemsTypes {
     yOffset: number;
 }
 
-export class SetInteract extends BehaviorEntityComponentBuilder<InteractData> {
+export class SetInteract extends BehaviorEntityComponentBuilder<InteractData, "minecraft:interact"> {
     /**
      * 
      * @param {InteractData} params Parametros del componente.

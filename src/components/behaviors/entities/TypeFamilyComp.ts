@@ -6,7 +6,7 @@ interface TypeFamilyData extends BPComponent {
     family: (VanillaEntityFamilies | (string & {}))[];
 }
 
-export class SetTypeFamily extends BehaviorEntityComponentBuilder<TypeFamilyData> {
+export class SetTypeFamily extends BehaviorEntityComponentBuilder<TypeFamilyData, "minecraft:type_family"> {
     /**
      * 
      * @param {TypeFamilyData} params Parametros del componente.

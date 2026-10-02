@@ -15,7 +15,7 @@ interface SlotsEquipTypes {
     slot: number;
 }
 
-export class SetEquippable extends BehaviorEntityComponentBuilder<EquippableData> {
+export class SetEquippable extends BehaviorEntityComponentBuilder<EquippableData, "minecraft:equippable"> {
     /**
      * 
      * @param {EquippableData} params Parametros del componente.

@@ -16,7 +16,7 @@ interface BehaviorPanicData extends BPComponent {
     };
 }
 
-export class SetBehaviorPanic extends BehaviorEntityComponentBuilder<BehaviorPanicData> {
+export class SetBehaviorPanic extends BehaviorEntityComponentBuilder<BehaviorPanicData, "minecraft:behavior.panic"> {
     /**
      * 
      * @param {BehaviorPanicData} params Parametros del componente.

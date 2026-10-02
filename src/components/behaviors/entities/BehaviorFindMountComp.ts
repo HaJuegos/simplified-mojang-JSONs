@@ -11,7 +11,7 @@ interface BehaviorFindMountData extends BPComponent {
     maxFailedAttempts?: number;
 }
 
-export class SetBehaviorFindMount extends BehaviorEntityComponentBuilder<BehaviorFindMountData> {
+export class SetBehaviorFindMount extends BehaviorEntityComponentBuilder<BehaviorFindMountData, "minecraft:behavior.find_mount"> {
     /**
      * 
      * @param {BehaviorFindMountData} params Parametros del componente.

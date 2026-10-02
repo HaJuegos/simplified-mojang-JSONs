@@ -20,7 +20,7 @@ interface BehaviorAvoidBlockData extends BPComponent {
     soundInterval?: number | { min: number; max: number; };
 }
 
-export class SetBehaviorAvoidBlock extends BehaviorEntityComponentBuilder<BehaviorAvoidBlockData> {
+export class SetBehaviorAvoidBlock extends BehaviorEntityComponentBuilder<BehaviorAvoidBlockData, "minecraft:behavior.avoid_block"> {
     /**
      * 
      * @param {BehaviorAvoidBlockData} params Parametros del componente.

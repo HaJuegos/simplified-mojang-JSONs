@@ -12,7 +12,7 @@ interface RailSensorData extends BPComponent {
     tickCommandBlockOnDeactivate?: boolean;
 }
 
-export class SetRailSensor extends BehaviorEntityComponentBuilder<RailSensorData> {
+export class SetRailSensor extends BehaviorEntityComponentBuilder<RailSensorData, "minecraft:rail_sensor"> {
     /**
      * 
      * @param {RailSensorData} params Parametros del componente.

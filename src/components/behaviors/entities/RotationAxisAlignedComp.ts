@@ -5,7 +5,7 @@ interface RotationAxisAlignedData extends BPComponent {
 
 }
 
-export class SetRotationAxisAligned extends BehaviorEntityComponentBuilder<RotationAxisAlignedData> {
+export class SetRotationAxisAligned extends BehaviorEntityComponentBuilder<RotationAxisAlignedData, "minecraft:rotation_axis_aligned"> {
     /**
      * 
      * @author HaJuegos - 29-09-2026

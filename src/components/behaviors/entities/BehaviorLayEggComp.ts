@@ -20,7 +20,7 @@ interface BehaviorLayEggData extends BPComponent {
     useDefaultAnimation?: boolean;
 }
 
-export class SetBehaviorLayEgg extends BehaviorEntityComponentBuilder<BehaviorLayEggData> {
+export class SetBehaviorLayEgg extends BehaviorEntityComponentBuilder<BehaviorLayEggData, "minecraft:behavior.lay_egg"> {
     /**
      * 
      * @param {BehaviorLayEggData} params Parametros del componente.

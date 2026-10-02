@@ -12,7 +12,7 @@ interface LavaMovementData extends BPComponent {
     };
 }
 
-export class SetLavaMovement extends BehaviorEntityComponentBuilder<LavaMovementData> {
+export class SetLavaMovement extends BehaviorEntityComponentBuilder<LavaMovementData, "minecraft:lava_movement"> {
     /**
      * 
      * @param {LavaMovementData} params Parametros del componente.

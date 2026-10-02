@@ -11,7 +11,7 @@ interface BehaviorRandomFlyData extends BPComponent {
     yOffset?: number;
 }
 
-export class SetBehaviorRandomFly extends BehaviorEntityComponentBuilder<BehaviorRandomFlyData> {
+export class SetBehaviorRandomFly extends BehaviorEntityComponentBuilder<BehaviorRandomFlyData, "minecraft:behavior.random_fly"> {
     /**
      * 
      * @param {BehaviorRandomFlyData} params Parametros del componente.

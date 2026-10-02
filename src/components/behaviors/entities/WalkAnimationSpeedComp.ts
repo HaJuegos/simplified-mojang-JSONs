@@ -5,7 +5,7 @@ interface WalkAnimationSpeedData extends BPComponent {
     value?: number;
 }
 
-export class SetWalkAnimationSpeed extends BehaviorEntityComponentBuilder<WalkAnimationSpeedData> {
+export class SetWalkAnimationSpeed extends BehaviorEntityComponentBuilder<WalkAnimationSpeedData, "minecraft:walk_animation_speed"> {
     /**
      * 
      * @param {WalkAnimationSpeedData} params Parametros del componente.

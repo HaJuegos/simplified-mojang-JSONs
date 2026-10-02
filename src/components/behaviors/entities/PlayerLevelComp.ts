@@ -6,7 +6,7 @@ interface PlayerLevelData extends BPComponent {
     max?: number;
 }
 
-export class SetPlayerLevel extends BehaviorEntityComponentBuilder<PlayerLevelData> {
+export class SetPlayerLevel extends BehaviorEntityComponentBuilder<PlayerLevelData, "minecraft:player.level"> {
     /**
      * 
      * @param {PlayerLevelData} params Parametros del componente.

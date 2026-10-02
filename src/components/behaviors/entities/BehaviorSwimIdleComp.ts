@@ -7,7 +7,7 @@ interface BehaviorSwimIdleData extends BPComponent {
     successRate?: number;
 }
 
-export class SetBehaviorSwimIdle extends BehaviorEntityComponentBuilder<BehaviorSwimIdleData> {
+export class SetBehaviorSwimIdle extends BehaviorEntityComponentBuilder<BehaviorSwimIdleData, "minecraft:behavior.swim_idle"> {
     /**
      * 
      * @param {BehaviorSwimIdleData} params Parametros del componente.

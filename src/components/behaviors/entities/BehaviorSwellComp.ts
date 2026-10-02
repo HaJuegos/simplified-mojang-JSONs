@@ -7,7 +7,7 @@ interface BehaviorSwellData extends BPComponent {
     stopDistance?: number;
 }
 
-export class SetBehaviorSwell extends BehaviorEntityComponentBuilder<BehaviorSwellData> {
+export class SetBehaviorSwell extends BehaviorEntityComponentBuilder<BehaviorSwellData, "minecraft:behavior.swell"> {
     /**
      * 
      * @param {BehaviorSwellData} params Parametros del componente.

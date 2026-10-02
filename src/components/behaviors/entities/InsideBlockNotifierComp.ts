@@ -18,7 +18,7 @@ interface BlockDataTypes {
     states?: Record<string, string>;
 }
 
-export class SetInsideBlockNotifier extends BehaviorEntityComponentBuilder<InsideBlockNotifierData> {
+export class SetInsideBlockNotifier extends BehaviorEntityComponentBuilder<InsideBlockNotifierData, "minecraft:inside_block_notifier"> {
     /**
      * 
      * @param {InsideBlockNotifierData} params Parametros del componente.

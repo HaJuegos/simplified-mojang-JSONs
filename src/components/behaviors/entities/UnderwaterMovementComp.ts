@@ -12,7 +12,7 @@ interface UnderwaterMovementData extends BPComponent {
     };
 }
 
-export class SetUnderwaterMovement extends BehaviorEntityComponentBuilder<UnderwaterMovementData> {
+export class SetUnderwaterMovement extends BehaviorEntityComponentBuilder<UnderwaterMovementData, "minecraft:underwater_movement"> {
     /**
      * 
      * @param {UnderwaterMovementData} params Parametros del componente.

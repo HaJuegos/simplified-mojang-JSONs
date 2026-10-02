@@ -15,7 +15,7 @@ interface BehaviorLookAtEntityData extends BPComponent {
     filters?: EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorLookAtEntity extends BehaviorEntityComponentBuilder<BehaviorLookAtEntityData> {
+export class SetBehaviorLookAtEntity extends BehaviorEntityComponentBuilder<BehaviorLookAtEntityData, "minecraft:behavior.look_at_entity"> {
     /**
      * 
      * @param {BehaviorLookAtEntityData} params Parametros del componente.

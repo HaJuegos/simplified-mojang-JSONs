@@ -9,7 +9,7 @@ interface BehaviorMoveToVillageData extends BPComponent {
     searchRange?: number;
 }
 
-export class SetBehaviorMoveToVillage extends BehaviorEntityComponentBuilder<BehaviorMoveToVillageData> {
+export class SetBehaviorMoveToVillage extends BehaviorEntityComponentBuilder<BehaviorMoveToVillageData, "minecraft:behavior.move_to_village"> {
     /**
      * 
      * @param {BehaviorMoveToVillageData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface IsDyeableData extends BPComponent {
     interactText?: string;
 }
 
-export class SetIsDyeable extends BehaviorEntityComponentBuilder<IsDyeableData> {
+export class SetIsDyeable extends BehaviorEntityComponentBuilder<IsDyeableData, "minecraft:is_dyeable"> {
     /**
      * 
      * @param {IsDyeableData} params Parametros del componente.

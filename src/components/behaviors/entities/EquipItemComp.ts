@@ -7,7 +7,7 @@ interface EquipItemData extends BPComponent {
     canWearArmor?: boolean;
 }
 
-export class SetEquipItem extends BehaviorEntityComponentBuilder<EquipItemData> {
+export class SetEquipItem extends BehaviorEntityComponentBuilder<EquipItemData, "minecraft:equip_item"> {
     /**
      * 
      * @param {EquipItemData} params Parametros del componente.

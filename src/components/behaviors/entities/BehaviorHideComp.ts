@@ -9,7 +9,7 @@ interface BehaviorHideData extends BPComponent {
     timeoutCooldown?: number;
 }
 
-export class SetBehaviorHide extends BehaviorEntityComponentBuilder<BehaviorHideData> {
+export class SetBehaviorHide extends BehaviorEntityComponentBuilder<BehaviorHideData, "minecraft:behavior.hide"> {
     /**
      * 
      * @param {BehaviorHideData} params Parametros del componente.

@@ -16,7 +16,7 @@ interface BehaviorExploreOutskirtsData extends BPComponent {
     timerRatio?: number;
 }
 
-export class SetBehaviorExploreOutskirts extends BehaviorEntityComponentBuilder<BehaviorExploreOutskirtsData> {
+export class SetBehaviorExploreOutskirts extends BehaviorEntityComponentBuilder<BehaviorExploreOutskirtsData, "minecraft:behavior.explore_outskirts"> {
     /**
      * 
      * @param {BehaviorExploreOutskirtsData} params Parametros del componente.

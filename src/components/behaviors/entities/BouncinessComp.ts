@@ -5,7 +5,7 @@ interface BouncinessData extends BPComponent {
     value: number;
 }
 
-export class SetBounciness extends BehaviorEntityComponentBuilder<BouncinessData> {
+export class SetBounciness extends BehaviorEntityComponentBuilder<BouncinessData, "minecraft:bounciness"> {
     /**
      * 
      * @param {BouncinessData} params Parametros del componente.

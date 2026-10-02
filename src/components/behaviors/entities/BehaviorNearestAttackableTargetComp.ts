@@ -25,7 +25,7 @@ interface BehaviorNearestAttackableTargetData extends BPComponent {
     withinRadius?: number;
 }
 
-export class SetBehaviorNearestAttackableTarget extends BehaviorEntityComponentBuilder<BehaviorNearestAttackableTargetData> {
+export class SetBehaviorNearestAttackableTarget extends BehaviorEntityComponentBuilder<BehaviorNearestAttackableTargetData, "minecraft:behavior.nearest_attackable_target"> {
     /**
      * 
      * @param {BehaviorNearestAttackableTargetData} params Parametros del componente.

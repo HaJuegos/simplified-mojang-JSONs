@@ -21,7 +21,7 @@ interface AdmireItemData extends BPComponent {
     duration: number;
 }
 
-export class SetAdmireItem extends BehaviorEntityComponentBuilder<AdmireItemData> {
+export class SetAdmireItem extends BehaviorEntityComponentBuilder<AdmireItemData, "minecraft:admire_item"> {
     /**
      * Componente que asigna la duracion y cooldown de admiracion de un item a la entidad.
      * @param {AdmireItemData} params Parametros del componente.

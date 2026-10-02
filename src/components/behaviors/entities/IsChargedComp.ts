@@ -5,7 +5,7 @@ interface IsChargedData extends BPComponent {
 
 }
 
-export class SetIsCharged extends BehaviorEntityComponentBuilder<IsChargedData> {
+export class SetIsCharged extends BehaviorEntityComponentBuilder<IsChargedData, "minecraft:is_charged"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

@@ -14,7 +14,7 @@ interface NameActionsTypes {
     onNamed: EntityFilter | EntityFilter[];
 }
 
-export class SetNameable extends BehaviorEntityComponentBuilder<NameableData> {
+export class SetNameable extends BehaviorEntityComponentBuilder<NameableData, "minecraft:nameable"> {
     /**
      * 
      * @param {NameableData} params Parametros del componente.

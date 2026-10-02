@@ -17,7 +17,7 @@ interface BehaviorTemptData extends BPComponent {
     onEnd?: string | EntityFilterTrigger | EntityFilterTrigger[];
 }
 
-export class SetBehaviorTempt extends BehaviorEntityComponentBuilder<BehaviorTemptData> {
+export class SetBehaviorTempt extends BehaviorEntityComponentBuilder<BehaviorTemptData, "minecraft:behavior.tempt"> {
     /**
      * 
      * @param {BehaviorTemptData} params Parametros del componente.

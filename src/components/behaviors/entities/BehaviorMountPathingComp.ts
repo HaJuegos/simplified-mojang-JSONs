@@ -8,7 +8,7 @@ interface BehaviorMountPathingData extends BPComponent {
     trackTarget?: boolean;
 }
 
-export class SetBehaviorMountPathing extends BehaviorEntityComponentBuilder<BehaviorMountPathingData> {
+export class SetBehaviorMountPathing extends BehaviorEntityComponentBuilder<BehaviorMountPathingData, "minecraft:behavior.mount_pathing"> {
     /**
      * 
      * @param {BehaviorMountPathingData} params Parametros del componente.

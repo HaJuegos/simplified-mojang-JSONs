@@ -17,7 +17,7 @@ interface BehaviorMoveAroundTargetData extends BPComponent {
     filters?: EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorMoveAroundTarget extends BehaviorEntityComponentBuilder<BehaviorMoveAroundTargetData> {
+export class SetBehaviorMoveAroundTarget extends BehaviorEntityComponentBuilder<BehaviorMoveAroundTargetData, "minecraft:behavior.move_around_target"> {
     /**
      * 
      * @param {BehaviorMoveAroundTargetData} params Parametros del componente.

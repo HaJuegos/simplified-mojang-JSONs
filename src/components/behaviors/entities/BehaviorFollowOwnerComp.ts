@@ -12,7 +12,7 @@ interface BehaviorFollowOwnerData extends BPComponent {
     stopDistance?: number;
 }
 
-export class SetBehaviorFollowOwner extends BehaviorEntityComponentBuilder<BehaviorFollowOwnerData> {
+export class SetBehaviorFollowOwner extends BehaviorEntityComponentBuilder<BehaviorFollowOwnerData, "minecraft:behavior.follow_owner"> {
     /**
      * 
      * @param {BehaviorFollowOwnerData} params Parametros del componente.

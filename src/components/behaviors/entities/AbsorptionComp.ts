@@ -34,7 +34,7 @@ interface AbsorptionComponentData extends BPComponent {
  * @author HaJuegos - 22-09-2026
  * @export
  */
-export class SetAbsorption extends BehaviorEntityComponentBuilder<AbsorptionComponentData> {
+export class SetAbsorption extends BehaviorEntityComponentBuilder<AbsorptionComponentData, "minecraft:absorption"> {
     /**
      * Componente que asigna y establece absorcion a una entidad en concreto.
      * @param {AbsorptionComponentData} params Parametros del componente.

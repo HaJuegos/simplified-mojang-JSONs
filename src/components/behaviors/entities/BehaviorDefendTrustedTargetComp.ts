@@ -14,7 +14,7 @@ interface BehaviorDefendTrustedTargetData extends BPComponent {
     soundChance?: number;
 }
 
-export class SetBehaviorDefendTrustedTarget extends BehaviorEntityComponentBuilder<BehaviorDefendTrustedTargetData> {
+export class SetBehaviorDefendTrustedTarget extends BehaviorEntityComponentBuilder<BehaviorDefendTrustedTargetData, "minecraft:behavior.defend_trusted_target"> {
     /**
      * 
      * @param {BehaviorDefendTrustedTargetData} params Parametros del componente.

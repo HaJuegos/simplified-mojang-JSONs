@@ -5,7 +5,7 @@ interface VibrationDamperData extends BPComponent {
 
 }
 
-export class SetVibrationDamper extends BehaviorEntityComponentBuilder<VibrationDamperData> {
+export class SetVibrationDamper extends BehaviorEntityComponentBuilder<VibrationDamperData, "minecraft:vibration_damper"> {
     /**
      * 
      * @author HaJuegos - 29-09-2026

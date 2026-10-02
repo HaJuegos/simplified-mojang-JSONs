@@ -32,7 +32,7 @@ interface BehaviorDelayedAttackData extends BPComponent {
     soundEvent?: string;
 }
 
-export class SetBehaviorDelayedAttack extends BehaviorEntityComponentBuilder<BehaviorDelayedAttackData> {
+export class SetBehaviorDelayedAttack extends BehaviorEntityComponentBuilder<BehaviorDelayedAttackData, "minecraft:behavior.delayed_attack"> {
     /**
      * 
      * @param {BehaviorDelayedAttackData} params Parametros del componente.

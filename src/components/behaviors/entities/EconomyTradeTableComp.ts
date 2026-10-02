@@ -16,7 +16,7 @@ interface EconomyTradeTableData extends BPComponent {
     useLegacyPriceFormula?: boolean;
 }
 
-export class SetEconomyTradeTable extends BehaviorEntityComponentBuilder<EconomyTradeTableData> {
+export class SetEconomyTradeTable extends BehaviorEntityComponentBuilder<EconomyTradeTableData, "minecraft:economy_trade_table"> {
     /**
      * 
      * @param {EconomyTradeTableData} params Parametros del componente.

@@ -10,7 +10,7 @@ interface BehaviorRandomSittingData extends BPComponent {
     stopChance?: number;
 }
 
-export class SetBehaviorRandomSitting extends BehaviorEntityComponentBuilder<BehaviorRandomSittingData> {
+export class SetBehaviorRandomSitting extends BehaviorEntityComponentBuilder<BehaviorRandomSittingData, "minecraft:behavior.random_sitting"> {
     /**
      * 
      * @param {BehaviorRandomSittingData} params Parametros del componente.

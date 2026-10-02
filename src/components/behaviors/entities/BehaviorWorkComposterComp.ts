@@ -21,7 +21,7 @@ interface BehaviorWorkComposterData extends BPComponent {
     workInRainTolerance?: number;
 }
 
-export class SetBehaviorWorkComposter extends BehaviorEntityComponentBuilder<BehaviorWorkComposterData> {
+export class SetBehaviorWorkComposter extends BehaviorEntityComponentBuilder<BehaviorWorkComposterData, "minecraft:behavior.work_composter"> {
     /**
      * 
      * @param {BehaviorWorkComposterData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface MovementBasicData extends BPComponent {
     maxTurn?: number;
 }
 
-export class SetMovementBasic extends BehaviorEntityComponentBuilder<MovementBasicData> {
+export class SetMovementBasic extends BehaviorEntityComponentBuilder<MovementBasicData, "minecraft:movement.basic"> {
     /**
      * 
      * @param {MovementBasicData} params Parametros del componente.

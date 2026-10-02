@@ -5,7 +5,7 @@ interface BehaviorRestrictOpenDoorData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorRestrictOpenDoor extends BehaviorEntityComponentBuilder<BehaviorRestrictOpenDoorData> {
+export class SetBehaviorRestrictOpenDoor extends BehaviorEntityComponentBuilder<BehaviorRestrictOpenDoorData, "minecraft:behavior.restrict_open_door"> {
     /**
      * 
      * @param {BehaviorRestrictOpenDoorData} params Parametros del componente.

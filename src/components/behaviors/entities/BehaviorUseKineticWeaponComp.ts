@@ -34,7 +34,7 @@ interface BehaviorUseKineticWeaponData extends BPComponent {
     hijackMountNavigation?: boolean;
 }
 
-export class SetBehaviorUseKineticWeapon extends BehaviorEntityComponentBuilder<BehaviorUseKineticWeaponData> {
+export class SetBehaviorUseKineticWeapon extends BehaviorEntityComponentBuilder<BehaviorUseKineticWeaponData, "minecraft:behavior.use_kinetic_weapon"> {
     /**
      * 
      * @param {BehaviorUseKineticWeaponData} params Parametros del componente.

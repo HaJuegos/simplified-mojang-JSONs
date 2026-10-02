@@ -10,7 +10,7 @@ interface BehaviorStrollTowardsVillageData extends BPComponent {
     startChance?: number;
 }
 
-export class SetBehaviorStrollTowardsVillage extends BehaviorEntityComponentBuilder<BehaviorStrollTowardsVillageData> {
+export class SetBehaviorStrollTowardsVillage extends BehaviorEntityComponentBuilder<BehaviorStrollTowardsVillageData, "minecraft:behavior.stroll_towards_village"> {
     /**
      * 
      * @param {BehaviorStrollTowardsVillageData} params Parametros del componente.

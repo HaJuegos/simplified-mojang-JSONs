@@ -15,7 +15,7 @@ interface BehaviorOcelotattackData extends BPComponent {
     yMaxHeadRotation?: number;
 }
 
-export class SetBehaviorOcelotattack extends BehaviorEntityComponentBuilder<BehaviorOcelotattackData> {
+export class SetBehaviorOcelotattack extends BehaviorEntityComponentBuilder<BehaviorOcelotattackData, "minecraft:behavior.ocelotattack"> {
     /**
      * 
      * @param {BehaviorOcelotattackData} params Parametros del componente.

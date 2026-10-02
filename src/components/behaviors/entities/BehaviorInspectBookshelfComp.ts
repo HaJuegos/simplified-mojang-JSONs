@@ -10,7 +10,7 @@ interface BehaviorInspectBookshelfData extends BPComponent {
     searchRange?: number;
 }
 
-export class SetBehaviorInspectBookshelf extends BehaviorEntityComponentBuilder<BehaviorInspectBookshelfData> {
+export class SetBehaviorInspectBookshelf extends BehaviorEntityComponentBuilder<BehaviorInspectBookshelfData, "minecraft:behavior.inspect_bookshelf"> {
     /**
      * 
      * @param {BehaviorInspectBookshelfData} params Parametros del componente.

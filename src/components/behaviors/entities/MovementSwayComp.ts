@@ -7,7 +7,7 @@ interface MovementSwayData extends BPComponent {
     swayFrequency?: number;
 }
 
-export class SetMovementSway extends BehaviorEntityComponentBuilder<MovementSwayData> {
+export class SetMovementSway extends BehaviorEntityComponentBuilder<MovementSwayData, "minecraft:movement.sway"> {
     /**
      * 
      * @param {MovementSwayData} params Parametros del componente.

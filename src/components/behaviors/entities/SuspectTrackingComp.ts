@@ -5,7 +5,7 @@ interface SuspectTrackingData extends BPComponent {
 
 }
 
-export class SetSuspectTracking extends BehaviorEntityComponentBuilder<SuspectTrackingData> {
+export class SetSuspectTracking extends BehaviorEntityComponentBuilder<SuspectTrackingData, "minecraft:suspect_tracking"> {
     /**
      * 
      * @author HaJuegos - 29-09-2026

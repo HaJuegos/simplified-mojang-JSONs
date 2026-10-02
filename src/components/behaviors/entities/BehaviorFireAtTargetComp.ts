@@ -23,7 +23,7 @@ interface BehaviorFireAtTargetData extends BPComponent {
     filters?: EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorFireAtTarget extends BehaviorEntityComponentBuilder<BehaviorFireAtTargetData> {
+export class SetBehaviorFireAtTarget extends BehaviorEntityComponentBuilder<BehaviorFireAtTargetData, "minecraft:behavior.fire_at_target"> {
     /**
      * 
      * @param {BehaviorFireAtTargetData} params Parametros del componente.

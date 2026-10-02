@@ -5,7 +5,7 @@ interface DimensionBoundData extends BPComponent {
 
 }
 
-export class SetDimensionBound extends BehaviorEntityComponentBuilder<DimensionBoundData> {
+export class SetDimensionBound extends BehaviorEntityComponentBuilder<DimensionBoundData, "minecraft:dimension_bound"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

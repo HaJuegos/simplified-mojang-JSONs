@@ -13,7 +13,7 @@ interface BehaviorHarvestFarmBlockData extends BPComponent {
     secondsUntilNewTask?: number;
 }
 
-export class SetBehaviorHarvestFarmBlock extends BehaviorEntityComponentBuilder<BehaviorHarvestFarmBlockData> {
+export class SetBehaviorHarvestFarmBlock extends BehaviorEntityComponentBuilder<BehaviorHarvestFarmBlockData, "minecraft:behavior.harvest_farm_block"> {
     /**
      * 
      * @param {BehaviorHarvestFarmBlockData} params Parametros del componente.

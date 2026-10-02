@@ -10,7 +10,7 @@ interface BehaviorHoldGroundData extends BPComponent {
     withinRadiusEvent?: string | EntityFiltersTarget;
 }
 
-export class SetBehaviorHoldGround extends BehaviorEntityComponentBuilder<BehaviorHoldGroundData> {
+export class SetBehaviorHoldGround extends BehaviorEntityComponentBuilder<BehaviorHoldGroundData, "minecraft:behavior.hold_ground"> {
     /**
      * 
      * @param {BehaviorHoldGroundData} params Parametros del componente.

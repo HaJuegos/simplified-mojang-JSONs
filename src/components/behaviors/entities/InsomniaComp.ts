@@ -5,7 +5,7 @@ interface InsomniaData extends BPComponent {
     daysUntilInsomnia?: number;
 }
 
-export class SetInsomnia extends BehaviorEntityComponentBuilder<InsomniaData> {
+export class SetInsomnia extends BehaviorEntityComponentBuilder<InsomniaData, "minecraft:insomnia"> {
     /**
      * 
      * @param {InsomniaData} params Parametros del componente.

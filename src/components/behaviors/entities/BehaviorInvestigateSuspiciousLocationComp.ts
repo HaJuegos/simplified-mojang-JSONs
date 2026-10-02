@@ -7,7 +7,7 @@ interface BehaviorInvestigateSuspiciousLocationData extends BPComponent {
     speedMultiplier?: number;
 }
 
-export class SetBehaviorInvestigateSuspiciousLocation extends BehaviorEntityComponentBuilder<BehaviorInvestigateSuspiciousLocationData> {
+export class SetBehaviorInvestigateSuspiciousLocation extends BehaviorEntityComponentBuilder<BehaviorInvestigateSuspiciousLocationData, "minecraft:behavior.investigate_suspicious_location"> {
     /**
      * 
      * @param {BehaviorInvestigateSuspiciousLocationData} params Parametros del componente.

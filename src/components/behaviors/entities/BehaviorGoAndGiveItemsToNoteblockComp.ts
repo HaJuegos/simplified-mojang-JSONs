@@ -13,7 +13,7 @@ interface BehaviorGoAndGiveItemsToNoteblockData extends BPComponent {
     verticalThrowMul?: number;
 }
 
-export class SetBehaviorGoAndGiveItemsToNoteblock extends BehaviorEntityComponentBuilder<BehaviorGoAndGiveItemsToNoteblockData> {
+export class SetBehaviorGoAndGiveItemsToNoteblock extends BehaviorEntityComponentBuilder<BehaviorGoAndGiveItemsToNoteblockData, "minecraft:behavior.go_and_give_items_to_noteblock"> {
     /**
      * 
      * @param {BehaviorGoAndGiveItemsToNoteblockData} params Parametros del componente.

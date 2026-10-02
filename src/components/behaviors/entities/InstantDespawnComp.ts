@@ -5,7 +5,7 @@ interface InstantDespawnData extends BPComponent {
     removeChildEntities?: boolean;
 }
 
-export class SetInstantDespawn extends BehaviorEntityComponentBuilder<InstantDespawnData> {
+export class SetInstantDespawn extends BehaviorEntityComponentBuilder<InstantDespawnData, "minecraft:instant_despawn"> {
     /**
      * 
      * @param {InstantDespawnData} params Parametros del componente.

@@ -7,7 +7,7 @@ interface BehaviorMoveTowardsTargetData extends BPComponent {
     withinRadius?: number;
 }
 
-export class SetBehaviorMoveTowardsTarget extends BehaviorEntityComponentBuilder<BehaviorMoveTowardsTargetData> {
+export class SetBehaviorMoveTowardsTarget extends BehaviorEntityComponentBuilder<BehaviorMoveTowardsTargetData, "minecraft:behavior.move_towards_target"> {
     /**
      * 
      * @param {BehaviorMoveTowardsTargetData} params Parametros del componente.

@@ -7,7 +7,7 @@ interface BehaviorVexRandomMoveData extends BPComponent {
     entityTypes?: EntityAttackableTargetFilters | EntityAttackableTargetFilters[];
 }
 
-export class SetBehaviorVexRandomMove extends BehaviorEntityComponentBuilder<BehaviorVexRandomMoveData> {
+export class SetBehaviorVexRandomMove extends BehaviorEntityComponentBuilder<BehaviorVexRandomMoveData, "minecraft:behavior.vex_random_move"> {
     /**
      * 
      * @param {BehaviorVexRandomMoveData} params Parametros del componente.

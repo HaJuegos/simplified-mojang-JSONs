@@ -21,7 +21,7 @@ interface BehaviorTakeBlockData extends BPComponent {
     };
 }
 
-export class SetBehaviorTakeBlock extends BehaviorEntityComponentBuilder<BehaviorTakeBlockData> {
+export class SetBehaviorTakeBlock extends BehaviorEntityComponentBuilder<BehaviorTakeBlockData, "minecraft:behavior.take_block"> {
     /**
      * 
      * @param {BehaviorTakeBlockData} params Parametros del componente.

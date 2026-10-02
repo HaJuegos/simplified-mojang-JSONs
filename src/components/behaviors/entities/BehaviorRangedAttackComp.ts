@@ -22,7 +22,7 @@ interface BehaviorRangedAttackData extends BPComponent {
     yMaxHeadRotation?: number;
 }
 
-export class SetBehaviorRangedAttack extends BehaviorEntityComponentBuilder<BehaviorRangedAttackData> {
+export class SetBehaviorRangedAttack extends BehaviorEntityComponentBuilder<BehaviorRangedAttackData, "minecraft:behavior.ranged_attack"> {
     /**
      * 
      * @param {BehaviorRangedAttackData} params Parametros del componente.

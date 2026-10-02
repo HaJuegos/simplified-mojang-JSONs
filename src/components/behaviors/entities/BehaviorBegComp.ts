@@ -12,7 +12,7 @@ interface BehaviorBegData extends BPComponent {
     };
 }
 
-export class SetBehaviorBeg extends BehaviorEntityComponentBuilder<BehaviorBegData> {
+export class SetBehaviorBeg extends BehaviorEntityComponentBuilder<BehaviorBegData, "minecraft:behavior.beg"> {
     /**
      * 
      * @param {BehaviorBegData} params Parametros del componente.

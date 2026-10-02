@@ -5,7 +5,7 @@ interface BehaviorBarterData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorBarter extends BehaviorEntityComponentBuilder<BehaviorBarterData> {
+export class SetBehaviorBarter extends BehaviorEntityComponentBuilder<BehaviorBarterData, "minecraft:behavior.barter"> {
     /**
      * 
      * @param {BehaviorBarterData} params Parametros del componente.

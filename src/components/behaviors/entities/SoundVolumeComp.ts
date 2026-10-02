@@ -5,7 +5,7 @@ interface SoundVolumeData extends BPComponent {
     value?: number;
 }
 
-export class SetSoundVolume extends BehaviorEntityComponentBuilder<SoundVolumeData> {
+export class SetSoundVolume extends BehaviorEntityComponentBuilder<SoundVolumeData, "minecraft:sound_volume"> {
     /**
      * 
      * @param {SoundVolumeData} params Parametros del componente.

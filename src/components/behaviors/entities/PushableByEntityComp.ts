@@ -24,7 +24,7 @@ interface PresetsPush {
     verticalKickMultiplier: number;
 }
 
-export class SetPushableByEntity extends BehaviorEntityComponentBuilder<PushableByEntityData> {
+export class SetPushableByEntity extends BehaviorEntityComponentBuilder<PushableByEntityData, "minecraft:pushable_by_entity"> {
     /**
      * 
      * @param {PushableByEntityData} params Parametros del componente.

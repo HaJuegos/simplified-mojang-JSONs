@@ -6,7 +6,7 @@ interface OnTargetEscapeData extends BPComponent, EntityFilterTrigger {
 
 }
 
-export class SetOnTargetEscape extends BehaviorEntityComponentBuilder<OnTargetEscapeData> {
+export class SetOnTargetEscape extends BehaviorEntityComponentBuilder<OnTargetEscapeData, "minecraft:on_target_escape"> {
     /**
      * 
      * @param {OnTargetEscapeData} params Parametros del componente.

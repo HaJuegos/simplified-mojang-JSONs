@@ -5,7 +5,7 @@ interface FrictionModifierData extends BPComponent {
     value?: number;
 }
 
-export class SetFrictionModifier extends BehaviorEntityComponentBuilder<FrictionModifierData> {
+export class SetFrictionModifier extends BehaviorEntityComponentBuilder<FrictionModifierData, "minecraft:friction_modifier"> {
     /**
      * 
      * @param {FrictionModifierData} params Parametros del componente.

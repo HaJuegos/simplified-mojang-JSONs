@@ -12,7 +12,7 @@ interface BehaviorGoHomeData extends BPComponent {
     calculateNewPathRadius?: number;
 }
 
-export class SetBehaviorGoHome extends BehaviorEntityComponentBuilder<BehaviorGoHomeData> {
+export class SetBehaviorGoHome extends BehaviorEntityComponentBuilder<BehaviorGoHomeData, "minecraft:behavior.go_home"> {
     /**
      * 
      * @param {BehaviorGoHomeData} params Parametros del componente.

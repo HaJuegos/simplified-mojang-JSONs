@@ -13,7 +13,7 @@ interface BehaviorSniffData extends BPComponent {
     suspicionRadiusVertical?: number;
 }
 
-export class SetBehaviorSniff extends BehaviorEntityComponentBuilder<BehaviorSniffData> {
+export class SetBehaviorSniff extends BehaviorEntityComponentBuilder<BehaviorSniffData, "minecraft:behavior.sniff"> {
     /**
      * 
      * @param {BehaviorSniffData} params Parametros del componente.

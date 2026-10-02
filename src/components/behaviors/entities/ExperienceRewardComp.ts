@@ -7,7 +7,7 @@ interface ExperienceRewardData extends BPComponent {
     onDeath?: number | MoLangValue;
 }
 
-export class SetExperienceReward extends BehaviorEntityComponentBuilder<ExperienceRewardData> {
+export class SetExperienceReward extends BehaviorEntityComponentBuilder<ExperienceRewardData, "minecraft:experience_reward"> {
     /**
      * 
      * @param {ExperienceRewardData} params Parametros del componente.

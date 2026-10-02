@@ -12,7 +12,7 @@ interface TeleportData extends BPComponent {
     targetTeleportChance?: number;
 }
 
-export class SetTeleport extends BehaviorEntityComponentBuilder<TeleportData> {
+export class SetTeleport extends BehaviorEntityComponentBuilder<TeleportData, "minecraft:teleport"> {
     /**
      * 
      * @param {TeleportData} params Parametros del componente.

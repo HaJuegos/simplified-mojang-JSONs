@@ -5,7 +5,7 @@ interface BehaviorReceiveLoveData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorReceiveLove extends BehaviorEntityComponentBuilder<BehaviorReceiveLoveData> {
+export class SetBehaviorReceiveLove extends BehaviorEntityComponentBuilder<BehaviorReceiveLoveData, "minecraft:behavior.receive_love"> {
     /**
      * 
      * @param {BehaviorReceiveLoveData} params Parametros del componente.

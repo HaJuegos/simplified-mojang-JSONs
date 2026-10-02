@@ -5,7 +5,7 @@ interface ColorData extends BPComponent {
     value?: number;
 }
 
-export class SetColor extends BehaviorEntityComponentBuilder<ColorData> {
+export class SetColor extends BehaviorEntityComponentBuilder<ColorData, "minecraft:color"> {
     /**
      * 
      * @param {ColorData} params Parametros del componente.

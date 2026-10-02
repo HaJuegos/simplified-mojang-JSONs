@@ -9,7 +9,7 @@ interface BehaviorSwimWanderData extends BPComponent {
     wanderTime?: number;
 }
 
-export class SetBehaviorSwimWander extends BehaviorEntityComponentBuilder<BehaviorSwimWanderData> {
+export class SetBehaviorSwimWander extends BehaviorEntityComponentBuilder<BehaviorSwimWanderData, "minecraft:behavior.swim_wander"> {
     /**
      * 
      * @param {BehaviorSwimWanderData} params Parametros del componente.

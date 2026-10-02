@@ -33,7 +33,7 @@ interface EnvRequirementsTypes {
     radius: number;
 }
 
-export class SetBreedable extends BehaviorEntityComponentBuilder<BreedableData> {
+export class SetBreedable extends BehaviorEntityComponentBuilder<BreedableData, "minecraft:breedable"> {
     /**
      * 
      * @param {BreedableData} params Parametros del componente.

@@ -147,7 +147,7 @@ interface SpawnChanceTypes {
     spawnDefinition: string | MinecraftEntityTypes;
 }
 
-export class SetProjectile extends BehaviorEntityComponentBuilder<ProjectileData> {
+export class SetProjectile extends BehaviorEntityComponentBuilder<ProjectileData, "minecraft:projectile"> {
     /**
      * 
      * @param {ProjectileData} params Parametros del componente.

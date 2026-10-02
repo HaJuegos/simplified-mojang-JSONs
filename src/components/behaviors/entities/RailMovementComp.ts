@@ -5,7 +5,7 @@ interface RailMovementData extends BPComponent {
     maxSpeed?: number;
 }
 
-export class SetRailMovement extends BehaviorEntityComponentBuilder<RailMovementData> {
+export class SetRailMovement extends BehaviorEntityComponentBuilder<RailMovementData, "minecraft:rail_movement"> {
     /**
      * 
      * @param {RailMovementData} params Parametros del componente.

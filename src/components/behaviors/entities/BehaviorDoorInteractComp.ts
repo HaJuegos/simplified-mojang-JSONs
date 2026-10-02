@@ -5,7 +5,7 @@ interface BehaviorDoorInteractData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorDoorInteract extends BehaviorEntityComponentBuilder<BehaviorDoorInteractData> {
+export class SetBehaviorDoorInteract extends BehaviorEntityComponentBuilder<BehaviorDoorInteractData, "minecraft:behavior.door_interact"> {
     /**
      * 
      * @param {BehaviorDoorInteractData} params Parametros del componente.

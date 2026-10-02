@@ -5,7 +5,7 @@ interface IsStackableData extends BPComponent {
     value?: boolean;
 }
 
-export class SetIsStackable extends BehaviorEntityComponentBuilder<IsStackableData> {
+export class SetIsStackable extends BehaviorEntityComponentBuilder<IsStackableData, "minecraft:is_stackable"> {
     /**
      * 
      * @param {IsStackableData} params Parametros del componente.

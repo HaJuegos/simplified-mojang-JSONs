@@ -5,7 +5,7 @@ interface CanJoinRaidData extends BPComponent {
 
 }
 
-export class SetCanJoinRaid extends BehaviorEntityComponentBuilder<CanJoinRaidData> {
+export class SetCanJoinRaid extends BehaviorEntityComponentBuilder<CanJoinRaidData, "minecraft:can_join_raid"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

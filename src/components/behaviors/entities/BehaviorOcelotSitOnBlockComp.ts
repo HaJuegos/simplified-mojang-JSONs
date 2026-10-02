@@ -6,7 +6,7 @@ interface BehaviorOcelotSitOnBlockData extends BPComponent {
     speedMultiplier?: number;
 }
 
-export class SetBehaviorOcelotSitOnBlock extends BehaviorEntityComponentBuilder<BehaviorOcelotSitOnBlockData> {
+export class SetBehaviorOcelotSitOnBlock extends BehaviorEntityComponentBuilder<BehaviorOcelotSitOnBlockData, "minecraft:behavior.ocelot_sit_on_block"> {
     /**
      * 
      * @param {BehaviorOcelotSitOnBlockData} params Parametros del componente.

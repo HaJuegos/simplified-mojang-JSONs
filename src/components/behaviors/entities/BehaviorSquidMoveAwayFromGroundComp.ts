@@ -5,7 +5,7 @@ interface BehaviorSquidMoveAwayFromGroundData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorSquidMoveAwayFromGround extends BehaviorEntityComponentBuilder<BehaviorSquidMoveAwayFromGroundData> {
+export class SetBehaviorSquidMoveAwayFromGround extends BehaviorEntityComponentBuilder<BehaviorSquidMoveAwayFromGroundData, "minecraft:behavior.squid_move_away_from_ground"> {
     /**
      * 
      * @param {BehaviorSquidMoveAwayFromGroundData} params Parametros del componente.

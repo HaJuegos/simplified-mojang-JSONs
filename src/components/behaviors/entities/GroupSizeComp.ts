@@ -7,7 +7,7 @@ interface GroupSizeData extends BPComponent {
     radius?: number;
 }
 
-export class SetGroupSize extends BehaviorEntityComponentBuilder<GroupSizeData> {
+export class SetGroupSize extends BehaviorEntityComponentBuilder<GroupSizeData, "minecraft:group_size"> {
     /**
      * 
      * @param {GroupSizeData} params Parametros del componente.

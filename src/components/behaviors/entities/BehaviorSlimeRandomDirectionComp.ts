@@ -8,7 +8,7 @@ interface BehaviorSlimeRandomDirectionData extends BPComponent {
     turnRange?: number;
 }
 
-export class SetBehaviorSlimeRandomDirection extends BehaviorEntityComponentBuilder<BehaviorSlimeRandomDirectionData> {
+export class SetBehaviorSlimeRandomDirection extends BehaviorEntityComponentBuilder<BehaviorSlimeRandomDirectionData, "minecraft:behavior.slime_random_direction"> {
     /**
      * 
      * @param {BehaviorSlimeRandomDirectionData} params Parametros del componente.

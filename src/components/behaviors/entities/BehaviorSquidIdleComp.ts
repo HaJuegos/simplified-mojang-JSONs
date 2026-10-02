@@ -5,7 +5,7 @@ interface BehaviorSquidIdleData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorSquidIdle extends BehaviorEntityComponentBuilder<BehaviorSquidIdleData> {
+export class SetBehaviorSquidIdle extends BehaviorEntityComponentBuilder<BehaviorSquidIdleData, "minecraft:behavior.squid_idle"> {
     /**
      * 
      * @param {BehaviorSquidIdleData} params Parametros del componente.

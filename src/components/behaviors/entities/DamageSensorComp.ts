@@ -15,7 +15,7 @@ interface TriggerDamageTypes {
     onDamageSoundEvent?: string;
 }
 
-export class SetDamageSensor extends BehaviorEntityComponentBuilder<DamageSensorData> {
+export class SetDamageSensor extends BehaviorEntityComponentBuilder<DamageSensorData, "minecraft:damage_sensor"> {
     /**
      * 
      * @param {DamageSensorData} params Parametros del componente.

@@ -23,7 +23,7 @@ interface AttackCooldownData extends BPComponent {
     attackCooldownTime: AttackCooldownTimeTypes;
 }
 
-export class SetAttackCooldown extends BehaviorEntityComponentBuilder<AttackCooldownData> {
+export class SetAttackCooldown extends BehaviorEntityComponentBuilder<AttackCooldownData, "minecraft:attack_cooldown"> {
     /**
      * Componente que agrega cooldown a una entidad con la intension de prevenir que la entidad trackee a nuevos targets.
      * @param {AttackCooldownData} params Parametros del componente.

@@ -10,7 +10,7 @@ interface BehaviorTradeInterestData extends BPComponent {
     withinRadius?: number;
 }
 
-export class SetBehaviorTradeInterest extends BehaviorEntityComponentBuilder<BehaviorTradeInterestData> {
+export class SetBehaviorTradeInterest extends BehaviorEntityComponentBuilder<BehaviorTradeInterestData, "minecraft:behavior.trade_interest"> {
     /**
      * 
      * @param {BehaviorTradeInterestData} params Parametros del componente.

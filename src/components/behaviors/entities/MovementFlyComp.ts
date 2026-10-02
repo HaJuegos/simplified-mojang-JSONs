@@ -5,7 +5,7 @@ interface MovementFlyData extends BPComponent {
     maxTurn?: number;
 }
 
-export class SetMovementFly extends BehaviorEntityComponentBuilder<MovementFlyData> {
+export class SetMovementFly extends BehaviorEntityComponentBuilder<MovementFlyData, "minecraft:movement.fly"> {
     /**
      * 
      * @param {MovementFlyData} params Parametros del componente.

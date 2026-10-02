@@ -15,7 +15,7 @@ interface BehaviorCroakData extends BPComponent {
     };
 }
 
-export class SetBehaviorCroak extends BehaviorEntityComponentBuilder<BehaviorCroakData> {
+export class SetBehaviorCroak extends BehaviorEntityComponentBuilder<BehaviorCroakData, "minecraft:behavior.croak"> {
     /**
      * 
      * @param {BehaviorCroakData} params Parametros del componente.

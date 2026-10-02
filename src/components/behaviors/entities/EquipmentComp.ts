@@ -12,7 +12,7 @@ interface SlotDropChanceTypes {
     slot: EntitySlotsArmor;
 }
 
-export class SetEquipment extends BehaviorEntityComponentBuilder<EquipmentData> {
+export class SetEquipment extends BehaviorEntityComponentBuilder<EquipmentData, "minecraft:equipment"> {
     /**
      * 
      * @param {EquipmentData} params Parametros del componente.

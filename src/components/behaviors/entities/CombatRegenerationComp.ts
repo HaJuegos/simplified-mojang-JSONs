@@ -7,7 +7,7 @@ interface CombatRegenerationData extends BPComponent {
     regenerationDuration?: "infinite" | number;
 }
 
-export class SetCombatRegeneration extends BehaviorEntityComponentBuilder<CombatRegenerationData> {
+export class SetCombatRegeneration extends BehaviorEntityComponentBuilder<CombatRegenerationData, "minecraft:combat_regeneration"> {
     /**
      * 
      * @param {CombatRegenerationData} params Parametros del componente.

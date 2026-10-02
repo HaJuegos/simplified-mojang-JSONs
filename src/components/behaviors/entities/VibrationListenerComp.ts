@@ -5,7 +5,7 @@ interface VibrationListenerData extends BPComponent {
 
 }
 
-export class SetVibrationListener extends BehaviorEntityComponentBuilder<VibrationListenerData> {
+export class SetVibrationListener extends BehaviorEntityComponentBuilder<VibrationListenerData, "minecraft:vibration_listener"> {
     /**
      * 
      * @author HaJuegos - 29-09-2026

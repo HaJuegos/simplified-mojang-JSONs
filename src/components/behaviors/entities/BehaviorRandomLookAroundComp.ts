@@ -12,7 +12,7 @@ interface BehaviorRandomLookAroundData extends BPComponent {
     probability?: number;
 }
 
-export class SetBehaviorRandomLookAround extends BehaviorEntityComponentBuilder<BehaviorRandomLookAroundData> {
+export class SetBehaviorRandomLookAround extends BehaviorEntityComponentBuilder<BehaviorRandomLookAroundData, "minecraft:behavior.random_look_around"> {
     /**
      * 
      * @param {BehaviorRandomLookAroundData} params Parametros del componente.

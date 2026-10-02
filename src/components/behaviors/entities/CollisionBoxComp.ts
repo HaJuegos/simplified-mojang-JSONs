@@ -6,7 +6,7 @@ interface CollisionBoxData extends BPComponent {
     width: number;
 }
 
-export class SetCollisionBox extends BehaviorEntityComponentBuilder<CollisionBoxData> {
+export class SetCollisionBox extends BehaviorEntityComponentBuilder<CollisionBoxData, "minecraft:collision_box"> {
     /**
      * 
      * @param {CollisionBoxData} params Parametros del componente.

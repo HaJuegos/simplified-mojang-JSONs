@@ -15,7 +15,7 @@ interface RandomTimeRypes {
     weight: number;
 }
 
-export class SetTimer extends BehaviorEntityComponentBuilder<TimerData> {
+export class SetTimer extends BehaviorEntityComponentBuilder<TimerData, "minecraft:timer"> {
     /**
      * 
      * @param {TimerData} params Parametros del componente.

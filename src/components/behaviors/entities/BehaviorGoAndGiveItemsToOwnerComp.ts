@@ -12,7 +12,7 @@ interface BehaviorGoAndGiveItemsToOwnerData extends BPComponent {
     verticalThrowMul?: number;
 }
 
-export class SetBehaviorGoAndGiveItemsToOwner extends BehaviorEntityComponentBuilder<BehaviorGoAndGiveItemsToOwnerData> {
+export class SetBehaviorGoAndGiveItemsToOwner extends BehaviorEntityComponentBuilder<BehaviorGoAndGiveItemsToOwnerData, "minecraft:behavior.go_and_give_items_to_owner"> {
     /**
      * 
      * @param {BehaviorGoAndGiveItemsToOwnerData} params Parametros del componente.

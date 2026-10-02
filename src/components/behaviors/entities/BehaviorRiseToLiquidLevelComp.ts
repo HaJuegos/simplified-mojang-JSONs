@@ -8,7 +8,7 @@ interface BehaviorRiseToLiquidLevelData extends BPComponent {
     sinkDelta?: number;
 }
 
-export class SetBehaviorRiseToLiquidLevel extends BehaviorEntityComponentBuilder<BehaviorRiseToLiquidLevelData> {
+export class SetBehaviorRiseToLiquidLevel extends BehaviorEntityComponentBuilder<BehaviorRiseToLiquidLevelData, "minecraft:behavior.rise_to_liquid_level"> {
     /**
      * 
      * @param {BehaviorRiseToLiquidLevelData} params Parametros del componente.

@@ -10,7 +10,7 @@ interface BehaviorMoveToWaterData extends BPComponent {
     goalRadius?: number;
 }
 
-export class SetBehaviorMoveToWater extends BehaviorEntityComponentBuilder<BehaviorMoveToWaterData> {
+export class SetBehaviorMoveToWater extends BehaviorEntityComponentBuilder<BehaviorMoveToWaterData, "minecraft:behavior.move_to_water"> {
     /**
      * 
      * @param {BehaviorMoveToWaterData} params Parametros del componente.

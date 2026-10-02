@@ -14,7 +14,7 @@ interface BehaviorRandomHoverData extends BPComponent {
     yOffset?: number;
 }
 
-export class SetBehaviorRandomHover extends BehaviorEntityComponentBuilder<BehaviorRandomHoverData> {
+export class SetBehaviorRandomHover extends BehaviorEntityComponentBuilder<BehaviorRandomHoverData, "minecraft:behavior.random_hover"> {
     /**
      * 
      * @param {BehaviorRandomHoverData} params Parametros del componente.

@@ -11,7 +11,7 @@ interface BehaviorEatMobData extends BPComponent {
     runSpeed?: number;
 }
 
-export class SetBehaviorEatMob extends BehaviorEntityComponentBuilder<BehaviorEatMobData> {
+export class SetBehaviorEatMob extends BehaviorEntityComponentBuilder<BehaviorEatMobData, "minecraft:behavior.eat_mob"> {
     /**
      * 
      * @param {BehaviorEatMobData} params Parametros del componente.

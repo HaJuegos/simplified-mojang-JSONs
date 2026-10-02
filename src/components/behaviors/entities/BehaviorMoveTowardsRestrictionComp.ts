@@ -6,7 +6,7 @@ interface BehaviorMoveTowardsRestrictionData extends BPComponent {
     speedMultiplier?: number;
 }
 
-export class SetBehaviorMoveTowardsRestriction extends BehaviorEntityComponentBuilder<BehaviorMoveTowardsRestrictionData> {
+export class SetBehaviorMoveTowardsRestriction extends BehaviorEntityComponentBuilder<BehaviorMoveTowardsRestrictionData, "minecraft:behavior.move_towards_restriction"> {
     /**
      * 
      * @param {BehaviorMoveTowardsRestrictionData} params Parametros del componente.

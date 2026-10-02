@@ -22,7 +22,7 @@ interface BehaviorAvoidMobTypeData extends BPComponent {
     soundInterval?: SoundIntervalTypes;
 }
 
-export class SetBehaviorAvoidMobType extends BehaviorEntityComponentBuilder<BehaviorAvoidMobTypeData> {
+export class SetBehaviorAvoidMobType extends BehaviorEntityComponentBuilder<BehaviorAvoidMobTypeData, "minecraft:behavior.avoid_mob_type"> {
     /**
      * 
      * @param {BehaviorAvoidMobTypeData} params Parametros del componente.

@@ -7,7 +7,7 @@ interface BossData extends BPComponent {
     shouldDarkenSky?: boolean;
 }
 
-export class SetBoss extends BehaviorEntityComponentBuilder<BossData> {
+export class SetBoss extends BehaviorEntityComponentBuilder<BossData, "minecraft:boss"> {
     /**
      * 
      * @param {BossData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface IsPregnantData extends BPComponent {
 
 }
 
-export class SetIsPregnant extends BehaviorEntityComponentBuilder<IsPregnantData> {
+export class SetIsPregnant extends BehaviorEntityComponentBuilder<IsPregnantData, "minecraft:is_pregnant"> {
     /**
      * 
      * @param {IsPregnantData} params Parametros del componente.

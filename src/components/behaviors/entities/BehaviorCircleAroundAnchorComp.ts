@@ -25,7 +25,7 @@ interface BehaviorCircleAroundAnchorData extends BPComponent {
     angleChange?: number;
 }
 
-export class SetBehaviorCircleAroundAnchor extends BehaviorEntityComponentBuilder<BehaviorCircleAroundAnchorData> {
+export class SetBehaviorCircleAroundAnchor extends BehaviorEntityComponentBuilder<BehaviorCircleAroundAnchorData, "minecraft:behavior.circle_around_anchor"> {
     /**
      * 
      * @param {BehaviorCircleAroundAnchorData} params Parametros del componente.

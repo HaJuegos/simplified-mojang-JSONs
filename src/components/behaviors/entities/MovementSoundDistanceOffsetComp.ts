@@ -5,7 +5,7 @@ interface MovementSoundDistanceOffsetData extends BPComponent {
     value: number;
 }
 
-export class SetMovementSoundDistanceOffset extends BehaviorEntityComponentBuilder<MovementSoundDistanceOffsetData> {
+export class SetMovementSoundDistanceOffset extends BehaviorEntityComponentBuilder<MovementSoundDistanceOffsetData, "minecraft:movement_sound_distance_offset"> {
     /**
      * 
      * @param {MovementSoundDistanceOffsetData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface WantsJockeyData extends BPComponent {
     
 }
 
-export class SetWantsJockey extends BehaviorEntityComponentBuilder<WantsJockeyData> {
+export class SetWantsJockey extends BehaviorEntityComponentBuilder<WantsJockeyData, "minecraft:wants_jockey"> {
     /**
      * 
      * @param {WantsJockeyData} params Parametros del componente.

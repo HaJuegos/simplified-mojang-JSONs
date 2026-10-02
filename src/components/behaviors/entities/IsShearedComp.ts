@@ -5,7 +5,7 @@ interface IsShearedData extends BPComponent {
 
 }
 
-export class SetIsSheared extends BehaviorEntityComponentBuilder<IsShearedData> {
+export class SetIsSheared extends BehaviorEntityComponentBuilder<IsShearedData, "minecraft:is_sheared"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

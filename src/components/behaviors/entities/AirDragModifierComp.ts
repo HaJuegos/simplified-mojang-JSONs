@@ -15,7 +15,7 @@ interface AirDragModifierData extends BPComponent {
     value: number;
 }
 
-export class SetAirDragModifier extends BehaviorEntityComponentBuilder<AirDragModifierData> {
+export class SetAirDragModifier extends BehaviorEntityComponentBuilder<AirDragModifierData, "minecraft:air_drag_modifier"> {
     /**
      * Componente que define la resistencia aerodinamica que afecta a la entidad.
      * @param {AirDragModifierData} params Parametros del componente.

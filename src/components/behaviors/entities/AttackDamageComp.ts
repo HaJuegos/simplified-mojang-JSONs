@@ -7,7 +7,7 @@ interface AttackDamageData extends BPComponent {
     max?: number;
 }
 
-export class SetAttackDamage extends BehaviorEntityComponentBuilder<AttackDamageData> {
+export class SetAttackDamage extends BehaviorEntityComponentBuilder<AttackDamageData, "minecraft:attack_damage"> {
     public constructor (params: AttackDamageData) {
         super("minecraft:attack_damage", params);
     }

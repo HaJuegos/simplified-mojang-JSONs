@@ -14,7 +14,7 @@ interface BehaviorPlayData extends BPComponent {
     randomPosSearchRange?: number;
 }
 
-export class SetBehaviorPlay extends BehaviorEntityComponentBuilder<BehaviorPlayData> {
+export class SetBehaviorPlay extends BehaviorEntityComponentBuilder<BehaviorPlayData, "minecraft:behavior.play"> {
     /**
      * 
      * @param {BehaviorPlayData} params Parametros del componente.

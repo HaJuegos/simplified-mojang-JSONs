@@ -6,7 +6,7 @@ interface MovementJumpData extends BPComponent {
     jump_delay: [number, number];
 }
 
-export class SetMovementJump extends BehaviorEntityComponentBuilder<MovementJumpData> {
+export class SetMovementJump extends BehaviorEntityComponentBuilder<MovementJumpData, "minecraft:movement.jump"> {
     /**
      * 
      * @param {MovementJumpData} params Parametros del componente.

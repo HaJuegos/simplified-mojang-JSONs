@@ -6,7 +6,7 @@ interface GrowsCropData extends BPComponent {
     charges?: number;
 }
 
-export class SetGrowsCrop extends BehaviorEntityComponentBuilder<GrowsCropData> {
+export class SetGrowsCrop extends BehaviorEntityComponentBuilder<GrowsCropData, "minecraft:grows_crop"> {
     /**
      * 
      * @param {GrowsCropData} params Parametros del componente.

@@ -5,7 +5,7 @@ import { GlobalNavigationParams } from "../../../types/EntityFilters";
 interface NavigationFlyData extends BPComponent, GlobalNavigationParams {
 }
 
-export class SetNavigationFly extends BehaviorEntityComponentBuilder<NavigationFlyData> {
+export class SetNavigationFly extends BehaviorEntityComponentBuilder<NavigationFlyData, "minecraft:navigation.fly"> {
     /**
      * 
      * @param {NavigationFlyData} params Parametros del componente.

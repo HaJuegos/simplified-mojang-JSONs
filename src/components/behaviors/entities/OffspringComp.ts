@@ -34,7 +34,7 @@ interface InheritancePropertyTypes {
     mutationValues: string[];
 }
 
-export class SetOffspring extends BehaviorEntityComponentBuilder<OffspringData> {
+export class SetOffspring extends BehaviorEntityComponentBuilder<OffspringData, "minecraft:offspring"> {
     /**
      * 
      * @param {OffspringData} params Parametros del componente.

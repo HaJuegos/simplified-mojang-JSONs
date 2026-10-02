@@ -11,7 +11,7 @@ interface BehaviorMoveToLiquidData extends BPComponent {
     materialType?: "Air" | "Any" | "Lava" | "Water";
 }
 
-export class SetBehaviorMoveToLiquid extends BehaviorEntityComponentBuilder<BehaviorMoveToLiquidData> {
+export class SetBehaviorMoveToLiquid extends BehaviorEntityComponentBuilder<BehaviorMoveToLiquidData, "minecraft:behavior.move_to_liquid"> {
     /**
      * 
      * @param {BehaviorMoveToLiquidData} params Parametros del componente.

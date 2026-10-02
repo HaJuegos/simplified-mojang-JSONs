@@ -15,7 +15,7 @@ interface PotionsIDsTypes {
     chance: number;
 }
 
-export class SetBehaviorDrinkPotion extends BehaviorEntityComponentBuilder<BehaviorDrinkPotionData> {
+export class SetBehaviorDrinkPotion extends BehaviorEntityComponentBuilder<BehaviorDrinkPotionData, "minecraft:behavior.drink_potion"> {
     /**
      * 
      * @param {BehaviorDrinkPotionData} params Parametros del componente.

@@ -5,7 +5,7 @@ interface BehaviorDragonScanningData extends BPComponent {
     priority: number;
 }
 
-export class SetBehaviorDragonScanning extends BehaviorEntityComponentBuilder<BehaviorDragonScanningData> {
+export class SetBehaviorDragonScanning extends BehaviorEntityComponentBuilder<BehaviorDragonScanningData, "minecraft:behavior.dragonscanning"> {
     /**
      * 
      * @param {BehaviorDragonScanningData} params Parametros del componente.

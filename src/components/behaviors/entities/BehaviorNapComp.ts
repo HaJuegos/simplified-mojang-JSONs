@@ -13,7 +13,7 @@ interface BehaviorNapData extends BPComponent {
     wakeMobExceptions?: EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorNap extends BehaviorEntityComponentBuilder<BehaviorNapData> {
+export class SetBehaviorNap extends BehaviorEntityComponentBuilder<BehaviorNapData, "minecraft:behavior.nap"> {
     /**
      * 
      * @param {BehaviorNapData} params Parametros del componente.

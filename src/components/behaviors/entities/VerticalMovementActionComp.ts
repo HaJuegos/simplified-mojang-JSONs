@@ -5,7 +5,7 @@ interface VerticalMovementActionData extends BPComponent {
     verticalVelocity?: number;
 }
 
-export class SetVerticalMovementAction extends BehaviorEntityComponentBuilder<VerticalMovementActionData> {
+export class SetVerticalMovementAction extends BehaviorEntityComponentBuilder<VerticalMovementActionData, "minecraft:vertical_movement_action"> {
     /**
      * 
      * @param {VerticalMovementActionData} params Parametros del componente.

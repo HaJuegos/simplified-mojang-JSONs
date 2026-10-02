@@ -48,7 +48,7 @@ interface EventsNameAmbientSound {
     condition: MoLangValue;
 }
 
-export class SetAmbientSoundInterval extends BehaviorEntityComponentBuilder<Record<string, unknown>> {
+export class SetAmbientSoundInterval extends BehaviorEntityComponentBuilder<Record<string, unknown>, 'minecraft:ambient_sound_interval'> {
     /**
      * Componente que establece el retraso de la entidad entre cada reproduccion de su sonido ambiental.
      * @param {AmbientSoundIntervalData} params Parametros del componente.

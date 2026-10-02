@@ -5,7 +5,7 @@ interface MarkVariantData extends BPComponent {
     value: number;
 }
 
-export class SetMarkVariant extends BehaviorEntityComponentBuilder<MarkVariantData> {
+export class SetMarkVariant extends BehaviorEntityComponentBuilder<MarkVariantData, "minecraft:mark_variant"> {
     /**
      * 
      * @param {MarkVariantData} params Parametros del componente.

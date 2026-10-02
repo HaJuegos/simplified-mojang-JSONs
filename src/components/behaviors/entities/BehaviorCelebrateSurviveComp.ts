@@ -13,7 +13,7 @@ interface BehaviorCelebrateSurviveData extends BPComponent {
     onCelebrationEndEvent?: string | EntityFiltersTarget;
 }
 
-export class SetBehaviorCelebrateSurvive extends BehaviorEntityComponentBuilder<BehaviorCelebrateSurviveData> {
+export class SetBehaviorCelebrateSurvive extends BehaviorEntityComponentBuilder<BehaviorCelebrateSurviveData, "minecraft:behavior.celebrate_survive"> {
     /**
      * 
      * @param {BehaviorCelebrateSurviveData} params Parametros del componente.

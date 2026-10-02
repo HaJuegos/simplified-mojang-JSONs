@@ -77,7 +77,7 @@ interface PresetKnockbackRules {
     slowdownScale?: number;
 }
 
-export class SetApplyKnockbackRules extends BehaviorEntityComponentBuilder<ApplyKnockbackRulesData> {
+export class SetApplyKnockbackRules extends BehaviorEntityComponentBuilder<ApplyKnockbackRulesData, "minecraft:apply_knockback_rules"> {
     /**
      * Componente que determina como una entidad aplica empuje a un target.
      * @param {ApplyKnockbackRulesData} params Parametros del componente.

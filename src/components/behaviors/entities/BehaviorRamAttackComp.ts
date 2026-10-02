@@ -21,7 +21,7 @@ interface BehaviorRamAttackData extends BPComponent {
     trigger?: string | EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorRamAttack extends BehaviorEntityComponentBuilder<BehaviorRamAttackData> {
+export class SetBehaviorRamAttack extends BehaviorEntityComponentBuilder<BehaviorRamAttackData, "minecraft:behavior.ram_attack"> {
     /**
      * 
      * @param {BehaviorRamAttackData} params Parametros del componente.

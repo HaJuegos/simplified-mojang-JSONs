@@ -22,7 +22,7 @@ interface FeedItemsTypes {
     temperMod: number;
 }
 
-export class SetTamemount extends BehaviorEntityComponentBuilder<TamemountData> {
+export class SetTamemount extends BehaviorEntityComponentBuilder<TamemountData, "minecraft:tamemount"> {
     /**
      * 
      * @param {TamemountData} params Parametros del componente.

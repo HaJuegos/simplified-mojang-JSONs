@@ -7,7 +7,7 @@ interface FollowRangeData extends BPComponent {
     value?: number | [number, number];
 }
 
-export class SetFollowRange extends BehaviorEntityComponentBuilder<FollowRangeData> {
+export class SetFollowRange extends BehaviorEntityComponentBuilder<FollowRangeData, "minecraft:follow_range"> {
     /**
      * 
      * @param {FollowRangeData} params Parametros del componente.

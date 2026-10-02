@@ -6,7 +6,7 @@ interface EnvironmentSensorData extends BPComponent {
     triggers: EntityFilterTrigger | EntityFilterTrigger[];
 }
 
-export class SetEnvironmentSensor extends BehaviorEntityComponentBuilder<EnvironmentSensorData> {
+export class SetEnvironmentSensor extends BehaviorEntityComponentBuilder<EnvironmentSensorData, "minecraft:environment_sensor"> {
     /**
      * 
      * @param {EnvironmentSensorData} params Parametros del componente.

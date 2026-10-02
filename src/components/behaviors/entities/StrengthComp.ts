@@ -6,7 +6,7 @@ interface StrengthData extends BPComponent {
     value?: number;
 }
 
-export class SetStrength extends BehaviorEntityComponentBuilder<StrengthData> {
+export class SetStrength extends BehaviorEntityComponentBuilder<StrengthData, "minecraft:strength"> {
     /**
      * 
      * @param {StrengthData} params Parametros del componente.

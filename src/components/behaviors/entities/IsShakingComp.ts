@@ -5,7 +5,7 @@ interface IsShakingData extends BPComponent {
 
 }
 
-export class SetIsShaking extends BehaviorEntityComponentBuilder<IsShakingData> {
+export class SetIsShaking extends BehaviorEntityComponentBuilder<IsShakingData, "minecraft:is_shaking"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

@@ -6,7 +6,7 @@ interface OnStartTakeoffData extends BPComponent, EntityFilterTrigger {
 
 }
 
-export class SetOnStartTakeoff extends BehaviorEntityComponentBuilder<OnStartTakeoffData> {
+export class SetOnStartTakeoff extends BehaviorEntityComponentBuilder<OnStartTakeoffData, "minecraft:on_start_takeoff"> {
     /**
      * 
      * @param {OnStartTakeoffData} params Parametros del componente.

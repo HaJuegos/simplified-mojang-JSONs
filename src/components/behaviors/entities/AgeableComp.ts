@@ -66,7 +66,7 @@ interface AgeableData extends BPComponent {
     resetGlowItems?: vanilla.MinecraftItemTypes[] | string[];
 }
 
-export class SetAgeable extends BehaviorEntityComponentBuilder<AgeableData> {
+export class SetAgeable extends BehaviorEntityComponentBuilder<Record<string, unknown>, "minecraft:ageable"> {
     /**
      * Componente que añade un timer a la entidad para que esta misma pueda crecer.
      * @param {AgeableData} params Parametros del componente.

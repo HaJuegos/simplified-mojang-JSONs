@@ -8,7 +8,7 @@ interface BehaviorFindUnderwaterTreasureData extends BPComponent {
     stopDistance?: number;
 }
 
-export class SetBehaviorFindUnderwaterTreasure extends BehaviorEntityComponentBuilder<BehaviorFindUnderwaterTreasureData> {
+export class SetBehaviorFindUnderwaterTreasure extends BehaviorEntityComponentBuilder<BehaviorFindUnderwaterTreasureData, "minecraft:behavior.find_underwater_treasure"> {
     /**
      * 
      * @param {BehaviorFindUnderwaterTreasureData} params Parametros del componente.

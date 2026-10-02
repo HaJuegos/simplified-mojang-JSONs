@@ -10,7 +10,7 @@ interface BehaviorMoveToLavaData extends BPComponent {
     searchRange?: number;
 }
 
-export class SetBehaviorMoveToLava extends BehaviorEntityComponentBuilder<BehaviorMoveToLavaData> {
+export class SetBehaviorMoveToLava extends BehaviorEntityComponentBuilder<BehaviorMoveToLavaData, "minecraft:behavior.move_to_lava"> {
     /**
      * 
      * @param {BehaviorMoveToLavaData} params Parametros del componente.

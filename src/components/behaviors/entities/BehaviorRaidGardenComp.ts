@@ -15,7 +15,7 @@ interface BehaviorRaidGardenData extends BPComponent {
     searchHeight?: number;
 }
 
-export class SetBehaviorRaidGarden extends BehaviorEntityComponentBuilder<BehaviorRaidGardenData> {
+export class SetBehaviorRaidGarden extends BehaviorEntityComponentBuilder<BehaviorRaidGardenData, "minecraft:behavior.raid_garden"> {
     /**
      * 
      * @param {BehaviorRaidGardenData} params Parametros del componente.

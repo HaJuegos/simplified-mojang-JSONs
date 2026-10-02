@@ -6,7 +6,7 @@ interface RaidTriggerData extends BPComponent {
     triggeredEvent?: EntityFiltersTarget | string;
 }
 
-export class SetRaidTrigger extends BehaviorEntityComponentBuilder<RaidTriggerData> {
+export class SetRaidTrigger extends BehaviorEntityComponentBuilder<RaidTriggerData, "minecraft:raid_trigger"> {
     /**
      * 
      * @param {RaidTriggerData} params Parametros del componente.

@@ -6,7 +6,7 @@ interface OnWakeWithOwnerData extends BPComponent, EntityFilterTrigger {
 
 }
 
-export class SetOnWakeWithOwner extends BehaviorEntityComponentBuilder<OnWakeWithOwnerData> {
+export class SetOnWakeWithOwner extends BehaviorEntityComponentBuilder<OnWakeWithOwnerData, "minecraft:on_wake_with_owner"> {
     /**
      * 
      * @param {OnWakeWithOwnerData} params Parametros del componente.

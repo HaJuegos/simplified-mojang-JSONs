@@ -9,7 +9,7 @@ interface BehaviorChargeHeldItemData extends BPComponent {
     items?: TargetItemsTypes[];
 }
 
-export class SetBehaviorChargeHeldItem extends BehaviorEntityComponentBuilder<BehaviorChargeHeldItemData> {
+export class SetBehaviorChargeHeldItem extends BehaviorEntityComponentBuilder<BehaviorChargeHeldItemData, "minecraft:behavior.charge_held_item"> {
     /**
      * 
      * @param {BehaviorChargeHeldItemData} params Parametros del componente.

@@ -7,7 +7,7 @@ interface BehaviorMoveToPoiData extends BPComponent {
     poiType?: "bed" | "jobsite" | "meeting_area";
 }
 
-export class SetBehaviorMoveToPoi extends BehaviorEntityComponentBuilder<BehaviorMoveToPoiData> {
+export class SetBehaviorMoveToPoi extends BehaviorEntityComponentBuilder<BehaviorMoveToPoiData, "minecraft:behavior.move_to_poi"> {
     /**
      * 
      * @param {BehaviorMoveToPoiData} params Parametros del componente.

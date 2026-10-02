@@ -14,7 +14,7 @@ interface BehaviorWorkData extends BPComponent {
     workInRainTolerance?: number;
 }
 
-export class SetBehaviorWork extends BehaviorEntityComponentBuilder<BehaviorWorkData> {
+export class SetBehaviorWork extends BehaviorEntityComponentBuilder<BehaviorWorkData, "minecraft:behavior.work"> {
     /**
      * 
      * @param {BehaviorWorkData} params Parametros del componente.

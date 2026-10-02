@@ -6,7 +6,7 @@ interface BreakBlocksData extends BPComponent {
     breakableBlocks: (string | MinecraftBlockTypes)[];
 }
 
-export class SetBreakBlocks extends BehaviorEntityComponentBuilder<BreakBlocksData> {
+export class SetBreakBlocks extends BehaviorEntityComponentBuilder<BreakBlocksData, "minecraft:break_blocks"> {
     /**
      * 
      * @param {BreakBlocksData} params Parametros del componente.

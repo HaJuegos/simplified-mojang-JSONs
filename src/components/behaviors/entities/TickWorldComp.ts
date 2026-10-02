@@ -7,7 +7,7 @@ interface TickWorldData extends BPComponent {
     radius?: number;
 }
 
-export class SetTickWorld extends BehaviorEntityComponentBuilder<TickWorldData> {
+export class SetTickWorld extends BehaviorEntityComponentBuilder<TickWorldData, "minecraft:tick_world"> {
     /**
      * 
      * @param {TickWorldData} params Parametros del componente.

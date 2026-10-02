@@ -16,7 +16,7 @@ interface BehaviorPlayDeadData extends BPComponent {
     damageSources?: EntityDamageType[];
 }
 
-export class SetBehaviorPlayDead extends BehaviorEntityComponentBuilder<BehaviorPlayDeadData> {
+export class SetBehaviorPlayDead extends BehaviorEntityComponentBuilder<BehaviorPlayDeadData, "minecraft:behavior.play_dead"> {
     /**
      * 
      * @param {BehaviorPlayDeadData} params Parametros del componente.

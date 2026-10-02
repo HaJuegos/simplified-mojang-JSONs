@@ -7,7 +7,7 @@ interface BehaviorFollowParentData extends BPComponent {
     speedMultiplier?: number;
 }
 
-export class SetBehaviorFollowParent extends BehaviorEntityComponentBuilder<BehaviorFollowParentData> {
+export class SetBehaviorFollowParent extends BehaviorEntityComponentBuilder<BehaviorFollowParentData, "minecraft:behavior.follow_parent"> {
     /**
      * 
      * @param {BehaviorFollowParentData} params Parametros del componente.

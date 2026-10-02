@@ -12,7 +12,7 @@ interface BehaviorGuardianAttackData extends BPComponent {
     yMaxHeadRotation?: number;
 }
 
-export class SetBehaviorGuardianAttack extends BehaviorEntityComponentBuilder<BehaviorGuardianAttackData> {
+export class SetBehaviorGuardianAttack extends BehaviorEntityComponentBuilder<BehaviorGuardianAttackData, "minecraft:behavior.guardian_attack"> {
     /**
      * 
      * @param {BehaviorGuardianAttackData} params Parametros del componente.

@@ -6,7 +6,7 @@ interface BehaviorOpenDoorData extends BPComponent {
     closeDoorAfter?: boolean;
 }
 
-export class SetBehaviorOpenDoor extends BehaviorEntityComponentBuilder<BehaviorOpenDoorData> {
+export class SetBehaviorOpenDoor extends BehaviorEntityComponentBuilder<BehaviorOpenDoorData, "minecraft:behavior.open_door"> {
     /**
      * 
      * @param {BehaviorOpenDoorData} params Parametros del componente.

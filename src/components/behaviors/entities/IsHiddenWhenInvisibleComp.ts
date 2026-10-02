@@ -5,7 +5,7 @@ interface IsHiddenWhenInvisibleData extends BPComponent {
     
 }
 
-export class SetIsHiddenWhenInvisible extends BehaviorEntityComponentBuilder<IsHiddenWhenInvisibleData> {
+export class SetIsHiddenWhenInvisible extends BehaviorEntityComponentBuilder<IsHiddenWhenInvisibleData, "minecraft:is_hidden_when_invisible"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

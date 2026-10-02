@@ -5,7 +5,7 @@ interface HurtWhenWetData extends BPComponent {
 
 }
 
-export class SetHurtWhenWet extends BehaviorEntityComponentBuilder<HurtWhenWetData> {
+export class SetHurtWhenWet extends BehaviorEntityComponentBuilder<HurtWhenWetData, "minecraft:hurt_when_wet"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

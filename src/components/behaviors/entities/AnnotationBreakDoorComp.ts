@@ -21,7 +21,7 @@ interface AnnotationBreakDoorData extends BPComponent {
     minDifficulty: string;
 }
 
-export class SetAnnotationBreakDoor extends BehaviorEntityComponentBuilder<AnnotationBreakDoorData> {
+export class SetAnnotationBreakDoor extends BehaviorEntityComponentBuilder<AnnotationBreakDoorData, "minecraft:annotation.break_door"> {
     /**
      * Componente que permite a la entidad romper puertas, siempre y cuando se haya configurado los indicadores correspondientes para que el componente los utilice en la navegacion.
      * @param {AnnotationBreakDoorData} params Parametros del componente.

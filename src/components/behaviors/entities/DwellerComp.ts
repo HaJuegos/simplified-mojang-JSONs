@@ -13,7 +13,7 @@ interface DwellerData extends BPComponent {
     preferredProfession?: string;
 }
 
-export class SetDweller extends BehaviorEntityComponentBuilder<DwellerData> {
+export class SetDweller extends BehaviorEntityComponentBuilder<DwellerData, "minecraft:dweller"> {
     /**
      * 
      * @param {DwellerData} params Parametros del componente.

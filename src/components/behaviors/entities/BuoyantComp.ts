@@ -14,7 +14,7 @@ interface BuoyantData extends BPComponent {
     canAutoStepFromLiquid?: boolean;
 }
 
-export class SetBuoyant extends BehaviorEntityComponentBuilder<BuoyantData> {
+export class SetBuoyant extends BehaviorEntityComponentBuilder<BuoyantData, "minecraft:buoyant"> {
     /**
      * 
      * @param {BuoyantData} params Parametros del componente.

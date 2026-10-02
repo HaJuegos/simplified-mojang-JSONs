@@ -6,7 +6,7 @@ interface OnStartLandingData extends BPComponent, EntityFilterTrigger {
 
 }
 
-export class SetOnStartLanding extends BehaviorEntityComponentBuilder<OnStartLandingData> {
+export class SetOnStartLanding extends BehaviorEntityComponentBuilder<OnStartLandingData, "minecraft:on_start_landing"> {
     /**
      * 
      * @param {OnStartLandingData} params Parametros del componente.

@@ -22,7 +22,7 @@ interface FlockingData extends BPComponent {
     useCenterOfMass?: boolean;
 }
 
-export class SetFlocking extends BehaviorEntityComponentBuilder<FlockingData> {
+export class SetFlocking extends BehaviorEntityComponentBuilder<FlockingData, "minecraft:flocking"> {
     /**
      * 
      * @param {FlockingData} params Parametros del componente.

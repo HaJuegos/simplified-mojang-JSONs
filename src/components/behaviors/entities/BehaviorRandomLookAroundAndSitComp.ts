@@ -15,7 +15,7 @@ interface BehaviorRandomLookAroundAndSitData extends BPComponent {
     randomLookAroundCooldown?: number;
 }
 
-export class SetBehaviorRandomLookAroundAndSit extends BehaviorEntityComponentBuilder<BehaviorRandomLookAroundAndSitData> {
+export class SetBehaviorRandomLookAroundAndSit extends BehaviorEntityComponentBuilder<BehaviorRandomLookAroundAndSitData, "minecraft:behavior.random_look_around_and_sit"> {
     /**
      * 
      * @param {BehaviorRandomLookAroundAndSitData} params Parametros del componente.

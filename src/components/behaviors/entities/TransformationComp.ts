@@ -28,7 +28,7 @@ interface DelayTypes {
     value: number;
 }
 
-export class SetTransformation extends BehaviorEntityComponentBuilder<TransformationData> {
+export class SetTransformation extends BehaviorEntityComponentBuilder<TransformationData, "minecraft:transformation"> {
     /**
      * 
      * @param {TransformationData} params Parametros del componente.

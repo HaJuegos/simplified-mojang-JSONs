@@ -6,7 +6,7 @@ interface IgnoreCannotBeAttackedData extends BPComponent {
     filters?: EntityFilter | EntityFilter[];
 }
 
-export class SetIgnoreCannotBeAttacked extends BehaviorEntityComponentBuilder<IgnoreCannotBeAttackedData> {
+export class SetIgnoreCannotBeAttacked extends BehaviorEntityComponentBuilder<IgnoreCannotBeAttackedData, "minecraft:ignore_cannot_be_attacked"> {
     /**
      * 
      * @param {IgnoreCannotBeAttackedData} params Parametros del componente.

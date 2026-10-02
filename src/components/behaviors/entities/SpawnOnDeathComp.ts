@@ -15,7 +15,7 @@ interface SpawnOnDeathData extends BPComponent {
     spawnMethod?: "born" | "spawned" | "summoned";
 }
 
-export class SetSpawnOnDeath extends BehaviorEntityComponentBuilder<SpawnOnDeathData> {
+export class SetSpawnOnDeath extends BehaviorEntityComponentBuilder<SpawnOnDeathData, "minecraft:spawn_on_death"> {
     /**
      * 
      * @param {SpawnOnDeathData} params Parametros del componente.

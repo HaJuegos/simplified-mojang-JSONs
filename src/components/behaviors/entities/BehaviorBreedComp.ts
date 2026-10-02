@@ -6,7 +6,7 @@ interface BehaviorBreedData extends BPComponent {
     speedMultiplier?: number;
 }
 
-export class SetBehaviorBreed extends BehaviorEntityComponentBuilder<BehaviorBreedData> {
+export class SetBehaviorBreed extends BehaviorEntityComponentBuilder<BehaviorBreedData, "minecraft:behavior.breed"> {
     /**
      * 
      * @param {BehaviorBreedData} params Parametros del componente.

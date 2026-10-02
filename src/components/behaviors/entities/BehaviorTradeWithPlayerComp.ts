@@ -7,7 +7,7 @@ interface BehaviorTradeWithPlayerData extends BPComponent {
     filters?: EntityFilter | EntityFilter[];
 }
 
-export class SetBehaviorTradeWithPlayer extends BehaviorEntityComponentBuilder<BehaviorTradeWithPlayerData> {
+export class SetBehaviorTradeWithPlayer extends BehaviorEntityComponentBuilder<BehaviorTradeWithPlayerData, "minecraft:behavior.trade_with_player"> {
     /**
      * 
      * @param {BehaviorTradeWithPlayerData} params Parametros del componente.

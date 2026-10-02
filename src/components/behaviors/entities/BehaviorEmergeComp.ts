@@ -9,7 +9,7 @@ interface BehaviorEmergeData extends BPComponent {
     onDone?: string | EntityFilterTrigger | EntityFilterTrigger[];
 }
 
-export class SetBehaviorEmerge extends BehaviorEntityComponentBuilder<BehaviorEmergeData> {
+export class SetBehaviorEmerge extends BehaviorEntityComponentBuilder<BehaviorEmergeData, "minecraft:behavior.emerge"> {
     /**
      * 
      * @param {BehaviorEmergeData} params Parametros del componente.

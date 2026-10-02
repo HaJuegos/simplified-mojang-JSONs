@@ -5,7 +5,7 @@ interface TradeResupplyData extends BPComponent {
 
 }
 
-export class SetTradeResupply extends BehaviorEntityComponentBuilder<TradeResupplyData> {
+export class SetTradeResupply extends BehaviorEntityComponentBuilder<TradeResupplyData, "minecraft:trade_resupply"> {
     /**
      * 
      * @author HaJuegos - 29-09-2026

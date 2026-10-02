@@ -32,7 +32,7 @@ interface BehaviorStompAttackData extends BPComponent {
     yMaxHeadRotation?: number;
 }
 
-export class SetBehaviorStompAttack extends BehaviorEntityComponentBuilder<BehaviorStompAttackData> {
+export class SetBehaviorStompAttack extends BehaviorEntityComponentBuilder<BehaviorStompAttackData, "minecraft:behavior.stomp_attack"> {
     /**
      * 
      * @param {BehaviorStompAttackData} params Parametros del componente.

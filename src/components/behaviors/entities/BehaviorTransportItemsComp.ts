@@ -26,7 +26,7 @@ interface BehaviorTransportItemsData extends BPComponent {
     disallowedItems?: (string | MinecraftItemTypes)[];
 }
 
-export class SetBehaviorTransportItems extends BehaviorEntityComponentBuilder<BehaviorTransportItemsData> {
+export class SetBehaviorTransportItems extends BehaviorEntityComponentBuilder<BehaviorTransportItemsData, "minecraft:behavior.transport_items"> {
     /**
      * 
      * @param {BehaviorTransportItemsData} params Parametros del componente.

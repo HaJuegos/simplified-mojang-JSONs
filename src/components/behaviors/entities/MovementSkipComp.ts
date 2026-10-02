@@ -5,7 +5,7 @@ interface MovementSkipData extends BPComponent {
     maxTurn?: number;
 }
 
-export class SetMovementSkip extends BehaviorEntityComponentBuilder<MovementSkipData> {
+export class SetMovementSkip extends BehaviorEntityComponentBuilder<MovementSkipData, "minecraft:movement.skip"> {
     /**
      * 
      * @param {MovementSkipData} params Parametros del componente.

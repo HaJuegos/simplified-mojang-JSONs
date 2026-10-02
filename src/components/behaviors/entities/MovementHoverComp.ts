@@ -6,7 +6,7 @@ interface MovementHoverData extends BPComponent {
     maxTurn?: number;
 }
 
-export class SetMovementHover extends BehaviorEntityComponentBuilder<MovementHoverData> {
+export class SetMovementHover extends BehaviorEntityComponentBuilder<MovementHoverData, "minecraft:movement.hover"> {
     /**
      * 
      * @param {MovementHoverData} params Parametros del componente.

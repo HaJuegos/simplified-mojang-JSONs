@@ -5,7 +5,7 @@ interface WaterMovementData extends BPComponent {
     dragFactor?: number;
 }
 
-export class SetWaterMovement extends BehaviorEntityComponentBuilder<WaterMovementData> {
+export class SetWaterMovement extends BehaviorEntityComponentBuilder<WaterMovementData, "minecraft:water_movement"> {
     /**
      * 
      * @param {WaterMovementData} params Parametros del componente.

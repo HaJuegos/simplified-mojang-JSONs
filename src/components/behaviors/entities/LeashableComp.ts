@@ -21,7 +21,7 @@ interface PresetLeashTypes {
     spring_type: 'bouncy' | 'dampened' | 'quad_dampened';
 }
 
-export class SetLeashable extends BehaviorEntityComponentBuilder<LeashableData> {
+export class SetLeashable extends BehaviorEntityComponentBuilder<LeashableData, "minecraft:leashable"> {
     /**
      * 
      * @param {LeashableData} params Parametros del componente.

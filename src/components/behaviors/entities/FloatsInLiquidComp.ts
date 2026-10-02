@@ -5,7 +5,7 @@ interface FloatsInLiquidData extends BPComponent {
 
 }
 
-export class SetFloatsInLiquid extends BehaviorEntityComponentBuilder<FloatsInLiquidData> {
+export class SetFloatsInLiquid extends BehaviorEntityComponentBuilder<FloatsInLiquidData, "minecraft:floats_in_liquid"> {
     /**
      * 
      * @author HaJuegos - 27-09-2026

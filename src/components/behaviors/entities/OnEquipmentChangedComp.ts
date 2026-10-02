@@ -12,7 +12,7 @@ interface OnEquipTypes {
     slot: number;
 }
 
-export class SetOnEquipmentChanged extends BehaviorEntityComponentBuilder<OnEquipmentChangedData> {
+export class SetOnEquipmentChanged extends BehaviorEntityComponentBuilder<OnEquipmentChangedData, "minecraft:on_equipment_changed"> {
     /**
      * 
      * @param {OnEquipmentChangedData} params Parametros del componente.

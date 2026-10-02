@@ -16,7 +16,7 @@ interface ProyectilesTypes {
     def: string | MinecraftEntityTypes;
 }
 
-export class SetShooter extends BehaviorEntityComponentBuilder<ShooterData> {
+export class SetShooter extends BehaviorEntityComponentBuilder<ShooterData, "minecraft:shooter"> {
     /**
      * 
      * @param {ShooterData} params Parametros del componente.

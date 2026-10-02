@@ -13,7 +13,7 @@ interface TriggerGiveTypes {
     onGive?: EntityFilterTrigger;
 }
 
-export class SetGiveable extends BehaviorEntityComponentBuilder<GiveableData> {
+export class SetGiveable extends BehaviorEntityComponentBuilder<GiveableData, "minecraft:giveable"> {
     /**
      * 
      * @param {GiveableData} params Parametros del componente.

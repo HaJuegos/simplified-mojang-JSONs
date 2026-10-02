@@ -9,7 +9,7 @@ interface BehaviorStayNearNoteblockData extends BPComponent {
     stopDistance?: number;
 }
 
-export class SetBehaviorStayNearNoteblock extends BehaviorEntityComponentBuilder<BehaviorStayNearNoteblockData> {
+export class SetBehaviorStayNearNoteblock extends BehaviorEntityComponentBuilder<BehaviorStayNearNoteblockData, "minecraft:behavior.stay_near_noteblock"> {
     /**
      * 
      * @param {BehaviorStayNearNoteblockData} params Parametros del componente.

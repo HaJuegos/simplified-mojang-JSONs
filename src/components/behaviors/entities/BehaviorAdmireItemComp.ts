@@ -12,7 +12,7 @@ interface BehaviorAdmireItemData extends BPComponent {
     soundInterval?: SoundIntervalTypes;
 }
 
-export class SetBehaviorAdmireItem extends BehaviorEntityComponentBuilder<BehaviorAdmireItemData> {
+export class SetBehaviorAdmireItem extends BehaviorEntityComponentBuilder<BehaviorAdmireItemData, "minecraft:behavior.admire_item"> {
     public constructor (params: BehaviorAdmireItemData) {
         super("minecraft:behavior.admire_item", params);
     }
