@@ -217,7 +217,7 @@ export const AllayTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             add: {
                 componentGroups: [
-                    "pickup_item"
+                    "pickup_item",
                 ]
             }
         },
@@ -247,5 +247,3 @@ export const AllayTemplate = createBPEntityTemplate({
         }
     }
 });
-
-console.log(AllayTemplate().finalBuild());

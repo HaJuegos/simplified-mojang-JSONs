@@ -217,26 +217,27 @@ type BPPropertiesEntities = BPBoolPropertyEntity | BPEnumPropertyEntity | BPFloa
 /**
  * Lista de parametros disponibles para un evento de una entidad.
  * @interface BPEntityEventsBase
+ * @template {string} G Plantilla base que se añade a los grupos seleccionados. 
  * @author HaJuegos - 30-09-2026
  */
-interface BPEntityEventsBase {
+interface BPEntityEventsBase<G extends string = string> {
     /**
      * (Opcional) Parametro que indica todos los parametros adiccionales que se deben validar primero antes de ejecutarse este mismo.
-     * @type {?BPEntityEventsBase[]}
+     * @type {?BPEntityEventsBase<G>[]}
      */
-    firstValid?: BPEntityEventsBase[];
+    firstValid?: BPEntityEventsBase<G>[];
 
     /**
      * (Opcional) Parametro que indica los grupos de componentes a añadir a la entidad.
-     * @type {?ManagerCGTypes}
+     * @type {?ManagerCGTypes<G>}
      */
-    add?: ManagerCGTypes;
+    add?: ManagerCGTypes<G>;
 
     /**
      * (Opcional) Parametro que indica los grupos de componentes a eliminar a la entidad.
-     * @type {?ManagerCGTypes}
+     * @type {?ManagerCGTypes<G>}
      */
-    remove?: ManagerCGTypes;
+    remove?: ManagerCGTypes<G>;
 
     /**
      * (Opcional) Parametro que indica de dropear un item de la entidad. Por defecto, no es necesario establecer un slot.
@@ -357,23 +358,31 @@ interface BPEntityEventsBase {
     };
 }
 
-interface ManagerCGTypes {
-    componentGroups: string[];
+/**
+ * Tipado general para la gestion de grupos de componentes de eventos en una entidad.
+ * @interface ManagerCGTypes
+ * @template {string} G Plantilla base que se añade a los grupos seleccionados.
+ * @author HaJuegos - 01-10-2026 
+ */
+interface ManagerCGTypes<G extends string = string> {
+    componentGroups: readonly G[];
 }
 
 /**
  * Lista de tipos cuando se llama a una secuencia de eventos en una entidad.
+ * @template {string} G Plantilla base que se añade a los grupos seleccionados.
  * @author HaJuegos - 30-09-2026
  */
-type SequenceItemsEvents = BPEntityEvents & {
+type SequenceItemsEvents<G extends string = string> = BPEntityEvents<G> & {
     filters: EntityFilter | EntityFilter[];
 };
 
 /**
  * Lista de tipos cuando se llama a una aleatoria de eventos en una entidad.
+ * @template {string} G Plantilla base que se añade a los grupos seleccionados.
  * @author HaJuegos - 30-09-2026
  */
-type RandomizeItemsEvents = BPEntityEvents & {
+type RandomizeItemsEvents<G extends string = string> = BPEntityEvents<G> & {
     weight: number;
 };
 
@@ -386,32 +395,35 @@ type NoBaseParams = { [K in keyof BPEntityEventsBase]?: never };
 /**
  * Lista de parametros en una sequencia de eventos, pero, no permitiendo la secuencia aleatoria a la misma vez.
  * @interface SequenceEvents
+ * @template {string} G Plantilla base que se añade a los grupos seleccionados.
  * @extends {NoBaseParams}
  * @author HaJuegos - 30-09-2026
  */
-interface SequenceEvents extends NoBaseParams {
-    sequence: SequenceItemsEvents[];
+interface SequenceEvents<G extends string = string> extends NoBaseParams {
+    sequence: SequenceItemsEvents<G>[];
     randomize?: never;
 }
 
 /**
  * Lista de parametros para una secuencia aleatoria de eventos, pero, no permitiendo una secuencia a la misma vez.
  * @interface RandomizeEvents
+ * @template {string} G Plantilla base que se añade a los grupos seleccionados.
  * @extends {NoBaseParams}
  * @author HaJuegos - 30-09-2026
  */
-interface RandomizeEvents extends NoBaseParams {
-    randomize: RandomizeItemsEvents[];
+interface RandomizeEvents<G extends string = string> extends NoBaseParams {
+    randomize: RandomizeItemsEvents<G>[];
     sequence?: never;
 }
 
 /**
  * Lista de tipados base cuyos no pueden tener a su vez la sequencia de eventos o aleatoriedad de eventos.
  * @interface BaseEvents
+ * @template {string} G Plantilla base que se añade a los grupos seleccionados.
  * @extends {BPEntityEventsBase}
  * @author HaJuegos - 30-09-2026
  */
-interface BaseEvents extends BPEntityEventsBase {
+interface BaseEvents<G extends string = string> extends BPEntityEventsBase<G> {
     sequence?: never;
     randomize?: never;
 }
@@ -420,7 +432,7 @@ interface BaseEvents extends BPEntityEventsBase {
  * Tipado final sobre los parametros finales para la lista de eventos de una entidad. 
  * @author HaJuegos - 30-09-2026
  */
-type BPEntityEvents = BaseEvents | SequenceEvents | RandomizeEvents;
+type BPEntityEvents<G extends string = string> = BaseEvents<G> | SequenceEvents<G> | RandomizeEvents<G>;
 
 /**
  * Lista de versiones de formato disponibles para entidades.

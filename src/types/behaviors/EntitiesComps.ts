@@ -9,7 +9,7 @@ export {
  * Definicion generica para la creacion de un componente.
  * @author HaJuegos - 23-09-2026
  */
-type BPComponent = Record<string, unknown>;
+interface BPComponent { };
 
 /**
  * Definicion generica para la creacion de un componente compilado o adaptado a formato JSON.

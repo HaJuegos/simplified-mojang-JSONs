@@ -4,6 +4,7 @@ import { BPAnimationScriptEntities, BPEntityEvents, BPEntityOptionalParams, BPPr
 import { MoLangValue } from '../../types/MoLang';
 import { BPEntityFile } from '../../types/behaviors/EntitiesComps';
 import { BehaviorEntityComponentBuilder } from './EntityCompsBuilder';
+import { SnakeCase } from '../../utils/SnakeCase';
 
 /**
  * Clase abstracta de base para la creacion de una entidad con todos los parametros requeridos y una estructura fija.
@@ -292,7 +293,7 @@ export class BehaviorEntityBuilder {
                 description,
                 ...(componentGroupsObj && Object.keys(componentGroupsObj).length > 0 && { component_groups: componentGroupsObj }),
                 ...(componentsObj && Object.keys(componentsObj).length > 0 && { components: componentsObj }),
-                ...(this.events && Object.keys(this.events).length > 0 && { events: this.events })
+                ...(this.events && Object.keys(this.events).length > 0 && { events: Object.fromEntries(Object.entries(this.events).map(([name, event]) => [name, SnakeCase.deepSnakeCase(event)])) })
             }
         });
 

@@ -1,4 +1,5 @@
 import { BPComponent, BuiltComponent } from "../../types/behaviors/EntitiesComps";
+import { SnakeCase } from "../../utils/SnakeCase";
 
 /**
  * Clase plantilla builder para la creacion de un componente de entidades en un behavior.
@@ -68,43 +69,7 @@ export abstract class BehaviorEntityComponentBuilder<Component extends BPCompone
      */
     public build(): BuiltComponent {
         return {
-            [this.idComponent]: (this.deepSnakeCase(this.getComponentData()) ?? {}) as Record<string, unknown>
+            [this.idComponent]: (SnakeCase.deepSnakeCase(this.getComponentData()) ?? {}) as Record<string, unknown>
         };
-    }
-
-    /**
-     * Metodo auxiliar privado que convierte los tipados a "snake_case". Para compatibilidad correcta de los componentes vanilla.
-     * @param {string} str Tipo de string a convertir.
-     * @returns {string} Devuelve el string convertido a "snake_case".
-     * @author HaJuegos - 21-09-2026
-     * @private
-     */
-    private toSnakeCase(str: string): string {
-        return str.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
-    }
-
-    /**
-     * Metodo auxiliar privado que convierte un objecto y sus strings a formato "snake_case" en formato string para compatibilidad con los componentes vanilla.
-     * @param {unknown} obj Los objectos y strings en cuestion a convertir.
-     * @returns {unknown} Devuelve el JSON formateado con el objecto convertido.
-     * @author HaJuegos - 21-09-2026
-     * @private
-     */
-    private deepSnakeCase(obj: unknown): unknown {
-        if (Array.isArray(obj)) {
-            return obj.map(item => this.deepSnakeCase(item));
-        }
-
-        if (obj != null && typeof obj == "object") {
-            const result: Record<string, unknown> = {};
-
-            for (const [key, value] of Object.entries(obj)) {
-                result[this.toSnakeCase(key)] = this.deepSnakeCase(value);
-            }
-
-            return result;
-        }
-
-        return obj;
     }
 }
