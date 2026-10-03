@@ -15,25 +15,25 @@ interface AngryData extends BPComponent {
      * Referencia del sonido o ID del sonido.
      * @type {string}
      */
-    angrySoundId: string;
+    angrySoundId?: string;
 
     /**
      * Si es true. otras entidades iguales dentro del rango tambien se enojaran.
      * @type {boolean}
      */
-    broadcastAnger: boolean;
+    broadcastAnger?: boolean;
 
     /**
      * Si es true. otras entidades iguales dentro del rango tambien se enojaran cada vez que este mob ataque.
      * @type {boolean}
      */
-    broadcastAngerOnAttack: boolean;
+    broadcastAngerOnAttack?: boolean;
 
     /**
      * Si es true. otras entidades iguales dentro del rango tambien se enojaran cada vez que este mob sea atacado.
      * @type {boolean}
      */
-    broadcastAngerOnBeingAttacked: boolean;
+    broadcastAngerOnBeingAttacked?: boolean;
 
     /**
      * (Opcional) Si es true. otras entidades iguales dentro del rango tambien se enojaran cuando muera.
@@ -51,13 +51,13 @@ interface AngryData extends BPComponent {
      * Rango en bloques para trasmitir su enojo a otras entidades iguales.
      * @type {number}
      */
-    broadcastRange: number;
+    broadcastRange?: number;
 
     /**
      * Lista de familias a las cuales les va a afectar el enojo de esta entidad.
      * @type {string[]}
      */
-    broadcastTargets: string[];
+    broadcastTargets?: string[];
 
     /**
      * (Opcional) Filtros condicionales y eventos a disparar cuando el temporizador termina y el mob entra en modo calma.
@@ -69,13 +69,13 @@ interface AngryData extends BPComponent {
      * Duracion en segundos del timer de enojo de la entidad.
      * @type {number}
      */
-    duration: number;
+    duration?: number;
 
     /**
      * Variacion en segundos que suma a la duracion [-delta, delta]. Osea, un timer basado en deltaTime.
      * @type {number}
      */
-    durationDelta: number;
+    durationDelta?: number;
 
     /**
      * (Opcional) Los respectivos filtros condicionales para que la entidad se pueda enojar.

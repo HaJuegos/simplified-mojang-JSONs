@@ -9,12 +9,12 @@ interface SpawnEntityData extends BPComponent {
 
 interface EntitiesTypes {
     filters?: EntityFilter | EntityFilter[];
-    maxWaitTime: number;
-    minWaitTime: number;
-    numToSpawn: number;
-    shouldLeash: boolean;
-    singleUse: boolean;
-    spawnEntity: string | MinecraftEntityTypes;
+    maxWaitTime?: number;
+    minWaitTime?: number;
+    numToSpawn?: number;
+    shouldLeash?: boolean;
+    singleUse?: boolean;
+    spawnEntity?: string | MinecraftEntityTypes;
     spawnEvent?: string;
     spawnItem?: string | MinecraftItemTypes;
     spawnItemEvent?: EntityFilter;

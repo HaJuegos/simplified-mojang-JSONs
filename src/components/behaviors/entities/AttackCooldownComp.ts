@@ -1,5 +1,6 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { EntityFilterTrigger } from "../../../types/EntityFilters";
 
 type AttackCooldownTimeTypes = number | [number, number];
 
@@ -14,7 +15,7 @@ interface AttackCooldownData extends BPComponent {
      * Evento que se ejecutara cuando finalice el cooldown.
      * @type {string}
      */
-    attackCooldownCompleteEvent: string;
+    attackCooldownCompleteEvent: string | EntityFilterTrigger | EntityFilterTrigger[];
 
     /**
      * Tiempo en segundos del cooldown. Se puede especificar un minimo y un maximo.

@@ -8,6 +8,7 @@ import { EntityFilters } from "../../../utils/EntityFilters";
 /**
  * Plantilla vanilla del Allay para la sobreescritura del mismo. Sus datos base ya estan definidos.
  * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 02-10-2026
  */
 export const AllayTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Allay,

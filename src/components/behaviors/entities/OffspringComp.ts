@@ -24,9 +24,9 @@ interface DenyParentsTypes {
 }
 
 interface MutationFactorTypes {
-    color: number;
-    extraVariant: number;
-    variant: number;
+    color?: number;
+    extraVariant?: number;
+    variant?: number;
 }
 
 interface InheritancePropertyTypes {

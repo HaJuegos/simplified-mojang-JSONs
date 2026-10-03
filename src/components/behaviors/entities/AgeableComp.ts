@@ -43,9 +43,9 @@ interface AgeableData extends BPComponent {
 
     /**
      * (Opcional) Item o lista de items para que la entidad aumente su velocidad de crecimiento.
-     * @type {?(vanilla.MinecraftItemTypes[] | string[])}
+     * @type {?string | vanilla.MinecraftItemTypes | FeedItemsTypes | (string | vanilla.MinecraftItemTypes | FeedItemsTypes)[]}
      */
-    feedItemsToGrow?: vanilla.MinecraftItemTypes[] | string[];
+    feedItemsToGrow?: string | vanilla.MinecraftItemTypes | FeedItemsTypes | (string | vanilla.MinecraftItemTypes | FeedItemsTypes)[];
 
     /**
      * (Opcional) Item o lista de items a dropear cuando la entidad crece.
@@ -64,6 +64,11 @@ interface AgeableData extends BPComponent {
      * @type {?(vanilla.MinecraftItemTypes[] | string[])}
      */
     resetGlowItems?: vanilla.MinecraftItemTypes[] | string[];
+}
+
+interface FeedItemsTypes {
+    item: string | vanilla.MinecraftItemTypes;
+    resultItem: string | vanilla.MinecraftItemTypes;
 }
 
 export class SetAgeable extends BehaviorEntityComponentBuilder<Record<string, unknown>, "minecraft:ageable"> {

@@ -35,9 +35,9 @@ interface InteractionsTypes {
 }
 
 interface ParticleOnStartTypes {
-    particleOffsetTowardsInteractor: boolean;
-    particleType: string;
-    particleYOffset: number;
+    particleOffsetTowardsInteractor?: boolean;
+    particleType?: string;
+    particleYOffset?: number;
 }
 
 interface RepairItemsTypes {
@@ -46,8 +46,8 @@ interface RepairItemsTypes {
 }
 
 interface SpawnItemsTypes {
-    table: string;
-    yOffset: number;
+    table?: string;
+    yOffset?: number;
 }
 
 export class SetInteract extends BehaviorEntityComponentBuilder<InteractData, "minecraft:interact"> {

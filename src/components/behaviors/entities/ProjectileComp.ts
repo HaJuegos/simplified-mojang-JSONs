@@ -87,22 +87,23 @@ interface HurtOwnerTypes {
 }
 
 interface ImpactDamageTypes {
-    applyKnockbackToBlockingTargets: boolean;
-    catchFire: boolean;
-    ceilPreCriticalDamage: boolean;
-    channeling: boolean;
-    damage: {
+    applyKnockbackToBlockingTargets?: boolean;
+    catchFire?: boolean;
+    ceilPreCriticalDamage?: boolean;
+    channeling?: boolean;
+    damage?: {
         min: number;
         max: number;
-    },
-    destroyOnHit: boolean;
-    destroyOnHitRequiresDamage: boolean;
-    filter: EntityFilter | EntityFilter[];
-    knockback: boolean;
-    maxCriticalDamage: number;
-    minCriticalDamage: number;
-    powerMultiplier: number;
-    setLastHurtRequiresDamage: number;
+    } | number,
+    destroyOnHit?: boolean;
+    destroyOnHitRequiresDamage?: boolean;
+    filter?: EntityFilter | EntityFilter[];
+    knockback?: boolean;
+    maxCriticalDamage?: number;
+    minCriticalDamage?: number;
+    powerMultiplier?: number;
+    setLastHurtRequiresDamage?: number;
+    difficultyRandomization?: 'none' | 'additive' | 'multiplicative';
 }
 
 interface MobEffectTypes {

@@ -253,6 +253,7 @@ export { SetHealable } from "./HealableComp";
 export { SetHealth } from "./HealthComp";
 export { SetHeartbeat } from "./HeartbeatComp";
 export { SetHide } from "./HideComp";
+export { SetHome } from "./HomeComp";
 export { SetHorseJumpStrength } from "./HorseJumpStrengthComp";
 export { SetHurtOnCondition } from "./HurtOnConditionComp";
 export { SetHurtWhenWet } from "./HurtWhenWetComp";

@@ -44,7 +44,7 @@ class GenerateAutoIndexs {
      * @author HaJuegos - 01-10-2026
      * @private
      */
-    private targetDirs: BarrelTarget[] = [
+    private readonly targetDirs: BarrelTarget[] = [
         { dir: "src/components/behaviors/entities", namespace: "BPEntityComponents", kind: "class", syncIds: true },
         { dir: "src/templates/behaviors/entities", namespace: "BPEntityTemplates", kind: "const" },
     ];

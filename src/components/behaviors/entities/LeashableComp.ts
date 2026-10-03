@@ -9,7 +9,7 @@ interface LeashableData extends BPComponent {
     onLeash?: EntityFilterTrigger;
     onUnleash?: EntityFilterTrigger;
     unleashOnRemoval?: boolean;
-    presets: PresetLeashTypes[];
+    presets?: PresetLeashTypes[];
 }
 
 interface PresetLeashTypes {

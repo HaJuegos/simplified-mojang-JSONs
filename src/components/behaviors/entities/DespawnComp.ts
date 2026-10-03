@@ -5,8 +5,8 @@ import { EntityFilter } from "../../../types/EntityFilters";
 interface DespawnData extends BPComponent {
     despawnFromChance?: boolean;
     despawnFromDistance?: {
-        minDistance: number;
-        maxDistance: number;
+        minDistance?: number;
+        maxDistance?: number;
     };
     despawnFromInactivity?: boolean;
     despawnFromSimulationEdge?: boolean;

@@ -56,17 +56,17 @@ export class SetAmbientSoundInterval extends BehaviorEntityComponentBuilder<Reco
      * @constructor
      * @public
      */
-    public constructor (params: AmbientSoundIntervalData) {
-        const isEventsArray = Array.isArray(params.soundEvents);
+    public constructor (params?: AmbientSoundIntervalData) {
+        const isEventsArray = Array.isArray(params?.soundEvents);
 
         super("minecraft:ambient_sound_interval", {
-            eventName: isEventsArray ? undefined : params.soundEvents,
-            eventNames: isEventsArray ? (params.soundEvents as EventsNameAmbientSound[]).map(event => ({
+            eventName: isEventsArray ? undefined : params?.soundEvents,
+            eventNames: isEventsArray ? (params?.soundEvents as EventsNameAmbientSound[]).map(event => ({
                 eventName: event.soundID,
                 condition: event.condition
             })) : undefined,
-            value: params.minRandomCooldownSound ?? 8,
-            range: params.maxRandomCooldownSound ?? 16
+            value: params?.minRandomCooldownSound ?? 8,
+            range: params?.maxRandomCooldownSound ?? 16
         });
     }
 }

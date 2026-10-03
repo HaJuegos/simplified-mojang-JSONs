@@ -1,6 +1,6 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface BehaviorMeleeBoxAttackData extends BPComponent {
     priority: number;
@@ -15,8 +15,8 @@ interface BehaviorMeleeBoxAttackData extends BPComponent {
     maxPathTime?: number;
     meleeFov?: number;
     minPathTime?: number;
-    onAttack?: string | EntityFilter | EntityFilter[];
-    onKill?: string | EntityFilter | EntityFilter[];
+    onAttack?: string | EntityFilterTrigger | EntityFilterTrigger[];
+    onKill?: string | EntityFilterTrigger | EntityFilterTrigger[];
     outerBoundaryTimeIncrease?: number;
     pathFailTimeIncrease?: number;
     pathInnerBoundary?: number;

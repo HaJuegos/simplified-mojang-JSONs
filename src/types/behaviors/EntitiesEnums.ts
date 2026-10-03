@@ -98,12 +98,6 @@ interface BPAnimationScriptEntities {
  */
 interface BPBaseProperty {
     /**
-     * ID de la propiedad en cuestion a crear. Como por ej: 'ha:test'.
-     * @type {string}
-     */
-    idProperty: string;
-
-    /**
      * Parametro que indica si esta propiedad debe sincronizarse con el client side.
      * @type {boolean}
      */
@@ -127,7 +121,7 @@ interface BPBoolPropertyEntity extends BPBaseProperty {
      * Valor por defecto de la propiedad.
      * @type {boolean}
      */
-    default: boolean;
+    default: boolean | MoLangValue;
 }
 
 /**
@@ -238,6 +232,14 @@ interface BPEntityEventsBase<G extends string = string> {
      * @type {?ManagerCGTypes<G>}
      */
     remove?: ManagerCGTypes<G>;
+
+    /**
+     * (Opcional) Parametro que indica si la entidad debe ejecutar un comando en este evento.
+     * @type {?{command: string | string[];}}
+     */
+    queueCommand?: {
+        command: string | string[];
+    };
 
     /**
      * (Opcional) Parametro que indica de dropear un item de la entidad. Por defecto, no es necesario establecer un slot.
@@ -374,7 +376,7 @@ interface ManagerCGTypes<G extends string = string> {
  * @author HaJuegos - 30-09-2026
  */
 type SequenceItemsEvents<G extends string = string> = BPEntityEvents<G> & {
-    filters: EntityFilter | EntityFilter[];
+    filters?: EntityFilter | EntityFilter[];
 };
 
 /**

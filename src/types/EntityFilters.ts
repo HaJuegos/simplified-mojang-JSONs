@@ -446,6 +446,12 @@ interface GlobalNavigationParams {
     avoidDamageBlocks?: boolean;
 
     /**
+     * Sin documentar. Pero suponemos que es para permitir a la IA interactuar con puertas.
+     * @type {?boolean}
+     */
+    usingDoorAnnotation?: boolean;
+
+    /**
      * Indica a la IA si debe pasar de largo de los portales (como los del Nether) al buscar camino.
      * @type {?boolean}
      */

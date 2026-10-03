@@ -1,13 +1,13 @@
 import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter, TargetItemsTypes } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger, TargetItemsTypes } from "../../../types/EntityFilters";
 import { MoLangValue } from "../../../types/MoLang";
 
 interface BehaviorMoveToBlockData extends BPComponent {
     priority: number;
     goalRadius?: number;
-    onStayCompleted?: string | EntityFilter | EntityFilter[];
+    onStayCompleted?: string | EntityFilterTrigger | EntityFilterTrigger[];
     onReach?: string | EntityFilter | EntityFilter[];
     startChance?: number;
     searchRange?: number;
@@ -16,7 +16,7 @@ interface BehaviorMoveToBlockData extends BPComponent {
     targetSelectionMethod?: "random" | "nearest";
     targetOffset?: [number, number, number];
     targetBlocks?: (string | TargetItemsTypes)[];
-    targetBlockFilters?: EntityFilter[];
+    targetBlockFilters?: EntityFilter | EntityFilter[];
     tickInterval?: number;
 }
 

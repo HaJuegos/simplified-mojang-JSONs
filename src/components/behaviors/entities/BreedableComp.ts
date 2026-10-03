@@ -6,8 +6,8 @@ import { EntityFilter, EntityFilterTrigger, TargetItemsTypes } from "../../../ty
 interface BreedableData extends BPComponent {
     allowSitting?: boolean;
     breedCooldown?: number;
-    breedItems?: TargetItemsTypes | BreedItemsTypes[];
-    breedsWith?: BreedsWithTypes | BreedsWithTypes[];
+    breedItems?: TargetItemsTypes | BreedItemsTypes[] | string[];
+    breedsWith?: BreedsWithTypes | BreedsWithTypes[] | Record<string, unknown>;
     causesPregnancy?: boolean;
     environmentRequirements?: EnvRequirementsTypes | EnvRequirementsTypes[];
     extraBabyChance?: number;

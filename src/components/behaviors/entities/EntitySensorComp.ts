@@ -7,15 +7,15 @@ interface EntitySensorData extends BPComponent {
 }
 
 interface SubsensorsTypes {
-    cooldown: number,
-    event: string,
-    eventFilters: EntityFilter | EntityFilter[],
-    maximumCount: number,
-    minimumCount: number,
-    range: [number, number],
-    requireAll: boolean,
-    sensorRange: number,
-    yOffset: number;
+    cooldown?: number,
+    event?: string,
+    eventFilters?: EntityFilter | EntityFilter[],
+    maximumCount?: number,
+    minimumCount?: number,
+    range?: [number, number],
+    requireAll?: boolean,
+    sensorRange?: number,
+    yOffset?: number;
 }
 
 export class SetEntitySensor extends BehaviorEntityComponentBuilder<EntitySensorData, "minecraft:entity_sensor"> {

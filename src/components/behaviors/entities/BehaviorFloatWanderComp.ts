@@ -15,7 +15,7 @@ interface BehaviorFloatWanderData extends BPComponent {
     surfaceXzDist?: number;
     surfaceYDist?: number;
     useHomePositionRestriction?: boolean;
-    floatDuration?: {
+    floatDuration?: [number, number] | {
         min: number,
         max: number;
     };

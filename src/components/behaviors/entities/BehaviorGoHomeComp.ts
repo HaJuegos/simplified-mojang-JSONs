@@ -1,14 +1,14 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface BehaviorGoHomeData extends BPComponent {
     priority: number;
     speedMultiplier?: number;
     goalRadius?: number;
     interval?: number;
-    onHome?: string | EntityFilter | EntityFilter[];
-    onFailed?: EntityFilter | EntityFilter[];
+    onHome?: string | EntityFilterTrigger | EntityFilterTrigger[];
+    onFailed?: string | EntityFilterTrigger | EntityFilterTrigger[];
     calculateNewPathRadius?: number;
 }
 

@@ -24,7 +24,8 @@
         "structures"
     ],
     "scripts": {
-        "generatepaths": "tsx scripts/autoIndexes.ts"
+        "generatepaths": "tsx scripts/autoIndexes.ts",
+        "exportjson": "tsx scripts/exporttojson.ts"
     },
     "author": "HaJuegos",
     "license": "MIT",
