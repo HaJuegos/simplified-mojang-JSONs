@@ -4,9 +4,13 @@ import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Golem de Hierro para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const IronGolemTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.IronGolem,
-    formatVersion: FormatVersionEntities.V1_26_20,
     description: {
         isSummonable: true,
         isSpawneable: true
@@ -28,21 +32,9 @@ export const IronGolemTemplate = createBPEntityTemplate({
                 mustReach: true,
                 entityTypes: [
                     {
-                        filters: EntityFilters.allOf(
-                            EntityFilters.anyOf(
-                                {
-                                    test: "is_family",
-                                    subject: 1,
-                                    operator: 0,
-                                    value: "mob"
-                                },
-                                {
-                                    test: "is_family",
-                                    subject: 1,
-                                    operator: 0,
-                                    value: "player"
-                                }
-                            )
+                        filters: EntityFilters.anyOf(
+                            EntityFilters.isFamily('mob', 'other'),
+                            EntityFilters.isFamily('player', 'other')
                         )
                     }
                 ],
@@ -106,50 +98,20 @@ export const IronGolemTemplate = createBPEntityTemplate({
             entityTypes: [
                 {
                     filters: EntityFilters.allOf(
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 0,
-                            value: "monster"
-                        },
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 1,
-                            value: "creeper"
-                        }
+                        EntityFilters.isFamily('creeper', 'other', '!='),
+                        EntityFilters.isFamily('monster', 'other')
                     )
                 },
                 {
                     filters: EntityFilters.allOf(
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 0,
-                            value: "hoglin"
-                        },
-                        {
-                            test: "is_difficulty",
-                            subject: 0,
-                            operator: 1,
-                            value: 0
-                        }
+                        EntityFilters.isDifficulty('peaceful', 'self', '!='),
+                        EntityFilters.isFamily('hoglin', 'other')
                     )
                 },
                 {
                     filters: EntityFilters.allOf(
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 0,
-                            value: "zoglin"
-                        },
-                        {
-                            test: "is_difficulty",
-                            subject: 0,
-                            operator: 1,
-                            value: 0
-                        }
+                        EntityFilters.isDifficulty('peaceful', 'self', '!='),
+                        EntityFilters.isFamily('zoglin', 'other')
                     )
                 }
             ],
@@ -240,7 +202,7 @@ export const IronGolemTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.25
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidDamageBlocks: true,
@@ -249,7 +211,7 @@ export const IronGolemTemplate = createBPEntityTemplate({
             usingDoorAnnotation: true
         }),
         new BPEntityComponents.SetPersistent(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPreferredPath({
             defaultBlockCost: 1.5,
             jumpCost: 5,

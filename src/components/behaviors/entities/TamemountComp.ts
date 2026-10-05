@@ -1,6 +1,6 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter, TargetItemsTypes } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger, TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface TamemountData extends BPComponent {
     attemptTemperMod?: number;
@@ -10,7 +10,7 @@ interface TamemountData extends BPComponent {
     maxTemper?: number;
     minTemper?: number;
     rideText?: string;
-    tameEvent?: EntityFilter;
+    tameEvent?: EntityFilterTrigger;
 }
 
 interface AutoRejectTypes {

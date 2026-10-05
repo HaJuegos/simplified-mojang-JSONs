@@ -3,15 +3,20 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Guardian para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const GuardianTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Guardian,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:guardian_aggressive": [
@@ -25,27 +30,10 @@ export const GuardianTemplate = createBPEntityTemplate({
                 mustSee: true,
                 entityTypes: [
                     {
-                        filters: EntityFilters.allOf(
-                            EntityFilters.anyOf(
-                                {
-                                    test: "is_family",
-                                    subject: 1,
-                                    operator: 0,
-                                    value: "player"
-                                },
-                                {
-                                    test: "is_family",
-                                    subject: 1,
-                                    operator: 0,
-                                    value: "squid"
-                                },
-                                {
-                                    test: "is_family",
-                                    subject: 1,
-                                    operator: 0,
-                                    value: "axolotl"
-                                }
-                            )
+                        filters: EntityFilters.anyOf(
+                            EntityFilters.isFamily('player', 'other'),
+                            EntityFilters.isFamily('squid', 'other'),
+                            EntityFilters.isFamily('axolotl', 'other')
                         )
                     }
                 ],
@@ -64,12 +52,7 @@ export const GuardianTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetBehaviorAvoidMobType({
                 entityTypes: [
                     {
-                        filters: EntityFilters.allOf({
-                            test: "is_family",
-                            subject: 1,
-                            operator: 0,
-                            value: "player"
-                        }),
+                        filters: EntityFilters.isFamily('player', 'other'),
                         maxDist: 8
                     }
                 ],
@@ -90,7 +73,7 @@ export const GuardianTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.in.water",
-                    condition: "query.head_is_in_water"
+                    condition: `${MoLang.headIsInWater()}`
                 }
             ],
             minRandomCooldownSound: 8,
@@ -121,27 +104,10 @@ export const GuardianTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "squid"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "axolotl"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('squid', 'other'),
+                        EntityFilters.isFamily('axolotl', 'other')
                     )
                 }
             ],
@@ -178,7 +144,10 @@ export const GuardianTemplate = createBPEntityTemplate({
             max: 30,
             value: 30
         }),
-        // TODO(migrate): componente sin clase "minecraft:home": {"restriction_radius": 16, "restriction_type": "random_movement"}
+        new BPEntityComponents.SetHome({
+            restrictionRadius: 16,
+            restrictionType: 'random_movement'
+        }),
         new BPEntityComponents.SetHurtOnCondition({
             damageConditions: [
                 {
@@ -196,7 +165,7 @@ export const GuardianTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.12
         }),
-        new BPEntityComponents.SetMovementSway({}),
+        new BPEntityComponents.SetMovementSway(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationGeneric({
             canBreach: true,
@@ -206,7 +175,7 @@ export const GuardianTemplate = createBPEntityTemplate({
             isAmphibious: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetTargetNearbySensor({

@@ -7,12 +7,12 @@ interface EquippableData extends BPComponent {
 }
 
 interface SlotsEquipTypes {
-    acceptedItems: (string | TargetItemsTypes)[],
-    interactText: string,
-    item: string | TargetItemsTypes,
-    onEquip: EntityFilterTrigger,
-    onUnequip: EntityFilterTrigger,
-    slot: number;
+    acceptedItems?: (string | TargetItemsTypes)[],
+    interactText?: string,
+    item?: string | TargetItemsTypes,
+    onEquip?: EntityFilterTrigger,
+    onUnequip?: EntityFilterTrigger,
+    slot?: number;
 }
 
 export class SetEquippable extends BehaviorEntityComponentBuilder<EquippableData, "minecraft:equippable"> {

@@ -3,9 +3,13 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
+/**
+ * Plantilla vanilla de la Fireball para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const FireballTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Fireball,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         isSummonable: false,
         isSpawneable: false

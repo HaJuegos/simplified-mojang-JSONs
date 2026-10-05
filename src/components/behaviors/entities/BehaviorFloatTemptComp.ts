@@ -1,7 +1,7 @@
 import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface BehaviorFloatTemptData extends BPComponent {
     priority: number;
@@ -14,8 +14,9 @@ interface BehaviorFloatTemptData extends BPComponent {
     stopDistance?: number;
     temptSound?: string;
     withinRadius?: number;
-    onStart?: string | EntityFilter | EntityFilter[];
-    onEnd?: string | EntityFilter | EntityFilter[];
+    onStart?: string | EntityFilterTrigger | EntityFilterTrigger[];
+    onEnd?: string | EntityFilterTrigger | EntityFilterTrigger[];
+    onTemptEnd?: string | EntityFilterTrigger | EntityFilterTrigger[];
 }
 
 export class SetBehaviorFloatTempt extends BehaviorEntityComponentBuilder<BehaviorFloatTemptData, "minecraft:behavior.float_tempt"> {

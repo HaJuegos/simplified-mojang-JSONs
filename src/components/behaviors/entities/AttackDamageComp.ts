@@ -2,8 +2,8 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
 interface AttackDamageData extends BPComponent {
-    value: number | [number, number];
-    min: number;
+    value?: number | [number, number];
+    min?: number;
     max?: number;
 }
 

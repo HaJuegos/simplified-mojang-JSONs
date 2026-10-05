@@ -10,6 +10,7 @@ interface TeleportData extends BPComponent {
     randomTeleports?: boolean;
     targetDistance?: number;
     targetTeleportChance?: number;
+    teleportsOnProjectileHit?: boolean;
 }
 
 export class SetTeleport extends BehaviorEntityComponentBuilder<TeleportData, "minecraft:teleport"> {

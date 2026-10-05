@@ -11,9 +11,9 @@ interface BehaviorFireAtTargetData extends BPComponent {
         max: number;
     };
     ownerAnchor?: number;
-    ownerOffset?: [number, number];
+    ownerOffset?: [number, number, number];
     targetAnchor?: number;
-    targetOffset?: [number, number];
+    targetOffset?: [number, number, number];
     postShootDelay?: number;
     preShootDelay?: number;
     projectileDef?: string | MinecraftEntityTypes;

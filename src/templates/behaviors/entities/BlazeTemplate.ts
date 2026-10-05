@@ -1,16 +1,21 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTemplateBuilder";
-import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
+import { SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Blaze para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const BlazeTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Blaze,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "melee_mode": [
@@ -43,13 +48,20 @@ export const BlazeTemplate = createBPEntityTemplate({
                     min: 3,
                     max: 5
                 },
-                // TODO(migrate): clave no soportada "attack_range": {"min": 0.0, "max": 48.0}
+                attackRange: {
+                    min: 0,
+                    max: 48
+                },
                 burstInterval: 0.3,
                 burstShots: 3,
                 priority: 3
             }),
             new BPEntityComponents.SetShooter({
-                // TODO(migrate): clave no soportada "def": "minecraft:small_fireball"
+                projectiles: [
+                    {
+                        def: "minecraft:small_fireball"
+                    }
+                ]
             })
         ]
     },
@@ -64,12 +76,7 @@ export const BlazeTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "player"
-                    }),
+                    filters: EntityFilters.isFamily('player', 'other'),
                     maxDist: 48
                 }
             ],
@@ -100,10 +107,10 @@ export const BlazeTemplate = createBPEntityTemplate({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 10 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 10 : 0`
         }),
         new BPEntityComponents.SetFireImmune(),
-        // TODO(migrate): componente sin clase "minecraft:freezing_vulnerable": {}
+        new BPEntityComponents.SetFreezingVulnerable(),
         new BPEntityComponents.SetFollowRange({
             max: 48,
             value: 48

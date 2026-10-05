@@ -3,13 +3,17 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
+/**
+ * Plantilla vanilla de los Fireworks para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const FireworksRocketTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.FireworksRocket,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Misc,
         isSummonable: true,
-        isSpawneable: false,
-        spawnCategory: SpawnCategoryEntities.Misc
+        isSpawneable: false
     },
     componentsGroups: {},
     components: [
@@ -27,7 +31,7 @@ export const FireworksRocketTemplate = createBPEntityTemplate({
                 useMotionPredictionHints: true
             }
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock()
     ],

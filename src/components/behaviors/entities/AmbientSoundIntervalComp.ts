@@ -14,19 +14,19 @@ interface AmbientSoundIntervalData extends BPComponent {
      * Lista de IDs condicionales y ID de los sonidos ambientales de la entidad.
      * @type {(string | EventsNameAmbientSound[])}
      */
-    soundEvents: string | EventsNameAmbientSound[];
+    soundEvents?: string | EventsNameAmbientSound[];
 
     /**
      * Tiempo minimo en segundos que se agregara al azar al tiempo de retardo del sonido. Por defecto sera el valor 8.
      * @type {number}
      */
-    minRandomCooldownSound: number;
+    minRandomCooldownSound?: number;
 
     /**
      * Tiempo maximo en segundos que se agregara al azar al tiempo de retardo del sonido. Por defecto sera el valor 16.
      * @type {number}
      */
-    maxRandomCooldownSound: number;
+    maxRandomCooldownSound?: number;
 }
 
 /**
@@ -39,13 +39,13 @@ interface EventsNameAmbientSound {
      * ID del sonido ambiental de la entidad.
      * @type {(string | EventsNameAmbientSound[])}
      */
-    soundID: string;
+    soundID?: string;
 
     /**
      * Condicion {@link MoLang} a cumplirse antes de ejecutar el sonido.
      * @type {MoLangValue}
      */
-    condition: MoLangValue;
+    condition?: MoLangValue;
 }
 
 export class SetAmbientSoundInterval extends BehaviorEntityComponentBuilder<Record<string, unknown>, "minecraft:ambient_sound_interval"> {

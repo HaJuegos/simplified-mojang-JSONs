@@ -18,7 +18,7 @@ export class SetInventory extends BehaviorEntityComponentBuilder<InventoryData, 
      * @constructor
      * @public
      */
-    public constructor (params: InventoryData) {
+    public constructor (params?: InventoryData) {
         super("minecraft:inventory", params);
     }
 }

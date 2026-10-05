@@ -4,14 +4,18 @@ import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/beh
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Command Block en Minecart para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 03-10-2026
+ */
 export const CommandBlockMinecartTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.CommandBlockMinecart,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
+        spawnCategory: SpawnCategoryEntities.Misc,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: false,
-        spawnCategory: SpawnCategoryEntities.Misc
+        isSpawneable: false
     },
     componentsGroups: {
         "minecraft:command_block_active": [
@@ -60,8 +64,8 @@ export const CommandBlockMinecartTemplate = createBPEntityTemplate({
                 useMotionPredictionHints: true
             }
         }),
-        new BPEntityComponents.SetInventory({}),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetInventory(),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {
@@ -74,7 +78,7 @@ export const CommandBlockMinecartTemplate = createBPEntityTemplate({
             ]
         }),
         new BPEntityComponents.SetPushableByBlock(),
-        new BPEntityComponents.SetRailMovement({}),
+        new BPEntityComponents.SetRailMovement(),
         new BPEntityComponents.SetTypeFamily({
             family: ["minecart", "inanimate"]
         })

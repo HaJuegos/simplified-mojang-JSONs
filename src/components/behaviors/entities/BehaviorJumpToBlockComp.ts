@@ -6,15 +6,15 @@ import { TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorJumpToBlockData extends BPComponent {
     priority: number;
-    cooldownRange?: {
+    cooldownRange?: [number, number] | {
         min: number,
         max: number;
     };
-    forbiddenBlocks?: string[] | MinecraftBlockTypes[] | TargetItemsTypes[];
+    forbiddenBlocks?: (string | MinecraftBlockTypes | TargetItemsTypes)[];
     maxVelocity?: number;
     minimumDistance?: number;
     minimumPathLength?: number;
-    preferredBlocks?: string[] | MinecraftBlockTypes[] | TargetItemsTypes[];
+    preferredBlocks?: (string | MinecraftBlockTypes | TargetItemsTypes)[];
     preferredBlocksChance?: number;
     scaleFactor?: number;
     searchHeight?: number;

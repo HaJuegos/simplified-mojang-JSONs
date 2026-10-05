@@ -3,15 +3,20 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Creeper para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 03-10-2026
+ */
 export const CreeperTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Creeper,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:charged_creeper": [
@@ -43,8 +48,8 @@ export const CreeperTemplate = createBPEntityTemplate({
                 destroyAffectedByGriefing: true,
                 fuseLength: 1.5
             }),
-            new BPEntityComponents.SetOnTargetEscape({}),
-            new BPEntityComponents.SetTargetNearbySensor({})
+            new BPEntityComponents.SetOnTargetEscape(),
+            new BPEntityComponents.SetTargetNearbySensor()
         ],
         "minecraft:forced_exploding": [
             new BPEntityComponents.SetExplode({
@@ -54,8 +59,8 @@ export const CreeperTemplate = createBPEntityTemplate({
                 destroyAffectedByGriefing: true,
                 fuseLength: 1.5
             }),
-            new BPEntityComponents.SetOnTargetEscape({}),
-            new BPEntityComponents.SetTargetNearbySensor({})
+            new BPEntityComponents.SetOnTargetEscape(),
+            new BPEntityComponents.SetTargetNearbySensor()
         ]
     },
     components: [
@@ -65,21 +70,9 @@ export const CreeperTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorAvoidMobType({
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "ocelot"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "cat"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('ocelot', 'other'),
+                        EntityFilters.isFamily('cat', 'other')
                     ),
                     maxDist: 6,
                     sprintSpeedMultiplier: 1.2
@@ -109,12 +102,7 @@ export const CreeperTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "player"
-                    })
+                    filters: EntityFilters.isFamily('player', 'other')
                 }
             ],
             priority: 1
@@ -156,7 +144,7 @@ export const CreeperTemplate = createBPEntityTemplate({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 : 0`
         }),
         new BPEntityComponents.SetHealth({
             max: 20,
@@ -198,7 +186,7 @@ export const CreeperTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.2
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             canPathOverWater: true,
@@ -208,8 +196,9 @@ export const CreeperTemplate = createBPEntityTemplate({
             event: "minecraft:stop_exploding",
             target: "self"
         }),
-        new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPhysics(),
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetTargetNearbySensor({
             insideRange: 2.5,
             onInsideRange: {

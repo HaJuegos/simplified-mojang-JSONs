@@ -3,6 +3,8 @@ import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityFilter } from "../../../types/EntityFilters";
 
 interface EntitySensorData extends BPComponent {
+    findPlayersOnly?: boolean;
+    relativeRange?: boolean;
     subsensors: SubsensorsTypes[];
 }
 

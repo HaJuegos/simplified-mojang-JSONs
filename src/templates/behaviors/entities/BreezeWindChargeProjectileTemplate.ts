@@ -3,9 +3,13 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
+/**
+ * Plantilla vanilla del Breeze WindCharge para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const BreezeWindChargeProjectileTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.BreezeWindChargeProjectile,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         isSummonable: false,
         isSpawneable: false
@@ -44,7 +48,7 @@ export const BreezeWindChargeProjectileTemplate = createBPEntityTemplate({
             power: 3,
             soundEffect: "breeze_wind_charge.burst"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetProjectile({
             gravity: 0,
             uncertaintyBase: 5,

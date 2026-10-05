@@ -9,12 +9,13 @@ interface BehaviorTemptData extends BPComponent {
     canTemptWhileRidden?: boolean;
     canTemptVertically?: boolean;
     items?: (string | TargetItemsTypes)[];
-    soundInterval?: number;
+    soundInterval?: number | [number, number];
     stopDistance?: number;
     temptSound?: string;
     withinRadius?: number;
     onStart?: string | EntityFilterTrigger | EntityFilterTrigger[];
     onEnd?: string | EntityFilterTrigger | EntityFilterTrigger[];
+    onTemptEnd?: string | EntityFilterTrigger | EntityFilterTrigger[];
 }
 
 export class SetBehaviorTempt extends BehaviorEntityComponentBuilder<BehaviorTemptData, "minecraft:behavior.tempt"> {

@@ -2,7 +2,7 @@ import { MinecraftBlockTypes, MinecraftItemTypes } from "@minecraft/vanilla-data
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { MoLangValue } from "../../../types/MoLang";
-import { EntityFilter, TargetItemsTypes } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger, TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorLayEggData extends BPComponent {
     priority: number;
@@ -12,7 +12,7 @@ interface BehaviorLayEggData extends BPComponent {
     goalRadius?: number;
     layEggSound?: string;
     laySeconds?: number;
-    onLay?: string | EntityFilter | EntityFilter[];
+    onLay?: string | EntityFilterTrigger | EntityFilterTrigger[];
     searchHeight?: number;
     searchRange?: number;
     targetBlocks?: (string | MinecraftBlockTypes)[];

@@ -13,7 +13,7 @@ export class SetInstantDespawn extends BehaviorEntityComponentBuilder<InstantDes
      * @constructor
      * @public
      */
-    public constructor (params: InstantDespawnData) {
+    public constructor (params?: InstantDespawnData) {
         super("minecraft:instant_despawn", params);
     }
 }

@@ -13,7 +13,7 @@ export class SetBehaviorPlayerRideTamed extends BehaviorEntityComponentBuilder<B
      * @constructor
      * @public
      */
-    public constructor (params: BehaviorPlayerRideTamedData) {
+    public constructor (params?: BehaviorPlayerRideTamedData) {
         super("minecraft:behavior.player_ride_tamed", params);
     }
 }

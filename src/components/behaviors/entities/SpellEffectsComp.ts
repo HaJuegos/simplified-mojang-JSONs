@@ -8,12 +8,12 @@ interface SpellEffectsData extends BPComponent {
 }
 
 interface ListEffectsTypes {
-    ambient: boolean;
-    amplifier: number;
-    displayOnScreenAnimation: boolean;
-    duration: "infinite" | number;
-    effect: EntityEffectTypes;
-    visible: boolean;
+    ambient?: boolean;
+    amplifier?: number;
+    displayOnScreenAnimation?: boolean;
+    duration?: "infinite" | number;
+    effect?: EntityEffectTypes;
+    visible?: boolean;
 }
 
 export class SetSpellEffects extends BehaviorEntityComponentBuilder<SpellEffectsData, "minecraft:spell_effects"> {

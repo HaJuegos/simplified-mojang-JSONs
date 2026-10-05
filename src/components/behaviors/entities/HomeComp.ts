@@ -3,9 +3,9 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
 interface HomeData extends BPComponent {
-    restrictionRadius: number;
-    homeBlockList: (string | MinecraftBlockTypes)[];
-    restrictionType: "none" | "all_movement" | "random_movement";
+    restrictionRadius?: number;
+    homeBlockList?: (string | MinecraftBlockTypes)[];
+    restrictionType?: "none" | "all_movement" | "random_movement";
 }
 
 export class SetHome extends BehaviorEntityComponentBuilder<HomeData, "minecraft:home"> {

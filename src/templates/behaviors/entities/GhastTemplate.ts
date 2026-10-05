@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Ghast para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const GhastTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Ghast,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {},
     components: [
@@ -31,19 +36,17 @@ export const GhastTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "player"
-                    }),
+                    filters: EntityFilters.isFamily('player', 'other'),
                     maxDist: 28
                 }
             ],
             priority: 2
         }),
         new BPEntityComponents.SetBehaviorRangedAttack({
-            attackRadius: 64,
+            attackRange: {
+                min: 64,
+                max: 64
+            },
             chargeChargedTrigger: 1,
             priority: 1,
             chargeShootTrigger: 2
@@ -71,7 +74,7 @@ export const GhastTemplate = createBPEntityTemplate({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
         }),
         new BPEntityComponents.SetFireImmune(),
         new BPEntityComponents.SetFollowRange({
@@ -96,9 +99,14 @@ export const GhastTemplate = createBPEntityTemplate({
             usingDoorAnnotation: true
         }),
         new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetShooter({
-            // TODO(migrate): clave no soportada "def": "minecraft:fireball"
+            projectiles: [
+                {
+                    def: "minecraft:fireball"
+                }
+            ]
         }),
         new BPEntityComponents.SetTypeFamily({
             family: ["ghast", "monster", "mob"]

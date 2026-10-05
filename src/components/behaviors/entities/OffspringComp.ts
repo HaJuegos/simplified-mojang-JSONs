@@ -7,7 +7,9 @@ interface OffspringData extends BPComponent {
     mutationFactor?: MutationFactorTypes;
     mutationStrategy?: string | 'none';
     parentCentricAttributeBlending?: string[];
-    propertyInheritance?: InheritancePropertyTypes;
+    propertyInheritance?: {
+        [key: string]: {};
+    } | InheritancePropertyTypes;
     randomExtraVariantMutationInterval?: [number, number];
     randomVariantMutationInterval?: [number, number];
     inheritTamed?: boolean;

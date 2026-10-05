@@ -4,9 +4,13 @@ import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Minecart para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const MinecartTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Minecart,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
         isExperimental: false,
         isSummonable: true,

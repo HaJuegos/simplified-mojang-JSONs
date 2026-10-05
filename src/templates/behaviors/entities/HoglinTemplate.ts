@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Hoglin para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const HoglinTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Hoglin,
-    formatVersion: FormatVersionEntities.V1_26_20,
     description: {
         spawnCategory: SpawnCategoryEntities.Monster,
         isSpawneable: true,
@@ -222,7 +227,7 @@ export const HoglinTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetExperienceReward({
             onBred: "Math.Random(1,7)",
-            onDeath: "query.last_hit_by_player ? 5 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 : 0`
         }),
         new BPEntityComponents.SetKnockbackResistance({
             value: 0.6
@@ -300,7 +305,7 @@ export const HoglinTemplate = createBPEntityTemplate({
             avoidWater: true,
             avoidDamageBlocks: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetCollisionBox({
@@ -323,8 +328,8 @@ export const HoglinTemplate = createBPEntityTemplate({
             lookDistance: 6,
             probability: 0.02
         }),
-        new BPEntityComponents.SetBalloonable({}),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetBalloonable(),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetConditionalBandwidthOptimization()

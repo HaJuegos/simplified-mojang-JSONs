@@ -15,7 +15,7 @@ export class SetMovementSway extends BehaviorEntityComponentBuilder<MovementSway
      * @constructor
      * @public
      */
-    public constructor (params: MovementSwayData) {
+    public constructor (params?: MovementSwayData) {
         super("minecraft:movement.sway", params);
     }
 }

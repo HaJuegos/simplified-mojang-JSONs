@@ -4,13 +4,17 @@ import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/beh
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Evoker para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const EvocationIllagerTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.EvocationIllager,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:celebrate": [
@@ -65,22 +69,12 @@ export const EvocationIllagerTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorAvoidMobType({
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "player"
-                    }),
+                    filters: EntityFilters.isFamily('player', 'other'),
                     maxDist: 8,
                     walkSpeedMultiplier: 0.6
                 },
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "creaking"
-                    }),
+                    filters: EntityFilters.isFamily('creaking', 'other'),
                     maxDist: 8,
                     sprintSpeedMultiplier: 1.2
                 }
@@ -120,50 +114,18 @@ export const EvocationIllagerTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "snowgolem"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "irongolem"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "wandering_trader"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('snowgolem', 'other'),
+                        EntityFilters.isFamily('irongolem', 'other'),
+                        EntityFilters.isFamily('wandering_trader', 'other'),
                     ),
                     maxDist: 20
                 },
                 {
                     filters: EntityFilters.allOf(
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 0,
-                            value: "villager"
-                        },
-                        {
-                            test: "has_component",
-                            subject: 1,
-                            operator: 1,
-                            value: "minecraft:is_baby"
-                        }
+                        EntityFilters.hasComponent('minecraft:is_baby', 'other'),
+                        EntityFilters.isFamily('villager', 'other'),
                     ),
                     maxDist: 20
                 }
@@ -293,7 +255,7 @@ export const EvocationIllagerTemplate = createBPEntityTemplate({
             width: 0.6
         }),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),
-        new BPEntityComponents.SetEquipItem({}),
+        new BPEntityComponents.SetEquipItem(),
         new BPEntityComponents.SetExperienceReward({
             onDeath: 10
         }),
@@ -321,7 +283,7 @@ export const EvocationIllagerTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.5
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidWater: true,
@@ -331,8 +293,9 @@ export const EvocationIllagerTemplate = createBPEntityTemplate({
             canPathOverWater: true
         }),
         new BPEntityComponents.SetPersistent(),
-        new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPhysics(),
+        new BPEntityComponents.SetPushableByEntity(),
+        new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetShareables({
             items: [
                 {
@@ -375,8 +338,6 @@ export const EvocationIllagerTemplate = createBPEntityTemplate({
         "minecraft:start_celebrating": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:celebrate"]
                     }

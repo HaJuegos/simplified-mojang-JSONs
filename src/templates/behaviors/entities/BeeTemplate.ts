@@ -5,6 +5,11 @@ import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Abeja para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 03-10-2026
+ */
 export const BeeTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Bee,
     description: {

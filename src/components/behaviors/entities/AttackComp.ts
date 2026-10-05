@@ -2,7 +2,7 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityEffectTypes } from "../../../types/EntityFilters";
 
-type AttackDamageOption = number | [number, number];
+type AttackDamageOption = number | [number, number] | { rangeMax: number, rangeMin: number; };
 
 /**
  * Lista de parametros fijos del componente en concreto.

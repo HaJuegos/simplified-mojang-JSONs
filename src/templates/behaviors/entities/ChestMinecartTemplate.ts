@@ -4,14 +4,18 @@ import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/beh
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Minecart con Cofre para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const ChestMinecartTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.ChestMinecart,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
+        spawnCategory: SpawnCategoryEntities.Misc,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: false,
-        spawnCategory: SpawnCategoryEntities.Misc
+        isSpawneable: false
     },
     componentsGroups: {},
     components: [
@@ -40,8 +44,8 @@ export const ChestMinecartTemplate = createBPEntityTemplate({
             inventorySize: 27,
             containerType: "minecart_chest"
         }),
-        new BPEntityComponents.SetIsStackable({}),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetIsStackable(),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {
@@ -54,7 +58,7 @@ export const ChestMinecartTemplate = createBPEntityTemplate({
             ]
         }),
         new BPEntityComponents.SetPushableByBlock(),
-        new BPEntityComponents.SetRailMovement({}),
+        new BPEntityComponents.SetRailMovement(),
         new BPEntityComponents.SetTypeFamily({
             family: ["minecart", "inanimate"]
         })

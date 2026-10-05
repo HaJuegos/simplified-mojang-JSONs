@@ -7,21 +7,21 @@ interface PushableByEntityData extends BPComponent {
 }
 
 interface PresetsPush {
-    filters: EntityFilter | EntityFilter[],
-    kickSpeedScale: number,
-    maxDistance: number,
-    maxKickSpeed: number,
-    minDistance: number,
-    minKickSpeed: number,
-    playSound: boolean,
-    playSoundCooldownInSeconds: number,
-    playSoundImpulseThreshold: number,
-    pushMode: "ball" | "default" | "legacy_boat" | "legacy_minecart" | "none",
-    pushScaleOther: number,
-    pushScaleSelf: number,
-    requireCollisionOverlap: boolean,
-    strengthMultiplier: number,
-    verticalKickMultiplier: number;
+    filters?: EntityFilter | EntityFilter[],
+    kickSpeedScale?: number,
+    maxDistance?: number,
+    maxKickSpeed?: number,
+    minDistance?: number,
+    minKickSpeed?: number,
+    playSound?: boolean,
+    playSoundCooldownInSeconds?: number,
+    playSoundImpulseThreshold?: number,
+    pushMode?: "ball" | "default" | "legacy_boat" | "legacy_minecart" | "none",
+    pushScaleOther?: number,
+    pushScaleSelf?: number,
+    requireCollisionOverlap?: boolean,
+    strengthMultiplier?: number,
+    verticalKickMultiplier?: number;
 }
 
 export class SetPushableByEntity extends BehaviorEntityComponentBuilder<PushableByEntityData, "minecraft:pushable_by_entity"> {

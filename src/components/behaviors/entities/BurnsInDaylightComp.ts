@@ -14,7 +14,7 @@ export class SetBurnsInDaylight extends BehaviorEntityComponentBuilder<BurnsInDa
      * @constructor
      * @public
      */
-    public constructor (params: BurnsInDaylightData) {
+    public constructor (params?: BurnsInDaylightData) {
         super("minecraft:burns_in_daylight", params);
     }
 }

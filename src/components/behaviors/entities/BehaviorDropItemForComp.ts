@@ -18,8 +18,8 @@ interface BehaviorDropItemForData extends BPComponent {
     searchHeight?: number;
     searchRange?: number;
     secondsBeforePickup?: number;
-    targetRange?: [number, number];
-    teleportOffset?: [number, number];
+    targetRange?: [number, number, number];
+    teleportOffset?: [number, number, number];
     timeOfDayRange?: {
         min: number,
         max: number;

@@ -1,12 +1,17 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTemplateBuilder";
-import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
+import { SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Burro para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const DonkeyTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Donkey,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -69,7 +74,7 @@ export const DonkeyTemplate = createBPEntityTemplate({
         "minecraft:donkey_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/horse.json"
@@ -225,7 +230,7 @@ export const DonkeyTemplate = createBPEntityTemplate({
                     }
                 ]
             }),
-            new BPEntityComponents.SetBehaviorPlayerRideTamed({}),
+            new BPEntityComponents.SetBehaviorPlayerRideTamed(),
             new BPEntityComponents.SetInventory({
                 inventorySize: 16,
                 containerType: "horse"
@@ -330,7 +335,7 @@ export const DonkeyTemplate = createBPEntityTemplate({
     },
     components: [
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
-        new BPEntityComponents.SetAmbientSoundInterval({}),
+        new BPEntityComponents.SetAmbientSoundInterval(),
         new BPEntityComponents.SetTypeFamily({
             family: ["donkey", "mob"]
         }),
@@ -365,7 +370,7 @@ export const DonkeyTemplate = createBPEntityTemplate({
             avoidWater: true,
             avoidDamageBlocks: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetOffspring({
@@ -388,7 +393,7 @@ export const DonkeyTemplate = createBPEntityTemplate({
                 }
             ]
         }),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetHealable({
             items: [
                 {
@@ -466,7 +471,7 @@ export const DonkeyTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorRandomLookAround({
             priority: 8
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {

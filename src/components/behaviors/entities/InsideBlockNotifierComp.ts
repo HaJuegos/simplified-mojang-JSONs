@@ -1,7 +1,7 @@
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface InsideBlockNotifierData extends BPComponent {
     blockList: BlockListTypes[];
@@ -9,13 +9,13 @@ interface InsideBlockNotifierData extends BPComponent {
 
 interface BlockListTypes {
     block: BlockDataTypes;
-    enteredBlockEvent?: EntityFilter;
-    exitedBlockEvent?: EntityFilter;
+    enteredBlockEvent?: EntityFilterTrigger;
+    exitedBlockEvent?: EntityFilterTrigger;
 }
 
 interface BlockDataTypes {
     name: string | MinecraftBlockTypes;
-    states?: Record<string, string>;
+    states?: Record<string, string | boolean>;
 }
 
 export class SetInsideBlockNotifier extends BehaviorEntityComponentBuilder<InsideBlockNotifierData, "minecraft:inside_block_notifier"> {

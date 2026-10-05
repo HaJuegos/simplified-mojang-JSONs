@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Caballo para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const HorseTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Horse,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -73,7 +78,7 @@ export const HorseTemplate = createBPEntityTemplate({
         "minecraft:horse_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/horse.json"
@@ -262,7 +267,7 @@ export const HorseTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetIsSaddled(),
             new BPEntityComponents.SetInputGroundControlled(),
             new BPEntityComponents.SetCanPowerJump(),
-            new BPEntityComponents.SetBehaviorPlayerRideTamed({})
+            new BPEntityComponents.SetBehaviorPlayerRideTamed()
         ],
         "minecraft:base_white": [
             new BPEntityComponents.SetVariant({
@@ -331,7 +336,7 @@ export const HorseTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.baby",
-                    condition: "query.is_baby"
+                    condition: `${MoLang.isBaby()}`
                 }
             ],
             minRandomCooldownSound: 12,
@@ -402,7 +407,7 @@ export const HorseTemplate = createBPEntityTemplate({
             avoidDamageBlocks: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetOffspring({
@@ -436,7 +441,7 @@ export const HorseTemplate = createBPEntityTemplate({
             ],
             unleashOnRemoval: false
         }),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetHealable({
             items: [
                 {
@@ -514,7 +519,7 @@ export const HorseTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorRandomLookAround({
             priority: 8
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {
@@ -534,8 +539,6 @@ export const HorseTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 36,
@@ -552,8 +555,6 @@ export const HorseTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 1,
@@ -600,8 +601,6 @@ export const HorseTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 1,

@@ -25,6 +25,7 @@ export {
     EntitySlotsArmor,
     GlobalNavigationParams,
     VanillaEntityFamilies,
+    BlockTagsTypes,
 };
 
 /**
@@ -97,7 +98,7 @@ type EntityEffectTypes = "absorption" | "bad_omen" | "blindness" | "conduit_powe
  * Lista de slots de armadura disponibles a usar en los componentes de entidades.
  * @author HaJuegos - 21-09-2026
  */
-type EntitySlotsArmor = 'slot.armor.head' | 'slot.armor.chest' | 'slot.armor.legs' | 'slot.armor.feet' | 'slot.armor.body' | 'slot.weapon.mainhand' | 'slot.weapon.offhand';
+type EntitySlotsArmor = 'slot.armor.head' | 'slot.armor.chest' | 'slot.armor.legs' | 'slot.armor.feet' | 'slot.armor.body' | 'slot.weapon.mainhand' | 'slot.weapon.offhand' | '0' | '1';
 
 /**
  * Lista de todas las familias vanillas encontradas en los archivos JSON que se pueden usar.
@@ -428,9 +429,9 @@ interface EntityAttackableTargetPriorityFilters extends EntityAttackableTargetFi
  * @author HaJuegos - 24-09-2026
  */
 interface TargetItemsTypes {
-    item: string | MinecraftItemTypes;
-    itemTag: string;
-    tags: MoLangValue;
+    item?: string | MinecraftItemTypes;
+    itemTag?: string;
+    tags?: MoLangValue;
 }
 
 /**
@@ -439,6 +440,12 @@ interface TargetItemsTypes {
  * @author HaJuegos - 27-09-2026
  */
 interface GlobalNavigationParams {
+    /**
+     * Sin documentar. Pero suponemos que es para que la IA piense que puede flotar.
+     * @type {?boolean}
+     */
+    canFloat?: boolean;
+
     /**
      * Indica a la IA si debe esquivar bloques que hacen daño (como cactus o fuego).
      * @type {?boolean}
@@ -473,7 +480,7 @@ interface GlobalNavigationParams {
      * Lista de bloques específicos que la IA debe evitar pisar o cruzar al calcular su camino.
      * @type {?(string | MinecraftBlockTypes)[]}
      */
-    blocksToAvoid?: (string | MinecraftBlockTypes)[];
+    blocksToAvoid?: (string | MinecraftBlockTypes | BlockTagsTypes)[];
 
     /**
      * Le dice a la IA si puede saltar y salir impulsado del agua (tipo delfín).
@@ -558,6 +565,31 @@ interface GlobalNavigationParams {
      * @type {?boolean}
      */
     isAmphibious?: boolean;
+}
+
+/**
+ * Lista generica de bloques con especificaciones en concreto.
+ * @interface BlockTagsTypes
+ * @author HaJuegos - 04-10-2026
+ */
+interface BlockTagsTypes {
+    /**
+     * Lista de estados del bloque a cumplir.
+     * @type {?Record<string, string | boolean>}
+     */
+    states?: Record<string, string | boolean>;
+
+    /**
+     * Nombre del item a cumplir.
+     * @type {?(string | MinecraftItemTypes)}
+     */
+    name?: string | MinecraftItemTypes;
+
+    /**
+     * Tag o tags en string o Molang a cumplir.
+     * @type {?(string | MoLangValue)}
+     */
+    tags?: string | MoLangValue;
 }
 
 /**

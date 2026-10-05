@@ -3,15 +3,20 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Magma Cube para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const MagmaCubeTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.MagmaCube,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:slime_aggressive": [
@@ -29,8 +34,11 @@ export const MagmaCubeTemplate = createBPEntityTemplate({
                 cause: "entity_attack",
                 damageCooldown: 0.5,
                 damagePerTick: 6,
-                damageRange: 0.15
-                // TODO(migrate): clave no soportada "entity_filter": {"any_of": [{"subject": "other", "test": "is_family", "value": "player"}, {"subject": "other", "test": "is_family", "value": "irongolem"}]}
+                damageRange: 0.15,
+                entityFilter: EntityFilters.anyOf(
+                    EntityFilters.isFamily('player', 'other'),
+                    EntityFilters.isFamily('irongolem', 'other')
+                )
             }),
             new BPEntityComponents.SetAttack({
                 damage: 6
@@ -58,8 +66,11 @@ export const MagmaCubeTemplate = createBPEntityTemplate({
                 cause: "entity_attack",
                 damageCooldown: 0.5,
                 damagePerTick: 4,
-                damageRange: 0.15
-                // TODO(migrate): clave no soportada "entity_filter": {"any_of": [{"subject": "other", "test": "is_family", "value": "player"}, {"subject": "other", "test": "is_family", "value": "irongolem"}]}
+                damageRange: 0.15,
+                entityFilter: EntityFilters.anyOf(
+                    EntityFilters.isFamily('player', 'other'),
+                    EntityFilters.isFamily('irongolem', 'other')
+                )
             }),
             new BPEntityComponents.SetAttack({
                 damage: 4
@@ -87,8 +98,11 @@ export const MagmaCubeTemplate = createBPEntityTemplate({
                 cause: "entity_attack",
                 damageCooldown: 0.5,
                 damagePerTick: 3,
-                damageRange: 0.15
-                // TODO(migrate): clave no soportada "entity_filter": {"any_of": [{"subject": "other", "test": "is_family", "value": "player"}, {"subject": "other", "test": "is_family", "value": "irongolem"}]}
+                damageRange: 0.15,
+                entityFilter: EntityFilters.anyOf(
+                    EntityFilters.isFamily('player', 'other'),
+                    EntityFilters.isFamily('irongolem', 'other')
+                )
             }),
             new BPEntityComponents.SetAttack({
                 damage: 3
@@ -114,21 +128,9 @@ export const MagmaCubeTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "irongolem"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('irongolem', 'other'),
                     )
                 }
             ],
@@ -151,7 +153,7 @@ export const MagmaCubeTemplate = createBPEntityTemplate({
             suffocateTime: 0,
             totalSupply: 15
         }),
-        new BPEntityComponents.SetBurnsInDaylight({}),
+        new BPEntityComponents.SetBurnsInDaylight(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetCollisionBox({
             height: 2.08,
@@ -170,10 +172,10 @@ export const MagmaCubeTemplate = createBPEntityTemplate({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? query.variant : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? query.variant : 0`
         }),
         new BPEntityComponents.SetFireImmune(),
-        // TODO(migrate): componente sin clase "minecraft:freezing_vulnerable": {}
+        new BPEntityComponents.SetFreezingVulnerable(),
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetMovementJump({

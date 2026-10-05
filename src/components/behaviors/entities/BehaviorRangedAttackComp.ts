@@ -8,8 +8,10 @@ interface BehaviorRangedAttackData extends BPComponent {
         min: number;
         max: number;
     };
-    attackRadius?: number;
-    attackRadiusMin?: number;
+    attackRange: {
+        min: number;
+        max: number;
+    },
     burstInterval?: number;
     burstShots?: number;
     chargeChargedTrigger?: number;

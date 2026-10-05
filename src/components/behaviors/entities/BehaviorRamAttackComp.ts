@@ -1,6 +1,6 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface BehaviorRamAttackData extends BPComponent {
     priority: number;
@@ -12,13 +12,13 @@ interface BehaviorRamAttackData extends BPComponent {
     knockbackForce?: number;
     knockbackHeight?: number;
     minRamDistance?: number;
-    onStart?: string | EntityFilter | EntityFilter[];
+    onStart?: string | EntityFilterTrigger | EntityFilterTrigger[];
     preRamSound?: string;
     ramDistance?: number;
     ramImpactSound?: string;
     ramSpeed?: number;
     runSpeed?: number;
-    trigger?: string | EntityFilter | EntityFilter[];
+    trigger?: string | EntityFilterTrigger | EntityFilterTrigger[];
 }
 
 export class SetBehaviorRamAttack extends BehaviorEntityComponentBuilder<BehaviorRamAttackData, "minecraft:behavior.ram_attack"> {

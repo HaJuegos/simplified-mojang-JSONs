@@ -1,12 +1,17 @@
-import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { MinecraftEntityTypes, MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Bogged para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 03-10-2026
+ */
 export const BoggedTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Bogged,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
         isSummonable: true,
         isSpawneable: true,
@@ -39,8 +44,14 @@ export const BoggedTemplate = createBPEntityTemplate({
         ],
         "minecraft:ranged_attack": [
             new BPEntityComponents.SetBehaviorRangedAttack({
-                attackInterval: 3.5,
-                attackRadius: 15,
+                attackInterval: {
+                    min: 3.5,
+                    max: 3.5
+                },
+                attackRange: {
+                    min: 15,
+                    max: 15
+                },
                 priority: 0
             }),
             new BPEntityComponents.SetEnvironmentSensor({
@@ -60,15 +71,25 @@ export const BoggedTemplate = createBPEntityTemplate({
                 ]
             }),
             new BPEntityComponents.SetShooter({
-                // TODO(migrate): clave no soportada "aux_val": 26
-                // TODO(migrate): clave no soportada "def": "minecraft:arrow"
-                sound: "bow"
+                sound: "bow",
+                projectiles: [
+                    {
+                        def: MinecraftEntityTypes.Arrow,
+                        auxVal: 26
+                    }
+                ]
             })
         ],
         "minecraft:ranged_attack_hard": [
             new BPEntityComponents.SetBehaviorRangedAttack({
-                attackInterval: 2.5,
-                attackRadius: 15,
+                attackInterval: {
+                    min: 2.5,
+                    max: 2.5
+                },
+                attackRange: {
+                    min: 15,
+                    max: 15
+                },
                 priority: 0
             }),
             new BPEntityComponents.SetEnvironmentSensor({
@@ -88,9 +109,13 @@ export const BoggedTemplate = createBPEntityTemplate({
                 ]
             }),
             new BPEntityComponents.SetShooter({
-                // TODO(migrate): clave no soportada "aux_val": 26
-                // TODO(migrate): clave no soportada "def": "minecraft:arrow"
-                sound: "bow"
+                sound: "bow",
+                projectiles: [
+                    {
+                        def: MinecraftEntityTypes.Arrow,
+                        auxVal: 26
+                    }
+                ]
             })
         ]
     },
@@ -147,7 +172,7 @@ export const BoggedTemplate = createBPEntityTemplate({
             canPickupAnyItem: true,
             excludedItems: [
                 {
-                    tags: "q.all_tags('minecraft:is_spear')"
+                    tags: `${MoLang.allTags('minecraft:is_spear')}`
                 }
             ],
             pickupBasedOnChance: true,
@@ -168,7 +193,7 @@ export const BoggedTemplate = createBPEntityTemplate({
             suffocateTime: 0,
             totalSupply: 15
         }),
-        new BPEntityComponents.SetBurnsInDaylight({}),
+        new BPEntityComponents.SetBurnsInDaylight(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetCollisionBox({
             height: 1.9,
@@ -201,7 +226,7 @@ export const BoggedTemplate = createBPEntityTemplate({
             table: "loot_tables/entities/skeleton_gear.json"
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
         }),
         new BPEntityComponents.SetHealth({
             max: 16,
@@ -245,254 +270,254 @@ export const BoggedTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.25
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidSun: true,
             isAmphibious: true,
             avoidWater: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetShareables({
             items: [
                 {
-                    item: "minecraft:netherite_sword",
+                    item: MinecraftItemTypes.NetheriteSword,
                     priority: 0,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:diamond_sword",
+                    item: MinecraftItemTypes.DiamondSword,
                     priority: 1,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:iron_sword",
+                    item: MinecraftItemTypes.IronSword,
                     priority: 2,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:golden_sword",
+                    item: MinecraftItemTypes.GoldenSword,
                     priority: 3,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:copper_sword",
+                    item: MinecraftItemTypes.CopperSword,
                     priority: 4,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:stone_sword",
+                    item: MinecraftItemTypes.StoneSword,
                     priority: 5,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:wooden_sword",
+                    item: MinecraftItemTypes.WoodenSword,
                     priority: 6,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:bow",
+                    item: MinecraftItemTypes.Bow,
                     priority: 6,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:netherite_helmet",
+                    item: MinecraftItemTypes.NetheriteHelmet,
                     priority: 0,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:diamond_helmet",
+                    item: MinecraftItemTypes.DiamondHelmet,
                     priority: 1,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:iron_helmet",
+                    item: MinecraftItemTypes.IronHelmet,
                     priority: 2,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:chainmail_helmet",
+                    item: MinecraftItemTypes.ChainmailHelmet,
                     priority: 3,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:golden_helmet",
+                    item: MinecraftItemTypes.GoldenHelmet,
                     priority: 4,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:copper_helmet",
+                    item: MinecraftItemTypes.CopperHelmet,
                     priority: 5,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:leather_helmet",
+                    item: MinecraftItemTypes.LeatherHelmet,
                     priority: 6,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:turtle_helmet",
+                    item: MinecraftItemTypes.TurtleHelmet,
                     priority: 7,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:skull:0",
+                    item: MinecraftItemTypes.SkeletonSkull,
                     priority: 8,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:skull:1",
+                    item: MinecraftItemTypes.WitherSkeletonSkull,
                     priority: 8,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:carved_pumpkin",
+                    item: MinecraftItemTypes.CarvedPumpkin,
                     priority: 8,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:netherite_chestplate",
+                    item: MinecraftItemTypes.NetheriteChestplate,
                     priority: 0,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:diamond_chestplate",
+                    item: MinecraftItemTypes.DiamondChestplate,
                     priority: 1,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:iron_chestplate",
+                    item: MinecraftItemTypes.IronChestplate,
                     priority: 2,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:chainmail_chestplate",
+                    item: MinecraftItemTypes.ChainmailChestplate,
                     priority: 3,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:golden_chestplate",
+                    item: MinecraftItemTypes.GoldenChestplate,
                     priority: 4,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:copper_chestplate",
+                    item: MinecraftItemTypes.CopperChestplate,
                     priority: 5,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:leather_chestplate",
+                    item: MinecraftItemTypes.LeatherChestplate,
                     priority: 6,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:netherite_leggings",
+                    item: MinecraftItemTypes.NetheriteLeggings,
                     priority: 0,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:diamond_leggings",
+                    item: MinecraftItemTypes.DiamondLeggings,
                     priority: 1,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:iron_leggings",
+                    item: MinecraftItemTypes.IronLeggings,
                     priority: 2,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:chainmail_leggings",
+                    item: MinecraftItemTypes.ChainmailLeggings,
                     priority: 3,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:golden_leggings",
+                    item: MinecraftItemTypes.GoldenLeggings,
                     priority: 4,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:copper_leggings",
+                    item: MinecraftItemTypes.CopperLeggings,
                     priority: 5,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:leather_leggings",
+                    item: MinecraftItemTypes.LeatherLeggings,
                     priority: 6,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:netherite_boots",
+                    item: MinecraftItemTypes.NetheriteBoots,
                     priority: 0,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:diamond_boots",
+                    item: MinecraftItemTypes.DiamondBoots,
                     priority: 1,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:iron_boots",
+                    item: MinecraftItemTypes.IronBoots,
                     priority: 2,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:chainmail_boots",
+                    item: MinecraftItemTypes.ChainmailBoots,
                     priority: 3,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:golden_boots",
+                    item: MinecraftItemTypes.GoldenBoots,
                     priority: 4,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:copper_boots",
+                    item: MinecraftItemTypes.CopperBoots,
                     priority: 5,
                     surplusAmount: 1,
                     wantAmount: 1
                 },
                 {
-                    item: "minecraft:leather_boots",
+                    item: MinecraftItemTypes.LeatherBoots,
                     priority: 6,
                     surplusAmount: 1,
                     wantAmount: 1
@@ -508,8 +533,7 @@ export const BoggedTemplate = createBPEntityTemplate({
         "be_sheared": {
             add: {
                 componentGroups: ["minecraft:bogged_sheared"]
-            },
-            remove: {}
+            }
         },
         "minecraft:melee_mode": {
             add: {

@@ -3,14 +3,18 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
+/**
+ * Plantilla vanilla del Ojo del Ender para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const EyeOfEnderSignalTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.EyeOfEnderSignal,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Misc,
         isExperimental: false,
         isSummonable: false,
-        isSpawneable: false,
-        spawnCategory: SpawnCategoryEntities.Misc
+        isSpawneable: false
     },
     componentsGroups: {},
     components: [
@@ -25,8 +29,9 @@ export const EyeOfEnderSignalTemplate = createBPEntityTemplate({
                 useMotionPredictionHints: true
             }
         }),
-        new BPEntityComponents.SetPhysics({})
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPhysics(),
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity()
     ],
     events: {}
 });

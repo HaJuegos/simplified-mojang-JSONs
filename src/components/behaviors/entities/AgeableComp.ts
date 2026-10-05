@@ -1,7 +1,7 @@
 import * as vanilla from "@minecraft/vanilla-data";
 
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
-import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger, TargetItemsTypes } from "../../../types/EntityFilters";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
 /**
@@ -43,9 +43,9 @@ interface AgeableData extends BPComponent {
 
     /**
      * (Opcional) Item o lista de items para que la entidad aumente su velocidad de crecimiento.
-     * @type {?string | vanilla.MinecraftItemTypes | FeedItemsTypes | (string | vanilla.MinecraftItemTypes | FeedItemsTypes)[]}
+     * @type {?(string | vanilla.MinecraftItemTypes | FeedItemsTypes)[]}
      */
-    feedItemsToGrow?: string | vanilla.MinecraftItemTypes | FeedItemsTypes | (string | vanilla.MinecraftItemTypes | FeedItemsTypes)[];
+    feedItemsToGrow?: (string | vanilla.MinecraftItemTypes | FeedItemsTypes) | (string | vanilla.MinecraftItemTypes | FeedItemsTypes)[];
 
     /**
      * (Opcional) Item o lista de items a dropear cuando la entidad crece.
@@ -67,8 +67,9 @@ interface AgeableData extends BPComponent {
 }
 
 interface FeedItemsTypes {
-    item: string | vanilla.MinecraftItemTypes;
-    resultItem: string | vanilla.MinecraftItemTypes;
+    item?: string | vanilla.MinecraftItemTypes | TargetItemsTypes;
+    resultItem?: string | vanilla.MinecraftItemTypes | TargetItemsTypes;
+    growth?: number;
 }
 
 export class SetAgeable extends BehaviorEntityComponentBuilder<Record<string, unknown>, "minecraft:ageable"> {

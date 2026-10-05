@@ -4,9 +4,13 @@ import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Ansuelo de Pesca para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const FishingHookTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.FishingHook,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         isSummonable: false,
         isSpawneable: false
@@ -37,7 +41,7 @@ export const FishingHookTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetLoot({
             table: "loot_tables/gameplay/fishing.json"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetProjectile({
             onHit: {
                 stickInGround: {}

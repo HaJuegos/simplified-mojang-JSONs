@@ -15,7 +15,7 @@ export class SetEquipItem extends BehaviorEntityComponentBuilder<EquipItemData, 
      * @constructor
      * @public
      */
-    public constructor (params: EquipItemData) {
+    public constructor (params?: EquipItemData) {
         super("minecraft:equip_item", params);
     }
 }

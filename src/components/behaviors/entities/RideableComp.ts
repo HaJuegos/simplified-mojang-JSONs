@@ -22,8 +22,8 @@ interface SeatsTypes {
     cameraRelaxDistanceSmoothing?: number;
     lockRiderRotation?: number;
     maxRiderCount?: number;
-    minRiderCount: number;
-    position: [number, number, number];
+    minRiderCount?: number;
+    position?: [number, number, number];
     rotateRiderBy?: MoLangValue;
     thirdPersonCameraRadius?: number;
 }

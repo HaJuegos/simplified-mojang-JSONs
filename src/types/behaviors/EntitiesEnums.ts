@@ -216,6 +216,12 @@ type BPPropertiesEntities = BPBoolPropertyEntity | BPEnumPropertyEntity | BPFloa
  */
 interface BPEntityEventsBase<G extends string = string> {
     /**
+     * (Opcional) Filtros iniciales a considerar antes de ejecutar los eventos.
+     * @type {?(EntityFilter | EntityFilter[])}
+     */
+    filters?: EntityFilter | EntityFilter[];
+
+    /**
      * (Opcional) Parametro que indica todos los parametros adiccionales que se deben validar primero antes de ejecutarse este mismo.
      * @type {?BPEntityEventsBase<G>[]}
      */
@@ -274,7 +280,7 @@ interface BPEntityEventsBase<G extends string = string> {
          * (Opcional) Tipo de vibracion en concreto.
          * @type {?('shear' | 'entity_interact' | 'entity_act')}
          */
-        vibration?: 'shear' | 'entity_interact' | 'entity_act';
+        vibration?: 'shear' | 'entity_interact' | 'entity_act' | 'entity_die';
     };
 
     /**

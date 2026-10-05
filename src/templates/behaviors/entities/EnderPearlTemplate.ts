@@ -4,13 +4,17 @@ import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/beh
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Ender Pearl para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const EnderPearlTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.EnderPearl,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Misc,
         isSummonable: false,
-        isSpawneable: false,
-        spawnCategory: SpawnCategoryEntities.Misc
+        isSpawneable: false
     },
     componentsGroups: {
         "minecraft:no_spawn": [

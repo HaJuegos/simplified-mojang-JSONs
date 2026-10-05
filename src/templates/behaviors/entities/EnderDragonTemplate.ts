@@ -3,13 +3,17 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
+/**
+ * Plantilla vanilla del Ender Dragon para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const EnderDragonTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.EnderDragon,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "dragon_death": [
@@ -31,7 +35,11 @@ export const EnderDragonTemplate = createBPEntityTemplate({
                 priority: 0
             }),
             new BPEntityComponents.SetShooter({
-                // TODO(migrate): clave no soportada "def": "minecraft:dragon_fireball"
+                projectiles: [
+                    {
+                        def: "minecraft:dragon_fireball"
+                    }
+                ]
             })
         ],
         "dragon_sitting": [
@@ -71,7 +79,7 @@ export const EnderDragonTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetFlyingSpeed({
             value: 0.6
         }),
-        // TODO(migrate): componente sin clase "minecraft:freezing_immune": {}
+        new BPEntityComponents.SetFreezingImmune(),
         new BPEntityComponents.SetGameEventMovementTracking({
             emitFlap: true
         }),
@@ -112,8 +120,7 @@ export const EnderDragonTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             add: {
                 componentGroups: ["dragon_flying"]
-            },
-            remove: {}
+            }
         },
         "minecraft:start_death": {
             add: {

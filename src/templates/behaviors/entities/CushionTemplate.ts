@@ -4,9 +4,13 @@ import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Cojin para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const CushionTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Cushion,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         isSpawneable: false,
         isSummonable: true,

@@ -26,7 +26,7 @@ interface SequenceSummonEntityTypes {
     delay?: number;
     delayPerSummon?: number;
     entityLifespan?: number;
-    entityTypes: string | MinecraftEntityTypes;
+    entityType: string | MinecraftEntityTypes;
     numEntitiesSpawned: number;
     shape: 'circle' | 'line';
     size: number;

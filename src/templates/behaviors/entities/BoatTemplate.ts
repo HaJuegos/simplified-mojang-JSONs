@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Bote para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 03-10-2026
+ */
 export const BoatTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Boat,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
         isSummonable: true,
         isSpawneable: false
@@ -56,14 +61,14 @@ export const BoatTemplate = createBPEntityTemplate({
                         lockRiderRotation: 90,
                         position: [0.2, 0.1, 0],
                         maxRiderCount: 2,
-                        rotateRiderBy: "query.has_any_family('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast') ? -90 : 0"
+                        rotateRiderBy: `${MoLang.hasAnyFamily('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast')} ? -90 : 0`
                     },
                     {
                         minRiderCount: 2,
                         lockRiderRotation: 90,
                         position: [-0.6, 0.1, 0],
                         maxRiderCount: 2,
-                        rotateRiderBy: "query.has_any_family('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast') ? -90 : 0"
+                        rotateRiderBy: `${MoLang.hasAnyFamily('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast')} ? -90 : 0`
                     }
                 ],
                 passengerMaxWidth: 1.375,
@@ -87,14 +92,14 @@ export const BoatTemplate = createBPEntityTemplate({
                         lockRiderRotation: 90,
                         position: [0.2, -0.2, 0],
                         maxRiderCount: 2,
-                        rotateRiderBy: "query.has_any_family('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast') ? -90 : 0"
+                        rotateRiderBy: `${MoLang.hasAnyFamily('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast')} ? -90 : 0`
                     },
                     {
                         minRiderCount: 2,
                         lockRiderRotation: 90,
                         position: [-0.6, -0.2, 0],
                         maxRiderCount: 2,
-                        rotateRiderBy: "query.has_any_family('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast') ? -90 : 0"
+                        rotateRiderBy: `${MoLang.hasAnyFamily('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast')} ? -90 : 0`
                     }
                 ],
                 passengerMaxWidth: 1.375,
@@ -114,7 +119,7 @@ export const BoatTemplate = createBPEntityTemplate({
         ]
     },
     components: [
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetBuoyant({
             applyGravity: true,
             baseBuoyancy: 1,
@@ -159,7 +164,7 @@ export const BoatTemplate = createBPEntityTemplate({
                     block: {
                         name: "minecraft:bubble_column",
                         states: {
-                            dragDown: true
+                            "drag_down": true
                         }
                     },
                     enteredBlockEvent: {
@@ -175,7 +180,7 @@ export const BoatTemplate = createBPEntityTemplate({
                     block: {
                         name: "minecraft:bubble_column",
                         states: {
-                            dragDown: false
+                            "drag_down": false
                         }
                     },
                     enteredBlockEvent: {
@@ -190,7 +195,7 @@ export const BoatTemplate = createBPEntityTemplate({
             ]
         }),
         new BPEntityComponents.SetIsCollidable(),
-        new BPEntityComponents.SetIsStackable({}),
+        new BPEntityComponents.SetIsStackable(),
         new BPEntityComponents.SetLeashable({
             presets: [
                 {
@@ -209,7 +214,7 @@ export const BoatTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetLoot({
             table: "loot_tables/entities/boat.json"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {
@@ -246,14 +251,14 @@ export const BoatTemplate = createBPEntityTemplate({
                     minRiderCount: 2,
                     maxRiderCount: 2,
                     position: [0.2, -0.2, 0],
-                    rotateRiderBy: "query.has_any_family('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast') ? -90 : 0"
+                    rotateRiderBy: `${MoLang.hasAnyFamily('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast') ? -90 : 0}`
                 },
                 {
                     lockRiderRotation: 90,
                     minRiderCount: 2,
                     maxRiderCount: 2,
                     position: [-0.6, -0.2, 0],
-                    rotateRiderBy: "query.has_any_family('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast') ? -90 : 0"
+                    rotateRiderBy: `${MoLang.hasAnyFamily('blaze', 'creeper', 'enderman', 'illager', 'magmacube', 'piglin', 'player', 'skeleton', 'slime', 'villager', 'wandering_trader', 'witch', 'zombie', 'zombie_pigman', 'happy_ghast') ? -90 : 0}`
                 }
             ],
             pullInEntities: true,

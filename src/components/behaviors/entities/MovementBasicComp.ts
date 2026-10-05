@@ -13,7 +13,7 @@ export class SetMovementBasic extends BehaviorEntityComponentBuilder<MovementBas
      * @constructor
      * @public
      */
-    public constructor (params: MovementBasicData) {
+    public constructor (params?: MovementBasicData) {
         super("minecraft:movement.basic", params);
     }
 }

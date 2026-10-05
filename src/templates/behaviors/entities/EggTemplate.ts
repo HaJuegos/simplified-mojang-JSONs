@@ -4,16 +4,19 @@ import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Huevo para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const EggTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Egg,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         isSummonable: true,
         isSpawneable: false
     },
     properties: {
         "minecraft:climate_variant": {
-            idProperty: "minecraft:climate_variant",
             clientSync: true,
             type: "enum",
             default: "temperate",
@@ -36,7 +39,7 @@ export const EggTemplate = createBPEntityTemplate({
                 useMotionPredictionHints: true
             }
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetProjectile({
             angleOffset: 0,
             onHit: {

@@ -3,9 +3,13 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
+/**
+ * Plantilla vanilla del Escupitajo de la Llama para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const LlamaSpitTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.LlamaSpit,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         isSummonable: false,
         isSpawneable: false,
@@ -27,7 +31,7 @@ export const LlamaSpitTemplate = createBPEntityTemplate({
                 useMotionPredictionHints: true
             }
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetProjectile({
             anchor: "eye_height",
             gravity: 0.06,

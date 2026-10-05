@@ -8,7 +8,7 @@ interface BehaviorMoveToBlockData extends BPComponent {
     priority: number;
     goalRadius?: number;
     onStayCompleted?: string | EntityFilterTrigger | EntityFilterTrigger[];
-    onReach?: string | EntityFilter | EntityFilter[];
+    onReach?: string | EntityFilterTrigger | EntityFilterTrigger[];
     startChance?: number;
     searchRange?: number;
     searchHeight?: number;

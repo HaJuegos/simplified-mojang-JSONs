@@ -3,18 +3,22 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Breeze para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const BreezeTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Breeze,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     properties: {
         "minecraft:is_playing_idle_ground_sound": {
-            idProperty: "minecraft:is_playing_idle_ground_sound",
             clientSync: false,
             type: "bool",
             default: false
@@ -26,7 +30,7 @@ export const BreezeTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.in.air",
-                    condition: "!query.is_on_ground"
+                    condition: `!${MoLang.isOnGround()}`
                 }
             ],
             minRandomCooldownSound: 8,
@@ -123,21 +127,11 @@ export const BreezeTemplate = createBPEntityTemplate({
             withinRadius: 24,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "player"
-                    }),
+                    filters: EntityFilters.isFamily('player', 'other'),
                     maxDist: 24
                 },
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "irongolem"
-                    }),
+                    filters: EntityFilters.isFamily('irongolem', 'other'),
                     maxDist: 24
                 }
             ],
@@ -196,7 +190,7 @@ export const BreezeTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetExperienceReward({
             onBred: "Math.Random(1,7)",
-            onDeath: "query.last_hit_by_player ? 10 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 10 : 0`
         }),
         new BPEntityComponents.SetFollowRange({
             value: 32
@@ -225,18 +219,18 @@ export const BreezeTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.4
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             blocksToAvoid: [
                 {
-                    tags: "query.any_tag('trapdoors')"
+                    tags: `${MoLang.anyTag('trapdoors')}`
                 }
             ],
             usingDoorAnnotation: true
         }),
         new BPEntityComponents.SetPersistent(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetReflectProjectiles({
@@ -272,10 +266,8 @@ export const BreezeTemplate = createBPEntityTemplate({
             setProperty: {
                 "minecraft:is_playing_idle_ground_sound": false
             }
-            // TODO(migrate): remove referenciaba grupos inexistentes: ["minecraft:playing_idle_ground_sound"]
         },
         "minecraft:start_playing_idle_ground_sound": {
-            // TODO(migrate): add referenciaba grupos inexistentes: ["minecraft:playing_idle_ground_sound"]
             setProperty: {
                 "minecraft:is_playing_idle_ground_sound": true
             }

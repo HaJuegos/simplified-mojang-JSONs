@@ -13,7 +13,7 @@ export class SetMovementGeneric extends BehaviorEntityComponentBuilder<MovementG
      * @constructor
      * @public
      */
-    public constructor (params: MovementGenericData) {
+    public constructor (params?: MovementGenericData) {
         super("minecraft:movement.generic", params);
     }
 }

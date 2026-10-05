@@ -23,8 +23,8 @@ interface LookedAtData extends BPComponent {
 }
 
 interface LookAtLocsTypes {
-    location: 'body' | 'feet' | 'head';
-    verticalOffset: number;
+    location?: 'body' | 'feet' | 'head';
+    verticalOffset?: number;
 }
 
 export class SetLookedAt extends BehaviorEntityComponentBuilder<LookedAtData, "minecraft:looked_at"> {

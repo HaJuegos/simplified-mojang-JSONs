@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Delfin para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const DolphinTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Dolphin,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.WaterCreature,
         isSpawneable: true,
@@ -15,7 +20,7 @@ export const DolphinTemplate = createBPEntityTemplate({
     componentsGroups: {
         "dolphin_adult": [
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/dolphin.json"
@@ -62,7 +67,7 @@ export const DolphinTemplate = createBPEntityTemplate({
                     target: "self"
                 }
             }),
-            new BPEntityComponents.SetOnTargetAcquired({})
+            new BPEntityComponents.SetOnTargetAcquired()
         ],
         "dolphin_dried": [
             new BPEntityComponents.SetDamageOverTime({
@@ -146,7 +151,7 @@ export const DolphinTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.in.water",
-                    condition: "query.head_is_in_water"
+                    condition: `${MoLang.headIsInWater()}`
                 }
             ],
             minRandomCooldownSound: 6,
@@ -306,7 +311,7 @@ export const DolphinTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetOnTargetEscape({
             target: "self"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetLeashable({

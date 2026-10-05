@@ -1,7 +1,7 @@
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter, EntityFiltersTarget } from "../../../types/EntityFilters";
+import { BlockTagsTypes, EntityFilter, EntityFiltersTarget } from "../../../types/EntityFilters";
 
 interface BehaviorPlaceBlockData extends BPComponent {
     priority: number;
@@ -9,16 +9,22 @@ interface BehaviorPlaceBlockData extends BPComponent {
     canPlace?: EntityFilter | EntityFilter[];
     chance?: number;
     onPlace?: string | EntityFiltersTarget;
-    placeableCarriedBlocks?: (string | MinecraftBlockTypes)[];
-    randomlyPlaceableBlocks?: (string | MinecraftBlockTypes)[];
-    xzRange?: {
+    placeableCarriedBlocks?: (string | MinecraftBlockTypes | BlockTagsTypes)[];
+    randomlyPlaceableBlocks?: (string | MinecraftBlockTypes | RandomPlaceBlockTypes)[];
+    xzRange?: number | {
         min: number;
         max: number;
     };
-    yRange?: {
+    yRange?: number | {
         min: number;
         max: number;
     };
+}
+
+interface RandomPlaceBlockTypes {
+    filter: EntityFilter | EntityFilter[];
+    block?: (string | MinecraftBlockTypes | BlockTagsTypes);
+    weight?: number;
 }
 
 export class SetBehaviorPlaceBlock extends BehaviorEntityComponentBuilder<BehaviorPlaceBlockData, "minecraft:behavior.place_block"> {

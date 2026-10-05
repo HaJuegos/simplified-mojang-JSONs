@@ -13,12 +13,12 @@ interface LeashableData extends BPComponent {
 }
 
 interface PresetLeashTypes {
-    filter: EntityFilter;
-    hardDistance: number;
-    maxDistance: number;
-    rotationAdjustment: number;
-    softDistance: number;
-    spring_type: 'bouncy' | 'dampened' | 'quad_dampened';
+    filter?: EntityFilter;
+    hardDistance?: number;
+    maxDistance?: number;
+    rotationAdjustment?: number;
+    softDistance?: number;
+    springType?: 'bouncy' | 'dampened' | 'quad_dampened';
 }
 
 export class SetLeashable extends BehaviorEntityComponentBuilder<LeashableData, "minecraft:leashable"> {

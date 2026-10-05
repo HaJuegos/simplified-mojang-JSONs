@@ -32,25 +32,25 @@ interface PresetKnockbackRules {
      * Define cuanto se empuja hacia atras el target.
      * @type {number}
      */
-    horizontalPower: number;
+    horizontalPower?: number;
 
     /**
      * Define cuanto se empuja hacia arriba el target.
      * @type {number}
      */
-    verticalPower: number;
+    verticalPower?: number;
 
     /**
      * Define la velocidad vertical maxima hacia arriba del target despues de que se haya evaluado las reglas de empuje.
      * @type {number}
      */
-    verticalVelocityCap: number;
+    verticalVelocityCap?: number;
 
     /**
      * Define si el objectivo debe estar completamente sumergido en agua para que se apliquen las reglas de empuje.
      * @type {boolean}
      */
-    checkIfTargetIsImmersedInWater: boolean;
+    checkIfTargetIsImmersedInWater?: boolean;
 
     /**
      * (Opcional) Maneja el empuje adiccional proveniente de encantamientos, correr a toda velocidad y nadar.

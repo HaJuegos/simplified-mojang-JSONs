@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Mula para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const MuleTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Mule,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -68,7 +73,7 @@ export const MuleTemplate = createBPEntityTemplate({
         ],
         "minecraft:mule_adult": [
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/horse.json"
@@ -280,12 +285,12 @@ export const MuleTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetIsSaddled(),
             new BPEntityComponents.SetInputGroundControlled(),
             new BPEntityComponents.SetCanPowerJump(),
-            new BPEntityComponents.SetBehaviorPlayerRideTamed({})
+            new BPEntityComponents.SetBehaviorPlayerRideTamed()
         ]
     },
     components: [
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
-        new BPEntityComponents.SetAmbientSoundInterval({}),
+        new BPEntityComponents.SetAmbientSoundInterval(),
         new BPEntityComponents.SetTypeFamily({
             family: ["mule", "mob"]
         }),
@@ -320,7 +325,7 @@ export const MuleTemplate = createBPEntityTemplate({
             avoidWater: true,
             avoidDamageBlocks: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetOffspring({
@@ -341,7 +346,7 @@ export const MuleTemplate = createBPEntityTemplate({
                 }
             ]
         }),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetHealable({
             items: [
                 {
@@ -419,7 +424,7 @@ export const MuleTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorRandomLookAround({
             priority: 8
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {

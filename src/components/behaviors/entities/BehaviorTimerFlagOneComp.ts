@@ -3,7 +3,7 @@ import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface BehaviorTimerFlagOneData extends BPComponent {
-    priority: number;
+    priority?: number;
     cooldownRange?: number | {
         min: number;
         max: number;

@@ -14,7 +14,7 @@ export class SetOnTargetAcquired extends BehaviorEntityComponentBuilder<OnTarget
      * @constructor
      * @public
      */
-    public constructor (params: OnTargetAcquiredData) {
+    public constructor (params?: OnTargetAcquiredData) {
         super("minecraft:on_target_acquired", params);
     }
 }

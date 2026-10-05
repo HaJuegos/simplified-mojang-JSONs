@@ -1,16 +1,21 @@
-import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { MinecraftBlockTypes, MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Araña de Cueva para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const CaveSpiderTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.CaveSpider,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:spider_angry": [
@@ -249,7 +254,11 @@ export const CaveSpiderTemplate = createBPEntityTemplate({
             priority: 6,
             speedMultiplier: 0.8
         }),
-        // TODO(migrate): componente sin clase "minecraft:block_movement_slowdown_immunity": {"blocks": ["minecraft:web"]}
+        new BPEntityComponents.SetBlockMovementSlowdownImmunity({
+            blocks: [
+                MinecraftBlockTypes.Web
+            ]
+        }),
         new BPEntityComponents.SetBreathable({
             suffocateTime: 0,
             totalSupply: 15
@@ -264,7 +273,7 @@ export const CaveSpiderTemplate = createBPEntityTemplate({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 : 0`
         }),
         new BPEntityComponents.SetHealth({
             max: 12,
@@ -287,12 +296,12 @@ export const CaveSpiderTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.3
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationClimb({
             canPathOverWater: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetRendersWhenInvisible(),
@@ -313,8 +322,6 @@ export const CaveSpiderTemplate = createBPEntityTemplate({
         "minecraft:become_angry": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:spider_angry"]
                     },
@@ -354,8 +361,6 @@ export const CaveSpiderTemplate = createBPEntityTemplate({
         "minecraft:become_hostile": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:spider_hostile"]
                     },

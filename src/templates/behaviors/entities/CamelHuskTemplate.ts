@@ -3,18 +3,22 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Camello Zombie para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const CamelHuskTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.CamelHusk,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     properties: {
         "minecraft:has_rider_mounted": {
-            idProperty: "minecraft:has_rider_mounted",
             clientSync: false,
             type: "bool",
             default: false
@@ -157,7 +161,7 @@ export const CamelHuskTemplate = createBPEntityTemplate({
         ]
     },
     components: [
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetBehaviorFloat({
             chancePerTickToFloat: 1,
             priority: 0,
@@ -237,7 +241,7 @@ export const CamelHuskTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetExperienceReward({
             onBred: "Math.Random(1,7)",
-            onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
         }),
         new BPEntityComponents.SetHealable({
             items: [

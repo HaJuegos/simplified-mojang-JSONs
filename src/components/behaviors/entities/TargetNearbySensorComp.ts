@@ -1,13 +1,13 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface TargetNearbySensorData extends BPComponent {
     mustSee?: boolean;
     insideRange?: number;
-    onInsideRange?: EntityFilter;
-    onOutsideRange?: EntityFilter;
-    onVisionLostInsideRange?: EntityFilter;
+    onInsideRange?: EntityFilterTrigger | EntityFilterTrigger[];
+    onOutsideRange?: EntityFilterTrigger | EntityFilterTrigger[];
+    onVisionLostInsideRange?: EntityFilterTrigger | EntityFilterTrigger[];
     outsideRange?: number;
 }
 
@@ -19,7 +19,7 @@ export class SetTargetNearbySensor extends BehaviorEntityComponentBuilder<Target
      * @constructor
      * @public
      */
-    public constructor (params: TargetNearbySensorData) {
+    public constructor (params?: TargetNearbySensorData) {
         super("minecraft:target_nearby_sensor", params);
     }
 }

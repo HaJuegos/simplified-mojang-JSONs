@@ -13,7 +13,7 @@ export class SetRailMovement extends BehaviorEntityComponentBuilder<RailMovement
      * @constructor
      * @public
      */
-    public constructor (params: RailMovementData) {
+    public constructor (params?: RailMovementData) {
         super("minecraft:rail_movement", params);
     }
 }

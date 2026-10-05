@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Gato para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const CatTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Cat,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -14,7 +19,6 @@ export const CatTemplate = createBPEntityTemplate({
     },
     properties: {
         "minecraft:sound_variant": {
-            idProperty: "minecraft:sound_variant",
             clientSync: true,
             type: "enum",
             default: "default",
@@ -41,7 +45,7 @@ export const CatTemplate = createBPEntityTemplate({
         "minecraft:cat_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/cat.json"
@@ -274,7 +278,7 @@ export const CatTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.baby",
-                    condition: "query.is_baby"
+                    condition: `${MoLang.isBaby()}`
                 }
             ],
             minRandomCooldownSound: 6,
@@ -339,7 +343,7 @@ export const CatTemplate = createBPEntityTemplate({
             avoidDamageBlocks: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetDamageSensor({
@@ -408,19 +412,15 @@ export const CatTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 3,
-                            remove: {},
                             add: {
                                 componentGroups: ["minecraft:cat_adult", "minecraft:cat_wild"]
                             }
                         },
                         {
                             weight: 1,
-                            remove: {},
                             add: {
                                 componentGroups: ["minecraft:cat_baby", "minecraft:cat_wild"]
                             }
@@ -428,8 +428,6 @@ export const CatTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 15,
@@ -500,8 +498,6 @@ export const CatTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     trigger: "minecraft:randomize_sound_variant"
                 }
             ]
@@ -509,8 +505,6 @@ export const CatTemplate = createBPEntityTemplate({
         "minecraft:spawn_from_village": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 3,
@@ -523,8 +517,6 @@ export const CatTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 15,
@@ -593,8 +585,6 @@ export const CatTemplate = createBPEntityTemplate({
         "minecraft:spawn_midnight_cat": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     trigger: "minecraft:spawn_wild_adult",
                     add: {
                         componentGroups: ["minecraft:cat_black"]
@@ -648,15 +638,11 @@ export const CatTemplate = createBPEntityTemplate({
         "minecraft:on_tame": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     remove: {
                         componentGroups: ["minecraft:cat_wild"]
                     }
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:cat_tame"]
                     }

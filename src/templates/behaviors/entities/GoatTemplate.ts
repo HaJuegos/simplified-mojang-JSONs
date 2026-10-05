@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Cabra para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const GoatTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Goat,
-    formatVersion: FormatVersionEntities.V1_26_10,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -39,7 +44,7 @@ export const GoatTemplate = createBPEntityTemplate({
         "goat_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/goat.json"
@@ -229,7 +234,7 @@ export const GoatTemplate = createBPEntityTemplate({
                 }
             ]
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetCollisionBox({
@@ -313,8 +318,8 @@ export const GoatTemplate = createBPEntityTemplate({
             priority: 11
         }),
         new BPEntityComponents.SetLeashable(),
-        new BPEntityComponents.SetBalloonable({}),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetBalloonable(),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock()
     ],

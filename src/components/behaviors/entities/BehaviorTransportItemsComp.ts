@@ -1,11 +1,12 @@
 import { MinecraftBlockTypes, MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { BlockTagsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorTransportItemsData extends BPComponent {
     priority: number;
-    sourceContainerTypes?: (string | MinecraftBlockTypes)[];
-    destinationContainerTypes?: (string | MinecraftBlockTypes)[];
+    sourceContainerTypes?: (string | MinecraftBlockTypes | BlockTagsTypes)[];
+    destinationContainerTypes?: (string | MinecraftBlockTypes | BlockTagsTypes)[];
     maxStackSize?: number;
     interactionTime?: number;
     allowSimultaneousInteraction?: boolean;

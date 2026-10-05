@@ -1,4 +1,4 @@
-import { MinecraftItemTypes } from "@minecraft/vanilla-data";
+import { MinecraftBlockTypes, MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityFiltersTarget, TargetItemsTypes } from "../../../types/EntityFilters";
@@ -13,7 +13,7 @@ interface BehaviorAvoidBlockData extends BPComponent {
     searchHeight?: number;
     sprintSpeedModifier?: number;
     targetSelectionMethod?: TargetSelectionMethod;
-    targetBlocks?: TargetItemsTypes[];
+    targetBlocks?: (string | MinecraftBlockTypes | TargetItemsTypes)[];
     avoidBlockSound: string;
     walkSpeedModifier?: number;
     onEscape?: EntityFiltersTarget[];

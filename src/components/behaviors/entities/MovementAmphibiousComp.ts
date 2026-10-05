@@ -13,7 +13,7 @@ export class SetMovementAmphibious extends BehaviorEntityComponentBuilder<Moveme
      * @constructor
      * @public
      */
-    public constructor (params: MovementAmphibiousData) {
+    public constructor (params?: MovementAmphibiousData) {
         super("minecraft:movement.amphibious", params);
     }
 }

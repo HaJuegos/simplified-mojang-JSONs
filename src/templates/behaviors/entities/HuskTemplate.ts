@@ -3,18 +3,22 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Husk para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const HuskTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Husk,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     properties: {
         "minecraft:is_riding_camel_husk": {
-            idProperty: "minecraft:is_riding_camel_husk",
             clientSync: false,
             type: "bool",
             default: false
@@ -22,7 +26,7 @@ export const HuskTemplate = createBPEntityTemplate({
     },
     componentsGroups: {
         "minecraft:can_break_doors": [
-            new BPEntityComponents.SetAnnotationBreakDoor({})
+            new BPEntityComponents.SetAnnotationBreakDoor()
         ],
         "minecraft:zombie_husk_adult": [
             new BPEntityComponents.SetBehaviorMountPathing({
@@ -32,7 +36,7 @@ export const HuskTemplate = createBPEntityTemplate({
                 trackTarget: true
             }),
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
             }),
             new BPEntityComponents.SetMovement({
                 value: 0.23
@@ -54,7 +58,7 @@ export const HuskTemplate = createBPEntityTemplate({
         ],
         "minecraft:zombie_husk_baby": [
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 12 + (query.equipment_count * Math.Random(1,3)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 12 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
             }),
             new BPEntityComponents.SetIsBaby(),
             new BPEntityComponents.SetMovement({
@@ -349,7 +353,7 @@ export const HuskTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetLoot({
             table: "loot_tables/entities/zombie.json"
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidPortals: false,
@@ -362,7 +366,7 @@ export const HuskTemplate = createBPEntityTemplate({
                 "minecraft:husk": "minecraft:husk"
             }
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetRotationLockedToVehicle(),
@@ -662,8 +666,6 @@ export const HuskTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 9500,
@@ -680,8 +682,6 @@ export const HuskTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 10,

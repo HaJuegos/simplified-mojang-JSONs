@@ -4,42 +4,41 @@ import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Copper Golem para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const CopperGolemTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.CopperGolem,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
         isSummonable: true,
         isSpawneable: true
     },
     properties: {
         "minecraft:oxidation_level": {
-            idProperty: "minecraft:oxidation_level",
             clientSync: true,
             type: "enum",
             default: "unoxidized",
             values: ["unoxidized", "exposed", "weathered", "oxidized"]
         },
         "minecraft:is_waxed": {
-            idProperty: "minecraft:is_waxed",
             clientSync: false,
             type: "bool",
             default: false
         },
         "minecraft:chest_interaction": {
-            idProperty: "minecraft:chest_interaction",
             clientSync: true,
             type: "enum",
             default: "none",
             values: ["none", "take", "take_fail", "put", "put_fail"]
         },
         "minecraft:has_flower": {
-            idProperty: "minecraft:has_flower",
             clientSync: true,
             type: "bool",
             default: false
         },
         "minecraft:is_becoming_statue": {
-            idProperty: "minecraft:is_becoming_statue",
             clientSync: false,
             type: "bool",
             default: false
@@ -47,7 +46,7 @@ export const CopperGolemTemplate = createBPEntityTemplate({
     },
     componentsGroups: {
         "minecraft:became_statue": [
-            new BPEntityComponents.SetInstantDespawn({}),
+            new BPEntityComponents.SetInstantDespawn(),
             new BPEntityComponents.SetSpawnEntity({
                 entities: {
                     filters: EntityFilters.boolProperty("minecraft:has_flower"),
@@ -142,7 +141,7 @@ export const CopperGolemTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetAttack({
             damage: 2
         }),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetBehaviorLookAtPlayer({
             lookTime: {
                 min: 1,
@@ -274,7 +273,7 @@ export const CopperGolemTemplate = createBPEntityTemplate({
                         )
                     },
                     particleOnStart: {
-                        copperEvent: "wax_on"
+                        "copper_event": "wax_on"
                     },
                     useItem: true,
                     swing: true
@@ -292,7 +291,7 @@ export const CopperGolemTemplate = createBPEntityTemplate({
                         )
                     },
                     particleOnStart: {
-                        copperEvent: "scrape"
+                        "copper_event": "scrape"
                     },
                     swing: true
                 },
@@ -308,7 +307,7 @@ export const CopperGolemTemplate = createBPEntityTemplate({
                         )
                     },
                     particleOnStart: {
-                        copperEvent: "wax_off"
+                        "copper_event": "wax_off"
                     },
                     swing: true
                 },
@@ -357,7 +356,7 @@ export const CopperGolemTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.2
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidDamageBlocks: true,
@@ -367,8 +366,9 @@ export const CopperGolemTemplate = createBPEntityTemplate({
             usingDoorAnnotation: true
         }),
         new BPEntityComponents.SetPersistent(),
-        new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPhysics(),
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetTypeFamily({
             family: ["copper_golem", "mob"]
         })
@@ -488,13 +488,9 @@ export const CopperGolemTemplate = createBPEntityTemplate({
         "minecraft:remove_oxidation_layer": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     trigger: "minecraft:restart_oxidation_timer"
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     firstValid: [
                         {
                             filters: EntityFilters.enumProperty("minecraft:oxidation_level", "exposed"),
@@ -556,8 +552,6 @@ export const CopperGolemTemplate = createBPEntityTemplate({
         "minecraft:wax_off": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     firstValid: [
                         {
                             filters: EntityFilters.enumProperty("minecraft:oxidation_level", "oxidized"),
@@ -573,8 +567,6 @@ export const CopperGolemTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     setProperty: {
                         "minecraft:is_waxed": false
                     }

@@ -6,8 +6,8 @@ interface BehaviorNearestAttackableTargetData extends BPComponent {
     priority: number;
     entityTypes?: EntityAttackableTargetFilters | EntityAttackableTargetFilters[];
     attackInterval?: number | {
-        min: number;
-        max: number;
+        min?: number;
+        max?: number;
     };
     attackIntervalMin?: number;
     attackOwner?: boolean;

@@ -3,36 +3,29 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Cod para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const CodTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Cod,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.WaterAmbient,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.WaterAmbient
+        isSpawneable: true
     },
     componentsGroups: {},
     components: [
         new BPEntityComponents.SetBehaviorAvoidMobType({
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "axolotl"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('axolotl', 'other')
                     ),
                     maxDist: 6,
                     walkSpeedMultiplier: 1.5,
@@ -74,7 +67,7 @@ export const CodTemplate = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
         }),
         new BPEntityComponents.SetFlocking({
             breachInfluence: 7,
@@ -132,7 +125,8 @@ export const CodTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetPhysics({
             hasGravity: false
         }),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByEntity(),
+        new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetScale({
             value: 1
         }),

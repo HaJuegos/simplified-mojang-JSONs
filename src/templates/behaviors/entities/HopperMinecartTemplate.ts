@@ -4,14 +4,18 @@ import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/beh
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla de la tolva en un Minecart para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const HopperMinecartTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.HopperMinecart,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
+        spawnCategory: SpawnCategoryEntities.Misc,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: false,
-        spawnCategory: SpawnCategoryEntities.Misc
+        isSpawneable: false
     },
     componentsGroups: {
         "minecraft:hopper_active": [

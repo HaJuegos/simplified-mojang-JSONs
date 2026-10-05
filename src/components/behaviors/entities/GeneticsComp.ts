@@ -8,24 +8,28 @@ interface GeneticsData extends BPComponent {
 }
 
 interface GenesTypes {
-    alleleRange: number;
-    name: string;
-    geneticVariants: GeneticVariantsTypes[];
+    alleleRange?: number | [number, number] | {
+        rangeMin: number;
+        rangeMax: number;
+    };
+    name?: string;
+    useSimplifiedBreeding?: boolean;
+    geneticVariants?: GeneticVariantsTypes[];
 }
 
 interface GeneticVariantsTypes {
-    birthEvent: EntityFilterTrigger;
-    bothAllele: {
+    birthEvent?: EntityFilterTrigger;
+    bothAllele?: {
         rangeMin: number;
         rangeMax: number;
     } | number;
-    eitherAllele: number;
-    hiddenAllele: number;
-    mainAllele: {
+    eitherAllele?: number;
+    hiddenAllele?: number;
+    mainAllele?: {
         rangeMin: number;
         rangeMax: number;
     } | number;
-    mutationRate: number;
+    mutationRate?: number;
 }
 
 export class SetGenetics extends BehaviorEntityComponentBuilder<GeneticsData, "minecraft:genetics"> {

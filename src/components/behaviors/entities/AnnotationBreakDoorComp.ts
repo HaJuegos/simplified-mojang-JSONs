@@ -29,7 +29,7 @@ export class SetAnnotationBreakDoor extends BehaviorEntityComponentBuilder<Annot
      * @constructor
      * @public
      */
-    public constructor (params: AnnotationBreakDoorData) {
+    public constructor (params?: AnnotationBreakDoorData) {
         super("minecraft:annotation.break_door", params);
     }
 }

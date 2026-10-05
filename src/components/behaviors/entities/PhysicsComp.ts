@@ -15,7 +15,7 @@ export class SetPhysics extends BehaviorEntityComponentBuilder<PhysicsData, "min
      * @constructor
      * @public
      */
-    public constructor (params: PhysicsData) {
+    public constructor (params?: PhysicsData) {
         super("minecraft:physics", params);
     }
 }

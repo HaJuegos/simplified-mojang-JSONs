@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Camello para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const CamelTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Camel,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -21,7 +26,7 @@ export const CamelTemplate = createBPEntityTemplate({
                 horizontalMomentum: 20,
                 verticalMomentum: 0.6
             }),
-            new BPEntityComponents.SetBehaviorPlayerRideTamed({})
+            new BPEntityComponents.SetBehaviorPlayerRideTamed()
         ],
         "minecraft:camel_baby": [
             new BPEntityComponents.SetIsBaby(),
@@ -118,7 +123,7 @@ export const CamelTemplate = createBPEntityTemplate({
             }),
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetBreedable({
                 requireTame: false,
@@ -217,7 +222,7 @@ export const CamelTemplate = createBPEntityTemplate({
                 }
             ]
         }),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetTypeFamily({
             family: ["camel", "mob"]
         }),
@@ -252,7 +257,7 @@ export const CamelTemplate = createBPEntityTemplate({
             canPathOverWater: true,
             avoidDamageBlocks: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetMovement({
@@ -261,7 +266,7 @@ export const CamelTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetDespawn({
             despawnFromDistance: {}
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),
         new BPEntityComponents.SetBehaviorFloat({
             priority: 0,

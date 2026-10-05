@@ -22,8 +22,8 @@ interface InteractionsTypes {
     hurtItem?: number;
     interactText?: string;
     onInteract?: string | EntityFilterTrigger | EntityFilterTrigger[];
-    particleOnStart?: ParticleOnStartTypes;
-    playSounds?: string;
+    particleOnStart?: Record<string, string> | ParticleOnStartTypes;
+    playSounds?: string | [string];
     repairEntityItem?: RepairItemsTypes;
     spawnEntities?: string;
     spawnItems?: SpawnItemsTypes;

@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Rana para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const FrogTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Frog,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Creature,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Creature
+        isSpawneable: true
     },
     componentsGroups: {
         "cold_frog": [
@@ -35,7 +40,7 @@ export const FrogTemplate = createBPEntityTemplate({
                 useDefaultAnimation: false,
                 speedMultiplier: 1,
                 targetBlocks: ["minecraft:sand", "minecraft:water"],
-                targetMaterialsAboveBlock: ["air", "air"]
+                targetMaterialsAboveBlock: ['Air']
             }),
             new BPEntityComponents.SetBehaviorMoveToWater({
                 goalRadius: 1.5,
@@ -60,7 +65,7 @@ export const FrogTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.baby",
-                    condition: "query.is_baby"
+                    condition: `${MoLang.isBaby()}`
                 }
             ],
             minRandomCooldownSound: 6,
@@ -99,17 +104,17 @@ export const FrogTemplate = createBPEntityTemplate({
             maxVelocity: 1,
             forbiddenBlocks: [
                 {
-                    name: "minecraft:water"
+                    item: "minecraft:water"
                 }
             ],
             minimumDistance: 1,
             minimumPathLength: 2,
             preferredBlocks: [
                 {
-                    name: "minecraft:waterlily"
+                    item: "minecraft:waterlily"
                 },
                 {
-                    name: "minecraft:big_dripleaf"
+                    item: "minecraft:big_dripleaf"
                 }
             ],
             preferredBlocksChance: 0.5,
@@ -196,7 +201,7 @@ export const FrogTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetExperienceReward({
             onBred: "Math.Random(1,7)",
-            onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
         }),
         new BPEntityComponents.SetHealth({
             value: 10
@@ -221,7 +226,7 @@ export const FrogTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.1
         }),
-        new BPEntityComponents.SetMovementAmphibious({}),
+        new BPEntityComponents.SetMovementAmphibious(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationGeneric({
             avoidDamageBlocks: true,
@@ -237,7 +242,7 @@ export const FrogTemplate = createBPEntityTemplate({
                 "minecraft:frog": "minecraft:tadpole"
             }
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetSpawnEggInteraction(),
@@ -273,8 +278,6 @@ export const FrogTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["temperate_frog"]
                     }
@@ -326,8 +329,6 @@ export const FrogTemplate = createBPEntityTemplate({
         "minecraft:entity_transformed": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["temperate_frog"]
                     }

@@ -13,7 +13,7 @@ export class SetIsStackable extends BehaviorEntityComponentBuilder<IsStackableDa
      * @constructor
      * @public
      */
-    public constructor (params: IsStackableData) {
+    public constructor (params?: IsStackableData) {
         super("minecraft:is_stackable", params);
     }
 }

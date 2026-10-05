@@ -58,15 +58,16 @@ interface OnHitTypes {
     stickInGround?: {},
     teleportOwner?: {},
     thrownPotionEffect?: {};
+    windBurstOnHit?: {};
 }
 
 interface DefinitionEventOnHitTypes {
-    affectProjectile: boolean,
-    affectShooter: boolean,
-    affectSplashArea: boolean,
-    affectTarget: boolean,
-    eventTrigger: EntityFilterTrigger,
-    splashArea: number;
+    affectProjectile?: boolean,
+    affectShooter?: boolean,
+    affectSplashArea?: boolean,
+    affectTarget?: boolean,
+    eventTrigger?: EntityFilterTrigger,
+    splashArea?: number;
 }
 
 interface FreezeOnHitTypes {
@@ -129,23 +130,23 @@ interface ParticleOnHitTypes {
 }
 
 interface SpawnCloudTypes {
-    affectOwner: boolean,
-    duration: number,
-    particle: string,
-    potion: number,
-    radius: number,
-    radiusOnUse: number,
-    reapplicationDelay: number;
+    affectOwner?: boolean,
+    duration?: number,
+    particle?: string,
+    potion?: number,
+    radius?: number,
+    radiusOnUse?: number,
+    reapplicationDelay?: number;
 }
 
 interface SpawnChanceTypes {
-    onSpawn: EntityFilter | EntityFilter[],
-    firstSpawnChance: number,
-    firstSpawnCount: number,
-    secondSpawnChance: number,
-    secondSpawnCount: number,
-    spawnBaby: boolean,
-    spawnDefinition: string | MinecraftEntityTypes;
+    onSpawn?: EntityFilterTrigger | EntityFilterTrigger[],
+    firstSpawnChance?: number,
+    firstSpawnCount?: number,
+    secondSpawnChance?: number,
+    secondSpawnCount?: number,
+    spawnBaby?: boolean,
+    spawnDefinition?: string | MinecraftEntityTypes;
 }
 
 export class SetProjectile extends BehaviorEntityComponentBuilder<ProjectileData, "minecraft:projectile"> {

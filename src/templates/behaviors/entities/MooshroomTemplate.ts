@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Champivaca para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 03-10-2026
+ */
 export const MooshroomTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Mooshroom,
-    formatVersion: FormatVersionEntities.V1_26_10,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -50,7 +55,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
         "minecraft:cow_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/mooshroom.json"
@@ -606,11 +611,11 @@ export const MooshroomTemplate = createBPEntityTemplate({
             avoidWater: true,
             avoidDamageBlocks: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetLeashable(),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetDespawn({
             despawnFromDistance: {}
         }),
@@ -652,7 +657,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorRandomLookAround({
             priority: 9
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),
@@ -685,7 +690,6 @@ export const MooshroomTemplate = createBPEntityTemplate({
     ],
     events: {
         "become_cow": {
-            remove: {},
             add: {
                 componentGroups: ["minecraft:mooshroom_become_cow"]
             }
@@ -694,14 +698,12 @@ export const MooshroomTemplate = createBPEntityTemplate({
             randomize: [
                 {
                     weight: 95,
-                    remove: {},
                     add: {
                         componentGroups: ["minecraft:cow_adult", "minecraft:mooshroom_red"]
                     }
                 },
                 {
                     weight: 5,
-                    remove: {},
                     add: {
                         componentGroups: ["minecraft:cow_baby", "minecraft:mooshroom_red"]
                     }
@@ -709,7 +711,6 @@ export const MooshroomTemplate = createBPEntityTemplate({
             ]
         },
         "minecraft:entity_born": {
-            remove: {},
             add: {
                 componentGroups: ["minecraft:cow_baby"]
             }

@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Ahogado para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const DrownedTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Drowned,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:drowned_rider": [
@@ -37,11 +42,11 @@ export const DrownedTemplate = createBPEntityTemplate({
             })
         ],
         "minecraft:can_break_doors": [
-            new BPEntityComponents.SetAnnotationBreakDoor({})
+            new BPEntityComponents.SetAnnotationBreakDoor()
         ],
         "minecraft:baby_drowned": [
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 12 + (query.equipment_count * Math.Random(1,3)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 12 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
             }),
             new BPEntityComponents.SetIsBaby(),
             new BPEntityComponents.SetMovement({
@@ -63,7 +68,7 @@ export const DrownedTemplate = createBPEntityTemplate({
         ],
         "minecraft:adult_drowned": [
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
             }),
             new BPEntityComponents.SetTypeFamily({
                 family: ["drowned", "zombie", "undead", "monster", "mob"]
@@ -143,13 +148,20 @@ export const DrownedTemplate = createBPEntityTemplate({
                     min: 1,
                     max: 3
                 },
-                // TODO(migrate): clave no soportada "attack_range": {"min": 0.0, "max": 10.0}
+                attackRange: {
+                    min: 0,
+                    max: 10
+                },
                 priority: 3,
                 swing: true
             }),
             new BPEntityComponents.SetShooter({
-                // TODO(migrate): clave no soportada "def": "minecraft:thrown_trident"
-                sound: "item.trident.throw"
+                sound: "item.trident.throw",
+                projectiles: [
+                    {
+                        def: "minecraft:thrown_trident"
+                    }
+                ]
             })
         ],
         "minecraft:wander_mode": [
@@ -168,7 +180,7 @@ export const DrownedTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.in.water",
-                    condition: "query.head_is_in_water"
+                    condition: `${MoLang.headIsInWater}`
                 }
             ],
             minRandomCooldownSound: 8,
@@ -232,7 +244,7 @@ export const DrownedTemplate = createBPEntityTemplate({
             canPickupAnyItem: true,
             excludedItems: [
                 {
-                    name: "minecraft:glow_ink_sac"
+                    item: "minecraft:glow_ink_sac"
                 },
                 {
                     tags: "q.all_tags('minecraft:is_spear')"
@@ -265,7 +277,7 @@ export const DrownedTemplate = createBPEntityTemplate({
             suffocateTime: 0,
             totalSupply: 15
         }),
-        new BPEntityComponents.SetBurnsInDaylight({}),
+        new BPEntityComponents.SetBurnsInDaylight(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetCollisionBox({
             height: 1.9,
@@ -303,7 +315,7 @@ export const DrownedTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.23
         }),
-        new BPEntityComponents.SetMovementGeneric({}),
+        new BPEntityComponents.SetMovementGeneric(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationGeneric({
             avoidSun: true,
@@ -327,7 +339,7 @@ export const DrownedTemplate = createBPEntityTemplate({
             event: "minecraft:lost_target",
             target: "self"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetRotationLockedToVehicle(),
@@ -684,8 +696,6 @@ export const DrownedTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 9500,
@@ -729,8 +739,6 @@ export const DrownedTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 10,

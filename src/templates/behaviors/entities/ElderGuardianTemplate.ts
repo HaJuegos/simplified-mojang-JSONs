@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Elder Guardian para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const ElderGuardianTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.ElderGuardian,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         isExperimental: false,
         isSummonable: true,
@@ -19,7 +24,7 @@ export const ElderGuardianTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.in.water",
-                    condition: "query.head_is_in_water"
+                    condition: `${MoLang.headIsInWater}`
                 }
             ],
             minRandomCooldownSound: 8,
@@ -50,27 +55,10 @@ export const ElderGuardianTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "squid"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "axolotl"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('squid', 'other'),
+                        EntityFilters.isFamily('axolotl', 'other'),
                     )
                 }
             ],
@@ -103,7 +91,10 @@ export const ElderGuardianTemplate = createBPEntityTemplate({
             max: 80,
             value: 80
         }),
-        // TODO(migrate): componente sin clase "minecraft:home": {"restriction_radius": 16, "restriction_type": "random_movement"}
+        new BPEntityComponents.SetHome({
+            restrictionRadius: 16,
+            restrictionType: 'random_movement'
+        }),
         new BPEntityComponents.SetHurtOnCondition({
             damageConditions: [
                 {
@@ -121,7 +112,7 @@ export const ElderGuardianTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.3
         }),
-        new BPEntityComponents.SetMovementSway({}),
+        new BPEntityComponents.SetMovementSway(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationGeneric({
             canBreach: true,
@@ -131,7 +122,7 @@ export const ElderGuardianTemplate = createBPEntityTemplate({
             isAmphibious: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetTypeFamily({

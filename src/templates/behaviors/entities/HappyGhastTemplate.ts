@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Happy Ghast para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const HappyGhastTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.HappyGhast,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -14,7 +19,6 @@ export const HappyGhastTemplate = createBPEntityTemplate({
     },
     properties: {
         "minecraft:can_move": {
-            idProperty: "minecraft:can_move",
             clientSync: true,
             type: "bool",
             default: true
@@ -111,8 +115,10 @@ export const HappyGhastTemplate = createBPEntityTemplate({
                 canTemptVertically: true,
                 items: ["minecraft:snowball"],
                 speedMultiplier: 1.25,
-                withinRadius: 16
-                // TODO(migrate): clave no soportada "on_tempt_end": {"event": "minecraft:on_stop_tempting"}
+                withinRadius: 16,
+                onTemptEnd: {
+                    event: "minecraft:on_stop_tempting"
+                }
             }),
             new BPEntityComponents.SetBehaviorRandomHover({
                 priority: 8,
@@ -124,8 +130,11 @@ export const HappyGhastTemplate = createBPEntityTemplate({
                     min: 1,
                     max: 4
                 }
+            }),
+            new BPEntityComponents.SetHome({
+                restrictionRadius: 32,
+                restrictionType: 'random_movement'
             })
-            // TODO(migrate): componente sin clase "minecraft:home": {"restriction_radius": 32, "restriction_type": "random_movement"}
         ],
         "minecraft:adult": [
             new BPEntityComponents.SetHealth({
@@ -145,8 +154,8 @@ export const HappyGhastTemplate = createBPEntityTemplate({
                 avoidWater: true
             }),
             new BPEntityComponents.SetEntitySensor({
-                // TODO(migrate): clave no soportada "find_players_only": true
-                // TODO(migrate): clave no soportada "relative_range": false
+                findPlayersOnly: true,
+                relativeRange: false,
                 subsensors: [
                     {
                         event: "minecraft:become_mobile",
@@ -174,7 +183,7 @@ export const HappyGhastTemplate = createBPEntityTemplate({
                 ]
             }),
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             })
         ],
         "minecraft:adult_mobile": [
@@ -252,10 +261,15 @@ export const HappyGhastTemplate = createBPEntityTemplate({
                     "minecraft:yellow_harness"
                 ],
                 withinRadius: 16,
-                stopDistance: 7
-                // TODO(migrate): clave no soportada "on_tempt_end": {"event": "minecraft:on_stop_tempting"}
+                stopDistance: 7,
+                onTemptEnd: {
+                    event: "minecraft:on_stop_tempting"
+                }
             }),
-            // TODO(migrate): componente sin clase "minecraft:home": {"restriction_radius": 64, "restriction_type": "random_movement"}
+            new BPEntityComponents.SetHome({
+                restrictionRadius: 64,
+                restrictionType: 'random_movement'
+            }),
             new BPEntityComponents.SetInteract({
                 interactions: [
                     {
@@ -290,7 +304,10 @@ export const HappyGhastTemplate = createBPEntityTemplate({
             })
         ],
         "minecraft:adult_harnessed": [
-            // TODO(migrate): componente sin clase "minecraft:home": {"restriction_radius": 32, "restriction_type": "random_movement"}
+            new BPEntityComponents.SetHome({
+                restrictionRadius: 32,
+                restrictionType: 'random_movement'
+            }),
             new BPEntityComponents.SetRideable({
                 seatCount: 4,
                 familyTypes: ["player"],
@@ -344,8 +361,10 @@ export const HappyGhastTemplate = createBPEntityTemplate({
                 canTemptVertically: true,
                 items: ["minecraft:snowball"],
                 withinRadius: 16,
-                stopDistance: 7
-                // TODO(migrate): clave no soportada "on_tempt_end": {"event": "minecraft:on_stop_tempting"}
+                stopDistance: 7,
+                onTemptEnd: {
+                    event: "minecraft:on_stop_tempting"
+                }
             }),
             new BPEntityComponents.SetInteract({
                 interactions: [
@@ -580,8 +599,6 @@ export const HappyGhastTemplate = createBPEntityTemplate({
                     }
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     setHomePosition: {},
                     trigger: "minecraft:on_player_detected_above"
                 }

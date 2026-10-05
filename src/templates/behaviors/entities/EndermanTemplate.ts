@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Enderman para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const EndermanTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Enderman,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.Monster,
         isSpawneable: true,
@@ -58,8 +63,8 @@ export const EndermanTemplate = createBPEntityTemplate({
                 randomTeleportCube: [32, 32, 32],
                 targetDistance: 16,
                 targetTeleportChance: 0.05,
-                lightTeleportChance: 0.05
-                // TODO(migrate): clave no soportada "teleports_on_projectile_hit": true
+                lightTeleportChance: 0.05,
+                teleportsOnProjectileHit: true
             })
         ]
     },
@@ -67,7 +72,7 @@ export const EndermanTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
         new BPEntityComponents.SetRendersWhenInvisible(),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 : 0`
         }),
         new BPEntityComponents.SetTypeFamily({
             family: ["enderman", "monster", "mob"]
@@ -115,8 +120,8 @@ export const EndermanTemplate = createBPEntityTemplate({
             randomTeleportCube: [32, 32, 32],
             targetDistance: 16,
             targetTeleportChance: 0.05,
-            lightTeleportChance: 0.05
-            // TODO(migrate): clave no soportada "teleports_on_projectile_hit": true
+            lightTeleportChance: 0.05,
+            teleportsOnProjectileHit: true
         }),
         new BPEntityComponents.SetLookedAt({
             searchRadius: 64,
@@ -146,10 +151,10 @@ export const EndermanTemplate = createBPEntityTemplate({
             canPathOverWater: false,
             avoidWater: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetConditionalBandwidthOptimization({
@@ -255,7 +260,6 @@ export const EndermanTemplate = createBPEntityTemplate({
     ],
     events: {
         "minecraft:entity_spawned": {
-            remove: {},
             add: {
                 componentGroups: ["minecraft:enderman_calm", "minecraft:not_riding"]
             }

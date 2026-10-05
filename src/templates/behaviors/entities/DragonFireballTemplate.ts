@@ -3,9 +3,13 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
+/**
+ * Plantilla vanilla de la bola del dragon para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const DragonFireballTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.DragonFireball,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         isSummonable: false,
         isSpawneable: false
@@ -27,7 +31,7 @@ export const DragonFireballTemplate = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetDimensionBound(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetProjectile({
             anchor: "middle",
             gravity: 0,

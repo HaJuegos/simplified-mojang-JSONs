@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Zorro para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const FoxTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Fox,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -40,7 +45,7 @@ export const FoxTemplate = createBPEntityTemplate({
         "minecraft:fox_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/fox.json"
@@ -333,7 +338,7 @@ export const FoxTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetSpawnEggInteraction(),
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
-        // TODO(migrate): componente sin clase "minecraft:can_stand_on_powder_snow": {}
+        new BPEntityComponents.SetCanStandOnPowderSnow(),
         new BPEntityComponents.SetTypeFamily({
             family: ["fox", "mob"]
         }),
@@ -349,7 +354,7 @@ export const FoxTemplate = createBPEntityTemplate({
             avoidWater: true,
             avoidDamageBlocks: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetCollisionBox({
@@ -503,7 +508,7 @@ export const FoxTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBalloonable({
             mass: 0.6
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),
@@ -552,8 +557,6 @@ export const FoxTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 95,

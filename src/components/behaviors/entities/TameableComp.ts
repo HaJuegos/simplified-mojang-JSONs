@@ -1,11 +1,11 @@
 import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter, TargetItemsTypes } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger, TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface TameableData extends BPComponent {
     probability?: number;
-    tameEvent?: EntityFilter;
+    tameEvent?: EntityFilterTrigger;
     tameItems?: (string | MinecraftItemTypes | TameItemTypes)[];
 }
 

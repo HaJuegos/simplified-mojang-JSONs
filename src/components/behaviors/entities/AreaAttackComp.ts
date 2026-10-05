@@ -13,7 +13,7 @@ interface AreaAttackData extends BPComponent {
      * (Opcional) Filtros condicionales para validar el daño a las entidades.
      * @type {EntityFilter}
      */
-    filters?: EntityFilter;
+    entityFilter?: EntityFilter | EntityFilter[];
 
     /**
      * Cuanto daño por tick se aplica a las entidades que entran en el rango de daño.

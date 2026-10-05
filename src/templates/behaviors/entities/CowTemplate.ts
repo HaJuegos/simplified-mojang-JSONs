@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la vaca para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const CowTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Cow,
-    formatVersion: FormatVersionEntities.V1_26_10,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -14,14 +19,12 @@ export const CowTemplate = createBPEntityTemplate({
     },
     properties: {
         "minecraft:climate_variant": {
-            idProperty: "minecraft:climate_variant",
             clientSync: true,
             type: "enum",
             default: "temperate",
             values: ["temperate", "warm", "cold"]
         },
         "minecraft:sound_variant": {
-            idProperty: "minecraft:sound_variant",
             clientSync: true,
             type: "enum",
             default: "default",
@@ -62,7 +65,7 @@ export const CowTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetLeashableTo(),
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/cow.json"
@@ -129,7 +132,7 @@ export const CowTemplate = createBPEntityTemplate({
             avoidWater: true,
             avoidDamageBlocks: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetCollisionBox({
@@ -195,8 +198,8 @@ export const CowTemplate = createBPEntityTemplate({
             priority: 9
         }),
         new BPEntityComponents.SetLeashable(),
-        new BPEntityComponents.SetBalloonable({}),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetBalloonable(),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetConditionalBandwidthOptimization()
@@ -205,8 +208,6 @@ export const CowTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 95,
@@ -221,8 +222,6 @@ export const CowTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     firstValid: [
                         {
                             filters: EntityFilters.hasBiomeTag("spawns_warm_variant_farm_animals"),
@@ -247,7 +246,6 @@ export const CowTemplate = createBPEntityTemplate({
             trigger: "minecraft:randomize_sound_variant"
         },
         "minecraft:entity_transformed": {
-            remove: {},
             add: {
                 componentGroups: ["minecraft:cow_adult"]
             }

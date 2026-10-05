@@ -4,24 +4,26 @@ import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/beh
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Creaking para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 04-10-2026
+ */
 export const CreakingTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Creaking,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     properties: {
         "minecraft:creaking_swaying_ticks": {
-            idProperty: "minecraft:creaking_swaying_ticks",
             clientSync: true,
             type: "int",
             default: 0,
             range: [0, 6]
         },
         "minecraft:creaking_state": {
-            idProperty: "minecraft:creaking_state",
             clientSync: true,
             type: "enum",
             default: "neutral",
@@ -30,10 +32,10 @@ export const CreakingTemplate = createBPEntityTemplate({
     },
     componentsGroups: {
         "minecraft:crumbling": [
-            new BPEntityComponents.SetInstantDespawn({})
+            new BPEntityComponents.SetInstantDespawn()
         ],
         "minecraft:neutral": [
-            new BPEntityComponents.SetAmbientSoundInterval({}),
+            new BPEntityComponents.SetAmbientSoundInterval(),
             new BPEntityComponents.SetBehaviorRandomStroll({
                 priority: 7,
                 speedMultiplier: 0.3
@@ -45,7 +47,7 @@ export const CreakingTemplate = createBPEntityTemplate({
                 filters: EntityFilters.actorHealth(0, "other", ">"),
                 lookedAtEvent: {
                     event: "minecraft:become_hostile",
-                    filter: "self"
+                    target: "self"
                 },
                 findPlayersOnly: true,
                 lookAtLocations: [
@@ -74,7 +76,7 @@ export const CreakingTemplate = createBPEntityTemplate({
                 fieldOfView: 120,
                 notLookedAtEvent: {
                     event: "minecraft:on_target_stop_looking",
-                    filter: "self"
+                    target: "self"
                 },
                 filters: EntityFilters.noneOf(
                     EntityFilters.actorHealth(0, "target"),
@@ -82,7 +84,7 @@ export const CreakingTemplate = createBPEntityTemplate({
                 ),
                 lookedAtEvent: {
                     event: "minecraft:on_target_start_looking",
-                    filter: "self"
+                    target: "self"
                 },
                 findPlayersOnly: true,
                 lookAtLocations: [
@@ -254,13 +256,16 @@ export const CreakingTemplate = createBPEntityTemplate({
                 ]
             }),
             new BPEntityComponents.SetFireImmune(),
-            // TODO(migrate): componente sin clase "minecraft:home": {"restriction_radius": 32, "restriction_type": "all_movement"}
+            new BPEntityComponents.SetHome({
+                restrictionRadius: 32,
+                restrictionType: 'all_movement'
+            }),
             new BPEntityComponents.SetNavigationWalk({
                 avoidDamageBlocks: false,
                 canPathOverLava: true,
                 canPathOverWater: true
-            })
-            // TODO(migrate): componente sin clase "minecraft:not_pickable_from_inside": {}
+            }),
+            new BPEntityComponents.SetNotPickableFromInsideComp()
         ],
         "minecraft:twitching": [
             new BPEntityComponents.SetBehaviorTimerFlagOne({
@@ -290,16 +295,16 @@ export const CreakingTemplate = createBPEntityTemplate({
             max: 32,
             value: 32
         }),
-        // TODO(migrate): componente sin clase "minecraft:freezing_immune": {}
+        new BPEntityComponents.SetFreezingImmune(),
         new BPEntityComponents.SetHealth({
             max: 1,
             value: 1
         }),
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
         new BPEntityComponents.SetJumpStatic(),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetRendersWhenInvisible(),
         new BPEntityComponents.SetTypeFamily({
             family: ["creaking", "monster", "mob"]

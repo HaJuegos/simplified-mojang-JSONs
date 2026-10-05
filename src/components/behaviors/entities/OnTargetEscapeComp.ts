@@ -14,7 +14,7 @@ export class SetOnTargetEscape extends BehaviorEntityComponentBuilder<OnTargetEs
      * @constructor
      * @public
      */
-    public constructor (params: OnTargetEscapeData) {
+    public constructor (params?: OnTargetEscapeData) {
         super("minecraft:on_target_escape", params);
     }
 }
