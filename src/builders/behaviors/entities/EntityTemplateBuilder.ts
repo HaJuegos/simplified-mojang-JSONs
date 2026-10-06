@@ -1,4 +1,4 @@
-import { BPEntitiesTemplateDef, BPEntitiesTemplateOverride, BPEntityComponent, BPEntityComponentsMap, BPEntityDefaultEventsNames, BPEntityEventsMap, BPEntityGroupCompsList, GroupNames, LooseEvents, LoseDefinition, LoseOver } from "../../types/behaviors/EntitiesTemplate";
+import { BPEntitiesTemplateDef, BPEntitiesTemplateOverride, BPEntityComponent, BPEntityComponentsMap, BPEntityDefaultEventsNames, BPEntityEventsMap, BPEntityGroupCompsList, GroupNames, LooseEvents, LoseDefinition, LoseOver } from "../../../types/behaviors/entities/EntitiesTemplate";
 import { BehaviorEntityBuilder } from "./EntityBuilder";
 
 /**

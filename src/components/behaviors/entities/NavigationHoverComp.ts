@@ -1,5 +1,5 @@
-import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
-import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 import { GlobalNavigationParams } from "../../../types/EntityFilters";
 
 interface NavigationHoverData extends BPComponent, GlobalNavigationParams {

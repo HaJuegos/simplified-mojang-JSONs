@@ -1,6 +1,6 @@
 import { MinecraftItemTypes } from "@minecraft/vanilla-data";
-import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
-import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 import { MoLangValue } from "../../../types/MoLang";
 import { TargetItemsTypes } from "../../../types/EntityFilters";
 

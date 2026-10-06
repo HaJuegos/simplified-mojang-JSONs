@@ -1,5 +1,5 @@
-import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
-import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 import { EntitySlotsArmor } from "../../../types/EntityFilters";
 
 interface EquipmentData extends BPComponent {

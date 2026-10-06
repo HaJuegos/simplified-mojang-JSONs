@@ -1,7 +1,7 @@
 import * as vanilla from '@minecraft/vanilla-data';
 
-import { MoLangValue } from '../MoLang';
-import { EntityFilter, EntityFilterTrigger, EntitySlotsArmor } from '../EntityFilters';
+import { MoLangValue } from '../../MoLang';
+import { EntityFilter, EntityFilterTrigger, EntitySlotsArmor } from '../../EntityFilters';
 
 export {
     FormatVersionEntities,

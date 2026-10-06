@@ -1,8 +1,8 @@
-import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
-import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 
 interface IsHiddenWhenInvisibleData extends BPComponent {
-    
+
 }
 
 export class SetIsHiddenWhenInvisible extends BehaviorEntityComponentBuilder<IsHiddenWhenInvisibleData, "minecraft:is_hidden_when_invisible"> {

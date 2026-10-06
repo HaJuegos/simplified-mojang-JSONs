@@ -1,8 +1,8 @@
 import * as vanilla from "@minecraft/vanilla-data";
 
-import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
 import { EntityFilter, EntityFilterTrigger, TargetItemsTypes } from "../../../types/EntityFilters";
-import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 
 /**
  * Lista de parametros del componente en cuestion.

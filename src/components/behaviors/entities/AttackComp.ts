@@ -1,5 +1,5 @@
-import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
-import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 import { EntityEffectTypes } from "../../../types/EntityFilters";
 
 type AttackDamageOption = number | [number, number] | { rangeMax: number, rangeMin: number; };

@@ -1,6 +1,6 @@
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
-import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
-import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 import { EntityFilter, EntityFiltersTarget } from "../../../types/EntityFilters";
 
 interface BehaviorTakeBlockData extends BPComponent {

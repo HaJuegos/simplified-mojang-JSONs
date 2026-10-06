@@ -1,5 +1,5 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { BehaviorEntityComponentBuilder } from "../../builders/behaviors/EntityCompsBuilder";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
 import { BPAnimationScriptEntities, BPEntityEvents, BPEntityOptionalParams, BPPropertiesEntities, FormatVersionEntities } from "./EntitiesEnums";
 
 export {

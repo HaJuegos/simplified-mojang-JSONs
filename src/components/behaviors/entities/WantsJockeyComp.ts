@@ -1,8 +1,8 @@
-import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
-import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 
 interface WantsJockeyData extends BPComponent {
-    
+
 }
 
 export class SetWantsJockey extends BehaviorEntityComponentBuilder<WantsJockeyData, "minecraft:wants_jockey"> {

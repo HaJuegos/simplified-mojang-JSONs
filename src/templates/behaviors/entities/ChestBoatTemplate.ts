@@ -1,6 +1,6 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTemplateBuilder";
-import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
+import { createBPEntityTemplate } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { FormatVersionEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 import { MoLang } from "../../../utils/MoLang";

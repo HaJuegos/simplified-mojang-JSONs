@@ -1,5 +1,5 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTemplateBuilder";
+import { createBPEntityTemplate } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 import { VillagerV2Template } from "./VillagerV2Template";

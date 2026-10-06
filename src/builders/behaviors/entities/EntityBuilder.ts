@@ -1,10 +1,10 @@
 import * as vanilla from '@minecraft/vanilla-data';
 
-import { BPAnimationScriptEntities, BPEntityEvents, BPEntityOptionalParams, BPPropertiesEntities, FormatVersionEntities, SpawnCategoryEntities } from "../../types/behaviors/EntitiesEnums";
-import { MoLangValue } from '../../types/MoLang';
-import { BPEntityFile } from '../../types/behaviors/EntitiesComps';
+import { BPAnimationScriptEntities, BPEntityEvents, BPEntityOptionalParams, BPPropertiesEntities, FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
+import { MoLangValue } from '../../../types/MoLang';
+import { BPEntityFile } from '../../../types/behaviors/entities/EntitiesComps';
 import { BehaviorEntityComponentBuilder } from './EntityCompsBuilder';
-import { SnakeCase } from '../../utils/SnakeCase';
+import { SnakeCase } from '../../../utils/SnakeCase';
 
 /**
  * Clase abstracta de base para la creacion de una entidad con todos los parametros requeridos y una estructura fija.

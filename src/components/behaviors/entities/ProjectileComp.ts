@@ -1,6 +1,6 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
-import { BPComponent, BuiltComponent } from "../../../types/behaviors/EntitiesComps";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
+import { BPComponent, BuiltComponent } from "../../../types/behaviors/entities/EntitiesComps";
 import { EntityEffectTypes, EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface ProjectileData extends BPComponent {

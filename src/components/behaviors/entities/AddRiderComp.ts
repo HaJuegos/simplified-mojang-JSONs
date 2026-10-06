@@ -1,7 +1,7 @@
 import * as vanilla from '@minecraft/vanilla-data';
 
-import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
-import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
+import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 
 /**
  * Parametros adiccionales de las entidades a asignar.

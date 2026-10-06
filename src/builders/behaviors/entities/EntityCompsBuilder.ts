@@ -1,5 +1,5 @@
-import { BPComponent, BuiltComponent } from "../../types/behaviors/EntitiesComps";
-import { SnakeCase } from "../../utils/SnakeCase";
+import { BPComponent, BuiltComponent } from "../../../types/behaviors/entities/EntitiesComps";
+import { SnakeCase } from "../../../utils/SnakeCase";
 
 /**
  * Clase plantilla builder para la creacion de un componente de entidades en un behavior.
