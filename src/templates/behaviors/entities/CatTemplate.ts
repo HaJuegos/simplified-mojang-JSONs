@@ -143,7 +143,7 @@ export const CatTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetColor({
                 value: 14
             }),
-            new BPEntityComponents.SetSittable({}),
+            new BPEntityComponents.SetSittable(),
             new BPEntityComponents.SetIsDyeable({
                 interactText: "action.interact.dye"
             }),
@@ -366,7 +366,7 @@ export const CatTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetDespawn({
             despawnFromDistance: {}
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),

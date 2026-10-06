@@ -278,7 +278,7 @@ export const PandaTemplate = createBPEntityTemplate({
                     target: "self"
                 }
             }),
-            new BPEntityComponents.SetOnTargetAcquired({})
+            new BPEntityComponents.SetOnTargetAcquired()
         ],
         "minecraft:baby_scared": [
             new BPEntityComponents.SetAngry({
@@ -328,7 +328,7 @@ export const PandaTemplate = createBPEntityTemplate({
             avoidDamageBlocks: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetScale({
             value: 1
         }),

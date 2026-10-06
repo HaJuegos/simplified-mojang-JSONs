@@ -36,7 +36,7 @@ export class SetRideable extends BehaviorEntityComponentBuilder<RideableData, "m
      * @constructor
      * @public
      */
-    public constructor (params: RideableData) {
+    public constructor (params?: RideableData) {
         super("minecraft:rideable", params);
     }
 }

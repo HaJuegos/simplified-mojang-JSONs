@@ -15,7 +15,7 @@ export class SetSittable extends BehaviorEntityComponentBuilder<SittableData, "m
      * @constructor
      * @public
      */
-    public constructor (params: SittableData) {
+    public constructor (params?: SittableData) {
         super("minecraft:sittable", params);
     }
 }

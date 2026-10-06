@@ -24,7 +24,10 @@ export const BatTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetBehaviorFloatWander({
             priority: 1,
-            floatDuration: [0.1, 0.35],
+            floatDuration: {
+                min: 0.1,
+                max: 0.35
+            },
             floatWanderHasMoveControl: false,
             randomReselect: true,
             yOffset: -2,
@@ -74,13 +77,13 @@ export const BatTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.1
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationFloat({
             canPathOverWater: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetTypeFamily({
             family: ["bat", "mob"]
         })

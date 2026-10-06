@@ -103,7 +103,10 @@ export const AllayTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetBehaviorRandomHover({
             priority: 9,
-            hoverHeight: [1, 4],
+            hoverHeight: {
+                min: 1,
+                max: 4
+            },
             yDist: 8,
             interval: 1,
             xzDist: 8,

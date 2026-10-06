@@ -289,7 +289,7 @@ export const StriderTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetLavaMovement({
             value: 0.32
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNavigationWalk({
             canPathOverLava: true,
             avoidWater: true,
@@ -309,7 +309,7 @@ export const StriderTemplate = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetSpawnEggInteraction(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetBehaviorLookAtPlayer({
             priority: 9,
             lookDistance: 6,

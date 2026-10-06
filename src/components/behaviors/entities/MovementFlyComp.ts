@@ -13,7 +13,7 @@ export class SetMovementFly extends BehaviorEntityComponentBuilder<MovementFlyDa
      * @constructor
      * @public
      */
-    public constructor (params: MovementFlyData) {
+    public constructor (params?: MovementFlyData) {
         super("minecraft:movement.fly", params);
     }
 }

@@ -167,7 +167,7 @@ export const ZombiePigmanTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetDespawn({
             despawnFromDistance: {}
         }),
-        new BPEntityComponents.SetEquipItem({}),
+        new BPEntityComponents.SetEquipItem(),
         new BPEntityComponents.SetEquipment({
             table: "loot_tables/entities/zombie_pigman_gear.json"
         }),
@@ -184,7 +184,7 @@ export const ZombiePigmanTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.23
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidPortals: true,
@@ -199,7 +199,7 @@ export const ZombiePigmanTemplate = createBPEntityTemplate({
                 "minecraft:zombie_pigman": "minecraft:zombie_pigman"
             }
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetShareables({

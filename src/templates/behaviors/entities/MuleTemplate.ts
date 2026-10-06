@@ -202,7 +202,7 @@ export const MuleTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetInteract({
                 interactions: [
                     {
-                        playSounds: "armor.equip_generic",
+                        playSounds: ["armor.equip_generic"],
                         onInteract: {
                             filters: EntityFilters.allOf(
                                 EntityFilters.hasEquipment("chest", "hand", "other"),
@@ -239,7 +239,7 @@ export const MuleTemplate = createBPEntityTemplate({
                         dropItemSlot: "0",
                         dropItemYOffset: 1.1,
                         interactText: "action.interact.removesaddle",
-                        playSounds: "unsaddle",
+                        playSounds: ["unsaddle"],
                         vibration: "shear"
                     }
                 ]
@@ -275,7 +275,7 @@ export const MuleTemplate = createBPEntityTemplate({
                         dropItemSlot: "0",
                         dropItemYOffset: 1.1,
                         interactText: "action.interact.removesaddle",
-                        playSounds: "unsaddle",
+                        playSounds: ["unsaddle"],
                         vibration: "shear"
                     }
                 ]

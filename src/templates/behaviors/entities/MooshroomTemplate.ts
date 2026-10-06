@@ -98,7 +98,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "milk_suspiciously",
+                        playSounds: ["milk_suspiciously"],
                         interactText: "action.interact.moostew"
                     },
                     {
@@ -114,7 +114,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -135,7 +135,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -156,7 +156,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -177,7 +177,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -198,7 +198,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -219,7 +219,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -240,7 +240,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -261,7 +261,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -323,7 +323,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -344,7 +344,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -365,7 +365,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -386,7 +386,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -407,7 +407,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         swing: true,
-                        playSounds: "eat",
+                        playSounds: ["eat"],
                         particleOnStart: {
                             particleType: "smoke",
                             particleYOffset: 0.25,
@@ -428,7 +428,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         useItem: false,
                         swing: true,
                         hurtItem: 1,
-                        playSounds: "shear",
+                        playSounds: ["shear"],
                         spawnItems: {
                             table: "loot_tables/entities/mooshroom_shear.json"
                         },
@@ -453,7 +453,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         useItem: false,
                         swing: true,
                         hurtItem: 1,
-                        playSounds: "shear",
+                        playSounds: ["shear"],
                         spawnItems: {
                             table: "loot_tables/entities/brown_mooshroom_shear.json"
                         },
@@ -475,7 +475,7 @@ export const MooshroomTemplate = createBPEntityTemplate({
                         useItem: true,
                         swing: true,
                         transformToItem: "bucket:1",
-                        playSounds: "milk",
+                        playSounds: ["milk"],
                         interactText: "action.interact.milk"
                     }
                 ]

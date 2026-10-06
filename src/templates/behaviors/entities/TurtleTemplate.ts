@@ -179,7 +179,7 @@ export const TurtleTemplate = createBPEntityTemplate({
             maxTurn: 5
         }),
         new BPEntityComponents.SetJumpStatic(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetHome(),

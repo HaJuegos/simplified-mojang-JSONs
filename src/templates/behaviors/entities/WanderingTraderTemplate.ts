@@ -222,7 +222,7 @@ export const WanderingTraderTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.5
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidWater: true,
@@ -231,7 +231,7 @@ export const WanderingTraderTemplate = createBPEntityTemplate({
             canPassDoors: true,
             canPathOverWater: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetSpawnEntity({

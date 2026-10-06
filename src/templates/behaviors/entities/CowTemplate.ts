@@ -102,7 +102,7 @@ export const CowTemplate = createBPEntityTemplate({
                         useItem: true,
                         swing: true,
                         transformToItem: "bucket:1",
-                        playSounds: "milk",
+                        playSounds: ["milk"],
                         interactText: "action.interact.milk"
                     }
                 ]

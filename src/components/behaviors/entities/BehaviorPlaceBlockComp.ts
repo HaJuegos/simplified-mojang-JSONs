@@ -11,11 +11,11 @@ interface BehaviorPlaceBlockData extends BPComponent {
     onPlace?: string | EntityFiltersTarget;
     placeableCarriedBlocks?: (string | MinecraftBlockTypes | BlockTagsTypes)[];
     randomlyPlaceableBlocks?: (string | MinecraftBlockTypes | RandomPlaceBlockTypes)[];
-    xzRange?: number | {
+    xzRange?: {
         min: number;
         max: number;
     };
-    yRange?: number | {
+    yRange?: {
         min: number;
         max: number;
     };

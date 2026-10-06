@@ -379,7 +379,7 @@ export const ShulkerTemplate = createBPEntityTemplate({
             max: 0,
             value: 0
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             usingDoorAnnotation: true
@@ -395,7 +395,7 @@ export const ShulkerTemplate = createBPEntityTemplate({
                 event: "minecraft:on_open"
             }
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetRendersWhenInvisible(),
         new BPEntityComponents.SetShooter({
             projectiles: [

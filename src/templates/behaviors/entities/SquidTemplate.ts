@@ -104,7 +104,7 @@ export const SquidTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.2
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             canPathOverWater: true,
@@ -115,7 +115,7 @@ export const SquidTemplate = createBPEntityTemplate({
                 "minecraft:squid": "minecraft:squid"
             }
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetSpawnEggInteraction(),

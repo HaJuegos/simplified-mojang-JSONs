@@ -60,8 +60,8 @@ export const HopperMinecartTemplate = createBPEntityTemplate({
             inventorySize: 5,
             containerType: "minecart_hopper"
         }),
-        new BPEntityComponents.SetIsStackable({}),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetIsStackable(),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {
@@ -74,7 +74,7 @@ export const HopperMinecartTemplate = createBPEntityTemplate({
             ]
         }),
         new BPEntityComponents.SetPushableByBlock(),
-        new BPEntityComponents.SetRailMovement({}),
+        new BPEntityComponents.SetRailMovement(),
         new BPEntityComponents.SetTypeFamily({
             family: ["minecart", "inanimate"]
         })

@@ -141,13 +141,13 @@ export const SnowGolemTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.2
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidWater: true
         }),
         new BPEntityComponents.SetPersistent(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetShooter({

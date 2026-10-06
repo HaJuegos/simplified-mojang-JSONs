@@ -3,11 +3,11 @@ import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityFilter } from "../../../types/EntityFilters";
 
 interface BehaviorFollowTargetLeaderData extends BPComponent {
-    priority: number;
+    priority?: number;
     speedMultiplier?: number;
     alwaysLookForLeader?: boolean;
     followDistance?: number;
-    leaderFilters: EntityFilter | EntityFilter[];
+    leaderFilters?: EntityFilter | EntityFilter[];
     searchCooldown?: number;
     withinRadius?: number;
 }

@@ -40,7 +40,7 @@ export const TripodCameraTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetLoot({
             table: "loot_tables/empty.json"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetTypeFamily({
             family: ["tripodcamera", "inanimate", "mob"]
         })

@@ -265,7 +265,7 @@ export const SnifferTemplate = createBPEntityTemplate({
             avoidWater: true,
             avoidDamageBlocks: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetFollowRange({
             value: 64
         }),
@@ -275,7 +275,7 @@ export const SnifferTemplate = createBPEntityTemplate({
             value: 0.09
         }),
         new BPEntityComponents.SetPersistent(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetConditionalBandwidthOptimization()
     ],
     events: {

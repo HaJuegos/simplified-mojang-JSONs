@@ -172,7 +172,7 @@ export const ZombieHorseTemplate = createBPEntityTemplate({
                         },
                         equipItemSlot: "1",
                         interactText: "action.interact.equiphorsearmor",
-                        playSounds: "armor.equip_generic"
+                        playSounds: ["armor.equip_generic"]
                     },
                     {
                         onInteract: {
@@ -187,7 +187,7 @@ export const ZombieHorseTemplate = createBPEntityTemplate({
                         dropItemSlot: "1",
                         dropItemYOffset: 1.1,
                         interactText: "action.interact.removehorsearmor",
-                        playSounds: "armor.unequip_generic",
+                        playSounds: ["armor.unequip_generic"],
                         vibration: "shear"
                     },
                     {
@@ -215,7 +215,7 @@ export const ZombieHorseTemplate = createBPEntityTemplate({
                         dropItemSlot: "0",
                         dropItemYOffset: 1.1,
                         interactText: "action.interact.removesaddle",
-                        playSounds: "unsaddle",
+                        playSounds: ["unsaddle"],
                         vibration: "shear"
                     }
                 ]
@@ -278,7 +278,7 @@ export const ZombieHorseTemplate = createBPEntityTemplate({
     },
     components: [
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
-        new BPEntityComponents.SetAmbientSoundInterval({}),
+        new BPEntityComponents.SetAmbientSoundInterval(),
         new BPEntityComponents.SetTypeFamily({
             family: ["zombiehorse", "undead", "mob"]
         }),
@@ -322,7 +322,7 @@ export const ZombieHorseTemplate = createBPEntityTemplate({
                 rangeMax: 0.275
             }
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetOffspring({
@@ -379,7 +379,7 @@ export const ZombieHorseTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorRandomLookAround({
             priority: 8
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {

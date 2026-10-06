@@ -201,7 +201,7 @@ export const PiglinBruteTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.35
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             canOpenDoors: true,
@@ -212,7 +212,7 @@ export const PiglinBruteTemplate = createBPEntityTemplate({
             event: "become_angry_event",
             target: "self"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetTypeFamily({

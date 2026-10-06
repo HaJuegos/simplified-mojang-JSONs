@@ -6,7 +6,7 @@ import { TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorJumpToBlockData extends BPComponent {
     priority: number;
-    cooldownRange?: [number, number] | {
+    cooldownRange?: {
         min: number,
         max: number;
     };

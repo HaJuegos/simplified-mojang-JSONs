@@ -171,7 +171,7 @@ export const ArrowTemplate = createBPEntityTemplate({
                 }
             ]
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetProjectile({
             anchor: "eye_height",
             gravity: 0.05,

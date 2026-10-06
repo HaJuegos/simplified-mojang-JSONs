@@ -254,12 +254,12 @@ export const SpiderTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.3
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationClimb({
             canPathOverWater: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetRendersWhenInvisible(),

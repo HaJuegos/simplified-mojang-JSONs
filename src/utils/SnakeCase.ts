@@ -16,7 +16,7 @@ export class SnakeCase {
      * @public
      */
     public static toSnakeCase(txt: string): string {
-        return txt.replace(/[A-Z]/g, letter => `_${letter.toLowerCase()}`);
+        return txt.replace(/([A-Z]+)([A-Z][a-z])/g, "$1_$2").replace(/([a-z0-9])([A-Z])/g, "$1_$2").toLowerCase();
     }
 
     /**

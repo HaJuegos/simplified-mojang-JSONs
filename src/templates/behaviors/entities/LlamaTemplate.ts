@@ -182,7 +182,7 @@ export const LlamaTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetInteract({
                 interactions: [
                     {
-                        playSounds: "armor.equip_generic",
+                        playSounds: ["armor.equip_generic"],
                         onInteract: {
                             filters: EntityFilters.allOf(
                                 EntityFilters.isFamily("player", "other"),
@@ -196,7 +196,7 @@ export const LlamaTemplate = createBPEntityTemplate({
                         interactText: "action.interact.attachchest"
                     },
                     {
-                        playSounds: "armor.equip_generic",
+                        playSounds: ["armor.equip_generic"],
                         onInteract: {
                             filters: EntityFilters.allOf(
                                 EntityFilters.hasEquipment("carpet", "inventory", "self", "not"),
@@ -221,7 +221,7 @@ export const LlamaTemplate = createBPEntityTemplate({
                         dropItemSlot: "0",
                         dropItemYOffset: 1.1,
                         interactText: "action.interact.removecarpet",
-                        playSounds: "armor.unequip_generic",
+                        playSounds: ["armor.unequip_generic"],
                         vibration: "shear"
                     }
                 ]
@@ -232,7 +232,7 @@ export const LlamaTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetInteract({
                 interactions: [
                     {
-                        playSounds: "armor.equip_generic",
+                        playSounds: ["armor.equip_generic"],
                         onInteract: {
                             filters: EntityFilters.allOf(
                                 EntityFilters.hasEquipment("carpet", "inventory", "self", "not"),
@@ -258,7 +258,7 @@ export const LlamaTemplate = createBPEntityTemplate({
                         dropItemSlot: "0",
                         dropItemYOffset: 1.1,
                         interactText: "action.interact.removecarpet",
-                        playSounds: "unsaddle",
+                        playSounds: ["unsaddle"],
                         vibration: "shear"
                     }
                 ]

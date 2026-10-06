@@ -141,7 +141,7 @@ export const RabbitTemplate = createBPEntityTemplate({
             canPathOverWater: true,
             avoidWater: true
         }),
-        new BPEntityComponents.SetMovementSkip({}),
+        new BPEntityComponents.SetMovementSkip(),
         new BPEntityComponents.SetJumpDynamic({
             regularSkipData: {
                 distanceScale: 0.8,
@@ -215,7 +215,7 @@ export const RabbitTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorLookAtPlayer({
             priority: 11
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),

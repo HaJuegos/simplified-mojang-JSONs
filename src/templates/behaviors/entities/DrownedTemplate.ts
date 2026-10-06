@@ -180,7 +180,7 @@ export const DrownedTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.in.water",
-                    condition: `${MoLang.headIsInWater}`
+                    condition: `${MoLang.headIsInWater()}`
                 }
             ],
             minRandomCooldownSound: 8,

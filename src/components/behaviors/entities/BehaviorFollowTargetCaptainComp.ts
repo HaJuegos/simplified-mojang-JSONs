@@ -1,5 +1,6 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { SetBehaviorFollowTargetLeader } from "./BehaviorFollowTargetLeaderComp";
 
 interface BehaviorFollowTargetCaptainData extends BPComponent {
     priority?: number;
@@ -12,6 +13,7 @@ export class SetBehaviorFollowTargetCaptain extends BehaviorEntityComponentBuild
     /**
      * 
      * @param {BehaviorFollowTargetCaptainData} params Parametros del componente.
+     * @deprecated Ya no se usa hoy en dia. Usa {@link SetBehaviorFollowTargetLeader} en su lugar.
      * @author HaJuegos - 05-10-2026
      * @constructor
      * @public

@@ -24,8 +24,8 @@ export const WitchTemplate = createBPEntityTemplate({
                 celebrationSound: "celebrate",
                 duration: 30,
                 jumpInterval: {
-                    rangeMax: 3.5,
-                    rangeMin: 1
+                    max: 3.5,
+                    min: 1
                 },
                 onCelebrationEndEvent: {
                     event: "minecraft:stop_celebrating",
@@ -33,8 +33,8 @@ export const WitchTemplate = createBPEntityTemplate({
                 },
                 priority: 5,
                 soundInterval: {
-                    rangeMax: 7,
-                    rangeMin: 2
+                    max: 7,
+                    min: 2
                 }
             })
         ],
@@ -144,7 +144,6 @@ export const WitchTemplate = createBPEntityTemplate({
             priority: 2
         }),
         new BPEntityComponents.SetBehaviorRandomLookAround({
-            lookDistance: 8,
             priority: 5
         }),
         new BPEntityComponents.SetBehaviorRandomStroll({
@@ -205,14 +204,14 @@ export const WitchTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.25
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidWater: false,
             canPathOverWater: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetShooter({

@@ -122,8 +122,14 @@ export const CopperGolemTemplate = createBPEntityTemplate({
                     event: "minecraft:become_statue",
                     target: "self"
                 },
-                xzRange: 0,
-                yRange: 0
+                xzRange: {
+                    min: 0,
+                    max: 0
+                },
+                yRange: {
+                    min: 0,
+                    max: 0
+                }
             })
         ],
         "minecraft:copper_oxidizing": [
@@ -324,7 +330,7 @@ export const CopperGolemTemplate = createBPEntityTemplate({
                     swing: true
                 },
                 {
-                    playSounds: "shear",
+                    playSounds: ["shear"],
                     cooldown: 2.5,
                     hurtItem: 1,
                     spawnItems: {

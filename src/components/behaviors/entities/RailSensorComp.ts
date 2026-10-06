@@ -20,7 +20,7 @@ export class SetRailSensor extends BehaviorEntityComponentBuilder<RailSensorData
      * @constructor
      * @public
      */
-    public constructor (params: RailSensorData) {
+    public constructor (params?: RailSensorData) {
         super("minecraft:rail_sensor", params);
     }
 }

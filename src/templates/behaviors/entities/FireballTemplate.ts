@@ -42,7 +42,7 @@ export const FireballTemplate = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetDimensionBound(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetProjectile({
             anchor: "middle",
             gravity: 0,

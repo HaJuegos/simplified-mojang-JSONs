@@ -173,7 +173,7 @@ export const CreeperTemplate = createBPEntityTemplate({
                         ),
                         target: "self"
                     },
-                    playSounds: "ignite",
+                    playSounds: ["ignite"],
                     swing: true
                 }
             ]

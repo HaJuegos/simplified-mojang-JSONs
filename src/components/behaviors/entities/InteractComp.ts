@@ -23,7 +23,7 @@ interface InteractionsTypes {
     interactText?: string;
     onInteract?: string | EntityFilterTrigger | EntityFilterTrigger[];
     particleOnStart?: Record<string, string> | ParticleOnStartTypes;
-    playSounds?: string | [string];
+    playSounds?: string[];
     repairEntityItem?: RepairItemsTypes;
     spawnEntities?: string;
     spawnItems?: SpawnItemsTypes;

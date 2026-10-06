@@ -89,14 +89,14 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que valida si un item o bloque tiene todas las tags especificadas.
-     * @param {...MoLangValue[]} tags Todas las tags en concreto a consultar.
+    * @param {...string[]} tags Todas las tags en concreto a consultar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @public
      * @static
      */
-    public static allTags(...tags: MoLangValue[]): string {
-        return this.queryFunction("all_tags", ...tags);
+    public static allTags(...tags: string[]): string {
+        return this.queryStringFunction("all_tags", ...tags);
     }
 
     /**
@@ -156,15 +156,15 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que calcula si el item o bloque tiene alguna de las tags especificadas.
-     * @param {...MoLangValue[]} tags Las tags en cuestion a calcular.
+    * @param {...string[]} tags Las tags en cuestion a calcular.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026
      * @public
      * @static
      */
-    public static anyTag(...tags: MoLangValue[]): string {
-        return this.queryFunction("any_tag", ...tags);
+    public static anyTag(...tags: string[]): string {
+        return this.queryStringFunction("any_tag", ...tags);
     }
 
     /**
@@ -273,66 +273,66 @@ export class MoLang {
     /**
      * Metodo auxiliar de consulta para tomar una posicion relativa y uno o mas tags. Devuelve true o false dependiendo si el bloque en esa posicion contiene todas las tags en especifico.
      * @param {MoLangValue} position Posicion en concreto a calcular.
-     * @param {MoLangValue} firstTag Primer tag a calcular.
-     * @param {...MoLangValue[]} tags Los demas tags a calcular.
+    * @param {string} firstTag Primer tag a calcular.
+    * @param {...string[]} tags Los demas tags a calcular.
      * @returns {string} Devuelve la consulta formateada y lista. 
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026
      * @public
      * @static
      */
-    public static blockHasAllTags(position: MoLangValue, firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("block_has_all_tags", position, firstTag, ...tags);
+    public static blockHasAllTags(position: MoLangValue, firstTag: string, ...tags: string[]): string {
+        return this.queryFunction("block_has_all_tags", position, this.quoteString(firstTag), ...tags.map(tag => this.quoteString(tag)));
     }
 
     /**
      * Metodo auxiliar de consulta para tomar una posicion relativa y uno o mas tags. Devuelve true o false dependiendo si el bloque en esa posicion contiene alguna de las tags en especifico.
      * @param {MoLangValue} position Posicion en concreto a calcular.
-     * @param {MoLangValue} firstTag Primer tag a calcular.
-     * @param {...MoLangValue[]} tags Los demas tags a calcular.
+    * @param {string} firstTag Primer tag a calcular.
+    * @param {...string[]} tags Los demas tags a calcular.
      * @returns {string} Devuelve la consulta formateada y lista. 
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026
      * @public
      * @static
      */
-    public static blockHasAnyTag(position: MoLangValue, firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("block_has_any_tag", position, firstTag, ...tags);
+    public static blockHasAnyTag(position: MoLangValue, firstTag: string, ...tags: string[]): string {
+        return this.queryFunction("block_has_any_tag", position, this.quoteString(firstTag), ...tags.map(tag => this.quoteString(tag)));
     }
 
     /**
      * Metodo auxiliar de consulta para tomar una posicion relativa al bloque y uno o mas tags. Devuelve true o false dependiendo si el bloque en esa posicion contiene todas las tags en especifico.
      * @param {MoLangValue} position Posicion en concreto. 
-     * @param {MoLangValue} firstTag Primer tag a calcular.
-     * @param {...MoLangValue[]} tags Los demas tags a calcular.
+    * @param {string} firstTag Primer tag a calcular.
+    * @param {...string[]} tags Los demas tags a calcular.
      * @returns {string} Devuelve la consulta formateada y lista. 
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026
      * @public
      * @static
      */
-    public static blockNeighborHasAllTags(position: MoLangValue, firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("block_neighbor_has_all_tags", position, firstTag, ...tags);
+    public static blockNeighborHasAllTags(position: MoLangValue, firstTag: string, ...tags: string[]): string {
+        return this.queryFunction("block_neighbor_has_all_tags", position, this.quoteString(firstTag), ...tags.map(tag => this.quoteString(tag)));
     }
 
     /**
      * Metodo auxiliar de consulta que toma una posicion relativa del bloque y uno o mas tags. Dependiendo de si el bloque en esa posicion contiene las tags en concreto. Sera true o false. 
      * @param {MoLangValue} position Posicion en concreto.
-     * @param {MoLangValue} firstTag El primer tag a calcular.
-     * @param {...MoLangValue[]} tags El resto de tags a calcular.
+    * @param {string} firstTag El primer tag a calcular.
+    * @param {...string[]} tags El resto de tags a calcular.
      * @returns {string} Devuelve la consulta formateada y lista. 
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026
      * @public
      * @static
      */
-    public static blockNeighborHasAnyTag(position: MoLangValue, firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("block_neighbor_has_any_tag", position, firstTag, ...tags);
+    public static blockNeighborHasAnyTag(position: MoLangValue, firstTag: string, ...tags: string[]): string {
+        return this.queryFunction("block_neighbor_has_any_tag", position, this.quoteString(firstTag), ...tags.map(tag => this.quoteString(tag)));
     }
 
     /**
      * Metodo auxiliar de consulta para obtener la propiedad del bloque asociado.
-     * @param {MoLangValue} property Propiedad del bloque a obtener.
+    * @param {string} property Propiedad del bloque a obtener.
      * @returns {string} Devuelve la consulta formateada y lista. 
      * @deprecated - No disponible en 1.20.40+ en adelante.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -340,21 +340,21 @@ export class MoLang {
      * @public
      * @static
      */
-    public static blockProperty(property: MoLangValue): string {
-        return this.queryFunction("block_property", property);
+    public static blockProperty(property: string): string {
+        return this.queryStringFunction("block_property", property);
     }
 
     /**
      * Metodo auxiliar de consulta para obtener el estado del bloque asociado.
-     * @param {MoLangValue} property Estado del bloque a obtener.
+    * @param {string} property Estado del bloque a obtener.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026
      * @public
      * @static
      */
-    public static blockState(property: MoLangValue): string {
-        return this.queryFunction("block_state", property);
+    public static blockState(property: string): string {
+        return this.queryStringFunction("block_state", property);
     }
 
     /**
@@ -395,67 +395,67 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve el cuadro delimitador alineado con el eje del hueso como una estructura que contiene los mimebros .min y .max junto con los valores .x, .y, y .z correspondientes.
-     * @param {MoLangValue} bone Nombre del hueso a analizar en concreto.
+    * @param {string} bone Nombre del hueso a analizar en concreto.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026
      * @public
      * @static
      */
-    public static boneAabb(bone: MoLangValue): string {
-        return this.queryFunction("bone_aabb", bone);
+    public static boneAabb(bone: string): string {
+        return this.queryStringFunction("bone_aabb", bone);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve la orientacion de hueso en forma de matriz del parametro en especifico, y cuando exista en la consulta. De lo contrario, devuelve la matriz de identidad y genera error.
-     * @param {MoLangValue} bone Hueso en concreto a consultar. 
+    * @param {string} bone Hueso en concreto a consultar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026
      * @public
      * @static
      */
-    public static boneOrientationMatrix(bone: MoLangValue): string {
-        return this.queryFunction("bone_orientation_matrix", bone);
+    public static boneOrientationMatrix(bone: string): string {
+        return this.queryStringFunction("bone_orientation_matrix", bone);
     }
 
     /**
      * Metodo auxiliar de consulta que obtiene el TRS (Translate/Rotate/Scale) que devuevle la matriz de orientacion del hueso en concreto desconpuesta en los componentes de TRS, siempre que este exista en la geometria. De lo contrario genera un error junto con la matriz. EL valor devuelto se representa como una variante de tipo 'struct' con los miembros '.t', '.r' y '.s' cada uno con los miembros '.x','.y', y '.z' y se puede acceder a de esta forma: v.my_variable = q.bone_orientation_trs('rightarm'); return v.my_variable.r.x;
-     * @param {MoLangValue} bone Hueso en concreto a consultar.
+    * @param {string} bone Hueso en concreto a consultar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026
      * @public
      * @static
      */
-    public static boneOrientationTrs(bone: MoLangValue): string {
-        return this.queryFunction("bone_orientation_trs", bone);
+    public static boneOrientationTrs(bone: string): string {
+        return this.queryStringFunction("bone_orientation_trs", bone);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve el pivot inicial de un hueso como una estructa de miembros '.x', '.y', y '.z'.
-     * @param {MoLangValue} bone Hueso en concreto a analizar.
+    * @param {string} bone Hueso en concreto a analizar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026
      * @public
      * @static
      */
-    public static boneOrigin(bone: MoLangValue): string {
-        return this.queryFunction("bone_origin", bone);
+    public static boneOrigin(bone: string): string {
+        return this.queryStringFunction("bone_origin", bone);
     }
 
     /**
      * Metodo auxiliar de consulta para obtener el valor de rotacion inicial de un hueso con una estructura de miembros '.x', '.y', y '.z'.
-     * @param {MoLangValue} bone Hueso en concreto a analizar.
+    * @param {string} bone Hueso en concreto a analizar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026
      * @public
      * @static
      */
-    public static boneRotation(bone: MoLangValue): string {
-        return this.queryFunction("bone_rotation", bone);
+    public static boneRotation(bone: string): string {
+        return this.queryStringFunction("bone_rotation", bone);
     }
 
     /**
@@ -658,20 +658,20 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que combina todas las referencias de entidad validas de todos los argumentos en un solo array. No se conserva el orden y se eliminan los valores duplicados y los que no son validos.
-     * @param {...MoLangValue[]} entities Entidades a considerar en cuestion. 
+    * @param {...string[]} entities Entidades a considerar en cuestion. 
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026 
      * @public
      * @static
      */
-    public static combineEntities(...entities: MoLangValue[]): string {
-        return this.queryFunction("combine_entities", ...entities);
+    public static combineEntities(...entities: string[]): string {
+        return this.queryStringFunction("combine_entities", ...entities);
     }
 
     /**
      * Metodo auxiliar de consulta que obtiene el total de tiempo de cooldown del item que tiene en la mano o que se lleva en el slot especificado por su nombre. Los slots son los mismos que estan en el comando /replaceitem.
-     * @param {MoLangValue} slotName Slot en concreto a consultar.
+    * @param {string} slotName Slot en concreto a consultar.
      * @param {?MoLangValue} [slotId] (Opcional) ID del slot si es necesario a consultar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -679,21 +679,21 @@ export class MoLang {
      * @public
      * @static
      */
-    public static cooldownTime(slotName: MoLangValue, slotId?: MoLangValue): string {
-        return slotId == undefined ? this.queryFunction("cooldown_time", slotName) : this.queryFunction("cooldown_time", slotName, slotId);
+    public static cooldownTime(slotName: string, slotId?: MoLangValue): string {
+        return slotId == undefined ? this.queryStringFunction("cooldown_time", slotName) : this.queryFunction("cooldown_time", this.quoteString(slotName), slotId);
     }
 
     /**
      * Metodo auxiliar de consulta que obtiene los segundos restantes de cooldown del item que porta o del slot seleccionado. De lo contrario, sera 0. Los slots son los mismos que estan en el comando /replaceitem. 
-     * @param {...MoLangValue[]} arguments_ Los slots en concreto a consultar. 
+    * @param {...string[]} slots Los slots en concreto a consultar. 
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026 
      * @public
      * @static
      */
-    public static cooldownTimeRemaining(...arguments_: MoLangValue[]): string {
-        return this.queryFunction("cooldown_time_remaining", ...arguments_);
+    public static cooldownTimeRemaining(...slots: string[]): string {
+        return this.queryStringFunction("cooldown_time_remaining", ...slots);
     }
 
     /**
@@ -821,8 +821,8 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que compara el bioma donde se encuentra la entidad con uno o mas tags y devuelve true o false, dependiendo si todos los tags coinciden.
-     * @param {MoLangValue} firstTag Primera tag a comparar.
-     * @param {...MoLangValue[]} tags El resto de tags a comparar.
+    * @param {string} firstTag Primera tag a comparar.
+    * @param {...string[]} tags El resto de tags a comparar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @clientSide - Este metodo solo funciona si se consulta por parte de un jugador.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -830,14 +830,14 @@ export class MoLang {
      * @public
      * @static
      */
-    public static entityBiomeHasAllTags(firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("entity_biome_has_all_tags", firstTag, ...tags);
+    public static entityBiomeHasAllTags(firstTag: string, ...tags: string[]): string {
+        return this.queryStringFunction("entity_biome_has_all_tags", firstTag, ...tags);
     }
 
     /**
      * Metodo auxiliar de consulta que compara el bioma en el que esta la entidad con uno o mas IDs y devuelve true o false, dependiendo de si algunos de los IDs coincide.
-     * @param {MoLangValue} firstID ID del primer bioma a comparar.
-     * @param {...MoLangValue[]} restOfIDs IDs del resto de biomas a comparar.
+    * @param {string} firstID ID del primer bioma a comparar.
+    * @param {...string[]} restOfIDs IDs del resto de biomas a comparar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @clientSide - Este metodo solo funciona si se consulta por parte de un jugador.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -845,14 +845,14 @@ export class MoLang {
      * @public
      * @static
      */
-    public static entityBiomeHasAnyIdentifier(firstID: MoLangValue, ...restOfIDs: MoLangValue[]): string {
-        return this.queryFunction("entity_biome_has_any_identifier", firstID, ...restOfIDs);
+    public static entityBiomeHasAnyIdentifier(firstID: string, ...restOfIDs: string[]): string {
+        return this.queryStringFunction("entity_biome_has_any_identifier", firstID, ...restOfIDs);
     }
 
     /**
      * Metodo auxiliar de consulta que compara el bioma en el que esta la entidad con uno o mas tags y devuelve true o false, dependiendo de si algunos de los tags coincide.
-     * @param {MoLangValue} firstTag Primer tag a consultar.
-     * @param {...MoLangValue[]} tags Los demas tags a comparar.
+    * @param {string} firstTag Primer tag a consultar.
+    * @param {...string[]} tags Los demas tags a comparar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @clientSide - Este metodo solo funciona si se consulta por parte de un jugador.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -860,8 +860,8 @@ export class MoLang {
      * @public
      * @static
      */
-    public static entityBiomeHasAnyTags(firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("entity_biome_has_any_tags", firstTag, ...tags);
+    public static entityBiomeHasAnyTags(firstTag: string, ...tags: string[]): string {
+        return this.queryStringFunction("entity_biome_has_any_tags", firstTag, ...tags);
     }
 
     /**
@@ -878,32 +878,32 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si los tags que se encuentran en ese objecto equipado son validos a los parametros especificos.
-     * @param {MoLangValue} slot Slot en concreto a comparar.
-     * @param {MoLangValue} firstTag Primer tag a comparar.
-     * @param {...MoLangValue[]} tags Los demas tags a comparar.
+    * @param {string} slot Slot en concreto a comparar.
+    * @param {string} firstTag Primer tag a comparar.
+    * @param {...string[]} tags Los demas tags a comparar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026  
      * @public
      * @static
      */
-    public static equippedItemAllTags(slot: MoLangValue, firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("equipped_item_all_tags", slot, firstTag, ...tags);
+    public static equippedItemAllTags(slot: string, firstTag: string, ...tags: string[]): string {
+        return this.queryStringFunction("equipped_item_all_tags", slot, firstTag, ...tags);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si uno o mas de los tags que se encuentran en ese objecto equipado son validos a los parametros especificos.
-     * @param {MoLangValue} slot Slot en concreto a comparar.
-     * @param {MoLangValue} firstTag Primer tag a comparar.
-     * @param {...MoLangValue[]} tags Los demas tags a comparar.
+    * @param {string} slot Slot en concreto a comparar.
+    * @param {string} firstTag Primer tag a comparar.
+    * @param {...string[]} tags Los demas tags a comparar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026  
      * @public
      * @static
      */
-    public static equippedItemAnyTag(slot: MoLangValue, firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("equipped_item_any_tag", slot, firstTag, ...tags);
+    public static equippedItemAnyTag(slot: string, firstTag: string, ...tags: string[]): string {
+        return this.queryStringFunction("equipped_item_any_tag", slot, firstTag, ...tags);
     }
 
     /**
@@ -981,15 +981,15 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve el ID entero del actor a partir de su string name.
-     * @param {MoLangValue} name String name a validar y obtener su ID.
+    * @param {string} name String name a validar y obtener su ID.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 17-09-2026 
      * @public
      * @static
      */
-    public static getActorInfoId(name: MoLangValue): string {
-        return this.queryFunction("get_actor_info_id", name);
+    public static getActorInfoId(name: string): string {
+        return this.queryStringFunction("get_actor_info_id", name);
     }
 
     /**
@@ -1006,7 +1006,7 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que obtiene el eje especificado del pivot de orientacion del hueso indicado.
-     * @param {MoLangValue} bone Hueso en cuestion a consultar.
+    * @param {string} bone Hueso en cuestion a consultar.
      * @param {MoLangValue} axis Pivote en cuestion a consultar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -1014,8 +1014,8 @@ export class MoLang {
      * @public
      * @static
      */
-    public static getDefaultBonePivot(bone: MoLangValue, axis: MoLangValue): string {
-        return this.queryFunction("get_default_bone_pivot", bone, axis);
+    public static getDefaultBonePivot(bone: string, axis: MoLangValue): string {
+        return this.queryFunction("get_default_bone_pivot", this.quoteString(bone), axis);
     }
 
     /**
@@ -1047,7 +1047,7 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que obtiene el desplazamiento del localizacion en el eje especificado.
-     * @param {MoLangValue} locator Localizador en concreto.
+    * @param {string} locator Localizador en concreto.
      * @param {MoLangValue} axis Eje en concreto.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -1055,8 +1055,8 @@ export class MoLang {
      * @public
      * @static
      */
-    public static getLocatorOffset(locator: MoLangValue, axis: MoLangValue): string {
-        return this.queryFunction("get_locator_offset", locator, axis);
+    public static getLocatorOffset(locator: string, axis: MoLangValue): string {
+        return this.queryFunction("get_locator_offset", this.quoteString(locator), axis);
     }
 
     /**
@@ -1074,7 +1074,7 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve el valor de la configuracion del pack seleccionado.
-     * @param {MoLangValue} setting Parametro a considerar de la configuracion del pack.
+    * @param {string} setting Parametro a considerar de la configuracion del pack.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @onlyRPPack - Esta consulta solo funciona con packs de recursos. (Resource Pack)
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -1082,13 +1082,13 @@ export class MoLang {
      * @public
      * @static
      */
-    public static getPackSetting(setting: MoLangValue): string {
-        return this.queryFunction("get_pack_setting", setting);
+    public static getPackSetting(setting: string): string {
+        return this.queryStringFunction("get_pack_setting", setting);
     }
 
     /**
      * Metodo auxiliar de consulta que obtiene el eje especificado del desplazamiento del localizador especificado del modelo raiz.
-     * @param {MoLangValue} locator Localizador en concreto.
+    * @param {string} locator Localizador en concreto.
      * @param {MoLangValue} axis Eje en concreto.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -1096,14 +1096,14 @@ export class MoLang {
      * @public
      * @static
      */
-    public static getRootLocatorOffset(locator: MoLangValue, axis: MoLangValue): string {
-        return this.queryFunction("get_root_locator_offset", locator, axis);
+    public static getRootLocatorOffset(locator: string, axis: MoLangValue): string {
+        return this.queryFunction("get_root_locator_offset", this.quoteString(locator), axis);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si el cliente tiene uno o varios modos graficos.
-     * @param {MoLangValue} firstMode Modo grafico en concreto a considerar. Siendo estos: 'simple', 'fancy', 'deferred' y 'raytraced'.
-     * @param {...MoLangValue[]} modes Demas modos graficos a considerar.
+    * @param {string} firstMode Modo grafico en concreto a considerar. Siendo estos: 'simple', 'fancy', 'deferred' y 'raytraced'.
+    * @param {...string[]} modes Demas modos graficos a considerar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @onlyRPPack - Esta consulta solo funciona con packs de recursos. (Resource Pack)
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -1111,8 +1111,8 @@ export class MoLang {
      * @public
      * @static
      */
-    public static graphicsModeIsAny(firstMode: MoLangValue, ...modes: MoLangValue[]): string {
-        return this.queryFunction("graphics_mode_is_any", firstMode, ...modes);
+    public static graphicsModeIsAny(firstMode: string, ...modes: string[]): string {
+        return this.queryStringFunction("graphics_mode_is_any", firstMode, ...modes);
     }
 
     /**
@@ -1129,7 +1129,7 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que valida si la entidad tiene un grupo de componentes en concreto por ultima vez cargado. Devuelve true o false dependiendo el caso.
-     * @param {MoLangValue} group Grupo de componentes en cuestion a considerar. Este mismo debe estar en un string, como por ej: 'ha:test'.
+    * @param {string} group Grupo de componentes en cuestion a considerar. Este mismo debe estar en un string, como por ej: 'ha:test'.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @onlyBPPack - Esta consulta solo es funcional en packs de comportamiento. (Behavior Packs)
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -1137,64 +1137,64 @@ export class MoLang {
      * @public
      * @static
      */
-    public static hadComponentGroup(group: MoLangValue): string {
-        return this.queryFunction("had_component_group", group);
+    public static hadComponentGroup(group: string): string {
+        return this.queryStringFunction("had_component_group", group);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false dependiendo si la posicion actual el bioma tiene todas las tags en concreto.
-     * @param {MoLangValue} firstTag Primer tag a considerar.
-     * @param {...MoLangValue[]} tags Demas tags a considerar.
+    * @param {string} firstTag Primer tag a considerar.
+    * @param {...string[]} tags Demas tags a considerar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026
      * @public
      * @static
      */
-    public static hasAllBiomeTags(firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("has_all_biome_tags", firstTag, ...tags);
+    public static hasAllBiomeTags(firstTag: string, ...tags: string[]): string {
+        return this.queryStringFunction("has_all_biome_tags", firstTag, ...tags);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false dependiendo si la posicion actual el bioma tiene una o varias tags en concreto.
-     * @param {MoLangValue} firstTag Primer tag a considerar.
-     * @param {...MoLangValue[]} tags Demas tags a considerar.
+    * @param {string} firstTag Primer tag a considerar.
+    * @param {...string[]} tags Demas tags a considerar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026
      * @public
      * @static
      */
-    public static hasAnyBiomeTags(firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("has_any_biome_tags", firstTag, ...tags);
+    public static hasAnyBiomeTags(firstTag: string, ...tags: string[]): string {
+        return this.queryStringFunction("has_any_biome_tags", firstTag, ...tags);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false dependiendo si la entidad pertenece a alguna de las familias en concreto.
-     * @param {MoLangValue} firstFamily Primer familia a considerar.
-     * @param {...MoLangValue[]} families Las demas familias a considerar.
+    * @param {string} firstFamily Primer familia a considerar.
+    * @param {...string[]} families Las demas familias a considerar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026 
      * @public
      * @static
      */
-    public static hasAnyFamily(firstFamily: MoLangValue, ...families: MoLangValue[]): string {
-        return this.queryFunction("has_any_family", firstFamily, ...families);
+    public static hasAnyFamily(firstFamily: string, ...families: string[]): string {
+        return this.queryStringFunction("has_any_family", firstFamily, ...families);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si la entidad esta amarrada a uno o varias entidades mas en concreto.
-     * @param {MoLangValue} firstType Primer entidad en concreto.
-     * @param {...MoLangValue[]} types Las demas entidades.
+    * @param {string} firstType Primer entidad en concreto.
+    * @param {...string[]} types Las demas entidades.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026 
      * @public
      * @static
      */
-    public static hasAnyLeashedEntityOfType(firstType: MoLangValue, ...types: MoLangValue[]): string {
-        return this.queryFunction("has_any_leashed_entity_of_type", firstType, ...types);
+    public static hasAnyLeashedEntityOfType(firstType: string, ...types: string[]): string {
+        return this.queryStringFunction("has_any_leashed_entity_of_type", firstType, ...types);
     }
 
     /**
@@ -1212,7 +1212,7 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si el bioma en la ubicacion actual o posicion indicada tiene las tags especificas.
-     * @param {MoLangValue} tag Tags en cuestion a considerar.
+    * @param {string} tag Tags en cuestion a considerar.
      * @param {...MoLangValue[]} position Posicion y/o ubicacion en concreto.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -1220,13 +1220,13 @@ export class MoLang {
      * @public
      * @static
      */
-    public static hasBiomeTag(tag: MoLangValue, ...position: MoLangValue[]): string {
-        return this.queryFunction("has_biome_tag", tag, ...position);
+    public static hasBiomeTag(tag: string, ...position: MoLangValue[]): string {
+        return this.queryFunction("has_biome_tag", this.quoteString(tag), ...position);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si el bloque tiene la propiedad de bloque indicado.
-     * @param {MoLangValue} property Propiedad del bloque en concreto.
+    * @param {string} property Propiedad del bloque en concreto.
      * @deprecated - No funciona en versiones actuales. Usa {@link MoLang.hasBlockState} en su lugar para versiones recientes.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -1234,21 +1234,21 @@ export class MoLang {
      * @public
      * @static
      */
-    public static hasBlockProperty(property: MoLangValue): string {
-        return this.queryFunction("has_block_property", property);
+    public static hasBlockProperty(property: string): string {
+        return this.queryStringFunction("has_block_property", property);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si el bloque tiene el estado de bloque indicado.
-     * @param {MoLangValue} state Estado del bloque en concreto.
+    * @param {string} state Estado del bloque en concreto.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026 
      * @public
      * @static
      */
-    public static hasBlockState(state: MoLangValue): string {
-        return this.queryFunction("has_block_state", state);
+    public static hasBlockState(state: string): string {
+        return this.queryStringFunction("has_block_state", state);
     }
 
     /**
@@ -1337,15 +1337,15 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si la entidad tiene una propiedad en especifico.
-     * @param {MoLangValue} property Propiedad en concreto a considerar.
+    * @param {string} property Propiedad en concreto a considerar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026 
      * @public
      * @static
      */
-    public static hasProperty(property: MoLangValue): string {
-        return this.queryFunction("has_property", property);
+    public static hasProperty(property: string): string {
+        return this.queryStringFunction("has_property", property);
     }
 
     /**
@@ -1732,8 +1732,8 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si el item equipado en la mano tiene una categoria de cooldown en concreto.
-     * @param {MoLangValue} cooldown La categoria en concreto a identificar.
-     * @param {MoLangValue} slot El slot en concreto a identificar.
+    * @param {string} cooldown La categoria en concreto a identificar.
+    * @param {string} slot El slot en concreto a identificar.
      * @param {?MoLangValue} [slotId] (Opcional) El argumento del ID adiccional del slot a identificar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -1741,8 +1741,8 @@ export class MoLang {
      * @public
      * @static
      */
-    public static isCooldownCategory(cooldown: MoLangValue, slot: MoLangValue, slotId?: MoLangValue): string {
-        return slotId == undefined ? this.queryFunction("is_cooldown_category", cooldown, slot) : this.queryFunction("is_cooldown_category", cooldown, slot, slotId);
+    public static isCooldownCategory(cooldown: string, slot: string, slotId?: MoLangValue): string {
+        return slotId == undefined ? this.queryStringFunction("is_cooldown_category", cooldown, slot) : this.queryFunction("is_cooldown_category", this.quoteString(cooldown), this.quoteString(slot), slotId);
     }
 
     /**
@@ -2095,29 +2095,29 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si hay un item en el slot en concreto.
-     * @param {?MoLangValue} [hand] (Opcional) El slot en concreto a tener en cuenta, por defecto sera la mainhand. (Usa 0 o 'main_hand' para la mano principal, 1 o 'off_hand' para la mano secundaria)
+    * @param {?(string | number)} [hand] (Opcional) El slot en concreto a tener en cuenta, por defecto sera la mainhand. (Usa 0 o 'main_hand' para la mano principal, 1 o 'off_hand' para la mano secundaria)
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026  
      * @public
      * @static
      */
-    public static isItemEquipped(hand?: MoLangValue): string {
-        return hand == undefined ? this.queryFunction("is_item_equipped") : this.queryFunction("is_item_equipped", hand);
+    public static isItemEquipped(hand?: string | number): string {
+        return hand == undefined ? this.queryFunction("is_item_equipped") : this.queryFunctionWithStringOrNumber("is_item_equipped", hand);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si el slot en concreto tiene alguno de los nombres de items indicados.
-     * @param {MoLangValue} slot Slots en concreto a identificar. (Usa los que aparecen en el comando /replaceitem)
-     * @param {...MoLangValue[]} arguments_ Nombres de items a conciderar. (Tiene que ir el identificador, osea 'minecraft:')
+    * @param {string} slot Slots en concreto a identificar. (Usa los que aparecen en el comando /replaceitem)
+    * @param {...string[]} itemNames Nombres de items a conciderar. (Tiene que ir el identificador, osea 'minecraft:')
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026   
      * @public
      * @static
      */
-    public static isItemNameAny(slot: MoLangValue, ...arguments_: MoLangValue[]): string {
-        return this.queryFunction("is_item_name_any", slot, ...arguments_);
+    public static isItemNameAny(slot: string, ...itemNames: string[]): string {
+        return this.queryStringFunction("is_item_name_any", slot, ...itemNames);
     }
 
     /**
@@ -2231,16 +2231,16 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si la entidad coincide con alguno de los valores establecidos.
-     * @param {MoLangValue} firstName Primer nombre a validar.
-     * @param {...MoLangValue[]} names Demas nombres a validar.
+    * @param {string} firstName Primer nombre a validar.
+    * @param {...string[]} names Demas nombres a validar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026   
      * @public
      * @static
      */
-    public static isNameAny(firstName: MoLangValue, ...names: MoLangValue[]): string {
-        return this.queryFunction("is_name_any", firstName, ...names);
+    public static isNameAny(firstName: string, ...names: string[]): string {
+        return this.queryStringFunction("is_name_any", firstName, ...names);
     }
 
     /**
@@ -2293,21 +2293,21 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve el identificador raiz de la entidad, si esta esta definida, comparandola con uno o mas argumentos.
-     * @param {MoLangValue} firstIdentifier Primer ID a considerar.
-     * @param {...MoLangValue[]} identifiers Los demas IDs a considerar.
+    * @param {string} firstIdentifier Primer ID a considerar.
+    * @param {...string[]} identifiers Los demas IDs a considerar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026   
      * @public
      * @static
      */
-    public static isOwnerIdentifierAny(firstIdentifier: MoLangValue, ...identifiers: MoLangValue[]): string {
-        return this.queryFunction("is_owner_identifier_any", firstIdentifier, ...identifiers);
+    public static isOwnerIdentifierAny(firstIdentifier: string, ...identifiers: string[]): string {
+        return this.queryStringFunction("is_owner_identifier_any", firstIdentifier, ...identifiers);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si una opcion de configuracion del pack esta activo.
-     * @param {MoLangValue} setting Nombre de la opcion a tomar en cuenta.
+    * @param {string} setting Nombre de la opcion a tomar en cuenta.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @onlyRPPack - Esta consulta solo funciona con packs de recursos. (Resource Pack)
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -2315,14 +2315,14 @@ export class MoLang {
      * @public
      * @static
      */
-    public static isPackSettingEnabled(setting: MoLangValue): string {
-        return this.queryFunction("is_pack_setting_enabled", setting);
+    public static isPackSettingEnabled(setting: string): string {
+        return this.queryStringFunction("is_pack_setting_enabled", setting);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si una opcion de configuracion del pack coincide con el valor selecionado.
-     * @param {MoLangValue} setting Nombre de la opcion a tomar en cuenta.
-     * @param {MoLangValue} selection Valor seleccionado a tomar en cuenta de la opcion.
+    * @param {string} setting Nombre de la opcion a tomar en cuenta.
+    * @param {string} selection Valor seleccionado a tomar en cuenta de la opcion.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @onlyRPPack - Esta consulta solo funciona con packs de recursos. (Resource Pack)
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -2330,8 +2330,8 @@ export class MoLang {
      * @public
      * @static
      */
-    public static isPackSettingSelected(setting: MoLangValue, selection: MoLangValue): string {
-        return this.queryFunction("is_pack_setting_selected", setting, selection);
+    public static isPackSettingSelected(setting: string, selection: string): string {
+        return this.queryStringFunction("is_pack_setting_selected", setting, selection);
     }
 
     /**
@@ -2420,16 +2420,16 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si la entidad se encuentra montando alguna de las entidades de los parametros asignados.
-     * @param {MoLangValue} firstType Primer ID a considerar.
-     * @param {...MoLangValue[]} types El resto de IDs a considerar.
+        * @param {string} firstType Primer ID a considerar.
+        * @param {...string[]} types El resto de IDs a considerar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026   
      * @public
      * @static
      */
-    public static isRidingAnyEntityOfType(firstType: MoLangValue, ...types: MoLangValue[]): string {
-        return this.queryFunction("is_riding_any_entity_of_type", firstType, ...types);
+    public static isRidingAnyEntityOfType(firstType: string, ...types: string[]): string {
+        return this.queryStringFunction("is_riding_any_entity_of_type", firstType, ...types);
     }
 
     /**
@@ -2808,15 +2808,15 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si el item seleccionado esta totalmente cargado y listo para usarse.
-     * @param {?MoLangValue} [hand] (Opcional) Slot en concreto a considerar, siendo 0 o 'main_hand' para la mano principal y/o 1 o 'off_hand' para la mano secundaria.
+    * @param {?(string | number)} [hand] (Opcional) Slot en concreto a considerar, siendo 0 o 'main_hand' para la mano principal y/o 1 o 'off_hand' para la mano secundaria.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026
      * @public
      * @static
      */
-    public static itemIsCharged(hand?: MoLangValue): string {
-        return hand == undefined ? this.queryFunction("item_is_charged") : this.queryFunction("item_is_charged", hand);
+    public static itemIsCharged(hand?: string | number): string {
+        return hand == undefined ? this.queryFunction("item_is_charged") : this.queryFunctionWithStringOrNumber("item_is_charged", hand);
     }
 
     /**
@@ -2833,7 +2833,7 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta devuelve el tiempo que le queda de uso a un item en el slot en concreto. El tiempo restante se normaliza utilizando el valor de normalización, solo si se proporciona uno; de lo contrario, se devuelve en segundos.
-     * @param {MoLangValue} slot Slot en concreto. ('main_hand' o 'off_hand')
+    * @param {string} slot Slot en concreto. ('main_hand' o 'off_hand')
      * @param {?MoLangValue} [normalization] (Opcional) Tiempo de normalizacion en segundos.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -2841,21 +2841,21 @@ export class MoLang {
      * @public
      * @static
      */
-    public static itemRemainingUseDuration(slot: MoLangValue, normalization?: MoLangValue): string {
-        return normalization == undefined ? this.queryFunction("item_remaining_use_duration", slot) : this.queryFunction("item_remaining_use_duration", slot, normalization);
+    public static itemRemainingUseDuration(slot: string, normalization?: MoLangValue): string {
+        return normalization == undefined ? this.queryStringFunction("item_remaining_use_duration", slot) : this.queryFunction("item_remaining_use_duration", this.quoteString(slot), normalization);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve el nombre del hueso de la entidad en el slot en concreto.
-     * @param {MoLangValue} slot Nombre del slot en concreto.
+    * @param {string} slot Nombre del slot en concreto.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 19-09-2026 
      * @public
      * @static
      */
-    public static itemSlotToBoneName(slot: MoLangValue): string {
-        return this.queryFunction("item_slot_to_bone_name", slot);
+    public static itemSlotToBoneName(slot: string): string {
+        return this.queryStringFunction("item_slot_to_bone_name", slot);
     }
 
     /**
@@ -2945,8 +2945,8 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta true o false si alguno de los valores especificos concinciden con el ultimo input utilizado en el jugador.
-     * @param {MoLangValue} firstMode Uno de los primeros inputs a considerar. 'keyboard_and_mouse', 'touch' y/o 'gamepad'
-     * @param {...MoLangValue[]} modes Los demas inputs a considerar.
+    * @param {string} firstMode Uno de los primeros inputs a considerar. 'keyboard_and_mouse', 'touch' y/o 'gamepad'
+    * @param {...string[]} modes Los demas inputs a considerar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @onlyRPPack - Esta consulta solo funciona con packs de recursos. (Resource Pack)
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -2954,8 +2954,8 @@ export class MoLang {
      * @public
      * @static
      */
-    public static lastInputModeIsAny(firstMode: MoLangValue, ...modes: MoLangValue[]): string {
-        return this.queryFunction("last_input_mode_is_any", firstMode, ...modes);
+    public static lastInputModeIsAny(firstMode: string, ...modes: string[]): string {
+        return this.queryStringFunction("last_input_mode_is_any", firstMode, ...modes);
     }
 
     /**
@@ -3331,45 +3331,45 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que devuelve el valor de la propiedad en especifico de la entidad.
-     * @param {MoLangValue} name Propiedad en especifico a considerar.
+     * @param {string} name Propiedad en especifico a considerar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 20-09-2026
      * @public
      * @static
      */
-    public static property(name: MoLangValue): string {
-        return this.queryFunction("property", name);
+    public static property(name: string): string {
+        return this.queryStringFunction("property", name);
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si el bloque en la posicion relativa tiene todos los tags en especifico.
      * @param {MoLangValue} position Posicion relativa en concreto.
-     * @param {MoLangValue} firstTag Primer tag en concreto.
-     * @param {...MoLangValue[]} tags Los demas tags en concreto.
+        * @param {string} firstTag Primer tag en concreto.
+        * @param {...string[]} tags Los demas tags en concreto.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 20-09-2026
      * @public
      * @static
      */
-    public static relativeBlockHasAllTags(position: MoLangValue, firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("relative_block_has_all_tags", position, firstTag, ...tags);
+    public static relativeBlockHasAllTags(position: MoLangValue, firstTag: string, ...tags: string[]): string {
+        return this.queryFunction("relative_block_has_all_tags", position, this.quoteString(firstTag), ...tags.map(tag => this.quoteString(tag)));
     }
 
     /**
      * Metodo auxiliar de consulta que devuelve true o false si el bloque en la posicion relativa tiene uno o mas tags en especifico.
      * @param {MoLangValue} position Posicion relativa en concreto.
-     * @param {MoLangValue} firstTag Primer tag en concreto.
-     * @param {...MoLangValue[]} tags Los demas tags en concreto.
+        * @param {string} firstTag Primer tag en concreto.
+        * @param {...string[]} tags Los demas tags en concreto.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
      * @author HaJuegos - 20-09-2026
      * @public
      * @static
      */
-    public static relativeBlockHasAnyTag(position: MoLangValue, firstTag: MoLangValue, ...tags: MoLangValue[]): string {
-        return this.queryFunction("relative_block_has_any_tag", position, firstTag, ...tags);
+    public static relativeBlockHasAnyTag(position: MoLangValue, firstTag: string, ...tags: string[]): string {
+        return this.queryFunction("relative_block_has_any_tag", position, this.quoteString(firstTag), ...tags.map(tag => this.quoteString(tag)));
     }
 
     /**
@@ -3513,7 +3513,7 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que obtiene el valor de una entrada del Scoreboard para la entidad actual.
-     * @param {MoLangValue} entry Nombre del objective a consultar.
+    * @param {string} entry Nombre del objective a consultar.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @onlyBPPack - Esta consulta solo es funcional en packs de comportamiento. (Behavior Packs)
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -3521,8 +3521,8 @@ export class MoLang {
      * @public
      * @static
      */
-    public static scoreboard(entry: MoLangValue): string {
-        return this.queryFunction("scoreboard", entry);
+    public static scoreboard(entry: string): string {
+        return this.queryStringFunction("scoreboard", entry);
     }
 
     /**
@@ -4340,9 +4340,47 @@ export class MoLang {
     }
 
     /**
+     * Metodo auxiliar que cita un string literal para usarlo como argumento MoLang.
+     * @param {string} value Valor a considerar.
+     * @returns {string} Devuelve el formato legible para el juego.
+     * @author HaJuegos - 06-10-2026 
+     * @private
+     * @static
+     */
+    private static quoteString(value: string): string {
+        return `'${value.replace(/\\/g, "\\\\").replace(/'/g, "\\'")}'`;
+    }
+
+    /**
+     * Metodo auxiliar que consulta argumentos que sean identificadores o nombres literales.
+     * @param {string} name Valor a considerar.
+     * @param {...string[]} arguments_ Otros argumentos indicados.
+     * @returns {string} Devuelve el formato legible para el juego.
+     * @author HaJuegos - 06-10-2026
+     * @private
+     * @static
+     */
+    private static queryStringFunction(name: string, ...arguments_: string[]): string {
+        return this.queryFunction(name, ...arguments_.map(value => this.quoteString(value)));
+    }
+
+    /**
+     * Metodo auxiliar que cita nombres string y conversa los indices numeros como valores sin comillas.
+     * @param {string} name Valor a considerar.
+     * @param {...(string | number)[]} arguments_ Otros argumentos indicados. 
+     * @returns {string} Devuelve el formato legible para el juego.
+     * @author HaJuegos - 06-10-2026
+     * @private
+     * @static
+     */
+    private static queryFunctionWithStringOrNumber(name: string, ...arguments_: (string | number)[]): string {
+        return this.queryFunction(name, ...arguments_.map(value => typeof value == "string" ? this.quoteString(value) : value));
+    }
+
+    /**
      * Metodo auxiliar privado que construye y formatea las llamadas a consultas.
      * @param {string} name Nombre base de la consulta Molang (ej. "health", "lod_index").
-     * @param {...MoLangValue[]} arguments_ Lista opcional de argumentos o parámetros para la consulta.
+    * @param {...MoLangValue[]} arguments_ Argumentos MoLang crudos: números o expresiones ya formateadas. Para IDs y nombres string usa {@link MoLang.queryStringFunction}.
      * @returns {string} Retorna la cadena formateada de la consulta lista para usarse en scripts o animaciones.
      * @author HaJuegos - 20-09-2026
      * @private

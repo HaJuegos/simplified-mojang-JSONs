@@ -157,7 +157,6 @@ export const BeeTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetTimer({
                 looping: false,
                 time: [20, 50],
-                randomInterval: true,
                 timeDownEvent: {
                     event: "stop_panicking_after_fire",
                     target: "self"
@@ -176,7 +175,6 @@ export const BeeTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetTimer({
                 looping: false,
                 time: [10, 60],
-                randomInterval: true,
                 timeDownEvent: {
                     event: "perish_event",
                     target: "self"
@@ -344,7 +342,6 @@ export const BeeTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetTimer({
                 looping: false,
                 time: [5, 20],
-                randomInterval: true,
                 timeDownEvent: {
                     event: "find_hive_event",
                     target: "self"
@@ -516,7 +513,10 @@ export const BeeTemplate = createBPEntityTemplate({
             yDist: 8,
             yOffset: -1,
             interval: 1,
-            hoverHeight: [1, 4]
+            hoverHeight: {
+                min: 1,
+                max: 4
+            }
         }),
         new BPEntityComponents.SetLeashable(),
         new BPEntityComponents.SetBalloonable({
@@ -610,7 +610,7 @@ export const BeeTemplate = createBPEntityTemplate({
                 }
             ]
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetInteract({
@@ -650,8 +650,6 @@ export const BeeTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 95,
@@ -668,8 +666,6 @@ export const BeeTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["track_attacker", "shelter_detection", "look_for_food"]
                     }
@@ -757,8 +753,6 @@ export const BeeTemplate = createBPEntityTemplate({
         "attacked": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["angry_bee"]
                     },

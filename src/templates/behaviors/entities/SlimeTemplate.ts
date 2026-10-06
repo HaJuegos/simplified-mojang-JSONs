@@ -184,7 +184,7 @@ export const SlimeTemplate = createBPEntityTemplate({
             event: "minecraft:become_calm",
             target: "self"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetTypeFamily({

@@ -155,7 +155,7 @@ export const ZoglinTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.25
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidDamageBlocks: true,
@@ -172,7 +172,7 @@ export const ZoglinTemplate = createBPEntityTemplate({
             event: "become_angry_event",
             target: "self"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetSpawnEggInteraction()

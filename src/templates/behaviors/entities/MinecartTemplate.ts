@@ -38,8 +38,8 @@ export const MinecartTemplate = createBPEntityTemplate({
                 useMotionPredictionHints: true
             }
         }),
-        new BPEntityComponents.SetIsStackable({}),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetIsStackable(),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {
@@ -60,7 +60,7 @@ export const MinecartTemplate = createBPEntityTemplate({
             ]
         }),
         new BPEntityComponents.SetPushableByBlock(),
-        new BPEntityComponents.SetRailMovement({}),
+        new BPEntityComponents.SetRailMovement(),
         new BPEntityComponents.SetRailSensor({
             ejectOnActivate: true
         }),

@@ -1165,7 +1165,7 @@ export const SulfurCubeTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetDespawn({
             despawnFromDistance: {}
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),
         new BPEntityComponents.SetEquipment({

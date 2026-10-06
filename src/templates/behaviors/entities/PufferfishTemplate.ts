@@ -44,7 +44,6 @@ export const PufferfishTemplate = createBPEntityTemplate({
         "minecraft:deflate_sensor_buffer": [
             new BPEntityComponents.SetTimer({
                 looping: false,
-                randomInterval: false,
                 time: 0.01,
                 timeDownEvent: {
                     event: "minecraft:on_full_puff"
@@ -99,7 +98,6 @@ export const PufferfishTemplate = createBPEntityTemplate({
         "minecraft:half_puff_primary": [
             new BPEntityComponents.SetTimer({
                 looping: false,
-                randomInterval: false,
                 time: 2,
                 timeDownEvent: {
                     event: "minecraft:on_half_puff"
@@ -132,7 +130,6 @@ export const PufferfishTemplate = createBPEntityTemplate({
             }),
             new BPEntityComponents.SetTimer({
                 looping: false,
-                randomInterval: false,
                 time: 2,
                 timeDownEvent: {
                     event: "minecraft:on_normal_puff"
@@ -145,7 +142,6 @@ export const PufferfishTemplate = createBPEntityTemplate({
         "minecraft:start_deflate": [
             new BPEntityComponents.SetTimer({
                 looping: false,
-                randomInterval: false,
                 time: 3,
                 timeDownEvent: {
                     event: "minecraft:on_deflate"

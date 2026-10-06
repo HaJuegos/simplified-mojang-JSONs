@@ -437,7 +437,7 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
         new BPEntityComponents.SetLoot({
             table: "loot_tables/entities/zombie.json"
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidSun: false,
@@ -450,7 +450,7 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
                 "minecraft:zombie_villager_v2": "minecraft:zombie_villager_v2"
             }
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetShareables({

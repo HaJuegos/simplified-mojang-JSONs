@@ -23,7 +23,10 @@ export const GhastTemplate = createBPEntityTemplate({
             priority: 0
         }),
         new BPEntityComponents.SetBehaviorFloatWander({
-            floatDuration: [2, 7],
+            floatDuration: {
+                min: 2,
+                max: 7
+            },
             floatWanderHasMoveControl: false,
             randomReselect: true,
             mustReach: true,
@@ -98,7 +101,7 @@ export const GhastTemplate = createBPEntityTemplate({
             canPathOverWater: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetShooter({

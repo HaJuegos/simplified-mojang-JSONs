@@ -207,7 +207,7 @@ export const SheepTemplate = createBPEntityTemplate({
             canPathOverWater: true,
             avoidWater: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetInteract({
@@ -220,7 +220,7 @@ export const SheepTemplate = createBPEntityTemplate({
                     spawnItems: {
                         table: "loot_tables/entities/sheep_shear.json"
                     },
-                    playSounds: "shear",
+                    playSounds: ["shear"],
                     interactText: "action.interact.shear",
                     vibration: "shear",
                     onInteract: {
@@ -304,7 +304,7 @@ export const SheepTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorRandomLookAround({
             priority: 9
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetConditionalBandwidthOptimization()

@@ -43,7 +43,7 @@ export const WindChargeProjectileTemplate = createBPEntityTemplate({
             power: 1.2,
             soundEffect: "wind_charge.burst"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetProjectile({
             reflectImmunity: 0.5,
             gravity: 0,

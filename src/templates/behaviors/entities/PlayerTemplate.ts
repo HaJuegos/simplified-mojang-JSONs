@@ -39,7 +39,7 @@ export const PlayerTemplate = createBPEntityTemplate({
             })
         ],
         "minecraft:clear_raid_omen_spell_effect": [
-            new BPEntityComponents.SetSpellEffects({})
+            new BPEntityComponents.SetSpellEffects()
         ],
         "minecraft:raid_trigger": [
             new BPEntityComponents.SetRaidTrigger({

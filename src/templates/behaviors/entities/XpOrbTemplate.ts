@@ -36,7 +36,7 @@ export const XpOrbTemplate = createBPEntityTemplate({
             max: 5,
             value: 5
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetTypeFamily({

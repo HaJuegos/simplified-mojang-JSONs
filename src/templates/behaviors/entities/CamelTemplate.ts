@@ -95,7 +95,7 @@ export const CamelTemplate = createBPEntityTemplate({
                         dropItemSlot: "0",
                         dropItemYOffset: 2,
                         interactText: "action.interact.removesaddle",
-                        playSounds: "unsaddle",
+                        playSounds: ["unsaddle"],
                         vibration: "shear"
                     },
                     {
@@ -112,7 +112,7 @@ export const CamelTemplate = createBPEntityTemplate({
                         dropItemSlot: "0",
                         dropItemYOffset: 1,
                         interactText: "action.interact.removesaddle",
-                        playSounds: "unsaddle",
+                        playSounds: ["unsaddle"],
                         vibration: "shear"
                     }
                 ]

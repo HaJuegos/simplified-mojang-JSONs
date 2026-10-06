@@ -24,8 +24,8 @@ export const PillagerTemplate = createBPEntityTemplate({
                 celebrationSound: "celebrate",
                 duration: 30,
                 jumpInterval: {
-                    rangeMax: 3.5,
-                    rangeMin: 1
+                    max: 3.5,
+                    min: 1
                 },
                 onCelebrationEndEvent: {
                     event: "minecraft:stop_celebrating",
@@ -33,8 +33,8 @@ export const PillagerTemplate = createBPEntityTemplate({
                 },
                 priority: 5,
                 soundInterval: {
-                    rangeMax: 7,
-                    rangeMin: 2
+                    max: 7,
+                    min: 2
                 }
             })
         ],
@@ -54,7 +54,7 @@ export const PillagerTemplate = createBPEntityTemplate({
             })
         ],
         "minecraft:patrol_follower": [
-            new BPEntityComponents.SetBehaviorFollowTargetCaptain({
+            new BPEntityComponents.SetBehaviorFollowTargetLeader({
                 priority: 5,
                 speedMultiplier: 0.8,
                 withinRadius: 64,

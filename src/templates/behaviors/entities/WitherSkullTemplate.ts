@@ -41,7 +41,7 @@ export const WitherSkullTemplate = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetDimensionBound(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetProjectile({
             anchor: "eye_height",
             gravity: 0,

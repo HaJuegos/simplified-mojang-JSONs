@@ -282,8 +282,8 @@ export const VillagerTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetBehaviorCelebrateSurvive({
                 duration: 30,
                 fireworksInterval: {
-                    rangeMax: 7,
-                    rangeMin: 2
+                    max: 7,
+                    min: 2
                 },
                 onCelebrationEndEvent: {
                     event: "minecraft:stop_celebrating",
@@ -458,7 +458,7 @@ export const VillagerTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.5
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidWater: true,
@@ -470,7 +470,7 @@ export const VillagerTemplate = createBPEntityTemplate({
             isAmphibious: true
         }),
         new BPEntityComponents.SetPersistent(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetTypeFamily({

@@ -124,7 +124,7 @@ export const OcelotTemplate = createBPEntityTemplate({
                 value: 20,
                 max: 20
             }),
-            new BPEntityComponents.SetSittable({}),
+            new BPEntityComponents.SetSittable(),
             new BPEntityComponents.SetBehaviorTeleportToOwner({
                 priority: 0,
                 filters: EntityFilters.allOf(
@@ -191,7 +191,7 @@ export const OcelotTemplate = createBPEntityTemplate({
             avoidWater: true,
             avoidDamageBlocks: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetDamageSensor({
@@ -218,7 +218,7 @@ export const OcelotTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBalloonable({
             mass: 0.7
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),
@@ -253,8 +253,7 @@ export const OcelotTemplate = createBPEntityTemplate({
             trackTarget: true
         }),
         new BPEntityComponents.SetBehaviorLeapAtTarget({
-            priority: 3,
-            targetDist: 0.3
+            priority: 3
         }),
         new BPEntityComponents.SetBehaviorOcelotattack({
             priority: 4,

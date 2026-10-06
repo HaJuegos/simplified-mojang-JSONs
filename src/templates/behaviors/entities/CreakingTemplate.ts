@@ -267,7 +267,7 @@ export const CreakingTemplate = createBPEntityTemplate({
                 canPathOverLava: true,
                 canPathOverWater: true
             }),
-            new BPEntityComponents.SetNotPickableFromInsideComp()
+            new BPEntityComponents.SetNotPickableFromInside()
         ],
         "minecraft:twitching": [
             new BPEntityComponents.SetBehaviorTimerFlagOne({

@@ -122,7 +122,7 @@ export const WitherSkeletonTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.25
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidSun: true,
@@ -131,7 +131,7 @@ export const WitherSkeletonTemplate = createBPEntityTemplate({
             canPathOverLava: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetScale({

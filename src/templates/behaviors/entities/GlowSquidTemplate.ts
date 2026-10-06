@@ -103,7 +103,7 @@ export const GlowSquidTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.2
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             canPathOverWater: true,
@@ -114,7 +114,7 @@ export const GlowSquidTemplate = createBPEntityTemplate({
                 "minecraft:glow_squid": "minecraft:glow_squid"
             }
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetSpawnEggInteraction(),

@@ -115,7 +115,7 @@ export const ParrotTemplate = createBPEntityTemplate({
                 priority: 0
             }),
             new BPEntityComponents.SetIsTamed(),
-            new BPEntityComponents.SetSittable({}),
+            new BPEntityComponents.SetSittable(),
             new BPEntityComponents.SetTypeFamily({
                 family: ["parrot_tame", "mob"]
             })
@@ -129,9 +129,7 @@ export const ParrotTemplate = createBPEntityTemplate({
             }),
             new BPEntityComponents.SetBehaviorRandomFly({
                 priority: 3,
-                avoidDamageBlocks: true,
                 canLandOnTrees: true,
-                yOffset: 0,
                 speedMultiplier: 1,
                 xzDist: 15,
                 yDist: 1
@@ -226,13 +224,13 @@ export const ParrotTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.4
         }),
-        new BPEntityComponents.SetMovementFly({}),
+        new BPEntityComponents.SetMovementFly(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationFly({
             canPathFromAir: true,
             canPathOverWater: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity()
     ],

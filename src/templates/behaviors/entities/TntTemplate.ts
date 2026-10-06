@@ -47,7 +47,7 @@ export const TntTemplate = createBPEntityTemplate({
             power: 4,
             fuseLength: 4
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetTypeFamily({

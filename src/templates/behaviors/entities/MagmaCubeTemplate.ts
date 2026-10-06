@@ -195,7 +195,7 @@ export const MagmaCubeTemplate = createBPEntityTemplate({
             event: "minecraft:become_calm",
             target: "self"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetTypeFamily({

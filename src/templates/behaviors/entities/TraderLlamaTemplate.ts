@@ -233,7 +233,7 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetInteract({
                 interactions: [
                     {
-                        playSounds: "armor.equip_generic",
+                        playSounds: ["armor.equip_generic"],
                         onInteract: {
                             filters: EntityFilters.allOf(
                                 EntityFilters.isFamily("player", "other"),
@@ -430,7 +430,7 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
             canPathOverWater: true,
             avoidDamageBlocks: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetFollowRange({
             value: 40,
@@ -501,7 +501,7 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
             event: "minecraft:on_calm",
             target: "self"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {

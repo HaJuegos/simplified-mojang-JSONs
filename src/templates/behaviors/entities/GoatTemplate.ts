@@ -89,7 +89,7 @@ export const GoatTemplate = createBPEntityTemplate({
                         useItem: true,
                         swing: true,
                         transformToItem: "bucket:1",
-                        playSounds: "milk_suspiciously",
+                        playSounds: ["milk_suspiciously"],
                         interactText: "action.interact.milk"
                     }
                 ]
@@ -109,7 +109,7 @@ export const GoatTemplate = createBPEntityTemplate({
                         useItem: true,
                         swing: true,
                         transformToItem: "bucket:1",
-                        playSounds: "milk.screamer",
+                        playSounds: ["milk.screamer"],
                         interactText: "action.interact.milk"
                     }
                 ]
@@ -180,7 +180,10 @@ export const GoatTemplate = createBPEntityTemplate({
             minimumPathLength: 8,
             minimumDistance: 1,
             scaleFactor: 0.6,
-            cooldownRange: [30, 60]
+            cooldownRange: {
+                min: 30,
+                max: 60
+            }
         }),
         new BPEntityComponents.SetGenetics({
             mutationRate: 0.02,

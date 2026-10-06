@@ -9,17 +9,11 @@ interface BehaviorCelebrateData extends BPComponent {
     jumpInterval?: {
         min: number,
         max: number;
-    } | {
-        rangeMin: number,
-        rangeMax: number;
     };
     onCelebrationEndEvent?: string | EntityFiltersTarget;
     soundInterval?: {
         min: number,
         max: number;
-    } | {
-        rangeMin: number,
-        rangeMax: number;
     };
 }
 

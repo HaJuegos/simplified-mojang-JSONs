@@ -383,7 +383,7 @@ export const PiglinTemplate = createBPEntityTemplate({
             canOpenDoors: true
         }),
         new BPEntityComponents.SetAnnotationOpenDoor(),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetOffspring({
@@ -494,7 +494,7 @@ export const PiglinTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorRandomLookAround({
             priority: 12
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetFollowRange({

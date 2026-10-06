@@ -28,7 +28,6 @@ export const VexTemplate = createBPEntityTemplate({
         "minecraft:start_damage_timer": [
             new BPEntityComponents.SetTimer({
                 looping: false,
-                randomInterval: true,
                 time: [30, 119],
                 timeDownEvent: {
                     event: "minecraft:add_periodic_damage"
@@ -115,7 +114,7 @@ export const VexTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 1
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             canPathOverWater: true,

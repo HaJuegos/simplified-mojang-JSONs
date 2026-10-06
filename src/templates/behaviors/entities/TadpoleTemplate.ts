@@ -69,7 +69,7 @@ export const TadpoleTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetUnderwaterMovement({
             value: 0.1
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetDespawn({

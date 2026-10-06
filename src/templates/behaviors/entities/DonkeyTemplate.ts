@@ -214,7 +214,7 @@ export const DonkeyTemplate = createBPEntityTemplate({
                         dropItemSlot: "0",
                         dropItemYOffset: 1.1,
                         interactText: "action.interact.removesaddle",
-                        playSounds: "unsaddle",
+                        playSounds: ["unsaddle"],
                         vibration: "shear"
                     }
                 ]
@@ -272,11 +272,11 @@ export const DonkeyTemplate = createBPEntityTemplate({
                         dropItemSlot: "0",
                         dropItemYOffset: 1.1,
                         interactText: "action.interact.removesaddle",
-                        playSounds: "unsaddle",
+                        playSounds: ["unsaddle"],
                         vibration: "shear"
                     },
                     {
-                        playSounds: "armor.equip_generic",
+                        playSounds: ["armor.equip_generic"],
                         onInteract: {
                             filters: EntityFilters.allOf(
                                 EntityFilters.isSneaking(false, "other"),
@@ -321,7 +321,7 @@ export const DonkeyTemplate = createBPEntityTemplate({
                         dropItemSlot: "0",
                         dropItemYOffset: 1.1,
                         interactText: "action.interact.removesaddle",
-                        playSounds: "unsaddle",
+                        playSounds: ["unsaddle"],
                         vibration: "shear"
                     }
                 ]

@@ -24,7 +24,7 @@ export class SetSpellEffects extends BehaviorEntityComponentBuilder<SpellEffects
      * @constructor
      * @public
      */
-    public constructor (params: SpellEffectsData) {
+    public constructor (params?: SpellEffectsData) {
         super("minecraft:spell_effects", params);
     }
 }

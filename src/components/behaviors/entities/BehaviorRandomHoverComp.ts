@@ -4,7 +4,7 @@ import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 interface BehaviorRandomHoverData extends BPComponent {
     priority: number;
     speedMultiplier?: number;
-    hoverHeight?: [number, number] | {
+    hoverHeight?: {
         min: number;
         max: number;
     };

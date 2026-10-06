@@ -5,7 +5,6 @@ interface BehaviorRandomLookAroundData extends BPComponent {
     priority: number;
     angleOfViewHorizontal?: number;
     angleOfViewVertical?: number;
-    lookDistance?: number;
     lookTime?: {
         min: number;
         max: number;

@@ -363,7 +363,7 @@ export const ZombieTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
         new BPEntityComponents.SetJumpStatic(),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             canBreakDoors: true,
@@ -376,7 +376,7 @@ export const ZombieTemplate = createBPEntityTemplate({
                 "minecraft:zombie": "minecraft:zombie"
             }
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetRotationLockedToVehicle(),

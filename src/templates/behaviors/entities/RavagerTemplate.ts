@@ -23,12 +23,12 @@ export const RavagerTemplate = createBPEntityTemplate({
                 priority: 5,
                 celebrationSound: "celebrate",
                 soundInterval: {
-                    rangeMin: 2,
-                    rangeMax: 7
+                    min: 2,
+                    max: 7
                 },
                 jumpInterval: {
-                    rangeMin: 1,
-                    rangeMax: 3.5
+                    min: 1,
+                    max: 3.5
                 },
                 duration: 30,
                 onCelebrationEndEvent: {
@@ -275,14 +275,14 @@ export const RavagerTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidDamageBlocks: true,
             canPathOverWater: true,
             canSink: false
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetCanJoinRaid(),

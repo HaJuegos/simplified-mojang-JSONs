@@ -136,7 +136,7 @@ export const BlazeTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.23
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidDamageBlocks: true,
@@ -152,7 +152,7 @@ export const BlazeTemplate = createBPEntityTemplate({
             event: "minecraft:on_hurt_event",
             target: "self"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetTypeFamily({

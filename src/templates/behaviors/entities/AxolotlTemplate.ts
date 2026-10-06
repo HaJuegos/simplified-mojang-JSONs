@@ -224,7 +224,7 @@ export const AxolotlTemplate = createBPEntityTemplate({
             value: 0.2
         }),
         new BPEntityComponents.SetJumpStatic(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetLeashable({
@@ -236,7 +236,7 @@ export const AxolotlTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetAttack({
             damage: 2
         }),
-        new BPEntityComponents.SetCombatRegeneration({}),
+        new BPEntityComponents.SetCombatRegeneration(),
         new BPEntityComponents.SetBehaviorPlayDead({
             priority: 0,
             duration: 10,

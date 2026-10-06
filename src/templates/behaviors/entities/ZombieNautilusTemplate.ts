@@ -496,7 +496,7 @@ export const ZombieNautilusTemplate = createBPEntityTemplate({
             isAmphibious: false,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {

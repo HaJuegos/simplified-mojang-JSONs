@@ -175,7 +175,7 @@ export const WardenTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.3
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetMovementSoundDistanceOffset({
             value: 0.55
         }),
@@ -186,7 +186,7 @@ export const WardenTemplate = createBPEntityTemplate({
             canPathOverWater: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPreferredPath({
             maxFallBlocks: 20
         }),

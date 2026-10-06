@@ -13,7 +13,7 @@ export class SetMovementSkip extends BehaviorEntityComponentBuilder<MovementSkip
      * @constructor
      * @public
      */
-    public constructor (params: MovementSkipData) {
+    public constructor (params?: MovementSkipData) {
         super("minecraft:movement.skip", params);
     }
 }

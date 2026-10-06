@@ -45,7 +45,7 @@ export const VindicatorTemplate = createBPEntityTemplate({
             })
         ],
         "minecraft:patrol_follower": [
-            new BPEntityComponents.SetBehaviorFollowTargetCaptain({
+            new BPEntityComponents.SetBehaviorFollowTargetLeader({
                 followDistance: 5,
                 priority: 5,
                 speedMultiplier: 0.8,
@@ -57,8 +57,8 @@ export const VindicatorTemplate = createBPEntityTemplate({
                 celebrationSound: "celebrate",
                 duration: 30,
                 jumpInterval: {
-                    rangeMax: 3.5,
-                    rangeMin: 1
+                    max: 3.5,
+                    min: 1
                 },
                 onCelebrationEndEvent: {
                     event: "minecraft:stop_celebrating",
@@ -66,8 +66,8 @@ export const VindicatorTemplate = createBPEntityTemplate({
                 },
                 priority: 5,
                 soundInterval: {
-                    rangeMax: 7,
-                    rangeMin: 2
+                    max: 7,
+                    min: 2
                 }
             })
         ],
@@ -238,7 +238,7 @@ export const VindicatorTemplate = createBPEntityTemplate({
             width: 0.6
         }),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),
-        new BPEntityComponents.SetEquipItem({}),
+        new BPEntityComponents.SetEquipItem(),
         new BPEntityComponents.SetEquipment({
             table: "loot_tables/entities/vindicator_gear.json"
         }),
@@ -269,7 +269,7 @@ export const VindicatorTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.35
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable({
             defaultTrigger: {
                 event: "minecraft:stop_johnny",
@@ -297,7 +297,7 @@ export const VindicatorTemplate = createBPEntityTemplate({
             event: "minecraft:stop_aggro",
             target: "self"
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetShareables({

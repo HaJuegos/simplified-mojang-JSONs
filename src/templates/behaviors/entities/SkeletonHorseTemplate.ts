@@ -19,7 +19,7 @@ export const SkeletonHorseTemplate = createBPEntityTemplate({
     },
     componentsGroups: {
         "minecraft:skeleton_horse_r5_upgrade": [
-            new BPEntityComponents.SetRideable({})
+            new BPEntityComponents.SetRideable()
         ],
         "minecraft:skeleton_horse_baby": [
             new BPEntityComponents.SetIsBaby(),
@@ -80,7 +80,7 @@ export const SkeletonHorseTemplate = createBPEntityTemplate({
     },
     components: [
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
-        new BPEntityComponents.SetAmbientSoundInterval({}),
+        new BPEntityComponents.SetAmbientSoundInterval(),
         new BPEntityComponents.SetTypeFamily({
             family: ["skeletonhorse", "undead", "mob"]
         }),
@@ -113,7 +113,7 @@ export const SkeletonHorseTemplate = createBPEntityTemplate({
             avoidWater: true,
             avoidDamageBlocks: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetOffspring({
@@ -172,7 +172,7 @@ export const SkeletonHorseTemplate = createBPEntityTemplate({
             priority: 8
         }),
         new BPEntityComponents.SetIsTamed(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {

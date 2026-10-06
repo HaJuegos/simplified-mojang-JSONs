@@ -31,7 +31,7 @@ export const ThrownTridentTemplate = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetDimensionBound(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetProjectile({
             hitGroundSound: "item.trident.hit_ground",
             anchor: "eye_height",

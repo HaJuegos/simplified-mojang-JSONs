@@ -88,7 +88,7 @@ export const ArmadilloTemplate = createBPEntityTemplate({
                                 EntityFilters.hasEquipment("brush", "hand", "other")
                             )
                         },
-                        playSounds: "mob.armadillo.brush",
+                        playSounds: ["mob.armadillo.brush"],
                         interactText: "action.interact.brush",
                         hurtItem: 16,
                         swing: true,
@@ -204,7 +204,6 @@ export const ArmadilloTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetTimer({
                 looping: true,
                 time: 4,
-                randomInterval: false,
                 timeDownEvent: {
                     event: "minecraft:unroll"
                 }
@@ -235,10 +234,10 @@ export const ArmadilloTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetTypeFamily({
             family: ["armadillo", "mob"]
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNavigationWalk({
             canPathOverWater: true,
             avoidDamageBlocks: true,

@@ -257,7 +257,7 @@ export const BoggedTemplate = createBPEntityTemplate({
                     spawnItems: {
                         table: "loot_tables/entities/bogged_shear.json"
                     },
-                    playSounds: "shear",
+                    playSounds: ["shear"],
                     useItem: false
                 }
             ]

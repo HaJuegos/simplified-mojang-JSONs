@@ -4,7 +4,6 @@ import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters"
 
 interface TimerData extends BPComponent {
     looping?: boolean;
-    randomInterval?: boolean;
     time?: [number, number] | number;
     timeDownEvent?: EntityFilterTrigger;
     randomTimeChoices?: RandomTimeRypes[];

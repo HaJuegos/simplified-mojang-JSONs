@@ -56,7 +56,7 @@ export const TntMinecartTemplate = createBPEntityTemplate({
                             },
                             target: "self"
                         },
-                        playSounds: "ignite",
+                        playSounds: ["ignite"],
                         swing: true
                     },
                     {
@@ -101,7 +101,7 @@ export const TntMinecartTemplate = createBPEntityTemplate({
                 fuseLength: 0
             }),
             new BPEntityComponents.SetIsIgnited(),
-            new BPEntityComponents.SetRailSensor({})
+            new BPEntityComponents.SetRailSensor()
         ],
         "minecraft:primed_tnt": [
             new BPEntityComponents.SetExplode({
@@ -111,7 +111,7 @@ export const TntMinecartTemplate = createBPEntityTemplate({
                 fuseLength: 4
             }),
             new BPEntityComponents.SetIsIgnited(),
-            new BPEntityComponents.SetRailSensor({})
+            new BPEntityComponents.SetRailSensor()
         ]
     },
     components: [
@@ -135,8 +135,8 @@ export const TntMinecartTemplate = createBPEntityTemplate({
                 useMotionPredictionHints: true
             }
         }),
-        new BPEntityComponents.SetIsStackable({}),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetIsStackable(),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {
@@ -149,7 +149,7 @@ export const TntMinecartTemplate = createBPEntityTemplate({
             ]
         }),
         new BPEntityComponents.SetPushableByBlock(),
-        new BPEntityComponents.SetRailMovement({}),
+        new BPEntityComponents.SetRailMovement(),
         new BPEntityComponents.SetTypeFamily({
             family: ["minecart", "inanimate"]
         })

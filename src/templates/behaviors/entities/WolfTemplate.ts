@@ -116,7 +116,7 @@ export const WolfTemplate = createBPEntityTemplate({
                     target: "self"
                 }
             }),
-            new BPEntityComponents.SetOnTargetAcquired({}),
+            new BPEntityComponents.SetOnTargetAcquired(),
             new BPEntityComponents.SetRideable({
                 seatCount: 1,
                 familyTypes: ["baby_undead"],
@@ -249,7 +249,7 @@ export const WolfTemplate = createBPEntityTemplate({
                 postTeleportDistance: -1,
                 ignoreVibration: true
             }),
-            new BPEntityComponents.SetSittable({}),
+            new BPEntityComponents.SetSittable(),
             new BPEntityComponents.SetIsDyeable({
                 interactText: "action.interact.dye"
             })
@@ -427,7 +427,7 @@ export const WolfTemplate = createBPEntityTemplate({
             avoidDamageBlocks: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetJumpStatic(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetAttack({
@@ -535,7 +535,7 @@ export const WolfTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetDespawn({
             despawnFromDistance: {}
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),

@@ -183,7 +183,7 @@ export const IronGolemTemplate = createBPEntityTemplate({
                             EntityFilters.isMissingHealth()
                         )
                     },
-                    playSounds: "irongolem.repair",
+                    playSounds: ["irongolem.repair"],
                     swing: false,
                     useItem: true
                 }

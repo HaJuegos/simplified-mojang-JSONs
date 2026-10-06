@@ -219,7 +219,10 @@ export const HappyGhastTemplate = createBPEntityTemplate({
                 useHomePositionRestriction: true,
                 surfaceXzDist: 16,
                 surfaceYDist: 16,
-                floatDuration: [2, 7]
+                floatDuration: {
+                    min: 2,
+                    max: 7
+                }
             })
         ],
         "minecraft:adult_immobile": [
@@ -297,7 +300,7 @@ export const HappyGhastTemplate = createBPEntityTemplate({
                         },
                         useItem: true,
                         equipItemSlot: "slot.armor.body",
-                        playSounds: "armor.equip_generic",
+                        playSounds: ["armor.equip_generic"],
                         interactText: "action.interact.equipharness"
                     }
                 ]
@@ -381,7 +384,7 @@ export const HappyGhastTemplate = createBPEntityTemplate({
                         hurtItem: 1,
                         dropItemSlot: "slot.armor.body",
                         dropItemYOffset: 5,
-                        playSounds: "armor.unequip_generic",
+                        playSounds: ["armor.unequip_generic"],
                         interactText: "action.interact.removeharness",
                         vibration: "shear"
                     }

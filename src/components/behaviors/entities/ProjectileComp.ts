@@ -1,6 +1,6 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
-import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { BPComponent, BuiltComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityEffectTypes, EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface ProjectileData extends BPComponent {
@@ -42,48 +42,48 @@ interface OnHitTypes {
     arrowEffect?: {
         applyEffectToBlockingTargets: boolean;
     },
-    catchFire?: {},
-    definitionEvent?: DefinitionEventOnHitTypes,
-    douseFire?: {},
-    freezeOnHit?: FreezeOnHitTypes,
-    grantXp?: GrantXpTypes,
-    hurtOwner?: HurtOwnerTypes,
+    catchFire?: {};
+    definitionEvent?: DefinitionEventOnHitTypes;
+    douseFire?: {};
+    freezeOnHit?: FreezeOnHitTypes;
+    grantXp?: GrantXpTypes;
+    hurtOwner?: HurtOwnerTypes;
     ignite?: {},
-    impactDamage?: ImpactDamageTypes,
-    mobEffect?: MobEffectTypes,
-    particleOnHit?: ParticleOnHitTypes,
-    removeOnHit?: {},
-    spawnAoeCloud?: SpawnCloudTypes,
-    spawnChance?: SpawnChanceTypes,
-    stickInGround?: {},
-    teleportOwner?: {},
+    impactDamage?: ImpactDamageTypes;
+    mobEffect?: MobEffectTypes;
+    particleOnHit?: ParticleOnHitTypes;
+    removeOnHit?: {};
+    spawnAoeCloud?: SpawnCloudTypes;
+    spawnChance?: SpawnChanceTypes;
+    stickInGround?: {};
+    teleportOwner?: {};
     thrownPotionEffect?: {};
     windBurstOnHit?: {};
 }
 
 interface DefinitionEventOnHitTypes {
-    affectProjectile?: boolean,
-    affectShooter?: boolean,
-    affectSplashArea?: boolean,
-    affectTarget?: boolean,
-    eventTrigger?: EntityFilterTrigger,
+    affectProjectile?: boolean;
+    affectShooter?: boolean;
+    affectSplashArea?: boolean;
+    affectTarget?: boolean;
+    eventTrigger?: EntityFilterTrigger;
     splashArea?: number;
 }
 
 interface FreezeOnHitTypes {
-    shape: "cube" | "sphere",
-    size: number,
+    shape: "cube" | "sphere";
+    size: number;
     snapToBlock: boolean;
 }
 
 interface GrantXpTypes {
-    maxXP: number,
+    maxXP: number;
     minXP: number;
 }
 
 interface HurtOwnerTypes {
-    ignite: boolean,
-    knockback: boolean,
+    ignite: boolean;
+    knockback: boolean;
     ownerDamage: number;
 }
 
@@ -113,16 +113,16 @@ interface MobEffectTypes {
 
 interface EffectsTypes {
     effect: string | EntityEffectTypes,
-    amplifier: number,
-    durationeasy: number | 'infinite',
+    amplifier: number;
+    durationeasy: number | 'infinite';
     durationnormal: number | 'infinite';
-    durationhard: number | 'infinite',
+    durationhard: number | 'infinite';
 }
 
 interface ParticleOnHitTypes {
-    numParticles?: number,
-    onEntityHit?: boolean,
-    onOtherHit?: boolean,
+    numParticles?: number;
+    onEntityHit?: boolean;
+    onOtherHit?: boolean;
     particleItemName?: {
         [key: string]: EntityFilter | EntityFilter[];
     },
@@ -130,22 +130,22 @@ interface ParticleOnHitTypes {
 }
 
 interface SpawnCloudTypes {
-    affectOwner?: boolean,
-    duration?: number,
-    particle?: string,
-    potion?: number,
-    radius?: number,
-    radiusOnUse?: number,
+    affectOwner?: boolean;
+    duration?: number;
+    particle?: string;
+    potion?: number;
+    radius?: number;
+    radiusOnUse?: number;
     reapplicationDelay?: number;
 }
 
 interface SpawnChanceTypes {
-    onSpawn?: EntityFilterTrigger | EntityFilterTrigger[],
-    firstSpawnChance?: number,
-    firstSpawnCount?: number,
-    secondSpawnChance?: number,
-    secondSpawnCount?: number,
-    spawnBaby?: boolean,
+    onSpawn?: EntityFilterTrigger | EntityFilterTrigger[];
+    firstSpawnChance?: number;
+    firstSpawnCount?: number;
+    secondSpawnChance?: number;
+    secondSpawnCount?: number;
+    spawnBaby?: boolean;
     spawnDefinition?: string | MinecraftEntityTypes;
 }
 
@@ -159,5 +159,32 @@ export class SetProjectile extends BehaviorEntityComponentBuilder<ProjectileData
      */
     public constructor (params: ProjectileData) {
         super("minecraft:projectile", params);
+    }
+
+    /**
+     * Metodo auxiliar publico rebuscado porque a mojang se le ocurrio la gran idea de poner minXP y cosas asi y por ende, me jode practicamente el formateador automatico, asi que tuve que buscar una solucion rebuscada al problema pq sino entonces, me muero, auxilio, estoy cansado y quiero dormir. En fin, el metodo lo que hace es que en vez de min_xp sea minXP como esta en el archivo vanilla. Todo eso para que en dias lo cambien, omg. Hola como estas? 
+     * @returns {BuiltComponent} Devuelve el formateo correcto.
+     * @author HaJuegos - 06-10-2026 
+     * @override
+     * @public
+     */
+    public override build(): BuiltComponent {
+        const built = super.build();
+        const projectile = built[this.idComp];
+        const onHit = projectile.on_hit as Record<string, unknown> | undefined;
+        const grantXp = onHit?.grant_xp as Record<string, unknown> | undefined;
+
+        if (grantXp) {
+            for (const key of ["maxXP", "minXP"] as const) {
+                const snakeKey = key == "maxXP" ? "max_xp" : "min_xp";
+
+                if (snakeKey in grantXp) {
+                    grantXp[key] = grantXp[snakeKey];
+                    delete grantXp[snakeKey];
+                }
+            }
+        }
+
+        return built;
     }
 }

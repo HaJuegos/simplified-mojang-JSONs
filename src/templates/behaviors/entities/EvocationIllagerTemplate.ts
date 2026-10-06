@@ -22,8 +22,8 @@ export const EvocationIllagerTemplate = createBPEntityTemplate({
                 celebrationSound: "celebrate",
                 duration: 30,
                 jumpInterval: {
-                    rangeMax: 3.5,
-                    rangeMin: 1
+                    max: 3.5,
+                    min: 1
                 },
                 onCelebrationEndEvent: {
                     event: "minecraft:stop_celebrating",
@@ -31,8 +31,8 @@ export const EvocationIllagerTemplate = createBPEntityTemplate({
                 },
                 priority: 5,
                 soundInterval: {
-                    rangeMax: 7,
-                    rangeMin: 2
+                    max: 7,
+                    min: 2
                 }
             })
         ],

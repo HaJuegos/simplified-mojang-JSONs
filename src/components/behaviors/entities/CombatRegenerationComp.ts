@@ -15,7 +15,7 @@ export class SetCombatRegeneration extends BehaviorEntityComponentBuilder<Combat
      * @constructor
      * @public
      */
-    public constructor (params: CombatRegenerationData) {
+    public constructor (params?: CombatRegenerationData) {
         super("minecraft:combat_regeneration", params);
     }
 }

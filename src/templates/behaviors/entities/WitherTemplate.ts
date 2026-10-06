@@ -122,7 +122,7 @@ export const WitherTemplate = createBPEntityTemplate({
             usingDoorAnnotation: true
         }),
         new BPEntityComponents.SetPersistent(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetTypeFamily({

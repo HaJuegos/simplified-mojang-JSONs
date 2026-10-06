@@ -89,7 +89,7 @@ export const CamelHuskTemplate = createBPEntityTemplate({
                 interactions: [
                     {
                         equipItemSlot: "0",
-                        playSounds: "saddle",
+                        playSounds: ["saddle"],
                         interactText: "action.interact.saddle",
                         onInteract: {
                             filters: EntityFilters.allOf(
@@ -113,7 +113,7 @@ export const CamelHuskTemplate = createBPEntityTemplate({
                                 EntityFilters.isSneakHeld(false, "other")
                             )
                         },
-                        playSounds: "unsaddle",
+                        playSounds: ["unsaddle"],
                         vibration: "shear"
                     },
                     {
@@ -130,7 +130,7 @@ export const CamelHuskTemplate = createBPEntityTemplate({
                                 EntityFilters.isSneakHeld(false, "other")
                             )
                         },
-                        playSounds: "unsaddle",
+                        playSounds: ["unsaddle"],
                         vibration: "shear"
                     }
                 ]
@@ -275,13 +275,13 @@ export const CamelHuskTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.09
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidDamageBlocks: true,
             canPathOverWater: true
         }),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetRideable({
             crouchingSkipInteract: true,
             familyTypes: ["player", "parched", "husk_rider"],

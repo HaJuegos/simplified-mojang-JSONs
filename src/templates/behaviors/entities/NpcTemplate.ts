@@ -243,7 +243,7 @@ export const NpcTemplate = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetPersistent(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetTypeFamily({
             family: ["npc", "mob"]
         })

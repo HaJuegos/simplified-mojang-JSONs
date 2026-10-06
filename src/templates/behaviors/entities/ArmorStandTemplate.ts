@@ -46,7 +46,7 @@ export const ArmorStandTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetPersistent(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetTypeFamily({
             family: ["armor_stand", "inanimate", "mob"]

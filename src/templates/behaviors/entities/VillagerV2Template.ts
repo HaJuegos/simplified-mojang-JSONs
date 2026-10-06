@@ -1673,7 +1673,7 @@ export const VillagerV2Template = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.5
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             avoidWater: true,
@@ -1687,7 +1687,7 @@ export const VillagerV2Template = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetPersistent(),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetSpawnEggInteraction(),
