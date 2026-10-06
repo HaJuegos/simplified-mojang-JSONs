@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Oso Polar para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const PolarBearTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.PolarBear,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -60,7 +65,7 @@ export const PolarBearTemplate = createBPEntityTemplate({
         ],
         "minecraft:adult": [
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/polar_bear.json"
@@ -116,7 +121,7 @@ export const PolarBearTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.baby",
-                    condition: "query.is_baby"
+                    condition: `${MoLang.isBaby()}`
                 }
             ],
             minRandomCooldownSound: 6,
@@ -130,7 +135,7 @@ export const PolarBearTemplate = createBPEntityTemplate({
             totalSupply: 15,
             suffocateTime: 0
         }),
-        // TODO(migrate): componente sin clase "minecraft:freezing_immune": {}
+        new BPEntityComponents.SetFreezingImmune(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetOffspring({
             offspringPairs: {
@@ -213,7 +218,7 @@ export const PolarBearTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetLeashable({
             unleashOnRemoval: false
         }),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),
         new BPEntityComponents.SetUsesLegacyFriction()
     ],

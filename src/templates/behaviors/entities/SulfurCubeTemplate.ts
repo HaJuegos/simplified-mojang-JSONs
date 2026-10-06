@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Cubo de Azufre para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SulfurCubeTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.SulfurCube,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.Monster,
         isSpawneable: true,
@@ -14,7 +19,6 @@ export const SulfurCubeTemplate = createBPEntityTemplate({
     },
     properties: {
         "minecraft:sulfur_cube_archetype": {
-            idProperty: "minecraft:sulfur_cube_archetype",
             clientSync: true,
             type: "enum",
             default: "none",
@@ -98,9 +102,13 @@ export const SulfurCubeTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetBehaviorTempt({
                 priority: 2,
                 items: ["slime_ball"],
-                withinRadius: 8
-                // TODO(migrate): clave no soportada "on_tempt_start": {"event": "minecraft:on_gain_target"}
-                // TODO(migrate): clave no soportada "on_tempt_end": {"event": "minecraft:on_lose_target"}
+                withinRadius: 8,
+                onTemptStart: {
+                    event: "minecraft:on_gain_target"
+                },
+                onTemptEnd: {
+                    event: "minecraft:on_lose_target"
+                }
             })
         ],
         "minecraft:sulfur_cube_medium": [
@@ -119,7 +127,7 @@ export const SulfurCubeTemplate = createBPEntityTemplate({
                 value: 0.4
             }),
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? Math.Random(1,2) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,2) : 0`
             }),
             new BPEntityComponents.SetEquipItem({
                 canWearArmor: false
@@ -146,9 +154,13 @@ export const SulfurCubeTemplate = createBPEntityTemplate({
                         tags: "q.any_tag('minecraft:sulfur_cube_archetype_bouncy', 'minecraft:sulfur_cube_archetype_regular', 'minecraft:sulfur_cube_archetype_slow_bouncy', 'minecraft:sulfur_cube_archetype_slow_flat', 'minecraft:sulfur_cube_archetype_fast_flat', 'minecraft:sulfur_cube_archetype_light', 'minecraft:sulfur_cube_archetype_fast_sliding', 'minecraft:sulfur_cube_archetype_slow_sliding', 'minecraft:sulfur_cube_archetype_sticky', 'minecraft:sulfur_cube_archetype_high_resistance', 'minecraft:sulfur_cube_archetype_explosive', 'minecraft:sulfur_cube_archetype_hot')"
                     }
                 ],
-                withinRadius: 8
-                // TODO(migrate): clave no soportada "on_tempt_start": {"event": "minecraft:on_gain_target"}
-                // TODO(migrate): clave no soportada "on_tempt_end": {"event": "minecraft:on_lose_target"}
+                withinRadius: 8,
+                onTemptStart: {
+                    event: "minecraft:on_gain_target"
+                },
+                onTemptEnd: {
+                    event: "minecraft:on_lose_target"
+                }
             }),
             new BPEntityComponents.SetBehaviorEquipItem({
                 priority: 2
@@ -281,7 +293,7 @@ export const SulfurCubeTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetLeashable(),
             new BPEntityComponents.SetLeashableTo(),
             new BPEntityComponents.SetRotationAxisAligned(),
-            // TODO(migrate): componente sin clase "minecraft:not_pickable_from_inside": {}
+            new BPEntityComponents.SetNotPickableFromInside(),
             new BPEntityComponents.SetVariableMaxAutoStep({
                 baseValue: 0,
                 controlledValue: 0,
@@ -293,7 +305,7 @@ export const SulfurCubeTemplate = createBPEntityTemplate({
                 suffocateTime: 0,
                 totalSupply: 15
             }),
-            // TODO(migrate): componente sin clase "minecraft:freezing_immune": {}
+            new BPEntityComponents.SetFreezingImmune(),
             new BPEntityComponents.SetMobEffectImmunity({
                 mobEffects: ["poison"]
             }),
@@ -1103,8 +1115,23 @@ export const SulfurCubeTemplate = createBPEntityTemplate({
                 damagePerTick: 1,
                 damageRange: 0.4,
                 useSelfAsDamageSource: false,
-                deathMessageOverride: "death.attack.sulfurCube.hot"
-                // TODO(migrate): clave no soportada "entity_filter": {"all_of": [{"any_of": [{"subject": "other", "test": "is_family", "operator": "not", "value": "sulfur_cube"}, {"any_of": [{"subject": "other", "domain": "minecraft:sulfur_cube_archetype", "test": "enum_property", "value": "explosive"}, {"subject": "other", "domain": "minecraft:sulfur_cube_archetype", "test": "enum_property", "value": "none"}]}]}, {"all_of": [{"any_of": [{"subject": "other", "test": "is_family", "value": "mob"}, {"subject": "other", "test": "is_family", "value": "player"}]}, {"subject": "other", "test": "actor_has_item_with_enchantment_in_slot", "domain": 7, "operator": "not", "value": "frost_walker"}]}]}
+                deathMessageOverride: "death.attack.sulfurCube.hot",
+                entityFilter: EntityFilters.allOf(
+                    EntityFilters.anyOf(
+                        EntityFilters.isFamily('sulfur_cube', 'other', 'not'),
+                        EntityFilters.anyOf(
+                            EntityFilters.enumProperty('minecraft:sulfur_cube_archetype', 'explosive', 'other'),
+                            EntityFilters.enumProperty('minecraft:sulfur_cube_archetype', 'none', 'other'),
+                        )
+                    ),
+                    EntityFilters.allOf(
+                        EntityFilters.anyOf(
+                            EntityFilters.isFamily('mob', 'other'),
+                            EntityFilters.isFamily('player', 'other')
+                        ),
+                        EntityFilters.actorHasItemWithEnchantmentInSlot('frost_walker', 7, 'other', 'not')
+                    )
+                )
             })
         ]
     },
@@ -1245,8 +1272,6 @@ export const SulfurCubeTemplate = createBPEntityTemplate({
         "minecraft:on_block_absorbed": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     remove: {
                         componentGroups: [
                             "minecraft:sulfur_cube_ai",

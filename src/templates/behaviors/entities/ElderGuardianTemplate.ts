@@ -81,7 +81,7 @@ export const ElderGuardianTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 10 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 10 : 0`
         }),
         new BPEntityComponents.SetFollowRange({
             max: 16,

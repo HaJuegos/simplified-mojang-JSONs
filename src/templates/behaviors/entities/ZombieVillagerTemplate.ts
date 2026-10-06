@@ -3,15 +3,22 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
+import { ZombieVillagerV2Template } from "./ZombieVillagerV2Template";
 
+/**
+ * Plantilla vanilla del Zombie Villager Legacy para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @deprecated Esto ya no se usa en versiones actuales. Usa {@link ZombieVillagerV2Template} en su lugar.
+ * @author HaJuegos - 05-10-2026
+ */
 export const ZombieVillagerTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.ZombieVillager,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "adult": [
@@ -22,7 +29,7 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
                 trackTarget: true
             }),
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
             }),
             new BPEntityComponents.SetMovement({
                 value: 0.23
@@ -52,7 +59,7 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
             })
         ],
         "can_break_doors": [
-            new BPEntityComponents.SetAnnotationBreakDoor({})
+            new BPEntityComponents.SetAnnotationBreakDoor()
         ],
         "cartographer": [
             new BPEntityComponents.SetTypeFamily({
@@ -64,7 +71,7 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
         ],
         "baby": [
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 12 + (query.equipment_count * Math.Random(1,3)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 12 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
             }),
             new BPEntityComponents.SetIsBaby(),
             new BPEntityComponents.SetMovement({
@@ -229,64 +236,25 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "snowgolem"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "irongolem"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('snowgolem', 'other'),
+                        EntityFilters.isFamily('irongolem', 'other')
                     ),
                     maxDist: 35
                 },
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "villager"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "wandering_trader"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('villager', 'other'),
+                        EntityFilters.isFamily('wandering_trader', 'other')
                     ),
                     maxDist: 35,
                     mustSee: false
                 },
                 {
                     filters: EntityFilters.allOf(
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 0,
-                            value: "baby_turtle"
-                        },
-                        {
-                            test: "in_water",
-                            subject: 1,
-                            operator: 1,
-                            value: true
-                        }
+                        EntityFilters.isFamily('baby_turtle', 'other'),
+                        EntityFilters.inWater(true, 'other', 'not')
                     ),
                     maxDist: 35
                 }
@@ -322,7 +290,7 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
             suffocateTime: 0,
             totalSupply: 15
         }),
-        new BPEntityComponents.SetBurnsInDaylight({}),
+        new BPEntityComponents.SetBurnsInDaylight(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetCollisionBox({
             height: 1.9,
@@ -384,7 +352,8 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
             usingDoorAnnotation: true
         }),
         new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetShareables({
             items: [
                 {
@@ -599,8 +568,7 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
         "villager_converted": {
             add: {
                 componentGroups: ["to_villager"]
-            },
-            remove: {}
+            }
         },
         "from_village": {
             sequence: [
@@ -611,22 +579,19 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
                             weight: 9500,
                             add: {
                                 componentGroups: ["adult"]
-                            },
-                            remove: {}
+                            }
                         },
                         {
                             weight: 425,
                             add: {
                                 componentGroups: ["baby"]
-                            },
-                            remove: {}
+                            }
                         },
                         {
                             weight: 75,
                             add: {
                                 componentGroups: ["baby", "jockey"]
-                            },
-                            remove: {}
+                            }
                         }
                     ]
                 },
@@ -708,8 +673,6 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["from_abandoned_village"]
                     }
@@ -725,22 +688,19 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
                             weight: 9500,
                             add: {
                                 componentGroups: ["adult"]
-                            },
-                            remove: {}
+                            }
                         },
                         {
                             weight: 425,
                             add: {
                                 componentGroups: ["baby"]
-                            },
-                            remove: {}
+                            }
                         },
                         {
                             weight: 75,
                             add: {
                                 componentGroups: ["baby", "jockey"]
-                            },
-                            remove: {}
+                            }
                         }
                     ]
                 },
@@ -822,8 +782,6 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 10,
@@ -930,7 +888,6 @@ export const ZombieVillagerTemplate = createBPEntityTemplate({
                     }
                 }
             ]
-            // TODO(migrate): accion no soportada "filters": {"test": "has_component", "operator": "!=", "value": "minecraft:variant"}
         }
     }
 });

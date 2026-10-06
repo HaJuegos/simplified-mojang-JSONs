@@ -98,7 +98,7 @@ interface ImpactDamageTypes {
     } | number,
     destroyOnHit?: boolean;
     destroyOnHitRequiresDamage?: boolean;
-    filter?: EntityFilter | EntityFilter[];
+    filter?: string | EntityFilter | EntityFilter[];
     knockback?: boolean;
     maxCriticalDamage?: number;
     minCriticalDamage?: number;
@@ -120,13 +120,13 @@ interface EffectsTypes {
 }
 
 interface ParticleOnHitTypes {
-    numParticles: number,
-    onEntityHit: boolean,
-    onOtherHit: boolean,
-    particleItemName: {
+    numParticles?: number,
+    onEntityHit?: boolean,
+    onOtherHit?: boolean,
+    particleItemName?: {
         [key: string]: EntityFilter | EntityFilter[];
     },
-    particleType: string;
+    particleType?: string;
 }
 
 interface SpawnCloudTypes {

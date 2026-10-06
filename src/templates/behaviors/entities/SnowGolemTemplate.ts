@@ -4,9 +4,13 @@ import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del SnowGolem para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SnowGolemTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.SnowGolem,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         isSummonable: true,
         isSpawneable: true
@@ -20,7 +24,7 @@ export const SnowGolemTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetAttack({
             damage: 2
         }),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetBehaviorLookAtPlayer({
             lookDistance: 6,
             priority: 3
@@ -46,7 +50,10 @@ export const SnowGolemTemplate = createBPEntityTemplate({
                 min: 1,
                 max: 1
             },
-            // TODO(migrate): clave no soportada "attack_range": {"min": 0, "max": 10}
+            attackRange: {
+                min: 0,
+                max: 10
+            },
             priority: 1,
             speedMultiplier: 1.25
         }),
@@ -68,7 +75,7 @@ export const SnowGolemTemplate = createBPEntityTemplate({
                 }
             ]
         }),
-        // TODO(migrate): componente sin clase "minecraft:freezing_immune": {}
+        new BPEntityComponents.SetFreezingImmune(),
         new BPEntityComponents.SetHealth({
             max: 4,
             value: 4
@@ -144,7 +151,11 @@ export const SnowGolemTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetShooter({
-            // TODO(migrate): clave no soportada "def": "minecraft:snowball"
+            projectiles: [
+                {
+                    def: MinecraftEntityTypes.Snowball
+                }
+            ]
         }),
         new BPEntityComponents.SetTrail({
             blockType: "minecraft:snow_layer",
@@ -158,8 +169,7 @@ export const SnowGolemTemplate = createBPEntityTemplate({
         "minecraft:on_sheared": {
             add: {
                 componentGroups: ["minecraft:snowman_sheared"]
-            },
-            remove: {}
+            }
         }
     }
 });

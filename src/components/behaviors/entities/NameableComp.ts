@@ -1,17 +1,17 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface NameableData extends BPComponent {
     allowNameTagRenaming?: boolean;
     alwaysShow?: boolean;
-    defaultTrigger?: EntityFilter | EntityFilter[];
+    defaultTrigger?: EntityFilterTrigger | EntityFilterTrigger[];
     nameActions?: NameActionsTypes | NameActionsTypes[];
 }
 
 interface NameActionsTypes {
     nameFilter: string;
-    onNamed: EntityFilter | EntityFilter[];
+    onNamed: EntityFilterTrigger | EntityFilterTrigger[];
 }
 
 export class SetNameable extends BehaviorEntityComponentBuilder<NameableData, "minecraft:nameable"> {

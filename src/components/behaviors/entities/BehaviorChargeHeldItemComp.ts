@@ -6,7 +6,7 @@ import { TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorChargeHeldItemData extends BPComponent {
     priority: number;
-    items?: TargetItemsTypes[];
+    items?: (string | MinecraftItemTypes | TargetItemsTypes)[];
 }
 
 export class SetBehaviorChargeHeldItem extends BehaviorEntityComponentBuilder<BehaviorChargeHeldItemData, "minecraft:behavior.charge_held_item"> {

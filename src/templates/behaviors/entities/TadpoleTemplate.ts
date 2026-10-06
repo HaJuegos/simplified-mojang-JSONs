@@ -4,9 +4,13 @@ import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/beh
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Tadpole para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const TadpoleTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Tadpole,
-    formatVersion: FormatVersionEntities.V1_26_10,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -104,15 +108,9 @@ export const TadpoleTemplate = createBPEntityTemplate({
     ],
     events: {
         "ageable_grow_up": {
-            sequence: [
-                {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
-                    add: {
-                        componentGroups: ["grow_up"]
-                    }
-                }
-            ]
+            add: {
+                componentGroups: ["grow_up"]
+            }
         }
     }
 });

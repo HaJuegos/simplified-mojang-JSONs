@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Ocelote para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const OcelotTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Ocelot,
-    formatVersion: FormatVersionEntities.V1_26_10,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -32,7 +37,7 @@ export const OcelotTemplate = createBPEntityTemplate({
         "minecraft:ocelot_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/ocelot.json"
@@ -248,8 +253,8 @@ export const OcelotTemplate = createBPEntityTemplate({
             trackTarget: true
         }),
         new BPEntityComponents.SetBehaviorLeapAtTarget({
-            priority: 3
-            // TODO(migrate): clave no soportada "target_dist": 0.3
+            priority: 3,
+            targetDist: 0.3
         }),
         new BPEntityComponents.SetBehaviorOcelotattack({
             priority: 4,
@@ -276,12 +281,9 @@ export const OcelotTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 3,
-                            remove: {},
                             add: {
                                 componentGroups: [
                                     "minecraft:ocelot_adult",
@@ -292,7 +294,6 @@ export const OcelotTemplate = createBPEntityTemplate({
                         },
                         {
                             weight: 1,
-                            remove: {},
                             add: {
                                 componentGroups: ["minecraft:ocelot_baby", "minecraft:ocelot_wild"]
                             }
@@ -304,9 +305,6 @@ export const OcelotTemplate = createBPEntityTemplate({
         "minecraft:entity_born": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
-                    remove: {},
                     add: {
                         componentGroups: ["minecraft:ocelot_baby", "minecraft:ocelot_trusting"]
                     }
@@ -332,26 +330,16 @@ export const OcelotTemplate = createBPEntityTemplate({
         "minecraft:on_trust": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     remove: {
                         componentGroups: ["minecraft:ocelot_wild"]
                     }
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:ocelot_trusting"]
                     }
                 }
             ]
-        },
-        "minecraft:on_leash": {
-            // TODO(migrate): add referenciaba grupos inexistentes: ["minecraft:ocelot_leashed"]
-        },
-        "minecraft:on_unleash": {
-            // TODO(migrate): remove referenciaba grupos inexistentes: ["minecraft:ocelot_leashed"]
         }
     }
 });

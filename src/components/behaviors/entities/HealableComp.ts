@@ -18,9 +18,10 @@ interface ItemsHealablesTypes {
 }
 
 interface EffectHealhableTypes {
-    name: EntityEffectTypes | string;
-    duration: "infinite" | number;
-    amplifier: number;
+    name?: EntityEffectTypes | string;
+    duration?: "infinite" | number;
+    amplifier?: number;
+    chance?: number;
 }
 
 export class SetHealable extends BehaviorEntityComponentBuilder<HealableData, "minecraft:healable"> {

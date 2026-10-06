@@ -18,7 +18,7 @@ export class SetBehaviorTradeInterest extends BehaviorEntityComponentBuilder<Beh
      * @constructor
      * @public
      */
-    public constructor (params: BehaviorTradeInterestData) {
+    public constructor (params?: BehaviorTradeInterestData) {
         super("minecraft:behavior.trade_interest", params);
     }
 }

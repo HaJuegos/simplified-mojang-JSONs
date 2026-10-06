@@ -3,19 +3,24 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Loro para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const ParrotTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Parrot,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Creature,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Creature
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:parrot_adult": [
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLeashableTo(),
             new BPEntityComponents.SetLoot({
@@ -56,7 +61,7 @@ export const ParrotTemplate = createBPEntityTemplate({
                 priority: 2
             }),
             new BPEntityComponents.SetEntitySensor({
-                // TODO(migrate): clave no soportada "relative_range": false
+                relativeRange: false,
                 subsensors: [
                     {
                         event: "minecraft:on_riding_player",
@@ -71,7 +76,7 @@ export const ParrotTemplate = createBPEntityTemplate({
         ],
         "minecraft:parrot_riding_player": [
             new BPEntityComponents.SetEntitySensor({
-                // TODO(migrate): clave no soportada "relative_range": false
+                relativeRange: false,
                 subsensors: [
                     {
                         event: "minecraft:on_not_riding_player",
@@ -152,7 +157,7 @@ export const ParrotTemplate = createBPEntityTemplate({
         ]
     },
     components: [
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetBehaviorFloat({
             priority: 1
         }),
@@ -227,8 +232,9 @@ export const ParrotTemplate = createBPEntityTemplate({
             canPathFromAir: true,
             canPathOverWater: true
         }),
-        new BPEntityComponents.SetPhysics({})
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity()
     ],
     events: {
         "minecraft:entity_spawned": {

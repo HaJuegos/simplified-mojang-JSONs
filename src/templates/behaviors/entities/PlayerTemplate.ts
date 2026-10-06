@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Player para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const PlayerTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Player,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
+        spawnCategory: SpawnCategoryEntities.Creature,
         isSummonable: false,
-        isSpawneable: false,
-        spawnCategory: SpawnCategoryEntities.Creature
+        isSpawneable: false
     },
     componentsGroups: {
         "minecraft:add_raid_omen": [
@@ -65,7 +70,10 @@ export const PlayerTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetEnvironmentSensor({
             triggers: {
                 event: "minecraft:gain_raid_omen",
-                filters: EntityFilters.allOf(EntityFilters.hasMobEffect("bad_omen"), EntityFilters.isInVillage())
+                filters: EntityFilters.allOf(
+                    EntityFilters.hasMobEffect("bad_omen"),
+                    EntityFilters.isInVillage()
+                )
             }
         }),
         new BPEntityComponents.SetExhaustionValues({
@@ -81,7 +89,7 @@ export const PlayerTemplate = createBPEntityTemplate({
             walk: 0
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "Math.Min(query.player_level * 7, 100)"
+            onDeath: `Math.Min(${MoLang.playerLevel()} * 7, 100)`
         }),
         new BPEntityComponents.SetHurtOnCondition({
             damageConditions: [

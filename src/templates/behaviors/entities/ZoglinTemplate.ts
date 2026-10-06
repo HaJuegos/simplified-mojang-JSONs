@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Araña de cueva para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const ZoglinTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Zoglin,
-    formatVersion: FormatVersionEntities.V1_26_20,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "angry_zoglin": [
@@ -79,7 +84,7 @@ export const ZoglinTemplate = createBPEntityTemplate({
         ]
     },
     components: [
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetBehaviorLookAtPlayer({
             lookDistance: 6,
             priority: 8
@@ -131,7 +136,7 @@ export const ZoglinTemplate = createBPEntityTemplate({
             )
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 : 0`
         }),
         new BPEntityComponents.SetFireImmune(),
         new BPEntityComponents.SetHealth({

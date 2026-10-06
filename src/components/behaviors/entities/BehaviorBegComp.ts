@@ -1,10 +1,11 @@
 import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorBegData extends BPComponent {
     priority: number;
-    items?: string[] | MinecraftItemTypes[];
+    items?: (string | MinecraftItemTypes | TargetItemsTypes)[];
     lookDistance?: number;
     lookTime?: {
         min: number;

@@ -24,7 +24,7 @@ export class SetEconomyTradeTable extends BehaviorEntityComponentBuilder<Economy
      * @constructor
      * @public
      */
-    public constructor (params: EconomyTradeTableData) {
+    public constructor (params?: EconomyTradeTableData) {
         super("minecraft:economy_trade_table", params);
     }
 }

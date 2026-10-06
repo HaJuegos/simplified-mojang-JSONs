@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Calamar para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SquidTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Squid,
-    formatVersion: FormatVersionEntities.V1_26_20,
     description: {
+        spawnCategory: SpawnCategoryEntities.WaterCreature,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.WaterCreature
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:squid_adult": [
@@ -75,7 +80,7 @@ export const SquidTemplate = createBPEntityTemplate({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "!query.is_baby && query.last_hit_by_player ? Math.Random(1,3) : 0"
+            onDeath: `!${MoLang.isBaby()} && ${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
         }),
         new BPEntityComponents.SetHealth({
             max: 10,

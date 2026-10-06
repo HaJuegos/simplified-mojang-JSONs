@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Cerdo para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const PigTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Pig,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -14,14 +19,12 @@ export const PigTemplate = createBPEntityTemplate({
     },
     properties: {
         "minecraft:climate_variant": {
-            idProperty: "minecraft:climate_variant",
             clientSync: true,
             type: "enum",
             default: "temperate",
             values: ["temperate", "warm", "cold"]
         },
         "minecraft:sound_variant": {
-            idProperty: "minecraft:sound_variant",
             clientSync: true,
             type: "enum",
             default: "default",
@@ -59,7 +62,7 @@ export const PigTemplate = createBPEntityTemplate({
         "minecraft:pig_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/pig.json"
@@ -162,7 +165,7 @@ export const PigTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.baby",
-                    condition: "query.is_baby"
+                    condition: `${MoLang.isBaby()}`
                 }
             ],
             minRandomCooldownSound: 6,
@@ -292,8 +295,6 @@ export const PigTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 95,
@@ -308,8 +309,6 @@ export const PigTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     firstValid: [
                         {
                             filters: EntityFilters.hasBiomeTag("spawns_warm_variant_farm_animals"),
@@ -328,7 +327,6 @@ export const PigTemplate = createBPEntityTemplate({
             ]
         },
         "minecraft:entity_born": {
-            remove: {},
             add: {
                 componentGroups: ["minecraft:pig_baby"]
             },

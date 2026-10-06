@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Sniffer para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SnifferTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Sniffer,
-    formatVersion: FormatVersionEntities.V1_26_10,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -36,7 +41,7 @@ export const SnifferTemplate = createBPEntityTemplate({
             }),
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLeashableTo(),
             new BPEntityComponents.SetBreedable({
@@ -71,7 +76,7 @@ export const SnifferTemplate = createBPEntityTemplate({
         "stand_up": [
             new BPEntityComponents.SetBehaviorTimerFlagTwo({
                 priority: 2,
-                // TODO(migrate): clave no soportada "control_flags": ["move"]
+                controlFlags: ["move"],
                 cooldownRange: {
                     min: 0,
                     max: 0
@@ -184,7 +189,10 @@ export const SnifferTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetBehaviorTimerFlagOne({
             priority: 6,
-            // TODO(migrate): clave no soportada "control_flags": ["move", "look"]
+            controlFlags: [
+                "move",
+                "look"
+            ],
             cooldownRange: {
                 min: 400,
                 max: 500
@@ -230,7 +238,7 @@ export const SnifferTemplate = createBPEntityTemplate({
                 }
             ]
         }),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetTypeFamily({
             family: ["sniffer", "mob"]
         }),

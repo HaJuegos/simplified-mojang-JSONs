@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Conejo para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const RabbitTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Rabbit,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -47,7 +52,7 @@ export const RabbitTemplate = createBPEntityTemplate({
             }),
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/rabbit.json"
@@ -98,7 +103,7 @@ export const RabbitTemplate = createBPEntityTemplate({
     },
     components: [
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
-        // TODO(migrate): componente sin clase "minecraft:can_stand_on_powder_snow": {}
+        new BPEntityComponents.SetCanStandOnPowderSnow(),
         new BPEntityComponents.SetTypeFamily({
             family: ["rabbit", "mob"]
         }),
@@ -241,8 +246,6 @@ export const RabbitTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 3,
@@ -259,7 +262,6 @@ export const RabbitTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.hasComponent("minecraft:variant", "self", "!="),
                     randomize: [
                         {
                             weight: 50,
@@ -288,7 +290,6 @@ export const RabbitTemplate = createBPEntityTemplate({
                     }
                 },
                 {
-                    filters: EntityFilters.isSnowCovered(),
                     randomize: [
                         {
                             weight: 80,
@@ -309,14 +310,11 @@ export const RabbitTemplate = createBPEntityTemplate({
         "minecraft:entity_born": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["baby"]
                     }
                 },
                 {
-                    filters: EntityFilters.hasComponent("minecraft:variant", "self", "!="),
                     randomize: [
                         {
                             weight: 50,
@@ -345,7 +343,6 @@ export const RabbitTemplate = createBPEntityTemplate({
                     }
                 },
                 {
-                    filters: EntityFilters.isSnowCovered(),
                     randomize: [
                         {
                             weight: 80,

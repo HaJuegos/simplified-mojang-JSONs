@@ -44,7 +44,7 @@ type EntityFilterOperator = "==" | "!=" | ">" | ">=" | "<" | "<=" | "equals" | "
  * Lista de slots o ubicaciones de equipamiento para filtros de ítems.
  * @author HaJuegos - 20-09-2026
  */
-type EntityFilterDomain = | "any" | "armor" | "body" | "feet" | "hand" | "head" | "inventory" | "leg" | "main_hand" | "torso";
+type EntityFilterDomain = | "any" | "armor" | "body" | "feet" | "hand" | "head" | "inventory" | "leg" | "main_hand" | "torso" | number;
 
 /**
  * Lista de valores permitidos en los filtros de entidades.
@@ -62,7 +62,7 @@ type EntityAbility = | "flySpeed" | "flying" | "instabuild" | "invulnerable" | "
  * Lista de todos los tipos de daños que puede sufrir una entidad.
  * @author HaJuegos - 21-09-2026
  */
-type EntityDamageType = "all" | "anvil" | "attack" | "block_explosion" | "campfire" | "charging" | "contact" | "drowning" | "entity_attack" | "entity_explosion" | "fall" | "falling_block" | "fatal" | "fire" | "fire_tick" | "fireworks" | "fly_into_wall" | "freezing" | "lava" | "lightning" | "magic" | "magma" | "none" | "override" | "piston" | "projectile" | "ram_attack" | "self_destruct" | "sonic_boom" | "soul_campfire" | "stalactite" | "stalagmite" | "starve" | "suffocation" | "temperature" | "thorns" | "void" | "wither";
+type EntityDamageType = "all" | "anvil" | "attack" | "block_explosion" | "campfire" | "charging" | "contact" | "drowning" | "entity_attack" | "entity_explosion" | "fall" | "falling_block" | "fatal" | "fire" | "fire_tick" | "fireworks" | "fly_into_wall" | "freezing" | "lava" | "lightning" | "magic" | "magma" | "none" | "override" | "piston" | "projectile" | "ram_attack" | "self_destruct" | "sonic_boom" | "soul_campfire" | "stalactite" | "stalagmite" | "starve" | "suffocation" | "temperature" | "thorns" | "void" | "wither" | "mace_smash";
 
 /**
  * Lista de todos los biomas disponibles en un filtro de entidad.
@@ -92,7 +92,7 @@ type TemperatureCategory = "cold" | "mild" | "ocean" | "warm";
  * Lista disponibles de efectos a evaluar en los filtros de entidades.
  * @author HaJuegos - 21-09-2026
  */
-type EntityEffectTypes = "absorption" | "bad_omen" | "blindness" | "conduit_power" | "darkness" | "fatal_poison" | "fire_resistance" | "haste" | "health_boost" | "hunger" | "infested" | "instant_damage" | "instant_health" | "invisibility" | "jump_boost" | "levitation" | "mining_fatigue" | "nausea" | "night_vision" | "oozing" | "poison" | "raid_omen" | "regeneration" | "resistance" | "saturation" | "slow_falling" | "slowness" | "speed" | "strength" | "trial_omen" | "village_hero" | "water_breathing" | "weakness" | "weaving" | "wind_charged" | "wither";
+type EntityEffectTypes = "absorption" | "bad_omen" | "blindness" | "conduit_power" | "darkness" | "fatal_poison" | "fire_resistance" | "haste" | "health_boost" | "hunger" | "infested" | "instant_damage" | "instant_health" | "invisibility" | "jump_boost" | "levitation" | "mining_fatigue" | "nausea" | "night_vision" | "oozing" | "poison" | "raid_omen" | "regeneration" | "resistance" | "saturation" | "slow_falling" | "slowness" | "speed" | "strength" | "trial_omen" | "village_hero" | "water_breathing" | "weakness" | "weaving" | "wind_charged" | "wither" | "breath_of_the_nautilus" | "heal";
 
 /**
  * Lista de slots de armadura disponibles a usar en los componentes de entidades.

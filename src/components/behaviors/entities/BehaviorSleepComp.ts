@@ -21,7 +21,7 @@ export class SetBehaviorSleep extends BehaviorEntityComponentBuilder<BehaviorSle
      * @constructor
      * @public
      */
-    public constructor (params: BehaviorSleepData) {
+    public constructor (params?: BehaviorSleepData) {
         super("minecraft:behavior.sleep", params);
     }
 }

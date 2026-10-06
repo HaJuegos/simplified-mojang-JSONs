@@ -13,7 +13,9 @@ interface ShooterData extends BPComponent {
 interface ProyectilesTypes {
     filters?: EntityFilter | EntityFilter[];
     auxVal?: number;
+    chance?: number;
     def: string | MinecraftEntityTypes;
+    loseTarget?: boolean;
 }
 
 export class SetShooter extends BehaviorEntityComponentBuilder<ShooterData, "minecraft:shooter"> {

@@ -1,6 +1,6 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter, EntityFiltersTarget } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFiltersTarget, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface BehaviorKnockbackRoarData extends BPComponent {
     priority: number;
@@ -16,7 +16,7 @@ interface BehaviorKnockbackRoarData extends BPComponent {
     knockbackVerticalStrength?: number;
     knockbackHeightCap?: number;
     trackTarget?: boolean;
-    onRoarEnd?: string | EntityFiltersTarget;
+    onRoarEnd?: string | EntityFilterTrigger;
 }
 
 export class SetBehaviorKnockbackRoar extends BehaviorEntityComponentBuilder<BehaviorKnockbackRoarData, "minecraft:behavior.knockback_roar"> {

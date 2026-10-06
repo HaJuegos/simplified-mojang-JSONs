@@ -172,7 +172,7 @@ export const MagmaCubeTemplate = createBPEntityTemplate({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: `${MoLang.lastHitByPlayer()} ? query.variant : 0`
+            onDeath: `${MoLang.lastHitByPlayer()} ? ${MoLang.variant()} : 0`
         }),
         new BPEntityComponents.SetFireImmune(),
         new BPEntityComponents.SetFreezingVulnerable(),

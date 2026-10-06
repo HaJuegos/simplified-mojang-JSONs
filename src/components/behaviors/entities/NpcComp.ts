@@ -12,8 +12,8 @@ interface NpcTypes {
 }
 
 interface OffSetTypes {
-    scale: [number, number];
-    translate: [number, number];
+    scale: [number, number, number];
+    translate: [number, number, number];
 }
 
 interface SkinListTypes {

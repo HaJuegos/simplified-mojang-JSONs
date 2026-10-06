@@ -1,21 +1,26 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTemplateBuilder";
-import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
+import { SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del PufferFish para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const PufferfishTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Pufferfish,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.WaterAmbient,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.WaterAmbient
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:deflate_sensor": [
             new BPEntityComponents.SetEntitySensor({
-                // TODO(migrate): clave no soportada "relative_range": false
+                relativeRange: false,
                 subsensors: [
                     {
                         event: "minecraft:from_full_puff",
@@ -51,8 +56,20 @@ export const PufferfishTemplate = createBPEntityTemplate({
                 cause: "contact",
                 damageCooldown: 0.5,
                 damagePerTick: 2,
-                damageRange: 0.2
-                // TODO(migrate): clave no soportada "entity_filter": {"any_of": [{"all_of": [{"subject": "other", "test": "is_family", "value": "mob"}, {"any_of": [{"subject": "other", "test": "is_family", "value": "axolotl"}, {"operator": "not", "test": "is_family", "subject": "other", "value": "aquatic"}]}]}, {"all_of": [{"subject": "other", "test": "is_family", "value": "player"}, {"operator": "not", "test": "has_ability", "subject": "other", "value": "instabuild"}]}]}
+                damageRange: 0.2,
+                entityFilter: EntityFilters.anyOf(
+                    EntityFilters.allOf(
+                        EntityFilters.isFamily('mob', 'other'),
+                        EntityFilters.anyOf(
+                            EntityFilters.isFamily('aquatic', 'other', 'not'),
+                            EntityFilters.isFamily('axolotl', 'other')
+                        )
+                    ),
+                    EntityFilters.allOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.hasAbility('instabuild', 'other', 'not')
+                    )
+                )
             }),
             new BPEntityComponents.SetMobEffect({
                 effectRange: 0.2,
@@ -94,7 +111,7 @@ export const PufferfishTemplate = createBPEntityTemplate({
         ],
         "minecraft:half_puff_secondary": [
             new BPEntityComponents.SetEntitySensor({
-                // TODO(migrate): clave no soportada "relative_range": false
+                relativeRange: false,
                 subsensors: [
                     {
                         event: "minecraft:start_full_puff",
@@ -137,7 +154,7 @@ export const PufferfishTemplate = createBPEntityTemplate({
         ],
         "minecraft:normal_puff": [
             new BPEntityComponents.SetEntitySensor({
-                // TODO(migrate): clave no soportada "relative_range": false
+                relativeRange: false,
                 subsensors: [
                     {
                         event: "minecraft:start_half_puff",
@@ -166,20 +183,8 @@ export const PufferfishTemplate = createBPEntityTemplate({
             entityTypes: [
                 {
                     filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "axolotl"
-                            }
-                        )
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('axolotl', 'other')
                     ),
                     maxDist: 6,
                     walkSpeedMultiplier: 1.5,
@@ -218,7 +223,7 @@ export const PufferfishTemplate = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
         }),
         new BPEntityComponents.SetFlocking({
             breachInfluence: 7,
@@ -276,7 +281,8 @@ export const PufferfishTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetPhysics({
             hasGravity: false
         }),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetScale({
             value: 1.2
         }),

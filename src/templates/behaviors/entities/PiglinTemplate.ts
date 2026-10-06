@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Piglin para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const PiglinTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Piglin,
-    formatVersion: FormatVersionEntities.V1_26_20,
     description: {
         spawnCategory: SpawnCategoryEntities.Monster,
         isSpawneable: true,
@@ -49,15 +54,23 @@ export const PiglinTemplate = createBPEntityTemplate({
         "ranged_unit": [
             new BPEntityComponents.SetBehaviorRangedAttack({
                 priority: 8,
-                // TODO(migrate): clave no soportada "attack_interval_min": 1
-                // TODO(migrate): clave no soportada "attack_interval_max": 1
-                attackRadius: 8,
-                attackRadiusMin: 4,
+                attackRange: {
+                    min: 4,
+                    max: 8
+                },
+                attackInterval: {
+                    min: 1,
+                    max: 1,
+                },
                 speedMultiplier: 1,
                 targetInSightTime: 0.1
             }),
             new BPEntityComponents.SetShooter({
-                // TODO(migrate): clave no soportada "def": "minecraft:arrow"
+                projectiles: [
+                    {
+                        def: 'minecraft:arrow'
+                    }
+                ]
             }),
             new BPEntityComponents.SetBehaviorChargeHeldItem({
                 priority: 3,
@@ -147,7 +160,7 @@ export const PiglinTemplate = createBPEntityTemplate({
                 value: 0.42
             }),
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 1 + (query.equipment_count * Math.Random(1,2)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 1 + (${MoLang.equipmentCount()} * Math.Random(1,2)) : 0`
             }),
             new BPEntityComponents.SetBehaviorPanic({
                 priority: 1,
@@ -173,7 +186,7 @@ export const PiglinTemplate = createBPEntityTemplate({
                 cooldownAfterBeingAttacked: 20
             }),
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
             }),
             new BPEntityComponents.SetCelebrateHunt({
                 celebrationTargets: EntityFilters.allOf(EntityFilters.isFamily("hoglin")),

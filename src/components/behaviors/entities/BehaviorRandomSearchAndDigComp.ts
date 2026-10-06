@@ -1,7 +1,7 @@
 import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface BehaviorRandomSearchAndDigData extends BPComponent {
     priority: number;
@@ -17,12 +17,12 @@ interface BehaviorRandomSearchAndDigData extends BPComponent {
     findValidPositionRetries?: number;
     goalRadius?: number;
     itemTable?: string;
-    onDiggingStart?: string | EntityFilter | EntityFilter[];
-    onFailDuringDigging?: string | EntityFilter | EntityFilter[];
-    onFailDuringSearching?: string | EntityFilter | EntityFilter[];
-    onItemFound?: string | EntityFilter | EntityFilter[];
-    onSearchingStart?: string | EntityFilter | EntityFilter[];
-    onSuccess?: string | EntityFilter | EntityFilter[];
+    onDiggingStart?: (string | EntityFilterTrigger) | (string | EntityFilterTrigger | EntityFilterTrigger)[];
+    onFailDuringDigging?: (string | EntityFilterTrigger) | (string | EntityFilterTrigger | EntityFilterTrigger)[];
+    onFailDuringSearching?: (string | EntityFilterTrigger) | (string | EntityFilterTrigger | EntityFilterTrigger)[];
+    onItemFound?: (string | EntityFilterTrigger) | (string | EntityFilterTrigger | EntityFilterTrigger)[];
+    onSearchingStart?: (string | EntityFilterTrigger) | (string | EntityFilterTrigger | EntityFilterTrigger)[];
+    onSuccess?: (string | EntityFilterTrigger) | (string | EntityFilterTrigger | EntityFilterTrigger)[];
     searchRangeXz?: number;
     searchRangeY?: number;
     spawnItemAfterSeconds?: number;

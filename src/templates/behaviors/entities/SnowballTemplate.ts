@@ -3,6 +3,11 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
+/**
+ * Plantilla vanilla de la Bola de Nieve para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SnowballTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Snowball,
     formatVersion: FormatVersionEntities.MostRecent,

@@ -23,7 +23,7 @@ export class SetDamageSensor extends BehaviorEntityComponentBuilder<DamageSensor
      * @constructor
      * @public
      */
-    public constructor (params: DamageSensorData) {
+    public constructor (params?: DamageSensorData) {
         super("minecraft:damage_sensor", params);
     }
 }

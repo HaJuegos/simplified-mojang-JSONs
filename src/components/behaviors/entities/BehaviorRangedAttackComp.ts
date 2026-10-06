@@ -2,7 +2,7 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
 interface BehaviorRangedAttackData extends BPComponent {
-    priority: number;
+    priority?: number;
     speedMultiplier?: number;
     attackInterval?: {
         min: number;

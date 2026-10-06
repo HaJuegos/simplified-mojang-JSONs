@@ -24,7 +24,7 @@ export class SetBehaviorExploreOutskirts extends BehaviorEntityComponentBuilder<
      * @constructor
      * @public
      */
-    public constructor (params: BehaviorExploreOutskirtsData) {
+    public constructor (params?: BehaviorExploreOutskirtsData) {
         super("minecraft:behavior.explore_outskirts", params);
     }
 }

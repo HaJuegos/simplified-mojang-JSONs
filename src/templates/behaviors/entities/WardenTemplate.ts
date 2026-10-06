@@ -3,15 +3,20 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Warden para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const WardenTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Warden,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "emerging": [
@@ -24,7 +29,8 @@ export const WardenTemplate = createBPEntityTemplate({
             })
         ],
         "pushable": [
-            // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+            new BPEntityComponents.SetPushableByBlock(),
+            new BPEntityComponents.SetPushableByEntity()
         ]
     },
     components: [
@@ -32,11 +38,11 @@ export const WardenTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "angry",
-                    condition: "query.anger_level(this) >= 80"
+                    condition: `${MoLang.angerLevel()} >= 80`
                 },
                 {
                     soundID: "agitated",
-                    condition: "query.anger_level(this) >= 40"
+                    condition: `${MoLang.angerLevel()} >= 40`
                 }
             ],
             minRandomCooldownSound: 2,
@@ -51,12 +57,12 @@ export const WardenTemplate = createBPEntityTemplate({
             maxAnger: 150,
             onIncreaseSounds: [
                 {
-                    condition: "query.anger_level(this) >= 40",
-                    sound: "listening_angry"
+                    condition: `${MoLang.angerLevel()} >= 40`,
+                    soundID: "listening_angry"
                 },
                 {
-                    condition: "query.anger_level(this) >= 0",
-                    sound: "listening"
+                    condition: `${MoLang.angerLevel()} >= 0`,
+                    soundID: "listening"
                 }
             ],
             nuisanceFilter: EntityFilters.allOf(
@@ -135,7 +141,7 @@ export const WardenTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetExperienceReward({
             onBred: "Math.Random(1,7)",
-            onDeath: "query.last_hit_by_player ? 5 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 : 0`
         }),
         new BPEntityComponents.SetFireImmune(),
         new BPEntityComponents.SetFollowRange({
@@ -146,7 +152,7 @@ export const WardenTemplate = createBPEntityTemplate({
             value: 500
         }),
         new BPEntityComponents.SetHeartbeat({
-            interval: "2.0 - math.clamp(query.anger_level / 80 * 1.5, 0, 1.5)"
+            interval: `2.0 - math.clamp(${MoLang.angerLevel()} / 80 * 1.5, 0, 1.5)`
         }),
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
         new BPEntityComponents.SetJumpStatic(),

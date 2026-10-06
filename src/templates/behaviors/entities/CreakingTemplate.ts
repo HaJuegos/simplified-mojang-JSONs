@@ -3,6 +3,8 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
+
 
 /**
  * Plantilla vanilla del Creaking para la sobreescritura del mismo. Sus datos base ya estan definidos.
@@ -424,7 +426,7 @@ export const CreakingTemplate = createBPEntityTemplate({
         },
         "minecraft:increment_swaying_ticks": {
             setProperty: {
-                "minecraft:creaking_swaying_ticks": "math.clamp(query.property('minecraft:creaking_swaying_ticks') + 1, 0, 6)"
+                "minecraft:creaking_swaying_ticks": `math.clamp(${MoLang.property('minecraft:creaking_swaying_ticks')} + 1, 0, 6)`
             }
         },
         "minecraft:on_target_start_looking": {

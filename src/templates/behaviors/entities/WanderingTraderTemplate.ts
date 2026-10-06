@@ -4,13 +4,17 @@ import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/beh
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Wandering Trader para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const WanderingTraderTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.WanderingTrader,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Creature,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Creature
+        isSpawneable: true
     },
     componentsGroups: {
         "despawning": [
@@ -40,45 +44,13 @@ export const WanderingTraderTemplate = createBPEntityTemplate({
             maxDist: 6,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "zombie"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "zombie_villager"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "zombie_pigman"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "illager"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "vex"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "zoglin"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('zombie', 'other'),
+                        EntityFilters.isFamily('zombie_villager', 'other'),
+                        EntityFilters.isFamily('zombie_pigman', 'other'),
+                        EntityFilters.isFamily('illager', 'other'),
+                        EntityFilters.isFamily('vex', 'other'),
+                        EntityFilters.isFamily('zoglin', 'other'),
                     ),
                     walkSpeedMultiplier: 0.6,
                     sprintSpeedMultiplier: 0.6
@@ -88,24 +60,9 @@ export const WanderingTraderTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetBehaviorDrinkMilk({
             filters: EntityFilters.allOf(
-                {
-                    test: "is_daytime",
-                    subject: 0,
-                    operator: 0,
-                    value: true
-                },
-                {
-                    test: "is_visible",
-                    subject: 0,
-                    operator: 0,
-                    value: false
-                },
-                {
-                    test: "is_avoiding_mobs",
-                    subject: 0,
-                    operator: 0,
-                    value: false
-                }
+                EntityFilters.isDaytime(),
+                EntityFilters.isVisible(),
+                EntityFilters.isAvoidingMobs()
             ),
             priority: 5
         }),
@@ -247,7 +204,10 @@ export const WanderingTraderTemplate = createBPEntityTemplate({
             max: 20,
             value: 20
         }),
-        // TODO(migrate): componente sin clase "minecraft:home": {"restriction_radius": 16, "restriction_type": "random_movement"}
+        new BPEntityComponents.SetHome({
+            restrictionRadius: 16,
+            restrictionType: 'random_movement'
+        }),
         new BPEntityComponents.SetHurtOnCondition({
             damageConditions: [
                 {
@@ -272,7 +232,8 @@ export const WanderingTraderTemplate = createBPEntityTemplate({
             canPathOverWater: true
         }),
         new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetSpawnEntity({
             entities: [
                 {

@@ -8,7 +8,7 @@ interface BehaviorMingleData extends BPComponent {
     cooldownTime?: number;
     duration?: number;
     mingleDistance?: number;
-    minglePartnerType?: string[] | MinecraftEntityTypes[];
+    minglePartnerType?: (string | MinecraftEntityTypes) | (string | MinecraftEntityTypes)[];
 }
 
 export class SetBehaviorMingle extends BehaviorEntityComponentBuilder<BehaviorMingleData, "minecraft:behavior.mingle"> {
@@ -19,7 +19,7 @@ export class SetBehaviorMingle extends BehaviorEntityComponentBuilder<BehaviorMi
      * @constructor
      * @public
      */
-    public constructor (params: BehaviorMingleData) {
+    public constructor (params?: BehaviorMingleData) {
         super("minecraft:behavior.mingle", params);
     }
 }

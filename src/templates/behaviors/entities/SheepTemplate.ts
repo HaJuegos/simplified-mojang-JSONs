@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Oveja para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SheepTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Sheep,
-    formatVersion: FormatVersionEntities.V1_26_20,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -77,7 +82,7 @@ export const SheepTemplate = createBPEntityTemplate({
         "minecraft:sheep_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLeashableTo(),
             new BPEntityComponents.SetBehaviorBreed({
@@ -262,7 +267,7 @@ export const SheepTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetBehaviorEatBlock({
             priority: 6,
-            successChance: "query.is_baby ? 0.02 : 0.001",
+            successChance: `${MoLang.isBaby()} ? 0.02 : 0.001`,
             timeUntilEat: 1.8,
             eatAndReplaceBlockPairs: [
                 {
@@ -308,24 +313,18 @@ export const SheepTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 95,
-                            remove: {},
                             trigger: "spawn_adult"
                         },
                         {
                             weight: 5,
-                            remove: {},
                             trigger: "spawn_baby"
                         }
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     firstValid: [
                         {
                             filters: EntityFilters.hasBiomeTag("spawns_cold_variant_farm_animals"),
@@ -358,7 +357,6 @@ export const SheepTemplate = createBPEntityTemplate({
             }
         },
         "minecraft:entity_born": {
-            remove: {},
             add: {
                 componentGroups: ["minecraft:sheep_baby", "minecraft:sheep_dyeable"]
             }
@@ -386,8 +384,6 @@ export const SheepTemplate = createBPEntityTemplate({
         "minecraft:on_eat_block": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     remove: {
                         componentGroups: ["minecraft:sheep_sheared"]
                     },

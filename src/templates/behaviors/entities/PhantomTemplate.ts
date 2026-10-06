@@ -3,14 +3,21 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { EntityFireImmuneComponent } from "@minecraft/server";
+import { MoLang } from "../../../utils/MoLang";
 
+
+/**
+ * Plantilla vanilla del Phatom para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const PhantomTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Phantom,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {},
     components: [
@@ -49,12 +56,7 @@ export const PhantomTemplate = createBPEntityTemplate({
             mustSeeForgetDuration: 0.5,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "player"
-                    }),
+                    filters: EntityFilters.isFamily('player', 'other'),
                     maxDist: 64
                 }
             ],
@@ -69,7 +71,7 @@ export const PhantomTemplate = createBPEntityTemplate({
             suffocateTime: 0,
             totalSupply: 15
         }),
-        new BPEntityComponents.SetBurnsInDaylight({}),
+        new BPEntityComponents.SetBurnsInDaylight(),
         new BPEntityComponents.SetCollisionBox({
             height: 0.5,
             width: 0.9
@@ -79,7 +81,7 @@ export const PhantomTemplate = createBPEntityTemplate({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 : 0`
         }),
         new BPEntityComponents.SetFollowRange({
             max: 64,
@@ -116,7 +118,8 @@ export const PhantomTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetPhysics({
             hasGravity: false
         }),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetRendersWhenInvisible(),
         new BPEntityComponents.SetTypeFamily({
             family: ["phantom", "undead", "monster", "mob"]

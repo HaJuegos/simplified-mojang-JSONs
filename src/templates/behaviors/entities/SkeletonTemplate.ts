@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Esqueleto para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SkeletonTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Skeleton,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "become_stray": [
@@ -65,6 +70,7 @@ export const SkeletonTemplate = createBPEntityTemplate({
                         dealsDamage: "no",
                         onDamage: {
                             filters: {
+                                // @ts-ignore idk, a veces no entiendo a Mojang y sus filtros raros.
                                 otherWithFamilies: "lightning"
                             }
                         }
@@ -100,7 +106,10 @@ export const SkeletonTemplate = createBPEntityTemplate({
                     min: 3,
                     max: 3
                 },
-                // TODO(migrate): clave no soportada "attack_range": {"min": 0.0, "max": 15.0}
+                attackRange: {
+                    min: 0,
+                    max: 15
+                },
                 priority: 0
             }),
             new BPEntityComponents.SetEnvironmentSensor({
@@ -124,7 +133,11 @@ export const SkeletonTemplate = createBPEntityTemplate({
                 ]
             }),
             new BPEntityComponents.SetShooter({
-                // TODO(migrate): clave no soportada "def": "minecraft:arrow"
+                projectiles: [
+                    {
+                        def: MinecraftEntityTypes.Arrow
+                    }
+                ],
                 sound: "bow"
             })
         ],
@@ -134,7 +147,10 @@ export const SkeletonTemplate = createBPEntityTemplate({
                     min: 2,
                     max: 2
                 },
-                // TODO(migrate): clave no soportada "attack_range": {"min": 0.0, "max": 15.0}
+                attackRange: {
+                    min: 0,
+                    max: 15
+                },
                 priority: 0
             }),
             new BPEntityComponents.SetEnvironmentSensor({
@@ -158,7 +174,11 @@ export const SkeletonTemplate = createBPEntityTemplate({
                 ]
             }),
             new BPEntityComponents.SetShooter({
-                // TODO(migrate): clave no soportada "def": "minecraft:arrow"
+                projectiles: [
+                    {
+                        def: MinecraftEntityTypes.Arrow
+                    }
+                ],
                 sound: "bow"
             })
         ]
@@ -237,7 +257,10 @@ export const SkeletonTemplate = createBPEntityTemplate({
                 min: 3,
                 max: 3
             },
-            // TODO(migrate): clave no soportada "attack_range": {"min": 0.0, "max": 15.0}
+            attackRange: {
+                min: 0,
+                max: 15
+            },
             priority: 0
         }),
         new BPEntityComponents.SetBreathable({
@@ -245,7 +268,7 @@ export const SkeletonTemplate = createBPEntityTemplate({
             suffocateTime: 0,
             totalSupply: 15
         }),
-        new BPEntityComponents.SetBurnsInDaylight({}),
+        new BPEntityComponents.SetBurnsInDaylight(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetCollisionBox({
             height: 1.9,
@@ -282,9 +305,9 @@ export const SkeletonTemplate = createBPEntityTemplate({
             table: "loot_tables/entities/skeleton_gear.json"
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
         }),
-        // TODO(migrate): componente sin clase "minecraft:freezing_immune": {}
+        new BPEntityComponents.SetFreezingImmune(),
         new BPEntityComponents.SetHealth({
             max: 20,
             value: 20
@@ -563,7 +586,11 @@ export const SkeletonTemplate = createBPEntityTemplate({
             singularPickup: true
         }),
         new BPEntityComponents.SetShooter({
-            // TODO(migrate): clave no soportada "def": "minecraft:arrow"
+            projectiles: [
+                {
+                    def: MinecraftEntityTypes.Arrow
+                }
+            ]
         }),
         new BPEntityComponents.SetTypeFamily({
             family: ["skeleton", "undead", "monster", "mob"]

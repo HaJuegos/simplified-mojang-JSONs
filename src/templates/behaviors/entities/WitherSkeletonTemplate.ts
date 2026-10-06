@@ -3,15 +3,20 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Wither Skeleton para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const WitherSkeletonTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.WitherSkeleton,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {},
     components: [
@@ -43,51 +48,21 @@ export const WitherSkeletonTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "player"
-                    })
+                    filters: EntityFilters.isFamily('player', 'other')
                 },
                 {
                     filters: EntityFilters.allOf(
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 0,
-                            value: "piglin"
-                        },
-                        {
-                            test: "is_difficulty",
-                            subject: 0,
-                            operator: 1,
-                            value: 0
-                        }
+                        EntityFilters.isFamily('piglin', 'other'),
+                        EntityFilters.isDifficulty('peaceful', 'self', 'not')
                     )
                 },
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "irongolem"
-                    })
+                    filters: EntityFilters.isFamily('irongolem', 'other')
                 },
                 {
                     filters: EntityFilters.allOf(
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 0,
-                            value: "baby_turtle"
-                        },
-                        {
-                            test: "in_water",
-                            subject: 1,
-                            operator: 1,
-                            value: true
-                        }
+                        EntityFilters.isFamily('baby_turtle', 'other'),
+                        EntityFilters.inWater(true, 'other', 'not')
                     )
                 }
             ],
@@ -132,7 +107,7 @@ export const WitherSkeletonTemplate = createBPEntityTemplate({
             table: "loot_tables/entities/wither_skeleton_gear.json"
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
         }),
         new BPEntityComponents.SetFireImmune(),
         new BPEntityComponents.SetHealth({
@@ -157,7 +132,8 @@ export const WitherSkeletonTemplate = createBPEntityTemplate({
             usingDoorAnnotation: true
         }),
         new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetScale({
             value: 1.2
         }),

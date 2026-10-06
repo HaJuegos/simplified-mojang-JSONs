@@ -1,15 +1,15 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilterTrigger } from "../../../types/EntityFilters";
+import { EntityFilterTrigger, EntitySlotsArmor } from "../../../types/EntityFilters";
 
 interface OnEquipmentChangedData extends BPComponent {
     slots: OnEquipTypes[];
 }
 
 interface OnEquipTypes {
-    onEquip: EntityFilterTrigger;
-    onUnequip: EntityFilterTrigger;
-    slot: number;
+    onEquip: string | EntityFilterTrigger;
+    onUnequip: string | EntityFilterTrigger;
+    slot: EntitySlotsArmor;
 }
 
 export class SetOnEquipmentChanged extends BehaviorEntityComponentBuilder<OnEquipmentChangedData, "minecraft:on_equipment_changed"> {

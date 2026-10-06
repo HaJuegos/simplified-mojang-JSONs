@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Tortuga para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const TurtleTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Turtle,
-    formatVersion: FormatVersionEntities.V1_26_40,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -49,7 +54,7 @@ export const TurtleTemplate = createBPEntityTemplate({
         "minecraft:adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetTypeFamily({
                 family: ["aquatic", "turtle", "mob"]
@@ -119,7 +124,7 @@ export const TurtleTemplate = createBPEntityTemplate({
         ]
     },
     components: [
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetOffspring({
             offspringPairs: {
                 "minecraft:turtle": "minecraft:turtle"
@@ -177,7 +182,7 @@ export const TurtleTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetPhysics({}),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
-        // TODO(migrate): componente sin clase "minecraft:home": {}
+        new BPEntityComponents.SetHome(),
         new BPEntityComponents.SetFollowRange({
             value: 1024
         }),

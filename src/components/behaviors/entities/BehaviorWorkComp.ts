@@ -22,7 +22,7 @@ export class SetBehaviorWork extends BehaviorEntityComponentBuilder<BehaviorWork
      * @constructor
      * @public
      */
-    public constructor (params: BehaviorWorkData) {
+    public constructor (params?: BehaviorWorkData) {
         super("minecraft:behavior.work", params);
     }
 }

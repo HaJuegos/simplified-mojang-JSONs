@@ -1,11 +1,11 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface TrustingData extends BPComponent {
     probability?: number;
-    trustEvent?: EntityFilter;
+    trustEvent?: EntityFilterTrigger;
     trustItems?: (string | MinecraftEntityTypes)[];
 }
 

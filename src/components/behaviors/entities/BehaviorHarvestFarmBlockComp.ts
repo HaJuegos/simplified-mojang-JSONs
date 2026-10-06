@@ -21,7 +21,7 @@ export class SetBehaviorHarvestFarmBlock extends BehaviorEntityComponentBuilder<
      * @constructor
      * @public
      */
-    public constructor (params: BehaviorHarvestFarmBlockData) {
+    public constructor (params?: BehaviorHarvestFarmBlockData) {
         super("minecraft:behavior.harvest_farm_block", params);
     }
 }

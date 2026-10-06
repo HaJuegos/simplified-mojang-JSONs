@@ -3,15 +3,20 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Vex para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const VexTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Vex,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:periodic_damage": [
@@ -64,44 +69,17 @@ export const VexTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "irongolem"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "wandering_trader"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('irongolem', 'other'),
+                        EntityFilters.isFamily('wandering_trader', 'other'),
                     ),
                     maxDist: 70
                 },
                 {
                     filters: EntityFilters.allOf(
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 0,
-                            value: "villager"
-                        },
-                        {
-                            test: "has_component",
-                            subject: 1,
-                            operator: 1,
-                            value: "minecraft:is_baby"
-                        }
+                        EntityFilters.isFamily('villager', 'other'),
+                        EntityFilters.hasComponent('minecraft:is_baby', 'other', 'not')
                     ),
                     maxDist: 70
                 }
@@ -121,7 +99,7 @@ export const VexTemplate = createBPEntityTemplate({
             table: "loot_tables/entities/vex_gear.json"
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
         }),
         new BPEntityComponents.SetFireImmune(),
         new BPEntityComponents.SetGameEventMovementTracking({

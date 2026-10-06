@@ -124,7 +124,7 @@ export const EvocationIllagerTemplate = createBPEntityTemplate({
                 },
                 {
                     filters: EntityFilters.allOf(
-                        EntityFilters.hasComponent('minecraft:is_baby', 'other'),
+                        EntityFilters.hasComponent('minecraft:is_baby', 'other', 'not'),
                         EntityFilters.isFamily('villager', 'other'),
                     ),
                     maxDist: 20

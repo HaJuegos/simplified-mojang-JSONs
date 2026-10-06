@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Zombie Villager Actual para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const ZombieVillagerV2Template = createBPEntityTemplate({
     id: MinecraftEntityTypes.ZombieVillagerV2,
-    formatVersion: FormatVersionEntities.V1_26_20,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: false,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "desert_villager": [
@@ -26,7 +31,7 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
                 trackTarget: true
             }),
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
             }),
             new BPEntityComponents.SetMovement({
                 value: 0.23
@@ -54,7 +59,7 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
             })
         ],
         "can_break_doors": [
-            new BPEntityComponents.SetAnnotationBreakDoor({})
+            new BPEntityComponents.SetAnnotationBreakDoor()
         ],
         "armorer": [
             new BPEntityComponents.SetTypeFamily({
@@ -71,7 +76,7 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
         ],
         "baby": [
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 12 + (query.equipment_count * Math.Random(1,3)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 12 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
             }),
             new BPEntityComponents.SetIsBaby(),
             new BPEntityComponents.SetMovement({
@@ -381,7 +386,7 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
             suffocateTime: 0,
             totalSupply: 15
         }),
-        new BPEntityComponents.SetBurnsInDaylight({}),
+        new BPEntityComponents.SetBurnsInDaylight(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetCollisionBox({
             height: 1.9,
@@ -735,13 +740,9 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
         "from_village": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     trigger: "minecraft:entity_spawned"
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["from_abandoned_village"]
                     }
@@ -757,22 +758,19 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
                             weight: 9500,
                             add: {
                                 componentGroups: ["adult"]
-                            },
-                            remove: {}
+                            }
                         },
                         {
                             weight: 425,
                             add: {
                                 componentGroups: ["baby"]
-                            },
-                            remove: {}
+                            }
                         },
                         {
                             weight: 75,
                             add: {
                                 componentGroups: ["baby", "jockey"]
-                            },
-                            remove: {}
+                            }
                         }
                     ]
                 },
@@ -875,13 +873,9 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     trigger: "minecraft:add_biome_and_skin"
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 10,
@@ -904,8 +898,6 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
         "minecraft:add_biome_and_skin": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 1,
@@ -1004,20 +996,14 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
         "minecraft:as_baby": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["baby"]
                     }
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     trigger: "minecraft:randomize_job"
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     trigger: "minecraft:add_biome_and_skin"
                 }
             ]
@@ -1313,8 +1299,6 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     trigger: "minecraft:add_biome_and_skin"
                 }
             ]
@@ -1322,8 +1306,7 @@ export const ZombieVillagerV2Template = createBPEntityTemplate({
         "villager_converted": {
             add: {
                 componentGroups: ["to_villager"]
-            },
-            remove: {}
+            }
         }
     }
 });

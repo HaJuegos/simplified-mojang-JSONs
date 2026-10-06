@@ -1,7 +1,7 @@
 import { MinecraftEntityTypes, MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface SpawnEntityData extends BPComponent {
     entities: EntitiesTypes[] | EntitiesTypes;
@@ -17,7 +17,7 @@ interface EntitiesTypes {
     spawnEntity?: string | MinecraftEntityTypes;
     spawnEvent?: string;
     spawnItem?: string | MinecraftItemTypes;
-    spawnItemEvent?: EntityFilter;
+    spawnItemEvent?: EntityFilterTrigger;
     spawnMethod?: string;
     spawnSound?: string;
 }

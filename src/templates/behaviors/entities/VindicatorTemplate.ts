@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Vindicador para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const VindicatorTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Vindicator,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:default_targeting": [
@@ -20,50 +25,18 @@ export const VindicatorTemplate = createBPEntityTemplate({
                 mustSeeForgetDuration: 40,
                 entityTypes: [
                     {
-                        filters: EntityFilters.allOf(
-                            EntityFilters.anyOf(
-                                {
-                                    test: "is_family",
-                                    subject: 1,
-                                    operator: 0,
-                                    value: "player"
-                                },
-                                {
-                                    test: "is_family",
-                                    subject: 1,
-                                    operator: 0,
-                                    value: "snowgolem"
-                                },
-                                {
-                                    test: "is_family",
-                                    subject: 1,
-                                    operator: 0,
-                                    value: "irongolem"
-                                },
-                                {
-                                    test: "is_family",
-                                    subject: 1,
-                                    operator: 0,
-                                    value: "wandering_trader"
-                                }
-                            )
+                        filters: EntityFilters.anyOf(
+                            EntityFilters.isFamily('player', 'other'),
+                            EntityFilters.isFamily('snowgolem', 'other'),
+                            EntityFilters.isFamily('irongolem', 'other'),
+                            EntityFilters.isFamily('wandering_trader', 'other')
                         ),
                         maxDist: 12
                     },
                     {
                         filters: EntityFilters.allOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "villager"
-                            },
-                            {
-                                test: "has_component",
-                                subject: 1,
-                                operator: 1,
-                                value: "minecraft:is_baby"
-                            }
+                            EntityFilters.isFamily('villager', 'other'),
+                            EntityFilters.hasComponent('minecraft:is_baby', 'other', 'not')
                         ),
                         maxDist: 12
                     }
@@ -72,7 +45,12 @@ export const VindicatorTemplate = createBPEntityTemplate({
             })
         ],
         "minecraft:patrol_follower": [
-            // TODO(migrate): componente sin clase "minecraft:behavior.follow_target_captain": {"follow_distance": 5, "priority": 5, "speed_multiplier": 0.8, "within_radius": 64}
+            new BPEntityComponents.SetBehaviorFollowTargetCaptain({
+                followDistance: 5,
+                priority: 5,
+                speedMultiplier: 0.8,
+                withinRadius: 64
+            })
         ],
         "minecraft:celebrate": [
             new BPEntityComponents.SetBehaviorCelebrate({
@@ -193,12 +171,9 @@ export const VindicatorTemplate = createBPEntityTemplate({
                 mustSeeForgetDuration: 40,
                 entityTypes: [
                     {
-                        filters: EntityFilters.allOf({
-                            test: "is_family",
-                            subject: 1,
-                            operator: 1,
-                            value: "illager"
-                        }),
+                        filters: EntityFilters.allOf(
+                            EntityFilters.isFamily('illager', 'other', 'not')
+                        ),
                         maxDist: 12
                     }
                 ],
@@ -213,12 +188,7 @@ export const VindicatorTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorAvoidMobType({
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "creaking"
-                    }),
+                    filters: EntityFilters.isFamily('creaking', 'other'),
                     maxDist: 8,
                     sprintSpeedMultiplier: 1.2
                 }
@@ -273,7 +243,7 @@ export const VindicatorTemplate = createBPEntityTemplate({
             table: "loot_tables/entities/vindicator_gear.json"
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? (query.is_baby ? 12 : 5) + (Math.die_roll(query.equipment_count,1,3)) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? (${MoLang.isBaby()} ? 12 : 5) + (Math.die_roll(${MoLang.equipmentCount()},1,3)) : 0`
         }),
         new BPEntityComponents.SetFollowRange({
             value: 64
@@ -328,7 +298,8 @@ export const VindicatorTemplate = createBPEntityTemplate({
             target: "self"
         }),
         new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetShareables({
             items: [
                 {
@@ -414,8 +385,6 @@ export const VindicatorTemplate = createBPEntityTemplate({
         "minecraft:start_celebrating": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:celebrate"]
                     }

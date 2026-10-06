@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Silverfish para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SilverfishTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Silverfish,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:silverfish_angry": [
@@ -55,27 +60,10 @@ export const SilverfishTemplate = createBPEntityTemplate({
             },
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "snowgolem"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "irongolem"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('snowgolem', 'other'),
+                        EntityFilters.isFamily('irongolem', 'other')
                     ),
                     maxDist: 8
                 }
@@ -100,7 +88,7 @@ export const SilverfishTemplate = createBPEntityTemplate({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 : 0`
         }),
         new BPEntityComponents.SetHealth({
             max: 8,
@@ -135,7 +123,7 @@ export const SilverfishTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetPhysics({}),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
-        // TODO(migrate): componente sin clase "minecraft:can_stand_on_powder_snow": {}
+        new BPEntityComponents.SetCanStandOnPowderSnow(),
         new BPEntityComponents.SetTypeFamily({
             family: ["silverfish", "monster", "mob", "arthropod"]
         })
@@ -146,21 +134,24 @@ export const SilverfishTemplate = createBPEntityTemplate({
                 componentGroups: ["minecraft:silverfish_angry"]
             },
             remove: {
-                "minecraft:silverfish_calm": {}
+                componentGroups: [
+                    "minecraft:silverfish_calm"
+                ]
             }
         },
         "minecraft:entity_spawned": {
             add: {
                 componentGroups: ["minecraft:silverfish_calm"]
-            },
-            remove: {}
+            }
         },
         "minecraft:on_calm": {
             add: {
                 componentGroups: ["minecraft:silverfish_calm"]
             },
             remove: {
-                "minecraft:silverfish_angry": {}
+                componentGroups: [
+                    "minecraft:silverfish_angry"
+                ]
             }
         }
     }

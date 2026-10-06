@@ -1,6 +1,6 @@
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
-import { EntityFilter } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface RavagerBlockedData extends BPComponent {
     knockbackStrength?: number;
@@ -8,8 +8,8 @@ interface RavagerBlockedData extends BPComponent {
 }
 
 interface ReactionEvents {
-    weight: number;
-    value: EntityFilter | string;
+    weight?: number;
+    value?: string | EntityFilterTrigger;
 }
 
 export class SetRavagerBlocked extends BehaviorEntityComponentBuilder<RavagerBlockedData, "minecraft:ravager_blocked"> {

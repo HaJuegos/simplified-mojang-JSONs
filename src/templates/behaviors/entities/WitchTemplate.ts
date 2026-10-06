@@ -3,15 +3,20 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Bruja para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const WitchTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Witch,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:celebrate": [
@@ -139,7 +144,7 @@ export const WitchTemplate = createBPEntityTemplate({
             priority: 2
         }),
         new BPEntityComponents.SetBehaviorRandomLookAround({
-            // TODO(migrate): clave no soportada "look_distance": 8
+            lookDistance: 8,
             priority: 5
         }),
         new BPEntityComponents.SetBehaviorRandomStroll({
@@ -147,9 +152,14 @@ export const WitchTemplate = createBPEntityTemplate({
             speedMultiplier: 1
         }),
         new BPEntityComponents.SetBehaviorRangedAttack({
-            // TODO(migrate): clave no soportada "attack_interval_max": 3
-            // TODO(migrate): clave no soportada "attack_interval_min": 3
-            attackRadius: 10,
+            attackInterval: {
+                min: 3,
+                max: 3
+            },
+            attackRange: {
+                min: 10,
+                max: 10
+            },
             priority: 2,
             speedMultiplier: 1
         }),
@@ -164,12 +174,12 @@ export const WitchTemplate = createBPEntityTemplate({
             width: 0.6
         }),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),
-        new BPEntityComponents.SetDamageSensor({}),
+        new BPEntityComponents.SetDamageSensor(),
         new BPEntityComponents.SetDespawn({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? (query.is_baby ? 12 : 5) + (Math.die_roll(query.equipment_count,1,3)) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? (${MoLang.isBaby()} ? 12 : 5) + (Math.die_roll(${MoLang.equipmentCount()},1,3)) : 0`
         }),
         new BPEntityComponents.SetFollowRange({
             value: 64
@@ -203,10 +213,9 @@ export const WitchTemplate = createBPEntityTemplate({
             usingDoorAnnotation: true
         }),
         new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetShooter({
-            // TODO(migrate): clave no soportada "aux_val": 23
-            // TODO(migrate): clave no soportada "def": "minecraft:splash_potion"
             magic: true,
             sound: "throw",
             power: 0.75,
@@ -250,6 +259,10 @@ export const WitchTemplate = createBPEntityTemplate({
                         EntityFilters.targetDistance(3, "self", "<="),
                         EntityFilters.noneOf(EntityFilters.hasMobEffect("weakness", "other"))
                     )
+                },
+                {
+                    def: 'minecraft:splash_potion',
+                    auxVal: 23
                 }
             ]
         }),
@@ -281,8 +294,6 @@ export const WitchTemplate = createBPEntityTemplate({
         "minecraft:start_celebrating": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:celebrate"]
                     }

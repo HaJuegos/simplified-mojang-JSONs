@@ -4,9 +4,13 @@ import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Aldeano Actual para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const VillagerV2Template = createBPEntityTemplate({
     id: MinecraftEntityTypes.VillagerV2,
-    formatVersion: FormatVersionEntities.V1_26_20,
     description: {
         isSummonable: false,
         isSpawneable: true
@@ -1106,13 +1110,13 @@ export const VillagerV2Template = createBPEntityTemplate({
         ],
         "home_schedule_villager": [],
         "job_specific_goals": [
-            new BPEntityComponents.SetBehaviorExploreOutskirts({}),
-            new BPEntityComponents.SetBehaviorHarvestFarmBlock({}),
-            new BPEntityComponents.SetBehaviorInspectBookshelf({}),
-            new BPEntityComponents.SetBehaviorMingle({}),
-            new BPEntityComponents.SetBehaviorSleep({}),
-            new BPEntityComponents.SetBehaviorWork({}),
-            new BPEntityComponents.SetBehaviorWorkComposter({})
+            new BPEntityComponents.SetBehaviorExploreOutskirts(),
+            new BPEntityComponents.SetBehaviorHarvestFarmBlock(),
+            new BPEntityComponents.SetBehaviorInspectBookshelf(),
+            new BPEntityComponents.SetBehaviorMingle(),
+            new BPEntityComponents.SetBehaviorSleep(),
+            new BPEntityComponents.SetBehaviorWork(),
+            new BPEntityComponents.SetBehaviorWorkComposter()
         ],
         "work_schedule_librarian": [
             new BPEntityComponents.SetBehaviorInspectBookshelf({
@@ -1454,8 +1458,8 @@ export const VillagerV2Template = createBPEntityTemplate({
             })
         ],
         "trade_components": [
-            new BPEntityComponents.SetBehaviorTradeInterest({}),
-            new BPEntityComponents.SetEconomyTradeTable({})
+            new BPEntityComponents.SetBehaviorTradeInterest(),
+            new BPEntityComponents.SetEconomyTradeTable()
         ],
         "trade_resupply_component_group": [
             new BPEntityComponents.SetTradeResupply()
@@ -1612,26 +1616,13 @@ export const VillagerV2Template = createBPEntityTemplate({
                 {
                     onDamage: {
                         event: "become_zombie",
-                        filters: {
-                            all_of: [
-                                {
-                                    test: "has_damage",
-                                    value: "fatal"
-                                }
-                            ],
-                            any_of: [
-                                {
-                                    subject: "other",
-                                    test: "is_family",
-                                    value: "zombie"
-                                },
-                                {
-                                    subject: "other",
-                                    test: "is_family",
-                                    value: "husk"
-                                }
-                            ]
-                        }
+                        filters: EntityFilters.allOf(
+                            EntityFilters.hasDamage('fatal'),
+                            EntityFilters.anyOf(
+                                EntityFilters.isFamily('zombie', 'other'),
+                                EntityFilters.isFamily('husk', 'other')
+                            )
+                        )
                     }
                 }
             ]
@@ -1959,8 +1950,6 @@ export const VillagerV2Template = createBPEntityTemplate({
                     filters: EntityFilters.hasComponent("minecraft:is_baby", "other", "!="),
                     sequence: [
                         {
-                            filters: EntityFilters.allOf(),
-                            // TODO(migrate): este item no tenia filters en el JSON original
                             add: {
                                 componentGroups: ["adult", "make_and_receive_love"]
                             }
@@ -2126,8 +2115,6 @@ export const VillagerV2Template = createBPEntityTemplate({
                     filters: EntityFilters.isFamily("villager", "other", "=="),
                     sequence: [
                         {
-                            filters: EntityFilters.allOf(),
-                            // TODO(migrate): este item no tenia filters en el JSON original
                             randomize: [
                                 {
                                     weight: 1,
@@ -2283,8 +2270,14 @@ export const VillagerV2Template = createBPEntityTemplate({
                             weight: 95,
                             sequence: [
                                 {
-                                    filters: EntityFilters.allOf(),
-                                    // TODO(migrate): este item no tenia filters en el JSON original
+                                    add: {
+                                        componentGroups: [
+                                            "adult",
+                                            "make_and_receive_love"
+                                        ]
+                                    }
+                                },
+                                {
                                     randomize: [
                                         {
                                             weight: 90,
@@ -2301,7 +2294,6 @@ export const VillagerV2Template = createBPEntityTemplate({
                                     ]
                                 }
                             ]
-                            // TODO(migrate): no combinable con sequence/randomize "add": {"component_groups": ["adult", "make_and_receive_love"]}
                         }
                     ]
                 },
@@ -2489,8 +2481,6 @@ export const VillagerV2Template = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["baby", "unskilled", "child_schedule"]
                     }
@@ -2595,15 +2585,11 @@ export const VillagerV2Template = createBPEntityTemplate({
                             weight: 95,
                             sequence: [
                                 {
-                                    filters: EntityFilters.allOf(),
-                                    // TODO(migrate): este item no tenia filters en el JSON original
                                     add: {
                                         componentGroups: ["adult", "make_and_receive_love"]
                                     }
                                 },
                                 {
-                                    filters: EntityFilters.allOf(),
-                                    // TODO(migrate): este item no tenia filters en el JSON original
                                     randomize: [
                                         {
                                             weight: 1,

@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Caballo esqueleto para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SkeletonHorseTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.SkeletonHorse,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -32,7 +37,7 @@ export const SkeletonHorseTemplate = createBPEntityTemplate({
         ],
         "minecraft:skeleton_horse_adult": [
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/skeleton_horse.json"
@@ -150,10 +155,10 @@ export const SkeletonHorseTemplate = createBPEntityTemplate({
             targetDist: 4,
             trackTarget: true
         }),
-        new BPEntityComponents.SetBehaviorPlayerRideTamed({}),
+        new BPEntityComponents.SetBehaviorPlayerRideTamed(),
         new BPEntityComponents.SetInputGroundControlled(),
         new BPEntityComponents.SetCanPowerJump(),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetBehaviorRandomStroll({
             priority: 6,
             speedMultiplier: 0.7

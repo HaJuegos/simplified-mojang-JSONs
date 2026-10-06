@@ -5,7 +5,7 @@ import { EntityAttackableTargetFilters, EntityFiltersTarget } from "../../../typ
 type SoundIntervalTypes = number | { min: number; max: number; };
 
 interface BehaviorAvoidMobTypeData extends BPComponent {
-    priority: number;
+    priority?: number;
     avoidMobSound?: string;
     avoidTargetXz?: number;
     avoidTargetY?: number;

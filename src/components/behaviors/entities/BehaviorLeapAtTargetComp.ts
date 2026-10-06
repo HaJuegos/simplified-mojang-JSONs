@@ -6,6 +6,7 @@ interface BehaviorLeapAtTargetData extends BPComponent {
     mustBeOnGround?: boolean;
     setPersistent?: boolean;
     yd?: number;
+    targetDist?: number;
 }
 
 export class SetBehaviorLeapAtTarget extends BehaviorEntityComponentBuilder<BehaviorLeapAtTargetData, "minecraft:behavior.leap_at_target"> {

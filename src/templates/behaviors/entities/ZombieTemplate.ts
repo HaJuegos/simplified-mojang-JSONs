@@ -3,18 +3,22 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Zombie para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const ZombieTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Zombie,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     properties: {
         "minecraft:is_riding_zombie_horse": {
-            idProperty: "minecraft:is_riding_zombie_horse",
             clientSync: false,
             type: "bool",
             default: false
@@ -22,7 +26,7 @@ export const ZombieTemplate = createBPEntityTemplate({
     },
     componentsGroups: {
         "minecraft:can_break_doors": [
-            new BPEntityComponents.SetAnnotationBreakDoor({})
+            new BPEntityComponents.SetAnnotationBreakDoor()
         ],
         "minecraft:can_have_equipment": [
             new BPEntityComponents.SetEquipment({
@@ -37,7 +41,7 @@ export const ZombieTemplate = createBPEntityTemplate({
                 trackTarget: true
             }),
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 5 + (query.equipment_count * Math.Random(1,3)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
             }),
             new BPEntityComponents.SetMovement({
                 value: 0.23
@@ -59,7 +63,7 @@ export const ZombieTemplate = createBPEntityTemplate({
         ],
         "minecraft:zombie_baby": [
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? 12 + (query.equipment_count * Math.Random(1,3)) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? 12 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
             }),
             new BPEntityComponents.SetIsBaby(),
             new BPEntityComponents.SetMovement({
@@ -305,7 +309,7 @@ export const ZombieTemplate = createBPEntityTemplate({
             suffocateTime: 0,
             totalSupply: 15
         }),
-        new BPEntityComponents.SetBurnsInDaylight({}),
+        new BPEntityComponents.SetBurnsInDaylight(),
         new BPEntityComponents.SetCanClimb(),
         new BPEntityComponents.SetCollisionBox({
             height: 1.9,
@@ -669,8 +673,6 @@ export const ZombieTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 9500,
@@ -687,8 +689,6 @@ export const ZombieTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 10,

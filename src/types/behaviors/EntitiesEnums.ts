@@ -383,7 +383,7 @@ interface ManagerCGTypes<G extends string = string> {
  */
 type SequenceItemsEvents<G extends string = string> = BPEntityEvents<G> & {
     filters?: EntityFilter | EntityFilter[];
-};
+} | SequenceRandomizeItemsEvents<G> | SequenceNestedItemsEvents<G>;
 
 /**
  * Lista de tipos cuando se llama a una aleatoria de eventos en una entidad.
@@ -399,6 +399,38 @@ type RandomizeItemsEvents<G extends string = string> = BPEntityEvents<G> & {
  * @author HaJuegos - 30-09-2026
  */
 type NoBaseParams = { [K in keyof BPEntityEventsBase]?: never };
+
+/**
+ * Tipado que prohibe usar sequence o randomize o parametros basicos todos a la vez en una sola secuencia. Pero, añadiendo excepciones con filters dentro de sequence.
+ * @author HaJuegos - 05-10-2026
+ */
+type NoBaseParamsExceptFilters = { [K in Exclude<keyof BPEntityEventsBase, "filters">]?: never };
+
+/**
+ * Filtros de secuencias permitidas dentro de un sequence con randomize excepcionales con filters.
+ * @template {string} G Plantilla base que se añade a los grupos seleccionados.
+ * @interface SequenceRandomizeItemsEvents
+ * @extends {NoBaseParamsExceptFilters}
+ * @author HaJuegos - 05-10-2026
+ */
+interface SequenceRandomizeItemsEvents<G extends string = string> extends NoBaseParamsExceptFilters {
+    filters?: EntityFilter | EntityFilter[];
+    randomize: RandomizeItemsEvents<G>[];
+    sequence?: never;
+}
+
+/**
+ * Filtros de secuencias permitidas dentro de un sequence con filtros excepcionales.
+ * @template {string} G Plantilla base que se añade a los grupos seleccionados.
+ * @interface SequenceNestedItemsEvents
+ * @extends {NoBaseParamsExceptFilters}
+ * @author HaJuegos - 05-10-2026
+ */
+interface SequenceNestedItemsEvents<G extends string = string> extends NoBaseParamsExceptFilters {
+    filters?: EntityFilter | EntityFilter[];
+    sequence: SequenceItemsEvents<G>[];
+    randomize?: never;
+}
 
 /**
  * Lista de parametros en una sequencia de eventos, pero, no permitiendo la secuencia aleatoria a la misma vez.

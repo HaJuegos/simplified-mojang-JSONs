@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Slime para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SlimeTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Slime,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:slime_aggressive": [
@@ -28,8 +33,12 @@ export const SlimeTemplate = createBPEntityTemplate({
                 cause: "entity_attack",
                 damageCooldown: 0.5,
                 damagePerTick: 4,
-                damageRange: 0.15
-                // TODO(migrate): clave no soportada "entity_filter": {"any_of": [{"subject": "other", "test": "is_family", "value": "player"}, {"subject": "other", "test": "is_family", "value": "irongolem"}, {"subject": "other", "test": "is_family", "value": "snowgolem"}]}
+                damageRange: 0.15,
+                entityFilter: EntityFilters.anyOf(
+                    EntityFilters.isFamily('player', 'other'),
+                    EntityFilters.isFamily('irongolem', 'other'),
+                    EntityFilters.isFamily('snowgolem', 'other')
+                )
             }),
             new BPEntityComponents.SetAttack({
                 damage: 4
@@ -54,8 +63,12 @@ export const SlimeTemplate = createBPEntityTemplate({
                 cause: "entity_attack",
                 damageCooldown: 0.5,
                 damagePerTick: 2,
-                damageRange: 0.15
-                // TODO(migrate): clave no soportada "entity_filter": {"any_of": [{"subject": "other", "test": "is_family", "value": "player"}, {"subject": "other", "test": "is_family", "value": "irongolem"}, {"subject": "other", "test": "is_family", "value": "snowgolem"}]}
+                damageRange: 0.15,
+                entityFilter: EntityFilters.anyOf(
+                    EntityFilters.isFamily('player', 'other'),
+                    EntityFilters.isFamily('irongolem', 'other'),
+                    EntityFilters.isFamily('snowgolem', 'other')
+                )
             }),
             new BPEntityComponents.SetAttack({
                 damage: 2
@@ -103,27 +116,10 @@ export const SlimeTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "snowgolem"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "irongolem"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('snowgolem', 'other'),
+                        EntityFilters.isFamily('irongolem', 'other')
                     )
                 }
             ],
@@ -155,7 +151,7 @@ export const SlimeTemplate = createBPEntityTemplate({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? query.variant : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? ${MoLang.variant()} : 0`
         }),
         new BPEntityComponents.SetHurtOnCondition({
             damageConditions: [
@@ -189,7 +185,8 @@ export const SlimeTemplate = createBPEntityTemplate({
             target: "self"
         }),
         new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetTypeFamily({
             family: ["slime", "monster", "mob"]
         })

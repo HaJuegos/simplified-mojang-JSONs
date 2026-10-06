@@ -3,9 +3,13 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
+/**
+ * Plantilla vanilla del Splash Potion para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SplashPotionTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.SplashPotion,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         isSummonable: true,
         isSpawneable: false,

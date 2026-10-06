@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Nautilo para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const NautilusTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Nautilus,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.WaterCreature,
         isSpawneable: true,
@@ -72,8 +77,10 @@ export const NautilusTemplate = createBPEntityTemplate({
                     "clownfish",
                     "cooked_fish",
                     "cooked_salmon"
-                ]
-                // TODO(migrate): clave no soportada "on_tempt_end": {"event": "minecraft:on_stop_tempting"}
+                ],
+                onTemptEnd: {
+                    event: 'minecraft:on_stop_tempting'
+                }
             }),
             new BPEntityComponents.SetBehaviorPanic({
                 priority: 1,
@@ -143,8 +150,10 @@ export const NautilusTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetBehaviorTempt({
                 priority: 4,
                 speedMultiplier: 2,
-                items: ["pufferfish", "pufferfish_bucket"]
-                // TODO(migrate): clave no soportada "on_tempt_end": {"event": "minecraft:on_stop_tempting"}
+                items: ["pufferfish", "pufferfish_bucket"],
+                onTemptEnd: {
+                    event: "minecraft:on_stop_tempting"
+                }
             }),
             new BPEntityComponents.SetTameable({
                 probability: 0.33,
@@ -180,8 +189,10 @@ export const NautilusTemplate = createBPEntityTemplate({
                     "clownfish",
                     "cooked_fish",
                     "cooked_salmon"
-                ]
-                // TODO(migrate): clave no soportada "on_tempt_end": {"event": "minecraft:on_stop_tempting"}
+                ],
+                onTemptEnd: {
+                    event: "minecraft:on_stop_tempting"
+                }
             }),
             new BPEntityComponents.SetIsTamed(),
             new BPEntityComponents.SetHealable({
@@ -381,7 +392,7 @@ export const NautilusTemplate = createBPEntityTemplate({
                 canDashUnderwater: true,
                 direction: "passenger"
             }),
-            // TODO(migrate): componente sin clase "minecraft:underwater_mount_breathing": {}
+            new BPEntityComponents.SetUnderwaterMountBreathing(),
             new BPEntityComponents.SetEnvironmentSensor({
                 triggers: [
                     {
@@ -411,13 +422,19 @@ export const NautilusTemplate = createBPEntityTemplate({
         ],
         "minecraft:nautilus_tame_saddled": [
             new BPEntityComponents.SetIsSaddled(),
-            // TODO(migrate): componente sin clase "minecraft:home": {"restriction_radius": 16, "restriction_type": "random_movement"}
+            new BPEntityComponents.SetHome({
+                restrictionRadius: 16,
+                restrictionType: 'random_movement'
+            }),
             new BPEntityComponents.SetBehaviorPlayerRideTamed({
                 priority: 0
             })
         ],
         "minecraft:nautilus_tame_unsaddled": [
-            // TODO(migrate): componente sin clase "minecraft:home": {"restriction_radius": 32, "restriction_type": "random_movement"}
+            new BPEntityComponents.SetHome({
+                restrictionRadius: 32,
+                restrictionType: 'random_movement'
+            })
         ],
         "minecraft:nautilus_player_controlled": [
             new BPEntityComponents.SetMovement({
@@ -465,7 +482,7 @@ export const NautilusTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.in.water",
-                    condition: "query.head_is_in_water"
+                    condition: `${MoLang.headIsInWater()}`
                 }
             ],
             minRandomCooldownSound: 8,
@@ -484,7 +501,7 @@ export const NautilusTemplate = createBPEntityTemplate({
             breathesWater: true
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player && !query.is_baby ? Math.Random(1,3) : 0",
+            onDeath: `${MoLang.lastHitByPlayer()} && !${MoLang.isBaby()} ? Math.Random(1,3) : 0`,
             onBred: "Math.Random(1,7)"
         }),
         new BPEntityComponents.SetLoot({
@@ -505,8 +522,8 @@ export const NautilusTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
         new BPEntityComponents.SetNameable(),
-        // TODO(migrate): componente sin clase "minecraft:home": {}
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetHome(),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity({
             presets: [
                 {
@@ -630,8 +647,6 @@ export const NautilusTemplate = createBPEntityTemplate({
         "minecraft:ageable_grow_up": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     remove: {
                         componentGroups: ["minecraft:nautilus_baby"]
                     },
@@ -660,8 +675,6 @@ export const NautilusTemplate = createBPEntityTemplate({
                     trigger: "minecraft:switch_to_player_controlled"
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     remove: {
                         componentGroups: ["minecraft:nautilus_tame_unsaddled"]
                     },
@@ -679,8 +692,6 @@ export const NautilusTemplate = createBPEntityTemplate({
                     trigger: "minecraft:on_saddled_out_of_water"
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     playSound: {
                         sound: "saddle"
                     }
@@ -710,8 +721,6 @@ export const NautilusTemplate = createBPEntityTemplate({
                     trigger: "minecraft:on_dismount"
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     remove: {
                         componentGroups: [
                             "minecraft:nautilus_tame_saddled",
@@ -734,8 +743,6 @@ export const NautilusTemplate = createBPEntityTemplate({
         "minecraft:on_tame": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     remove: {
                         componentGroups: ["minecraft:nautilus_wild_adult_calm"]
                     },
@@ -750,8 +757,6 @@ export const NautilusTemplate = createBPEntityTemplate({
                     }
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     setHomePosition: {}
                 }
             ]

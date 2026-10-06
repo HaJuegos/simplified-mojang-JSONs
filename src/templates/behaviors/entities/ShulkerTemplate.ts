@@ -3,14 +3,19 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Shulker para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const ShulkerTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Shulker,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:shulker_black": [
@@ -118,12 +123,7 @@ export const ShulkerTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "player"
-                    })
+                    filters: EntityFilters.isFamily('player', 'other')
                 }
             ],
             priority: 3
@@ -132,9 +132,14 @@ export const ShulkerTemplate = createBPEntityTemplate({
             priority: 8
         }),
         new BPEntityComponents.SetBehaviorRangedAttack({
-            // TODO(migrate): clave no soportada "attack_interval_max": 3
-            // TODO(migrate): clave no soportada "attack_interval_min": 1
-            attackRadius: 15
+            attackInterval: {
+                min: 1,
+                max: 3
+            },
+            attackRange: {
+                min: 15,
+                max: 15
+            }
         }),
         new BPEntityComponents.SetBreathable({
             breathesLava: false,
@@ -150,7 +155,7 @@ export const ShulkerTemplate = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5: 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5: 0`
         }),
         new BPEntityComponents.SetFireImmune(),
         new BPEntityComponents.SetHealth({
@@ -393,7 +398,11 @@ export const ShulkerTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetPhysics({}),
         new BPEntityComponents.SetRendersWhenInvisible(),
         new BPEntityComponents.SetShooter({
-            // TODO(migrate): clave no soportada "def": "minecraft:shulker_bullet"
+            projectiles: [
+                {
+                    def: MinecraftEntityTypes.ShulkerBullet
+                }
+            ]
         }),
         new BPEntityComponents.SetTypeFamily({
             family: ["shulker", "monster", "mob"]

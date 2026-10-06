@@ -2,11 +2,12 @@ import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityFilterTrigger } from "../../../types/EntityFilters";
+import { MoLangValue } from "../../../types/MoLang";
 
 interface BehaviorEatBlockData extends BPComponent {
     priority: number;
     onEat?: string | EntityFilterTrigger | EntityFilterTrigger[];
-    successChance?: number;
+    successChance?: string | number | MoLangValue;
     timeUntilEat?: number;
     eatAndReplaceBlockPairs?: ItemEatTypes[];
 }

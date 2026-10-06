@@ -3,7 +3,7 @@ import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface BehaviorEmergeData extends BPComponent {
-    priority: number;
+    priority?: number;
     cooldownTime?: number;
     duration?: number;
     onDone?: string | EntityFilterTrigger | EntityFilterTrigger[];

@@ -3,15 +3,20 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Salmon para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SalmonTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Salmon,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.WaterAmbient,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.WaterAmbient
+        isSpawneable: true
     },
     componentsGroups: {
         "scale_large": [
@@ -43,21 +48,9 @@ export const SalmonTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorAvoidMobType({
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "axolotl"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('axolotl', 'other')
                     ),
                     maxDist: 3,
                     walkSpeedMultiplier: 1.5,
@@ -99,7 +92,7 @@ export const SalmonTemplate = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
         }),
         new BPEntityComponents.SetFlocking({
             breachInfluence: 7,
@@ -154,7 +147,8 @@ export const SalmonTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetPhysics({
             hasGravity: false
         }),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetTypeFamily({
             family: ["aquatic", "salmon", "fish"]
         }),

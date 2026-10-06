@@ -2,7 +2,7 @@ import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { MoLangValue } from "../../../types/MoLang";
-import { EntityFilter, TargetItemsTypes } from "../../../types/EntityFilters";
+import { EntityFilter, EntityFilterTrigger, TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorPickupItemsData extends BPComponent {
     priority: number;
@@ -18,8 +18,8 @@ interface BehaviorPickupItemsData extends BPComponent {
     pickupBasedOnChance?: boolean;
     pickupSameItemsAsInHand?: boolean;
     trackTarget?: boolean;
-    onPickupItemStart?: string | EntityFilter | EntityFilter[];
-    onPickupItemEnd?: string | EntityFilter | EntityFilter[];
+    onPickupItemStart?: string | EntityFilterTrigger | EntityFilterTrigger[];
+    onPickupItemEnd?: string | EntityFilterTrigger | EntityFilterTrigger[];
 }
 
 export class SetBehaviorPickupItems extends BehaviorEntityComponentBuilder<BehaviorPickupItemsData, "minecraft:behavior.pickup_items"> {

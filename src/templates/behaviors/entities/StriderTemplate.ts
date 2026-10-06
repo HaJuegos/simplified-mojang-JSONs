@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Strider para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const StriderTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Strider,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -162,7 +167,7 @@ export const StriderTemplate = createBPEntityTemplate({
             }),
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetBreedable({
                 requireTame: false,
@@ -241,7 +246,7 @@ export const StriderTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovementSoundDistanceOffset({
             value: 0.6
         }),
-        // TODO(migrate): componente sin clase "minecraft:freezing_vulnerable": {}
+        new BPEntityComponents.SetFreezingVulnerable(),
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
         new BPEntityComponents.SetTypeFamily({
             family: ["strider", "mob"]
@@ -274,7 +279,7 @@ export const StriderTemplate = createBPEntityTemplate({
             ]
         }),
         new BPEntityComponents.SetLeashable(),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetDespawn({
             despawnFromDistance: {}
         }),

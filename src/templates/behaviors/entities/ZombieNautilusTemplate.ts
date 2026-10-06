@@ -3,18 +3,22 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Zombie Nautilo para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const ZombieNautilusTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.ZombieNautilus,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     properties: {
         "minecraft:variant": {
-            idProperty: "minecraft:variant",
             clientSync: true,
             type: "enum",
             default: "default",
@@ -34,7 +38,10 @@ export const ZombieNautilusTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetBehaviorPlayerRideTamed({
                 priority: 0
             }),
-            // TODO(migrate): componente sin clase "minecraft:home": {"restriction_radius": 16, "restriction_type": "random_movement"}
+            new BPEntityComponents.SetHome({
+                restrictionRadius: 16,
+                restrictionType: 'random_movement'
+            }),
             new BPEntityComponents.SetIsSaddled()
         ],
         "minecraft:zombie_nautilus_leashable": [
@@ -88,8 +95,8 @@ export const ZombieNautilusTemplate = createBPEntityTemplate({
                     EntityFilters.isFamily("player", "other"),
                     EntityFilters.isRidingSelf(true, "other")
                 )
-            })
-            // TODO(migrate): componente sin clase "minecraft:underwater_mount_breathing": {}
+            }),
+            new BPEntityComponents.SetUnderwaterMountBreathing()
         ],
         "minecraft:zombie_nautilus_tame": [
             new BPEntityComponents.SetBehaviorTempt({
@@ -105,7 +112,9 @@ export const ZombieNautilusTemplate = createBPEntityTemplate({
                     "cooked_fish",
                     "cooked_salmon"
                 ],
-                // TODO(migrate): clave no soportada "on_tempt_end": {"event": "minecraft:on_stop_tempting"}
+                onTemptEnd: {
+                    event: "minecraft:on_stop_tempting"
+                },
                 priority: 2,
                 speedMultiplier: 1.3
             }),
@@ -284,12 +293,17 @@ export const ZombieNautilusTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetInputGroundControlled()
         ],
         "minecraft:zombie_nautilus_tame_unsaddled": [
-            // TODO(migrate): componente sin clase "minecraft:home": {"restriction_radius": 32, "restriction_type": "random_movement"}
+            new BPEntityComponents.SetHome({
+                restrictionRadius: 32,
+                restrictionType: 'random_movement'
+            })
         ],
         "minecraft:zombie_nautilus_tameable": [
             new BPEntityComponents.SetBehaviorTempt({
                 items: ["pufferfish", "pufferfish_bucket"],
-                // TODO(migrate): clave no soportada "on_tempt_end": {"event": "minecraft:on_stop_tempting"}
+                onTemptEnd: {
+                    event: "minecraft:on_stop_tempting"
+                },
                 priority: 2,
                 speedMultiplier: 1.3
             }),
@@ -394,7 +408,7 @@ export const ZombieNautilusTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.in.water",
-                    condition: "query.head_is_in_water"
+                    condition: `${MoLang.headIsInWater()}`
                 }
             ],
             minRandomCooldownSound: 8,
@@ -442,13 +456,13 @@ export const ZombieNautilusTemplate = createBPEntityTemplate({
             }
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
         }),
         new BPEntityComponents.SetHealth({
             max: 15,
             value: 15
         }),
-        // TODO(migrate): componente sin clase "minecraft:home": {}
+        new BPEntityComponents.SetHome(),
         new BPEntityComponents.SetHurtOnCondition({
             damageConditions: [
                 {
@@ -530,8 +544,6 @@ export const ZombieNautilusTemplate = createBPEntityTemplate({
                     trigger: "minecraft:switch_to_player_controlled"
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:zombie_nautilus_tame_saddled"]
                     },
@@ -549,8 +561,6 @@ export const ZombieNautilusTemplate = createBPEntityTemplate({
                     trigger: "minecraft:on_saddled_out_of_water"
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     playSound: {
                         sound: "saddle"
                     }
@@ -577,13 +587,9 @@ export const ZombieNautilusTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     trigger: "minecraft:spawn_wild"
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     firstValid: [
                         {
                             filters: EntityFilters.allOf(
@@ -672,8 +678,6 @@ export const ZombieNautilusTemplate = createBPEntityTemplate({
                     trigger: "minecraft:on_player_dismount"
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:zombie_nautilus_tame_unsaddled"]
                     },

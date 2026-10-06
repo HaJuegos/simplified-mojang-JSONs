@@ -8,7 +8,10 @@ interface ExplodeData extends BPComponent {
     damageScaling?: number;
     destroyAffectedByGriefing?: boolean;
     fireAffectedByGriefing?: boolean;
-    fuseLength?: [number, number] | number;
+    fuseLength?: [number, number] | number | {
+        rangeMin?: number;
+        rangeMax?: number;
+    };
     fuseLit?: boolean;
     knockbackScaling?: number;
     maxResistance?: number;

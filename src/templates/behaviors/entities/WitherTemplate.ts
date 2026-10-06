@@ -4,14 +4,18 @@ import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/beh
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 
+/**
+ * Plantilla vanilla del Wither para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const WitherTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Wither,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isExperimental: false,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {},
     components: [
@@ -39,28 +43,13 @@ export const WitherTemplate = createBPEntityTemplate({
             mustSee: true,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "player"
-                    }),
+                    filters: EntityFilters.isFamily('player', 'other'),
                     maxDist: 70
                 },
                 {
                     filters: EntityFilters.allOf(
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 1,
-                            value: "undead"
-                        },
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 1,
-                            value: "inanimate"
-                        }
+                        EntityFilters.isFamily('undead', 'other', 'not'),
+                        EntityFilters.isFamily('inanimate', 'other', 'not')
                     ),
                     maxDist: 70
                 }
@@ -110,7 +99,7 @@ export const WitherTemplate = createBPEntityTemplate({
             onDeath: "50"
         }),
         new BPEntityComponents.SetFireImmune(),
-        // TODO(migrate): componente sin clase "minecraft:freezing_immune": {}
+        new BPEntityComponents.SetFreezingImmune(),
         new BPEntityComponents.SetHealth({
             max: 600,
             value: 600

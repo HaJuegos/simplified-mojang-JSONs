@@ -21,7 +21,7 @@ interface ItemsListTypes {
     maxAmount?: number;
     pickupLimit?: number;
     pickupOnly?: boolean;
-    priority: number;
+    priority?: number;
     storedInInventory?: boolean;
     surplusAmount?: number;
     wantAmount?: number;

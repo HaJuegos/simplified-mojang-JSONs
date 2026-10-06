@@ -1,6 +1,7 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
+import { EntityFilter, EntityFilterTrigger } from "../../../types/EntityFilters";
 
 interface BehaviorPlayData extends BPComponent {
     priority: number;
@@ -8,7 +9,7 @@ interface BehaviorPlayData extends BPComponent {
     chanceToStart?: number;
     followDistance?: number;
     friendSearchArea?: [number, number, number];
-    friendTypes?: (string | MinecraftEntityTypes)[];
+    friendTypes?: (string | MinecraftEntityTypes | EntityFilterTrigger)[];
     maxPlayDurationSeconds?: number;
     randomPosSearchHeight?: number;
     randomPosSearchRange?: number;

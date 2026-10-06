@@ -1,16 +1,21 @@
-import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { MinecraftBlockTypes, MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Araña para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const SpiderTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Spider,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:spider_angry": [
@@ -207,7 +212,11 @@ export const SpiderTemplate = createBPEntityTemplate({
             priority: 6,
             speedMultiplier: 0.8
         }),
-        // TODO(migrate): componente sin clase "minecraft:block_movement_slowdown_immunity": {"blocks": ["minecraft:web"]}
+        new BPEntityComponents.SetBlockMovementSlowdownImmunity({
+            blocks: [
+                MinecraftBlockTypes.Web
+            ]
+        }),
         new BPEntityComponents.SetBreathable({
             suffocateTime: 0,
             totalSupply: 15
@@ -222,7 +231,7 @@ export const SpiderTemplate = createBPEntityTemplate({
             despawnFromDistance: {}
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 5 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 : 0`
         }),
         new BPEntityComponents.SetHealth({
             max: 16,

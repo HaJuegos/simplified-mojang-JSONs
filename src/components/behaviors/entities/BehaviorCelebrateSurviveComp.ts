@@ -8,6 +8,9 @@ interface BehaviorCelebrateSurviveData extends BPComponent {
     fireworksInterval?: {
         min: number,
         max: number;
+    } | {
+        rangeMin: number,
+        rangeMax: number;
     };
     duration?: number;
     onCelebrationEndEvent?: string | EntityFiltersTarget;

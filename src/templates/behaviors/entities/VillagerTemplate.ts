@@ -1,12 +1,17 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTemplateBuilder";
-import { FormatVersionEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { VillagerV2Template } from "./VillagerV2Template";
 
+/**
+ * Plantilla vanilla del Aldeano Legacy para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @deprecated Esto ya no se usa en versiones actuales. Usa {@link VillagerV2Template} en su lugar.
+ * @author HaJuegos - 05-10-2026
+ */
 export const VillagerTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Villager,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
         isSummonable: true,
         isSpawneable: true
@@ -324,33 +329,11 @@ export const VillagerTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorAvoidMobType({
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "zombie"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "zombie_villager"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "illager"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "vex"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('zombie', 'other'),
+                        EntityFilters.isFamily('zombie_villager', 'other'),
+                        EntityFilters.isFamily('illager', 'other'),
+                        EntityFilters.isFamily('vex', 'other')
                     ),
                     maxDist: 8,
                     walkSpeedMultiplier: 0.6,
@@ -442,26 +425,13 @@ export const VillagerTemplate = createBPEntityTemplate({
                 {
                     onDamage: {
                         event: "become_zombie",
-                        filters: {
-                            all_of: [
-                                {
-                                    test: "has_damage",
-                                    value: "fatal"
-                                }
-                            ],
-                            any_of: [
-                                {
-                                    subject: "other",
-                                    test: "is_family",
-                                    value: "zombie"
-                                },
-                                {
-                                    subject: "other",
-                                    test: "is_family",
-                                    value: "husk"
-                                }
-                            ]
-                        }
+                        filters: EntityFilters.allOf(
+                            EntityFilters.hasDamage('fatal'),
+                            EntityFilters.anyOf(
+                                EntityFilters.isFamily('zombie', 'other'),
+                                EntityFilters.isFamily('husk', 'other')
+                            )
+                        )
                     }
                 }
             ]
@@ -501,7 +471,8 @@ export const VillagerTemplate = createBPEntityTemplate({
         }),
         new BPEntityComponents.SetPersistent(),
         new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetTypeFamily({
             family: ["villager", "mob"]
         })
@@ -603,7 +574,6 @@ export const VillagerTemplate = createBPEntityTemplate({
         "become_zombie": {
             sequence: [
                 {
-                    filters: EntityFilters.isDifficulty("normal"),
                     randomize: [
                         {
                             weight: 50,
@@ -627,8 +597,6 @@ export const VillagerTemplate = createBPEntityTemplate({
         "minecraft:ageable_grow_up": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["adult"]
                     },
@@ -747,15 +715,11 @@ export const VillagerTemplate = createBPEntityTemplate({
         "minecraft:entity_born": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["baby"]
                     }
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 5,

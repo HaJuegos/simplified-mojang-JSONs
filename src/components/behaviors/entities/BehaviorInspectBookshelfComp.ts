@@ -18,7 +18,7 @@ export class SetBehaviorInspectBookshelf extends BehaviorEntityComponentBuilder<
      * @constructor
      * @public
      */
-    public constructor (params: BehaviorInspectBookshelfData) {
+    public constructor (params?: BehaviorInspectBookshelfData) {
         super("minecraft:behavior.inspect_bookshelf", params);
     }
 }

@@ -3,13 +3,17 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
+/**
+ * Plantilla vanilla de la petita de Experiencia para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const XpOrbTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.XpOrb,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Misc,
         isSummonable: true,
-        isSpawneable: false,
-        spawnCategory: SpawnCategoryEntities.Misc
+        isSpawneable: false
     },
     componentsGroups: {},
     components: [
@@ -33,7 +37,8 @@ export const XpOrbTemplate = createBPEntityTemplate({
             value: 5
         }),
         new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": false, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByEntity(),
+        new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetTypeFamily({
             family: ["inanimate"]
         })

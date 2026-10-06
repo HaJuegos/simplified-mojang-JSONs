@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Lobo para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const WolfTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Wolf,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -14,26 +19,22 @@ export const WolfTemplate = createBPEntityTemplate({
     },
     properties: {
         "minecraft:is_armorable": {
-            idProperty: "minecraft:is_armorable",
             clientSync: false,
             type: "bool",
             default: false
         },
         "minecraft:has_increased_max_health": {
-            idProperty: "minecraft:has_increased_max_health",
             clientSync: false,
             type: "bool",
             default: false
         },
         "minecraft:sound_variant": {
-            idProperty: "minecraft:sound_variant",
             clientSync: true,
             type: "enum",
             default: "default",
             values: ["default", "big", "cute", "grumpy", "mad", "puglin", "sad"]
         },
         "minecraft:was_upgraded_to_1_21_100": {
-            idProperty: "minecraft:was_upgraded_to_1_21_100",
             clientSync: false,
             type: "bool",
             default: false
@@ -75,7 +76,7 @@ export const WolfTemplate = createBPEntityTemplate({
         "minecraft:wolf_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/wolf.json"
@@ -376,7 +377,7 @@ export const WolfTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.baby",
-                    condition: "query.is_baby"
+                    condition: `${MoLang.isBaby()}`
                 }
             ],
             minRandomCooldownSound: 6,
@@ -594,40 +595,40 @@ export const WolfTemplate = createBPEntityTemplate({
             },
             items: [
                 {
-                    name: "minecraft:bone"
+                    item: "minecraft:bone"
                 },
                 {
-                    name: "minecraft:porkchop"
+                    item: "minecraft:porkchop"
                 },
                 {
-                    name: "minecraft:cooked_porkchop"
+                    item: "minecraft:cooked_porkchop"
                 },
                 {
-                    name: "minecraft:chicken"
+                    item: "minecraft:chicken"
                 },
                 {
-                    name: "minecraft:cooked_chicken"
+                    item: "minecraft:cooked_chicken"
                 },
                 {
-                    name: "minecraft:beef"
+                    item: "minecraft:beef"
                 },
                 {
-                    name: "minecraft:cooked_beef"
+                    item: "minecraft:cooked_beef"
                 },
                 {
-                    name: "minecraft:rotten_flesh"
+                    item: "minecraft:rotten_flesh"
                 },
                 {
-                    name: "minecraft:muttonraw"
+                    item: "minecraft:muttonraw"
                 },
                 {
-                    name: "minecraft:muttoncooked"
+                    item: "minecraft:muttoncooked"
                 },
                 {
-                    name: "minecraft:rabbit"
+                    item: "minecraft:rabbit"
                 },
                 {
-                    name: "minecraft:cooked_rabbit"
+                    item: "minecraft:cooked_rabbit"
                 }
             ]
         }),
@@ -637,8 +638,6 @@ export const WolfTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     trigger: "minecraft:spawn_wild_baby_or_adult"
                 },
                 {
@@ -789,8 +788,6 @@ export const WolfTemplate = createBPEntityTemplate({
         "minecraft:spawn_wild_baby_or_adult": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 9,
@@ -905,8 +902,6 @@ export const WolfTemplate = createBPEntityTemplate({
                     }
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     setProperty: {
                         "minecraft:was_upgraded_to_1_21_100": true
                     }

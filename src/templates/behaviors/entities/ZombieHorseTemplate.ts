@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Zoglin para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const ZombieHorseTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.ZombieHorse,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
         spawnCategory: SpawnCategoryEntities.Monster,
         isSpawneable: true,
@@ -14,7 +19,6 @@ export const ZombieHorseTemplate = createBPEntityTemplate({
     },
     properties: {
         "minecraft:was_upgraded_to_1_21_130": {
-            idProperty: "minecraft:was_upgraded_to_1_21_130",
             clientSync: false,
             type: "bool",
             default: false
@@ -41,7 +45,7 @@ export const ZombieHorseTemplate = createBPEntityTemplate({
                 height: 1.6
             }),
             new BPEntityComponents.SetExperienceReward({
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/zombie_horse.json"
@@ -225,7 +229,7 @@ export const ZombieHorseTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetIsSaddled(),
             new BPEntityComponents.SetInputGroundControlled(),
             new BPEntityComponents.SetCanPowerJump(),
-            new BPEntityComponents.SetBehaviorPlayerRideTamed({})
+            new BPEntityComponents.SetBehaviorPlayerRideTamed()
         ],
         "minecraft:horse_wild_with_rider": [
             new BPEntityComponents.SetAddRider({
@@ -333,7 +337,7 @@ export const ZombieHorseTemplate = createBPEntityTemplate({
                 rangeMax: 0.7
             }
         }),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetDespawn({
             despawnFromDistance: {}
         }),
@@ -502,8 +506,6 @@ export const ZombieHorseTemplate = createBPEntityTemplate({
                     }
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     setProperty: {
                         "minecraft:was_upgraded_to_1_21_130": true
                     }

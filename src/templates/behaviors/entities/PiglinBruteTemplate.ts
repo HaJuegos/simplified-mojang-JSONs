@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Piglin Brute para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const PiglinBruteTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.PiglinBrute,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
         isExperimental: false,
         isSummonable: true,
@@ -46,12 +51,7 @@ export const PiglinBruteTemplate = createBPEntityTemplate({
             new BPEntityComponents.SetBehaviorNearestAttackableTarget({
                 entityTypes: [
                     {
-                        filters: EntityFilters.allOf({
-                            test: "is_family",
-                            subject: 1,
-                            operator: 0,
-                            value: "player"
-                        })
+                        filters: EntityFilters.isFamily('player', 'other')
                     }
                 ],
                 priority: 3
@@ -174,7 +174,7 @@ export const PiglinBruteTemplate = createBPEntityTemplate({
             )
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 20 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 20 : 0`
         }),
         new BPEntityComponents.SetFollowRange({
             value: 64
@@ -183,7 +183,7 @@ export const PiglinBruteTemplate = createBPEntityTemplate({
             max: 50,
             value: 50
         }),
-        // TODO(migrate): componente sin clase "minecraft:home": {}
+        new BPEntityComponents.SetHome(),
         new BPEntityComponents.SetHurtOnCondition({
             damageConditions: [
                 {
@@ -213,7 +213,8 @@ export const PiglinBruteTemplate = createBPEntityTemplate({
             target: "self"
         }),
         new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByEntity(),
+        new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetTypeFamily({
             family: ["piglin", "adult_piglin", "piglin_brute", "monster"]
         })

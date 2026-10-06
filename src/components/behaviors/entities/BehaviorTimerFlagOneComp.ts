@@ -2,8 +2,11 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityFilterTrigger } from "../../../types/EntityFilters";
 
+type ControlFlagsTypes = "jump" | "look" | "move";
+
 interface BehaviorTimerFlagOneData extends BPComponent {
     priority?: number;
+    controlFlags?: [] | [ControlFlagsTypes] | [ControlFlagsTypes, ControlFlagsTypes];
     cooldownRange?: number | {
         min: number;
         max: number;

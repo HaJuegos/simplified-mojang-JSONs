@@ -2,7 +2,7 @@ import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/Enti
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 
 interface BehaviorLookAtPlayerData extends BPComponent {
-    priority: number;
+    priority?: number;
     angleOfViewVertical?: number;
     angleOfViewHorizontal?: number;
     lookDistance?: number;

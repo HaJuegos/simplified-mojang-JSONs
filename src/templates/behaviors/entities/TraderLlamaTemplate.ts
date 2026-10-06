@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla de la Llama de un Wandering Trader para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const TraderLlamaTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.TraderLlama,
-    formatVersion: FormatVersionEntities.V1_26_30,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -45,7 +50,7 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
         "minecraft:llama_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/llama.json"
@@ -257,7 +262,10 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
             }),
             new BPEntityComponents.SetBehaviorRangedAttack({
                 priority: 2,
-                attackRadius: 64,
+                attackRange: {
+                    min: 64,
+                    max: 64
+                },
                 chargeShootTrigger: 2,
                 chargeChargedTrigger: 1
             })
@@ -273,7 +281,10 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
             }),
             new BPEntityComponents.SetBehaviorRangedAttack({
                 priority: 2,
-                attackRadius: 64,
+                attackRange: {
+                    min: 64,
+                    max: 64
+                },
                 chargeShootTrigger: 2,
                 chargeChargedTrigger: 1
             })
@@ -288,7 +299,10 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
             }),
             new BPEntityComponents.SetBehaviorRangedAttack({
                 priority: 2,
-                attackRadius: 64,
+                attackRange: {
+                    min: 64,
+                    max: 64
+                },
                 chargeShootTrigger: 2,
                 chargeChargedTrigger: 1
             })
@@ -432,7 +446,7 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
                 target: "self"
             }
         }),
-        new BPEntityComponents.SetBalloonable({}),
+        new BPEntityComponents.SetBalloonable(),
         new BPEntityComponents.SetHealable({
             items: [
                 {
@@ -446,7 +460,11 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
             ]
         }),
         new BPEntityComponents.SetShooter({
-            // TODO(migrate): clave no soportada "def": "minecraft:llama_spit"
+            projectiles: [
+                {
+                    def: "minecraft:llama_spit"
+                }
+            ]
         }),
         new BPEntityComponents.SetDespawn({
             despawnFromDistance: {}
@@ -506,8 +524,6 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
         "minecraft:entity_spawned": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 90,
@@ -529,8 +545,6 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
         "minecraft:from_wandering_trader": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: [
                             "minecraft:llama_adult",
@@ -540,8 +554,6 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
                     }
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     trigger: "minecraft:add_attributes"
                 }
             ]
@@ -622,8 +634,6 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
         "minecraft:add_attributes": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 32,
@@ -658,8 +668,6 @@ export const TraderLlamaTemplate = createBPEntityTemplate({
                     ]
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     randomize: [
                         {
                             weight: 25,

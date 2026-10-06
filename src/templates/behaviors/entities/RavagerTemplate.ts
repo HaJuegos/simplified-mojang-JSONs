@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Ravager para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const RavagerTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Ravager,
-    formatVersion: FormatVersionEntities.V1_21_90,
     description: {
         spawnCategory: SpawnCategoryEntities.Monster,
         isSpawneable: true,
@@ -34,36 +39,60 @@ export const RavagerTemplate = createBPEntityTemplate({
         ],
         "minecraft:pillager_rider": [
             new BPEntityComponents.SetAddRider({
-                // TODO(migrate): clave no soportada "entity_type": "minecraft:pillager"
+                riders: [
+                    {
+                        entityType: "minecraft:pillager"
+                    }
+                ]
             })
         ],
         "minecraft:pillager_rider_for_raid": [
             new BPEntityComponents.SetAddRider({
-                // TODO(migrate): clave no soportada "entity_type": "minecraft:pillager"
-                // TODO(migrate): clave no soportada "spawn_event": "minecraft:spawn_for_raid"
+                riders: [
+                    {
+                        entityType: "minecraft:pillager",
+                        spawnEvent: "minecraft:spawn_for_raid"
+                    }
+                ]
             })
         ],
         "minecraft:evoker_rider_for_raid": [
             new BPEntityComponents.SetAddRider({
-                // TODO(migrate): clave no soportada "entity_type": "minecraft:evocation_illager"
-                // TODO(migrate): clave no soportada "spawn_event": "minecraft:spawn_for_raid"
+                riders: [
+                    {
+                        entityType: "minecraft:evocation_illager",
+                        spawnEvent: "minecraft:spawn_for_raid"
+                    }
+                ]
             })
         ],
         "minecraft:pillager_captain_rider": [
             new BPEntityComponents.SetAddRider({
-                // TODO(migrate): clave no soportada "entity_type": "minecraft:pillager"
-                // TODO(migrate): clave no soportada "spawn_event": "minecraft:spawn_as_illager_captain"
+                riders: [
+                    {
+                        entityType: "minecraft:pillager",
+                        spawnEvent: "minecraft:spawn_as_illager_captain"
+                    }
+                ]
             })
         ],
         "minecraft:vindicator_rider": [
             new BPEntityComponents.SetAddRider({
-                // TODO(migrate): clave no soportada "entity_type": "minecraft:vindicator"
+                riders: [
+                    {
+                        entityType: "minecraft:vindicator"
+                    }
+                ]
             })
         ],
         "minecraft:vindicator_captain_rider": [
             new BPEntityComponents.SetAddRider({
-                // TODO(migrate): clave no soportada "entity_type": "minecraft:vindicator"
-                // TODO(migrate): clave no soportada "spawn_event": "minecraft:spawn_as_illager_captain"
+                riders: [
+                    {
+                        entityType: "minecraft:vindicator",
+                        spawnEvent: "minecraft:spawn_as_illager_captain"
+                    }
+                ]
             })
         ],
         "minecraft:raid_configuration": [
@@ -192,7 +221,7 @@ export const RavagerTemplate = createBPEntityTemplate({
     components: [
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? 20 : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? 20 : 0`
         }),
         new BPEntityComponents.SetBehaviorFloat({
             priority: 0
@@ -254,7 +283,8 @@ export const RavagerTemplate = createBPEntityTemplate({
             canSink: false
         }),
         new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetCanJoinRaid(),
         new BPEntityComponents.SetConditionalBandwidthOptimization(),
         new BPEntityComponents.SetDespawn({
@@ -411,8 +441,6 @@ export const RavagerTemplate = createBPEntityTemplate({
         "minecraft:start_celebrating": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:celebrate"]
                     }

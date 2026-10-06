@@ -3,10 +3,15 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
+/**
+ * Plantilla vanilla del Panda para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const PandaTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Panda,
-    formatVersion: FormatVersionEntities.MostRecent,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,
         isSpawneable: true,
@@ -75,7 +80,7 @@ export const PandaTemplate = createBPEntityTemplate({
         "minecraft:panda_adult": [
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
-                onDeath: "query.last_hit_by_player ? Math.Random(1,3) : 0"
+                onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
             }),
             new BPEntityComponents.SetLoot({
                 table: "loot_tables/entities/panda.json"
@@ -145,10 +150,10 @@ export const PandaTemplate = createBPEntityTemplate({
                 snackingStopChance: 0.0011,
                 items: [
                     {
-                        name: "minecraft:bamboo"
+                        item: "minecraft:bamboo"
                     },
                     {
-                        name: "minecraft:cake"
+                        item: "minecraft:cake"
                     }
                 ]
             }),
@@ -293,7 +298,7 @@ export const PandaTemplate = createBPEntityTemplate({
             soundEvents: [
                 {
                     soundID: "ambient.baby",
-                    condition: "query.is_baby"
+                    condition: `${MoLang.isBaby()}`
                 }
             ],
             minRandomCooldownSound: 6,
@@ -390,10 +395,10 @@ export const PandaTemplate = createBPEntityTemplate({
             snackingStopChance: 0.001334,
             items: [
                 {
-                    name: "minecraft:bamboo"
+                    item: "minecraft:bamboo"
                 },
                 {
-                    name: "minecraft:cake"
+                    item: "minecraft:cake"
                 }
             ]
         }),
@@ -428,8 +433,8 @@ export const PandaTemplate = createBPEntityTemplate({
             priority: 1,
             speedMultiplier: 1.25
         }),
-        new BPEntityComponents.SetBalloonable({}),
-        new BPEntityComponents.SetPhysics({}),
+        new BPEntityComponents.SetBalloonable(),
+        new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetVariant({
@@ -524,15 +529,11 @@ export const PandaTemplate = createBPEntityTemplate({
         "minecraft:ageable_grow_up": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     remove: {
                         componentGroups: ["minecraft:panda_baby"]
                     }
                 },
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:panda_adult"]
                     }
@@ -574,8 +575,6 @@ export const PandaTemplate = createBPEntityTemplate({
         "minecraft:panda_weak": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:panda_weak"]
                     }

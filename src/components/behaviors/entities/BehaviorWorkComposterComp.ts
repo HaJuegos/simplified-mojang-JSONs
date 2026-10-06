@@ -29,7 +29,7 @@ export class SetBehaviorWorkComposter extends BehaviorEntityComponentBuilder<Beh
      * @constructor
      * @public
      */
-    public constructor (params: BehaviorWorkComposterData) {
+    public constructor (params?: BehaviorWorkComposterData) {
         super("minecraft:behavior.work_composter", params);
     }
 }

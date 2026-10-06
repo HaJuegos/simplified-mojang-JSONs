@@ -1,4 +1,4 @@
-import { MinecraftBlockTypes } from "@minecraft/vanilla-data";
+import { MinecraftBlockTypes, MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 import { EntityFilter, EntityFilterTrigger, TargetItemsTypes } from "../../../types/EntityFilters";
@@ -6,7 +6,7 @@ import { EntityFilter, EntityFilterTrigger, TargetItemsTypes } from "../../../ty
 interface BreedableData extends BPComponent {
     allowSitting?: boolean;
     breedCooldown?: number;
-    breedItems?: TargetItemsTypes | BreedItemsTypes[] | string[];
+    breedItems?: (string | MinecraftItemTypes | BreedItemsTypes | TargetItemsTypes)[];
     breedsWith?: BreedsWithTypes | BreedsWithTypes[] | Record<string, unknown>;
     causesPregnancy?: boolean;
     environmentRequirements?: EnvRequirementsTypes | EnvRequirementsTypes[];

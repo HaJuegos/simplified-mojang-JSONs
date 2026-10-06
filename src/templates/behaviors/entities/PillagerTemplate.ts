@@ -3,14 +3,20 @@ import { createBPEntityTemplate } from "../../../builders/behaviors/EntityTempla
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
+import { EntityFireImmuneComponent } from "@minecraft/server";
 
+/**
+ * Plantilla vanilla del Pillager para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 05-10-2026
+ */
 export const PillagerTemplate = createBPEntityTemplate({
     id: MinecraftEntityTypes.Pillager,
-    formatVersion: FormatVersionEntities.V1_26_0,
     description: {
+        spawnCategory: SpawnCategoryEntities.Monster,
         isSummonable: true,
-        isSpawneable: true,
-        spawnCategory: SpawnCategoryEntities.Monster
+        isSpawneable: true
     },
     componentsGroups: {
         "minecraft:celebrate": [
@@ -48,7 +54,12 @@ export const PillagerTemplate = createBPEntityTemplate({
             })
         ],
         "minecraft:patrol_follower": [
-            // TODO(migrate): componente sin clase "minecraft:behavior.follow_target_captain": {"follow_distance": 5, "priority": 5, "speed_multiplier": 0.8, "within_radius": 64}
+            new BPEntityComponents.SetBehaviorFollowTargetCaptain({
+                priority: 5,
+                speedMultiplier: 0.8,
+                withinRadius: 64,
+                followDistance: 5
+            }),
             new BPEntityComponents.SetBehaviorHoldGround({
                 broadcast: true,
                 broadcastRange: 8,
@@ -173,9 +184,14 @@ export const PillagerTemplate = createBPEntityTemplate({
         ],
         "minecraft:ranged_attack": [
             new BPEntityComponents.SetBehaviorRangedAttack({
-                // TODO(migrate): clave no soportada "attack_interval_max": 1
-                // TODO(migrate): clave no soportada "attack_interval_min": 1
-                attackRadius: 8,
+                attackRange: {
+                    min: 8,
+                    max: 8
+                },
+                attackInterval: {
+                    min: 1,
+                    max: 1
+                },
                 priority: 4
             }),
             new BPEntityComponents.SetEnvironmentSensor({
@@ -185,7 +201,11 @@ export const PillagerTemplate = createBPEntityTemplate({
                 }
             }),
             new BPEntityComponents.SetShooter({
-                // TODO(migrate): clave no soportada "def": "minecraft:arrow"
+                projectiles: [
+                    {
+                        def: "minecraft:arrow"
+                    }
+                ]
             })
         ]
     },
@@ -193,12 +213,7 @@ export const PillagerTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetBehaviorAvoidMobType({
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf({
-                        test: "is_family",
-                        subject: 1,
-                        operator: 0,
-                        value: "creaking"
-                    }),
+                    filters: EntityFilters.isFamily('creaking', 'other'),
                     maxDist: 8,
                     sprintSpeedMultiplier: 1.2
                 }
@@ -235,43 +250,16 @@ export const PillagerTemplate = createBPEntityTemplate({
             withinRadius: 16,
             entityTypes: [
                 {
-                    filters: EntityFilters.allOf(
-                        EntityFilters.anyOf(
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "player"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "irongolem"
-                            },
-                            {
-                                test: "is_family",
-                                subject: 1,
-                                operator: 0,
-                                value: "wandering_trader"
-                            }
-                        )
+                    filters: EntityFilters.anyOf(
+                        EntityFilters.isFamily('player', 'other'),
+                        EntityFilters.isFamily('irongolem', 'other'),
+                        EntityFilters.isFamily('wandering_trader', 'other'),
                     )
                 },
                 {
                     filters: EntityFilters.allOf(
-                        {
-                            test: "is_family",
-                            subject: 1,
-                            operator: 0,
-                            value: "villager"
-                        },
-                        {
-                            test: "has_component",
-                            subject: 1,
-                            operator: 1,
-                            value: "minecraft:is_baby"
-                        }
+                        EntityFilters.hasComponent('minecraft:is_baby', 'other', 'not'),
+                        EntityFilters.isFamily('villager', 'other')
                     )
                 }
             ],
@@ -303,12 +291,12 @@ export const PillagerTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetDespawn({
             despawnFromDistance: {}
         }),
-        new BPEntityComponents.SetEquipItem({}),
+        new BPEntityComponents.SetEquipItem(),
         new BPEntityComponents.SetEquipment({
             table: "loot_tables/entities/pillager_gear.json"
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: "query.last_hit_by_player ? (query.is_baby ? 12 : 5) + (Math.die_roll(query.equipment_count,1,3)) : 0"
+            onDeath: `${MoLang.lastHitByPlayer()} ? (${MoLang.isBaby()} ? 12 : 5) + (Math.die_roll(${MoLang.equipmentCount()},1,3)) : 0`
         }),
         new BPEntityComponents.SetFollowRange({
             value: 64
@@ -334,14 +322,15 @@ export const PillagerTemplate = createBPEntityTemplate({
         new BPEntityComponents.SetMovement({
             value: 0.35
         }),
-        new BPEntityComponents.SetMovementBasic({}),
+        new BPEntityComponents.SetMovementBasic(),
         new BPEntityComponents.SetNameable(),
         new BPEntityComponents.SetNavigationWalk({
             canPathOverWater: true,
             usingDoorAnnotation: true
         }),
-        new BPEntityComponents.SetPhysics({}),
-        // TODO(migrate): componente sin clase "minecraft:pushable": {"is_pushable": true, "is_pushable_by_piston": true}
+        new BPEntityComponents.SetPhysics(),
+        new BPEntityComponents.SetPushableByBlock(),
+        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetShareables({
             items: [
                 {
@@ -434,8 +423,6 @@ export const PillagerTemplate = createBPEntityTemplate({
         "minecraft:start_celebrating": {
             sequence: [
                 {
-                    filters: EntityFilters.allOf(),
-                    // TODO(migrate): este item no tenia filters en el JSON original
                     add: {
                         componentGroups: ["minecraft:celebrate"]
                     }

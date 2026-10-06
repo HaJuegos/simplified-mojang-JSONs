@@ -9,12 +9,14 @@ interface BehaviorTemptData extends BPComponent {
     canTemptWhileRidden?: boolean;
     canTemptVertically?: boolean;
     items?: (string | TargetItemsTypes)[];
-    soundInterval?: number | [number, number];
+    soundInterval?: number | [number, number] | {
+        rangeMin?: number;
+        rangeMax?: number;
+    };
     stopDistance?: number;
     temptSound?: string;
     withinRadius?: number;
-    onStart?: string | EntityFilterTrigger | EntityFilterTrigger[];
-    onEnd?: string | EntityFilterTrigger | EntityFilterTrigger[];
+    onTemptStart?: string | EntityFilterTrigger | EntityFilterTrigger[];
     onTemptEnd?: string | EntityFilterTrigger | EntityFilterTrigger[];
 }
 

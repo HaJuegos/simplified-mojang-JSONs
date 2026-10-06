@@ -5,7 +5,7 @@ import { BPComponent } from "../../../types/behaviors/EntitiesComps";
 interface TransformationData extends BPComponent {
     add?: AddCompsTypes;
     beginTransformSound?: string;
-    delay?: DelayTypes;
+    delay?: number | DelayTypes;
     dropEquipment?: boolean;
     dropInventory?: boolean;
     into?: string;
@@ -22,6 +22,8 @@ interface AddCompsTypes {
 interface DelayTypes {
     blockAssistChance?: number;
     blockChance?: number;
+    rangeMax?: number;
+    rangeMin?: number;
     blockMax?: number;
     blockRadius?: number;
     blockTypes?: (string | MinecraftBlockTypes)[];
