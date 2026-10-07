@@ -1,5 +1,5 @@
-import { readdir, mkdir, writeFile } from "node:fs/promises";
-import { dirname, extname, join, relative, resolve, sep } from "node:path";
+import { readdir, mkdir, writeFile, readFile, rm } from "node:fs/promises";
+import { basename, dirname, extname, join, relative, resolve, sep } from "node:path";
 import { pathToFileURL, fileURLToPath } from "node:url";
 import * as ts from "typescript";
 
@@ -13,6 +13,14 @@ interface BuildableTemplate {
  * @author HaJuegos - 03-10-2026
  */
 class ExportToJson {
+    /**
+     * Marca temporal para separar los archivos fantasma en caso de que se requiera.
+     * @type {string}
+     * @readonly
+     * @private
+     */
+    private readonly tempMarker: string = ".__export__";
+
     /**
      * Ruta central del proyecto a considerar.
      * @type {string}
@@ -70,7 +78,6 @@ class ExportToJson {
         `// This file was automatically generated using the API: ${this.waterMarkURL}. If you have any questions, concerns, or bug reports, please create an issue on the page mentioned above. Author: ${this.waterMarkAuthors}`
     ].join("\n");
 
-
     /**
      * Eventos principales de la clase cuando es llamada o inicializada.
      * @param {boolean} [testOnly] Por defecto, solo se exportaran los archivos de la entrada input a export. Si se pone en false, se exportan todos los archivos vanilla, con fines de testeo. 
@@ -99,26 +106,50 @@ class ExportToJson {
 
     /**
      * Metodo auxiliar que obtiene las plantillas a construir de un template.
-     * @param {string} exportName Nombre de la exportacion del template.
      * @param {unknown} value Valor y datos del template.
-     * @returns {(BuildableTemplate | undefined)} Puede devolver el template con el metodo build funcional o errores.
+     * @returns {(string | undefined)} Puede devolver el string final del JSON si todo sale correcto.
      * @author HaJuegos - 06-10-2026
      * @private
      */
-    private getBuildTemplate(exportName: string, value: unknown): BuildableTemplate | undefined {
+    private getBuildTemplate(value: unknown): string | undefined {
         if (this.isBuildTemplate(value)) {
-            return value;
+            return value.finalBuild();
         }
 
-        if (exportName.endsWith("Template") && typeof value == "function") {
-            const template = (value as () => unknown)();
+        if (typeof value == "function" && value.length == 0) {
+            let r: unknown;
 
-            if (this.isBuildTemplate(template)) {
-                return template;
+            try {
+                r = (value as () => unknown)();
+            } catch {
+                return undefined;
             }
+
+            return this.isBuildTemplate(r) ? r.finalBuild() : this.asJSONtxt(r);
         }
 
-        return undefined;
+        return this.asJSONtxt(value);
+    }
+
+    /**
+     * Metodo auxiliar que comprueba y devuelve el string final del JSON convertido directamente en txt si es declarado a secas.
+     * @param {unknown} value Valor y datos del template.
+     * @returns {(string | undefined)} Puede devolver el string final del JSON si todo sale correcto.
+     * @author HaJuegos - 06-10-2026
+     * @private
+     */
+    private asJSONtxt(value: unknown): string | undefined {
+        if (typeof value != "string") {
+            return undefined;
+        }
+
+        try {
+            const parsed: unknown = JSON.parse(value);
+
+            return parsed != null && typeof parsed == "object" && !Array.isArray(parsed) ? value : undefined;
+        } catch {
+            return undefined;
+        }
     }
 
     /**
@@ -138,12 +169,75 @@ class ExportToJson {
 
             if (entry.isDirectory()) {
                 files.push(...await this.findFiles(path));
-            } else if ([".ts", ".tsx"].includes(extname(entry.name)) && !entry.name.endsWith(".d.ts") && entry.name != "_root.ts" && entry.name != "index.ts") {
+            } else if ([".ts", ".tsx"].includes(extname(entry.name)) && !entry.name.endsWith(".d.ts") && entry.name != "_root.ts" && entry.name != "index.ts" && !entry.name.includes(this.tempMarker)) {
                 files.push(path);
             }
         }
 
         return files.sort();
+    }
+
+    /**
+     * Metodo auxiliar que reescribe el codigo de un archivo para las llamadas sueltas sin ningun export para que este mismo se pueda exportar a un JSON.
+     * @param {string} src Codigo original en cuestion.
+     * @param {string} fileName Ruta del archivo en concreto, qu esolo se usa para que TS lo interprete.
+     * @returns {{ code: string; count: number; }} Devuelve el codigo reescrito y la cantidad de llamadas capturadas.
+     * @author HaJuegos - 07-10-2026
+     * @private
+     */
+    private captureCells(src: string, fileName: string): { code: string; count: number; } {
+        const sourceFile = ts.createSourceFile(fileName, src, ts.ScriptTarget.Latest, true);
+        const starts: number[] = [];
+
+        for (const state of sourceFile.statements) {
+            if (!ts.isExpressionStatement(state)) {
+                continue;
+            }
+
+            let exp = state.expression;
+
+            while (ts.isParenthesizedExpression(exp) || ts.isAwaitExpression(exp)) {
+                exp = exp.expression;
+            }
+
+            if (ts.isCallExpression(exp) || ts.isCallOrNewExpression(exp)) {
+                starts.push(state.getStart(sourceFile));
+            }
+        }
+
+        let code = src;
+
+        for (let i = starts.length - 1; i >= 0; i--) {
+            code = `${code.slice(0, starts[i])}export const __call_${i + 1} = ${code.slice(starts[i])}`;
+        }
+
+        return { code, count: starts.length };
+    }
+
+    /**
+     * Metodo auxiliar que importa un archivo TS y devuelve todo lo que exporta. Si el archivo tiene llamadas sueltas, importa una copia temporal reescrita para la correcta exportacion del mismo.
+     * @param {string} file Ruta del archivo a considerar.
+     * @returns {Promise<Record<string, unknown>>} Devuelve los exportos del modulo, incluyendo las llamadas capturadas de forma asincrona.
+     * @author HaJuegos - 07-10-2026
+     * @private
+     * @async
+     */
+    private async loadModule(file: string): Promise<Record<string, unknown>> {
+        const { code, count } = this.captureCells(await readFile(file, 'utf-8'), file);
+
+        if (count == 0) {
+            return await import(pathToFileURL(file).href) as Record<string, unknown>;
+        }
+
+        const tempFile = join(dirname(file), `${basename(file, extname(file))}${this.tempMarker}${extname(file)}`);
+
+        try {
+            await writeFile(tempFile, code, "utf8");
+
+            return await import(pathToFileURL(tempFile).href) as Record<string, unknown>;
+        } finally {
+            await rm(tempFile, { force: true });
+        }
     }
 
     /**
@@ -192,10 +286,12 @@ class ExportToJson {
 
         for (const file of files) {
             try {
-                const module = await import(pathToFileURL(file).href) as Record<string, unknown>;
-                const templates = Object.entries(module).filter(([exportName, value]) =>
-                    this.isBuildTemplate(value) || (exportName.endsWith("Template") && typeof value == "function")
-                );
+                const module = await this.loadModule(file);
+                const templates = Object.entries(module).flatMap(([exportName, value]) => {
+                    const built = this.getBuildTemplate(value);
+
+                    return built == undefined ? [] : [{ exportName, built }];
+                });
 
                 if (templates.length == 0) {
                     console.warn(`Sin templates exportables: ${relative(inputDir, file)}`);
@@ -204,17 +300,10 @@ class ExportToJson {
 
                 const relativeName = relative(inputDir, file).replace(/\.(?:tsx|ts)$/, "").split(sep).join(".");
 
-                for (const [exportName, value] of templates) {
-                    const template = this.getBuildTemplate(exportName, value);
-
-                    if (!template) {
-                        console.warn(`No se pudo construir el template ${exportName}: ${relative(inputDir, file)}`);
-                        continue;
-                    }
-
-                    const suffix = templates.length > 1 ? `.${exportName.replace(/[^A-Za-z0-9_-]/g, "_")}` : "";
+                for (const { exportName, built } of templates) {
+                    const suffix = templates.length > 1 ? `.${exportName.replace(/^__call_/, "call").replace(/[^A-Za-z0-9_-]/g, "_")}` : "";
                     const output = join(this.exportDirt, `${relativeName}${suffix}.json`);
-                    const jsonBody = JSON.stringify(JSON.parse(template.finalBuild()), null, 2);
+                    const jsonBody = JSON.stringify(JSON.parse(built), null, 2);
                     const json = `${this.waterMarkTXT}\n${jsonBody}\n${this.waterMarkTXT}\n`;
 
                     await writeFile(output, json, "utf8");

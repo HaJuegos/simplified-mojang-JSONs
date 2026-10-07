@@ -44,4 +44,16 @@ export class SnakeCase {
 
         return obj;
     }
+
+    /**
+     * Metodo principal auxiliar que convierte de varias cadenas de texto de primer nivel de tipo camelCase o PascalCase a snake_case. Sin afectar valores definidos.
+     * @param {object} obj Objecto en cuestion a considerar y convertir.
+     * @returns {Record<string, unknown>} Los datos ahora convertidos sin tocar sus valores definidos.
+     * @author HaJuegos - 07-10-2026
+     * @public
+     * @static
+     */
+    public static shallowSnakeCase(obj: object): Record<string, unknown> {
+        return Object.fromEntries(Object.entries(obj).map(([key, value]) => [this.toSnakeCase(key), value]));
+    }
 }

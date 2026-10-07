@@ -115,11 +115,11 @@ interface BPMetadataParamsTypes {
     authors?: string[];
 
     /**
-     * (Opcional) Lista de valores de los generadores que hicieron el add-on.
-     * @type {?{[key: string]: [number, number, number];}}
+     * (Opcional) Lista de valores de los generadores que hicieron el add-on. Los valores en el string son versiones con tags. Osea "1.0.0-beta"
+     * @type {?{[key: string]: string[];}}
      */
     generatedWith?: {
-        [key: string]: [number, number, number];
+        [key: string]: string[];
     };
 
     /**
@@ -192,7 +192,7 @@ interface BPDependencyBaseParamsTypes {
      * Versionario de la dependencia a integrar. Puede aceptar versiones con tags. Osea "1.0.0-beta".
      * @type {(string | [number, number, number])}
      */
-    version: string | [number, number, number];
+    version: string | [number, number, number] | "beta";
 }
 
 /**

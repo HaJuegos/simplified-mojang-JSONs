@@ -3,6 +3,7 @@ import * as vanilla from "@minecraft/vanilla-data";
 
 import { BPDependenciesParamsTypes, BPMetadataParamsTypes, BPModulesParamsTypes, BPCapabilitiesTypes, BPSubpacksParamsTypes } from "../../types/behaviors/ManifestTemplate";
 import { UUIDManager } from "../../utils/UUID";
+import { SnakeCase } from "../../utils/SnakeCase";
 
 /**
  * Clase principal que define la arquitectura fija de un archivo Manifest de un BehaviorPacks.
@@ -255,7 +256,7 @@ export class BehaviorManifestBuilder {
         };
 
         if (this.metadata) {
-            preManifestObj.metadata = this.metadata;
+            preManifestObj.metadata = SnakeCase.shallowSnakeCase(this.metadata);
         }
 
         preManifestObj.header = {
@@ -268,23 +269,16 @@ export class BehaviorManifestBuilder {
 
         if (this.modules && this.modules.length > 0) {
             preManifestObj.modules = this.modules.map(module => {
-                if (module.randomUuid) {
-                    const { randomUuid: _randomUuid, ...moduleParams } = module;
+                const { randomUuid, ...moduleParams } = module;
 
-                    return {
-                        ...moduleParams,
-                        uuid: UUIDManager.generateUUID()
-                    };
-                }
-
-                const { randomUuid: _randomUuid, ...moduleParams } = module;
-
-                return moduleParams;
+                return SnakeCase.shallowSnakeCase(randomUuid ? { ...moduleParams, uuid: UUIDManager.generateUUID() } : moduleParams);
             });
         }
 
         if (this.dependencies && this.dependencies.length > 0) {
-            preManifestObj.dependencies = this.dependencies;
+            preManifestObj.dependencies = this.dependencies.map(dep => {
+                return SnakeCase.shallowSnakeCase(dep);
+            });
         }
 
         if (this.capabilities && this.capabilities.length > 0) {
@@ -292,7 +286,9 @@ export class BehaviorManifestBuilder {
         }
 
         if (this.subpacks && this.subpacks.length > 0) {
-            preManifestObj.subpacks = this.subpacks;
+            preManifestObj.subpacks = this.subpacks.map(sub => {
+                return SnakeCase.shallowSnakeCase(sub);
+            });
         }
 
         const finalObj = Object.freeze(preManifestObj);
