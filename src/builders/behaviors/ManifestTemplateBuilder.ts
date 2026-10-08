@@ -8,7 +8,7 @@ import { BehaviorManifestBuilder } from "./ManifestBuilder";
  * @author HaJuegos - 06-10-2026
  * @export
  */
-export class FinalManifestBuilderTemplate extends BehaviorManifestBuilder {
+class FinalManifestBuilderTemplate extends BehaviorManifestBuilder {
     /**
      * Argumentos principales para la creacion de un manifest behavior pack de una plantilla en concreto.
      * @param {BPFinalDefinitionManifest} def Los valores a definir al manifest.

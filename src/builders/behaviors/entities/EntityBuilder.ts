@@ -297,7 +297,7 @@ export class BehaviorEntityBuilder {
             }
         });
 
-        const JSONtxt = JSON.stringify(finalObj);
+        const JSONtxt = JSON.stringify(finalObj, null, 4);
 
         return stringify ? JSONtxt : finalObj;
     }
