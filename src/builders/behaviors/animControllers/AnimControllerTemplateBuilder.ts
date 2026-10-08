@@ -1,5 +1,5 @@
 import { BPAnimControllerFinalDefinition } from "../../../types/behaviors/animContollers/AnimControllerTemplate";
-import { BehaviorAnimControllerBuilder } from "./AnimControllerBuilter";
+import { BehaviorAnimControllerBuilder } from "./AnimControllerBuilder";
 
 /**
  * Clase principal que crea una plantilla definitiva para la creacion de un controlador de animacion.
