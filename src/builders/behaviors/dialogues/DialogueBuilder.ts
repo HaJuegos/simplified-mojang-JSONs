@@ -52,7 +52,7 @@ export class BehaviorDialogueBuilder {
     protected convertToJSON(stringify?: false): Record<string, unknown>;
     protected convertToJSON(stringify?: boolean): string | Record<string, unknown> {
         if (!this.scenes || this.scenes.length <= 0) {
-            throw new Error("");
+            throw new Error("[CATLOG] Error: No se ha asignado ninguna escena al archivo del dialogue. Asigna alguna escena en el archivo.");
         }
 
         const preDialogue = {
