@@ -3,7 +3,9 @@ import { MinecraftEntityTypes, MinecraftItemTypes } from "@minecraft/vanilla-dat
 
 export {
     PoolsParamsTypes,
-    BPLootTableFinalDefinition,
+    BPLootTableTemplateDef,
+    BPLootTableTemplateOver,
+    BPLootTableFinalOverDefinition,
 };
 
 /**
@@ -61,17 +63,94 @@ type PotionIdEnums = "water" | "mundane" | "long_mundane" | "thick" | "awkward" 
 type EnchantsIdEnums = "aqua_affinity" | "bane_of_arthropods" | "blast_protection" | "channeling" | "binding" | "curse_of_vanishing" | "depth_strider" | "efficiency" | "feather_falling" | "fire_aspect" | "fire_protection" | "flame" | "fortune" | "frost_walker" | "impaling" | "infinity" | "knockback" | "looting" | "loyalty" | "luck_of_the_sea" | "lure" | "mending" | "multishot" | "piercing" | "projectile_protection" | "protection" | "power" | "punch" | "quick_charge" | "respiration" | "riptide" | "sharpness" | "silk_touch" | "smite" | "soul_speed" | "thorns" | "unbreaking" | (string & {});
 
 /**
- * Definicion final para la creacion base de un loot table.
- * @interface BPLootTableFinalDefinition
+ * Tipado final para la creacion de una plantilla base de un loot table fijo.
+ * @template {readonly PoolsParamsTypes[]} Pools Lista de pools a validar del template.
  * @author HaJuegos - 11-10-2026
  */
-interface BPLootTableFinalDefinition {
-    /**
-     * Lista de objectos de esta loot table en cuestion.
-     * @type {PoolsParamsTypes[]}
-     */
-    pools: PoolsParamsTypes[];
+type BPLootTableTemplateDef<
+    Pools extends readonly PoolsParamsTypes[] = readonly PoolsParamsTypes[]
+> = {
+    pools: Pools;
+};
+
+/**
+ * Tipado y plantilla final para la modificacion de una plantilla base en cuestion de un loot table.
+ * @interface BPLootTableFinalOverDefinition
+ * @author HaJuegos - 12-10-2026
+ */
+interface BPLootTableFinalOverDefinition {
+    clearAllData?: boolean;
+    pools?: PoolsParamsTypes[] | Record<number, Partial<PoolsParamsTypes>> | null;
+    add?: {
+        pools?: PoolsParamsTypes[];
+    };
 }
+
+/**
+ * Tipado auxiliar para validar tipos literales a sus primitivos base permitiendo su modificacion pero sin salirse de la base inicial.
+ * @template T 
+ * @author HaJuegos - 12-10-2026
+ */
+type Widen<T> = T extends string ? string
+    : T extends number ? number
+    : T extends boolean ? boolean
+    : T extends Array<infer U> ? Array<Widen<U>>
+    : T extends object ? { [K in keyof T]: Widen<T[K]> }
+    : T;
+
+type PatchEntry<U> = Widen<U> & Partial<EntriesTypes>;
+
+/**
+ * Tipado general para parchear un pool existente.
+ * @template T Pool en cuestion.
+ * @author HaJuegos - 11-10-2026
+ */
+type PatchPool<T> = {
+    [K in keyof PoolsParamsTypes]?: K extends keyof T ?
+    K extends "entries" ?
+    (T[K] extends readonly (infer U)[] ? Array<PatchEntry<U>> : T[K]) | EntriesTypes[]
+    : Widen<T[K]> | null
+    : PoolsParamsTypes[K]
+};
+
+/**
+ * Tipado final para la modificacion de una plantilla base de un loot table ya creado.
+ * @template {readonly PoolsParamsTypes[]} Pools Pools de la plantilla base.
+ * @template {readonly PoolsParamsTypes[]} AddPools Pools adiccionales a añadir a la base.
+ * @author HaJuegos - 11-10-2026
+ */
+type BPLootTableTemplateOver<
+    Pools extends readonly PoolsParamsTypes[],
+    AddPools extends readonly PoolsParamsTypes[] = readonly PoolsParamsTypes[]
+> = {
+    /**
+     * (Opcional) Si está activo, limpia todos los pools de la plantilla base.
+     * @type {?boolean}
+     */
+    clearAllData?: boolean;
+} & (
+        {
+            clearAllData?: false | undefined;
+
+            /**
+             * (Opcional) Pools a modificar o reemplazar completamente.
+             * @type {?({ [K in keyof Pools]?: PatchPool<Pools[K]> | null })}
+             */
+            pools?: { [K in keyof Pools]?: PatchPool<Pools[K]> | null };
+        } |
+        {
+            clearAllData: true;
+            pools?: never;
+        }
+    ) & {
+        /**
+         * (Opcional) Parámetro adicional que añade nuevos pools a la plantilla base o limpia.
+         * @type {?{pools?: AddPools;}}
+         */
+        add?: {
+            pools?: AddPools;
+        };
+    };
 
 /**
  * Parametros disponibles para la creacion de un nuevo pool u objecto en un loot table.
