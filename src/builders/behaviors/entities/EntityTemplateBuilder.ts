@@ -24,42 +24,54 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
             this.setDefaultVersion(def.formatVersion);
         }
 
-        this.setDefaultDescParams({ ...def.description, ...over.description });
+        this.setDefaultDescParams({
+            ...(over.clearAllData ? {} : def.description),
+            ...over.description
+        });
 
-        const anims = { ...def.animations, ...over.animations };
+        const anims = {
+            ...(over.clearAllData ? {} : def.animations),
+            ...over.animations
+        };
 
         if (Object.keys(anims).length) {
             this.setDefaultAnimationScripts(anims);
         }
 
-        const proper = { ...def.properties, ...over.properties };
+        const proper = {
+            ...(over.clearAllData ? {} : def.properties),
+            ...over.properties
+        };
 
         if (Object.keys(proper).length) {
             this.setDefaultProperties(proper);
         }
 
-        const comps = this.patchMap(this.byID(def.components, `${where} components`), over.components, `${where} components`);
+        const baseComps = over.clearAllData ? {} : this.byID(def.components, `${where} components`);
+        const comps = over.clearAllData ? {} : this.patchMap(baseComps, over.components, `${where} components`);
 
         this.addUnique(comps, over.add?.components, `${where} add.components`, "components");
 
         const compsGroups: Record<string, BPEntityComponentsMap> = {};
 
-        for (const id of Object.keys(over.componentsGroups ?? {})) {
-            if (!(id in def.componentsGroups)) {
-                throw new Error(`${where} componentsGroups: el grupo "${id}" no existe en la plantilla base. Usa add.componentsGroups para crearlo y añadirlo a la plantilla base.`);
-            }
-        }
-
-        for (const [id, list] of Object.entries(def.componentsGroups)) {
-            const groupOverride = over.componentsGroups?.[id];
-
-            if (groupOverride === null) {
-                continue;
+        if (!over.clearAllData && def.componentsGroups) {
+            for (const id of Object.keys(over.componentsGroups ?? {})) {
+                if (!(id in def.componentsGroups)) {
+                    throw new Error(`${where} componentsGroups: el grupo "${id}" no existe en la plantilla base. Usa add.componentsGroups para crearlo y añadirlo a la plantilla base.`);
+                }
             }
 
-            const path = `${where} componentsGroups."${id}"`;
+            for (const [id, list] of Object.entries(def.componentsGroups)) {
+                const groupOverride = over.componentsGroups?.[id];
 
-            compsGroups[id] = this.patchMap(this.byID(list, path), groupOverride, path);
+                if (groupOverride == null) {
+                    continue;
+                };
+
+                const path = `${where} componentsGroups."${id}"`;
+
+                compsGroups[id] = this.patchMap(this.byID(list, path), groupOverride, path);
+            }
         }
 
         for (const [id, list] of Object.entries(over.add?.componentsGroups ?? {})) {
@@ -68,18 +80,17 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
             this.addUnique(compsGroups[id], list, `${where} add.componentsGroups."${id}"`, `componentsGroups."${id}"`);
         }
 
-        const events = this.patchMap(def.events, over.events, `${where} events`, BPEntityDefaultEventsNames) as LooseEvents;
+        const baseEvents = over.clearAllData ? {} : this.patchMap(def.events, over.events, `${where} events`, BPEntityDefaultEventsNames);
+        const events = { ...baseEvents } as LooseEvents;
 
         for (const [name, event] of Object.entries(over.add?.events ?? {})) {
-            if (name in events) {
+            if (!over.clearAllData && name in events) {
                 throw new Error(`${where} add.events: el evento "${name}" ya existe en la plantilla base. Usa events para reemplazarlo de la plantilla base.`);
             }
-
             events[name] = event;
         }
 
         this.validateEvents(events, Object.keys(compsGroups), where);
-
         this.setDefaultComponents(Object.values(comps));
         this.setDefaultComponentGroups(Object.fromEntries(Object.entries(compsGroups).map(([id, g]) => [id, Object.values(g)])));
         this.setDefaultEvents(events);
@@ -241,8 +252,15 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
  * @author HaJuegos - 01-10-2026
  * @export
  */
-export function createBPEntityTemplate<const Comps extends readonly BPEntityComponent[], const CG extends BPEntityGroupCompsList, Ev extends BPEntityEventsMap<GroupNames<CG>>>(def: BPEntitiesTemplateDef<Comps, CG, Ev>) {
-    return <const AC extends readonly BPEntityComponent[] = [], const AG extends BPEntityGroupCompsList = {}>(over: BPEntitiesTemplateOverride<Comps, CG, Ev, AC, AG> = {}): FinalEntityBuilderTemplate => {
+export function createBPEntityTemplate<
+    const Comps extends readonly BPEntityComponent[],
+    const CG extends BPEntityGroupCompsList,
+    Ev extends BPEntityEventsMap<GroupNames<CG>>
+>(def: BPEntitiesTemplateDef<Comps, CG, Ev>) {
+    return <
+        const AC extends readonly BPEntityComponent[] = [],
+        const AG extends BPEntityGroupCompsList = {}
+    >(over: BPEntitiesTemplateOverride<Comps, CG, Ev, AC, AG> = {}): FinalEntityBuilderTemplate => {
         return new FinalEntityBuilderTemplate(def as unknown as LoseDefinition, over as unknown as LoseOver);
     };
 }

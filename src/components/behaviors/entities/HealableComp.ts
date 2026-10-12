@@ -32,7 +32,7 @@ export class SetHealable extends BehaviorEntityComponentBuilder<HealableData, "m
      * @constructor
      * @public
      */
-    public constructor (params: HealableData) {
+    public constructor (params?: HealableData) {
         super("minecraft:healable", params);
     }
 }

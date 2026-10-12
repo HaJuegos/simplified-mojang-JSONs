@@ -141,6 +141,11 @@ interface LoseDefinition {
  * @author HaJuegos - 01-10-2026
  */
 interface LoseOver {
+    /**
+     * (Opcional) Si esta en true, se limpia la plantilla base donde los grupos de componentes, componentes fijos y eventos ya no existen. Dejando solo los datos base.
+     * @type {?boolean}
+     */
+    clearAllData: boolean;
     description?: Partial<BPEntityOptionalParams>;
     animations?: Record<string, BPAnimationScriptEntities>;
     properties?: Record<string, BPPropertiesEntities>;
@@ -214,70 +219,124 @@ interface BPEntitiesTemplateDef<C extends readonly BPEntityComponent[], GC exten
 
 /**
  * Plantilla fija que sobreescribre los valores definidos en la plantilla base de una entidad vanilla o custom, con sus respectivos parametros.
- * @interface BPEntitiesTemplateOverride
  * @template {readonly BPEntityComponent[]} C Requiere una plantilla base de un mapeo de componentes.
  * @template {BPEntityGroupCompsList} GC Requiere una plantilla base de listas de grupos de componentes.
  * @template {BPEntityEventsMap} Ev Requiere una plantilla base de un mapeo de eventos de la entidad.
  * @author HaJuegos - 30-09-2026
  */
-interface BPEntitiesTemplateOverride<C extends readonly BPEntityComponent[], GC extends BPEntityGroupCompsList, Ev extends BPEntityEventsMap<GroupNames<GC>>, AC extends readonly BPEntityComponent[] = [], AG extends BPEntityGroupCompsList = {}> {
+type BPEntitiesTemplateOverride<
+    C extends readonly BPEntityComponent[],
+    GC extends BPEntityGroupCompsList,
+    Ev extends BPEntityEventsMap<GroupNames<GC>>,
+    AC extends readonly BPEntityComponent[] = [],
+    AG extends BPEntityGroupCompsList = {}
+> = {
     /**
-     * (Opcional) Mapeo de parametros adiccionales iniciales, que van a sobreescribir los valores definidos de la plantilla base.
-     * @type {?Partial<BPEntityOptionalParams>}
+     * (Opcional) Si esta en true, se limpia la plantilla base donde los grupos de componentes, componentes fijos y eventos ya no existen. Dejando solo los datos base.
+     * @type {?boolean}
      */
-    description?: Partial<BPEntityOptionalParams>;
+    clearAllData?: boolean;
+} & (
+        {
+            clearAllData?: false | undefined;
 
-    /**
-     * (Opcional) Mapeo de animaciones adiccionales iniciales, que van a sobreescribir los valores definidos en la plantilla base.
-     * @type {?Record<string, BPAnimationScriptEntities>}
-     */
-    animations?: Record<string, BPAnimationScriptEntities>;
+            /**
+             * (Opcional) Mapeo de parametros adiccionales iniciales, que van a sobreescribir los valores definidos de la plantilla base.
+             * @type {?Partial<BPEntityOptionalParams>}
+             */
+            description?: Partial<BPEntityOptionalParams>;
 
-    /**
-     * (Opcional) Mapeo de propiedades dinamicas iniciales, que van a sobreescribir los valores definidos en la plantilla base.
-     * @type {?Record<string, BPPropertiesEntities>}
-     */
-    properties?: Record<string, BPPropertiesEntities>;
+            /**
+             * (Opcional) Mapeo de animaciones adiccionales iniciales, que van a sobreescribir los valores definidos en la plantilla base.
+             * @type {?Record<string, BPAnimationScriptEntities>}
+             */
+            animations?: Record<string, BPAnimationScriptEntities>;
 
-    /**
-     * (Opcional) Mapeo de los grupos de componentes dinamicos iniciales, que van a sobreescribir los valores definidos en la plantilla base.
-     * @type {?({ [K in keyof GC]?: Patch<ByID<GC[K]>> | null })}
-     */
-    componentsGroups?: { [K in keyof GC]?: Patch<ByID<GC[K]>> | null };
+            /**
+             * (Opcional) Mapeo de propiedades dinamicas iniciales, que van a sobreescribir los valores definidos en la plantilla base.
+             * @type {?Record<string, BPPropertiesEntities>}
+             */
+            properties?: Record<string, BPPropertiesEntities>;
 
-    /**
-     * (Opcional) Mapeo de los componentes fijos iniciales, que van a sobreescribir los valores definidos en la plantilla base.
-     * @type {?Patch<ByID<C>>}
-     */
-    components?: Patch<ByID<C>>;
+            /**
+             * (Opcional) Mapeo de los grupos de componentes dinamicos iniciales, que van a sobreescribir los valores definidos en la plantilla base.
+             * @type {?({ [K in keyof GC]?: Patch<ByID<GC[K]>> | null })}
+             */
+            componentsGroups?: { [K in keyof GC]?: Patch<ByID<GC[K]>> | null };
 
-    /**
-     * (Opcional) Mapeo de los eventos iniciales, que van a sobreescribir los valores definidos en la plantilla base.
-     * @type {?EventsPatch<Ev>}
-     */
-    events?: EventsPatch<Ev, NoInfer<GroupNames<GC> | GroupNames<AG>>>;
+            /**
+             * (Opcional) Mapeo de los componentes fijos iniciales, que van a sobreescribir los valores definidos en la plantilla base.
+             * @type {?Patch<ByID<C>>}
+             */
+            components?: Patch<ByID<C>>;
 
-    /**
-     * (Opcional) Parametro adiccional que añade nuevos valores a la plantilla base en vez de sobresescribirla.
-     * @type {?{ componentsGroups?: Record<string, BPEntityComponent[]>; components?: BPEntityComponent[]; events?: BPEntityEventsMap; }}
-     */
-    add?: {
+            /**
+             * (Opcional) Mapeo de los eventos iniciales, que van a sobreescribir los valores definidos en la plantilla base.
+             * @type {?EventsPatch<Ev>}
+             */
+            events?: EventsPatch<Ev, NoInfer<GroupNames<GC> | GroupNames<AG>>>;
+        } |
+        {
+            clearAllData?: true;
+
+            /**
+             * (Opcional) Mapeo de parametros adiccionales iniciales, que van a sobreescribir los valores definidos de la plantilla base.
+             * @type {?Partial<BPEntityOptionalParams>}
+             */
+            description?: Partial<BPEntityOptionalParams>;
+
+            /**
+             * (Opcional) Mapeo de animaciones adiccionales iniciales, que van a sobreescribir los valores definidos en la plantilla base.
+             * @type {?Record<string, BPAnimationScriptEntities>}
+             */
+            animations?: Record<string, BPAnimationScriptEntities>;
+
+            /**
+             * (Opcional) Mapeo de propiedades dinamicas iniciales, que van a sobreescribir los valores definidos en la plantilla base.
+             * @type {?Record<string, BPPropertiesEntities>}
+             */
+            properties?: Record<string, BPPropertiesEntities>;
+
+            /**
+             * (Opcional) Mapeo de los grupos de componentes dinamicos iniciales, que van a sobreescribir los valores definidos en la plantilla base.
+             * @type {?never}
+             */
+            componentsGroups?: never;
+
+            /**
+             * (Opcional) Mapeo de los componentes fijos iniciales, que van a sobreescribir los valores definidos en la plantilla base.
+             * @type {?never}
+             */
+            components?: never;
+
+            /**
+             * (Opcional) Mapeo de los eventos iniciales, que van a sobreescribir los valores definidos en la plantilla base.
+             * @type {?never}
+             */
+            events?: never;
+        }
+    ) & {
         /**
-         * (Opcional) Lista de grupos de componentes dinamicos a añadir a la plantilla base.
-         * @type {?Record<string, BPEntityComponent[]>}
-         */
-        componentsGroups?: AG & GroupsDupes<AG>;
+         * (Opcional) Parametro adiccional que añade nuevos valores a la plantilla base en vez de sobresescribirla.
+         * @type {?{ componentsGroups?: Record<string, BPEntityComponent[]>; components?: BPEntityComponent[]; events?: BPEntityEventsMap; }}
+        */
+        add?: {
+            /**
+             * (Opcional) Lista de grupos de componentes dinamicos a añadir a la plantilla base.
+             * @type {?Record<string, BPEntityComponent[]>}
+             */
+            componentsGroups?: AG & GroupsDupes<AG>;
 
-        /**
-         * (Opcional) Lista de componentes fijos a añadir a la plantilla base.
-         * @type {?BPEntityComponent[]}
-         */
-        components?: AC & NoDupes<AC, Extract<keyof ByID<C>, string>>;
+            /**
+             * (Opcional) Lista de componentes fijos a añadir a la plantilla base.
+             * @type {?BPEntityComponent[]}
+             */
+            components?: AC & NoDupes<AC, Extract<keyof ByID<C>, string>>;
 
-        /**
-         * (Opcional) Lista de eventos a añadir a la plantilla base.
-         * @type {?BPEntityEventsMap}
-         */
-        events?: BPEntityEventsMap<NoInfer<GroupNames<GC> | GroupNames<AG>>>;
+            /**
+             * (Opcional) Lista de eventos a añadir a la plantilla base.
+             * @type {?BPEntityEventsMap}
+             */
+            events?: BPEntityEventsMap<NoInfer<GroupNames<GC> | GroupNames<AG>>>;
+        };
     };
-}
