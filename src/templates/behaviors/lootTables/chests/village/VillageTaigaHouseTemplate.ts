@@ -15,7 +15,6 @@ export const VillageTaigaHouseTemplate = createBPLootTable({
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
@@ -81,7 +80,6 @@ export const VillageTaigaHouseTemplate = createBPLootTable({
                     name: "minecraft:pumpkin_seeds"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:pumpkin_pie"
                 },
@@ -114,7 +112,6 @@ export const VillageTaigaHouseTemplate = createBPLootTable({
                     name: "minecraft:spruce_sapling"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
@@ -144,7 +141,6 @@ export const VillageTaigaHouseTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/chests/village/village_bundle.json"
                 }

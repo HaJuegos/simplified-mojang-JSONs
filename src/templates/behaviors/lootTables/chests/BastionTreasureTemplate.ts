@@ -60,8 +60,7 @@ export const BastionTreasureTemplate = createBPLootTable({
                     weight: 6,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
-                            function: "minecraft:set_damage",
+                            function: "set_damage",
                             damage: {
                                 min: 0.8,
                                 max: 1
@@ -78,8 +77,7 @@ export const BastionTreasureTemplate = createBPLootTable({
                     weight: 6,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
-                            function: "minecraft:set_damage",
+                            function: "set_damage",
                             damage: {
                                 min: 0.8,
                                 max: 1
@@ -96,8 +94,7 @@ export const BastionTreasureTemplate = createBPLootTable({
                     weight: 6,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
-                            function: "minecraft:set_damage",
+                            function: "set_damage",
                             damage: {
                                 min: 0.8,
                                 max: 1
@@ -114,8 +111,7 @@ export const BastionTreasureTemplate = createBPLootTable({
                     weight: 6,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
-                            function: "minecraft:set_damage",
+                            function: "set_damage",
                             damage: {
                                 min: 0.8,
                                 max: 1
@@ -132,8 +128,7 @@ export const BastionTreasureTemplate = createBPLootTable({
                     weight: 6,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
-                            function: "minecraft:set_damage",
+                            function: "set_damage",
                             damage: {
                                 min: 0.8,
                                 max: 1
@@ -150,8 +145,7 @@ export const BastionTreasureTemplate = createBPLootTable({
                     weight: 6,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
-                            function: "minecraft:set_damage",
+                            function: "set_damage",
                             damage: {
                                 min: 0.8,
                                 max: 1

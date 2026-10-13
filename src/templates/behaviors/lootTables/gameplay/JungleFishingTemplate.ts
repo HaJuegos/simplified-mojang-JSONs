@@ -15,21 +15,18 @@ export const JungleFishingTemplate = createBPLootTable({
                     type: "loot_table",
                     name: "loot_tables/gameplay/fishing/jungle_junk.json",
                     weight: 10,
-                    // TODO: La propiedad 'quality' no existe en el tipado de 'loot_table'.
                     quality: -2
                 },
                 {
                     type: "loot_table",
                     name: "loot_tables/gameplay/fishing/treasure.json",
                     weight: 5,
-                    // TODO: La propiedad 'quality' no existe en el tipado de 'loot_table'.
                     quality: 2
                 },
                 {
                     type: "loot_table",
                     name: "loot_tables/gameplay/fishing/jungle_fish.json",
                     weight: 85,
-                    // TODO: La propiedad 'quality' no existe en el tipado de 'loot_table'.
                     quality: -1
                 }
             ]

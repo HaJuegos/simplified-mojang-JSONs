@@ -148,22 +148,18 @@ export const VillageWeaponsmithTemplate = createBPLootTable({
                     name: "minecraft:saddle"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:horsearmoriron"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:copper_horse_armor"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:horsearmorgold"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:horsearmordiamond"
                 },
@@ -183,7 +179,6 @@ export const VillageWeaponsmithTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/chests/village/village_bundle.json"
                 }

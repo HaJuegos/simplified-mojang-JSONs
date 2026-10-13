@@ -15,7 +15,6 @@ export const VillageTanneryTemplate = createBPLootTable({
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
@@ -63,12 +62,10 @@ export const VillageTanneryTemplate = createBPLootTable({
                     name: "minecraft:leather_leggings"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:saddle"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
@@ -87,7 +84,6 @@ export const VillageTanneryTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/chests/village/village_bundle.json"
                 }

@@ -47,8 +47,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -67,8 +66,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -87,8 +85,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -107,8 +104,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 12
@@ -127,8 +123,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 12
@@ -147,8 +142,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -162,8 +156,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -177,8 +170,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -197,8 +189,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -212,8 +203,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -227,8 +217,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -242,8 +231,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -262,8 +250,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 3,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -277,8 +264,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 3,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -297,8 +283,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 4,
                                 max: 4
@@ -312,8 +297,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 4,
                                 max: 4
@@ -327,8 +311,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 4,
                                 max: 4
@@ -342,8 +325,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 4,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 4,
                                 max: 4
@@ -357,8 +339,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 4,
                                 max: 4
@@ -372,8 +353,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 4,
                                 max: 4
@@ -392,8 +372,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 3,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -407,8 +386,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 3,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -422,8 +400,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 3,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -442,8 +419,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 3,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -457,8 +433,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -477,8 +452,7 @@ export const SpawnBonusChestTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2

@@ -161,9 +161,7 @@ export const StrongholdCorridorTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 5
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     weight: 5

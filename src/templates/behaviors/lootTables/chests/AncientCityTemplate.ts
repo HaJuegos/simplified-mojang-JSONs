@@ -13,7 +13,6 @@ export const AncientCityTemplate = createBPLootTable({
                 min: 5,
                 max: 10.0
             },
-            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
             bonusRolls: 0,
             entries: [
                 {
@@ -24,9 +23,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 2.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:enchanted_golden_apple",
@@ -43,9 +40,7 @@ export const AncientCityTemplate = createBPLootTable({
                     functions: [
                         {
                             function: "set_count",
-                            count: 1,
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            count: 1
                         }
                     ],
                     name: "minecraft:compass"
@@ -59,9 +54,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 2.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:sculk_catalyst"
@@ -72,18 +65,14 @@ export const AncientCityTemplate = createBPLootTable({
                     functions: [
                         {
                             function: "set_count",
-                            count: 1,
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            count: 1
                         },
                         {
                             function: "set_damage",
                             damage: {
                                 min: 0.8,
                                 max: 1.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_damage'.
-                            add: false
+                            }
                         },
                         {
                             function: "enchant_with_levels",
@@ -102,9 +91,7 @@ export const AncientCityTemplate = createBPLootTable({
                     functions: [
                         {
                             function: "set_count",
-                            count: 1,
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            count: 1
                         }
                     ],
                     name: "minecraft:lead"
@@ -115,9 +102,7 @@ export const AncientCityTemplate = createBPLootTable({
                     functions: [
                         {
                             function: "set_count",
-                            count: 1,
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            count: 1
                         }
                     ],
                     name: "minecraft:diamond_horse_armor"
@@ -131,9 +116,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 5
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:leather"
@@ -169,7 +152,6 @@ export const AncientCityTemplate = createBPLootTable({
                     functions: [
                         {
                             function: "specific_enchants",
-                            // TODO: Se esperaba un texto y llego una lista.
                             enchants: [
                                 {
                                     id: "swift_sneak",
@@ -192,9 +174,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 4,
                                 max: 10.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:sculk"
@@ -208,9 +188,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:sculk_sensor"
@@ -224,9 +202,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 4.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:candle"
@@ -240,9 +216,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 15.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:amethyst_shard"
@@ -256,9 +230,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:experience_bottle"
@@ -272,9 +244,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 15.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:glow_berries"
@@ -303,9 +273,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:echo_shard"
@@ -319,9 +287,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:disc_fragment_5"
@@ -335,9 +301,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         },
                         {
                             function: "set_potion",
@@ -365,9 +329,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 3,
                                 max: 10.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:book"
@@ -381,9 +343,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 15.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:bone"
@@ -397,9 +357,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 15.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:soul_torch"
@@ -413,9 +371,7 @@ export const AncientCityTemplate = createBPLootTable({
                             count: {
                                 min: 6,
                                 max: 15.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:coal"

@@ -15,7 +15,6 @@ export const VillageButcherTemplate = createBPLootTable({
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:emerald"
                 },

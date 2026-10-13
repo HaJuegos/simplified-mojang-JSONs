@@ -12,7 +12,6 @@ export const BuriedtreasureTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:heart_of_the_sea"
                 }
@@ -145,7 +144,6 @@ export const BuriedtreasureTemplate = createBPLootTable({
             rolls: 2,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:cooked_cod",
                     functions: [
@@ -159,7 +157,6 @@ export const BuriedtreasureTemplate = createBPLootTable({
                     ]
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:cooked_salmon",
                     functions: [

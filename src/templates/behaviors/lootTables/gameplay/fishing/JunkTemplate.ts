@@ -31,12 +31,10 @@ export const JunkTemplate = createBPLootTable({
                     weight: 17
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: 10.0
                         }
                     ],

@@ -20,8 +20,7 @@ export const UnderwaterRuinBigTemplate = createBPLootTable({
                     weight: 10,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 4
@@ -40,8 +39,7 @@ export const UnderwaterRuinBigTemplate = createBPLootTable({
                     weight: 10,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -60,8 +58,7 @@ export const UnderwaterRuinBigTemplate = createBPLootTable({
                     weight: 10,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 2,
                                 max: 3

@@ -47,8 +47,7 @@ export const VillageTempleTemplate = createBPLootTable({
                     weight: 7,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 4
@@ -58,12 +57,10 @@ export const VillageTempleTemplate = createBPLootTable({
                     name: "minecraft:rotten_flesh"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 4
@@ -77,12 +74,10 @@ export const VillageTempleTemplate = createBPLootTable({
                     name: "minecraft:dye"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 4
@@ -92,12 +87,10 @@ export const VillageTempleTemplate = createBPLootTable({
                     name: "minecraft:gold_ingot"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 4

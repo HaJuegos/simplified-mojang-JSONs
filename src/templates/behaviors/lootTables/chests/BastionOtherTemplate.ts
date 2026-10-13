@@ -16,8 +16,7 @@ export const BastionOtherTemplate = createBPLootTable({
                     weight: 6,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
-                            function: "minecraft:set_damage",
+                            function: "set_damage",
                             damage: {
                                 min: 0.1,
                                 max: 0.9
@@ -137,7 +136,6 @@ export const BastionOtherTemplate = createBPLootTable({
                     functions: [
                         {
                             function: "specific_enchants",
-                            // TODO: Se esperaba un texto y llego una lista.
                             enchants: [
                                 {
                                     id: "soul_speed",
@@ -165,7 +163,6 @@ export const BastionOtherTemplate = createBPLootTable({
                         },
                         {
                             function: "specific_enchants",
-                            // TODO: Se esperaba un texto y llego una lista.
                             enchants: [
                                 {
                                     id: "soul_speed",
@@ -228,8 +225,7 @@ export const BastionOtherTemplate = createBPLootTable({
                     weight: 6,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
-                            function: "minecraft:set_damage",
+                            function: "set_damage",
                             damage: {
                                 min: 0.1,
                                 max: 0.9

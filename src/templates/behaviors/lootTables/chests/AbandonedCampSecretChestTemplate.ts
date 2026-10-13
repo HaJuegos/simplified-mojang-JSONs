@@ -10,7 +10,6 @@ export const AbandonedCampSecretChestTemplate = createBPLootTable({
     pools: [
         {
             rolls: 2,
-            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
             bonusRolls: 0,
             entries: [
                 {
@@ -70,7 +69,6 @@ export const AbandonedCampSecretChestTemplate = createBPLootTable({
                 min: 4,
                 max: 6
             },
-            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
             bonusRolls: 0,
             entries: [
                 {
@@ -81,9 +79,7 @@ export const AbandonedCampSecretChestTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 2
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:empty_map",
@@ -97,9 +93,7 @@ export const AbandonedCampSecretChestTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:copper_ingot",
@@ -113,9 +107,7 @@ export const AbandonedCampSecretChestTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:gold_ingot",
@@ -129,9 +121,7 @@ export const AbandonedCampSecretChestTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:iron_ingot",
@@ -144,7 +134,6 @@ export const AbandonedCampSecretChestTemplate = createBPLootTable({
                 min: 0,
                 max: 1
             },
-            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
             bonusRolls: 0,
             entries: [
                 {
@@ -175,7 +164,6 @@ export const AbandonedCampSecretChestTemplate = createBPLootTable({
         },
         {
             rolls: 1,
-            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
             bonusRolls: 0,
             entries: [
                 {

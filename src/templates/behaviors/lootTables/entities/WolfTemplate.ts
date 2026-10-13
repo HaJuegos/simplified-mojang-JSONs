@@ -7,7 +7,5 @@ import { createBPLootTable } from "../../../../builders/behaviors/lootTables/Loo
  * @author HaJuegos - 12-10-2026
  */
 export const WolfTemplate = createBPLootTable({
-    // TODO: Falta la propiedad requerida 'pools' segun el tipado.
-    // TODO: El JSON original no contiene la propiedad 'pools'; se dejo vacia.
     pools: []
 });

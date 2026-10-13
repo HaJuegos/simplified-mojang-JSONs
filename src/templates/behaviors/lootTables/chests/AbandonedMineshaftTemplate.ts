@@ -219,7 +219,6 @@ export const AbandonedMineshaftTemplate = createBPLootTable({
                 {
                     type: "item",
                     name: "minecraft:music_disc_bounce",
-                    // TODO: La propiedad 'conditions' no existe en el tipado de 'item'.
                     conditions: [
                         {
                             condition: "biome_has_tag",

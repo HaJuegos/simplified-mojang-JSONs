@@ -50,7 +50,6 @@ export const PiglinGearMeleeTemplate = createBPLootTable({
             ]
         },
         {
-            // TODO: Falta la propiedad requerida 'rolls' segun el tipado.
             conditions: [
                 {
                     condition: "random_difficulty_chance",
@@ -64,13 +63,10 @@ export const PiglinGearMeleeTemplate = createBPLootTable({
                 }
             ],
             tiers: {
-                // TODO: Falta la propiedad requerida 'bonusChance' segun el tipado.
-                // TODO: Falta la propiedad requerida 'bonusRolls' segun el tipado.
                 initialRange: 1
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/entities/armor_set_gold.json"
                 }

@@ -13,7 +13,6 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                 min: 4,
                 max: 6
             },
-            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
             bonusRolls: 0,
             entries: [
                 {
@@ -21,9 +20,7 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                     functions: [
                         {
                             function: "set_count",
-                            count: 4,
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            count: 4
                         }
                     ],
                     name: "minecraft:arrow",
@@ -43,9 +40,7 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                             count: {
                                 min: 2,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:bone",
@@ -71,9 +66,7 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 2
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:empty_map",
@@ -87,9 +80,7 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                             count: {
                                 min: 2,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:gunpowder",
@@ -115,9 +106,7 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:glass_bottle",
@@ -131,9 +120,7 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:lead",
@@ -147,9 +134,7 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:leather",
@@ -169,9 +154,7 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:rabbit_hide",
@@ -185,9 +168,7 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 2
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:saddle",
@@ -201,9 +182,7 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:white_candle",
@@ -213,7 +192,6 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
         },
         {
             rolls: 2,
-            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
             bonusRolls: 0,
             entries: [
                 {
@@ -280,14 +258,12 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
         },
         {
             rolls: 1,
-            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
             bonusRolls: 0,
             entries: [
                 {
                     type: "item",
                     name: "minecraft:map",
                     weight: 1,
-                    // TODO: La propiedad 'conditions' no existe en el tipado de 'item'.
                     conditions: [
                         {
                             condition: "biome_has_tag",
@@ -306,7 +282,6 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                     type: "item",
                     name: "minecraft:map",
                     weight: 1,
-                    // TODO: La propiedad 'conditions' no existe en el tipado de 'item'.
                     conditions: [
                         {
                             condition: "biome_has_tag",
@@ -325,7 +300,6 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                     type: "item",
                     name: "minecraft:map",
                     weight: 1,
-                    // TODO: La propiedad 'conditions' no existe en el tipado de 'item'.
                     conditions: [
                         {
                             condition: "biome_has_tag",
@@ -344,7 +318,6 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                     type: "item",
                     name: "minecraft:map",
                     weight: 1,
-                    // TODO: La propiedad 'conditions' no existe en el tipado de 'item'.
                     conditions: [
                         {
                             condition: "biome_has_tag",
@@ -363,7 +336,6 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                     type: "item",
                     name: "minecraft:map",
                     weight: 1,
-                    // TODO: La propiedad 'conditions' no existe en el tipado de 'item'.
                     conditions: [
                         {
                             condition: "biome_has_tag",
@@ -382,7 +354,6 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                     type: "item",
                     name: "minecraft:map",
                     weight: 1,
-                    // TODO: La propiedad 'conditions' no existe en el tipado de 'item'.
                     conditions: [
                         {
                             condition: "biome_has_tag",
@@ -401,7 +372,6 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                     type: "item",
                     name: "minecraft:map",
                     weight: 1,
-                    // TODO: La propiedad 'conditions' no existe en el tipado de 'item'.
                     conditions: [
                         {
                             condition: "biome_has_tag",
@@ -420,7 +390,6 @@ export const AbandonedCampCommonChestTemplate = createBPLootTable({
                     type: "item",
                     name: "minecraft:map",
                     weight: 1,
-                    // TODO: La propiedad 'conditions' no existe en el tipado de 'item'.
                     conditions: [
                         {
                             condition: "biome_has_tag",

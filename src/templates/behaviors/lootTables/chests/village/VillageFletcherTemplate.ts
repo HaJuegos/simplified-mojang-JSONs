@@ -7,8 +7,6 @@ import { createBPLootTable } from "../../../../../builders/behaviors/lootTables/
  * @author HaJuegos - 12-10-2026
  */
 export const VillageFletcherTemplate = createBPLootTable({
-    // TODO: La propiedad 'type' no existe en el tipado.
-    type: "minecraft:chest",
     pools: [
         {
             rolls: {
@@ -17,7 +15,6 @@ export const VillageFletcherTemplate = createBPLootTable({
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:emerald"
                 },

@@ -17,8 +17,7 @@ export const BoggedShearTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_data_from_color_index' de 'function' no existe en el tipado.
-                            function: "minecraft:set_data_from_color_index"
+                            function: "set_data_from_color_index"
                         },
                         {
                             function: "set_count",
@@ -32,8 +31,7 @@ export const BoggedShearTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_data_from_color_index' de 'function' no existe en el tipado.
-                            function: "minecraft:set_data_from_color_index"
+                            function: "set_data_from_color_index"
                         },
                         {
                             function: "set_count",

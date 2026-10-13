@@ -7,8 +7,6 @@ import { createBPLootTable } from "../../../../../builders/behaviors/lootTables/
  * @author HaJuegos - 12-10-2026
  */
 export const VillagePlainsHouseTemplate = createBPLootTable({
-    // TODO: La propiedad 'type' no existe en el tipado.
-    type: "minecraft:chest",
     pools: [
         {
             rolls: {
@@ -17,12 +15,10 @@ export const VillagePlainsHouseTemplate = createBPLootTable({
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -37,7 +33,6 @@ export const VillagePlainsHouseTemplate = createBPLootTable({
                     name: "minecraft:dandelion"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:poppy"
                 },
@@ -46,8 +41,7 @@ export const VillagePlainsHouseTemplate = createBPLootTable({
                     weight: 10,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 7
@@ -61,8 +55,7 @@ export const VillagePlainsHouseTemplate = createBPLootTable({
                     weight: 10,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 4
@@ -76,8 +69,7 @@ export const VillagePlainsHouseTemplate = createBPLootTable({
                     weight: 10,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 5
@@ -87,12 +79,10 @@ export const VillagePlainsHouseTemplate = createBPLootTable({
                     name: "minecraft:apple"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:book"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:feather"
                 },
@@ -101,8 +91,7 @@ export const VillagePlainsHouseTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 4
@@ -116,8 +105,7 @@ export const VillagePlainsHouseTemplate = createBPLootTable({
                     weight: 5,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -132,7 +120,6 @@ export const VillagePlainsHouseTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/chests/village/village_bundle.json"
                 }

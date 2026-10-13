@@ -16,8 +16,7 @@ export const BastionHoglinStableTemplate = createBPLootTable({
                     weight: 15,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
-                            function: "minecraft:set_damage",
+                            function: "set_damage",
                             damage: {
                                 min: 0.15,
                                 max: 0.8
@@ -85,8 +84,7 @@ export const BastionHoglinStableTemplate = createBPLootTable({
                             count: 1
                         },
                         {
-                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
-                            function: "minecraft:set_damage",
+                            function: "set_damage",
                             damage: {
                                 min: 0.15,
                                 max: 0.95

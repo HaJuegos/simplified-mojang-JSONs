@@ -119,12 +119,7 @@ export const RewardRareTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: Falta la propiedad requerida 'baseCost' segun el tipado.
-                            // TODO: Falta la propiedad requerida 'baseRandomCost' segun el tipado.
-                            // TODO: Falta la propiedad requerida 'perLevelCost' segun el tipado.
-                            // TODO: Falta la propiedad requerida 'perLevelRandomCost' segun el tipado.
                             function: "enchant_book_for_trading",
-                            // TODO: La propiedad 'enchantments' no existe en el tipado de 'enchant_book_for_trading'.
                             enchantments: [
                                 {
                                     name: "sharpness",
@@ -166,12 +161,7 @@ export const RewardRareTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: Falta la propiedad requerida 'baseCost' segun el tipado.
-                            // TODO: Falta la propiedad requerida 'baseRandomCost' segun el tipado.
-                            // TODO: Falta la propiedad requerida 'perLevelCost' segun el tipado.
-                            // TODO: Falta la propiedad requerida 'perLevelRandomCost' segun el tipado.
                             function: "enchant_book_for_trading",
-                            // TODO: La propiedad 'enchantments' no existe en el tipado de 'enchant_book_for_trading'.
                             enchantments: [
                                 {
                                     name: "riptide",

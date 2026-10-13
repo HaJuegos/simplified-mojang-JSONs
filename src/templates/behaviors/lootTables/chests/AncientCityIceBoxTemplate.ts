@@ -13,15 +13,13 @@ export const AncientCityIceBoxTemplate = createBPLootTable({
                 min: 4,
                 max: 10.0
             },
-            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
             bonusRolls: 0,
             entries: [
                 {
                     type: "item",
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_stew_effect' de 'function' no existe en el tipado.
-                            function: "minecraft:set_stew_effect",
+                            function: "set_stew_effect",
                             effects: [
                                 {
                                     id: 0
@@ -36,9 +34,7 @@ export const AncientCityIceBoxTemplate = createBPLootTable({
                             count: {
                                 min: 2,
                                 max: 6.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:suspicious_stew",
@@ -52,9 +48,7 @@ export const AncientCityIceBoxTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 10.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:golden_carrot",
@@ -68,9 +62,7 @@ export const AncientCityIceBoxTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 10.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:baked_potato",
@@ -85,9 +77,7 @@ export const AncientCityIceBoxTemplate = createBPLootTable({
                             count: {
                                 min: 2,
                                 max: 6.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:packed_ice"
@@ -101,9 +91,7 @@ export const AncientCityIceBoxTemplate = createBPLootTable({
                             count: {
                                 min: 2,
                                 max: 6.0
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:snowball"

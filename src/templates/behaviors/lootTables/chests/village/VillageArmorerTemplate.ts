@@ -43,12 +43,10 @@ export const VillageArmorerTemplate = createBPLootTable({
                     name: "minecraft:bread"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:iron_helmet"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:emerald"
                 }

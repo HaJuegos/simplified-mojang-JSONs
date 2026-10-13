@@ -7,10 +7,5 @@ import { createBPLootTable } from "../../../../builders/behaviors/lootTables/Loo
  * @author HaJuegos - 12-10-2026
  */
 export const ArmorStandTemplate = createBPLootTable({
-    pools: [
-        {
-            // TODO: Falta la propiedad requerida 'rolls' segun el tipado.
-            // TODO: Falta la propiedad requerida 'entries' segun el tipado.
-        }
-    ]
+    pools: []
 });

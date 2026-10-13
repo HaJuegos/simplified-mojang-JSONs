@@ -12,12 +12,10 @@ export const YellowWoolStairsTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:yellow_wool_stairs",
                     functions: [
                         {
-                            // TODO: El valor 'explosion_decay' de 'function' no existe en el tipado.
                             function: "explosion_decay"
                         }
                     ]

@@ -17,8 +17,7 @@ export const SheepTemplate = createBPLootTable({
                     weight: 1,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_data_from_color_index' de 'function' no existe en el tipado.
-                            function: "minecraft:set_data_from_color_index"
+                            function: "set_data_from_color_index"
                         }
                     ]
                 }
@@ -43,7 +42,6 @@ export const SheepTemplate = createBPLootTable({
                             function: "furnace_smelt",
                             conditions: [
                                 {
-                                    // TODO: El valor 'entity_properties' de 'condition' no existe en el tipado.
                                     condition: "entity_properties",
                                     entity: "this",
                                     properties: {

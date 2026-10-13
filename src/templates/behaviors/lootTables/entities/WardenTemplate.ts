@@ -12,7 +12,6 @@ export const WardenTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:sculk_catalyst"
                 }

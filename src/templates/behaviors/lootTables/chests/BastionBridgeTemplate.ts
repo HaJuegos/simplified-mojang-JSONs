@@ -12,7 +12,6 @@ export const BastionBridgeTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
@@ -34,8 +33,7 @@ export const BastionBridgeTemplate = createBPLootTable({
                     type: "item",
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
-                            function: "minecraft:set_damage",
+                            function: "set_damage",
                             damage: {
                                 min: 0.1,
                                 max: 0.5

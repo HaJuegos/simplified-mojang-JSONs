@@ -15,7 +15,6 @@ export const VillageToolsmithTemplate = createBPLootTable({
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
@@ -43,7 +42,6 @@ export const VillageToolsmithTemplate = createBPLootTable({
                     name: "minecraft:iron_ingot"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
@@ -76,7 +74,6 @@ export const VillageToolsmithTemplate = createBPLootTable({
                     name: "minecraft:iron_pickaxe"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {

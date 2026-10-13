@@ -7,8 +7,6 @@ import { createBPLootTable } from "../../../../../builders/behaviors/lootTables/
  * @author HaJuegos - 12-10-2026
  */
 export const VillageShepherdTemplate = createBPLootTable({
-    // TODO: La propiedad 'type' no existe en el tipado.
-    type: "minecraft:chest",
     pools: [
         {
             rolls: {
@@ -21,8 +19,7 @@ export const VillageShepherdTemplate = createBPLootTable({
                     weight: 6,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 8
@@ -36,8 +33,7 @@ export const VillageShepherdTemplate = createBPLootTable({
                     weight: 3,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -51,8 +47,7 @@ export const VillageShepherdTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -66,8 +61,7 @@ export const VillageShepherdTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -81,8 +75,7 @@ export const VillageShepherdTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -92,12 +85,10 @@ export const VillageShepherdTemplate = createBPLootTable({
                     name: "minecraft:light_gray_wool"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:emerald"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:shears"
                 },
@@ -106,8 +97,7 @@ export const VillageShepherdTemplate = createBPLootTable({
                     weight: 6,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 6

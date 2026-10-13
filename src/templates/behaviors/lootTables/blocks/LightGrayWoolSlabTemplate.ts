@@ -12,12 +12,10 @@ export const LightGrayWoolSlabTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:light_gray_wool_slab",
                     functions: [
                         {
-                            // TODO: El valor 'explosion_decay' de 'function' no existe en el tipado.
                             function: "explosion_decay"
                         }
                     ]

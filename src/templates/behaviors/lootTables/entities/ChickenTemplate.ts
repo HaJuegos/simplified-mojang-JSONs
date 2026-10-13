@@ -46,7 +46,6 @@ export const ChickenTemplate = createBPLootTable({
                             function: "furnace_smelt",
                             conditions: [
                                 {
-                                    // TODO: El valor 'entity_properties' de 'condition' no existe en el tipado.
                                     condition: "entity_properties",
                                     entity: "this",
                                     properties: {

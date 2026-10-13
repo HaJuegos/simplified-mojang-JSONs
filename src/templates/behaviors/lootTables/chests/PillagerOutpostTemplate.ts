@@ -15,7 +15,6 @@ export const PillagerOutpostTemplate = createBPLootTable({
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:crossbow"
                 }
@@ -161,12 +160,10 @@ export const PillagerOutpostTemplate = createBPLootTable({
                     name: "minecraft:iron_ingot"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:enchant_randomly' de 'function' no existe en el tipado.
-                            function: "minecraft:enchant_randomly"
+                            function: "enchant_randomly"
                         }
                     ],
                     name: "minecraft:book"
@@ -180,7 +177,6 @@ export const PillagerOutpostTemplate = createBPLootTable({
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:goat_horn",
                     functions: [

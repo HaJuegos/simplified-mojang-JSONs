@@ -13,7 +13,6 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                 min: 4,
                 max: 8
             },
-            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
             bonusRolls: 0,
             entries: [
                 {
@@ -24,9 +23,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:arrow",
@@ -40,9 +37,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 2,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:bone",
@@ -56,9 +51,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 2
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:bowl",
@@ -72,9 +65,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:bread",
@@ -88,9 +79,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 2,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:coal",
@@ -110,9 +99,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:glass_bottle",
@@ -126,9 +113,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:leather",
@@ -142,9 +127,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:rabbit_hide",
@@ -158,9 +141,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 2
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:string",
@@ -174,9 +155,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:wheat",
@@ -190,9 +169,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 3
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:white_candle",
@@ -206,9 +183,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 1,
                                 max: 2
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:white_cushion",
@@ -222,9 +197,7 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
                             count: {
                                 min: 2,
                                 max: 4
-                            },
-                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
-                            add: false
+                            }
                         }
                     ],
                     name: "minecraft:straw_bed",
@@ -234,7 +207,6 @@ export const AbandonedCampBarrelTemplate = createBPLootTable({
         },
         {
             rolls: 1,
-            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
             bonusRolls: 0,
             entries: [
                 {

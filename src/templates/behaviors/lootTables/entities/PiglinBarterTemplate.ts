@@ -18,7 +18,6 @@ export const PiglinBarterTemplate = createBPLootTable({
                     functions: [
                         {
                             function: "specific_enchants",
-                            // TODO: Se esperaba un texto y llego una lista.
                             enchants: [
                                 {
                                     id: "soul_speed",
@@ -38,7 +37,6 @@ export const PiglinBarterTemplate = createBPLootTable({
                     functions: [
                         {
                             function: "specific_enchants",
-                            // TODO: Se esperaba un texto y llego una lista.
                             enchants: [
                                 {
                                     id: "soul_speed",

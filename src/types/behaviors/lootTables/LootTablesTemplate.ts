@@ -9,28 +9,42 @@ export {
 };
 
 /**
- * Lista de condiciones base que no requieren de un parametro para funcionar.
- * @author HaJuegos - 11-10-2026
- */
-type ConditionsSimpleEnum = "is_baby" | "killed_by_player" | "killed_by_player_or_pets";
-
-/**
  * Lista de encantamientos base para asignar a la funcion.
  * @author HaJuegos - 11-10-2026
  */
 type EnchantmentsEnum = | "protection" | "fire_protection" | "feather_falling" | "blast_protection" | "projectile_protection" | "thorns" | "respiration" | "depth_strider" | "aqua_affinity" | "sharpness" | "smite" | "bane_of_arthropods" | "knockback" | "fire_aspect" | "looting" | "efficiency" | "silk_touch" | "unbreaking" | "fortune" | "power" | "punch" | "flame" | "infinity" | "luck_of_the_sea" | "lure" | "frost_walker" | "mending" | "binding" | "vanishing" | "impaling" | "riptide" | "loyalty" | "channeling" | "multishot" | "piercing" | "quick_charge" | "soul_speed" | "swift_sneak" | "wind_burst" | "density" | "breach" | (string & {});
 
 /**
+ * Simbolo unico usado como marca pra identificar los campos que requieren un float de 0 a 1.
+ * @author HaJuegos - 13-10-2026
+ */
+declare const ratioBrand: unique symbol;
+
+/**
  * Tipado general estricto para limitar un numero float de 0 a 1.
  * @author HaJuegos - 11-10-2026
  */
-type FloatRatio = 0 | 1 | `0.${number}`;
+type FloatRatio = number & { readonly [ratioBrand]?: never; };
+
+/**
+ * Tipado auxiliar que detecta si el tipo base declarado esta marccado como FloatRatio
+ * @template S Tipo declarado en el tipado base de la propiedad a validar.
+ * @author HaJuegos - 13-10-2026
+ */
+type HasRatioBrand<S> = true extends (S extends unknown ? (typeof ratioBrand extends keyof S ? true : false) : never) ? true : false;
+
+/**
+ * Tipado auxiliar que valida que un numero literal este entre 0 a 1.
+ * @template {number} T Numero literal a validar.
+ * @author HaJuegos - 13-10-2026
+ */
+type ValidRatio<T extends number> = number extends T ? T : `${T}` extends "0" | "1" | `0.${number}` ? T : never;
 
 /**
  * Lista de funciones base sin parametros para funcionar
  * @author HaJuegos - 11-10-2026
  */
-type FunctionsEntriesBasicEnums = "random_dye" | "set_data_from_color_index" | "trader_material_type";
+type FunctionsEntriesBasicEnums = "random_dye" | "set_data_from_color_index" | "trader_material_type" | "explosion_decay";
 
 /**
  * Lista de mapas prehechos para la funcion general de crear un mapa localizador.
@@ -62,10 +76,42 @@ type PotionIdEnums = "water" | "mundane" | "long_mundane" | "thick" | "awkward" 
  */
 type EnchantsIdEnums = "aqua_affinity" | "bane_of_arthropods" | "blast_protection" | "channeling" | "binding" | "curse_of_vanishing" | "depth_strider" | "efficiency" | "feather_falling" | "fire_aspect" | "fire_protection" | "flame" | "fortune" | "frost_walker" | "impaling" | "infinity" | "knockback" | "looting" | "loyalty" | "luck_of_the_sea" | "lure" | "mending" | "multishot" | "piercing" | "projectile_protection" | "protection" | "power" | "punch" | "quick_charge" | "respiration" | "riptide" | "sharpness" | "silk_touch" | "smite" | "soul_speed" | "thorns" | "unbreaking" | (string & {});
 
+/**
+ * Lista de parametros disponibles para un operador que valide algo.
+ * @author HaJuegos - 13-10-2026
+ */
+type OperatorTypesEnums = "==" | "!=" | "not";
+
+/**
+ * Tipado auxiliar que extrae de forma segura el tipo de una propiedad a traves de uniones.
+ * @template U Objecto o union de objectos.
+ * @template {PropertyKey} K Clase de la propiedad a extraer.
+ * @author HaJuegos - 13-10-2026
+ */
 type PropOf<U, K extends PropertyKey> = U extends unknown ? (K extends keyof U ? U[K] : never) : never;
+
+/**
+ * Tipado auxiliar para obtener todas las claves disponibles en una union de objectos.
+ * @template U Union de tipos de objectos.
+ * @author HaJuegos - 13-10-2026
+ */
 type KeysOfUnion<U> = U extends unknown ? keyof U : never;
+
+/**
+ * Tipado auxiliar para verificar y emparejar un tipo de su esquema base correspondiente.
+ * @template T Tipo a evaluar.
+ * @template S Esquema de referencia.
+ * @author HaJuegos - 13-10-2026
+ */
 type Match<T, S> = S extends unknown ? (T extends S ? S : never) : never;
 
+
+/**
+ * Tipado estricto recursivo para validar profundamente que un objecto o array no contenga propiedades fantasma ajenas al esquema de referencia.
+ * @template T Tipo de datos a validar.
+ * @template S Esquema o forma de referencia estricta.
+ * @author HaJuegos - 13-10-2026
+ */
 type DeepStrict<T, S> =
     T extends readonly unknown[]
     ? { [K in keyof T]: DeepStrict<T[K], S extends readonly (infer SU)[] ? SU : never> }
@@ -75,6 +121,7 @@ type DeepStrict<T, S> =
     : { [K in keyof T]: K extends KeysOfUnion<Match<T, S>>
         ? DeepStrict<T[K], PropOf<Match<T, S>, K>>
         : never }
+    : T extends number ? (HasRatioBrand<S> extends true ? ValidRatio<T> : T)
     : T;
 
 /**
@@ -113,7 +160,13 @@ type Widen<T> = T extends string ? string
     : T extends object ? { [K in keyof T]: Widen<T[K]> }
     : T;
 
-type PatchEntry<U> = Widen<U> & Partial<EntriesTypes>;
+
+/**
+ * Tipado auxiliar para parchear la lista de entries de un pool para conversar la misma cantidad y estructura de la plantilla base.
+ * @template E Lista de entries de la plantilla base.
+ * @author HaJuegos - 13-10-2026
+ */
+type PatchEntry<E> = E extends readonly unknown[] ? { -readonly [I in keyof E]: Widen<E[I]> } : never;
 
 /**
  * Tipado general para parchear un pool existente.
@@ -121,11 +174,7 @@ type PatchEntry<U> = Widen<U> & Partial<EntriesTypes>;
  * @author HaJuegos - 11-10-2026
  */
 type PatchPool<T> = {
-    [K in keyof PoolsParamsTypes]?: K extends keyof T ?
-    K extends "entries" ?
-    (T[K] extends readonly (infer U)[] ? Array<PatchEntry<U>> : T[K]) | EntriesTypes[]
-    : Widen<T[K]> | null
-    : PoolsParamsTypes[K]
+    -readonly [K in keyof T]?: K extends "entries" ? PatchEntry<T[K]> : Widen<T[K]> | null;
 };
 
 /**
@@ -183,10 +232,16 @@ interface PoolsParamsTypes {
      * Total de elementos a considerar para soltar o seleccionar de la lista de loot disponible.
      * @type {number | {min: number; max: number;}}
      */
-    rolls: number | {
+    rolls?: number | {
         min: number;
         max: number;
     };
+
+    /**
+     * (Opcional) Realmente no sabemos que hace esto. No esta documentado. Y parece contraproducente sabiendo que rolls tiene min y max. En fin, solo cosas de compabilidad.
+     * @type {?number}
+     */
+    bonusRolls?: number;
 
     /**
      * (Opcional) Condiciones que se deben cumplir primero antes de soltar el pool del loot disponible.
@@ -202,9 +257,9 @@ interface PoolsParamsTypes {
 }
 
 interface TiersTypes {
-    bonusChance: number;
-    bonusRolls: number;
-    initialRange: number;
+    bonusChance?: number;
+    bonusRolls?: number;
+    initialRange?: number;
 }
 
 /**
@@ -217,7 +272,19 @@ interface EntriesBaseTypes {
      * Peso del pool entre todos los de la loot table. Es como la probabilidad vaya.
      * @type {number}
      */
-    weight: number;
+    weight?: number;
+
+    /**
+     * (Opcional) Condiciones a cumplir antes de que el item sea añadido al loot table.
+     * @type {?ConditionsTypes[]}
+     */
+    conditions?: ConditionsTypes[];
+
+    /**
+     * (Opcional) Orden de dropeo de la loot table a elejir en el juego internamente.
+     * @type {?number}
+     */
+    quality?: number;
 }
 
 /**
@@ -291,12 +358,19 @@ interface CarryOverBlockEntityDataFunctionEntrieTypes {
     dynamicProperties?: boolean;
 }
 
+interface EnchanmentsTradingTypes {
+    name: EnchantsIdEnums;
+    min: number;
+    max: number;
+}
+
 interface EnchantBookForTradingFunctionEntrieTypes {
     function: "enchant_book_for_trading";
-    baseCost: number;
-    baseRandomCost: number;
-    perLevelCost: number;
-    perLevelRandomCost: number;
+    baseCost?: number;
+    baseRandomCost?: number;
+    perLevelCost?: number;
+    perLevelRandomCost?: number;
+    enchantments?: EnchanmentsTradingTypes[];
 }
 
 interface EnchantRandomGearFunctionEntrieTypes {
@@ -328,9 +402,15 @@ interface FillContainerFunctionEntrieTypes {
     loot_table: string;
 }
 
+interface ContidionsFurnaceTypes {
+    condition: string;
+    entity: string;
+    properties: Record<string, string | boolean>;
+}
+
 interface FurnaceSmeltFunctionEntrieTypes {
     function: "furnace_smelt";
-    conditions?: ConditionsTypes[];
+    conditions?: ContidionsFurnaceTypes[];
 }
 
 interface LootingEnchantFunctionEntrieTypes {
@@ -339,6 +419,7 @@ interface LootingEnchantFunctionEntrieTypes {
         min: number;
         max: number;
     };
+    limit?: number;
 }
 
 interface RandomAuxValueFunctionEntrieTypes {
@@ -435,81 +516,109 @@ interface SetStewEffectFunctionEntrieTypes {
 
 interface EffectTypeStewTypes {
     id: number;
-    duration: number;
+    duration?: number;
+}
+
+interface SpecificEnchantsListTypes {
+    id: EnchantsIdEnums;
+    level: number | [number, number];
 }
 
 interface SpecificEnchantsFunctionEntrieTypes {
     function: "specific_enchants";
-    enchants: EnchantsIdEnums;
+    enchants: EnchantsIdEnums | SpecificEnchantsListTypes | SpecificEnchantsListTypes[];
 }
 
 type FunctionsEntries = FunctionsEntriesBaseTypes | CarryOverBlockEntityDataFunctionEntrieTypes | EnchantBookForTradingFunctionEntrieTypes | EnchantRandomGearFunctionEntrieTypes | EnchantRandomlyFunctionEntrieTypes | EnchantWithLevelsFunctionEntrieTypes | ExplorationMapFunctionEntrieTypes | FillContainerFunctionEntrieTypes | FurnaceSmeltFunctionEntrieTypes | LootingEnchantFunctionEntrieTypes | RandomAuxValueFunctionEntrieTypes | RandomBlockStateFunctionEntrieTypes | SetActorIdFunctionEntrieTypes | SetArmorTrimFunctionEntrieTypes | SetBannerDetailsFunctionEntrieTypes | SetBookContentsFunctionEntrieTypes | SetCountFunctionEntrieTypes | SetDamageFunctionEntrieTypes | SetDataFunctionEntrieTypes | SetLoreFunctionEntrieTypes | SetNameFunctionEntrieTypes | SetOminousBottleAmplifierFunctionEntrieTypes | SetPotionFunctionEntrieTypes | SetStewEffectFunctionEntrieTypes | SpecificEnchantsFunctionEntrieTypes;
 
-interface ConditionsBaseTypes {
-    condition: ConditionsSimpleEnum;
-}
-
 interface BiomeHasTagConditionTypes {
     condition: "biome_has_tag";
+    operator?: OperatorTypesEnums;
     tag?: string;
 }
 
 interface BoolPropertyConditionTypes {
     condition: "bool_property";
+    operator?: OperatorTypesEnums;
     domain: string;
     value: boolean;
 }
 
 interface DamagedByEntityConditionTypes {
     condition: "damaged_by_entity";
+    operator?: OperatorTypesEnums;
     entityType?: string | MinecraftEntityTypes;
 }
 
 interface EntityKilledConditionTypes {
     condition: "entity_killed";
+    operator?: OperatorTypesEnums;
     entityType: string | MinecraftEntityTypes;
 }
 
 interface EnumPropertyConditionTypes {
     condition: "enum_property";
+    operator?: OperatorTypesEnums;
     domain: string;
     value: string;
 }
 
 interface FloatPropertyConditionTypes {
     condition: "float_property";
+    operator?: OperatorTypesEnums;
     domain: string;
     value: number;
 }
 
 interface HasMarkVariantConditionTypes {
     condition: "has_mark_variant";
+    operator?: OperatorTypesEnums;
     value?: number;
 }
 
 interface HasPropertyConditionTypes {
     condition: "has_property";
+    operator?: OperatorTypesEnums;
     domain: string;
 }
 
 interface HasVariantConditionTypes {
     condition: "has_variant";
+    operator?: OperatorTypesEnums;
     value: number;
 }
 
 interface IntPropertyConditionTypes {
     condition: "int_property";
+    operator?: OperatorTypesEnums;
     domain: string;
     value: number;
 }
 
+interface IsBabyConditionTypes {
+    condition: "is_baby";
+    operator?: OperatorTypesEnums;
+}
+
+interface KilledByPlayerConditionTypes {
+    condition: "killed_by_player";
+    operator?: OperatorTypesEnums;
+}
+
+interface KilledByPlayerOrPetsConditionTypes {
+    condition: "killed_by_player_or_pets";
+    operator?: OperatorTypesEnums;
+}
+
 interface KilledByEntityConditionTypes {
     condition: "killed_by_entity";
+    operator?: OperatorTypesEnums;
     entityType?: string | MinecraftEntityTypes;
 }
 
 interface MatchToolConditionTypes {
     condition: "match_tool";
+    operator?: OperatorTypesEnums;
     item?: string | MinecraftItemTypes,
     count?: number | {
         min: number;
@@ -535,23 +644,27 @@ interface ListOfEnchantmentsMatchTools {
 
 interface PassengerOfEntityConditionTypes {
     condition: "passenger_of_entity";
+    operator?: OperatorTypesEnums;
     entityType?: string | MinecraftEntityTypes;
 }
 
 interface RandomChanceConditionTypes {
     condition: "random_chance";
+    operator?: OperatorTypesEnums;
     chance?: FloatRatio;
     maxChance?: FloatRatio;
 }
 
 interface RandomChanceWithLootingConditionTypes {
     condition: "random_chance_with_looting";
+    operator?: OperatorTypesEnums;
     chance?: FloatRatio;
     lootingMultiplier?: FloatRatio;
 }
 
 interface RandomDifficultyChanceConditionTypes {
     condition: "random_difficulty_chance";
+    operator?: OperatorTypesEnums;
     defaultChance?: FloatRatio;
     peaceful?: FloatRatio;
     easy?: FloatRatio;
@@ -564,4 +677,4 @@ interface RandomRegionalDifficultyChanceConditionTypes {
     maxChance: number;
 }
 
-type ConditionsTypes = ConditionsBaseTypes | BiomeHasTagConditionTypes | BoolPropertyConditionTypes | DamagedByEntityConditionTypes | EntityKilledConditionTypes | EnumPropertyConditionTypes | FloatPropertyConditionTypes | HasMarkVariantConditionTypes | HasPropertyConditionTypes | HasVariantConditionTypes | IntPropertyConditionTypes | KilledByEntityConditionTypes | MatchToolConditionTypes | PassengerOfEntityConditionTypes | RandomChanceConditionTypes | RandomChanceWithLootingConditionTypes | RandomDifficultyChanceConditionTypes | RandomRegionalDifficultyChanceConditionTypes;
+type ConditionsTypes = BiomeHasTagConditionTypes | BoolPropertyConditionTypes | DamagedByEntityConditionTypes | EntityKilledConditionTypes | EnumPropertyConditionTypes | FloatPropertyConditionTypes | HasMarkVariantConditionTypes | HasPropertyConditionTypes | HasVariantConditionTypes | IntPropertyConditionTypes | KilledByEntityConditionTypes | MatchToolConditionTypes | PassengerOfEntityConditionTypes | RandomChanceConditionTypes | RandomChanceWithLootingConditionTypes | RandomDifficultyChanceConditionTypes | RandomRegionalDifficultyChanceConditionTypes | KilledByPlayerConditionTypes | KilledByPlayerOrPetsConditionTypes | IsBabyConditionTypes;

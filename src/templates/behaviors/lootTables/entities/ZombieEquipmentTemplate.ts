@@ -74,7 +74,6 @@ export const ZombieEquipmentTemplate = createBPLootTable({
             ]
         },
         {
-            // TODO: Falta la propiedad requerida 'rolls' segun el tipado.
             conditions: [
                 {
                     condition: "random_difficulty_chance",
@@ -94,32 +93,26 @@ export const ZombieEquipmentTemplate = createBPLootTable({
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/entities/armor_set_leather.json"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/entities/armor_set_copper.json"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/entities/armor_set_gold.json"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/entities/armor_set_chain.json"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/entities/armor_set_iron.json"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/entities/armor_set_diamond.json"
                 }

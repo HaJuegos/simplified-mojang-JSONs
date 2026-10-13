@@ -7,8 +7,6 @@ import { createBPLootTable } from "../../../../../builders/behaviors/lootTables/
  * @author HaJuegos - 12-10-2026
  */
 export const VillageMasonTemplate = createBPLootTable({
-    // TODO: La propiedad 'type' no existe en el tipado.
-    type: "minecraft:chest",
     pools: [
         {
             rolls: {
@@ -17,12 +15,10 @@ export const VillageMasonTemplate = createBPLootTable({
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -32,7 +28,6 @@ export const VillageMasonTemplate = createBPLootTable({
                     name: "minecraft:clay_ball"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:flower_pot"
                 },
@@ -51,8 +46,7 @@ export const VillageMasonTemplate = createBPLootTable({
                     weight: 4,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 4
@@ -62,17 +56,14 @@ export const VillageMasonTemplate = createBPLootTable({
                     name: "minecraft:bread"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:yellow_dye"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:smooth_stone"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:emerald"
                 }

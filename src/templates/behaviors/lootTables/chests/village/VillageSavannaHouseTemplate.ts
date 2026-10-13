@@ -7,8 +7,6 @@ import { createBPLootTable } from "../../../../../builders/behaviors/lootTables/
  * @author HaJuegos - 12-10-2026
  */
 export const VillageSavannaHouseTemplate = createBPLootTable({
-    // TODO: La propiedad 'type' no existe en el tipado.
-    type: "minecraft:chest",
     pools: [
         {
             rolls: {
@@ -17,12 +15,10 @@ export const VillageSavannaHouseTemplate = createBPLootTable({
             },
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 3
@@ -46,8 +42,7 @@ export const VillageSavannaHouseTemplate = createBPLootTable({
                     weight: 10,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 4
@@ -61,8 +56,7 @@ export const VillageSavannaHouseTemplate = createBPLootTable({
                     weight: 10,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 5
@@ -76,8 +70,7 @@ export const VillageSavannaHouseTemplate = createBPLootTable({
                     weight: 2,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 4
@@ -91,8 +84,7 @@ export const VillageSavannaHouseTemplate = createBPLootTable({
                     weight: 10,
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -102,17 +94,14 @@ export const VillageSavannaHouseTemplate = createBPLootTable({
                     name: "minecraft:acacia_sapling"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:saddle"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
-                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
-                            function: "minecraft:set_count",
+                            function: "set_count",
                             count: {
                                 min: 1,
                                 max: 2
@@ -122,7 +111,6 @@ export const VillageSavannaHouseTemplate = createBPLootTable({
                     name: "minecraft:torch"
                 },
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     name: "minecraft:bucket"
                 }
@@ -132,7 +120,6 @@ export const VillageSavannaHouseTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/chests/village/village_bundle.json"
                 }

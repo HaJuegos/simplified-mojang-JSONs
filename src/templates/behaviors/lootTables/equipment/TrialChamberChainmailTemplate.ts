@@ -18,7 +18,6 @@ export const TrialChamberChainmailTemplate = createBPLootTable({
             ],
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
@@ -28,7 +27,6 @@ export const TrialChamberChainmailTemplate = createBPLootTable({
                         },
                         {
                             function: "specific_enchants",
-                            // TODO: Se esperaba un texto y llego una lista.
                             enchants: [
                                 {
                                     id: "protection",
@@ -59,7 +57,6 @@ export const TrialChamberChainmailTemplate = createBPLootTable({
             ],
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "item",
                     functions: [
                         {
@@ -69,7 +66,6 @@ export const TrialChamberChainmailTemplate = createBPLootTable({
                         },
                         {
                             function: "specific_enchants",
-                            // TODO: Se esperaba un texto y llego una lista.
                             enchants: [
                                 {
                                     id: "protection",

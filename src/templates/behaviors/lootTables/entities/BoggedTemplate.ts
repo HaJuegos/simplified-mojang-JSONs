@@ -81,12 +81,10 @@ export const BoggedTemplate = createBPLootTable({
                                 min: 0,
                                 max: 1
                             },
-                            // TODO: La propiedad 'limit' no existe en el tipado de 'looting_enchant'.
                             limit: 1
                         },
                         {
-                            // TODO: El valor 'minecraft:set_potion' de 'function' no existe en el tipado.
-                            function: "minecraft:set_potion",
+                            function: "set_potion",
                             id: "poison"
                         }
                     ]

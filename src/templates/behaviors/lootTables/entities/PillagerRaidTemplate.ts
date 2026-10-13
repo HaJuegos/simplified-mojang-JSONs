@@ -12,7 +12,6 @@ export const PillagerRaidTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/entities/pillager.json"
                 }
@@ -22,7 +21,6 @@ export const PillagerRaidTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/entities/raider_drops.json"
                 }

@@ -12,7 +12,6 @@ export const VindicatorRaidTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/entities/vindication_illager.json"
                 }
@@ -22,7 +21,6 @@ export const VindicatorRaidTemplate = createBPLootTable({
             rolls: 1,
             entries: [
                 {
-                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
                     type: "loot_table",
                     name: "loot_tables/entities/raider_drops.json"
                 }
