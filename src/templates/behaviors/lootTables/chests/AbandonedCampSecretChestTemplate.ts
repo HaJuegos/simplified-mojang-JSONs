@@ -1,0 +1,261 @@
+import { FinalEntityBuilderTemplate } from "../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const AbandonedCampSecretChestTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: 2,
+            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
+            bonusRolls: 0,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:diamond",
+                    weight: 1,
+                    count: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:potion",
+                    functions: [
+                        {
+                            function: "set_potion",
+                            id: "healing"
+                        }
+                    ],
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:potion",
+                    functions: [
+                        {
+                            function: "set_potion",
+                            id: "leaping"
+                        }
+                    ],
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:potion",
+                    functions: [
+                        {
+                            function: "set_potion",
+                            id: "nightvision"
+                        }
+                    ],
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:potion",
+                    functions: [
+                        {
+                            function: "set_potion",
+                            id: "swiftness"
+                        }
+                    ],
+                    weight: 1
+                }
+            ]
+        },
+        {
+            rolls: {
+                min: 4,
+                max: 6
+            },
+            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
+            bonusRolls: 0,
+            entries: [
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            },
+                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
+                            add: false
+                        }
+                    ],
+                    name: "minecraft:empty_map",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 4
+                            },
+                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
+                            add: false
+                        }
+                    ],
+                    name: "minecraft:copper_ingot",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 4
+                            },
+                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
+                            add: false
+                        }
+                    ],
+                    name: "minecraft:gold_ingot",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 4
+                            },
+                            // TODO: La propiedad 'add' no existe en el tipado de 'set_count'.
+                            add: false
+                        }
+                    ],
+                    name: "minecraft:iron_ingot",
+                    weight: 1
+                }
+            ]
+        },
+        {
+            rolls: {
+                min: 0,
+                max: 1
+            },
+            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
+            bonusRolls: 0,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:iron_axe",
+                    weight: 1,
+                    count: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:iron_boots",
+                    weight: 1,
+                    count: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:iron_leggings",
+                    weight: 1,
+                    count: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:iron_spear",
+                    weight: 1,
+                    count: 1
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            // TODO: La propiedad 'bonus_rolls' no existe en el tipado.
+            bonusRolls: 0,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:map",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "exploration_map",
+                            destination: "trial_chambers"
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:map",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "exploration_map",
+                            destination: "jungle_temple"
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:map",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "exploration_map",
+                            destination: "mansion"
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:map",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "exploration_map",
+                            destination: "buried_mineshaft"
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:map",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "exploration_map",
+                            destination: "buried_ancient_city"
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:map",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "exploration_map",
+                            destination: "desert_pyramid"
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:map",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "exploration_map",
+                            destination: "warm_ocean_ruins"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+});

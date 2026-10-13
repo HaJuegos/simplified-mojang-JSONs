@@ -1,0 +1,70 @@
+import { FinalEntityBuilderTemplate } from "../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const WarmOceanRuinsBrushableBlockTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: {
+                min: 1,
+                max: 1
+            },
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:snort_pottery_sherd",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:angler_pottery_sherd",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:shelter_pottery_sherd",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:iron_axe",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:emerald",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:wheat",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:wooden_hoe",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:coal",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:gold_nugget",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:sniffer_egg",
+                    weight: 1
+                }
+            ]
+        }
+    ]
+});

@@ -1,0 +1,120 @@
+import { FinalEntityBuilderTemplate } from "../../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const JungleJunkTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:leather_boots",
+                    weight: 10,
+                    functions: [
+                        {
+                            function: "set_damage",
+                            damage: {
+                                min: 0,
+                                max: 0.9
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:leather",
+                    weight: 10
+                },
+                {
+                    type: "item",
+                    name: "minecraft:bone",
+                    weight: 10
+                },
+                {
+                    type: "item",
+                    name: "minecraft:potion",
+                    weight: 10
+                },
+                {
+                    type: "item",
+                    name: "minecraft:string",
+                    weight: 5
+                },
+                {
+                    type: "item",
+                    name: "minecraft:fishing_rod",
+                    weight: 2,
+                    functions: [
+                        {
+                            function: "set_damage",
+                            damage: {
+                                min: 0,
+                                max: 0.9
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:bowl",
+                    weight: 10
+                },
+                {
+                    type: "item",
+                    name: "minecraft:stick",
+                    weight: 5
+                },
+                {
+                    type: "item",
+                    name: "minecraft:dye",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_data",
+                            data: 0
+                        },
+                        {
+                            function: "set_count",
+                            count: 10
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:dye",
+                    weight: 10,
+                    functions: [
+                        {
+                            function: "set_data",
+                            data: 3
+                        },
+                        {
+                            function: "set_count",
+                            count: 1
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:tripwire_hook",
+                    weight: 10
+                },
+                {
+                    type: "item",
+                    name: "minecraft:rotten_flesh",
+                    weight: 10
+                },
+                {
+                    type: "item",
+                    name: "minecraft:bamboo",
+                    weight: 10
+                }
+            ]
+        }
+    ]
+});

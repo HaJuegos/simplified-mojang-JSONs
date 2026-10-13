@@ -1,0 +1,139 @@
+import { FinalEntityBuilderTemplate } from "../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const StrongholdCrossingTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: {
+                min: 1,
+                max: 4
+            },
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:iron_ingot",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 5
+                            }
+                        }
+                    ],
+                    weight: 50
+                },
+                {
+                    type: "item",
+                    name: "minecraft:gold_ingot",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ],
+                    weight: 25
+                },
+                {
+                    type: "item",
+                    name: "minecraft:redstone",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 4,
+                                max: 9
+                            }
+                        }
+                    ],
+                    weight: 25
+                },
+                {
+                    type: "item",
+                    name: "minecraft:coal",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 3,
+                                max: 8
+                            }
+                        }
+                    ],
+                    weight: 50
+                },
+                {
+                    type: "item",
+                    name: "minecraft:bread",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ],
+                    weight: 75
+                },
+                {
+                    type: "item",
+                    name: "minecraft:apple",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ],
+                    weight: 75
+                },
+                {
+                    type: "item",
+                    name: "minecraft:iron_pickaxe",
+                    weight: 5
+                },
+                {
+                    type: "item",
+                    name: "minecraft:book",
+                    weight: 6,
+                    functions: [
+                        {
+                            function: "enchant_with_levels",
+                            levels: 30,
+                            treasure: true
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:dye",
+                    weight: 75,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        },
+                        {
+                            function: "set_data",
+                            data: 0
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+});

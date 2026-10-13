@@ -1,0 +1,492 @@
+import { FinalEntityBuilderTemplate } from "../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const SpawnBonusChestTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:stone_axe",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:wooden_axe",
+                    weight: 3
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:stone_pickaxe",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:wooden_pickaxe",
+                    weight: 3
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:apple",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:bread",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:salmon",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:stick",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 12
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:oak_planks",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 12
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:acacia_log",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:dark_oak_log",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:mangrove_log",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:oak_log",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:spruce_log",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:birch_log",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:jungle_log",
+                    weight: 1,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:potato",
+                    weight: 3,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:carrot",
+                    weight: 3,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:oak_sapling",
+                    weight: 2,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 4,
+                                max: 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:spruce_sapling",
+                    weight: 2,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 4,
+                                max: 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:birch_sapling",
+                    weight: 2,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 4,
+                                max: 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:jungle_sapling",
+                    weight: 4,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 4,
+                                max: 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:acacia_sapling",
+                    weight: 2,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 4,
+                                max: 4
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:dark_oak_sapling",
+                    weight: 2,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 4,
+                                max: 4
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:melon_seeds",
+                    weight: 3,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:pumpkin_seeds",
+                    weight: 3,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:beetroot_seeds",
+                    weight: 3,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:cactus",
+                    weight: 3,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:cocoa_beans",
+                    weight: 2,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:brown_mushroom",
+                    weight: 2,
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_count' de 'function' no existe en el tipado.
+                            function: "minecraft:set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+});

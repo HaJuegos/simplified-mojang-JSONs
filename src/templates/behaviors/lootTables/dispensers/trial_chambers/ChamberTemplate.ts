@@ -1,0 +1,210 @@
+import { FinalEntityBuilderTemplate } from "../../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const ChamberTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:water_bucket",
+                    weight: 4,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1.0
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:arrow",
+                    weight: 4,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 4,
+                                max: 8
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:snowball",
+                    weight: 6,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 4,
+                                max: 8
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:egg",
+                    weight: 2,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 4,
+                                max: 8
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:fire_charge",
+                    weight: 6,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 4,
+                                max: 8
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:splash_potion",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_potion",
+                            id: "slowness"
+                        },
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 2,
+                                max: 5
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:splash_potion",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_potion",
+                            id: "poison"
+                        },
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 2,
+                                max: 5
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:splash_potion",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_potion",
+                            id: "weakness"
+                        },
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 2,
+                                max: 5
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:lingering_potion",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_potion",
+                            id: "slowness"
+                        },
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 2,
+                                max: 5
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:lingering_potion",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_potion",
+                            id: "poison"
+                        },
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 2,
+                                max: 5
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:lingering_potion",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_potion",
+                            id: "weakness"
+                        },
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 2,
+                                max: 5
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:lingering_potion",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_potion",
+                            id: "healing"
+                        },
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 2,
+                                max: 5
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+});

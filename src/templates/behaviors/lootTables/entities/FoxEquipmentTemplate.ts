@@ -1,0 +1,58 @@
+import { FinalEntityBuilderTemplate } from "../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const FoxEquipmentTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: 1,
+            conditions: [
+                {
+                    condition: "random_chance",
+                    chance: 0.2
+                }
+            ],
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:emerald",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:egg",
+                    weight: 4
+                },
+                {
+                    type: "item",
+                    name: "minecraft:rabbit_foot",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:rabbit_hide",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:wheat",
+                    weight: 4
+                },
+                {
+                    type: "item",
+                    name: "minecraft:leather",
+                    weight: 4
+                },
+                {
+                    type: "item",
+                    name: "minecraft:feather",
+                    weight: 3
+                }
+            ]
+        }
+    ]
+});

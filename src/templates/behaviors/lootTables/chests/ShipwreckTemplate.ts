@@ -1,0 +1,110 @@
+import { FinalEntityBuilderTemplate } from "../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const ShipwreckTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: 1,
+            entries: [
+                {
+                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
+                    type: "item",
+                    name: "minecraft:map",
+                    functions: [
+                        {
+                            function: "exploration_map",
+                            destination: "buriedtreasure"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 3,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:compass",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:map",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:clock",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:paper",
+                    weight: 20,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 10
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:feather",
+                    weight: 10,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 5
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:book",
+                    weight: 5,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 5
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "empty",
+                    weight: 5
+                },
+                {
+                    type: "item",
+                    name: "minecraft:coast_armor_trim_smithing_template",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 2
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+});

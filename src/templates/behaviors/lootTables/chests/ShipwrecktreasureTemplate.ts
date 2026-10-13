@@ -1,0 +1,146 @@
+import { FinalEntityBuilderTemplate } from "../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const ShipwrecktreasureTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: {
+                min: 3,
+                max: 6
+            },
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:iron_ingot",
+                    weight: 90,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 5
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:gold_ingot",
+                    weight: 10,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 5
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:emerald",
+                    weight: 40,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 5
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:diamond",
+                    weight: 5
+                },
+                {
+                    type: "item",
+                    name: "minecraft:experience_bottle",
+                    weight: 5
+                }
+            ]
+        },
+        {
+            rolls: {
+                min: 2,
+                max: 5
+            },
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:iron_nugget",
+                    weight: 50,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 10
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:gold_nugget",
+                    weight: 10,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 10
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:dye",
+                    weight: 20,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 10
+                            }
+                        },
+                        {
+                            function: "set_data",
+                            data: 4
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "empty",
+                    weight: 5
+                },
+                {
+                    type: "item",
+                    name: "minecraft:coast_armor_trim_smithing_template",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 2
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+});

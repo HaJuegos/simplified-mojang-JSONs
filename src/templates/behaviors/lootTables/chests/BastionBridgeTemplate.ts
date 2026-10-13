@@ -1,0 +1,322 @@
+import { FinalEntityBuilderTemplate } from "../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const BastionBridgeTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: 1,
+            entries: [
+                {
+                    // TODO: Falta la propiedad requerida 'weight' segun el tipado.
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1
+                        }
+                    ],
+                    name: "minecraft:lodestone"
+                }
+            ]
+        },
+        {
+            rolls: {
+                min: 1,
+                max: 2
+            },
+            entries: [
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            // TODO: El valor 'minecraft:set_damage' de 'function' no existe en el tipado.
+                            function: "minecraft:set_damage",
+                            damage: {
+                                min: 0.1,
+                                max: 0.5
+                            }
+                        },
+                        {
+                            function: "enchant_randomly"
+                        }
+                    ],
+                    name: "minecraft:crossbow",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 10,
+                                max: 28
+                            }
+                        }
+                    ],
+                    name: "minecraft:arrow",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 8,
+                                max: 12
+                            }
+                        }
+                    ],
+                    name: "minecraft:gilded_blackstone",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 3,
+                                max: 8
+                            }
+                        }
+                    ],
+                    name: "minecraft:crying_obsidian",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1
+                        }
+                    ],
+                    name: "minecraft:gold_block",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 4,
+                                max: 9
+                            }
+                        }
+                    ],
+                    name: "minecraft:gold_ingot",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 4,
+                                max: 9
+                            }
+                        }
+                    ],
+                    name: "minecraft:iron_ingot",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1
+                        }
+                    ],
+                    name: "minecraft:golden_sword",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1
+                        },
+                        {
+                            function: "enchant_randomly"
+                        }
+                    ],
+                    name: "minecraft:golden_chestplate",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1
+                        },
+                        {
+                            function: "enchant_randomly"
+                        }
+                    ],
+                    name: "minecraft:golden_helmet",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1
+                        },
+                        {
+                            function: "enchant_randomly"
+                        }
+                    ],
+                    name: "minecraft:golden_leggings",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1
+                        },
+                        {
+                            function: "enchant_randomly"
+                        }
+                    ],
+                    name: "minecraft:golden_boots",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1
+                        },
+                        {
+                            function: "enchant_randomly"
+                        }
+                    ],
+                    name: "minecraft:golden_axe",
+                    weight: 1
+                }
+            ]
+        },
+        {
+            rolls: {
+                min: 2,
+                max: 4
+            },
+            entries: [
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 6
+                            }
+                        }
+                    ],
+                    name: "minecraft:string",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ],
+                    name: "minecraft:leather",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 5,
+                                max: 17
+                            }
+                        }
+                    ],
+                    name: "minecraft:arrow",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 2,
+                                max: 6
+                            }
+                        }
+                    ],
+                    name: "minecraft:iron_nugget",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 2,
+                                max: 6
+                            }
+                        }
+                    ],
+                    name: "minecraft:gold_nugget",
+                    weight: 1
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "empty",
+                    weight: 11
+                },
+                {
+                    type: "item",
+                    name: "minecraft:snout_armor_trim_smithing_template",
+                    weight: 1
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "empty",
+                    weight: 9
+                },
+                {
+                    type: "item",
+                    name: "minecraft:netherite_upgrade_smithing_template",
+                    weight: 1
+                }
+            ]
+        }
+    ]
+});

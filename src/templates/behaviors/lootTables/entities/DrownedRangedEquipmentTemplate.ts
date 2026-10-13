@@ -1,0 +1,51 @@
+import { FinalEntityBuilderTemplate } from "../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const DrownedRangedEquipmentTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: 1,
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:trident",
+                    weight: 5,
+                    functions: [
+                        {
+                            function: "looting_enchant",
+                            count: {
+                                min: 0,
+                                max: 1
+                            }
+                        },
+                        {
+                            function: "enchant_random_gear",
+                            chance: 0.25
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            rolls: 1,
+            conditions: [
+                {
+                    condition: "random_chance",
+                    chance: 0.08
+                }
+            ],
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:nautilus_shell",
+                    weight: 5
+                }
+            ]
+        }
+    ]
+});

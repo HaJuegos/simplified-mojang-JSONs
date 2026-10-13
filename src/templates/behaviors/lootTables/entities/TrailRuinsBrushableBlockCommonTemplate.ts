@@ -1,0 +1,175 @@
+import { FinalEntityBuilderTemplate } from "../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const TrailRuinsBrushableBlockCommonTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: {
+                min: 1,
+                max: 1
+            },
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:emerald",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:wheat",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:wooden_hoe",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:clay",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:brick",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:yellow_dye",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:blue_dye",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:light_blue_dye",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:white_dye",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:orange_dye",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:red_candle",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:green_candle",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:purple_candle",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:brown_candle",
+                    weight: 2
+                },
+                {
+                    type: "item",
+                    name: "minecraft:magenta_stained_glass_pane",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:pink_stained_glass_pane",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:blue_stained_glass_pane",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:light_blue_stained_glass_pane",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:red_stained_glass_pane",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:yellow_stained_glass_pane",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:purple_stained_glass_pane",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:spruce_hanging_sign",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:oak_hanging_sign",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:gold_nugget",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:coal",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:wheat_seeds",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:beetroot_seeds",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:deadbush",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:flower_pot",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:string",
+                    weight: 1
+                },
+                {
+                    type: "item",
+                    name: "minecraft:lead",
+                    weight: 1
+                }
+            ]
+        }
+    ]
+});

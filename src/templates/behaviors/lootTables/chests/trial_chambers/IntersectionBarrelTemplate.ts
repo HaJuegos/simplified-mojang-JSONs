@@ -1,0 +1,169 @@
+import { FinalEntityBuilderTemplate } from "../../../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPLootTable } from "../../../../../builders/behaviors/lootTables/LootTablesTemplateBuilder";
+
+/**
+ * Plantilla vanilla del LootTable para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalEntityBuilderTemplate}
+ * @author HaJuegos - 12-10-2026
+ */
+export const IntersectionBarrelTemplate = createBPLootTable({
+    pools: [
+        {
+            rolls: {
+                min: 1,
+                max: 3
+            },
+            entries: [
+                {
+                    type: "item",
+                    name: "minecraft:diamond_axe",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1.0
+                        },
+                        {
+                            function: "set_damage",
+                            damage: {
+                                min: 0.4,
+                                max: 0.9
+                            }
+                        },
+                        {
+                            function: "enchant_randomly"
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:diamond_pickaxe",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1.0
+                        },
+                        {
+                            function: "set_damage",
+                            damage: {
+                                min: 0.15,
+                                max: 0.8
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:diamond",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 3
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:compass",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1.0
+                        },
+                        {
+                            function: "set_damage",
+                            damage: {
+                                min: 0.15,
+                                max: 0.8
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:bucket",
+                    weight: 1,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 1,
+                                max: 2
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:golden_axe",
+                    weight: 4,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1.0
+                        },
+                        {
+                            function: "set_damage",
+                            damage: {
+                                min: 0.15,
+                                max: 0.8
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:golden_pickaxe",
+                    weight: 4,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: 1.0
+                        },
+                        {
+                            function: "set_damage",
+                            damage: {
+                                min: 0.15,
+                                max: 0.8
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:bamboo_planks",
+                    weight: 10,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 5,
+                                max: 15
+                            }
+                        }
+                    ]
+                },
+                {
+                    type: "item",
+                    name: "minecraft:baked_potato",
+                    weight: 10,
+                    functions: [
+                        {
+                            function: "set_count",
+                            count: {
+                                min: 6,
+                                max: 10
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+});
