@@ -1,0 +1,34 @@
+import { createBPRecipe } from "../../../builders/behaviors/recipes/RecipeTemplateBuilder";
+import { TypeRecipesVanillaEnums } from "../../../types/behaviors/recipes/RecipeTemplate";
+
+/**
+ * Plantilla vanilla de la receta para la sobreescritura de la misma. Sus datos base ya estan definidos.
+ * @type {FinalRecipeBuilderTemplate}
+ * @author HaJuegos - 13-10-2026
+ */
+export const DriedKelpTemplate = createBPRecipe({
+    idRecipe: "minecraft:dried_kelp",
+    typeRecipe: TypeRecipesVanillaEnums.RecipeShaped,
+    shaped: {
+        tags: [
+            "crafting_table"
+        ],
+        pattern: [
+            "#"
+        ],
+        key: {
+            "#": {
+                item: "minecraft:dried_kelp_block"
+            }
+        },
+        unlock: [
+            {
+                item: "minecraft:dried_kelp_block"
+            }
+        ],
+        result: {
+            item: "minecraft:dried_kelp",
+            count: 9
+        }
+    }
+});

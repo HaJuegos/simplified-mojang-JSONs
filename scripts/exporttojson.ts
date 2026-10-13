@@ -1,5 +1,5 @@
 import { readdir, mkdir, writeFile, readFile, rm } from "node:fs/promises";
-import { basename, dirname, extname, join, relative, resolve, sep } from "node:path";
+import { basename, dirname, extname, join, relative, resolve } from "node:path";
 import { pathToFileURL, fileURLToPath } from "node:url";
 import * as ts from "typescript";
 
@@ -42,7 +42,7 @@ class ExportToJson {
      * @type {string}
      * @private
      */
-    private readonly templatesDirt = join(this.projectRoot, "src", "templates", "behaviors", "entities");
+    private readonly templatesDirt = join(this.projectRoot, "src", "templates", "behaviors", "lootTables");
 
     /**
      * Ruta principal donde se van a exportar los archivos de TS a JSON leibles.
@@ -298,7 +298,7 @@ class ExportToJson {
                     continue;
                 }
 
-                const relativeName = relative(inputDir, file).replace(/\.(?:tsx|ts)$/, "").split(sep).join(".");
+                const relativeName = relative(inputDir, file).replace(/\.(?:tsx|ts)$/, "");
 
                 for (const { exportName, built } of templates) {
                     const suffix = templates.length > 1 ? `.${exportName.replace(/^__call_/, "call").replace(/[^A-Za-z0-9_-]/g, "_")}` : "";
@@ -306,6 +306,7 @@ class ExportToJson {
                     const jsonBody = JSON.stringify(JSON.parse(built), null, 2);
                     const json = `${this.waterMarkTXT}\n${jsonBody}\n${this.waterMarkTXT}\n`;
 
+                    await mkdir(dirname(output), { recursive: true });
                     await writeFile(output, json, "utf8");
 
                     exportedCount++;

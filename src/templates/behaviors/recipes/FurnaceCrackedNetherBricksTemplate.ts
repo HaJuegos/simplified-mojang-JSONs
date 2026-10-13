@@ -1,0 +1,26 @@
+import { createBPRecipe } from "../../../builders/behaviors/recipes/RecipeTemplateBuilder";
+import { TypeRecipesVanillaEnums } from "../../../types/behaviors/recipes/RecipeTemplate";
+
+/**
+ * Plantilla vanilla de la receta para la sobreescritura de la misma. Sus datos base ya estan definidos.
+ * @type {FinalRecipeBuilderTemplate}
+ * @author HaJuegos - 13-10-2026
+ */
+export const FurnaceCrackedNetherBricksTemplate = createBPRecipe({
+    idRecipe: "minecraft:furnace_cracked_nether_bricks",
+    typeRecipe: TypeRecipesVanillaEnums.RecipeFurnace,
+    furnace: {
+        unlock: [
+            {
+                item: "minecraft:nether_brick"
+            }
+        ],
+        targetBlocks: [
+            "furnace"
+        ],
+        input: "minecraft:nether_brick",
+        output: "minecraft:cracked_nether_bricks",
+        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
+        priority: 330
+    }
+});
