@@ -7,7 +7,7 @@ import { BehaviorLooTablesBuilder } from "./LootTablesBuilder";
  * @extends {BehaviorLooTablesBuilder}
  * @author HaJuegos - 08-10-2026
  */
-class FinalLootTableBuilderTemplate extends BehaviorLooTablesBuilder {
+export class FinalLootTableBuilderTemplate extends BehaviorLooTablesBuilder {
     /**
      * Argumentos principales para la creacion de un Loot Table de una plantilla en concreto.
      * @param {BPLootTableTemplateDef} def Los valores a definir fijos en el loot table.

@@ -62,6 +62,21 @@ type PotionIdEnums = "water" | "mundane" | "long_mundane" | "thick" | "awkward" 
  */
 type EnchantsIdEnums = "aqua_affinity" | "bane_of_arthropods" | "blast_protection" | "channeling" | "binding" | "curse_of_vanishing" | "depth_strider" | "efficiency" | "feather_falling" | "fire_aspect" | "fire_protection" | "flame" | "fortune" | "frost_walker" | "impaling" | "infinity" | "knockback" | "looting" | "loyalty" | "luck_of_the_sea" | "lure" | "mending" | "multishot" | "piercing" | "projectile_protection" | "protection" | "power" | "punch" | "quick_charge" | "respiration" | "riptide" | "sharpness" | "silk_touch" | "smite" | "soul_speed" | "thorns" | "unbreaking" | (string & {});
 
+type PropOf<U, K extends PropertyKey> = U extends unknown ? (K extends keyof U ? U[K] : never) : never;
+type KeysOfUnion<U> = U extends unknown ? keyof U : never;
+type Match<T, S> = S extends unknown ? (T extends S ? S : never) : never;
+
+type DeepStrict<T, S> =
+    T extends readonly unknown[]
+    ? { [K in keyof T]: DeepStrict<T[K], S extends readonly (infer SU)[] ? SU : never> }
+    : T extends object
+    ? [Match<T, S>] extends [never]
+    ? T
+    : { [K in keyof T]: K extends KeysOfUnion<Match<T, S>>
+        ? DeepStrict<T[K], PropOf<Match<T, S>, K>>
+        : never }
+    : T;
+
 /**
  * Tipado final para la creacion de una plantilla base de un loot table fijo.
  * @template {readonly PoolsParamsTypes[]} Pools Lista de pools a validar del template.
@@ -70,7 +85,7 @@ type EnchantsIdEnums = "aqua_affinity" | "bane_of_arthropods" | "blast_protectio
 type BPLootTableTemplateDef<
     Pools extends readonly PoolsParamsTypes[] = readonly PoolsParamsTypes[]
 > = {
-    pools: Pools;
+    pools: Pools & DeepStrict<Pools, readonly PoolsParamsTypes[]>;
 };
 
 /**
@@ -148,7 +163,7 @@ type BPLootTableTemplateOver<
          * @type {?{pools?: AddPools;}}
          */
         add?: {
-            pools?: AddPools;
+            pools?: AddPools & DeepStrict<AddPools, readonly PoolsParamsTypes[]>;
         };
     };
 
