@@ -1,0 +1,9 @@
+export * as Barrels from "./barrels/_root";
+export * as Blocks from "./blocks/_root";
+export * as Chests from "./chests/_root";
+export * as Dispensers from "./dispensers/_root";
+export * as Entities from "./entities/_root";
+export * as Equipment from "./equipment/_root";
+export * as Gameplay from "./gameplay/_root";
+export * as Pots from "./pots/_root";
+export * as Spawners from "./spawners/_root";

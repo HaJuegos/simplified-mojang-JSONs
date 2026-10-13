@@ -1,0 +1,16 @@
+export { VillageArmorerTemplate } from "./VillageArmorerTemplate";
+export { VillageBundleTemplate } from "./VillageBundleTemplate";
+export { VillageButcherTemplate } from "./VillageButcherTemplate";
+export { VillageCartographerTemplate } from "./VillageCartographerTemplate";
+export { VillageDesertHouseTemplate } from "./VillageDesertHouseTemplate";
+export { VillageFletcherTemplate } from "./VillageFletcherTemplate";
+export { VillageMasonTemplate } from "./VillageMasonTemplate";
+export { VillagePlainsHouseTemplate } from "./VillagePlainsHouseTemplate";
+export { VillageSavannaHouseTemplate } from "./VillageSavannaHouseTemplate";
+export { VillageShepherdTemplate } from "./VillageShepherdTemplate";
+export { VillageSnowyHouseTemplate } from "./VillageSnowyHouseTemplate";
+export { VillageTaigaHouseTemplate } from "./VillageTaigaHouseTemplate";
+export { VillageTanneryTemplate } from "./VillageTanneryTemplate";
+export { VillageTempleTemplate } from "./VillageTempleTemplate";
+export { VillageToolsmithTemplate } from "./VillageToolsmithTemplate";
+export { VillageWeaponsmithTemplate } from "./VillageWeaponsmithTemplate";

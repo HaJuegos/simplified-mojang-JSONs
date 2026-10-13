@@ -2,6 +2,8 @@
 export { BPEntityComponents } from "./components/behaviors/entities";
 export { BPEntityTemplates } from "./templates/behaviors/entities";
 
+export { BPLootTableTemplates } from "./templates/behaviors/lootTables/index";
+
 
 // Exportacion de plantillas para la creacion custom.
 export { createBPManifest } from "./builders/behaviors/ManifestTemplateBuilder";
@@ -16,4 +18,4 @@ export type { BPFinalDefinitionManifest } from "./types/behaviors/ManifestTempla
 export type { BPAnimControllerFinalDefinition } from "./types/behaviors/animContollers/AnimControllerTemplate";
 export type { BPDialogueDefinition } from "./types/behaviors/dialogues/DialogueTemplate";
 export type { BPEntitiesTemplateDef, BPEntitiesTemplateOverride } from "./types/behaviors/entities/EntitiesTemplate";
-export type { BPLootTableFinalDefinition } from "./types/behaviors/lootTables/LootTablesTemplate";
+export type { BPLootTableTemplateDef, BPLootTableFinalOverDefinition, BPLootTableTemplateOver } from "./types/behaviors/lootTables/LootTablesTemplate";

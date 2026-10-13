@@ -1,0 +1,1 @@
+export { CorridorTemplate } from "./CorridorTemplate";

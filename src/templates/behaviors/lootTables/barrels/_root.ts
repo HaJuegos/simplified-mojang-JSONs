@@ -1,0 +1,1 @@
+export { AbandonedCampBarrelTemplate } from "./AbandonedCampBarrelTemplate";

@@ -30,6 +30,12 @@ interface BarrelTarget {
      * @type {?boolean}
      */
     syncIds?: boolean;
+
+    /**
+     * (Opcional) Si es true, recorre las subcarpetas y las expone como namespaces anidadas.
+     * @type {?boolean}
+     */
+    recursive?: boolean;
 }
 
 /**
@@ -47,6 +53,7 @@ class GenerateAutoIndexs {
     private readonly targetDirs: BarrelTarget[] = [
         { dir: "src/components/behaviors/entities", namespace: "BPEntityComponents", kind: "class", syncIds: true },
         { dir: "src/templates/behaviors/entities", namespace: "BPEntityTemplates", kind: "const" },
+        { dir: "src/templates/behaviors/lootTables", namespace: "BPLootTableTemplates", kind: "const", recursive: true },
     ];
 
     /**
@@ -120,26 +127,57 @@ class GenerateAutoIndexs {
     }
 
     /**
-     * Metodo principal auxiliar que genera la clase principal anidando las demas expuestas en una variante final.
-     * @param {BarrelTarget} param0 Parametros principales a obtener.
-     * @param {string} param0.dir Direccion de la ruta del archivo a obtener.
-     * @param {string} param0.namespace Namespace de la clase principal anidada a crear.
-     * @param {("class" | "const")} param0.kind Tipo de target de la clase anidada en cuestion.
-     * @param {boolean} param0.syncIds Validador si se debe mantener sincronizadas los IDs respecto a la version previa.
-     * @author HaJuegos - 01-10-2026
+     * Metodo auxiliar que convierte el nombre de una carpeta en PastalCase para usarlo como namespace.
+     * @param {string} name Nombre de la carpeta en cuestion.
+     * @returns {string} Nombre parseado a PascalCase.
+     * @author HaJuegos - 13-10-2026 
      * @private
      */
-    private generateRoot({ dir, namespace, kind, syncIds }: BarrelTarget): void {
-        const files = readdirSync(dir).filter(f => f.endsWith(".ts") && !f.startsWith("_") && f != "index.ts").sort();
-        const reexports: string[] = [];
-        let synced = 0;
+    private toPascalCase(name: string): string {
+        return name.split(/[^0-9A-Za-z]+/).filter(Boolean).map(p => p[0].toUpperCase() + p.slice(1)).join("");
+    }
 
-        for (const file of files) {
-            const mod = basename(file, ".ts");
-            const path = join(dir, file);
+    /**
+     * Metodo auxiliar que genera las lineas de re-exportacion de un directorio, y de sus subcarpetas si es recursivo.
+     * @param {string} dir Directorio a recorrer.
+     * @param {BarrelTarget['kind']} kind Tipo de target a exponer.
+     * @param {(boolean | undefined)} [syncIds] (Opcional) Si se deben sincronizar los IDs de los componentes.
+     * @param {(boolean | undefined)} [recursive] (Opcional) Si se deben recorrer las subcarpetas. 
+     * @param {{ synced: number; }} stats Contador de IDs sincronizados. 
+     * @returns {string[]} Lineas de exportacion finales del directorio.
+     * @author HaJuegos - 13-10-2026
+     * @private
+     */
+    private buildRoot(dir: string, kind: BarrelTarget['kind'], syncIds: boolean | undefined, recursive: boolean | undefined, stats: { synced: number; }): string[] {
+        const entries = readdirSync(dir, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name));
+        const reExports: string[] = [];
+
+        for (const entry of entries) {
+            const path = join(dir, entry.name);
+
+            if (entry.isDirectory()) {
+                if (!recursive || entry.name.startsWith('_')) {
+                    continue;
+                }
+
+                const sub = this.buildRoot(path, kind, syncIds, recursive, stats);
+
+                if (sub.length == 0) {
+                    continue;
+                }
+
+                writeFileSync(join(path, "_root.ts"), sub.join("\n") + "\n", "utf-8");
+                reExports.push(`export * as ${this.toPascalCase(entry.name)} from "./${entry.name}/_root";`);
+
+                continue;
+            }
+
+            if (!entry.name.endsWith(".ts") || entry.name.startsWith("_") || entry.name == "index.ts") {
+                continue;
+            }
 
             if (syncIds && this.syncCompID(path)) {
-                synced++;
+                stats.synced++;
             }
 
             const names = this.extractClasses(path, kind);
@@ -148,13 +186,32 @@ class GenerateAutoIndexs {
                 continue;
             }
 
-            reexports.push(`export { ${names.join(", ")} } from "./${mod}";`);
+            reExports.push(`export { ${names.join(", ")} } from "./${basename(entry.name, ".ts")}";`);
         }
+
+        return reExports;
+    }
+
+    /**
+     * Metodo principal auxiliar que genera la clase principal anidando las demas expuestas en una variante final.
+     * @param {BarrelTarget} param0 Parametros principales a obtener.
+     * @param {string} param0.dir Direccion de la ruta del archivo a exponer.
+     * @param {string} param0.namespace Namespace de la clase principal anidada en cuestion.
+     * @param {("class" | "const")} param0.kind Tipo de target de la clase anidada en cuestion.
+     * @param {boolean} param0.syncIds Validador si se debe mantener sincronizadas los IDs respectivos a la version previa.
+     * @param {boolean} param0.recursive Si se deben exponer las subcarpetas como namespace anidados.
+     * @returns {void}
+     * @author HaJuegos - 13-10-2026
+     * @private
+     */
+    private generateRoot({ dir, namespace, kind, syncIds, recursive }: BarrelTarget): void {
+        const stats = { synced: 0 };
+        const reexports = this.buildRoot(dir, kind, syncIds, recursive, stats);
 
         writeFileSync(join(dir, "_root.ts"), reexports.join("\n") + "\n", "utf-8");
         writeFileSync(join(dir, "index.ts"), `export * as ${namespace} from "./_root";\n`, "utf-8");
 
-        console.log(`${namespace}: ${reexports.length} archivos${syncIds ? `, ${synced} IDs sincronizados` : ""}`);
+        console.log(`${namespace}: ${reexports.length} exports${syncIds ? `, ${stats.synced} IDs sincronizados` : ""}`);
     }
 }
 
