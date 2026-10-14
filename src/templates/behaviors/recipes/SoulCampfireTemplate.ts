@@ -31,8 +31,6 @@ export const SoulCampfireTemplate = createBPRecipe({
         },
         unlock: [
             {
-                // TODO: Falta la propiedad requerida 'item' segun el tipado.
-                // TODO: La propiedad 'tag' no existe en el tipado.
                 tag: "minecraft:soul_fire_base_blocks"
             }
         ],

@@ -20,7 +20,6 @@ export const FurnaceSeaPickleTemplate = createBPRecipe({
         ],
         input: "minecraft:sea_pickle",
         output: "minecraft:dye:10",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 210
     }
 });

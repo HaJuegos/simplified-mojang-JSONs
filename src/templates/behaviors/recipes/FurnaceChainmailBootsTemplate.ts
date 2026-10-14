@@ -21,7 +21,6 @@ export const FurnaceChainmailBootsTemplate = createBPRecipe({
         ],
         input: "minecraft:chainmail_boots",
         output: "minecraft:iron_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 110
     }
 });

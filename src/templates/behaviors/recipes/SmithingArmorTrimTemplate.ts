@@ -1,22 +1,23 @@
-// TODO: El tipo de receta 'minecraft:recipe_smithing_trim' no existe en el tipado (TypeRecipesVanillaEnums). Migrar manualmente.
-// Contenido original del JSON:
-// {
-//   "format_version": "1.20.10",
-//   "minecraft:recipe_smithing_trim": {
-//     "description": {
-//       "identifier": "minecraft:smithing_armor_trim"
-//     },
-//     "tags": [ "smithing_table" ],
-//     "template": {
-//       "tag": "minecraft:trim_templates"
-//     },
-//     "base": {
-//       "tag": "minecraft:trimmable_armors"
-//     },
-//     "addition": {
-//       "tag": "minecraft:trim_materials"
-//     }
-//   }
-// }
+import { createBPRecipe } from "../../../builders/behaviors/recipes/RecipeTemplateBuilder";
+import { TypeRecipesVanillaEnums } from "../../../types/behaviors/recipes/RecipeTemplate";
 
-export {};
+/**
+ * Plantilla vanilla de la receta para la sobreescritura de la misma. Sus datos base ya estan definidos.
+ * @type {FinalRecipeBuilderTemplate}
+ * @author HaJuegos - 13-10-2026
+ */
+export const SmithingArmorTrimTemplate = createBPRecipe({
+    idRecipe: "minecraft:smithing_armor_trim",
+    typeRecipe: TypeRecipesVanillaEnums.RecipeSmithingTrim,
+    smithingTrim: {
+        template: {
+            tag: "minecraft:trim_templates"
+        },
+        base: {
+            tag: "minecraft:trimmable_armors"
+        },
+        addition: {
+            tag: "minecraft:trim_materials"
+        }
+    }
+});

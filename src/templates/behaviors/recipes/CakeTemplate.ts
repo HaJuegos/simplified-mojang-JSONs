@@ -35,12 +35,9 @@ export const CakeTemplate = createBPRecipe({
         },
         unlock: [
             {
-                // TODO: Falta la propiedad requerida 'item' segun el tipado.
-                // TODO: La propiedad 'tag' no existe en el tipado.
                 tag: "minecraft:egg"
             }
         ],
-        // TODO: Se esperaba un texto y llego una lista.
         result: [
             {
                 item: "minecraft:cake"

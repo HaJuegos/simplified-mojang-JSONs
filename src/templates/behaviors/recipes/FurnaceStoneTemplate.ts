@@ -21,7 +21,6 @@ export const FurnaceStoneTemplate = createBPRecipe({
         ],
         input: "minecraft:stone:0",
         output: "minecraft:smooth_stone",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 370
     }
 });

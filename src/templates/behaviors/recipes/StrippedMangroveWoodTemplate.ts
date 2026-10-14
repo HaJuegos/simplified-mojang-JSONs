@@ -10,7 +10,6 @@ export const StrippedMangroveWoodTemplate = createBPRecipe({
     idRecipe: "minecraft:stripped_mangrove_wood",
     typeRecipe: TypeRecipesVanillaEnums.RecipeShaped,
     shaped: {
-        // TODO: [0] El valor 'deprecated' no existe en el tipado (validos: crafting_table, stonecutter).
         tags: [
             "deprecated"
         ],

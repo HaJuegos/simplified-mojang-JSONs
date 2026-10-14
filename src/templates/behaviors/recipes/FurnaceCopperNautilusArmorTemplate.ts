@@ -21,7 +21,6 @@ export const FurnaceCopperNautilusArmorTemplate = createBPRecipe({
         ],
         input: "minecraft:copper_nautilus_armor",
         output: "minecraft:copper_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 150
     }
 });

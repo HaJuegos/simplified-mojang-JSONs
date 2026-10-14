@@ -23,7 +23,6 @@ export const FurnaceSalmonTemplate = createBPRecipe({
         ],
         input: "minecraft:salmon",
         output: "minecraft:cooked_salmon",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 20
     }
 });

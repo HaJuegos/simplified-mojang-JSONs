@@ -23,7 +23,6 @@ export const FurnaceChickenTemplate = createBPRecipe({
         ],
         input: "minecraft:chicken",
         output: "minecraft:cooked_chicken",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 50
     }
 });

@@ -10,7 +10,6 @@ export const BarrelWithTagDeprecatedTemplate = createBPRecipe({
     idRecipe: "minecraft:barrel_with_tag",
     typeRecipe: TypeRecipesVanillaEnums.RecipeShaped,
     shaped: {
-        // TODO: [0] El valor 'deprecated' no existe en el tipado (validos: crafting_table, stonecutter).
         tags: [
             "deprecated"
         ],

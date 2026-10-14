@@ -21,7 +21,6 @@ export const FurnaceHorseArmorIronTemplate = createBPRecipe({
         ],
         input: "minecraft:horsearmoriron",
         output: "minecraft:iron_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 110
     }
 });

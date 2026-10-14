@@ -20,7 +20,6 @@ export const FurnaceStrippedOakLogTemplate = createBPRecipe({
         ],
         input: "minecraft:stripped_oak_log",
         output: "minecraft:coal:1",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 90
     }
 });

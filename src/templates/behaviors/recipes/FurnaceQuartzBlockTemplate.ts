@@ -21,7 +21,6 @@ export const FurnaceQuartzBlockTemplate = createBPRecipe({
         ],
         input: "minecraft:quartz_block:0",
         output: "minecraft:smooth_quartz",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 390
     }
 });

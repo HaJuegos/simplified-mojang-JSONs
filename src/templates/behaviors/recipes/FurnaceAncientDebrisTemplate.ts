@@ -21,7 +21,6 @@ export const FurnaceAncientDebrisTemplate = createBPRecipe({
         ],
         input: "minecraft:ancient_debris",
         output: "minecraft:netherite_scrap",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 180
     }
 });

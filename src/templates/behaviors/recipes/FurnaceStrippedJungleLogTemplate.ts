@@ -20,7 +20,6 @@ export const FurnaceStrippedJungleLogTemplate = createBPRecipe({
         ],
         input: "minecraft:stripped_jungle_log",
         output: "minecraft:coal:1",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 90
     }
 });

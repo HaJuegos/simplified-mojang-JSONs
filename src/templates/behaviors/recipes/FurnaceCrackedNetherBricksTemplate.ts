@@ -20,7 +20,6 @@ export const FurnaceCrackedNetherBricksTemplate = createBPRecipe({
         ],
         input: "minecraft:nether_brick",
         output: "minecraft:cracked_nether_bricks",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 330
     }
 });

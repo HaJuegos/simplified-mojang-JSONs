@@ -20,7 +20,6 @@ export const FurnaceCobblestoneTemplate = createBPRecipe({
         ],
         input: "minecraft:cobblestone",
         output: "minecraft:stone",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 360
     }
 });

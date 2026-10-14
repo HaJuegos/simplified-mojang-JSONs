@@ -21,7 +21,6 @@ export const FurnaceGoldenHoeTemplate = createBPRecipe({
         ],
         input: "minecraft:golden_hoe",
         output: "minecraft:gold_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 130
     }
 });

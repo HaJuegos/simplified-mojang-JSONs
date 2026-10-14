@@ -21,7 +21,6 @@ export const FurnaceCopperTemplate = createBPRecipe({
         ],
         input: "minecraft:raw_copper",
         output: "minecraft:copper_ingot",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 140
     }
 });

@@ -23,7 +23,6 @@ export const MangroveBoatTemplate = createBPRecipe({
                 data: 4
             }
         },
-        // TODO: El formato de 'unlock' como objeto ('context') no existe en el tipado; solo se admite una lista de items { item, data? }.
         unlock: {
             context: "PlayerInWater"
         },

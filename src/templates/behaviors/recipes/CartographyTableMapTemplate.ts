@@ -10,7 +10,6 @@ export const CartographyTableMapTemplate = createBPRecipe({
     idRecipe: "minecraft:cartography_table_map",
     typeRecipe: TypeRecipesVanillaEnums.RecipeShapeless,
     shapeless: {
-        // TODO: [0] El valor 'cartography_table' no existe en el tipado (validos: crafting_table, stonecutter).
         tags: [
             "cartography_table"
         ],

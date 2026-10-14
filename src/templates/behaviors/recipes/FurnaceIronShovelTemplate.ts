@@ -21,7 +21,6 @@ export const FurnaceIronShovelTemplate = createBPRecipe({
         ],
         input: "minecraft:iron_shovel",
         output: "minecraft:iron_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 110
     }
 });

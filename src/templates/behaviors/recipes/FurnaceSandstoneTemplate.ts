@@ -19,13 +19,11 @@ export const FurnaceSandstoneTemplate = createBPRecipe({
         targetBlocks: [
             "furnace"
         ],
-        // TODO: Se esperaba un texto y llego un objeto.
         input: {
             item: "minecraft:sandstone",
             data: 0
         },
         output: "minecraft:smooth_sandstone",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 410
     }
 });

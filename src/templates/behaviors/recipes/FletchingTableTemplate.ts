@@ -31,7 +31,6 @@ export const FletchingTableTemplate = createBPRecipe({
                 item: "minecraft:flint"
             }
         ],
-        // TODO: Se esperaba un texto y llego una lista.
         result: [
             {
                 item: "minecraft:fletching_table"

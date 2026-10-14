@@ -23,7 +23,6 @@ export const FurnaceBeefTemplate = createBPRecipe({
         ],
         input: "minecraft:beef",
         output: "minecraft:cooked_beef",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 30
     }
 });

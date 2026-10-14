@@ -21,7 +21,6 @@ export const FurnaceDeepslateCoalOreTemplate = createBPRecipe({
         ],
         input: "minecraft:deepslate_coal_ore",
         output: "minecraft:coal",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 250
     }
 });

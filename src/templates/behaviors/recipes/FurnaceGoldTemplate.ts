@@ -21,7 +21,6 @@ export const FurnaceGoldTemplate = createBPRecipe({
         ],
         input: "minecraft:raw_gold",
         output: "minecraft:gold_ingot",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 120
     }
 });

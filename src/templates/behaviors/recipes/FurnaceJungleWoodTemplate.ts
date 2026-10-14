@@ -10,7 +10,6 @@ export const FurnaceJungleWoodTemplate = createBPRecipe({
     idRecipe: "minecraft:furnace_jungle_wood",
     typeRecipe: TypeRecipesVanillaEnums.RecipeFurnace,
     furnace: {
-        // TODO: [0] El valor 'deprecated' no existe en el tipado (validos: furnace, blast_furnace, campfire, soul_campfire, smoker).
         targetBlocks: [
             "deprecated"
         ],

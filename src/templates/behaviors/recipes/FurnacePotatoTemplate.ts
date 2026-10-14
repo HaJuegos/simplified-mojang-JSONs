@@ -23,7 +23,6 @@ export const FurnacePotatoTemplate = createBPRecipe({
         ],
         input: "minecraft:potato",
         output: "minecraft:baked_potato",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 40
     }
 });

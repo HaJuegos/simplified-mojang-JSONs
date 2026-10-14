@@ -20,7 +20,6 @@ export const FurnaceFloweringAzaleaLeavesTemplate = createBPRecipe({
         ],
         input: "minecraft:azalea_leaves_flowered",
         output: "minecraft:leaf_litter",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 240
     }
 });

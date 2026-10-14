@@ -23,7 +23,6 @@ export const FurnaceRabbitTemplate = createBPRecipe({
         ],
         input: "minecraft:rabbit",
         output: "minecraft:cooked_rabbit",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 70
     }
 });

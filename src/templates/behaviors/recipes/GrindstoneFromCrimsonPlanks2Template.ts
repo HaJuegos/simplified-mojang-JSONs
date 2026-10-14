@@ -10,7 +10,6 @@ export const GrindstoneFromCrimsonPlanks2Template = createBPRecipe({
     idRecipe: "minecraft:grindstone_from_crimson_planks2",
     typeRecipe: TypeRecipesVanillaEnums.RecipeShaped,
     shaped: {
-        // TODO: [0] El valor 'deprecated' no existe en el tipado (validos: crafting_table, stonecutter).
         tags: [
             "deprecated"
         ],

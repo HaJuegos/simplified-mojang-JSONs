@@ -21,7 +21,6 @@ export const FurnaceGoldenAxeTemplate = createBPRecipe({
         ],
         input: "minecraft:golden_axe",
         output: "minecraft:gold_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 130
     }
 });

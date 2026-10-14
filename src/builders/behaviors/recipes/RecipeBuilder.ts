@@ -1,4 +1,4 @@
-import { FurnaceBlockEnum, RecipeBrewingTypes, RecipeFurnaceTypes, RecipeShaped, RecipeShapeless, RecipeSmithing, TagsRecipesGlobalEnums, TypeRecipesVanillaEnums } from "../../../types/behaviors/recipes/RecipeTemplate";
+import { FurnaceBlockEnum, RecipeBrewingTypes, RecipeFurnaceTypes, RecipeShaped, RecipeShapeless, RecipeSmithing, RecipeSmithingTrim, TagsRecipesGlobalEnums, TypeRecipesVanillaEnums } from "../../../types/behaviors/recipes/RecipeTemplate";
 import { SnakeCase } from "../../../utils/SnakeCase";
 
 /**
@@ -65,7 +65,7 @@ export class BehaviorRecipeBuilder {
      * @type {(RecipeSmithing | undefined)}
      * @private
      */
-    private recipeSmithing: RecipeSmithing | undefined;
+    private recipeSmithing: RecipeSmithing | RecipeSmithingTrim | undefined;
 
     /**
      * Eventos y parametros iniciales al momento de inicializar o llamar la clase.
@@ -139,12 +139,12 @@ export class BehaviorRecipeBuilder {
 
     /**
      * Metodo principal auxiliar que almacena y crea los datos para una receta de la smithing table a crearse en cuestion.
-     * @param {RecipeSmithing} data Datos de la receta a crear.
+     * @param {RecipeSmithing | RecipeSmithingTrim} data Datos de la receta a crear.
      * @returns {this} Devuelve la misma clase debido a que es un metodo de asignacion de propiedades.
      * @author HaJuegos - 11-10-2026 
      * @protected
      */
-    protected createRecipeSmithing(data: RecipeSmithing): this {
+    protected createRecipeSmithing(data: RecipeSmithing | RecipeSmithingTrim): this {
         this.recipeSmithing = data;
 
         return this;
@@ -239,7 +239,8 @@ export class BehaviorRecipeBuilder {
                     Object.assign(recipeBody, { ...allData, tags: finalTags });
                 }
             } break;
-            case TypeRecipesVanillaEnums.RecipeSmithingTransform: {
+            case TypeRecipesVanillaEnums.RecipeSmithingTransform:
+            case TypeRecipesVanillaEnums.RecipeSmithingTrim: {
                 if (this.recipeSmithing) {
                     const { ...allData } = this.recipeSmithing;
 

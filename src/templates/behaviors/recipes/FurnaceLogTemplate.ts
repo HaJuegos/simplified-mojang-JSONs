@@ -12,20 +12,16 @@ export const FurnaceLogTemplate = createBPRecipe({
     furnace: {
         unlock: [
             {
-                // TODO: Falta la propiedad requerida 'item' segun el tipado.
-                // TODO: La propiedad 'tag' no existe en el tipado.
                 tag: "minecraft:logs_that_burn"
             }
         ],
         targetBlocks: [
             "furnace"
         ],
-        // TODO: Se esperaba un texto y llego un objeto.
         input: {
             tag: "minecraft:logs_that_burn"
         },
         output: "minecraft:coal:1",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 90
     }
 });

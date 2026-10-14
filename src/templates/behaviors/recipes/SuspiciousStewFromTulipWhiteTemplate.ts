@@ -27,7 +27,6 @@ export const SuspiciousStewFromTulipWhiteTemplate = createBPRecipe({
                 item: "minecraft:white_tulip"
             }
         ],
-        // TODO: El formato de 'unlock' como objeto ('context') no existe en el tipado; solo se admite una lista de items { item, data? }.
         unlock: {
             context: "None"
         },

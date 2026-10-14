@@ -23,7 +23,6 @@ export const FurnaceKelpTemplate = createBPRecipe({
         ],
         input: "minecraft:kelp",
         output: "minecraft:dried_kelp",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 80
     }
 });

@@ -54,6 +54,7 @@ class GenerateAutoIndexs {
         { dir: "src/components/behaviors/entities", namespace: "BPEntityComponents", kind: "class", syncIds: true },
         { dir: "src/templates/behaviors/entities", namespace: "BPEntityTemplates", kind: "const" },
         { dir: "src/templates/behaviors/lootTables", namespace: "BPLootTableTemplates", kind: "const", recursive: true },
+        { dir: "src/templates/behaviors/recipes", namespace: "BPRecipesTemplates", kind: "const" },
     ];
 
     /**

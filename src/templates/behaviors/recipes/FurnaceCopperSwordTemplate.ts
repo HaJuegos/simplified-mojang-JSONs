@@ -21,7 +21,6 @@ export const FurnaceCopperSwordTemplate = createBPRecipe({
         ],
         input: "minecraft:copper_sword",
         output: "minecraft:copper_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 150
     }
 });

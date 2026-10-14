@@ -21,7 +21,6 @@ export const FurnaceGoldenSwordTemplate = createBPRecipe({
         ],
         input: "minecraft:golden_sword",
         output: "minecraft:gold_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 130
     }
 });

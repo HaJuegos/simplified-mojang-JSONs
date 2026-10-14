@@ -21,7 +21,6 @@ export const FurnaceCopperPickaxeTemplate = createBPRecipe({
         ],
         input: "minecraft:copper_pickaxe",
         output: "minecraft:copper_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 150
     }
 });

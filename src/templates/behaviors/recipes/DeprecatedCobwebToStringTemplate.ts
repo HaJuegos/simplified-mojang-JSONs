@@ -10,7 +10,6 @@ export const DeprecatedCobwebToStringTemplate = createBPRecipe({
     idRecipe: "minecraft:cobweb_to_string",
     typeRecipe: TypeRecipesVanillaEnums.RecipeShapeless,
     shapeless: {
-        // TODO: [0] El valor 'deprecated' no existe en el tipado (validos: crafting_table, stonecutter).
         tags: [
             "deprecated"
         ],
@@ -19,7 +18,6 @@ export const DeprecatedCobwebToStringTemplate = createBPRecipe({
                 item: "minecraft:string"
             }
         ],
-        // TODO: El formato de 'unlock' como objeto ('context') no existe en el tipado; solo se admite una lista de items { item, data? }.
         unlock: {
             context: "None"
         },

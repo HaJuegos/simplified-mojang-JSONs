@@ -20,7 +20,6 @@ export const FurnaceChorusFruitTemplate = createBPRecipe({
         ],
         input: "minecraft:chorus_fruit",
         output: "minecraft:chorus_fruit_popped",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 220
     }
 });

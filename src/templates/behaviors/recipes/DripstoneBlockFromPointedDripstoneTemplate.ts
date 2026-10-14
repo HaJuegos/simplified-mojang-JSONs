@@ -22,7 +22,6 @@ export const DripstoneBlockFromPointedDripstoneTemplate = createBPRecipe({
                 item: "minecraft:pointed_dripstone"
             }
         },
-        // TODO: Se esperaba un texto y llego una lista.
         result: [
             {
                 item: "minecraft:dripstone_block"

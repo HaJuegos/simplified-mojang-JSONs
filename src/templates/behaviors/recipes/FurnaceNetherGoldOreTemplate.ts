@@ -21,7 +21,6 @@ export const FurnaceNetherGoldOreTemplate = createBPRecipe({
         ],
         input: "minecraft:nether_gold_ore",
         output: "minecraft:gold_ingot",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 120
     }
 });

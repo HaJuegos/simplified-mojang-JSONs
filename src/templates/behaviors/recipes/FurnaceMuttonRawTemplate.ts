@@ -23,7 +23,6 @@ export const FurnaceMuttonRawTemplate = createBPRecipe({
         ],
         input: "minecraft:muttonRaw",
         output: "minecraft:muttonCooked",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 0
     }
 });

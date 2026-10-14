@@ -26,7 +26,6 @@ export const HoneyBottleToSugarTemplate = createBPRecipe({
                 item: "minecraft:honey_bottle"
             }
         ],
-        // TODO: Se esperaba un texto y llego una lista.
         result: [
             {
                 item: "minecraft:sugar",

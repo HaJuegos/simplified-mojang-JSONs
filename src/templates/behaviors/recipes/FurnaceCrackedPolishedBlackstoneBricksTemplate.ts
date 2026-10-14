@@ -20,7 +20,6 @@ export const FurnaceCrackedPolishedBlackstoneBricksTemplate = createBPRecipe({
         ],
         input: "minecraft:polished_blackstone_bricks",
         output: "minecraft:cracked_polished_blackstone_bricks",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 340
     }
 });

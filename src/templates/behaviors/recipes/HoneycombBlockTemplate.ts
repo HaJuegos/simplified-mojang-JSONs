@@ -27,7 +27,6 @@ export const HoneycombBlockTemplate = createBPRecipe({
                 item: "minecraft:honeycomb"
             }
         ],
-        // TODO: Se esperaba un texto y llego una lista.
         result: [
             {
                 item: "minecraft:honeycomb_block"

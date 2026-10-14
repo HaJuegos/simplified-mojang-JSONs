@@ -20,7 +20,6 @@ export const FurnaceMangroveWoodTemplate = createBPRecipe({
         ],
         input: "minecraft:mangrove_wood",
         output: "minecraft:coal:1",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 90
     }
 });

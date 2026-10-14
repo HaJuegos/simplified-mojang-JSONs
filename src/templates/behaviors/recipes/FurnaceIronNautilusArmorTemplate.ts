@@ -21,7 +21,6 @@ export const FurnaceIronNautilusArmorTemplate = createBPRecipe({
         ],
         input: "minecraft:iron_nautilus_armor",
         output: "minecraft:iron_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 110
     }
 });

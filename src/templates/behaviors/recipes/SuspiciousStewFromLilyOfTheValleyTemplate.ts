@@ -27,7 +27,6 @@ export const SuspiciousStewFromLilyOfTheValleyTemplate = createBPRecipe({
                 item: "minecraft:lily_of_the_valley"
             }
         ],
-        // TODO: El formato de 'unlock' como objeto ('context') no existe en el tipado; solo se admite una lista de items { item, data? }.
         unlock: {
             context: "None"
         },

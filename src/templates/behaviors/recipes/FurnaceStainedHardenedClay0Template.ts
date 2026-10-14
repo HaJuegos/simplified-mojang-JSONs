@@ -20,7 +20,6 @@ export const FurnaceStainedHardenedClay0Template = createBPRecipe({
         ],
         input: "minecraft:white_terracotta",
         output: "minecraft:white_glazed_terracotta",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 450
     }
 });

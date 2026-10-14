@@ -31,7 +31,6 @@ export const BeehiveTemplate = createBPRecipe({
                 item: "minecraft:honeycomb"
             }
         ],
-        // TODO: Se esperaba un texto y llego una lista.
         result: [
             {
                 item: "minecraft:beehive"

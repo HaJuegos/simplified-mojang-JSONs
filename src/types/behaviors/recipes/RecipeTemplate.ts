@@ -12,6 +12,7 @@ export {
     BPRecipeDefinition,
     BPRecipeOverrideDefinition,
     RecipeTypesLoadMaps,
+    RecipeSmithingTrim,
 };
 
 /**
@@ -25,7 +26,8 @@ enum TypeRecipesVanillaEnums {
     RecipeFurnace = "minecraft:recipe_furnace",
     RecipeShaped = "minecraft:recipe_shaped",
     RecipeShapeless = "minecraft:recipe_shapeless",
-    RecipeSmithingTransform = "minecraft:recipe_smithing_transform"
+    RecipeSmithingTransform = "minecraft:recipe_smithing_transform",
+    RecipeSmithingTrim = "minecraft:recipe_smithing_trim"
 }
 
 /**
@@ -38,7 +40,7 @@ type FurnaceBlockEnum = "furnace" | "blast_furnace" | "campfire" | "soul_campfir
  * Tipados generales de todos los tags adiccionales que se pueden usar.
  * @author HaJuegos - 11-10-2026
  */
-type TagsRecipesGlobalEnums = "crafting_table" | "stonecutter";
+type TagsRecipesGlobalEnums = "crafting_table" | "stonecutter" | "cartography_table";
 
 /**
  * Tipado general para validar letra a letra si sigue una correcta estructura.
@@ -94,6 +96,10 @@ type RecipeTypesLoadMaps = {
     [TypeRecipesVanillaEnums.RecipeSmithingTransform]: {
         smithing: RecipeSmithing;
     };
+
+    [TypeRecipesVanillaEnums.RecipeSmithingTrim]: {
+        smithingTrim: RecipeSmithingTrim;
+    };
 };
 
 /**
@@ -137,22 +143,40 @@ type BPRecipeOverrideDefinition<
     };
 
 /**
+ * Todos los tipados contextuales vanillas sacados de los archivos originales y que tambien se pueden usar en caso de.
+ * @author HaJuegos - 13-10-2026
+ */
+type ContextVanillaUnlocks = "PlayerInWater" | "PlayerHasManyItems" | "AlwaysUnlocked" | "None" | (string & {});;
+
+/**
  * Lista de parametros base cuando se quiere asignar un desbloqueo de la receta con items.
  * @interface ItemDataUnlockTypes
  * @author HaJuegos - 11-10-2026
  */
 interface ItemDataUnlockTypes {
     /**
+     * (Opcional) Lista de IDs de tags requeridos para desbloquear esta receta en concreto.
+     * @type {?string}
+     */
+    tag?: string;
+
+    /**
      * ID del item en cuestion a obtener para desbloquear la receta.
      * @type {(string | MinecraftItemTypes)}
      */
-    item: string | MinecraftItemTypes;
+    item?: string | MinecraftItemTypes;
 
     /**
      * (Opcional) Data ID en cuestion del item para desbloquear la receta.
      * @type {?number}
      */
     data?: number;
+
+    /**
+     * (Opcional) El tipo de contexto que debe vivir el jugador para obtener la receta. Realmente no se sabe que tantos valores hay o como funciona, pero por compatibilidad, se deja.
+     * @type {?string}
+    */
+    context?: ContextVanillaUnlocks;
 }
 
 /**
@@ -227,7 +251,7 @@ interface RecipeBrewingTypes {
      * (Opcional) Lista de items requeridos para desbloquear la receta.
      * @type {?ItemDataUnlockTypes[]}
      */
-    unlock?: ItemDataUnlockTypes[];
+    unlock?: ItemDataUnlockTypes[] | ItemDataUnlockTypes;
 }
 
 /**
@@ -237,16 +261,22 @@ interface RecipeBrewingTypes {
  */
 interface RecipeFurnaceTypes {
     /**
+     * (Opcional) Lista de ordenes de las recetas en caso de que un item tenga varias formas de hacerse y solo por compatibilidad, se muestra un orden de mejor creacion.
+     * @type {?number}
+     */
+    priority?: number;
+
+    /**
      * Lista de bloques que permiten cocinar el item en concreto. Si se usa "all", funcionara en todos los bloques que puedan cocinar items.
      * @type {(["all"] | FurnaceBlockEnum[])}
      */
-    targetBlocks: ["all"] | FurnaceBlockEnum[];
+    targetBlocks: ["all" | "deprecated"] | FurnaceBlockEnum[];
 
     /**
      * ID del item a cocinar en cuestion.
      * @type {(string | MinecraftItemTypes)}
      */
-    input: string | MinecraftItemTypes;
+    input: string | MinecraftItemTypes | ItemDataGivesTypes;
 
     /**
      * ID del item cocinado en cuestion. 
@@ -258,7 +288,7 @@ interface RecipeFurnaceTypes {
      * (Opcional) Lista de items requeridos para desbloquear la receta.
      * @type {?ItemDataUnlockTypes[]}
      */
-    unlock?: ItemDataUnlockTypes[];
+    unlock?: ItemDataUnlockTypes[] | ItemDataUnlockTypes;
 }
 
 /**
@@ -284,7 +314,7 @@ interface RecipeShaped<TPattern extends readonly string[] = RecipeShapedPattern>
      * Lista de bloques donde esta receta funcionara.
      * @type {(["all"] | TagsRecipesGlobalEnums[])}
      */
-    tags: ["all"] | TagsRecipesGlobalEnums[];
+    tags: ["all" | "deprecated"] | TagsRecipesGlobalEnums[];
 
     /**
      * (Opcional) ID o nombre del grupo de items donde va ordenado esta receta internamente en el juego.
@@ -308,13 +338,13 @@ interface RecipeShaped<TPattern extends readonly string[] = RecipeShapedPattern>
      * ID del item a dar en concreto una vez la forma este correctamente.
      * @type {(ItemDataGivesTypes | string | MinecraftItemTypes)}
      */
-    result: ItemDataGivesTypes | string | MinecraftItemTypes;
+    result: ItemDataGivesTypes | ItemDataGivesTypes[] | string | MinecraftItemTypes;
 
     /**
      * (Opcional) Lista de items requeridos para desbloquear la receta.
      * @type {?ItemDataUnlockTypes[]}
      */
-    unlock?: ItemDataUnlockTypes[];
+    unlock?: ItemDataUnlockTypes[] | ItemDataUnlockTypes;
 }
 
 /**
@@ -339,7 +369,7 @@ interface RecipeShapeless {
      * Lista de bloques donde esta receta funcionara.
      * @type {(["all"] | TagsRecipesGlobalEnums[])}
      */
-    tags: ["all"] | TagsRecipesGlobalEnums[];
+    tags: ["all" | "deprecated"] | TagsRecipesGlobalEnums[];
 
     /**
      * Lista de items necesarios para la receta y creacion del item en cuestion. En este caso, si admite stacks de items.
@@ -357,7 +387,7 @@ interface RecipeShapeless {
      * (Opcional) Lista de items requeridos para desbloquear la receta.
      * @type {?ItemDataUnlockTypes[]}
      */
-    unlock?: ItemDataUnlockTypes[];
+    unlock?: ItemDataUnlockTypes[] | ItemDataUnlockTypes;
 }
 
 /**
@@ -394,5 +424,42 @@ interface RecipeSmithing {
      * (Opcional) Lista de items requeridos para desbloquear la receta.
      * @type {?ItemDataUnlockTypes[]}
      */
-    unlock?: ItemDataUnlockTypes[];
+    unlock?: ItemDataUnlockTypes[] | ItemDataUnlockTypes;
+}
+
+/**
+ * Lista de parametros base para la creacion de una receta con la mesa de smithing table, de un item en concreto para trims. Aunque, para algo mas custom. usa {@link RecipeSmithing} mejor.
+ * @interface RecipeSmithingTrim
+ * @author HaJuegos - 13-10-2026
+ */
+interface RecipeSmithingTrim {
+    /**
+     * ID o item de la plantilla requerida para crear el item.
+     * @type {(ItemDataGivesTypes | string | MinecraftItemTypes)}
+     */
+    template: ItemDataGivesTypes | string | MinecraftItemTypes;
+
+    /**
+     * ID o item de la base requerida para crear el item.
+     * @type {(ItemDataGivesTypes | string | MinecraftItemTypes)}
+     */
+    base: ItemDataGivesTypes | string | MinecraftItemTypes;
+
+    /**
+     * ID o item de la adiccion requerida para crear el item.
+     * @type {(ItemDataGivesTypes | string | MinecraftItemTypes)}
+     */
+    addition: ItemDataGivesTypes | string | MinecraftItemTypes;
+
+    /**
+     * ID o item a entregar cuando el item esta listo de la receta.
+     * @type {(ItemDataGivesTypes | string | MinecraftItemTypes)}
+     */
+    result?: ItemDataGivesTypes | string | MinecraftItemTypes;
+
+    /**
+     * (Opcional) Lista de items requeridos para desbloquear la receta.
+     * @type {?ItemDataUnlockTypes[]}
+     */
+    unlock?: ItemDataUnlockTypes[] | ItemDataUnlockTypes;
 }

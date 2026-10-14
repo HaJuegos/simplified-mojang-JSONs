@@ -20,7 +20,6 @@ export const FurnaceRedSandTemplate = createBPRecipe({
         ],
         input: "minecraft:red_sand",
         output: "minecraft:glass",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 300
     }
 });

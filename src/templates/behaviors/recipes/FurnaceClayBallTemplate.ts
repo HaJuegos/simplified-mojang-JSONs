@@ -20,7 +20,6 @@ export const FurnaceClayBallTemplate = createBPRecipe({
         ],
         input: "minecraft:clay_ball",
         output: "minecraft:brick",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 160
     }
 });

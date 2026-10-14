@@ -31,7 +31,6 @@ export const SmithingTableTemplate = createBPRecipe({
                 item: "minecraft:iron_ingot"
             }
         ],
-        // TODO: Se esperaba un texto y llego una lista.
         result: [
             {
                 item: "minecraft:smithing_table"

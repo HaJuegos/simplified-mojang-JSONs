@@ -20,7 +20,6 @@ export const FurnaceSpruceLeavesTemplate = createBPRecipe({
         ],
         input: "minecraft:spruce_leaves",
         output: "minecraft:leaf_litter",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 240
     }
 });

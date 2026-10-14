@@ -21,7 +21,6 @@ export const FurnaceEmeraldOreTemplate = createBPRecipe({
         ],
         input: "minecraft:emerald_ore",
         output: "minecraft:emerald",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 270
     }
 });

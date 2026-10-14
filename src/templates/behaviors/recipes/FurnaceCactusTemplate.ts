@@ -20,7 +20,6 @@ export const FurnaceCactusTemplate = createBPRecipe({
         ],
         input: "minecraft:cactus",
         output: "minecraft:dye:2",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 200
     }
 });

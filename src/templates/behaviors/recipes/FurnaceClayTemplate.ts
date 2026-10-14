@@ -20,7 +20,6 @@ export const FurnaceClayTemplate = createBPRecipe({
         ],
         input: "minecraft:clay",
         output: "minecraft:hardened_clay",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 440
     }
 });

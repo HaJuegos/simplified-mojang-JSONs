@@ -21,7 +21,6 @@ export const FurnaceCopperHoeTemplate = createBPRecipe({
         ],
         input: "minecraft:copper_hoe",
         output: "minecraft:copper_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 150
     }
 });

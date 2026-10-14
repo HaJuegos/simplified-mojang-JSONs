@@ -23,7 +23,6 @@ export const FurnacePorkchopTemplate = createBPRecipe({
         ],
         input: "minecraft:porkchop",
         output: "minecraft:cooked_porkchop",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 10
     }
 });

@@ -20,7 +20,6 @@ export const FurnaceSpongeTemplate = createBPRecipe({
         ],
         input: "minecraft:wet_sponge",
         output: "minecraft:sponge",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 610
     }
 });

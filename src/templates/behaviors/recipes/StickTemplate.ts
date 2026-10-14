@@ -24,8 +24,6 @@ export const StickTemplate = createBPRecipe({
         },
         unlock: [
             {
-                // TODO: Falta la propiedad requerida 'item' segun el tipado.
-                // TODO: La propiedad 'tag' no existe en el tipado.
                 tag: "minecraft:planks"
             }
         ],

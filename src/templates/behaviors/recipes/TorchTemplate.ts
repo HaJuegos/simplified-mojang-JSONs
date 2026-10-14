@@ -27,16 +27,12 @@ export const TorchTemplate = createBPRecipe({
         },
         unlock: [
             {
-                // TODO: Falta la propiedad requerida 'item' segun el tipado.
-                // TODO: La propiedad 'tag' no existe en el tipado.
                 tag: "minecraft:coals"
             },
             {
                 item: "minecraft:stick"
             },
             {
-                // TODO: Falta la propiedad requerida 'item' segun el tipado.
-                // TODO: La propiedad 'tag' no existe en el tipado.
                 tag: "minecraft:is_pickaxe"
             }
         ],

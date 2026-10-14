@@ -21,7 +21,6 @@ export const FurnaceIronTemplate = createBPRecipe({
         ],
         input: "minecraft:raw_iron",
         output: "minecraft:iron_ingot",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 100
     }
 });

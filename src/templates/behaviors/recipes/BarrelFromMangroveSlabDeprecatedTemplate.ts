@@ -10,7 +10,6 @@ export const BarrelFromMangroveSlabDeprecatedTemplate = createBPRecipe({
     idRecipe: "minecraft:barrel_from_mangrove_slab",
     typeRecipe: TypeRecipesVanillaEnums.RecipeShaped,
     shaped: {
-        // TODO: [0] El valor 'deprecated' no existe en el tipado (validos: crafting_table, stonecutter).
         tags: [
             "deprecated"
         ],

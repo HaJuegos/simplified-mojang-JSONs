@@ -21,7 +21,6 @@ export const FurnaceHorseArmorGoldTemplate = createBPRecipe({
         ],
         input: "minecraft:horsearmorgold",
         output: "minecraft:gold_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 130
     }
 });

@@ -20,7 +20,6 @@ export const FurnaceSmoothBasaltTemplate = createBPRecipe({
         ],
         input: "minecraft:basalt",
         output: "minecraft:smooth_basalt",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 380
     }
 });

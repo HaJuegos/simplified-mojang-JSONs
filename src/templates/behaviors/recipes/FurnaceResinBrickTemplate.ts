@@ -20,7 +20,6 @@ export const FurnaceResinBrickTemplate = createBPRecipe({
         ],
         input: "minecraft:resin_clump",
         output: "minecraft:resin_brick",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 190
     }
 });

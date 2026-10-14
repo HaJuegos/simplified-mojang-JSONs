@@ -21,7 +21,6 @@ export const FurnaceDiamondOreTemplate = createBPRecipe({
         ],
         input: "minecraft:diamond_ore",
         output: "minecraft:diamond",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 260
     }
 });

@@ -21,7 +21,6 @@ export const FurnaceIronAxeTemplate = createBPRecipe({
         ],
         input: "minecraft:iron_axe",
         output: "minecraft:iron_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 110
     }
 });

@@ -21,7 +21,6 @@ export const FurnaceIronLeggingsTemplate = createBPRecipe({
         ],
         input: "minecraft:iron_leggings",
         output: "minecraft:iron_nugget",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 110
     }
 });

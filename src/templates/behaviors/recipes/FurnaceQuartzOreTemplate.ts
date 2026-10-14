@@ -21,7 +21,6 @@ export const FurnaceQuartzOreTemplate = createBPRecipe({
         ],
         input: "minecraft:quartz_ore",
         output: "minecraft:quartz",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 230
     }
 });

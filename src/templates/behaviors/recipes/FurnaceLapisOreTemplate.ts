@@ -21,7 +21,6 @@ export const FurnaceLapisOreTemplate = createBPRecipe({
         ],
         input: "minecraft:lapis_ore",
         output: "minecraft:dye:4",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 280
     }
 });

@@ -21,7 +21,6 @@ export const FurnaceRedstoneOreTemplate = createBPRecipe({
         ],
         input: "minecraft:redstone_ore",
         output: "minecraft:redstone",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 290
     }
 });

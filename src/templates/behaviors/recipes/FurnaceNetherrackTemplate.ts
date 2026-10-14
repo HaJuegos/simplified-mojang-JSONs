@@ -20,7 +20,6 @@ export const FurnaceNetherrackTemplate = createBPRecipe({
         ],
         input: "minecraft:netherrack",
         output: "minecraft:netherbrick",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 170
     }
 });

@@ -20,7 +20,6 @@ export const CrackedDeepslateTilesFurnaceTemplate = createBPRecipe({
         targetBlocks: [
             "furnace"
         ],
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 320
     }
 });

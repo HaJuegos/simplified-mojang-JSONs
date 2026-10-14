@@ -7,7 +7,7 @@ import { BehaviorRecipeBuilder } from "./RecipeBuilder";
  * @extends {BehaviorRecipeBuilder}
  * @author HaJuegos - 12-10-2026
  */
-class FinalRecipeBuilderTemplate extends BehaviorRecipeBuilder {
+export class FinalRecipeBuilderTemplate extends BehaviorRecipeBuilder {
     /**
      * Eventos iniciales cuando la clase es llamada o inicializada. Con sus respectivos parametros iniciales para la creacion de la plantilla final.
      * @param {BPRecipeDefinition<any>} def Datos base finales de la plantilla.
@@ -42,6 +42,9 @@ class FinalRecipeBuilderTemplate extends BehaviorRecipeBuilder {
                 case TypeRecipesVanillaEnums.RecipeSmithingTransform: {
                     baseData = anyDef.smithing;
                 } break;
+                case TypeRecipesVanillaEnums.RecipeSmithingTrim: {
+                    baseData = anyDef.smithingTrim;
+                } break;
             }
         }
 
@@ -50,30 +53,34 @@ class FinalRecipeBuilderTemplate extends BehaviorRecipeBuilder {
         let aditionalData: any = {};
 
         switch (def.typeRecipe) {
-            case TypeRecipesVanillaEnums.RecipeBrewingContainer:
+            case TypeRecipesVanillaEnums.RecipeBrewingContainer: {
                 modifiedData = anyOver.brewingContainer;
                 aditionalData = anyOver.add?.brewingContainer;
-                break;
-            case TypeRecipesVanillaEnums.RecipeBrewingMix:
+            } break;
+            case TypeRecipesVanillaEnums.RecipeBrewingMix: {
                 modifiedData = anyOver.brewingMix;
                 aditionalData = anyOver.add?.brewingMix;
-                break;
-            case TypeRecipesVanillaEnums.RecipeFurnace:
+            } break;
+            case TypeRecipesVanillaEnums.RecipeFurnace: {
                 modifiedData = anyOver.furnace;
                 aditionalData = anyOver.add?.furnace;
-                break;
-            case TypeRecipesVanillaEnums.RecipeShaped:
+            } break;
+            case TypeRecipesVanillaEnums.RecipeShaped: {
                 modifiedData = anyOver.shaped;
                 aditionalData = anyOver.add?.shaped;
-                break;
-            case TypeRecipesVanillaEnums.RecipeShapeless:
+            } break;
+            case TypeRecipesVanillaEnums.RecipeShapeless: {
                 modifiedData = anyOver.shapeless;
                 aditionalData = anyOver.add?.shapeless;
-                break;
-            case TypeRecipesVanillaEnums.RecipeSmithingTransform:
+            } break;
+            case TypeRecipesVanillaEnums.RecipeSmithingTransform: {
                 modifiedData = anyOver.smithing;
                 aditionalData = anyOver.add?.smithing;
-                break;
+            } break;
+            case TypeRecipesVanillaEnums.RecipeSmithingTrim: {
+                modifiedData = anyOver.smithingTrim;
+                aditionalData = anyOver.add?.smithingTrim;
+            } break;
         }
 
         const finalData = {
@@ -98,7 +105,8 @@ class FinalRecipeBuilderTemplate extends BehaviorRecipeBuilder {
             case TypeRecipesVanillaEnums.RecipeShapeless: {
                 this.createRecipeShapeless(finalData);
             } break;
-            case TypeRecipesVanillaEnums.RecipeSmithingTransform: {
+            case TypeRecipesVanillaEnums.RecipeSmithingTransform:
+            case TypeRecipesVanillaEnums.RecipeSmithingTrim: {
                 this.createRecipeSmithing(finalData);
             } break;
         }

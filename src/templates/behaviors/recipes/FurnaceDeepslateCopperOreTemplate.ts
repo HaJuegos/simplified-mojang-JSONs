@@ -21,7 +21,6 @@ export const FurnaceDeepslateCopperOreTemplate = createBPRecipe({
         ],
         input: "minecraft:deepslate_copper_ore",
         output: "minecraft:copper_ingot",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 140
     }
 });

@@ -19,13 +19,11 @@ export const FurnaceSandTemplate = createBPRecipe({
         targetBlocks: [
             "furnace"
         ],
-        // TODO: Se esperaba un texto y llego un objeto.
         input: {
             item: "minecraft:sand",
             data: 0
         },
         output: "minecraft:glass",
-        // TODO: La propiedad 'priority' no existe en el tipado de 'furnace'.
         priority: 300
     }
 });
