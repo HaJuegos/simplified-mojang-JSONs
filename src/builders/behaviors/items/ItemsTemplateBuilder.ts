@@ -41,6 +41,12 @@ export class FinalItemsBuilderTemplate extends BehaviorItemsBuilder {
                 menuCategory = over.menuCategory as MenuDescTypes;
             }
 
+            if (def.components) {
+                for (const comp of def.components) {
+                    componentsMap.set(comp.idComp, comp);
+                }
+            }
+
             if (over.components) {
                 for (const [id, value] of Object.entries(over.components as Record<string, unknown>)) {
                     if (value == undefined) {
@@ -59,20 +65,16 @@ export class FinalItemsBuilderTemplate extends BehaviorItemsBuilder {
                     }
                 }
             }
-
-            if (over.components) {
-                for (const comp of Object.values(over.components)) {
-                    if (comp) {
-                        componentsMap.set(comp.idComp, comp);
-                    }
-                }
-            }
         }
 
         if (over.add?.components) {
             for (const comp of over.add.components) {
                 componentsMap.set(comp.idComp, comp);
             }
+        }
+
+        if (menuCategory) {
+            this.setMenuCategory(menuCategory);
         }
 
         const finalComponents = Array.from(componentsMap.values());
