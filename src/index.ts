@@ -1,8 +1,10 @@
 // Archivos root de plantillas pre-creadas.
 export { BPEntityComponents } from "./components/behaviors/entities";
+export { BPItemComponents } from "./components/behaviors/items";
+
 export { BPEntityTemplates } from "./templates/behaviors/entities";
-export { BPLootTableTemplates } from "./templates/behaviors/lootTables/index";
-export { BPRecipesTemplates } from "./templates/behaviors/recipes/index";
+export { BPLootTableTemplates } from "./templates/behaviors/lootTables";
+export { BPRecipesTemplates } from "./templates/behaviors/recipes";
 
 
 // Exportacion de plantillas para la creacion custom.
@@ -12,6 +14,7 @@ export { createBPDialogue } from "./builders/behaviors/dialogues/DialogueTemplat
 export { createBPEntityTemplate } from "./builders/behaviors/entities/EntityTemplateBuilder";
 export { createBPLootTable } from "./builders/behaviors/lootTables/LootTablesTemplateBuilder";
 export { createBPRecipe } from "./builders/behaviors/recipes/RecipeTemplateBuilder";
+export { createBPItemTemplate } from "./builders/behaviors/items/ItemsTemplateBuilder";
 
 
 // Tipados necesarios para las plantillas de creacion custom.
@@ -21,3 +24,4 @@ export type { BPDialogueDefinition } from "./types/behaviors/dialogues/DialogueT
 export type { BPEntitiesTemplateDef, BPEntitiesTemplateOverride } from "./types/behaviors/entities/EntitiesTemplate";
 export type { BPLootTableTemplateDef, BPLootTableFinalOverDefinition, BPLootTableTemplateOver } from "./types/behaviors/lootTables/LootTablesTemplate";
 export type { BPRecipeDefinition, BPRecipeOverrideDefinition } from "./types/behaviors/recipes/RecipeTemplate";
+export type { BPItemDefinition, BPItemDefinitionOver, BPItemTemplateInstance } from "./types/behaviors/items/ItemsTemplate";
