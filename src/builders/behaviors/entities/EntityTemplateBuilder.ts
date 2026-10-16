@@ -252,7 +252,7 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
  * @author HaJuegos - 01-10-2026
  * @export
  */
-export function createBPEntityTemplate<
+export function createBPEntity<
     const Comps extends readonly BPEntityComponent[],
     const CG extends BPEntityGroupCompsList,
     Ev extends BPEntityEventsMap<GroupNames<CG>>

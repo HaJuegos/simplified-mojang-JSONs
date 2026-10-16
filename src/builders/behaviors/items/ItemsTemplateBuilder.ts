@@ -103,7 +103,7 @@ export class FinalItemsBuilderTemplate extends BehaviorItemsBuilder {
  * @author HaJuegos - 14-10-2026 
  * @export
  */
-export function createBPItemTemplate<
+export function createBPItem<
     const Comps extends readonly BPItemComponent[] = []
 >(def: BPItemDefinition & { components?: Comps; }): BPItemTemplateInstance<Comps> {
     return (over = {}) => {

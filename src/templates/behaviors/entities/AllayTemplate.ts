@@ -1,5 +1,5 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { createBPEntityTemplate } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { MoLang } from "../../../utils/MoLang";
@@ -10,7 +10,7 @@ import { EntityFilters } from "../../../utils/EntityFilters";
  * @type {FinalEntityBuilderTemplate}
  * @author HaJuegos - 02-10-2026
  */
-export const AllayTemplate = createBPEntityTemplate({
+export const AllayTemplate = createBPEntity({
     id: MinecraftEntityTypes.Allay,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,

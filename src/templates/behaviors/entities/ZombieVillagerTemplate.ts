@@ -1,5 +1,5 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { createBPEntityTemplate } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
@@ -12,7 +12,7 @@ import { ZombieVillagerV2Template } from "./ZombieVillagerV2Template";
  * @deprecated Esto ya no se usa en versiones actuales. Usa {@link ZombieVillagerV2Template} en su lugar.
  * @author HaJuegos - 05-10-2026
  */
-export const ZombieVillagerTemplate = createBPEntityTemplate({
+export const ZombieVillagerTemplate = createBPEntity({
     id: MinecraftEntityTypes.ZombieVillager,
     description: {
         spawnCategory: SpawnCategoryEntities.Monster,

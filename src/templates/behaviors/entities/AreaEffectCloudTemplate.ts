@@ -1,5 +1,5 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { createBPEntityTemplate, FinalEntityBuilderTemplate } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPEntity, FinalEntityBuilderTemplate } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
@@ -8,7 +8,7 @@ import { BPEntityComponents } from "../../../components/behaviors/entities";
  * @type {FinalEntityBuilderTemplate}
  * @author HaJuegos - 02-10-2026
  */
-export const AreaEffectCloudTemplate = createBPEntityTemplate({
+export const AreaEffectCloudTemplate = createBPEntity({
     id: MinecraftEntityTypes.AreaEffectCloud,
     description: {
         spawnCategory: SpawnCategoryEntities.Misc,

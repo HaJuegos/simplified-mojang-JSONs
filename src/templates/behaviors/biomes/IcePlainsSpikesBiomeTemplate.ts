@@ -1,4 +1,4 @@
-import { createBPBiomeTemplate } from "../../../builders/behaviors/biomes/BiomeTemplateBuilder";
+import { createBPBiome } from "../../../builders/behaviors/biomes/BiomeTemplateBuilder";
 import { BPBiomeComponents } from "../../../components/behaviors/biomes";
 
 /**
@@ -6,7 +6,7 @@ import { BPBiomeComponents } from "../../../components/behaviors/biomes";
  * @type {FinalBiomeBuilderTemplate}
  * @author HaJuegos - 15-10-2026
  */
-export const IcePlainsSpikesBiomeTemplate = createBPBiomeTemplate({
+export const IcePlainsSpikesBiomeTemplate = createBPBiome({
     idBiome: "minecraft:ice_plains_spikes",
     components: [
         new BPBiomeComponents.SetCreatureSpawnProbability({

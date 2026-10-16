@@ -12,13 +12,13 @@ export { BPRecipesTemplates } from "./templates/behaviors/recipes";
 // Exportacion de plantillas para la creacion custom.
 export { createBPManifest } from "./builders/behaviors/ManifestTemplateBuilder";
 export { createBPAnimController } from "./builders/behaviors/animControllers/AnimControllerTemplateBuilder";
-export { createBPBiomeTemplate } from "./builders/behaviors/biomes/BiomeTemplateBuilder";
+export { createBPBiome } from "./builders/behaviors/biomes/BiomeTemplateBuilder";
 export { createBPDialogue } from "./builders/behaviors/dialogues/DialogueTemplateBuilder";
-export { createBPEntityTemplate } from "./builders/behaviors/entities/EntityTemplateBuilder";
-export { createBPItemTemplate } from "./builders/behaviors/items/ItemsTemplateBuilder";
+export { createBPEntity } from "./builders/behaviors/entities/EntityTemplateBuilder";
+export { createBPItem } from "./builders/behaviors/items/ItemsTemplateBuilder";
 export { createBPLootTable } from "./builders/behaviors/lootTables/LootTablesTemplateBuilder";
 export { createBPRecipe } from "./builders/behaviors/recipes/RecipeTemplateBuilder";
-export { createBPDimensionTemplate } from "./builders/behaviors/dimensions/DimensionTemplateBuilder";
+export { createBPDimension } from "./builders/behaviors/dimensions/DimensionTemplateBuilder";
 
 
 // Tipados necesarios para las plantillas de creacion custom.

@@ -1,4 +1,4 @@
-import { createBPBiomeTemplate } from "../../../builders/behaviors/biomes/BiomeTemplateBuilder";
+import { createBPBiome } from "../../../builders/behaviors/biomes/BiomeTemplateBuilder";
 import { BPBiomeComponents } from "../../../components/behaviors/biomes";
 
 /**
@@ -6,7 +6,7 @@ import { BPBiomeComponents } from "../../../components/behaviors/biomes";
  * @type {FinalBiomeBuilderTemplate}
  * @author HaJuegos - 15-10-2026
  */
-export const FlowerForestBiomeTemplate = createBPBiomeTemplate({
+export const FlowerForestBiomeTemplate = createBPBiome({
     idBiome: "minecraft:flower_forest",
     components: [
         new BPBiomeComponents.SetClimate({

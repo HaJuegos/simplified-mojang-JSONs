@@ -1,5 +1,5 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { createBPEntityTemplate } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { FormatVersionEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
@@ -8,7 +8,7 @@ import { BPEntityComponents } from "../../../components/behaviors/entities";
  * @type {FinalEntityBuilderTemplate}
  * @author HaJuegos - 05-10-2026
  */
-export const ThrownTridentTemplate = createBPEntityTemplate({
+export const ThrownTridentTemplate = createBPEntity({
     id: MinecraftEntityTypes.ThrownTrident,
     description: {
         isSummonable: false,

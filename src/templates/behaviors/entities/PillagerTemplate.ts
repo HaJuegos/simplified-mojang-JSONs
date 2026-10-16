@@ -1,5 +1,5 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { createBPEntityTemplate } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
@@ -11,7 +11,7 @@ import { EntityFireImmuneComponent } from "@minecraft/server";
  * @type {FinalEntityBuilderTemplate}
  * @author HaJuegos - 05-10-2026
  */
-export const PillagerTemplate = createBPEntityTemplate({
+export const PillagerTemplate = createBPEntity({
     id: MinecraftEntityTypes.Pillager,
     description: {
         spawnCategory: SpawnCategoryEntities.Monster,

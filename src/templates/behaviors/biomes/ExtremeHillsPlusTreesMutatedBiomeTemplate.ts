@@ -1,4 +1,4 @@
-import { createBPBiomeTemplate } from "../../../builders/behaviors/biomes/BiomeTemplateBuilder";
+import { createBPBiome } from "../../../builders/behaviors/biomes/BiomeTemplateBuilder";
 import { BPBiomeComponents } from "../../../components/behaviors/biomes";
 
 /**
@@ -6,7 +6,7 @@ import { BPBiomeComponents } from "../../../components/behaviors/biomes";
  * @type {FinalBiomeBuilderTemplate}
  * @author HaJuegos - 15-10-2026
  */
-export const ExtremeHillsPlusTreesMutatedBiomeTemplate = createBPBiomeTemplate({
+export const ExtremeHillsPlusTreesMutatedBiomeTemplate = createBPBiome({
     idBiome: "minecraft:extreme_hills_plus_trees_mutated",
     components: [
         new BPBiomeComponents.SetClimate({

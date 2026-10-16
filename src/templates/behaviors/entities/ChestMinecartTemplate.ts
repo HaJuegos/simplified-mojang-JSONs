@@ -1,5 +1,5 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { createBPEntityTemplate } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
@@ -9,7 +9,7 @@ import { EntityFilters } from "../../../utils/EntityFilters";
  * @type {FinalEntityBuilderTemplate}
  * @author HaJuegos - 04-10-2026
  */
-export const ChestMinecartTemplate = createBPEntityTemplate({
+export const ChestMinecartTemplate = createBPEntity({
     id: MinecraftEntityTypes.ChestMinecart,
     description: {
         spawnCategory: SpawnCategoryEntities.Misc,

@@ -1,5 +1,5 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { createBPEntityTemplate } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { FormatVersionEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 
@@ -8,7 +8,7 @@ import { BPEntityComponents } from "../../../components/behaviors/entities";
  * @type {FinalEntityBuilderTemplate}
  * @author HaJuegos - 04-10-2026
  */
-export const BreezeWindChargeProjectileTemplate = createBPEntityTemplate({
+export const BreezeWindChargeProjectileTemplate = createBPEntity({
     id: MinecraftEntityTypes.BreezeWindChargeProjectile,
     description: {
         isSummonable: false,

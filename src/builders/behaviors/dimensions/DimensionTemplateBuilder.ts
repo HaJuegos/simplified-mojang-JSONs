@@ -76,7 +76,7 @@ export class FinalDimensionTemplateBuilder extends BehaviorDimensionBuilder {
  * @author HaJuegos - 15-10-2026
  * @export
  */
-export function createBPDimensionTemplate<
+export function createBPDimension<
     const Comps extends readonly BPDimensionComponent[] = []
 >(def: BPDimensionDefinition & { components?: Comps; }): BPDimensionTemplateInstance<Comps> {
     return (over = {}) => {

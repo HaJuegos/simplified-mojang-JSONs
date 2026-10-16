@@ -1,5 +1,5 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
-import { createBPEntityTemplate } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
+import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
@@ -10,7 +10,7 @@ import { MoLang } from "../../../utils/MoLang";
  * @type {FinalEntityBuilderTemplate}
  * @author HaJuegos - 03-10-2026
  */
-export const BeeTemplate = createBPEntityTemplate({
+export const BeeTemplate = createBPEntity({
     id: MinecraftEntityTypes.Bee,
     description: {
         spawnCategory: SpawnCategoryEntities.Creature,

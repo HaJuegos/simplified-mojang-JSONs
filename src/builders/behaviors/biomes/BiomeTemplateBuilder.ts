@@ -76,7 +76,7 @@ export class FinalBiomeBuilderTemplate extends BehaviorBiomeBuilder {
  * @author HaJuegos - 15-10-2026
  * @export
  */
-export function createBPBiomeTemplate<
+export function createBPBiome<
     const Comps extends readonly BPBiomeComponent[] = []
 >(def: BPBiomeDefinition & { components?: Comps; }): BPBiomeTemplateInstance<Comps> {
     return (over = {}) => {
