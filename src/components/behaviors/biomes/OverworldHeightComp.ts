@@ -11,8 +11,8 @@ type NoiseTypes = "default" | "default_mutated" | "river" | "ocean" | "deep_ocea
  * @author HaJuegos - 15-10-2026
  */
 interface OverworldHeightData extends BPComponent {
-    noiseParams: [number, number];
-    noiseType: NoiseTypes;
+    noiseParams?: [number, number];
+    noiseType?: NoiseTypes;
 }
 
 /**

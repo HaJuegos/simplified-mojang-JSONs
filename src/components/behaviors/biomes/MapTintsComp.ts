@@ -4,8 +4,8 @@ import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 interface MapTintsData extends BPComponent {
     foliage: string;
     grass: {
-        type: "tint" | "noise";
-        tint: string;
+        type?: "tint" | "noise";
+        tint?: string;
     };
 }
 

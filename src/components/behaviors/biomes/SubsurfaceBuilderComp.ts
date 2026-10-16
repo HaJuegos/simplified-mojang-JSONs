@@ -14,7 +14,7 @@ type BlockDataTypes = {
 };
 
 interface SubsurfaceBuilderData extends BPComponent {
-    builder: BuilderSubsurfaceTypes[];
+    builder: BuilderSubsurfaceTypes;
 }
 
 interface BuilderSubsurfaceTypes {
@@ -25,17 +25,17 @@ interface BuilderSubsurfaceTypes {
         amplitudes: [number, number, number];
     },
     noiseBlockSpecifiers: NoiseBlocksTypes[],
-    nonReplaceableBlocks?: [];
+    nonReplaceableBlocks?: (string | MinecraftBlockTypes | BlockDataTypes)[];
 }
 
 interface NoiseBlocksTypes {
-    block: string | MinecraftBlockTypes | BlockDataTypes;
-    range: {
+    block?: string | MinecraftBlockTypes | BlockDataTypes;
+    range?: {
         min: number;
         max: number;
     };
-    noise: "Noise";
-    threshold: number;
+    noise?: "Noise";
+    threshold?: number;
 }
 
 export class SetSubsurfaceBuilder extends BehaviorBiomeComponentBulder<SubsurfaceBuilderData, "minecraft:subsurface_builder"> {

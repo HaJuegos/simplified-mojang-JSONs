@@ -2,9 +2,9 @@ import { BehaviorBiomeComponentBulder } from "../../../builders/behaviors/biomes
 import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 
 interface ClimateData extends BPComponent {
-    downfall: number;
-    snowAccumulation: [number, number],
-    temperature: number;
+    downfall?: number;
+    snowAccumulation?: [number, number],
+    temperature?: number;
 }
 
 export class SetClimate extends BehaviorBiomeComponentBulder<ClimateData, "minecraft:climate"> {

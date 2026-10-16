@@ -49,7 +49,7 @@ interface FrozenOceanBuilder extends BaseParamsBuilder {
 
 interface MesaBuilder extends BaseParamsBuilder {
     type: "minecraft:mesa";
-    brycePillars: string | MinecraftBlockTypes | BlockDataTypes;
+    brycePillars: boolean;
     clayMaterial: string | MinecraftBlockTypes | BlockDataTypes;
     hardClayMaterial: string | MinecraftBlockTypes | BlockDataTypes;
     hasForest: boolean;
@@ -62,11 +62,11 @@ interface SwampBuilder extends BaseParamsBuilder {
 
 interface CappedBuilder {
     type: "minecraft:capped";
-    ceilingMaterials: (string | MinecraftBlockTypes | BlockDataTypes)[];
-    floorMaterials: (string | MinecraftBlockTypes | BlockDataTypes)[];
-    foundationMaterial: string | MinecraftBlockTypes | BlockDataTypes;
-    seaMaterial: string | MinecraftBlockTypes | BlockDataTypes;
-    beachMaterial: string | MinecraftBlockTypes | BlockDataTypes;
+    ceilingMaterials?: (string | MinecraftBlockTypes | BlockDataTypes)[];
+    floorMaterials?: (string | MinecraftBlockTypes | BlockDataTypes)[];
+    foundationMaterial?: string | MinecraftBlockTypes | BlockDataTypes;
+    seaMaterial?: string | MinecraftBlockTypes | BlockDataTypes;
+    beachMaterial?: string | MinecraftBlockTypes | BlockDataTypes;
 };
 
 interface TheEndBuilder {

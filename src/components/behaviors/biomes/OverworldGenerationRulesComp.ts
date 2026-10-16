@@ -13,11 +13,11 @@ type GenerateClimesTypes = [ClimatesTypes, number];
  * @author HaJuegos - 15-10-2026
  */
 interface OverworldGenerationRulesData extends BPComponent {
-    generateForClimates: GenerateClimesTypes[],
-    hillsTransformation: string;
-    mutateTransformation: string;
-    riverTransformation: string;
-    shoreTransformation: string;
+    generateForClimates?: GenerateClimesTypes[];
+    hillsTransformation?: [string, | number][] | string[] | string;
+    mutateTransformation?: string | string[];
+    riverTransformation?: string | string[];
+    shoreTransformation?: string | string[];
 }
 
 /**

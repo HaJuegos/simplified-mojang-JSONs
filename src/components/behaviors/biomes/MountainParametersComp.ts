@@ -5,11 +5,11 @@ import { MoLangValue } from "../../../types/MoLang";
 
 interface MountainParametersData extends BPComponent {
     steepMaterialAdjustment?: {
-        material: string | MinecraftBlockTypes | BlockDataTypes;
-        eastSlopes: boolean;
-        northSlopes: boolean;
-        southSlopes: boolean;
-        westSlopes: boolean;
+        material?: string | MinecraftBlockTypes | BlockDataTypes;
+        eastSlopes?: boolean;
+        northSlopes?: boolean;
+        southSlopes?: boolean;
+        westSlopes?: boolean;
     };
     topSlide?: {
         enabled: boolean;
