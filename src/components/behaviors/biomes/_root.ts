@@ -1,0 +1,15 @@
+export { SetClimate } from "./ClimateComp";
+export { SetCreatureSpawnProbability } from "./CreatureSpawnProbabilityComp";
+export { SetHumidity } from "./HumidityComp";
+export { SetMapTints } from "./MapTintsComp";
+export { SetMountainParameters } from "./MountainParametersComp";
+export { SetMultinoiseGenerationRules } from "./MultinoiseGenerationRulesComp";
+export { SetOverworldGenerationRules } from "./OverworldGenerationRulesComp";
+export { SetOverworldHeight } from "./OverworldHeightComp";
+export { SetPartiallyFrozen } from "./PartiallyFrozenComp";
+export { SetReplaceBiomes } from "./ReplaceBiomesComp";
+export { SetSubsurfaceBuilder } from "./SubsurfaceBuilderComp";
+export { SetSurfaceBuilder } from "./SurfaceBuilderComp";
+export { SetSurfaceMaterialAdjustments } from "./SurfaceMaterialAdjustmentsComp";
+export { SetTags } from "./TagsComp";
+export { SetVillageType } from "./VillageTypeComp";

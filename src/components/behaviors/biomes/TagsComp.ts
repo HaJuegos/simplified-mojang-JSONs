@@ -1,0 +1,21 @@
+import { BehaviorBiomeComponentBulder } from "../../../builders/behaviors/biomes/BiomeCompBuilder";
+import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
+
+type BiomeVanillaTags = "animal" | "bamboo" | "basalt_deltas" | "beach" | "bee_habitat" | "birch" | "caves" | "cherry_grove" | "cold" | "crimson_forest" | "deep" | "deep_dark" | "desert" | "dripstone_caves" | "edge" | "extreme_hills" | "flower_forest" | "forest" | "frozen" | "frozen_peaks" | "grove" | "hills" | "ice" | "ice_plains" | "jagged_peaks" | "jungle" | "lukewarm" | "lush_caves" | "mangrove_swamp" | "meadow" | "mega" | "mesa" | "monster" | "mooshroom_island" | "mountain" | "mountains" | "mutated" | "nether" | "nether_wastes" | "netherwart_forest" | "no_legacy_worldgen" | "ocean" | "overworld" | "overworld_generation" | "plains" | "plateau" | "rare" | "river" | "roofed" | "savanna" | "shore" | "snowy_slopes" | "soulsand_valley" | "spawn_endermen" | "spawn_few_piglins" | "spawn_few_zombified_piglins" | "spawn_ghast" | "spawn_magma_cubes" | "spawn_many_magma_cubes" | "spawn_piglin" | "spawn_zombified_piglin" | "stone" | "swamp" | "taiga" | "the_end" | "warm" | "warped_forest" | (string & {});
+
+interface TagsData extends BPComponent {
+    tags: BiomeVanillaTags[];
+}
+
+export class SetTags extends BehaviorBiomeComponentBulder<TagsData, "minecraft:tags"> {
+    /**
+     * 
+     * @param {TagsData} params Parametros del componente.
+     * @author HaJuegos - 15-10-2026
+     * @constructor
+     * @public
+     */
+    public constructor (params: TagsData) {
+        super("minecraft:tags", params);
+    }
+}
