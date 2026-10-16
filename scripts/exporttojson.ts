@@ -363,4 +363,4 @@ class ExportToJson {
     }
 }
 
-new ExportToJson(false);
+new ExportToJson(true);
