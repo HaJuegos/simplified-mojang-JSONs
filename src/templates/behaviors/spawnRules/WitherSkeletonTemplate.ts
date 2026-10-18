@@ -1,0 +1,12 @@
+import { createBPSpawnRule } from "../../../builders/behaviors/spawnRules/SpawnRuleTemplateBuilder";
+
+/**
+ * Plantilla vanilla del spawn rule para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {FinalSpawnRuleTemplateBuilder}
+ * @author HaJuegos - 18-10-2026
+ */
+export const WitherSkeletonTemplate = createBPSpawnRule({
+    idSpawnRule: "minecraft:wither_skeleton",
+    categoryControl: "monster",
+    conditions: []
+});
