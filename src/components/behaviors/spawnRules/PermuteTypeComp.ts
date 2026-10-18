@@ -2,9 +2,9 @@ import { BehaviorSpawnRuleComponentBuilder } from "../../../builders/behaviors/s
 import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 
 interface PermuteTypeData extends BPComponent {
-    weight: number;
-    entityType: string;
-    guaranteedCount: number;
+    weight?: number;
+    entityType?: string;
+    guaranteedCount?: number;
 }
 
 export class SetPermuteType extends BehaviorSpawnRuleComponentBuilder<PermuteTypeData | PermuteTypeData[], "minecraft:permute_type"> {

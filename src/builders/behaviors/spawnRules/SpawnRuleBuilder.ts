@@ -33,10 +33,10 @@ export class BehaviorSpawnRuleBuilder {
 
     /**
      * (Opcional) Lista de condiciones para que este spawn rule a crear, se ejecute.
-     * @type {(BehaviorSpawnRuleComponentBuilder<any>[] | undefined)}
+     * @type {(BehaviorSpawnRuleComponentBuilder<any>[][] | undefined)}
      * @private
      */
-    private conditions: BehaviorSpawnRuleComponentBuilder<any>[] | undefined;
+    private conditions: BehaviorSpawnRuleComponentBuilder<any>[][] | undefined;
 
     /**
      * Parametros iniciales y eventos para la creacion del spawn rule.
@@ -53,12 +53,12 @@ export class BehaviorSpawnRuleBuilder {
 
     /**
      * Metodo principal auxiliar que asigna los condicions al spawn rule a crear.
-     * @param {BehaviorSpawnRuleComponentBuilder<any>[]} conditions Lista de conditions a añadir al spawn rule en cuestion.
+     * @param {BehaviorSpawnRuleComponentBuilder<any>[][]} conditions Lista de conditions a añadir al spawn rule en cuestion.
      * @returns {this} Devuelve la misma clase debido a que es un metodo de propiedades.
      * @author HaJuegos - 17-10-2026
      * @protected
      */
-    protected setConditionsSpawnRule(conditions: BehaviorSpawnRuleComponentBuilder<any>[]): this {
+    protected setConditionsSpawnRule(conditions: BehaviorSpawnRuleComponentBuilder<any>[][]): this {
         this.conditions = conditions;
 
         return this;
@@ -84,14 +84,16 @@ export class BehaviorSpawnRuleBuilder {
         const conditionsList: Record<string, unknown>[] = [];
 
         if (this.conditions && Array.isArray(this.conditions)) {
-            const singleConditionObj: Record<string, unknown> = {};
+            for (const block of this.conditions) {
+                const conditionObj: Record<string, unknown> = {};
 
-            for (const comp of this.conditions) {
-                Object.assign(singleConditionObj, comp.build());
-            }
+                for (const comp of block) {
+                    Object.assign(conditionObj, comp.build());
+                }
 
-            if (Object.keys(singleConditionObj).length > 0) {
-                conditionsList.push(singleConditionObj);
+                if (Object.keys(conditionObj).length > 0) {
+                    conditionsList.push(conditionObj);
+                }
             }
         }
 

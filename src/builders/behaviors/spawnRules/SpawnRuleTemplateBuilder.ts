@@ -1,5 +1,5 @@
 import { BPSpawnRuleComponent } from "../../../types/behaviors/spawnRules/SpawnRuleCompTemplate";
-import { BPSpawnRuleDefinition, BPSpawnRuleOverride, BPSpawnRuleTemplateInstance } from "../../../types/behaviors/spawnRules/SpawnRuleTemplate";
+import { BPSpawnRuleDefinition, BPSpawnRuleOverride, BPSpawnRuleTemplateInstance, ConditionsBlocks } from "../../../types/behaviors/spawnRules/SpawnRuleTemplate";
 import { BehaviorSpawnRuleBuilder } from "./SpawnRuleBuilder";
 import { BehaviorSpawnRuleComponentBuilder } from "./SpawnRuleCompBuilder";
 
@@ -22,35 +22,53 @@ export class FinalSpawnRuleTemplateBuilder extends BehaviorSpawnRuleBuilder {
     public constructor (def: BPSpawnRuleDefinition, over: BPSpawnRuleOverride<any>) {
         super(def.idSpawnRule, def.categoryControl);
 
-        const conditionsMap = new Map<string, BPSpawnRuleComponent>;
+        const blocks: Map<string, BPSpawnRuleComponent>[] = [];
+
+        /**
+         * Funcion auxiliar que convierte la lista de arrays de conditions definidos en las plantillas para pasarlo a un formato mas entendible para el JSON final.
+         * @param {ConditionsBlocks} block Lista de condiciones a considerar.
+         * @returns {Map<string, BPSpawnRuleComponent>} Devuelve el mapeo correcto y adaptado a un formato preparado para el JSON final.
+         * @author HaJuegos - 17-10-2026
+         */
+        const toMap = (block: ConditionsBlocks): Map<string, BPSpawnRuleComponent> => {
+            const map = new Map<string, BPSpawnRuleComponent>();
+
+            for (const comp of block) {
+                map.set(comp.idComp, comp);
+            }
+
+            return map;
+        };
 
         if (!over.clearAllData) {
-            if (def.conditions) {
-                for (const comp of def.conditions) {
-                    conditionsMap.set(comp.idComp, comp);
-                }
+            for (const block of def.conditions ?? []) {
+                blocks.push(toMap(block));
             }
 
             if (over.conditions) {
-                for (const [id, value] of Object.entries(over.conditions as Record<string, unknown>)) {
-                    if (value == undefined) {
+                for (const [indexStr, patch] of Object.entries(over.conditions as unknown as Record<string, Record<string, unknown> | undefined>)) {
+                    const target = blocks[Number(indexStr)];
+
+                    if (!target || !patch) {
                         continue;
                     }
 
-                    if (value instanceof BehaviorSpawnRuleComponentBuilder) {
-                        conditionsMap.set(value.idComp, value);
+                    for (const value of Object.values(patch)) {
+                        if (value instanceof BehaviorSpawnRuleComponentBuilder) {
+                            target.set(value.idComp, value);
+                        }
                     }
                 }
             }
         }
 
         if (over.add?.conditions) {
-            for (const comp of over.add.conditions) {
-                conditionsMap.set(comp.idComp, comp);
+            for (const block of over.add.conditions) {
+                blocks.push(toMap(block));
             }
         }
 
-        const finalConditions = Array.from(conditionsMap.values());
+        const finalConditions = blocks.map(block => Array.from(block.values())).filter(block => block.length > 0);
 
         if (finalConditions.length > 0) {
             this.setConditionsSpawnRule(finalConditions);
@@ -71,13 +89,13 @@ export class FinalSpawnRuleTemplateBuilder extends BehaviorSpawnRuleBuilder {
 /**
  * Funcion principal de fabrica que construye finalmente la estructura final permitiendo la creacion de un nuevo spawn rule con una estructura fija para la base y luego permitiendo la edicion post-edicion a la misma.
  * @param {(BPSpawnRuleDefinition & { conditions?: Comps; })} def Definicion inicial a la base a crear. 
- * @template {readonly BPSpawnRuleComponent[]} Comps Lista de componentes definidos a la base principal. 
+ * @template {readonly ConditionsBlocks[]} Comps Lista de componentes definidos a la base principal. 
  * @returns {BPSpawnRuleTemplateInstance<Comps>} Devuelve una funcion adiccional para permitir las adiccionales y modificaciones a la base principal post-edicion.
  * @author HaJuegos - 17-10-2026  
  * @export
  */
 export function createBPSpawnRule<
-    const Comps extends readonly BPSpawnRuleComponent[] = []
+    const Comps extends readonly ConditionsBlocks[] = []
 >(def: BPSpawnRuleDefinition & { conditions?: Comps; }): BPSpawnRuleTemplateInstance<Comps> {
     return (over = {}) => {
         return new FinalSpawnRuleTemplateBuilder(def, over as unknown as BPSpawnRuleOverride<any>);

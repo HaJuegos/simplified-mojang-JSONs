@@ -2,8 +2,8 @@ import { BehaviorSpawnRuleComponentBuilder } from "../../../builders/behaviors/s
 import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
 
 interface DensityLimitData extends BPComponent {
-    surface: number;
-    underground: number;
+    surface?: number;
+    underground?: number;
 }
 
 export class SetDensityLimit extends BehaviorSpawnRuleComponentBuilder<DensityLimitData, "minecraft:density_limit"> {
