@@ -3,6 +3,7 @@ export { BPBiomeComponents } from "./components/behaviors/biomes";
 export { BPEntityComponents } from "./components/behaviors/entities";
 export { BPItemComponents } from "./components/behaviors/items";
 export { BPDimensionComponents } from "./components/behaviors/dimensions";
+export { BPSpawnRuleComponents } from "./components/behaviors/spawnRules";
 
 export { BPEntityTemplates } from "./templates/behaviors/entities";
 export { BPLootTableTemplates } from "./templates/behaviors/lootTables";
@@ -19,6 +20,7 @@ export { createBPItem } from "./builders/behaviors/items/ItemsTemplateBuilder";
 export { createBPLootTable } from "./builders/behaviors/lootTables/LootTablesTemplateBuilder";
 export { createBPRecipe } from "./builders/behaviors/recipes/RecipeTemplateBuilder";
 export { createBPDimension } from "./builders/behaviors/dimensions/DimensionTemplateBuilder";
+export { createBPSpawnRule } from "./builders/behaviors/spawnRules/SpawnRuleTemplateBuilder";
 
 
 // Tipados necesarios para las plantillas de creacion custom.
@@ -31,3 +33,4 @@ export type { BPItemDefinition, BPItemDefinitionOver, BPItemTemplateInstance } f
 export type { BPLootTableTemplateDef, BPLootTableFinalOverDefinition, BPLootTableTemplateOver } from "./types/behaviors/lootTables/LootTablesTemplate";
 export type { BPRecipeDefinition, BPRecipeOverrideDefinition } from "./types/behaviors/recipes/RecipeTemplate";
 export type { BPDimensionDefinition, BPDimensionOverride, BPDimensionTemplateInstance } from "./types/behaviors/dimensions/DimensionTemplate";
+export type { BPSpawnRuleDefinition, BPSpawnRuleOverride, BPSpawnRuleTemplateInstance } from "./types/behaviors/spawnRules/SpawnRuleTemplate";
