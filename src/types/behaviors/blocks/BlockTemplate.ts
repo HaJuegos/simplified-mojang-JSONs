@@ -10,6 +10,7 @@ export {
     MenuCategoryParams,
     TraitsListTypes,
     PermutationsGroupsParams,
+    PermOverride,
 
     BPBlockDefinition,
     BPBlockOverride,
@@ -21,7 +22,9 @@ export {
  * @interface BPBlockDefinition
  * @author HaJuegos - 18-10-2026
  */
-interface BPBlockDefinition {
+interface BPBlockDefinition<
+    Perms extends readonly PermutationsGroupsParams[] = readonly PermutationsGroupsParams[]
+> {
     /**
      * ID del bloque a crear en cuestion.
      * @type {string}
@@ -50,7 +53,7 @@ interface BPBlockDefinition {
      * (Opcional) Lista de grupos de componentes dinamicos que se activara por una condicion MoLang del bloque.
      * @type {?readonly PermutationsGroupsParams[]}
      */
-    permutations?: readonly PermutationsGroupsParams[];
+    permutations?: Perms;
 
     /**
      * (Opcional) Lista de componentes fijos del bloque.
@@ -90,15 +93,23 @@ type OverrideKeys<Base, Allowed> = {
 };
 
 /**
- * Tipado general que bloquea y obtiene todos los datos parcialmente los permutations y datos establecidos en la plantilla base.
- * @template T 
- * @author HaJuegos - 18-10-2026
+ * Tipado general para obtener los datos fijados de las permutaciones de la plantilla base y bloquear cualquier salida de la plantilla base a modificar. 
+ * @template P Permutaciones a considerar.
+ * @author HaJuegos - 19-10-2026
  */
-type DeepPartial<T> = T extends readonly (infer U)[]
-    ? readonly DeepPartial<U>[]
-    : T extends object
-    ? { [K in keyof T]?: DeepPartial<T[K]> }
-    : T;
+type PermOverride<P> = {
+    condition?: string;
+    components?: P extends { components: readonly (infer C extends BPBlockComponent)[]; }
+    ? { [K in C['idComp'] & string]?: Extract<C, { idComp: K; }> }
+    : never;
+};
+
+/**
+ * Tipado obligatorio para permitir las ediciones de las permutaciones definidas de la plantilla base.
+ * @template Perms Permutaciones definidas en la plantilla base.
+ * @author HaJuegos - 19-10-2026
+ */
+type ChangePermutations<Perms> = Perms extends readonly unknown[] ? { [I in keyof Perms]?: PermOverride<Perms[I]> | undefined } : never;
 
 /**
  * Tipado general para la estructura fija despues de definir la plantilla base para permitir la post-edicion.
@@ -180,13 +191,7 @@ type BPBlockOverride<
      * (Opcional) Datos a modificar sobre los grupos de componentes del bloque definidos en la plantilla base.
      * @type {?BaseDef['permutations'] extends readonly (infer P extends PermutationsGroupsParams)[] ? readonly (Omit<DeepPartial<P>, 'condition'> & {condition: string;})[]: never}
      */
-    changePermutations?: BaseDef['permutations'] extends readonly (infer P extends PermutationsGroupsParams)[]
-    ? readonly (
-        Omit<DeepPartial<P>, 'condition'> & {
-            condition: string;
-        }
-    )[]
-    : never;
+    changePermutations?: ChangePermutations<NonNullable<BaseDef['permutations']>>;
 
     /**
      * (Opcional) Datos a modificar sobre los componentes fijos definidos en la plantilla base del bloque.

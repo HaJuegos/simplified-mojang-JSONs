@@ -56,6 +56,7 @@ class GenerateAutoIndexs {
         { dir: "src/components/behaviors/biomes", namespace: "BPBiomeComponents", kind: "class", syncIds: true },
         { dir: "src/components/behaviors/dimensions", namespace: "BPDimensionComponents", kind: "class", syncIds: true },
         { dir: "src/components/behaviors/spawnRules", namespace: "BPSpawnRuleComponents", kind: "class", syncIds: true },
+        { dir: "src/components/behaviors/blocks", namespace: "BPBlockComponents", kind: "class", syncIds: true },
 
         { dir: "src/templates/behaviors/entities", namespace: "BPEntityTemplates", kind: "const" },
         { dir: "src/templates/behaviors/lootTables", namespace: "BPLootTableTemplates", kind: "const", recursive: true },

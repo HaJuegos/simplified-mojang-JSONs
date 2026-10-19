@@ -1,5 +1,5 @@
 import { BPBlockComponent } from "../../../types/behaviors/blocks/BlockCompTemplate";
-import { BPBlockDefinition, BPBlockOverride, BPBlockOverrideInstance, MenuCategoryParams, PermutationsGroupsParams, StatesListTypes, TraitsListTypes } from "../../../types/behaviors/blocks/BlockTemplate";
+import { BPBlockDefinition, BPBlockOverride, BPBlockOverrideInstance, MenuCategoryParams, PermOverride, PermutationsGroupsParams, StatesListTypes, TraitsListTypes } from "../../../types/behaviors/blocks/BlockTemplate";
 import { BehaviorBlockBuilder } from "./BlockBuilder";
 import { BehaviorBlockComponentBuilder } from "./BlockCompBuilder";
 
@@ -18,7 +18,7 @@ export class FinalBlockBulderTemplate extends BehaviorBlockBuilder {
      * @author HaJuegos - 18-10-2026
      * @constructor
      */
-    constructor (def: BPBlockDefinition, over: BPBlockOverride<any>) {
+    constructor (def: BPBlockDefinition, over: BPBlockOverride<BPBlockDefinition>) {
         super(def.idBlock);
 
         let finalMenuData: MenuCategoryParams | undefined;
@@ -56,14 +56,19 @@ export class FinalBlockBulderTemplate extends BehaviorBlockBuilder {
             }
 
             if (over.changePermutations) {
-                finalPermutationsData = over.changePermutations.map((permutation) => {
-                    const original = finalPermutationsData?.find(
-                        (item) => item.condition == permutation.condition
-                    );
+                const changes = over.changePermutations as unknown as (PermOverride<any> | undefined)[];
+
+                finalPermutationsData = (finalPermutationsData ?? []).map((perm, i) => {
+                    const data = changes[i];
+
+                    if (!data) return perm;
+
+                    const changed = (data.components ?? {}) as Record<string, BPBlockComponent>;
 
                     return {
-                        ...original,
-                        ...permutation
+                        ...perm,
+                        condition: data.condition ?? perm.condition,
+                        components: perm.components.map((c: any) => changed[c.idComp] ?? c)
                     } as PermutationsGroupsParams;
                 });
             }
@@ -128,6 +133,6 @@ export function createBPBlock<
     const Comps extends readonly BPBlockComponent[] = BaseDef['components'] extends readonly BPBlockComponent[] ? BaseDef['components'] : readonly BPBlockComponent[]
 >(def: BaseDef): BPBlockOverrideInstance<BaseDef, Comps> {
     return (over = {}) => {
-        return new FinalBlockBulderTemplate(def, over as unknown as BPBlockOverride<any>);
+        return new FinalBlockBulderTemplate(def, over as unknown as BPBlockOverride<BPBlockDefinition>);
     };
 }
