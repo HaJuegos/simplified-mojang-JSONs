@@ -8,6 +8,8 @@ export {
     BPItemDefinition,
     BPItemDefinitionOver,
     BPItemTemplateInstance,
+    CategoryItemsList,
+    GroupItemsList,
 };
 
 /**
