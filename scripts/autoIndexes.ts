@@ -60,8 +60,9 @@ class GenerateAutoIndexs {
 
         { dir: "src/templates/behaviors/entities", namespace: "BPEntityTemplates", kind: "const" },
         { dir: "src/templates/behaviors/lootTables", namespace: "BPLootTableTemplates", kind: "const", recursive: true },
-        { dir: "src/templates/behaviors/recipes", namespace: "BPRecipesTemplates", kind: "const" },
-        { dir: "src/templates/behaviors/biomes", namespace: "BPBiomesTemplates", kind: "const" },
+        { dir: "src/templates/behaviors/recipes", namespace: "BPRecipeTemplates", kind: "const" },
+        { dir: "src/templates/behaviors/biomes", namespace: "BPBiomeTemplates", kind: "const" },
+        { dir: "src/templates/behaviors/spawnRules", namespace: "BPSpawnRuleTemplates", kind: "const" },
     ];
 
     /**

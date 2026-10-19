@@ -1,1 +1,1 @@
-export * as BPRecipesTemplates from "./_root";
+export * as BPRecipeTemplates from "./_root";

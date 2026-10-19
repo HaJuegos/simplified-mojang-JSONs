@@ -1,1 +1,1 @@
-export * as BPBiomesTemplates from "./_root";
+export * as BPBiomeTemplates from "./_root";
