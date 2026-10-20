@@ -1,6 +1,7 @@
 import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { FunctionsEntries } from "../lootTables/LootTablesTemplate";
 import { FinalTradingBuilderTemplate } from "../../../builders/behaviors/trading/TradingTemplateBuilder";
+import { EntityFilter } from "../../EntityFilters";
 
 export {
     TiersParams,
@@ -115,13 +116,13 @@ type BPTradingOverride<
 };
 
 interface TiersParams {
-    totalExpRequired: number;
+    totalExpRequired?: number;
     groups?: GroupsTradesParams[];
     trades?: TradesParams[];
 }
 
 interface GroupsTradesParams {
-    numToSelect: number;
+    numToSelect?: number;
     trades: TradesParams[];
 }
 
@@ -135,10 +136,14 @@ interface TradesParams {
 }
 
 interface ItemBaseToTradeParams {
-    item: string | MinecraftItemTypes;
-    quantity: number;
+    item?: string | MinecraftItemTypes;
+    quantity?: number | {
+        min?: number;
+        max?: number;
+    };
     functions?: FunctionsEntries[];
     choice?: ChoiceListToTradeParams[];
+    filters?: EntityFilter | EntityFilter[];
 }
 
 interface WantsItemsToTrade extends ItemBaseToTradeParams {
@@ -147,7 +152,11 @@ interface WantsItemsToTrade extends ItemBaseToTradeParams {
 
 interface ChoiceListToTradeParams {
     item: string | MinecraftItemTypes;
-    quantity: number;
+    quantity?: number | {
+        min?: number;
+        max?: number;
+    };
     functions?: FunctionsEntries[];
     priceMultiplier?: number;
+    filters?: EntityFilter | EntityFilter[];
 }

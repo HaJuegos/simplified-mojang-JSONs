@@ -1,0 +1,99 @@
+import { createBPTrading } from "../../../builders/behaviors/trading/TradingTemplateBuilder";
+
+/**
+ * Plantilla vanilla del trading para la sobreescritura del mismo. Sus datos base ya estan definidos.
+ * @type {BPTradingOverInstance}
+ * @deprecated - Estos archivos son viejos y no son compatibles con las versiones recientes de los aldeanos. Usa los de {@link .EconomyTrades} que es una buena alternativa.
+ * @author HaJuegos - 20-10-2026
+ */
+export const FishermanTradesTemplate = createBPTrading({
+    tiers: [
+        {
+            trades: [
+                {
+                    wants: [
+                        {
+                            item: "minecraft:fish",
+                            quantity: 6
+                        },
+                        {
+                            item: "minecraft:emerald",
+                            quantity: 1
+                        }
+                    ],
+                    gives: [
+                        {
+                            item: "minecraft:cooked_fish",
+                            quantity: 6
+                        }
+                    ]
+                },
+                {
+                    wants: [
+                        {
+                            item: "minecraft:string",
+                            quantity: {
+                                min: 15,
+                                max: 20
+                            }
+                        }
+                    ],
+                    gives: [
+                        {
+                            item: "minecraft:emerald",
+                            quantity: 1
+                        }
+                    ]
+                },
+                {
+                    wants: [
+                        {
+                            item: "minecraft:coal:0",
+                            quantity: {
+                                min: 16,
+                                max: 24
+                            }
+                        }
+                    ],
+                    gives: [
+                        {
+                            item: "minecraft:emerald",
+                            quantity: 1
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            trades: [
+                {
+                    wants: [
+                        {
+                            item: "minecraft:emerald",
+                            quantity: {
+                                min: 7,
+                                max: 8
+                            }
+                        }
+                    ],
+                    gives: [
+                        {
+                            item: "minecraft:fishing_rod",
+                            quantity: 1,
+                            functions: [
+                                {
+                                    function: "enchant_with_levels",
+                                    treasure: false,
+                                    levels: {
+                                        min: 5,
+                                        max: 19
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+});

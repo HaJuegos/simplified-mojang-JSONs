@@ -63,6 +63,7 @@ class GenerateAutoIndexs {
         { dir: "src/templates/behaviors/recipes", namespace: "BPRecipeTemplates", kind: "const" },
         { dir: "src/templates/behaviors/biomes", namespace: "BPBiomeTemplates", kind: "const" },
         { dir: "src/templates/behaviors/spawnRules", namespace: "BPSpawnRuleTemplates", kind: "const" },
+        { dir: "src/templates/behaviors/trading", namespace: "BPTradingTemplates", kind: "const", recursive: true },
     ];
 
     /**
