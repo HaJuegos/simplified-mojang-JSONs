@@ -3,6 +3,7 @@ export { SetChestObstruction } from "./ChestObstructionComp";
 export { SetCollisionBox } from "./CollisionBoxComp";
 export { SetConnectionRule } from "./ConnectionRuleComp";
 export { SetCraftingTable } from "./CraftingTableComp";
+export { SetCustomComponent } from "./CustomComponentComp";
 export { SetDestructibleByExplosion } from "./DestructibleByExplosionComp";
 export { SetDestructibleByMining } from "./DestructibleByMiningComp";
 export { SetDestructionParticles } from "./DestructionParticlesComp";
