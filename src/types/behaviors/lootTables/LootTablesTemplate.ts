@@ -2,6 +2,8 @@ import { RawMessage } from "@minecraft/server";
 import { MinecraftEntityTypes, MinecraftItemTypes } from "@minecraft/vanilla-data";
 
 export {
+    FunctionsEntries,
+
     PoolsParamsTypes,
     BPLootTableTemplateDef,
     BPLootTableTemplateOver,
