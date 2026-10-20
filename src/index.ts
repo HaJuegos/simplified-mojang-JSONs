@@ -13,6 +13,7 @@ export { BPEntityTemplates } from "./templates/behaviors/entities";
 export { BPLootTableTemplates } from "./templates/behaviors/lootTables";
 export { BPRecipeTemplates } from "./templates/behaviors/recipes";
 export { BPSpawnRuleTemplates } from "./templates/behaviors/spawnRules";
+export { BPTradingTemplates } from "./templates/behaviors/trading";
 
 
 // Exportacion de plantillas para la creacion custom.
@@ -28,6 +29,7 @@ export { createBPItem } from "./builders/behaviors/items/ItemsTemplateBuilder";
 export { createBPLootTable } from "./builders/behaviors/lootTables/LootTablesTemplateBuilder";
 export { createBPRecipe } from "./builders/behaviors/recipes/RecipeTemplateBuilder";
 export { createBPSpawnRule } from "./builders/behaviors/spawnRules/SpawnRuleTemplateBuilder";
+export { createBPTrading } from "./builders/behaviors/trading/TradingTemplateBuilder";
 
 
 // Tipados necesarios para las plantillas de creacion custom.
@@ -43,3 +45,4 @@ export type { BPItemDefinition, BPItemDefinitionOver, BPItemTemplateInstance } f
 export type { BPLootTableTemplateDef, BPLootTableFinalOverDefinition, BPLootTableTemplateOver } from "./types/behaviors/lootTables/LootTablesTemplate";
 export type { BPRecipeDefinition, BPRecipeOverrideDefinition } from "./types/behaviors/recipes/RecipeTemplate";
 export type { BPSpawnRuleDefinition, BPSpawnRuleOverride, BPSpawnRuleTemplateInstance } from "./types/behaviors/spawnRules/SpawnRuleTemplate";
+export type { BPTradingDefinition, BPTradingOverInstance, BPTradingOverride } from "./types/behaviors/trading/TradingTemplate";
