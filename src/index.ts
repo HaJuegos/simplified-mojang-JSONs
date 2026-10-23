@@ -25,6 +25,8 @@ export { createBPBlock } from "./builders/behaviors/blocks/BlockTemplateBuilder"
 export { createBPDialogue } from "./builders/behaviors/dialogues/DialogueTemplateBuilder";
 export { createBPDimension } from "./builders/behaviors/dimensions/DimensionTemplateBuilder";
 export { createBPEntity } from "./builders/behaviors/entities/EntityTemplateBuilder";
+export { createBPFeature } from "./builders/behaviors/features/FeatureTemplateBuilder";
+export { createItemCatalogBP } from "./builders/behaviors/itemCatalog/ItemCatalogTemplateBuilder";
 export { createBPItem } from "./builders/behaviors/items/ItemsTemplateBuilder";
 export { createBPLootTable } from "./builders/behaviors/lootTables/LootTablesTemplateBuilder";
 export { createBPRecipe } from "./builders/behaviors/recipes/RecipeTemplateBuilder";
@@ -41,6 +43,8 @@ export type { BPBlockDefinition, BPBlockOverride, BPBlockOverrideInstance } from
 export type { BPDialogueDefinition } from "./types/behaviors/dialogues/DialogueTemplate";
 export type { BPDimensionDefinition, BPDimensionOverride, BPDimensionTemplateInstance } from "./types/behaviors/dimensions/DimensionTemplate";
 export type { BPEntitiesTemplateDef, BPEntitiesTemplateOverride } from "./types/behaviors/entities/EntitiesTemplate";
+export type { BPFeatureOverride, BPFeatureDefinition } from "./types/behaviors/features/FeatureTemplate";
+export type { BPItemCatalogDefinition, BPItemCatalogTemplateInstance, BPItemCatalogOverride } from "./types/behaviors/itemCatalog/ItemCatalogTemplate";
 export type { BPItemDefinition, BPItemDefinitionOver, BPItemTemplateInstance } from "./types/behaviors/items/ItemsTemplate";
 export type { BPLootTableTemplateDef, BPLootTableFinalOverDefinition, BPLootTableTemplateOver } from "./types/behaviors/lootTables/LootTablesTemplate";
 export type { BPRecipeDefinition, BPRecipeOverrideDefinition } from "./types/behaviors/recipes/RecipeTemplate";
