@@ -42,7 +42,7 @@ class ExportToJson {
      * @type {string}
      * @private
      */
-    private readonly templatesDirt = join(this.projectRoot, "src", "templates", "behaviors", "trading");
+    private readonly templatesDirt = join(this.projectRoot, "src", "templates", "behaviors", "features");
 
     /**
      * Ruta principal donde se van a exportar los archivos de TS a JSON leibles.
