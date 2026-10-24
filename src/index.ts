@@ -10,6 +10,7 @@ export { BPSpawnRuleComponents } from "./components/behaviors/spawnRules";
 // Variable root de plantillas pre-creadas para editar.
 export { BPBiomeTemplates } from "./templates/behaviors/biomes";
 export { BPEntityTemplates } from "./templates/behaviors/entities";
+export { BPFeatureTemplates } from "./templates/behaviors/features";
 export { BPLootTableTemplates } from "./templates/behaviors/lootTables";
 export { BPRecipeTemplates } from "./templates/behaviors/recipes";
 export { BPSpawnRuleTemplates } from "./templates/behaviors/spawnRules";

@@ -215,7 +215,7 @@ type BPFeatureOverride<
 type EarlyOutTypes = "none" | "first_failure" | "first_success";
 
 interface AggregateFeatureParams {
-    earlyOut: EarlyOutTypes,
+    earlyOut?: EarlyOutTypes,
     features: string[];
 }
 
@@ -358,7 +358,7 @@ interface NetherCaveCarverFeatureParams {
 
 interface OreFeatureParams {
     count: number;
-    discardChanceOnAirExposure: number;
+    discardChanceOnAirExposure?: number;
     replaceRules: ReplaceRulesParams[];
 }
 
@@ -379,20 +379,34 @@ interface PartiallyExposedBlobFeatureParams {
 
 
 interface ScatterFeatureParams {
-    projectInputToFloor: boolean;
+    projectInputToFloor?: boolean;
     placesFeature: string;
     distribution: DistributionParams;
 }
 
 type CoordinatesOrdersTypes = "xyz" | "xzy" | "yxz" | "yzx" | "zxy" | "zyx";
 
+type DistributionTypes = "uniform" | "gaussian" | "inverse_gaussian" | "triangle" | "fixed_grid" | "jittered_grid";
+
+type CoordinatesSpawnTypes = string | MoLangValue | number | {
+    distribution: DistributionTypes;
+    extent: [number | MoLangValue | string, number | MoLangValue | string];
+    gridOffset?: number;
+    stepSize?: number;
+};
+
+type ChanceDemoniatorTypes = number | [number, number] | {
+    denominator: number;
+    numerator: number;
+};
+
 interface DistributionParams {
-    coordinateEvalOrder: CoordinatesOrdersTypes;
+    coordinateEvalOrder?: CoordinatesOrdersTypes;
     iterations: string | MoLangValue | number;
-    scatterChance: string | MoLangValue | number;
-    x: string | MoLangValue | number;
-    y: string | MoLangValue | number;
-    z: string | MoLangValue | number;
+    scatterChance?: string | MoLangValue | number | ChanceDemoniatorTypes;
+    x: CoordinatesSpawnTypes;
+    y: CoordinatesSpawnTypes;
+    z: CoordinatesSpawnTypes;
 }
 
 
@@ -417,13 +431,13 @@ interface SequenceFeatureParams {
 
 
 interface SingleBlockFeatureParams {
-    enforcePlacementRules: boolean;
-    enforceSurvivabilityRules: boolean;
-    mayAttachTo: MoreAttachSidesParams;
-    mayNotAttachTo: AttachSidesParams;
-    mayReplace: (string | MinecraftBlockTypes | BlockDataTypes)[];
-    placesBlock: (string | MinecraftBlockTypes | BlockDataTypes);
-    randomizeRaotation: boolean;
+    enforcePlacementRules?: boolean;
+    enforceSurvivabilityRules?: boolean;
+    mayAttachTo?: MoreAttachSidesParams;
+    mayNotAttachTo?: AttachSidesParams;
+    mayReplace?: (string | MinecraftBlockTypes | BlockDataTypes)[];
+    placesBlock?: (string | MinecraftBlockTypes | BlockDataTypes);
+    randomizeRaotation?: boolean;
 }
 
 interface MoreAttachSidesParams extends AttachSidesParams {
@@ -432,15 +446,15 @@ interface MoreAttachSidesParams extends AttachSidesParams {
 }
 
 interface AttachSidesParams {
-    top?: (string | MinecraftBlockTypes | BlockDataTypes);
-    bottom?: (string | MinecraftBlockTypes | BlockDataTypes);
-    north?: (string | MinecraftBlockTypes | BlockDataTypes);
-    south?: (string | MinecraftBlockTypes | BlockDataTypes);
-    east?: (string | MinecraftBlockTypes | BlockDataTypes);
-    west?: (string | MinecraftBlockTypes | BlockDataTypes);
-    all?: (string | MinecraftBlockTypes | BlockDataTypes);
-    sides?: (string | MinecraftBlockTypes | BlockDataTypes);
-    diagonal?: (string | MinecraftBlockTypes | BlockDataTypes);
+    top?: (string | MinecraftBlockTypes | BlockDataTypes) | (string | MinecraftBlockTypes | BlockDataTypes)[];
+    bottom?: (string | MinecraftBlockTypes | BlockDataTypes) | (string | MinecraftBlockTypes | BlockDataTypes)[];
+    north?: (string | MinecraftBlockTypes | BlockDataTypes) | (string | MinecraftBlockTypes | BlockDataTypes)[];
+    south?: (string | MinecraftBlockTypes | BlockDataTypes) | (string | MinecraftBlockTypes | BlockDataTypes)[];
+    east?: (string | MinecraftBlockTypes | BlockDataTypes) | (string | MinecraftBlockTypes | BlockDataTypes)[];
+    west?: (string | MinecraftBlockTypes | BlockDataTypes) | (string | MinecraftBlockTypes | BlockDataTypes)[];
+    all?: (string | MinecraftBlockTypes | BlockDataTypes) | (string | MinecraftBlockTypes | BlockDataTypes)[];
+    sides?: (string | MinecraftBlockTypes | BlockDataTypes) | (string | MinecraftBlockTypes | BlockDataTypes)[];
+    diagonal?: (string | MinecraftBlockTypes | BlockDataTypes) | (string | MinecraftBlockTypes | BlockDataTypes)[];
 }
 
 
@@ -490,15 +504,192 @@ interface SurfaceRelativeThresholdFeatureParams {
 }
 
 
+type StepDirectionsTypes = "down" | "up" | "out" | "away";
+
+
+interface DecorationBlocksSequencesParams {
+    block: (string | MinecraftBlockTypes | BlockDataTypes);
+    count: number;
+}
+
 interface TreeFeatureParams {
+    trunk?: {
+        canBeSubmerged?: boolean | {
+            maxDepth: number;
+        };
+        heightModifier?: IntRangeGeneric;
+        trunkBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        trunkDecoration?: {
+            decorationBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+            decorationBlocksSequence?: DecorationBlocksSequencesParams[];
+            decorationChance: ChanceDemoniatorTypes;
+            numSteps?: number;
+            stepDirection?: StepDirectionsTypes;
+        };
+        trunkHeight: IntRangeGeneric;
+    };
+
+    canopy?: {
+        canopyDecoration?: {
+            decorationBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+            decorationChance: ChanceDemoniatorTypes;
+            numSteps: IntRangeGeneric;
+            stepDirection: StepDirectionsTypes;
+        };
+        canopyOffset: {
+            min: number;
+            max: number;
+        };
+        canopySlope?: {
+            rise: number;
+            run: number;
+        };
+        leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        minWidth?: number;
+        variationChance: ChanceDemoniatorTypes | ChanceDemoniatorTypes[];
+    };
+
+    fallenTrunk?: {
+        heightModifier?: IntRangeGeneric;
+        logDecorationFeature?: string;
+        logLength: IntRangeGeneric;
+        stumpHeight?: IntRangeGeneric;
+        trunkBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        trunkDecoration?: {
+            decorationBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+            decorationBlocksSequence?: DecorationBlocksSequencesParams[];
+            decorationChance: ChanceDemoniatorTypes;
+            numSteps?: number;
+            stepDirection?: StepDirectionsTypes;
+        };
+    };
+
+    megaTrunk?: {
+        branches?: {
+            branchAltitudeFactor: {
+                min: number;
+                max: number;
+            },
+            branchCanopy: {
+                megaCanopy: {
+                    baseRadius: number;
+                    canopyHeight: IntRangeGeneric;
+                    coreWidth?: number;
+                    leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+                    simplifyCanopy: boolean;
+                };
+            },
+            branchInterval: IntRangeGeneric;
+            branchLength: number;
+            branchSlope: number;
+        };
+        trunkBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        trunkDecoration?: {
+            decorationBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+            decorationBlocksSequence?: DecorationBlocksSequencesParams[];
+            decorationChance: ChanceDemoniatorTypes;
+            numSteps?: number;
+            stepDirection?: StepDirectionsTypes;
+        };
+        trunkHeight: {
+            base: number;
+            intervals: [number, number];
+            minHeightForCanopy?: number;
+        };
+        trunkWidth: number;
+    };
+
+    megaCanopy?: {
+        baseRadius: number;
+        canopyHeight: IntRangeGeneric;
+        coreWidth: number;
+        leafBlock?: (string | MinecraftBlockTypes | BlockDataTypes);
+        simplifyCanopy?: boolean;
+    };
+
+    megaPineCanopy?: {
+        baseRadius: number;
+        canopyHeight: IntRangeGeneric;
+        coreWidth: number;
+        leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        radiusStepModifier: number;
+    };
+
+    pineCanopy?: {
+        baseRadius: number;
+        canopyHeight: IntRangeGeneric;
+        leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+    };
+
+    acaciaTrunk?: {
+        branches: {
+            branchCanopy: {
+                acaciaCanopy: {
+                    canopySize: number;
+                    leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+                    simplifyCanopy: boolean;
+                };
+            },
+            branchChance: ChanceDemoniatorTypes;
+            branchLength: IntRangeGeneric;
+            branchPosition: IntRangeGeneric;
+        };
+        trunkBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        trunkDecoration?: {
+            decorationBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+            decorationBlocksSequence?: DecorationBlocksSequencesParams[];
+            decorationChance: ChanceDemoniatorTypes;
+            numSteps?: number;
+            stepDirection?: StepDirectionsTypes;
+        },
+        trunkHeight: {
+            base: number;
+            intervals: [number, number];
+            minHeightForCanopy?: number;
+        },
+        trunkLean: {
+            allowDiagonalGrowth: Boolean;
+            leanHeight: IntRangeGeneric;
+            leanLength?: IntRangeGeneric;
+            leanSteps: IntRangeGeneric;
+        },
+        trunkWidth: number;
+    };
+
+    roofedCanopy?: {
+        canopyHeight: number;
+        coreWidth: number;
+        innerRadius: number;
+        leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        outerRadius: number;
+    };
+
+    acaciaCanopy?: {
+        canopySize: number;
+        leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        simplifyCanopy?: boolean;
+    };
+
+    spruceCanopy?: {
+        leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        lowerOffset: IntRangeGeneric;
+        maxRadius: IntRangeGeneric;
+        upperOffset: IntRangeGeneric;
+    };
+
     baseBlock: (string | MinecraftBlockTypes | BlockDataTypes) | (string | MinecraftBlockTypes | BlockDataTypes)[];
-    baseCluster: {
+
+    baseCluster?: {
         mayReplace: (string | MinecraftBlockTypes | BlockDataTypes)[];
         numClusters: number;
         clusterRadius: number;
     };
+
     mayReplace: (string | MinecraftBlockTypes | BlockDataTypes)[];
-    fancyTrunk: {
+    mayGrowOn: (string | MinecraftBlockTypes | BlockDataTypes)[];
+    mayGrowThrough?: (string | MinecraftBlockTypes | BlockDataTypes)[];
+
+    fancyTrunk?: {
         trunkBlock: (string | MinecraftBlockTypes | BlockDataTypes);
         trunkHeight: {
             base: number;
@@ -514,7 +705,8 @@ interface TreeFeatureParams {
             minAltitudeFactor: number;
         };
     };
-    fancyCanopy: {
+
+    fancyCanopy?: {
         height: number;
         radius: number;
         leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
@@ -550,6 +742,8 @@ interface VegetationPatchFeatureParams {
 }
 
 
+type ListOfFeaturesTypes = [string, number];
+
 interface WeightedRandomFeatureParams {
-    features: string[];
+    features: (ListOfFeaturesTypes | string)[];
 }
