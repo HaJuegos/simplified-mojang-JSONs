@@ -9,9 +9,11 @@ npm-debug.log*
 *.log
 
 *.tsbuildinfo
+*.tgz
 
 .DS_Store
 Thumbs.db
 
 .vscode/
 .idea/
+package-lock.json
