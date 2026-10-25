@@ -19,7 +19,7 @@ type BPCapabilitiesTypes = "chemistry" | "editorExtension" | "experimental_custo
  * Lista de dependencias scripts vanillas disponibles a usar para el juego.
  * @author HaJuegos - 06-10-2026
  */
-type DependenciesAPIVanillaTypes = "@minecraft/server" | "@minecraft/server-admin" | "@minecraft/server-editor" | "@minecraft/server-gametest" | "@minecraft/server-graphics" | "@minecraft/server-net" | "@minecraft/server-ui";
+type DependenciesAPIVanillaTypes = "@minecraft/server" | "@minecraft/server-admin" | "@minecraft/server-editor" | "@minecraft/server-gametest" | "@minecraft/server-graphics" | "@minecraft/server-net" | "@minecraft/server-ui" | "@minecraft/debug-utilities" | "@minecraft/gameplay-utilities";
 
 /**
  * Estructura fija de un manifest final a generar.
@@ -179,7 +179,7 @@ type BPModulesParamsTypes =
     | (BPModuleBaseParamsTypes & BPModuleUUIDParamsTypes & {
         type: "script";
         entry: string;
-        language: "javascript";
+        language?: "javascript";
     });
 
 /**
