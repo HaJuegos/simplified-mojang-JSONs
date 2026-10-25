@@ -42,7 +42,7 @@ class ExportToJson {
      * @type {string}
      * @private
      */
-    private readonly templatesDirt = join(this.projectRoot, "src", "templates", "behaviors", "features");
+    private readonly templatesDirt = join(this.projectRoot, "src", "templates", "behaviors", "featureRules");
 
     /**
      * Ruta principal donde se van a exportar los archivos de TS a JSON leibles.
@@ -116,11 +116,11 @@ class ExportToJson {
             return value.finalBuild();
         }
 
-        if (typeof value == "function" && value.length == 0) {
+        if (typeof value == "function" && value.length <= 1) {
             let r: unknown;
 
             try {
-                r = (value as () => unknown)();
+                r = (value as (over?: unknown) => unknown)({});
             } catch {
                 return undefined;
             }
@@ -363,4 +363,4 @@ class ExportToJson {
     }
 }
 
-new ExportToJson(true);
+new ExportToJson(false);

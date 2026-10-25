@@ -197,10 +197,10 @@ type CoordinatesSpawnTypes = string | MoLangValue | number | {
 };
 
 interface DistributionRulesParams {
-    coordinateEvalOrder: CoordinatesOrdersTypes;
-    iterations: string | MoLangValue | number;
-    scatterChance: string | MoLangValue | number | ChanceDemoniatorTypes;
-    x: CoordinatesSpawnTypes;
-    y: CoordinatesSpawnTypes;
-    z: CoordinatesSpawnTypes;
+    coordinateEvalOrder?: CoordinatesOrdersTypes;
+    iterations?: string | MoLangValue | number;
+    scatterChance?: string | MoLangValue | number | ChanceDemoniatorTypes;
+    x?: CoordinatesSpawnTypes;
+    y?: CoordinatesSpawnTypes;
+    z?: CoordinatesSpawnTypes;
 }

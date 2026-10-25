@@ -11,6 +11,7 @@ export { BPSpawnRuleComponents } from "./components/behaviors/spawnRules";
 export { BPBiomeTemplates } from "./templates/behaviors/biomes";
 export { BPEntityTemplates } from "./templates/behaviors/entities";
 export { BPFeatureTemplates } from "./templates/behaviors/features";
+export { BPFeatureRuleTemplates } from "./templates/behaviors/featureRules";
 export { BPLootTableTemplates } from "./templates/behaviors/lootTables";
 export { BPRecipeTemplates } from "./templates/behaviors/recipes";
 export { BPSpawnRuleTemplates } from "./templates/behaviors/spawnRules";
@@ -27,6 +28,7 @@ export { createBPDialogue } from "./builders/behaviors/dialogues/DialogueTemplat
 export { createBPDimension } from "./builders/behaviors/dimensions/DimensionTemplateBuilder";
 export { createBPEntity } from "./builders/behaviors/entities/EntityTemplateBuilder";
 export { createBPFeature } from "./builders/behaviors/features/FeatureTemplateBuilder";
+export { createBPFeatureRule } from "./builders/behaviors/featureRules/FeatureRuleTemplateBuilder";
 export { createItemCatalogBP } from "./builders/behaviors/itemCatalog/ItemCatalogTemplateBuilder";
 export { createBPItem } from "./builders/behaviors/items/ItemsTemplateBuilder";
 export { createBPLootTable } from "./builders/behaviors/lootTables/LootTablesTemplateBuilder";
@@ -45,6 +47,7 @@ export type { BPDialogueDefinition } from "./types/behaviors/dialogues/DialogueT
 export type { BPDimensionDefinition, BPDimensionOverride, BPDimensionTemplateInstance } from "./types/behaviors/dimensions/DimensionTemplate";
 export type { BPEntitiesTemplateDef, BPEntitiesTemplateOverride } from "./types/behaviors/entities/EntitiesTemplate";
 export type { BPFeatureOverride, BPFeatureDefinition } from "./types/behaviors/features/FeatureTemplate";
+export type { BPFeatureRuleDefinition, BPFeatureRuleOverride } from "./types/behaviors/featureRules/FeatureRuleTemplate";
 export type { BPItemCatalogDefinition, BPItemCatalogTemplateInstance, BPItemCatalogOverride } from "./types/behaviors/itemCatalog/ItemCatalogTemplate";
 export type { BPItemDefinition, BPItemDefinitionOver, BPItemTemplateInstance } from "./types/behaviors/items/ItemsTemplate";
 export type { BPLootTableTemplateDef, BPLootTableFinalOverDefinition, BPLootTableTemplateOver } from "./types/behaviors/lootTables/LootTablesTemplate";

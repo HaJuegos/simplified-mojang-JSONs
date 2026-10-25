@@ -36,14 +36,15 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta que permite obtener la altura de un bloque que se encuentra encima del bloque solido mas alto en la posicion de entrada. (x, z)
-     * @returns {string} Devuelve la consulta formateada y lista.
-     * @isQueryFunction - Es un metodo query o consulta simplificada.
-     * @author HaJuegos - 17-09-2026
-     * @public
+     * @param {string} x Posicion en X para obtener la altura.
+     * @param {string} z Posicion en Z para obtener la altura.
+     * @returns {string}  Devuelve la consulta formateada y lista.
+     * @author HaJuegos - 24-10-2026 
      * @static
+     * @public
      */
-    public static aboveTopSolid(): string {
-        return this.queryFunction("above_top_solid");
+    public static aboveTopSolid(x: string, z: string): string {
+        return this.queryFunction("above_top_solid", x, z);
     }
 
     /**
