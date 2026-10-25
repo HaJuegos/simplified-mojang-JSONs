@@ -1,5 +1,5 @@
 {
-    "name": "simplified-mojang-JSONs",
+    "name": "simplified-mojang-jsons",
     "version": "0.0.1",
     "description": "An API in TypeScript for creating and managing the JSON configuration of vanilla and custom Minecraft Bedrock entities using type system support, OOP, and a more organized and reusable structure.",
     "type": "module",
@@ -7,9 +7,12 @@
     "types": "./dist/index.d.ts",
     "exports": {
         ".": {
+            "types": "./dist/index.d.ts",
             "import": "./dist/index.js",
-            "types": "./dist/index.d.ts"
-        }
+            "default": "./dist/index.js"
+        },
+        "./exporttojson": "./scripts/exporttojson.ts",
+        "./package.json": "./package.json"
     },
     "repository": {
         "type": "git",
@@ -21,12 +24,16 @@
     "homepage": "https://github.com/HaJuegos/simplified-mojang-JSONs#readme",
     "files": [
         "dist",
-        "structures"
+        "scripts/exporttojson.ts",
+        "README.md",
+        "LICENSE.md"
     ],
     "scripts": {
-        "build": "tsc",
+        "build": "node scripts/clean.mjs && node scripts/bundle.mjs && tsc --emitDeclarationOnly",
+        "typecheck": "tsc --noEmit",
         "generatepaths": "tsx scripts/autoIndexes.ts",
-        "exportjson": "tsx scripts/exporttojson.ts"
+        "exportjson": "tsx scripts/exporttojson.ts",
+        "prepublishOnly": "pnpm build"
     },
     "author": "HaJuegos",
     "license": "MIT",
@@ -53,18 +60,19 @@
         "@minecraft/server-ui": "2.3.0-beta.1.26.52-stable",
         "@minecraft/vanilla-data": "1.26.52",
         "@types/node": "26.6.5",
-        "adm-zip": "^0.6.1",
-        "chokidar": "6.0.0",
         "esbuild": "^0.28.2",
-        "nodemon": "^3.1.14",
-        "simplified-mojang-api": "0.0.68",
         "tsx": "^4.23.15",
         "typescript": "7.0.2"
     },
-    "peerDependencies": {
-        "simplified-mojang-api": "0.0.68"
-    },
     "allowScripts": {
         "esbuild@0.28.1": true
+    },
+    "sideEffects": false,
+    "engines": {
+        "node": ">=20"
+    },
+    "packageManager": "pnpm@12.15.0",
+    "dependencies": {
+        "@minecraft/vanilla-data": "1.26.52"
     }
 }

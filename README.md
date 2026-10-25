@@ -160,10 +160,10 @@ import {
 
 Got an idea, found a bug, or want to add support for missing vanilla JSON schemas or components? Contributions are more than welcome!
 
-- **Getting Started:** Please check out our [Contributing Guide](CONTRIBUTING.md) before opening a pull request.
-- **Community Guidelines:** Be kind and respectful. See our [Code of Conduct](CODE_OF_CONDUCT.md).
-- **Security:** To report a security vulnerability, please follow the steps in our [Security Policy](SECURITY.md).
-- **Releases:** Check what's new in each update in the [Changelog](CHANGELOG.md).
+- **Getting Started:** Please check out our [Contributing Guide](.github/CONTRIBUTING.md) before opening a pull request.
+- **Community Guidelines:** Be kind and respectful. See our [Code of Conduct](.github/CODE_OF_CONDUCT.md).
+- **Security:** To report a security vulnerability, please follow the steps in our [Security Policy](.github/SECURITY.md).
+- **Releases:** Check what's new in each update in the [Changelog](.github/CHANGELOG.md).
 
 ---
 
