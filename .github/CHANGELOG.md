@@ -13,3 +13,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Modular exports for root components (`BPBiomeComponents`, `BPBlockComponents`, etc.).
 - Pre-made vanilla template definitions.
 - Automated TypeScript to JSON export script utility (`exporttojson`).
+
+## [0.0.2] - 2026-10-25
+
+### Added
+
+- In the BP manifest, the “language” parameter is no longer required.
+- More vanilla dependencies for the modules were needed.
