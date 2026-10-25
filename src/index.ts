@@ -29,7 +29,7 @@ export { createBPDimension } from "./builders/behaviors/dimensions/DimensionTemp
 export { createBPEntity } from "./builders/behaviors/entities/EntityTemplateBuilder";
 export { createBPFeature } from "./builders/behaviors/features/FeatureTemplateBuilder";
 export { createBPFeatureRule } from "./builders/behaviors/featureRules/FeatureRuleTemplateBuilder";
-export { createItemCatalogBP } from "./builders/behaviors/itemCatalog/ItemCatalogTemplateBuilder";
+export { createBPItemCatalog } from "./builders/behaviors/itemCatalog/ItemCatalogTemplateBuilder";
 export { createBPItem } from "./builders/behaviors/items/ItemsTemplateBuilder";
 export { createBPLootTable } from "./builders/behaviors/lootTables/LootTablesTemplateBuilder";
 export { createBPRecipe } from "./builders/behaviors/recipes/RecipeTemplateBuilder";

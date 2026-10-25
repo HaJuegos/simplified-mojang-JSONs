@@ -1,0 +1,61 @@
+name: "Feature Request / Missing Schema"
+description: "Suggest a new feature, improvement, or missing vanilla JSON schema/component"
+title: "[FEATURE]: "
+labels: ["enhancement"]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for helping improve **simplified-mojang-JSONs**! Use this form to request new builders, missing vanilla components, or improvements to the export workflow.
+
+    - type: dropdown
+      id: feature-type
+      attributes:
+          label: "Feature Category"
+          description: "What area of the library does this request relate to?"
+          options:
+              - "Missing Vanilla JSON Component / Schema"
+              - "New Builder or Template Utility"
+              - "Export Script / CLI Tooling"
+              - "TypeScript Types / Autocomplete Improvement"
+              - "Other"
+      validations:
+          required: true
+
+    - type: textarea
+      id: feature-description
+      attributes:
+          label: "Is your feature request related to a problem?"
+          description: "A clear and concise description of what the problem is or what functionality is missing (e.g., 'The entity builder is missing the new 1.21.x movement component')."
+          placeholder: "I'm trying to create a custom entity that uses..."
+      validations:
+          required: true
+
+    - type: textarea
+      id: solution-description
+      attributes:
+          label: "Describe the solution you'd like"
+          description: "A clear and concise description of what you want to happen or how the API/builder method should look."
+          placeholder: |
+              It would be great to have a helper method like:
+              ```ts
+              createBPEntity(...).setCustomComponent(...)
+              ```
+      validations:
+          required: true
+
+    - type: textarea
+      id: alternatives
+      attributes:
+          label: "Describe alternatives you've considered"
+          description: "A clear description of any alternative solutions or workarounds you've considered."
+      validations:
+          required: false
+
+    - type: textarea
+      id: additional-context
+      attributes:
+          label: "Additional Context"
+          description: "Add any other context, Minecraft Bedrock documentation links, or examples about the feature request here."
+      validations:
+          required: false

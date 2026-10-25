@@ -86,7 +86,7 @@ export class FinalItemCatalogTemplateBuilder extends BehaviorItemCatalogBuilder 
  * @author HaJuegos - 21-10-2026
  * @export
  */
-export function createItemCatalogBP<
+export function createBPItemCatalog<
     const Def extends BPItemCatalogDefinition
 >(def: Def): BPItemCatalogTemplateInstance<Def> {
     return (over = {}) => {

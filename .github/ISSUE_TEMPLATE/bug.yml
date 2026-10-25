@@ -1,0 +1,72 @@
+name: "Bug Report"
+description: "Create a report to help us fix a bug or unexpected behavior in simplified-mojang-JSONs"
+title: "[BUG]: "
+labels: ["bug"]
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Thanks for taking the time to fill out this bug report! Please fill out the sections below as accurately as possible.
+
+    - type: textarea
+      id: description
+      attributes:
+          label: "Bug Description"
+          description: "A clear and concise description of what the bug is."
+          placeholder: "Describe what went wrong when using simplified-mojang-JSONs..."
+      validations:
+          required: true
+
+    - type: textarea
+      id: reproduction
+      attributes:
+          label: "Steps to Reproduce"
+          description: "Explain step-by-step how to reproduce this behavior."
+          placeholder: |
+              1. Create a builder using `createBPEntity(...)`
+              2. Set component '...'
+              3. Run `npm run export:json`
+              4. See error in terminal / malformed JSON generated
+      validations:
+          required: true
+
+    - type: textarea
+      id: expected
+      attributes:
+          label: "Expected Behavior"
+          description: "A clear and concise description of what you expected to happen."
+          placeholder: "The exported JSON should contain valid vanilla components without missing keys..."
+      validations:
+          required: true
+
+    - type: textarea
+      id: code-snippet
+      attributes:
+          label: "Code Example"
+          description: "Provide the relevant TypeScript code snippet or template configuration that triggers the issue."
+          placeholder: |
+              ```ts
+              import { createBPEntity } from "simplified-mojang-jsons";
+
+              // Your code snippet here
+              ```
+          render: typescript
+      validations:
+          required: false
+
+    - type: input
+      id: environment
+      attributes:
+          label: "Environment Details"
+          description: "Node.js, package manager (npm/pnpm), TypeScript version, and library version used."
+          placeholder: "Node v20.x, npm v10.x, TypeScript v5.3, simplified-mojang-jsons v0.0.1"
+      validations:
+          required: true
+
+    - type: textarea
+      id: additional-context
+      attributes:
+          label: "Additional Context"
+          description: "Add any other context, error logs, or screenshots about the problem here."
+      validations:
+          required: false
