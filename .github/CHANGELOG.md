@@ -27,3 +27,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - The EntityFilters class is now exposed to the API for use.
 - The MoLang class is now exposed to the API for use.
+
+## [0.0.4] - 2026-10-25
+
+### Added
+
+- A minor fix
