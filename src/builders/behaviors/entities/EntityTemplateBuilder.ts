@@ -9,6 +9,22 @@ import { BehaviorEntityBuilder } from "./EntityBuilder";
  */
 export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
     /**
+     * Variable general para identificar un valor unico y completo para separar los valores a eliminar de la plantilla base.
+     * @type {symbol}
+     * @readonly
+     * @private
+     */
+    private readonly removedList: symbol = Symbol("removed");
+
+    /**
+     * Variable general para identificar los keys dentro de los eventos generales.
+     * @type {string[]}
+     * @readonly
+     * @private
+     */
+    private readonly metaKeys: string[] = ["weight", "filters", "target", "trigger"];
+
+    /**
      * Argumentos principales para la creacion de una entidad a base de una plantilla en concreto.
      * @param {LoseDefinition} def Los valores definidos de la entidad en la plantilla.
      * @param {LoseOver} over Los valores a cambiar de la entidad en la plantilla post-edicion.
@@ -50,27 +66,63 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
         const baseComps = over.clearAllData ? {} : this.byID(def.components, `${where} components`);
         const comps = over.clearAllData ? {} : this.patchMap(baseComps, over.components, `${where} components`);
 
+        if (!over.clearAllData) {
+            for (const id of over.remove?.components ?? []) {
+                if (!(id in comps)) {
+                    throw new Error(`${where} remove.components: "${id}" no existe en la plantilla base.`);
+                }
+
+                delete comps[id];
+            }
+        }
+
         this.addUnique(comps, over.add?.components, `${where} add.components`, "components");
 
         const compsGroups: Record<string, BPEntityComponentsMap> = {};
 
-        if (!over.clearAllData && def.componentsGroups) {
+        if (!over.clearAllData) {
             for (const id of Object.keys(over.componentsGroups ?? {})) {
-                if (!(id in def.componentsGroups)) {
+                if (!(id in (def.componentsGroups ?? {}))) {
                     throw new Error(`${where} componentsGroups: el grupo "${id}" no existe en la plantilla base. Usa add.componentsGroups para crearlo y añadirlo a la plantilla base.`);
                 }
             }
 
-            for (const [id, list] of Object.entries(def.componentsGroups)) {
+            for (const [id, list] of Object.entries(def.componentsGroups ?? {})) {
                 const groupOverride = over.componentsGroups?.[id];
 
-                if (groupOverride == null) {
+                if (groupOverride === null) {
                     continue;
-                };
+                }
 
                 const path = `${where} componentsGroups."${id}"`;
+                const baseGroup = this.byID(list, path);
 
-                compsGroups[id] = this.patchMap(this.byID(list, path), groupOverride, path);
+                compsGroups[id] = groupOverride ? this.patchMap(baseGroup, groupOverride, path) : baseGroup;
+            }
+
+            for (const [id, ids] of Object.entries(over.remove?.componentsGroups ?? {})) {
+                const path = `${where} remove.componentsGroups."${id}"`;
+
+                if (!(id in compsGroups)) {
+                    throw new Error(`${path}: el grupo no existe en la plantilla base.`);
+                }
+
+                if (!Array.isArray(ids) || ids.length == 0) {
+                    delete compsGroups[id];
+                    continue;
+                }
+
+                for (const compId of ids as string[]) {
+                    if (!(compId in compsGroups[id])) {
+                        throw new Error(`${path}: el componente "${compId}" no existe en el grupo.`);
+                    }
+
+                    delete compsGroups[id][compId];
+                }
+
+                if (Object.keys(compsGroups[id]).length == 0) {
+                    delete compsGroups[id];
+                }
             }
         }
 
@@ -82,6 +134,22 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
 
         const baseEvents = over.clearAllData ? {} : this.patchMap(def.events, over.events, `${where} events`, BPEntityDefaultEventsNames);
         const events = { ...baseEvents } as LooseEvents;
+
+        if (!over.clearAllData) {
+            for (const [name, mask] of Object.entries(over.remove?.events ?? {})) {
+                if (!(name in events)) {
+                    throw new Error(`${where} remove.events: el evento "${name}" no existe en la plantilla base.`);
+                }
+
+                const res = mask === true || Object.keys(mask as object).length == 0 ? this.removedList : this.prune(events[name], mask);
+
+                if (res === this.removedList) {
+                    delete events[name];
+                } else {
+                    events[name] = res as LooseEvents[string];
+                }
+            }
+        }
 
         for (const [name, event] of Object.entries(over.add?.events ?? {})) {
             if (!over.clearAllData && name in events) {
@@ -239,6 +307,87 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
         for (const [name, event] of Object.entries(events)) {
             walk(event, name);
         }
+    }
+
+    /**
+     * Metodo auxiliar que comprueba de forma recursiva si un nodo contiene, como subconjunto, todo lo indicado de la mascara. Comparando cada clave.
+     * @param {unknown} node Nodo real de la plantilla base a evaluar.
+     * @param {unknown} mask Mascara de los valroes que deben estar presentes en el nodo.
+     * @returns {boolean} Devuelve true si el nodo contiene una mascara, de lo contrario, sera false.
+     * @author HaJuegos - 26-10-2026 
+     * @private
+     */
+    private matches(node: unknown, mask: unknown): boolean {
+        if (Array.isArray(mask)) {
+            return Array.isArray(node) && mask.every(m => node.some(n => this.matches(n, m)));
+        }
+
+        if (mask && typeof mask == "object") {
+            return !!node && typeof node == "object" && !Array.isArray(node)
+                && Object.entries(mask).every(([k, v]) => k in node && this.matches((node as Record<string, unknown>)[k], v));
+        }
+
+        return node === mask;
+    }
+
+    /**
+     * Metodo auxiliar que elimina de forma no mutante, de un nodo, lo indicado en la mascara. Si la mascara es true se elimina el nodo por completo.
+     * @param {unknown} node Nodo real de la plantilla base a cual aplicar los cambios.
+     * @param {unknown} mask Mascara que describe lo que se debe eliminar.
+     * @returns {unknown} Devuelve el nodo resultante o el simbolo interno removedList si el nodo debe eliminarse por completo.
+     * @author HaJuegos - 26-10-2026 
+     * @private
+     */
+    private prune(node: unknown, mask: unknown): unknown {
+        if (mask === true) {
+            return this.removedList;
+        }
+
+        if (Array.isArray(node) && Array.isArray(mask)) {
+            const out: unknown[] = [];
+
+            for (const item of node) {
+                let current: unknown = item;
+
+                for (const m of mask) {
+                    if (current === this.removedList) {
+                        break;
+                    }
+
+                    if (current && typeof current == "object" ? this.matches(current, m) : current === m) {
+                        current = typeof m == "object" && m != null ? this.prune(current, m) : this.removedList;
+                    }
+                }
+
+                if (current !== this.removedList) {
+                    out.push(current);
+                }
+            }
+
+            return out.length ? out : this.removedList;
+        }
+
+        if (node && mask && typeof node == "object" && typeof mask == "object" && !Array.isArray(node) && !Array.isArray(mask)) {
+            const out: Record<string, unknown> = { ...node };
+
+            for (const [key, sub] of Object.entries(mask)) {
+                if (!(key in out) || this.metaKeys.includes(key)) {
+                    continue;
+                }
+
+                const res = this.prune(out[key], sub);
+
+                if (res === this.removedList) {
+                    delete out[key];
+                } else {
+                    out[key] = res;
+                }
+            }
+
+            return Object.keys(out).every(k => this.metaKeys.includes(k)) ? this.removedList : out;
+        }
+
+        return node;
     }
 }
 

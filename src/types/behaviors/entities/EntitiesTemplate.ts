@@ -82,6 +82,19 @@ type Patch<T> = {
 };
 
 /**
+ * Tipago general auxiliar para obtener una mascara profunda de un evento base eliminando el nodo completo.
+ * @template T Template general del grupo.
+ * @template {string} G Grupos a considerar.
+ * @author HaJuegos - 26-10-2026
+ */
+type EventMask<T, G extends string> =
+    T extends readonly (infer U)[]
+    ? readonly EventMask<U, G>[]
+    : T extends object
+    ? true | { [K in keyof T]?: K extends "componentGroups" ? readonly G[] : EventMask<T[K], G> }
+    : T;
+
+/**
  * Tipado general para el mapeo de listas de grupos de componentes generales.
  * @template {readonly BPEntityComponent[]} L Plantilla readonly definidas en la entidad.
  * @author HaJuegos - 30-09-2026
@@ -152,6 +165,11 @@ interface LoseOver {
     componentsGroups?: Record<string, Record<string, unknown> | null | undefined>;
     components?: Record<string, unknown>;
     events?: Record<string, unknown>;
+    remove?: {
+        components?: readonly string[];
+        componentsGroups?: Record<string, readonly string[] | Record<string, never>>;
+        events?: Record<string, unknown>;
+    };
     add?: {
         componentsGroups?: Record<string, readonly BPEntityComponent[]>;
         components?: readonly BPEntityComponent[];
@@ -316,6 +334,30 @@ type BPEntitiesTemplateOverride<
             events?: never;
         }
     ) & {
+        /**
+         * (Opcional) Parametro adiccional que elimina un valor en concreto a la plantilla base para no sobreescribir todo.
+         * @type {?{components?: readonly Extract<keyof ByID<C>, string>[]; componentsGroups?: { [K in keyof GC]?: readonly Extract<keyof ByID<GC[K]>, string>[] | Record<string, never> }; events?: { [K in keyof Ev]?: EventMask<Ev[K], GroupNames<GC>> }; }}
+         */
+        remove?: {
+            /**
+             * (Opcional) Lista de grupos de componentes y parametros a eliminar de la plantilla base.
+             * @type {?({ [K in keyof GC]?: readonly Extract<keyof ByID<GC[K]>, string>[] | Record<string, never> })}
+             */
+            componentsGroups?: { [K in keyof GC]?: readonly Extract<keyof ByID<GC[K]>, string>[] | Record<string, never> };
+
+            /**
+             * (Opcional) Lista de componentes a eliminar en concreto de la plantilla base.
+             * @type {?readonly Extract<keyof ByID<C>, string>[]}
+             */
+            components?: readonly Extract<keyof ByID<C>, string>[];
+
+            /**
+             * (Opcional) Lista de eventos y parametros a eliminar en concreto de la plantilla base.
+             * @type {?{ [K in keyof Ev]?: EventMask<Ev[K], GroupNames<GC>> }}
+             */
+            events?: { [K in keyof Ev]?: EventMask<Ev[K], GroupNames<GC>> };
+        };
+
         /**
          * (Opcional) Parametro adiccional que añade nuevos valores a la plantilla base en vez de sobresescribirla.
          * @type {?{ componentsGroups?: Record<string, BPEntityComponent[]>; components?: BPEntityComponent[]; events?: BPEntityEventsMap; }}

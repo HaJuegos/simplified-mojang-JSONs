@@ -38,4 +38,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 ### Added
 
--
+- Changes can no longer be added to the base template when it is completely cleared in a LootTable template.
+- Missing data in base template entities is no longer validated when dealing with vanilla files.
+
+## [0.0.6] - 2026-10-26
+
+### Added
+
+- When adding a new component group to an entity during post-editing. This action clears all fixed data from the base template for no apparent reason.
+- The “remove” argument has been added to post-editing to allow for faster removal of specific data from the base template in entities.

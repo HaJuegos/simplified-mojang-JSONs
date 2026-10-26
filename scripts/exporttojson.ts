@@ -1,7 +1,7 @@
 import { readdir, mkdir, writeFile, readFile, rm } from "node:fs/promises";
 import { basename, dirname, extname, join, relative, resolve } from "node:path";
 import { pathToFileURL, fileURLToPath } from "node:url";
-import * as ts from "typescript";
+import ts from "ts-api";
 
 interface BuildableTemplate {
     finalBuild(): string;
@@ -363,4 +363,4 @@ class ExportToJson {
     }
 }
 
-new ExportToJson(false);
+new ExportToJson(true);
