@@ -33,3 +33,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - A minor fix
+
+## [0.0.5] - 2026-10-26
+
+### Added
+
+-

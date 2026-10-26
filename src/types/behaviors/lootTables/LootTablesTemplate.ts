@@ -142,13 +142,18 @@ type BPLootTableTemplateDef<
  * @interface BPLootTableFinalOverDefinition
  * @author HaJuegos - 12-10-2026
  */
-interface BPLootTableFinalOverDefinition {
-    clearAllData?: boolean;
+type BPLootTableFinalOverDefinition = {
+    clearAllData: true;
+    add?: {
+        pools?: PoolsParamsTypes[];
+    };
+} | {
+    clearAllData?: false | undefined;
     pools?: PoolsParamsTypes[] | Record<number, Partial<PoolsParamsTypes>> | null;
     add?: {
         pools?: PoolsParamsTypes[];
     };
-}
+};
 
 /**
  * Tipado auxiliar para validar tipos literales a sus primitivos base permitiendo su modificacion pero sin salirse de la base inicial.

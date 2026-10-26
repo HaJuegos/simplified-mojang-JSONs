@@ -90,7 +90,7 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
             events[name] = event;
         }
 
-        this.validateEvents(events, Object.keys(compsGroups), where);
+        this.validateEvents(events, Object.keys(compsGroups), where, !def.id.startsWith("minecraft:"));
         this.setDefaultComponents(Object.values(comps));
         this.setDefaultComponentGroups(Object.fromEntries(Object.entries(compsGroups).map(([id, g]) => [id, Object.values(g)])));
         this.setDefaultEvents(events);
@@ -205,7 +205,7 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
      * @author HaJuegos - 01-10-2026
      * @private
      */
-    private validateEvents(events: LooseEvents, groups: string[], where: string): void {
+    private validateEvents(events: LooseEvents, groups: string[], where: string, strict: boolean): void {
         const walk = (node: unknown, event: string): void => {
             if (Array.isArray(node)) {
                 node.forEach(item => walk(item, event));
@@ -222,7 +222,7 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
 
                 if ((key == "add" || key == "remove") && Array.isArray(names)) {
                     names.forEach((name: string, i) => {
-                        if (!groups.includes(name)) {
+                        if (strict && !groups.includes(name)) {
                             throw new Error(`${where} events."${event}".${key}: el grupo "${name}" no existe. Disponibles: ${groups.join(", ") || "(ninguno)"}.`);
                         }
 
