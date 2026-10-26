@@ -55,5 +55,7 @@ export type { BPRecipeDefinition, BPRecipeOverrideDefinition } from "./types/beh
 export type { BPSpawnRuleDefinition, BPSpawnRuleOverride, BPSpawnRuleTemplateInstance } from "./types/behaviors/spawnRules/SpawnRuleTemplate";
 export type { BPTradingDefinition, BPTradingOverInstance, BPTradingOverride } from "./types/behaviors/trading/TradingTemplate";
 
+export { SpawnCategoryEntities, FormatVersionEntities } from "./types/behaviors/entities/EntitiesEnums";
+
 export { EntityFilters } from './utils/EntityFilters';
 export { MoLang } from './utils/MoLang';

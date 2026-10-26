@@ -49,7 +49,6 @@ export const TntTemplate = createBPEntity({
         }),
         new BPEntityComponents.SetPhysics(),
         new BPEntityComponents.SetPushableByBlock(),
-        new BPEntityComponents.SetPushableByEntity(),
         new BPEntityComponents.SetTypeFamily({
             family: ["tnt", "inanimate"]
         })

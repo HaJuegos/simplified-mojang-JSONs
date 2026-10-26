@@ -1,6 +1,6 @@
 {
     "name": "simplified-mojang-jsons",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "An API in TypeScript for creating and managing the JSON configuration of vanilla and custom Minecraft Bedrock entities using type system support, OOP, and a more organized and reusable structure.",
     "type": "module",
     "main": "./dist/index.js",

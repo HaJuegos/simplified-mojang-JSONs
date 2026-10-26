@@ -47,3 +47,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - When adding a new component group to an entity during post-editing. This action clears all fixed data from the base template for no apparent reason.
 - The “remove” argument has been added to post-editing to allow for faster removal of specific data from the base template in entities.
+
+## [0.0.7] - 2026-10-26
+
+### Added
+
+- The FormatVersion and SpawnCategory enums are now exposed when a new entity is created.
+- The “pushable by entity” property has been removed from the TNT entity. It is not part of the vanilla file.
