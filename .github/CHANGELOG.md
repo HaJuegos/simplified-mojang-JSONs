@@ -20,3 +20,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - In the BP manifest, the “language” parameter is no longer required.
 - More vanilla dependencies for the modules were needed.
+
+## [0.0.3] - 2026-10-25
+
+### Added
+
+- The EntityFilters class is now exposed to the API for use.
+- The MoLang class is now exposed to the API for use.
