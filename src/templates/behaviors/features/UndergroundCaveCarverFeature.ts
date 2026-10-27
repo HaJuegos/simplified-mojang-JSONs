@@ -1,10 +1,9 @@
 import { createBPFeature } from "../../../builders/behaviors/features/FeatureTemplateBuilder";
-import { FeatureListTypes, VanillaFormatVersionsFeature } from "../../../types/behaviors/features/FeatureTemplate";
+import { VanillaFormatVersionsFeature, FeatureListTypes } from "../../../types/behaviors/features/FeatureTemplate";
 
 /**
  * Plantilla vanilla del feature para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @type {FinalFeatureBuilderTemplate}
- * @author HaJuegos - 22-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const UndergroundCaveCarverFeature = createBPFeature({
     formatVersion: VanillaFormatVersionsFeature.v1_16_100,
@@ -13,23 +12,23 @@ export const UndergroundCaveCarverFeature = createBPFeature({
     caveCarver: {
         fillWith: "minecraft:air",
         widthModifier: 0.0,
-        skipCarveChance: 15,
+        skipCarveChance: 33,
         yScale: [
-            0.5,
-            0.5
+            0.1,
+            0.9
         ],
-        heightLimit: 120,
+        heightLimit: 236,
         horizontalRadiusMultiplier: [
-            1.0,
-            1.0
+            0.7,
+            1.4
         ],
         verticalRadiusMultiplier: [
-            1.0,
-            1.0
+            0.8,
+            1.3
         ],
         floorLevel: [
-            -0.7,
-            -0.7
+            -1.0,
+            -0.4
         ]
     }
 });

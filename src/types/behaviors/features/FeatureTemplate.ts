@@ -17,6 +17,9 @@ export {
  */
 enum VanillaFormatVersionsFeature {
     MostRecent = "1.26.50",
+    v1_26_10 = "1.26.10",
+    v1_21_60 = "1.21.60",
+    v1_21_40 = "1.21.40",
     v1_16_100 = "1.16.100",
     v1_16_0 = "1.16.0",
     v1_13_0 = "1.13.0"
@@ -51,7 +54,9 @@ enum FeatureListTypes {
     TreeFeature = "minecraft:tree_feature",
     UnderwaterCaveCarverFeature = "minecraft:underwater_cave_carver_feature",
     VegetationPatchFeature = "minecraft:vegetation_patch_feature",
-    WeightedRandomFeature = "minecraft:weighted_random_feature"
+    WeightedRandomFeature = "minecraft:weighted_random_feature",
+    SculkPatchFeature = "minecraft:sculk_patch_feature",
+    HorizontalTreeDecorationFeature = "minecraft:horizontal_tree_decoration_feature",
 }
 
 /**
@@ -130,6 +135,14 @@ type FeatureMapList = {
     };
     [FeatureListTypes.WeightedRandomFeature]: {
         weightedRandom: WeightedRandomFeatureParams;
+    };
+
+    [FeatureListTypes.SculkPatchFeature]: {
+        sculkPatch: SculkPatchFeatureParams;
+    };
+
+    [FeatureListTypes.HorizontalTreeDecorationFeature]: {
+        horizontalTreeDecoration: HorizontalTreeDecorationFeatureParams;
     };
 };
 
@@ -286,15 +299,18 @@ interface GeodeFeatureParams {
 }
 
 
-type BlocksInBlocksTypes = [(string | MinecraftBlockTypes | BlockDataTypes), (string | MinecraftBlockTypes | BlockDataTypes)];
+type BlocksInBlocksTypes = [
+    (string | MinecraftBlockTypes | BlockDataTypes | number),
+    (string | MinecraftBlockTypes | BlockDataTypes | number)
+];
 
 type IntGenericInIntTypes = [IntRangeGeneric, IntRangeGeneric];
 
 type GrowthDirectionsTypes = "UP" | "DOWN" | "up" | "down";
 
 interface GrowingPlantFeatureParams {
-    age: IntRangeGeneric;
-    allowWater: boolean;
+    age?: IntRangeGeneric;
+    allowWater?: boolean;
     bodyBlocks: BlocksInBlocksTypes[];
     growthDirection: GrowthDirectionsTypes,
     headBlocks: BlocksInBlocksTypes[];
@@ -321,13 +337,13 @@ interface MultiBlockFeatureParams {
 
 
 interface MultifaceFeatureParams {
-    "can_place_on": (string | MinecraftBlockTypes | BlockDataTypes)[],
-    "can_place_on_ceiling": boolean;
-    "can_place_on_floor": boolean;
-    "can_place_on_wall": boolean;
-    "chance_of_spreading": number;
-    "places_block": (string | MinecraftBlockTypes | BlockDataTypes);
-    "search_range": number;
+    canPlaceOn: (string | MinecraftBlockTypes | BlockDataTypes)[],
+    canPlaceOnCeiling: boolean;
+    canPlaceOnFloor: boolean;
+    canPlaceOnWall: boolean;
+    chanceOfSpreading: number;
+    placesBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+    searchRange: number;
 }
 
 
@@ -377,13 +393,6 @@ interface PartiallyExposedBlobFeatureParams {
     placesBlock: (string | MinecraftBlockTypes | BlockDataTypes);
 }
 
-
-interface ScatterFeatureParams {
-    projectInputToFloor?: boolean;
-    placesFeature: string;
-    distribution: DistributionParams;
-}
-
 type CoordinatesOrdersTypes = "xyz" | "xzy" | "yxz" | "yzx" | "zxy" | "zyx";
 
 type DistributionTypes = "uniform" | "gaussian" | "inverse_gaussian" | "triangle" | "fixed_grid" | "jittered_grid";
@@ -394,6 +403,18 @@ type CoordinatesSpawnTypes = string | MoLangValue | number | {
     gridOffset?: number;
     stepSize?: number;
 };
+
+interface ScatterFeatureParams {
+    iterations?: number | (string | MoLangValue);
+    scatterChance?: string | MoLangValue | number | ChanceDemoniatorTypes;
+    x?: CoordinatesSpawnTypes;
+    y?: CoordinatesSpawnTypes;
+    z?: CoordinatesSpawnTypes;
+    projectInputToFloor?: boolean;
+    coordinateEvalOrder?: CoordinatesOrdersTypes;
+    placesFeature: string;
+    distribution?: DistributionParams;
+}
 
 type ChanceDemoniatorTypes = number | [number, number] | {
     denominator: number;
@@ -429,6 +450,10 @@ interface SequenceFeatureParams {
     features: string[];
 }
 
+type PlacesBlockTypes = {
+    block: (string | MinecraftBlockTypes | BlockDataTypes);
+    weight: number;
+};
 
 interface SingleBlockFeatureParams {
     enforcePlacementRules?: boolean;
@@ -436,8 +461,8 @@ interface SingleBlockFeatureParams {
     mayAttachTo?: MoreAttachSidesParams;
     mayNotAttachTo?: AttachSidesParams;
     mayReplace?: (string | MinecraftBlockTypes | BlockDataTypes)[];
-    placesBlock?: (string | MinecraftBlockTypes | BlockDataTypes);
-    randomizeRaotation?: boolean;
+    placesBlock?: (string | MinecraftBlockTypes | BlockDataTypes | PlacesBlockTypes) | (string | MinecraftBlockTypes | BlockDataTypes | PlacesBlockTypes)[];
+    randomizeRotation?: boolean;
 }
 
 interface MoreAttachSidesParams extends AttachSidesParams {
@@ -461,14 +486,15 @@ interface AttachSidesParams {
 type SurfaceTypes = "ceiling" | "floor" | "wall" | "random_horizontal";
 
 interface SnapToSurfaceFeatureParams {
-    allowAirPlacement: boolean;
-    allowNonAirPlacement: boolean;
-    allowUnderwaterPlacement: boolean;
-    allowedSurfaceBlocks: (string | MinecraftBlockTypes | BlockDataTypes)[];
-    embedInSurface: boolean;
+    allowAirPlacement?: boolean;
+    allowNonAirPlacement?: boolean;
+    allowUnderwaterPlacement?: boolean;
+    allowedSurfaceBlocks?: (string | MinecraftBlockTypes | BlockDataTypes)[];
+    embedInSurface?: boolean;
     featureToSnap: string;
-    searchRange: number;
+    searchRange?: number;
     surface: SurfaceTypes;
+    verticalSearchRange: number;
 }
 
 
@@ -478,22 +504,22 @@ interface StructureTemplateFeatureParams {
     constraints: ConstraintsParams;
     structureName: string;
     adjustmentRadius: number;
-    facingDirection: FacingDirectionsTypes;
+    facingDirection?: FacingDirectionsTypes;
     groundLevel: number;
     rotateAroundCenter: boolean;
 }
 
 interface ConstraintsParams {
-    grounded: {};
+    grounded?: {};
     leveled: {};
     unburied: {};
-    maxSteepness: number;
+    maxSteepness?: number;
     blockIntersection: BlockIntersParams;
 }
 
 interface BlockIntersParams {
     blockAllowlist: (string | MinecraftBlockTypes | BlockDataTypes)[];
-    blockWhitelist: (string | MinecraftBlockTypes | BlockDataTypes)[];
+    blockWhitelist?: (string | MinecraftBlockTypes | BlockDataTypes)[];
     onlyCheckIntersectionForMotionBlockingBlocks: boolean;
 }
 
@@ -511,6 +537,8 @@ interface DecorationBlocksSequencesParams {
     block: (string | MinecraftBlockTypes | BlockDataTypes);
     count: number;
 }
+
+type WeightValue = { value: number; weight: number; };
 
 interface TreeFeatureParams {
     trunk?: {
@@ -622,7 +650,7 @@ interface TreeFeatureParams {
     };
 
     acaciaTrunk?: {
-        branches: {
+        branches?: {
             branchCanopy: {
                 acaciaCanopy: {
                     canopySize: number;
@@ -711,6 +739,142 @@ interface TreeFeatureParams {
         radius: number;
         leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
     };
+
+    randomSpreadCanopy?: {
+        canopyHeight: number;
+        canopyRadius: number;
+        leafPlacementAttempts: number;
+        leafBlocks: [(string | MinecraftBlockTypes | BlockDataTypes), number][];
+    };
+
+    cherryTrunk?: {
+        trunkBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        trunkHeight: {
+            base: number;
+            intervals: [number, number];
+        };
+        branches: {
+            treeTypeWeights: {
+                oneBranch: number;
+                twoBranches: number;
+                twoBranchesAndTrunk: number;
+            };
+            branchHorizontalLength: {
+                rangeMin: number;
+                rangeMax: number;
+            };
+            branchStartOffsetFromTop: {
+                rangeMin: number;
+                rangeMax: number;
+            };
+            branchEndOffsetFromTop: {
+                rangeMin: number;
+                rangeMax: number;
+            };
+            branchCanopy: {
+                cherryCanopy: {
+                    leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+                    height: number;
+                    radius: number;
+                    wideBottomLayerHoleChance: number;
+                    cornerHoleChance: number;
+                    hangingLeavesChance: number;
+                    hangingLeavesExtensionChance: number;
+                };
+            };
+        };
+    };
+
+    cherryCanopy?: {
+        leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        height: number;
+        radius: number;
+        wideBottomLayerHoleChance: number;
+        cornerHoleChance: number;
+        hangingLeavesChance: number;
+        hangingLeavesExtensionChance: number;
+    };
+
+    mangroveRoots?: {
+        maxRootWidth: number;
+        maxRootLength: number;
+        yOffset: {
+            rangeMin: number;
+            rangeMax: number;
+        },
+        rootBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        muddyRootBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        mudBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        aboveRoot: {
+            aboveRootBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+            aboveRootChance: ChanceDemoniatorTypes;
+        },
+        rootsMayGrowThrough: (string | MinecraftBlockTypes | BlockDataTypes)[];
+    };
+
+    mangroveTrunk?: {
+        trunkWidth: number;
+        trunkHeight: {
+            base: number;
+            heightRandA: number;
+            heightRandB: number;
+        };
+        trunkBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        branches: {
+            branchChance: number;
+            branchLength: {
+                rangeMin: number;
+                rangeMax: number;
+            };
+            branchSteps: {
+                rangeMin: number;
+                rangeMax: number;
+            };
+        };
+    };
+
+    mangroveCanopy?: {
+        canopyHeight: number;
+        canopyRadius: number;
+        leafPlacementAttempts: number;
+        leafBlocks: [(string | MinecraftBlockTypes | BlockDataTypes), number][];
+        canopyDecoration: {
+            decorationBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+            decorationChance: ChanceDemoniatorTypes;
+            numSteps: number;
+            stepDirection: StepDirectionsTypes;
+        };
+        hangingBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        hangingBlockPlacementChance: ChanceDemoniatorTypes;
+    };
+
+    poplarTrunk?: {
+        trunkHeight: {
+            rangeMin: number;
+            rangeMax: number;
+        };
+        trunkBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        remainingTrunkHeightAboveBranches: {
+            rangeMin: number;
+            rangeMax: number;
+        };
+        amountOfFoliageSupportBranches: {
+            rangeMin: number;
+            rangeMax: number;
+        };
+        logDecorationFeature: string;
+    };
+
+    poplarCanopy?: {
+        radius: WeightValue[];
+        height: {
+            rangeMin: number;
+            rangeMax: number;
+        };
+        sideHoleChance: number;
+        leafBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+        branchBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+    };
 }
 
 
@@ -729,7 +893,7 @@ interface UnderwaterCaveCarverFeatureParams {
 
 interface VegetationPatchFeatureParams {
     depth: IntRangeGeneric;
-    extraDeepBlockChance: number;
+    extraDeepBlockChance?: number;
     extraEdgeColumnChance: number;
     groundBlock: (string | MinecraftBlockTypes | BlockDataTypes);
     horizontalRadius: IntRangeGeneric;
@@ -738,7 +902,7 @@ interface VegetationPatchFeatureParams {
     vegetationChance: number;
     vegetationFeature: string;
     verticalRange: number;
-    waterlogged: boolean;
+    waterlogged?: boolean;
 }
 
 
@@ -746,4 +910,25 @@ type ListOfFeaturesTypes = [string, number];
 
 interface WeightedRandomFeatureParams {
     features: (ListOfFeaturesTypes | string)[];
+}
+
+interface SculkPatchFeatureParams {
+    canPlaceSculkPatchOn: (string | MinecraftBlockTypes | BlockDataTypes)[];
+    centralBlock: (string | MinecraftBlockTypes | BlockDataTypes);
+    centralBlockPlacementChance: number;
+    cursorCount: number;
+    chargeAmount: number;
+    spreadAttempts: number;
+    growthRounds: number;
+    spreadRounds: number;
+    extraGrowthChance?: {
+        rangeMin: number;
+        rangeMax: number;
+    };
+}
+
+interface HorizontalTreeDecorationFeatureParams {
+    placesBlock: string;
+    barkSideOnly: boolean;
+    allowAdjacent: boolean;
 }

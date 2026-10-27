@@ -1,10 +1,10 @@
 import { createBPFeature } from "../../../builders/behaviors/features/FeatureTemplateBuilder";
-import { FeatureListTypes, VanillaFormatVersionsFeature } from "../../../types/behaviors/features/FeatureTemplate";
+import { VanillaFormatVersionsFeature, FeatureListTypes } from "../../../types/behaviors/features/FeatureTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @type {FinalFeatureBuilderTemplate}
- * @author HaJuegos - 22-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const SwampTreeFeature = createBPFeature({
     formatVersion: VanillaFormatVersionsFeature.v1_13_0,
@@ -17,13 +17,10 @@ export const SwampTreeFeature = createBPFeature({
                 rangeMax: 9
             },
             trunkBlock: {
-                name: "minecraft:log",
-                states: {
-                    oldLogType: "oak"
-                }
+                name: "minecraft:oak_log"
             },
             canBeSubmerged: {
-                maxDepth: 1
+                maxDepth: 2
             }
         },
         canopy: {
@@ -51,10 +48,7 @@ export const SwampTreeFeature = createBPFeature({
             ],
             minWidth: 2,
             leafBlock: {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "oak"
-                }
+                name: "minecraft:oak_leaves"
             },
             canopyDecoration: {
                 decorationBlock: "minecraft:vine",
@@ -66,113 +60,25 @@ export const SwampTreeFeature = createBPFeature({
                 stepDirection: "down"
             }
         },
-        baseBlock: [
-            "minecraft:dirt",
+        mayGrowOn: [
             {
-                name: "minecraft:dirt",
-                states: {
-                    dirtType: "coarse"
-                }
+                tags: MoLang.anyTag("dirt")
             }
         ],
-        mayGrowOn: [
+        baseBlock: [
             "minecraft:dirt",
-            "minecraft:grass",
-            "minecraft:podzol",
-            {
-                name: "minecraft:dirt",
-                states: {
-                    dirtType: "coarse"
-                }
-            },
-            {
-                name: "minecraft:farmland",
-                states: {
-                    moisturizedAmount: 0
-                }
-            },
-            {
-                name: "minecraft:farmland",
-                states: {
-                    moisturizedAmount: 1
-                }
-            },
-            {
-                name: "minecraft:farmland",
-                states: {
-                    moisturizedAmount: 2
-                }
-            },
-            {
-                name: "minecraft:farmland",
-                states: {
-                    moisturizedAmount: 3
-                }
-            },
-            {
-                name: "minecraft:farmland",
-                states: {
-                    moisturizedAmount: 4
-                }
-            },
-            {
-                name: "minecraft:farmland",
-                states: {
-                    moisturizedAmount: 5
-                }
-            },
-            {
-                name: "minecraft:farmland",
-                states: {
-                    moisturizedAmount: 6
-                }
-            },
-            {
-                name: "minecraft:farmland",
-                states: {
-                    moisturizedAmount: 7
-                }
-            }
+            "minecraft:coarse_dirt"
         ],
         mayReplace: [
             "minecraft:air",
+            "minecraft:snow_layer",
+            {
+                tags: MoLang.anyTag("minecraft:leaves")
+            },
             "minecraft:water",
-            {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "oak"
-                }
-            },
-            {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "spruce"
-                }
-            },
-            {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "birch"
-                }
-            },
-            {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "jungle"
-                }
-            },
-            {
-                name: "minecraft:leaves2",
-                states: {
-                    newLeafType: "acacia"
-                }
-            },
-            {
-                name: "minecraft:leaves2",
-                states: {
-                    newLeafType: "dark_oak"
-                }
-            }
+            "minecraft:flowing_water",
+            "minecraft:wildflowers",
+            "minecraft:leaf_litter"
         ]
     }
 });

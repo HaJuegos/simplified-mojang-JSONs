@@ -1,10 +1,10 @@
 import { createBPFeature } from "../../../builders/behaviors/features/FeatureTemplateBuilder";
-import { FeatureListTypes, VanillaFormatVersionsFeature } from "../../../types/behaviors/features/FeatureTemplate";
+import { VanillaFormatVersionsFeature, FeatureListTypes } from "../../../types/behaviors/features/FeatureTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @type {FinalFeatureBuilderTemplate}
- * @author HaJuegos - 22-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const MegaJungleTreeFeature = createBPFeature({
     formatVersion: VanillaFormatVersionsFeature.v1_13_0,
@@ -21,10 +21,7 @@ export const MegaJungleTreeFeature = createBPFeature({
                 ]
             },
             trunkBlock: {
-                name: "minecraft:log",
-                states: {
-                    oldLogType: "jungle"
-                }
+                name: "minecraft:jungle_log"
             },
             trunkDecoration: {
                 decorationBlock: "minecraft:vine",
@@ -53,10 +50,7 @@ export const MegaJungleTreeFeature = createBPFeature({
                         baseRadius: 1,
                         simplifyCanopy: true,
                         leafBlock: {
-                            name: "minecraft:leaves",
-                            states: {
-                                oldLeafType: "jungle"
-                            }
+                            name: "minecraft:jungle_leaves"
                         }
                     }
                 }
@@ -67,72 +61,32 @@ export const MegaJungleTreeFeature = createBPFeature({
             baseRadius: 2,
             coreWidth: 2,
             leafBlock: {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "jungle"
-                }
+                name: "minecraft:jungle_leaves"
             }
         },
-        baseBlock: "minecraft:dirt",
         mayGrowOn: [
-            "minecraft:grass",
-            "minecraft:dirt",
-            "minecraft:podzol",
             {
-                name: "minecraft:dirt",
-                states: {
-                    dirtType: "coarse"
-                }
+                tags: MoLang.anyTag("dirt")
+            },
+            "minecraft:clay"
+        ],
+        baseBlock: [
+            "minecraft:dirt",
+            "minecraft:coarse_dirt"
+        ],
+        mayGrowThrough: [
+            {
+                tags: MoLang.anyTag("dirt")
             }
         ],
         mayReplace: [
             "minecraft:air",
+            "minecraft:snow_layer",
             {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "oak"
-                }
+                tags: MoLang.anyTag("minecraft:leaves")
             },
-            {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "spruce"
-                }
-            },
-            {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "birch"
-                }
-            },
-            {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "jungle"
-                }
-            },
-            {
-                name: "minecraft:leaves2",
-                states: {
-                    newLeafType: "acacia"
-                }
-            },
-            {
-                name: "minecraft:leaves2",
-                states: {
-                    newLeafType: "dark_oak"
-                }
-            }
-        ],
-        mayGrowThrough: [
-            "minecraft:dirt",
-            "minecraft:grass",
-            {
-                name: "minecraft:dirt",
-                states: {
-                    dirtType: "coarse"
-                }
-            }
+            "minecraft:wildflowers",
+            "minecraft:leaf_litter"
         ]
     }
 });

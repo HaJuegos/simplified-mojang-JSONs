@@ -1,10 +1,10 @@
 import { createBPFeature } from "../../../builders/behaviors/features/FeatureTemplateBuilder";
-import { FeatureListTypes, VanillaFormatVersionsFeature } from "../../../types/behaviors/features/FeatureTemplate";
+import { VanillaFormatVersionsFeature, FeatureListTypes } from "../../../types/behaviors/features/FeatureTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @type {FinalFeatureBuilderTemplate}
- * @author HaJuegos - 22-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const RoofedTreeWithVinesFeature = createBPFeature({
     formatVersion: VanillaFormatVersionsFeature.v1_13_0,
@@ -21,10 +21,7 @@ export const RoofedTreeWithVinesFeature = createBPFeature({
                 ]
             },
             trunkBlock: {
-                name: "minecraft:log2",
-                states: {
-                    newLogType: "dark_oak"
-                }
+                name: "minecraft:dark_oak_log"
             },
             trunkLean: {
                 allowDiagonalGrowth: false,
@@ -58,10 +55,7 @@ export const RoofedTreeWithVinesFeature = createBPFeature({
                     acaciaCanopy: {
                         canopySize: 2,
                         leafBlock: {
-                            name: "minecraft:leaves2",
-                            states: {
-                                newLeafType: "dark_oak"
-                            }
+                            name: "minecraft:dark_oak_leaves"
                         },
                         simplifyCanopy: true
                     }
@@ -74,31 +68,23 @@ export const RoofedTreeWithVinesFeature = createBPFeature({
             outerRadius: 2,
             innerRadius: 3,
             leafBlock: {
-                name: "minecraft:leaves2",
-                states: {
-                    newLeafType: "dark_oak"
-                }
+                name: "minecraft:dark_oak_leaves"
             }
         },
         baseBlock: [
             "minecraft:dirt",
-            {
-                name: "minecraft:dirt",
-                states: {
-                    dirtType: "coarse"
-                }
-            }
+            "minecraft:coarse_dirt"
         ],
         mayGrowOn: [
             "minecraft:dirt",
-            "minecraft:grass",
+            "minecraft:grass_block",
             "minecraft:podzol",
-            {
-                name: "minecraft:dirt",
-                states: {
-                    dirtType: "coarse"
-                }
-            },
+            "minecraft:dirt_with_roots",
+            "minecraft:moss_block",
+            "minecraft:mycelium",
+            "minecraft:mud",
+            "minecraft:muddy_mangrove_roots",
+            "minecraft:coarse_dirt",
             {
                 name: "minecraft:farmland",
                 states: {
@@ -151,51 +137,13 @@ export const RoofedTreeWithVinesFeature = createBPFeature({
         mayReplace: [
             "minecraft:air",
             {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "oak"
-                }
-            },
-            {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "spruce"
-                }
-            },
-            {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "birch"
-                }
-            },
-            {
-                name: "minecraft:leaves",
-                states: {
-                    oldLeafType: "jungle"
-                }
-            },
-            {
-                name: "minecraft:leaves2",
-                states: {
-                    newLeafType: "acacia"
-                }
-            },
-            {
-                name: "minecraft:leaves2",
-                states: {
-                    newLeafType: "dark_oak"
-                }
+                tags: MoLang.anyTag("minecraft:leaves")
             }
         ],
         mayGrowThrough: [
             "minecraft:dirt",
-            "minecraft:grass",
-            {
-                name: "minecraft:dirt",
-                states: {
-                    dirtType: "coarse"
-                }
-            }
+            "minecraft:grass_block",
+            "minecraft:coarse_dirt"
         ]
     }
 });
