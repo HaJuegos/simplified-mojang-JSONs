@@ -54,3 +54,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - The FormatVersion and SpawnCategory enums are now exposed when a new entity is created.
 - The “pushable by entity” property has been removed from the TNT entity. It is not part of the vanilla file.
+
+## [0.0.8] - 2026-10-27
+
+### Added
+
+- Implementation of additional missing vanilla feature templates.
+- Implementation of additional missing vanilla feature rules templates.
