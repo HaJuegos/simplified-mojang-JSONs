@@ -179,7 +179,7 @@ type BPFeatureRuleOverride<
 
 interface ConditionsRulesParams {
     placementPass: PlacementPassTypes;
-    "minecraft:biome_filter": EntityFilter | EntityFilter[];
+    "minecraft:biome_filter"?: EntityFilter | EntityFilter[];
 }
 
 
