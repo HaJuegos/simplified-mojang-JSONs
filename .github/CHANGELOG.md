@@ -61,3 +61,10 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - Implementation of additional missing vanilla feature templates.
 - Implementation of additional missing vanilla feature rules templates.
+
+## [0.0.9] - 2026-10-27
+
+### Added
+
+- Post-editing a base template for a new LootTable now includes the "remove" parameter, which allows you to remove a specific property without rewriting the entire template.
+- Modules have been updated to MC version 26.60.

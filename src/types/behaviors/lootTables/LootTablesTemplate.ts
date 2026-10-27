@@ -127,6 +127,18 @@ type DeepStrict<T, S> =
     : T;
 
 /**
+ * Tipado auxiliar para describir qué eliminar de un nodo del loot table. `true` elimina el nodo completo. En arrays, cada elemento de la máscara selecciona los elementos que coinciden: si no contiene ningún `true` se elimina el elemento completo, si lo contiene solo se eliminan esos campos.
+ * @template T Nodo base a evaluar.
+ * @author HaJuegos - 27-10-2026
+ */
+type LootMask<T> =
+    T extends readonly (infer U)[]
+    ? readonly LootMask<U>[]
+    : T extends object
+    ? true | { [K in keyof T]?: LootMask<Exclude<T[K], undefined>> }
+    : T | true;
+
+/**
  * Tipado final para la creacion de una plantilla base de un loot table fijo.
  * @template {readonly PoolsParamsTypes[]} Pools Lista de pools a validar del template.
  * @author HaJuegos - 11-10-2026
@@ -150,6 +162,9 @@ type BPLootTableFinalOverDefinition = {
 } | {
     clearAllData?: false | undefined;
     pools?: PoolsParamsTypes[] | Record<number, Partial<PoolsParamsTypes>> | null;
+    remove?: {
+        pools?: Record<number, unknown>;
+    };
     add?: {
         pools?: PoolsParamsTypes[];
     };
@@ -208,6 +223,14 @@ type BPLootTableTemplateOver<
              * @type {?({ [K in keyof Pools]?: PatchPool<Pools[K]> | null })}
              */
             pools?: { [K in keyof Pools]?: PatchPool<Pools[K]> | null };
+
+            /**
+             * (Opcional) Pools a eliminar completamente de la plantilla base.
+             * @type {?{pools?: { [K in keyof Pools as K extends `${number}` ? K : never]?: LootMask<Pools[K]> };}}
+             */
+            remove?: {
+                pools?: { [K in keyof Pools as K extends `${number}` ? K : never]?: LootMask<Pools[K]> };
+            };
         } |
         {
             clearAllData: true;

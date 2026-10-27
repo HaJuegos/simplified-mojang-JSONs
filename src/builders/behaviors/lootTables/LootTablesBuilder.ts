@@ -43,10 +43,6 @@ export class BehaviorLooTablesBuilder {
     protected convertToJSON(stringify: true): string;
     protected convertToJSON(stringify?: false): Record<string, unknown>;
     protected convertToJSON(stringify?: boolean): string | Record<string, unknown> {
-        if (!this.pools || this.pools.length <= 0) {
-            throw new Error("[CATLOG] Error: No se han creado pools dentro de este loot table. Crea al menos un pool.");
-        }
-
         const preLootTable = {
             pools: this.pools
         };
