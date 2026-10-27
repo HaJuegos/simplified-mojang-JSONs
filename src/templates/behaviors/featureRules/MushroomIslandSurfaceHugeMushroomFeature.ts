@@ -5,7 +5,7 @@ import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const MushroomIslandSurfaceHugeMushroomFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -14,7 +14,7 @@ export const MushroomIslandSurfaceHugeMushroomFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "surface_pass",
-            "minecraft:biome_filter": EntityFilters.hasBiomeTag('mooshroom_island')
+            "minecraft:biome_filter": EntityFilters.hasBiomeTag("mooshroom_island")
         },
         distribution: {
             iterations: 1,

@@ -4,7 +4,8 @@ import { EntityFilters } from "../../../utils/EntityFilters";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @deprecated Ya no se usa en la actualidad.
+ * @author HaJuegos - 26-10-2026
  */
 export const OverworldSurfaceKelpFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -13,35 +14,7 @@ export const OverworldSurfaceKelpFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "surface_pass",
-            "minecraft:biome_filter": EntityFilters.anyOf(
-                EntityFilters.allOf(
-                    EntityFilters.hasBiomeTag('ocean', 'self', '!='),
-                    EntityFilters.anyOf(
-                        EntityFilters.hasBiomeTag('overworld'),
-                        EntityFilters.hasBiomeTag('overworld_generation'),
-                    )
-                ),
-                EntityFilters.allOf(
-                    EntityFilters.hasBiomeTag('ocean'),
-                    EntityFilters.anyOf(
-                        EntityFilters.hasBiomeTag('warm'),
-                        EntityFilters.allOf(
-                            EntityFilters.hasBiomeTag('frozen'),
-                            EntityFilters.hasBiomeTag('monster'),
-                        )
-                    )
-                )
-            )
-        },
-        distribution: {
-            iterations: 0,
-            scatterChance: {
-                numerator: 1,
-                denominator: 18
-            },
-            x: 0,
-            y: 0,
-            z: 0
+            "minecraft:biome_filter": EntityFilters.hasBiomeTag("deprecated")
         }
     }
 });

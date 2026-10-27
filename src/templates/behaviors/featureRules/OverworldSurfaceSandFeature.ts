@@ -5,7 +5,7 @@ import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const OverworldSurfaceSandFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -14,12 +14,13 @@ export const OverworldSurfaceSandFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "surface_pass",
-            "minecraft:biome_filter": EntityFilters.anyOf(
-                EntityFilters.hasBiomeTag('swamp', 'self', '!='),
+            "minecraft:biome_filter": EntityFilters.allOf(
                 EntityFilters.anyOf(
-                    EntityFilters.hasBiomeTag('overworld'),
-                    EntityFilters.hasBiomeTag('overworld_generation'),
-                )
+                    EntityFilters.hasBiomeTag("overworld"),
+                    EntityFilters.hasBiomeTag("overworld_generation")
+                ),
+                EntityFilters.hasBiomeTag("swamp", "self", "!="),
+                EntityFilters.hasBiomeTag("mangrove_swamp", "self", "!=")
             )
         },
         distribution: {

@@ -1,10 +1,11 @@
 import { createBPFeatureRule } from "../../../builders/behaviors/featureRules/FeatureRuleTemplateBuilder";
 import { VanillaFormatVersionList } from "../../../types/behaviors/featureRules/FeatureRuleTemplate";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const DesertAfterSurfaceDesertWellFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -13,7 +14,7 @@ export const DesertAfterSurfaceDesertWellFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "after_surface_pass",
-            "minecraft:biome_filter": EntityFilters.hasBiomeTag('desert')
+            "minecraft:biome_filter": EntityFilters.hasBiomeTag("desert")
         },
         distribution: {
             iterations: 1,
@@ -29,7 +30,7 @@ export const DesertAfterSurfaceDesertWellFeature = createBPFeatureRule({
                     16
                 ]
             },
-            y: 128,
+            y: MoLang.heightmap(MoLang.variable("worldx"), MoLang.variable("worldz")),
             z: {
                 distribution: "uniform",
                 extent: [

@@ -5,7 +5,7 @@ import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const JungleAfterSurfaceBambooFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -15,12 +15,17 @@ export const JungleAfterSurfaceBambooFeature = createBPFeatureRule({
         conditions: {
             placementPass: "after_surface_pass",
             "minecraft:biome_filter": EntityFilters.allOf(
-                EntityFilters.hasBiomeTag('bamboo', 'self', '!='),
-                EntityFilters.hasBiomeTag('jungle')
+                EntityFilters.hasBiomeTag("jungle"),
+                EntityFilters.hasBiomeTag("edge", "self", "not"),
+                EntityFilters.hasBiomeTag("bamboo", "self", "not")
             )
         },
         distribution: {
-            iterations: 16,
+            iterations: 1,
+            scatterChance: {
+                numerator: 1,
+                denominator: 4
+            },
             x: {
                 distribution: "uniform",
                 extent: [
@@ -28,13 +33,7 @@ export const JungleAfterSurfaceBambooFeature = createBPFeatureRule({
                     16
                 ]
             },
-            y: {
-                distribution: "uniform",
-                extent: [
-                    0,
-                    `${MoLang.heightmap(MoLang.variable("worldx"), MoLang.variable("worldz"))} * 2`
-                ]
-            },
+            y: MoLang.heightmap(MoLang.variable("worldx"), MoLang.variable("worldz")),
             z: {
                 distribution: "uniform",
                 extent: [

@@ -5,7 +5,7 @@ import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const IcePlainsSpikesFirstIcePatchFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -14,9 +14,9 @@ export const IcePlainsSpikesFirstIcePatchFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "first_pass",
-            "minecraft:biome_filter": EntityFilters.allOf(
-                EntityFilters.hasBiomeTag('ice_plains'),
-                EntityFilters.hasBiomeTag('mutated')
+            "minecraft:biome_filter": EntityFilters.anyOf(
+                EntityFilters.hasBiomeTag("ice_plains"),
+                EntityFilters.hasBiomeTag("mutated")
             )
         },
         distribution: {

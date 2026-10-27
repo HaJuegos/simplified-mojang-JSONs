@@ -1,10 +1,11 @@
 import { createBPFeatureRule } from "../../../builders/behaviors/featureRules/FeatureRuleTemplateBuilder";
 import { VanillaFormatVersionList } from "../../../types/behaviors/featureRules/FeatureRuleTemplate";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const MegaTaigaFirstForestRockFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -13,15 +14,15 @@ export const MegaTaigaFirstForestRockFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "first_pass",
-            "minecraft:biome_filter": EntityFilters.allOf(
-                EntityFilters.hasBiomeTag('taiga'),
-                EntityFilters.hasBiomeTag('mega'),
+            "minecraft:biome_filter": EntityFilters.anyOf(
+                EntityFilters.hasBiomeTag("taiga"),
+                EntityFilters.hasBiomeTag("mega")
             )
         },
         distribution: {
             iterations: 1,
             x: 0,
-            y: 0,
+            y: MoLang.heightmap(MoLang.variable("worldx"), MoLang.variable("worldz")),
             z: 0
         }
     }

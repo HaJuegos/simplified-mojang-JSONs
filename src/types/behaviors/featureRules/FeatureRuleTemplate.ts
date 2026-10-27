@@ -17,7 +17,10 @@ export {
  */
 enum VanillaFormatVersionList {
     MostRecent = "1.26.50",
+    v1_21_60 = "1.21.60",
+    v1_26_10 = "1.21.10",
     v1_16_100 = "1.16.100",
+    v1_16_0 = "1.16.0",
     v1_13_0 = "1.13.0"
 }
 
@@ -62,7 +65,7 @@ interface BPFeatureRuleDefinition {
          * Formato de distribuccion para el feature rule.
          * @type {DistributionRulesParams}
          */
-        distribution: DistributionRulesParams;
+        distribution?: DistributionRulesParams;
     };
 }
 

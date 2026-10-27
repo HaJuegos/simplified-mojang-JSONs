@@ -4,7 +4,7 @@ import { EntityFilters } from "../../../utils/EntityFilters";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const CrimsonRootsSoulSandValleyFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -13,7 +13,9 @@ export const CrimsonRootsSoulSandValleyFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "surface_pass",
-            "minecraft:biome_filter": EntityFilters.hasBiomeTag('soulsand_valley')
+            "minecraft:biome_filter": EntityFilters.anyOf(
+                EntityFilters.hasBiomeTag("soulsand_valley")
+            )
         },
         distribution: {
             iterations: 1,

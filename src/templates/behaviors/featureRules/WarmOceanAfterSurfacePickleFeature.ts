@@ -5,7 +5,7 @@ import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const WarmOceanAfterSurfacePickleFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -14,9 +14,9 @@ export const WarmOceanAfterSurfacePickleFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "after_surface_pass",
-            "minecraft:biome_filter": EntityFilters.allOf(
-                EntityFilters.hasBiomeTag('warm'),
-                EntityFilters.hasBiomeTag('ocean'),
+            "minecraft:biome_filter": EntityFilters.anyOf(
+                EntityFilters.hasBiomeTag("warm"),
+                EntityFilters.hasBiomeTag("ocean")
             )
         },
         distribution: {
@@ -32,13 +32,7 @@ export const WarmOceanAfterSurfacePickleFeature = createBPFeatureRule({
                     24
                 ]
             },
-            y: {
-                distribution: "uniform",
-                extent: [
-                    0,
-                    `${MoLang.heightmap(MoLang.variable("worldx"), MoLang.variable("worldz"))} * 2`
-                ]
-            },
+            y: MoLang.aboveTopSolid(MoLang.variable("worldx"), MoLang.variable("worldz")),
             z: {
                 distribution: "uniform",
                 extent: [

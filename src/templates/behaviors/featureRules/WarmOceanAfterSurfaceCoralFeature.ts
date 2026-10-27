@@ -1,10 +1,11 @@
 import { createBPFeatureRule } from "../../../builders/behaviors/featureRules/FeatureRuleTemplateBuilder";
 import { VanillaFormatVersionList } from "../../../types/behaviors/featureRules/FeatureRuleTemplate";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const WarmOceanAfterSurfaceCoralFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -13,9 +14,9 @@ export const WarmOceanAfterSurfaceCoralFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "after_surface_pass",
-            "minecraft:biome_filter": EntityFilters.allOf(
-                EntityFilters.hasBiomeTag('warm'),
-                EntityFilters.hasBiomeTag('ocean'),
+            "minecraft:biome_filter": EntityFilters.anyOf(
+                EntityFilters.hasBiomeTag("warm"),
+                EntityFilters.hasBiomeTag("ocean")
             )
         },
         distribution: {
@@ -27,7 +28,7 @@ export const WarmOceanAfterSurfaceCoralFeature = createBPFeatureRule({
                     16
                 ]
             },
-            y: 45,
+            y: MoLang.aboveTopSolid(MoLang.variable("worldx"), MoLang.variable("worldz")),
             z: {
                 distribution: "uniform",
                 extent: [

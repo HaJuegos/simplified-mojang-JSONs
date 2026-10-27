@@ -5,7 +5,7 @@ import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const PlainsFirstDoublePlantGrassFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -14,11 +14,14 @@ export const PlainsFirstDoublePlantGrassFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "first_pass",
-            "minecraft:biome_filter": EntityFilters.hasBiomeTag('plains')
+            "minecraft:biome_filter": EntityFilters.hasBiomeTag("plains")
         },
         distribution: {
-            iterations: 7,
-            scatterChance: `((${MoLang.noise(`(${MoLang.variable("originx")} + 8) / 200.0`, `(${MoLang.variable("originz")} + 8) / 200.0`)} >= -.8) && ${MoLang.variable("is_legacy")} == 0.0) ? 100.0 : 0.0`,
+            iterations: `${MoLang.variable("is_legacy")} == 0.0 ? 1 : 0`,
+            scatterChance: {
+                numerator: 1,
+                denominator: 4
+            },
             x: {
                 distribution: "uniform",
                 extent: [
@@ -26,13 +29,7 @@ export const PlainsFirstDoublePlantGrassFeature = createBPFeatureRule({
                     16
                 ]
             },
-            y: {
-                distribution: "uniform",
-                extent: [
-                    0,
-                    `${MoLang.heightmap(MoLang.variable("worldx"), MoLang.variable("worldz"))} + 32`
-                ]
-            },
+            y: MoLang.heightmap(MoLang.variable("worldx"), MoLang.variable("worldz")),
             z: {
                 distribution: "uniform",
                 extent: [

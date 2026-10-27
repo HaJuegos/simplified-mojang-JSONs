@@ -4,7 +4,7 @@ import { EntityFilters } from "../../../utils/EntityFilters";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const ExtremeHillsAfterSurfaceSilverfishFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -13,30 +13,30 @@ export const ExtremeHillsAfterSurfaceSilverfishFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "after_surface_pass",
-            "minecraft:biome_filter": EntityFilters.hasBiomeTag('extreme_hills')
+            "minecraft:biome_filter": EntityFilters.hasBiomeTag("extreme_hills")
         },
         distribution: {
-            iterations: 7,
+            iterations: 0,
             coordinateEvalOrder: "xyz",
             x: {
                 distribution: "uniform",
                 extent: [
                     0,
-                    16
+                    1
                 ]
             },
             y: {
                 distribution: "uniform",
                 extent: [
                     0,
-                    32
+                    1
                 ]
             },
             z: {
                 distribution: "uniform",
                 extent: [
                     0,
-                    16
+                    1
                 ]
             }
         }

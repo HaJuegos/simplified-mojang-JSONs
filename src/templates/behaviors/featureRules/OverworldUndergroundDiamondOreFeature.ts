@@ -4,7 +4,7 @@ import { EntityFilters } from "../../../utils/EntityFilters";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const OverworldUndergroundDiamondOreFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -13,13 +13,10 @@ export const OverworldUndergroundDiamondOreFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "underground_pass",
-            "minecraft:biome_filter": EntityFilters.anyOf(
-                EntityFilters.hasBiomeTag('overworld'),
-                EntityFilters.hasBiomeTag('overworld_generation'),
-            )
+            "minecraft:biome_filter": EntityFilters.anyOf(EntityFilters.hasBiomeTag("overworld"), EntityFilters.hasBiomeTag("overworld_generation"))
         },
         distribution: {
-            iterations: 1,
+            iterations: 7,
             coordinateEvalOrder: "zyx",
             x: {
                 distribution: "uniform",
@@ -29,9 +26,9 @@ export const OverworldUndergroundDiamondOreFeature = createBPFeatureRule({
                 ]
             },
             y: {
-                distribution: "uniform",
+                distribution: "triangle",
                 extent: [
-                    0,
+                    -144,
                     16
                 ]
             },

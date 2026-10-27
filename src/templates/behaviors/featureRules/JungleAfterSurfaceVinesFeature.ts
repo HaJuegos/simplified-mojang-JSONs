@@ -1,10 +1,11 @@
 import { createBPFeatureRule } from "../../../builders/behaviors/featureRules/FeatureRuleTemplateBuilder";
 import { VanillaFormatVersionList } from "../../../types/behaviors/featureRules/FeatureRuleTemplate";
 import { EntityFilters } from "../../../utils/EntityFilters";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const JungleAfterSurfaceVinesFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -13,11 +14,11 @@ export const JungleAfterSurfaceVinesFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "after_surface_pass",
-            "minecraft:biome_filter": EntityFilters.hasBiomeTag('jungle')
+            "minecraft:biome_filter": EntityFilters.hasBiomeTag("jungle")
         },
         distribution: {
             iterations: 50,
-            coordinateEvalOrder: "xyz",
+            coordinateEvalOrder: "xzy",
             x: {
                 distribution: "uniform",
                 extent: [
@@ -25,7 +26,7 @@ export const JungleAfterSurfaceVinesFeature = createBPFeatureRule({
                     16
                 ]
             },
-            y: 64,
+            y: MoLang.heightmap(MoLang.variable("worldx"), MoLang.variable("worldz")),
             z: {
                 distribution: "uniform",
                 extent: [

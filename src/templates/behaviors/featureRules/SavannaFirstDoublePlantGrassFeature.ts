@@ -5,7 +5,7 @@ import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla del feature rule para la sobreescritura del mismo. Sus datos base ya están definidos.
- * @author HaJuegos - 24-10-2026
+ * @author HaJuegos - 26-10-2026
  */
 export const SavannaFirstDoublePlantGrassFeature = createBPFeatureRule({
     formatVersion: VanillaFormatVersionList.v1_13_0,
@@ -14,11 +14,17 @@ export const SavannaFirstDoublePlantGrassFeature = createBPFeatureRule({
     rules: {
         conditions: {
             placementPass: "first_pass",
-            "minecraft:biome_filter": EntityFilters.hasBiomeTag('savanna')
+            "minecraft:biome_filter": EntityFilters.allOf(
+                EntityFilters.hasBiomeTag("savanna"),
+                EntityFilters.hasBiomeTag("mutated", "self", "not")
+            )
         },
         distribution: {
-            iterations: 1,
-            scatterChance: `${MoLang.variable("is_legacy")} ? 0.0 : 100.0`,
+            iterations: `${MoLang.variable("is_legacy")} ? 0 : 1`,
+            scatterChance: {
+                numerator: 1,
+                denominator: 5
+            },
             x: {
                 distribution: "uniform",
                 extent: [
