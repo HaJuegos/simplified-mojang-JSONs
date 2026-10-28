@@ -1,12 +1,17 @@
 import { RawText } from "@minecraft/server";
 
 export {
+    BPHeaderBaseParamsTypes,
+    BPHeaderParamsTypes,
     BPMetadataParamsTypes,
     BPModulesParamsTypes,
     BPCapabilitiesTypes,
     BPDependenciesParamsTypes,
     BPSubpacksParamsTypes,
     BPFinalDefinitionManifest,
+
+    BPModuleBaseParamsTypes,
+    BPModuleUUIDParamsTypes,
 };
 
 /**
@@ -26,7 +31,10 @@ type DependenciesAPIVanillaTypes = "@minecraft/server" | "@minecraft/server-admi
  * @interface BPFinalDefinitionManifest
  * @author HaJuegos - 06-10-2026
  */
-interface BPFinalDefinitionManifest {
+interface BPFinalDefinitionManifest<
+    THeaderParams = BPHeaderParamsTypes,
+    TModuleParams = BPModulesParamsTypes[],
+> {
     /**
      * (Opcional) Lista de parametros para definir metadatos del add-on, como creditos.
      * @type {?BPMetadataParamsTypes}
@@ -35,15 +43,15 @@ interface BPFinalDefinitionManifest {
 
     /**
      * Lista de parametros principales del add-on a definir.
-     * @type {BPHeaderParamsTypes}
+     * @type {THeaderParams}
      */
-    header: BPHeaderParamsTypes;
+    header: THeaderParams;
 
     /**
      * Lista de modulos a usar en el add-on.
-     * @type {BPModulesParamsTypes[]}
+     * @type {TModuleParams}
      */
-    modules: BPModulesParamsTypes[];
+    modules: TModuleParams;
 
     /**
      * (Opcional) Lista de capacidades adiccionales del add-on.
@@ -99,7 +107,14 @@ interface BPHeaderBaseParamsTypes {
  * Tipado que prohible dos definiciones a la vez en un header cuando se trata de definir un UUID.
  * @author HaJuegos - 06-10-2026
  */
-type BPHeaderParamsTypes = BPHeaderBaseParamsTypes & (| { setRandomUUID: true; uuid?: never; } | { setRandomUUID?: false; uuid: string; }
+type BPHeaderParamsTypes = BPHeaderBaseParamsTypes & (
+    {
+        setRandomUUID: true;
+    } |
+    {
+        setRandomUUID?: false | undefined;
+        uuid: string;
+    }
 );
 
 /**
@@ -164,17 +179,21 @@ interface BPModuleBaseParamsTypes {
  * Tipado general que bloquea la asignacion de dos parametros simultaneos en un modulo.
  * @author HaJuegos - 06-10-2026
  */
-type BPModuleUUIDParamsTypes = | { uuid: string; randomUuid?: false; } | { uuid?: never; randomUuid: true; };
+type BPModuleUUIDParamsTypes = {
+    randomUuid: true;
+} |
+{
+    randomUuid?: false | undefined;
+    uuid: string;
+};
 
 /**
  * Tipo de modulo discriminado por type y con seleccion exclusiva entre UUID fijo o aleatorio.
  * @author HaJuegos - 06-10-2026
  */
 type BPModulesParamsTypes =
-    | (BPModuleBaseParamsTypes & BPModuleUUIDParamsTypes & {
+    (BPModuleBaseParamsTypes & BPModuleUUIDParamsTypes & {
         type: "data";
-        entry?: never;
-        language?: never;
     })
     | (BPModuleBaseParamsTypes & BPModuleUUIDParamsTypes & {
         type: "script";

@@ -1,14 +1,13 @@
 import * as mc from "@minecraft/server";
-import * as vanilla from "@minecraft/vanilla-data";
 
-import { BPDependenciesParamsTypes, BPMetadataParamsTypes, BPModulesParamsTypes, BPCapabilitiesTypes, BPSubpacksParamsTypes } from "../../types/behaviors/ManifestTemplate";
+import { BPDependenciesParamsTypes, BPMetadataParamsTypes, BPModulesParamsTypes, BPCapabilitiesTypes, BPSubpacksParamsTypes, BPHeaderBaseParamsTypes } from "../../types/behaviors/ManifestTemplate";
 import { UUIDManager } from "../../utils/UUID";
 import { SnakeCase } from "../../utils/SnakeCase";
 
 /**
  * Clase principal que define la arquitectura fija de un archivo Manifest de un BehaviorPacks.
  * @class BehaviorManifest
- * @author HaJuegos - 60-10-2026
+ * @author HaJuegos - 06-10-2026
  * @export
  */
 export class BehaviorManifestBuilder {
@@ -54,6 +53,13 @@ export class BehaviorManifestBuilder {
      * @private
      */
     private enginePack: [number, number, number] | string = [1, 26, 50];
+
+    /**
+     * (Opcional) Datos adiccionales que pueden ir en el header del manifest.
+     * @type {?(BPHeaderBaseParamsTypes | undefined)}
+     * @private
+     */
+    private aditionalHeaderData?: BPHeaderBaseParamsTypes | undefined;
 
     /**
      * Metadatos del add-on. Como derechos de autor o generacion automatica.
@@ -170,6 +176,19 @@ export class BehaviorManifestBuilder {
     }
 
     /**
+     * Metodo principal auxiliar que establece datos adiccionales que se añaden a la seccion de header del manifest a crear.
+     * @param {BPHeaderBaseParamsTypes} params Parametros definidos en la plantilla base.
+     * @returns {this} Devuelve la misma clase debido a que es un metodo de propiedades.
+     * @author HaJuegos - 28-10-2026
+     * @protected
+     */
+    protected setAditionalHeader(params: BPHeaderBaseParamsTypes): this {
+        this.aditionalHeaderData = params;
+
+        return this;
+    }
+
+    /**
      * Metodo principal que establece metadatos sobre la creacion del add-on, como los autores o creditos.
      * @param {BPMetadataParamsTypes} params Parametros de los metadatos en concreto.
      * @returns {this} Devuelve la misma clase.
@@ -259,13 +278,16 @@ export class BehaviorManifestBuilder {
             preManifestObj.metadata = SnakeCase.shallowSnakeCase(this.metadata);
         }
 
-        preManifestObj.header = {
+        const baseHeader = {
             name: this.namePack,
             description: this.descPack,
             uuid: this.uuidPack,
             version: this.versionPack,
-            min_engine_version: this.enginePack
+            min_engine_version: this.enginePack,
+            ...(this.aditionalHeaderData ? SnakeCase.shallowSnakeCase(this.aditionalHeaderData) : {})
         };
+
+        preManifestObj.header = baseHeader;
 
         if (this.modules && this.modules.length > 0) {
             preManifestObj.modules = this.modules.map(module => {

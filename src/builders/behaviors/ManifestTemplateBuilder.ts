@@ -1,4 +1,4 @@
-import { BPFinalDefinitionManifest } from "../../types/behaviors/ManifestTemplate";
+import { BPFinalDefinitionManifest, BPHeaderParamsTypes } from "../../types/behaviors/ManifestTemplate";
 import { BehaviorManifestBuilder } from "./ManifestBuilder";
 
 /**
@@ -8,7 +8,7 @@ import { BehaviorManifestBuilder } from "./ManifestBuilder";
  * @author HaJuegos - 06-10-2026
  * @export
  */
-class FinalManifestBuilderTemplate extends BehaviorManifestBuilder {
+export class FinalManifestBuilderTemplate extends BehaviorManifestBuilder {
     /**
      * Argumentos principales para la creacion de un manifest behavior pack de una plantilla en concreto.
      * @param {BPFinalDefinitionManifest} def Los valores a definir al manifest.
@@ -16,7 +16,7 @@ class FinalManifestBuilderTemplate extends BehaviorManifestBuilder {
      * @constructor
      * @public
      */
-    public constructor (def: BPFinalDefinitionManifest) {
+    public constructor (def: BPFinalDefinitionManifest<any, any>) {
         super();
 
         if (def.metadata) {
@@ -35,6 +35,12 @@ class FinalManifestBuilderTemplate extends BehaviorManifestBuilder {
 
         if (def.header.setMinEngine) {
             this.setSpecificMinEngine(def.header.setMinEngine);
+        }
+
+        const { name, description, version, uuid, setRandomUUID, setMinEngine, ...extraHeaderProps } = def.header;
+
+        if (Object.keys(extraHeaderProps).length > 0) {
+            this.setAditionalHeader(extraHeaderProps);
         }
 
         if (def.modules && def.modules.length > 0) {

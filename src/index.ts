@@ -37,6 +37,8 @@ export { createBPSpawnRule } from "./builders/behaviors/spawnRules/SpawnRuleTemp
 export { createBPTrading } from "./builders/behaviors/trading/TradingTemplateBuilder";
 
 
+export { createRPManifest } from "./builders/resources/ManifestTemplateBuilder";
+
 export { createRPAnimController } from "./builders/resources/animControllers/AnimControllerTemplateBuilder";
 
 
@@ -58,6 +60,8 @@ export type { BPRecipeDefinition, BPRecipeOverrideDefinition } from "./types/beh
 export type { BPSpawnRuleDefinition, BPSpawnRuleOverride, BPSpawnRuleTemplateInstance } from "./types/behaviors/spawnRules/SpawnRuleTemplate";
 export type { BPTradingDefinition, BPTradingOverInstance, BPTradingOverride } from "./types/behaviors/trading/TradingTemplate";
 
+
+export type { RPManifestDefinition } from "./types/resources/ManifestTemplate";
 
 export type { RPAnimControllerDefinition } from "./types/resources/animControllers/AnimControllerTemplate";
 

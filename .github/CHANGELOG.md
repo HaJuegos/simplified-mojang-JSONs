@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 
 - General adjustments to some files.
 - The base template for creating an Animation Controller in an RP is created.
+- The base template for creating an Manifest in an RP is created.
 
 ## [0.0.9] - 2026-10-27
 
