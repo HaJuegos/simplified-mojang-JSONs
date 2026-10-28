@@ -7,7 +7,7 @@ import { BehaviorAnimControllerBuilder } from "./AnimControllerBuilder";
  * @extends {BehaviorAnimControllerBuilder}
  * @author HaJuegos - 08-10-2026
  */
-class FinalAnimControllerBuilderTemplate extends BehaviorAnimControllerBuilder {
+export class FinalAnimControllerBuilderTemplate extends BehaviorAnimControllerBuilder {
     /**
      * Argumentos principales para la creacion de un Controlador de Animacion de una plantilla en concreto.
      * @param {BPAnimControllerFinalDefinition} def Los valores a definir en el controlador.

@@ -37,6 +37,9 @@ export { createBPSpawnRule } from "./builders/behaviors/spawnRules/SpawnRuleTemp
 export { createBPTrading } from "./builders/behaviors/trading/TradingTemplateBuilder";
 
 
+export { createRPAnimController } from "./builders/resources/animControllers/AnimControllerTemplateBuilder";
+
+
 // Tipados necesarios para las plantillas de creacion custom.
 export type { BPFinalDefinitionManifest } from "./types/behaviors/ManifestTemplate";
 
@@ -55,7 +58,13 @@ export type { BPRecipeDefinition, BPRecipeOverrideDefinition } from "./types/beh
 export type { BPSpawnRuleDefinition, BPSpawnRuleOverride, BPSpawnRuleTemplateInstance } from "./types/behaviors/spawnRules/SpawnRuleTemplate";
 export type { BPTradingDefinition, BPTradingOverInstance, BPTradingOverride } from "./types/behaviors/trading/TradingTemplate";
 
+
+export type { RPAnimControllerDefinition } from "./types/resources/animControllers/AnimControllerTemplate";
+
+
 export { SpawnCategoryEntities, FormatVersionEntities } from "./types/behaviors/entities/EntitiesEnums";
 
+
+// Otras exportaciones de la API.
 export { EntityFilters } from './utils/EntityFilters';
 export { MoLang } from './utils/MoLang';

@@ -9,7 +9,7 @@ export {
  * Tipado general permitido para las animaciones adiccionales en un estado.
  * @author HaJuegos - 07-10-2026
  */
-type AnimationsParams = string | Record<string, MoLangValue | string>;
+type AnimationsParams = string | Record<string, MoLangValue | string | number>;
 
 /**
  * Lista de parametros principales para la creacion de un controlador de animacion.
@@ -17,7 +17,10 @@ type AnimationsParams = string | Record<string, MoLangValue | string>;
  * @template {string} TStates Parametro generico para autocompletar cuando se define un nuevo estado en el controlador de animacion.
  * @author HaJuegos - 08-10-2026
  */
-interface BPAnimControllerFinalDefinition<TStates extends string = string> {
+interface BPAnimControllerFinalDefinition<
+    TStates extends string = string,
+    TStatesDetails = AnimControllerStatesTypes<TStates>
+> {
     /**
      * ID de la animacion a crear.
      * @type {string}
@@ -32,9 +35,9 @@ interface BPAnimControllerFinalDefinition<TStates extends string = string> {
 
     /**
      * Los demas estados a asignar al controlador y a ejecutar en cuestion.
-     * @type {Record<TStates, AnimControllerStatesTypes<TStates>>}
+     * @type {Record<TStates, TStatesDetails>}
      */
-    states: Record<TStates, AnimControllerStatesTypes<TStates>>;
+    states: Record<TStates, TStatesDetails>;
 }
 
 /**
