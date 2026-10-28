@@ -1,4 +1,4 @@
-import { AnimControllerStatesTypes } from "../../../types/behaviors/animContollers/AnimControllerTemplate";
+import { AnimControllerParamsBase, AnimControllerStatesTypes, FormatVersionAnimControllerList } from "../../../types/behaviors/animContollers/AnimControllerTemplate";
 import { SnakeCase } from "../../../utils/SnakeCase";
 
 /**
@@ -10,69 +10,42 @@ import { SnakeCase } from "../../../utils/SnakeCase";
 export class BehaviorAnimControllerBuilder {
     /**
      * Version del controlador. Por defecto siempre sera el mas estable o reciente. En este caso "1.10.0"
-     * @type {string}
+     * @type {FormatVersionAnimControllerList}
      * @private
      */
-    private animVersion: string = "1.10.0";
+    private animVersion: FormatVersionAnimControllerList = FormatVersionAnimControllerList.MostRecent;
 
     /**
-     * ID del controlador a crear.
-     * @type {(string | undefined)}
+     * (Opcional) Lista de animaciones asignadas en el controlador en concreto.
+     * @type {AnimControllerParamsBase[]}
      * @private
      */
-    private idAnim: string | undefined;
-
-    /**
-     * Estado inicial a ejecutar cuando el controlador es inicializado.
-     * @type {(string | undefined)}
-     * @private
-     */
-    private initialState: string | undefined;
-
-    /**
-     * Todos los estados que contiene el controlador.
-     * @type {Record<string, AnimControllerStatesTypes>}
-     * @private
-     */
-    private states: Record<string, AnimControllerStatesTypes> = {};
+    private listOfControllersData: AnimControllerParamsBase[] = [];
 
     protected constructor () { }
 
     /**
-     * Metodo principal que establece el ID al controlador a crear.
-     * @param {string} idAnim ID del controlador.
-     * @returns {this} Devuelve el mismo objecto por ser un metodo de propiedades.
-     * @author HaJuegos - 07-10-2026
+     * Metodo principal auxiliar que establece la version del controlador completo en concreto.
+     * @param {FormatVersionAnimControllerList} newVersion Nueva version a establecer. Por defecto es "1.10.0".
+     * @returns {this} Devuelve la misma clase debido a que es un metodo de propiedades.
+     * @author HaJuegos - 28-10-2026 
      * @protected
      */
-    protected setIDAnim(idAnim: string): this {
-        this.idAnim = `controller.animation.${idAnim}`;
+    protected setFormatVersion(newVersion: FormatVersionAnimControllerList): this {
+        this.animVersion = newVersion;
 
         return this;
     }
 
     /**
-     * Metodo principal que asigna el estado inicial a ejecutar al controlador.
-     * @param {string} stateID ID del estado a asignar.
-     * @returns {this} Devuelve el mismo objecto por ser un metodo de propiedades.
-     * @author HaJuegos - 07-10-2026
+     * Metodo principal auxiliar que asigna las animaciones con sus respectivos datos a la controladora en concreto.
+     * @param {AnimControllerParamsBase[]} params Lista de animaciones con sus parametros en concreto.
+     * @returns {this} Devuelve la misma clase debido a que es un metodo de propiedades.
+     * @author HaJuegos - 28-10-2026  
      * @protected
      */
-    protected setInitialState(stateID: string): this {
-        this.initialState = stateID;
-
-        return this;
-    }
-
-    /**
-     * Metodo principal que asigna la lista de estados a crear en el controlador.
-     * @param {Record<string, AnimControllerStatesTypes>} listStates Lista de estados en concreto.
-     * @returns {this} Devuelve el mismo objecto por ser un metodo de propiedades.
-     * @author HaJuegos - 07-10-2026
-     * @protected
-     */
-    protected setStates(listStates: Record<string, AnimControllerStatesTypes>): this {
-        this.states = listStates;
+    protected setAnimations(params: AnimControllerParamsBase[]): this {
+        this.listOfControllersData = params;
 
         return this;
     }
@@ -81,32 +54,37 @@ export class BehaviorAnimControllerBuilder {
      * Metodo principal que convierte toda la plantilla general a una JSON con estructura fija lista para su exportacion.
      * @param {boolean} stringify Si se establece en true, devuelve el objecto en formato de TXT listo para un JSON. 
      * @returns {string | Record<string, unknown>} Devuelve un string o un objecto readonly dependiendo el argumento asignado.
-     * 
-     * @throws {Error} Puede pasar error si, no se establece un ID al controllador de la animacion.
-     * 
      * @author HaJuegos - 07-10-2026 
      * @protected
      */
     protected convertToJSON(stringify: true): string;
     protected convertToJSON(stringify?: false): Record<string, unknown>;
     protected convertToJSON(stringify?: boolean): string | Record<string, unknown> {
-        if (!this.idAnim) {
-            throw new Error("[CATLOG] Error: El controllador de animacion requiere de un ID para ser reconocido por MC. Asigna uno. De preferencia, sin mayusculas.");
+        const animationControllersBody: Record<string, unknown> = {};
+
+        for (const controller of this.listOfControllersData) {
+            if (!controller.idController) {
+                throw new Error("[CATLOG] Error: Cada controlador de animacion requiere de un ID para ser reconocido por MC. Asigna uno.");
+            }
+
+            const controllerBody: Record<string, unknown> = {};
+
+            if (controller.initialState) {
+                controllerBody.initial_state = controller.initialState;
+            }
+
+            if (controller.states) {
+                controllerBody.states = Object.fromEntries(
+                    Object.entries(controller.states).map(([state, data]) => [state, SnakeCase.shallowSnakeCase(data)])
+                );
+            }
+
+            animationControllersBody[controller.idController] = controllerBody;
         }
-
-        const controllerBody: Record<string, unknown> = {};
-
-        if (this.initialState) {
-            controllerBody.initial_state = this.initialState;
-        }
-
-        controllerBody.states = Object.fromEntries(Object.entries(this.states).map(([state, data]) => [state, SnakeCase.shallowSnakeCase(data)]));
 
         const preController = {
             format_version: this.animVersion,
-            animation_controllers: {
-                [this.idAnim]: controllerBody
-            }
+            animation_controllers: animationControllersBody
         };
 
         const finalObj = Object.freeze(preController);

@@ -18,9 +18,11 @@ export class FinalAnimControllerBuilderTemplate extends BehaviorAnimControllerBu
     public constructor (def: BPAnimControllerFinalDefinition) {
         super();
 
-        this.setIDAnim(def.idController);
-        this.setInitialState(def.initialState);
-        this.setStates(def.states);
+        if (def.formatVersion) {
+            this.setFormatVersion(def.formatVersion);
+        }
+
+        this.setAnimations(def.animControllers);
     }
 
     /**
@@ -41,6 +43,6 @@ export class FinalAnimControllerBuilderTemplate extends BehaviorAnimControllerBu
  * @author HaJuegos - 08-10-2026
  * @export
  */
-export function createBPAnimController<TStates extends string>(def: BPAnimControllerFinalDefinition<TStates>): string {
+export function createBPAnimController(def: BPAnimControllerFinalDefinition): string {
     return new FinalAnimControllerBuilderTemplate(def).finalBuild();
 }

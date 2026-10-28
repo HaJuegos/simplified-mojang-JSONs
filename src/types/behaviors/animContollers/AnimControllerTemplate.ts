@@ -1,9 +1,20 @@
 import { MoLangValue } from '../../MoLang';
 
 export {
-    AnimControllerStatesTypes,
+    FormatVersionAnimControllerList,
     BPAnimControllerFinalDefinition,
+    AnimControllerParamsBase,
+    AnimControllerStatesTypes,
 };
+
+/**
+ * Lista de versiones permitidas del controlador de animacion. 
+ * @enum {string}
+ */
+enum FormatVersionAnimControllerList {
+    MostRecent = "1.10.0",
+    V1_8_0 = "1.8.0"
+}
 
 /**
  * Tipado general permitido para las animaciones adiccionales en un estado.
@@ -12,12 +23,34 @@ export {
 type AnimationsParams = string | Record<string, MoLangValue | string | number>;
 
 /**
- * Lista de parametros principales para la creacion de un controlador de animacion.
+ * Lista de animaciones a agregar en el controlador de animacion.
  * @interface BPAnimControllerFinalDefinition
- * @template {string} TStates Parametro generico para autocompletar cuando se define un nuevo estado en el controlador de animacion.
  * @author HaJuegos - 08-10-2026
  */
 interface BPAnimControllerFinalDefinition<
+    TAnimControllers = AnimControllerParamsBase[]
+> {
+    /**
+     * (Opcional) Version del format version en concreto a asignar en el controlador de animacion.
+     * @type {?FormatVersionAnimControllerList}
+     */
+    formatVersion?: FormatVersionAnimControllerList;
+
+    /**
+     * Lista de controladores de animacion a asignar en el archivo.
+     * @type {AnimControllerParamsBase[]}
+     */
+    animControllers: TAnimControllers;
+}
+
+/**
+ * Parametros principales para la creacion de un controlador de animacion general.
+ * @interface AnimControllerParamsBase
+ * @template {string} TStates Parametro generico para autocompletar cuando se define un nuevo estado en el controlador de animacion.
+ * @template {TStatesDetails} TStatesDetails Parametro generico para definir los tipos de datos permitidos en un state de un controllador.
+ * @author HaJuegos - 28-10-2026
+ */
+interface AnimControllerParamsBase<
     TStates extends string = string,
     TStatesDetails = AnimControllerStatesTypes<TStates>
 > {

@@ -11,6 +11,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - General adjustments to some files.
 - The base template for creating an Animation Controller in an RP is created.
 - The base template for creating an Manifest in an RP is created.
+- Updated to the official vanilla 26.60 files
+- The parameters and logic required for post-editing an animation controller file in an RP are added.
 
 ## [0.0.9] - 2026-10-27
 
