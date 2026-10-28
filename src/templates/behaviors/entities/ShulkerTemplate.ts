@@ -137,9 +137,10 @@ export const ShulkerTemplate = createBPEntity({
                 max: 3
             },
             attackRange: {
-                min: 15,
+                min: 0,
                 max: 15
-            }
+            },
+            setPersistent: true
         }),
         new BPEntityComponents.SetBreathable({
             breathesLava: false,
@@ -396,6 +397,7 @@ export const ShulkerTemplate = createBPEntity({
             }
         }),
         new BPEntityComponents.SetPhysics(),
+        new BPEntityComponents.SetPushableByBlock(),
         new BPEntityComponents.SetRendersWhenInvisible(),
         new BPEntityComponents.SetShooter({
             projectiles: [

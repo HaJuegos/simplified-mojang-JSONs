@@ -55,7 +55,7 @@ export const HorseTemplate = createBPEntity({
                         growth: 0.2
                     },
                     {
-                        item: "appleEnchanted",
+                        item: "enchanted_golden_apple",
                         growth: 0.2
                     }
                 ],
@@ -76,6 +76,10 @@ export const HorseTemplate = createBPEntity({
             })
         ],
         "minecraft:horse_adult": [
+            new BPEntityComponents.SetCollisionBox({
+                width: 1.4,
+                height: 1.6
+            }),
             new BPEntityComponents.SetExperienceReward({
                 onBred: "Math.Random(1,7)",
                 onDeath: `${MoLang.lastHitByPlayer()} ? Math.Random(1,3) : 0`
@@ -260,7 +264,7 @@ export const HorseTemplate = createBPEntity({
                     "minecraft:horse": {},
                     "minecraft:donkey": {}
                 },
-                breedItems: ["golden_carrot", "golden_apple", "appleEnchanted"]
+                breedItems: ["golden_carrot", "golden_apple", "enchanted_golden_apple"]
             })
         ],
         "minecraft:horse_saddled": [
@@ -473,7 +477,7 @@ export const HorseTemplate = createBPEntity({
                     healAmount: 10
                 },
                 {
-                    item: "appleEnchanted",
+                    item: "enchanted_golden_apple",
                     healAmount: 10
                 }
             ]
@@ -505,7 +509,7 @@ export const HorseTemplate = createBPEntity({
         new BPEntityComponents.SetBehaviorTempt({
             priority: 5,
             speedMultiplier: 1.2,
-            items: ["golden_apple", "appleEnchanted", "golden_carrot"]
+            items: ["golden_apple", "enchanted_golden_apple", "golden_carrot"]
         }),
         new BPEntityComponents.SetBehaviorRandomStroll({
             priority: 6,

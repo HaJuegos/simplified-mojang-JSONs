@@ -320,23 +320,13 @@ export const StriderTemplate = createBPEntity({
         }),
         new BPEntityComponents.SetBehaviorPanic({
             priority: 3,
-            speedMultiplier: 1.1,
-            panicSound: "panic",
-            soundInterval: {
-                rangeMin: 1,
-                rangeMax: 3
-            }
+            speedMultiplier: 1.1
         }),
         new BPEntityComponents.SetBehaviorTempt({
             priority: 5,
             speedMultiplier: 1.2,
             items: ["warped_fungus", "warped_fungus_on_a_stick"],
-            canTemptWhileRidden: true,
-            temptSound: "tempt",
-            soundInterval: {
-                rangeMin: 2,
-                rangeMax: 5
-            }
+            canTemptWhileRidden: true
         }),
         new BPEntityComponents.SetConditionalBandwidthOptimization()
     ],

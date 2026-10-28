@@ -47,7 +47,7 @@ export const GhastTemplate = createBPEntity({
         }),
         new BPEntityComponents.SetBehaviorRangedAttack({
             attackRange: {
-                min: 64,
+                min: 0,
                 max: 64
             },
             chargeChargedTrigger: 1,

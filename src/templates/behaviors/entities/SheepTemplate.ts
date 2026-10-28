@@ -358,7 +358,7 @@ export const SheepTemplate = createBPEntity({
         },
         "minecraft:entity_born": {
             add: {
-                componentGroups: ["minecraft:sheep_baby", "minecraft:sheep_dyeable"]
+                componentGroups: ["minecraft:sheep_baby", "minecraft:sheep_dyeable", "minecraft:sheep_white"]
             }
         },
         "minecraft:ageable_grow_up": {

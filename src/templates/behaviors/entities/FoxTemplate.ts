@@ -1,6 +1,6 @@
 import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
 import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
-import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
+import { SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
 import { EntityFilters } from "../../../utils/EntityFilters";
 import { MoLang } from "../../../utils/MoLang";
@@ -442,7 +442,7 @@ export const FoxTemplate = createBPEntity({
             ]
         }),
         new BPEntityComponents.SetBehaviorTempt({
-            priority: 3,
+            priority: 4,
             speedMultiplier: 0.5,
             withinRadius: 16,
             canGetScared: true,

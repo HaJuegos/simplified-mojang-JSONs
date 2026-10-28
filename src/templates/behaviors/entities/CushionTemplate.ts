@@ -37,7 +37,7 @@ export const CushionTemplate = createBPEntity({
             dismountMode: "on_top_center",
             seats: [
                 {
-                    position: [0, 0.1875, 0],
+                    position: [0, 0.0625, 0],
                     rotateRiderBy: -90
                 }
             ]

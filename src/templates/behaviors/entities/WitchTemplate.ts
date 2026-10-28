@@ -156,7 +156,7 @@ export const WitchTemplate = createBPEntity({
                 max: 3
             },
             attackRange: {
-                min: 10,
+                min: 0,
                 max: 10
             },
             priority: 2,

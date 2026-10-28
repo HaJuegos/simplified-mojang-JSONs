@@ -43,7 +43,7 @@ export const ParchedTemplate = createBPEntity({
                     max: 3.5
                 },
                 attackRange: {
-                    min: 15,
+                    min: 0,
                     max: 15
                 },
                 priority: 1
@@ -81,7 +81,7 @@ export const ParchedTemplate = createBPEntity({
                     max: 2.5
                 },
                 attackRange: {
-                    min: 15,
+                    min: 0,
                     max: 15
                 },
                 priority: 1

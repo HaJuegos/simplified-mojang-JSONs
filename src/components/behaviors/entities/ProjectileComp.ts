@@ -8,6 +8,7 @@ interface ProjectileData extends BPComponent {
     anchor?: "origin" | "eye_height" | "middle";
     angleOffset?: number;
     catchFire?: boolean;
+    spreadFire?: false;
     critParticleOnHurt?: boolean;
     destroyOnHurt?: boolean;
     gravity?: number;

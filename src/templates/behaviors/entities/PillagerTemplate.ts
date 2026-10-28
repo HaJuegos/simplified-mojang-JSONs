@@ -185,7 +185,7 @@ export const PillagerTemplate = createBPEntity({
         "minecraft:ranged_attack": [
             new BPEntityComponents.SetBehaviorRangedAttack({
                 attackRange: {
-                    min: 8,
+                    min: 0,
                     max: 8
                 },
                 attackInterval: {

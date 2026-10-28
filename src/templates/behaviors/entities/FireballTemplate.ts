@@ -47,6 +47,7 @@ export const FireballTemplate = createBPEntity({
             anchor: "middle",
             gravity: 0,
             catchFire: true,
+            spreadFire: false,
             inertia: 1,
             liquidInertia: 1,
             onHit: {

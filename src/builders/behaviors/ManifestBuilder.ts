@@ -52,7 +52,7 @@ export class BehaviorManifestBuilder {
      * @type {([number, number, number] | string)}
      * @private
      */
-    private enginePack: [number, number, number] | string = [1, 26, 50];
+    private enginePack: [number, number, number] | string = [1, 26, 60];
 
     /**
      * (Opcional) Datos adiccionales que pueden ir en el header del manifest.

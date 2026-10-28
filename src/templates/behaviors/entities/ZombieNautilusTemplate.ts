@@ -115,7 +115,7 @@ export const ZombieNautilusTemplate = createBPEntity({
                 onTemptEnd: {
                     event: "minecraft:on_stop_tempting"
                 },
-                priority: 2,
+                priority: 3,
                 speedMultiplier: 1.3
             }),
             new BPEntityComponents.SetEquippable({
@@ -304,7 +304,7 @@ export const ZombieNautilusTemplate = createBPEntity({
                 onTemptEnd: {
                     event: "minecraft:on_stop_tempting"
                 },
-                priority: 2,
+                priority: 3,
                 speedMultiplier: 1.3
             }),
             new BPEntityComponents.SetTameable({
@@ -364,7 +364,7 @@ export const ZombieNautilusTemplate = createBPEntity({
         ],
         "minecraft:zombie_nautilus_wild_mounted": [
             new BPEntityComponents.SetBehaviorMountPathing({
-                priority: 3,
+                priority: 4,
                 targetDist: 2,
                 speedMultiplier: 1,
                 trackTarget: true
@@ -423,18 +423,18 @@ export const ZombieNautilusTemplate = createBPEntity({
         new BPEntityComponents.SetBehaviorRandomSwim({
             interval: 0,
             xzDist: 16,
-            priority: 4,
+            priority: 5,
             speedMultiplier: 1.5,
             yDist: 4
         }),
         new BPEntityComponents.SetBehaviorSwimIdle({
-            priority: 6
+            priority: 7
         }),
         new BPEntityComponents.SetBehaviorSwimWander({
             interval: 10,
             lookAhead: 2,
             speedMultiplier: 1.5,
-            priority: 5
+            priority: 6
         }),
         new BPEntityComponents.SetBreathable({
             breathesAir: true,

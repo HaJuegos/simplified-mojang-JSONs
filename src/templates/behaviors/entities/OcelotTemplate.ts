@@ -72,14 +72,14 @@ export const OcelotTemplate = createBPEntity({
                 }
             }),
             new BPEntityComponents.SetBehaviorTempt({
-                priority: 4,
+                priority: 5,
                 speedMultiplier: 0.5,
                 withinRadius: 16,
                 canGetScared: true,
                 items: ["fish", "salmon"]
             }),
             new BPEntityComponents.SetBehaviorAvoidMobType({
-                priority: 5,
+                priority: 6,
                 entityTypes: [
                     {
                         filters: EntityFilters.isFamily("player", "other"),
@@ -112,7 +112,7 @@ export const OcelotTemplate = createBPEntity({
                 speedMultiplier: 1
             }),
             new BPEntityComponents.SetBehaviorTempt({
-                priority: 4,
+                priority: 5,
                 speedMultiplier: 0.5,
                 withinRadius: 16,
                 items: ["fish", "salmon"]
@@ -142,7 +142,7 @@ export const OcelotTemplate = createBPEntity({
                 stopDistance: 2
             }),
             new BPEntityComponents.SetBehaviorOcelotSitOnBlock({
-                priority: 6,
+                priority: 7,
                 speedMultiplier: 1
             })
         ]

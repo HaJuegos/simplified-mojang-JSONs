@@ -263,7 +263,7 @@ export const TraderLlamaTemplate = createBPEntity({
             new BPEntityComponents.SetBehaviorRangedAttack({
                 priority: 2,
                 attackRange: {
-                    min: 64,
+                    min: 0,
                     max: 64
                 },
                 chargeShootTrigger: 2,
@@ -282,7 +282,7 @@ export const TraderLlamaTemplate = createBPEntity({
             new BPEntityComponents.SetBehaviorRangedAttack({
                 priority: 2,
                 attackRange: {
-                    min: 64,
+                    min: 0,
                     max: 64
                 },
                 chargeShootTrigger: 2,
@@ -300,7 +300,7 @@ export const TraderLlamaTemplate = createBPEntity({
             new BPEntityComponents.SetBehaviorRangedAttack({
                 priority: 2,
                 attackRange: {
-                    min: 64,
+                    min: 0,
                     max: 64
                 },
                 chargeShootTrigger: 2,
@@ -380,21 +380,21 @@ export const TraderLlamaTemplate = createBPEntity({
             speedMultiplier: 1.2
         }),
         new BPEntityComponents.SetBehaviorTempt({
-            priority: 5,
+            priority: 6,
             speedMultiplier: 1.2,
             items: ["hay_block"]
         }),
         new BPEntityComponents.SetBehaviorRandomStroll({
-            priority: 6,
+            priority: 7,
             speedMultiplier: 0.7
         }),
         new BPEntityComponents.SetBehaviorLookAtPlayer({
-            priority: 7,
+            priority: 8,
             lookDistance: 6,
             probability: 0.02
         }),
         new BPEntityComponents.SetBehaviorRandomLookAround({
-            priority: 8
+            priority: 9
         }),
         new BPEntityComponents.SetIsHiddenWhenInvisible(),
         new BPEntityComponents.SetTypeFamily({

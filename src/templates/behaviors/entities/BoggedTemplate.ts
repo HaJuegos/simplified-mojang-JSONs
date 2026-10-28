@@ -49,7 +49,7 @@ export const BoggedTemplate = createBPEntity({
                     max: 3.5
                 },
                 attackRange: {
-                    min: 15,
+                    min: 0,
                     max: 15
                 },
                 priority: 0
@@ -87,7 +87,7 @@ export const BoggedTemplate = createBPEntity({
                     max: 2.5
                 },
                 attackRange: {
-                    min: 15,
+                    min: 0,
                     max: 15
                 },
                 priority: 0
