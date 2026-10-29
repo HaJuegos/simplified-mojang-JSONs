@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Updated to the official vanilla 26.60 files
 - The parameters and logic required for post-editing an animation controller file in an RP are added.
 - The base template for creating an Animation in an RP is created.
+- The base template for creating an Attachable in an RP is created.
 
 ## [0.0.9] - 2026-10-27
 
