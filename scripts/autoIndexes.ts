@@ -67,7 +67,8 @@ class GenerateAutoIndexs {
         { dir: "src/templates/behaviors/features", namespace: "BPFeatureTemplates", kind: "const" },
         { dir: "src/templates/behaviors/featureRules", namespace: "BPFeatureRuleTemplates", kind: "const" },
 
-        { dir: "src/templates/resources/animations", namespace: "RPAnimationsTemplates", kind: "const" },
+        { dir: "src/templates/resources/animations", namespace: "RPAnimationTemplates", kind: "const" },
+        { dir: "src/templates/resources/animationControllers", namespace: "RPAnimationControllerTemplates", kind: "const" },
     ];
 
     /**

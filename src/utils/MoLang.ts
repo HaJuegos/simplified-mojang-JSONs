@@ -2834,7 +2834,7 @@ export class MoLang {
 
     /**
      * Metodo auxiliar de consulta devuelve el tiempo que le queda de uso a un item en el slot en concreto. El tiempo restante se normaliza utilizando el valor de normalización, solo si se proporciona uno; de lo contrario, se devuelve en segundos.
-    * @param {string} slot Slot en concreto. ('main_hand' o 'off_hand')
+     * @param {string} slot Slot en concreto. ('main_hand' o 'off_hand')
      * @param {?MoLangValue} [normalization] (Opcional) Tiempo de normalizacion en segundos.
      * @returns {string} Devuelve la consulta formateada y lista.
      * @isQueryFunction - Es un metodo query o consulta simplificada.
@@ -2842,8 +2842,18 @@ export class MoLang {
      * @public
      * @static
      */
-    public static itemRemainingUseDuration(slot: string, normalization?: MoLangValue): string {
-        return normalization == undefined ? this.queryStringFunction("item_remaining_use_duration", slot) : this.queryFunction("item_remaining_use_duration", this.quoteString(slot), normalization);
+    public static itemRemainingUseDuration(slot?: string, normalization?: MoLangValue): string {
+        if (normalization === undefined) {
+            return slot
+                ? this.queryStringFunction("item_remaining_use_duration", slot)
+                : this.queryFunction("item_remaining_use_duration");
+        }
+
+        const safeSlot = slot ? this.quoteString(slot) : undefined;
+
+        return safeSlot !== undefined
+            ? this.queryFunction("item_remaining_use_duration", safeSlot, normalization)
+            : this.queryFunction("item_remaining_use_duration", normalization);
     }
 
     /**

@@ -1,1 +1,1 @@
-export * as RPAnimationsTemplates from "./_root";
+export * as RPAnimationTemplates from "./_root";

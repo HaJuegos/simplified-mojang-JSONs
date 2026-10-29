@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - The base template for creating an Animation in an RP is created.
 - The base template for creating an Attachable in an RP is created.
 - Creating vanilla template files for animations, from JSON to TS.
+- Creating vanilla template files for animation controllers, from JSON to TS.
 
 ## [0.0.9] - 2026-10-27
 
