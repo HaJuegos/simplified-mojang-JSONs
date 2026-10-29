@@ -1,4 +1,4 @@
-import { AnimControllerParamsBase, AnimControllerStatesTypes, FormatVersionAnimControllerList } from "../../../types/behaviors/animContollers/AnimControllerTemplate";
+import { AnimControllerParamsBase, FormatVersionAnimControllerList } from "../../../types/behaviors/animContollers/AnimControllerTemplate";
 import { SnakeCase } from "../../../utils/SnakeCase";
 
 /**
@@ -79,7 +79,7 @@ export class BehaviorAnimControllerBuilder {
                 );
             }
 
-            animationControllersBody[controller.idController] = controllerBody;
+            animationControllersBody[`controller.animation.${controller.idController}`] = controllerBody;
         }
 
         const preController = {

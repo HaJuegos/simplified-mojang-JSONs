@@ -9,8 +9,9 @@ import { FinalAnimControllerBuilderTemplate } from "../../behaviors/animControll
  */
 class FinalRPAnimControllerBuilderTemplate extends FinalAnimControllerBuilderTemplate {
     /**
-     * Argumentos principales para la creacion de un Controlador de Animacion de un RP de una plantilla en concreto.
-     * @param {RPAnimControllerDefinition} def Los valores a definir en el controlador.
+     * Argumentos principales y eventos para la creacion de los Controladores de Animacion de un RP en una plantilla fija en concreto.
+     * @param {RPAnimControllerDefinition} def Parametros fijos de la plantilla base a definir.
+     * @param {RPAnimControllerOverride<any>} over Parametros adiccionales de edicion post-edicion de la plantilla base definida.
      * @author HaJuegos - 27-10-2026 
      * @constructor
      * @public
@@ -19,6 +20,15 @@ class FinalRPAnimControllerBuilderTemplate extends FinalAnimControllerBuilderTem
         super(FinalRPAnimControllerBuilderTemplate.applyOverride(def, over));
     }
 
+    /**
+     * Metodo auxiliar que construye la definicion de la plantilla fija reconstruida en un resouce pack para ser recursivo.
+     * @param {RPAnimControllerDefinition} def Definiciones de la plantilla fija construida.
+     * @param {RPAnimControllerOverride<any>} over Definiciones post-edicion de la plantilla fija construida.
+     * @returns {RPAnimControllerDefinition} Devuelve la definicion fija final con los parametros asignados recursivos adaptados para la construccion final de la plantilla definitiva.
+     * @author HaJuegos - 27-10-2026 
+     * @private
+     * @static
+     */
     private static applyOverride(def: RPAnimControllerDefinition, over: RPAnimControllerOverride<any>): RPAnimControllerDefinition {
         let controllers: RPAnimControllerParamsBase[] = structuredClone([...def.animControllers]);
 
@@ -97,9 +107,10 @@ class FinalRPAnimControllerBuilderTemplate extends FinalAnimControllerBuilderTem
 }
 
 /**
- * Funcion principal de fabrica para la creacion de un Controlador de Animacion de un RP a patir de una definicion fija.
- * @param {RPAnimControllerDefinition} def Definicion base de los parametros para la plantilla fija.
- * @returns {string} Devuelve la plantilla base ya creada y adaptada a txt para el JSON final.
+ * Funcion principal de fabrica para la creacion de Controladores de animacion para un RP a patir de una definicion fija.
+ * @param {TDef} def Definicion base de los parametros para la plantilla fija.
+ * @template {RPAnimControllerDefinition} TDef Parametros a seguir de la plantilla base para los parametros post-edicion.
+ * @returns {(over?: RPAnimControllerOverride<RPControllersMap<TDef["animControllers"]>>) => any} Devuele una funcion auxiliar para las ediciones de la plantilla base para la post-edicion y finalmente la exportacion final adaptada a txt para el JSON final.
  * @author HaJuegos - 27-10-2026
  * @export
  */

@@ -63,10 +63,15 @@ export type { BPTradingDefinition, BPTradingOverInstance, BPTradingOverride } fr
 
 export type { RPManifestDefinition } from "./types/resources/ManifestTemplate";
 
-export type { RPAnimControllerDefinition } from "./types/resources/animControllers/AnimControllerTemplate";
+export type { RPAnimControllerDefinition, RPAnimControllerOverride } from "./types/resources/animControllers/AnimControllerTemplate";
+export type { RPAnimationDefinition, RPAnimationOverride } from "./types/resources/animations/AnimationTemplate";
 
 
+// Tipados necesarios externos
+export { FormatVersionAnimControllerList } from "./types/behaviors/animContollers/AnimControllerTemplate";
 export { SpawnCategoryEntities, FormatVersionEntities } from "./types/behaviors/entities/EntitiesEnums";
+
+export { FormatVersionListAnims } from "./types/resources/animations/AnimationTemplate";
 
 
 // Otras exportaciones de la API.
