@@ -66,6 +66,8 @@ class GenerateAutoIndexs {
         { dir: "src/templates/behaviors/trading", namespace: "BPTradingTemplates", kind: "const", recursive: true },
         { dir: "src/templates/behaviors/features", namespace: "BPFeatureTemplates", kind: "const" },
         { dir: "src/templates/behaviors/featureRules", namespace: "BPFeatureRuleTemplates", kind: "const" },
+
+        { dir: "src/templates/resources/animations", namespace: "RPAnimationsTemplates", kind: "const" },
     ];
 
     /**

@@ -1,0 +1,87 @@
+import { createRPAnimation } from "../../../builders/resources/animations/AnimationTemplateBuilder";
+import { FormatVersionListAnims } from "../../../types/resources/animations/AnimationTemplate";
+import { MoLang } from "../../../utils/MoLang";
+
+/**
+ * Plantilla vanilla de animaciones para la sobreescritura de las mismas. Sus datos base ya están definidos.
+ * @author HaJuegos - 29-10-2026
+ */
+export const ZombieAnimation = createRPAnimation({
+    formatVersion: FormatVersionListAnims.v1_8_0,
+    animations: [
+        {
+            idAnimation: "zombie.attack_bare_hand",
+            loop: true,
+            bones: {
+                leftarm: {
+                    rotation: [
+                        "-90.0 - ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4) - (math.sin(query.life_time * 76.776372) * 2.865) - this",
+                        "5.73 - ((math.sin(variable.attack_time * 180.0) * 57.3) * 0.6) - this",
+                        "math.cos(query.life_time * 103.13244) * -2.865 - 2.865 - this"
+                    ]
+                },
+                rightarm: {
+                    rotation: [
+                        "90.0 * (variable.is_brandishing_spear - 1.0) - ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4) + (math.sin(query.life_time * 76.776372) * 2.865) - this",
+                        "(math.sin(variable.attack_time * 180.0) * 57.3) * 0.6 - 5.73 - this",
+                        "math.cos(query.life_time * 103.13244) * 2.865 + 2.865 - this"
+                    ]
+                }
+            }
+        },
+        {
+            idAnimation: "zombie.swimming",
+            loop: true,
+            bones: {
+                body: {
+                    position: [
+                        0.0,
+                        "variable.swim_amount * -10.0 - this - query.is_baby ? -7.5 : 0.0",
+                        "variable.swim_amount * 9.0 - this"
+                    ],
+                    rotation: [`${MoLang.variable("swim_amount")} * (90.0 + ${MoLang.targetXRotation()})`, 0.0, 0.0]
+                },
+                leftarm: {
+                    rotation: [
+                        "math.lerp(this, -180.0, variable.swim_amount) - (variable.swim_amount * ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4)) - (variable.swim_amount * (math.sin(query.life_time * 76.776372) * 2.865)) - this",
+                        "math.lerp(this, 14.325, variable.swim_amount) - this",
+                        "math.lerp(this, 14.325, variable.swim_amount) - (variable.swim_amount * (math.cos(query.life_time * 103.13244) * 2.865 + 2.865)) - this"
+                    ]
+                },
+                leftleg: {
+                    rotation: ["math.lerp(this, math.cos(query.life_time * 390.0 + 180.0) * 0.3, variable.swim_amount)", 0.0, 0.0]
+                },
+                rightarm: {
+                    rotation: [
+                        "math.lerp(this, -180.0, variable.swim_amount) - (variable.swim_amount * ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4)) + (variable.swim_amount * (math.sin(query.life_time * 76.776372) * 2.865)) - this",
+                        "math.lerp(this, 14.325, variable.swim_amount) - this",
+                        "math.lerp(this, -14.325, variable.swim_amount) + (variable.swim_amount * (math.cos(query.life_time * 103.13244) * 2.865 + 2.865)) - this"
+                    ]
+                },
+                rightleg: {
+                    rotation: ["math.lerp(this, math.cos(query.life_time * 390.0) * 0.3, variable.swim_amount)", 0.0, 0.0]
+                }
+            }
+        },
+        {
+            idAnimation: "zombie.baby_attack_bare_hand",
+            loop: true,
+            bones: {
+                leftarm: {
+                    rotation: [
+                        "-((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4) - (math.sin(query.life_time * 76.776372) * 2.865) - this",
+                        "5.73 - ((math.sin(variable.attack_time * 180.0) * 57.3) * 0.6) - this",
+                        "math.cos(query.life_time * 103.13244) * -2.865 - 2.865 - this"
+                    ]
+                },
+                rightarm: {
+                    rotation: [
+                        "-((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4) + (math.sin(query.life_time * 76.776372) * 2.865) - this",
+                        "(math.sin(variable.attack_time * 180.0) * 57.3) * 0.6 - 5.73 - this",
+                        "math.cos(query.life_time * 103.13244) * 2.865 + 2.865 - this"
+                    ]
+                }
+            }
+        }
+    ]
+});

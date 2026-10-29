@@ -166,10 +166,22 @@ interface AnimationParams {
 type VectorType = number | string | MoLangValue;
 
 /**
+ * Tipado general auxiliar para hacer el arrya clasico de 3 dimensiones.
+ * @author HaJuegos - 29-10-2026
+ */
+type Vector3Tuple = [VectorType, VectorType, VectorType];
+
+/**
+ * Tipado general auxiliar que representa un objecto de un solo eje o multiples ejes mapeados.
+ * @author HaJuegos - 29-10-2026
+ */
+type AxisRecord = Partial<Record<'x' | 'y' | 'z' | string, VectorType>>;
+
+/**
  * Tipado general auxiliar para definir un tipo de Vector3 por animacion.
  * @author HaJuegos - 29-10-2026
  */
-type Vector3Animation = [VectorType, VectorType, VectorType];
+type Vector3Animation = Vector3Tuple | AxisRecord[];
 
 /**
  * Tipado general auxiliar para la creacion de un keyframe avanzado en una animacion en concreto.

@@ -17,6 +17,8 @@ export { BPRecipeTemplates } from "./templates/behaviors/recipes";
 export { BPSpawnRuleTemplates } from "./templates/behaviors/spawnRules";
 export { BPTradingTemplates } from "./templates/behaviors/trading";
 
+export { RPAnimationsTemplates } from "./templates/resources/animations";
+
 
 // Exportacion de plantillas para la creacion custom.
 export { createBPManifest } from "./builders/behaviors/ManifestTemplateBuilder";
@@ -39,7 +41,9 @@ export { createBPTrading } from "./builders/behaviors/trading/TradingTemplateBui
 
 export { createRPManifest } from "./builders/resources/ManifestTemplateBuilder";
 
+export { createRPAnimation } from "./builders/resources/animations/AnimationTemplateBuilder";
 export { createRPAnimController } from "./builders/resources/animControllers/AnimControllerTemplateBuilder";
+export { createRPAttachable } from "./builders/resources/attachables/AttachableTemplateBuilder";
 
 
 // Tipados necesarios para las plantillas de creacion custom.
@@ -63,8 +67,9 @@ export type { BPTradingDefinition, BPTradingOverInstance, BPTradingOverride } fr
 
 export type { RPManifestDefinition } from "./types/resources/ManifestTemplate";
 
-export type { RPAnimControllerDefinition, RPAnimControllerOverride } from "./types/resources/animControllers/AnimControllerTemplate";
 export type { RPAnimationDefinition, RPAnimationOverride } from "./types/resources/animations/AnimationTemplate";
+export type { RPAnimControllerDefinition, RPAnimControllerOverride } from "./types/resources/animControllers/AnimControllerTemplate";
+export type { RPAttachableDefinition, RPAttachableOverride } from "./types/resources/attachables/AttachableTemplate";
 
 
 // Tipados necesarios externos
@@ -72,6 +77,7 @@ export { FormatVersionAnimControllerList } from "./types/behaviors/animContoller
 export { SpawnCategoryEntities, FormatVersionEntities } from "./types/behaviors/entities/EntitiesEnums";
 
 export { FormatVersionListAnims } from "./types/resources/animations/AnimationTemplate";
+export { FormatVersionAttachList } from "./types/resources/attachables/AttachableTemplate";
 
 
 // Otras exportaciones de la API.

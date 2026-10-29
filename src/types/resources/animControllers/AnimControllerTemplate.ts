@@ -211,7 +211,7 @@ interface ParticleEffectParams {
      * Localizacion en el modelo como punto Locator donde la particula va a aparecer. 
      * @type {string}
      */
-    locator: string;
+    locator?: string;
 
     /**
      * (Opcional) Scripts MoLangs a ejecutar antes de aparecer la particula.
