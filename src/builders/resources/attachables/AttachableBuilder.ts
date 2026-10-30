@@ -77,7 +77,7 @@ export class ResourceAttachableBuilder {
     protected convertToJSON(stringify: true): string;
     protected convertToJSON(stringify?: false): Record<string, unknown>;
     protected convertToJSON(stringify?: boolean): string | Record<string, unknown> {
-        const { scripts, ...rest } = this.attachableData ?? {};
+        const { scripts, spawnEgg, ...rest } = this.attachableData ?? {};
 
         const preAttach = {
             format_version: this.attachableVersion,
@@ -86,6 +86,7 @@ export class ResourceAttachableBuilder {
                     identifier: this.idAttach,
                     ...SnakeCase.shallowSnakeCase(rest),
                     ...(scripts && { scripts: SnakeCase.shallowSnakeCase(scripts) }),
+                    ...(spawnEgg && { spawn_egg: SnakeCase.shallowSnakeCase(spawnEgg) }),
                 }
             }
         };

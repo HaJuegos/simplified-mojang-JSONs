@@ -8,7 +8,14 @@ export {
     AttachableBaseParams,
 
     GeometryVanillaValues,
+    GeometryVanillaKeys,
+
+    MaterialVanillaKeys,
     MaterialVanillaValues,
+
+    ScriptsParamsAnim,
+
+    SpawnEggColorIndexParams,
 };
 
 /**
@@ -25,7 +32,7 @@ enum FormatVersionAttachList {
  * Lista de tipados generales vanillas que permiten la nueva asignacion de una geometria en un Attachable y/o entidad.
  * @author HaJuegos - 29-10-2026
  */
-type GeometryVanillaKeys = "default" | "bow_pulling_0" | "bow_pulling_1" | "bow_pulling_2" | "crossbow_pulling_0" | "crossbow_pulling_1" | "crossbow_pulling_2" | "crossbow_arrow" | "crossbow_rocket" | (string & {});
+type GeometryVanillaKeys = "armor" | "baby" | "bow_pulling_0" | "bow_pulling_1" | "bow_pulling_2" | "breeze_eyes" | "breeze_wind_bottom" | "breeze_wind_mid" | "breeze_wind_top" | "cape" | "charged" | "cold" | "coral" | "creeper" | "crossbow_arrow" | "crossbow_pulling_0" | "crossbow_pulling_1" | "crossbow_pulling_2" | "crossbow_rocket" | "default" | "dragon" | "flower" | "ghost" | "large" | "mid" | "overlay" | "piglin" | "ropes" | "running" | "saddle" | "sheared" | "sitting" | "skeleton" | "small" | "standing" | "star" | "steve" | "typeA" | "typeB" | "warm" | "wither" | "zombie" | (string & {});
 
 /**
  * Lista de geometrias vanillas extraidas de los archivos vanillas permitidas a usar.
@@ -37,7 +44,7 @@ type GeometryVanillaValues = "geometry.bow_standby" | "geometry.bow_pulling_0" |
  * Tipado general para la asignacion de un nuevo material en un Attachable y/o entidad.
  * @author HaJuegos - 29-10-2026
  */
-type MaterialVanillaKeys = "default" | "enchanted" | (string & {});
+type MaterialVanillaKeys = "animated" | "armor" | "beam_material" | "bioluminescent_layer" | "body" | "body_layer" | "breeze_eyes" | "breeze_wind" | "cape" | "charged" | "cold" | "death_material" | "default" | "dissolve_0" | "dissolve_1" | "enchanted" | "eyes" | "flower" | "ghost" | "head" | "invisible" | "legs" | "limbs" | "masked" | "outer" | "overlay" | "spectator" | (string & {});
 
 /**
  * Lista de todos los materiales permitidos a usar extraidos de los archivos vanilla.
@@ -273,27 +280,33 @@ interface ScriptsParamsAnim<
  * @author HaJuegos - 29-10-2026
  */
 type SpawnEggColorIndexParams = {
+    baseColour?: undefined;
+    overlayColor?: undefined;
+
     /**
      * Ruta en concreto donde esta la textura del item de generador.
      * @type {string}
      */
     texture: string;
-} | {
-    /**
-     * (Opcional) Color hexadecimal del generador en su textura base.
-     * @type {?string}
-     */
-    baseColour?: string;
-
-    /**
-     * (Opcional) Color hexadecimal del generador en su textura por encima de la base.
-     * @type {?string}
-     */
-    overlayColor?: string;
 
     /**
      * (Opcional) ID de la textura base a considerar.
      * @type {?number}
      */
     textureIndex?: number;
+} | {
+    texture?: undefined;
+    textureIndex?: undefined;
+
+    /**
+     * (Opcional) Color hexadecimal del generador en su textura base.
+     * @type {?string}
+     */
+    baseColour: string;
+
+    /**
+     * (Opcional) Color hexadecimal del generador en su textura por encima de la base.
+     * @type {?string}
+     */
+    overlayColor: string;
 };
