@@ -7,7 +7,6 @@ import { MoLang } from "../../../utils/MoLang";
  * @author HaJuegos - 29-10-2026
  */
 export const BlazeAnimationControllers = createRPAnimController({
-    formatVersion: FormatVersionAnimControllerList.MostRecent,
     animControllers: [
         {
             idController: "blaze.flame",

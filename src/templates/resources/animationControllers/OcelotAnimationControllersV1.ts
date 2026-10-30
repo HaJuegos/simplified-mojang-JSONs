@@ -4,10 +4,10 @@ import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla de controladores de animación para la sobreescritura de los mismos. Sus datos base ya están definidos.
+ * @deprecated Ya no se usa en la actualidad. Se mantiene por compatibilidad. Usa la version normal.
  * @author HaJuegos - 29-10-2026
  */
-export const OcelotAnimationControllersV10 = createRPAnimController({
-    formatVersion: FormatVersionAnimControllerList.MostRecent,
+export const OcelotAnimationControllersV1 = createRPAnimController({
     animControllers: [
         {
             idController: "ocelot_v1.0.baby",

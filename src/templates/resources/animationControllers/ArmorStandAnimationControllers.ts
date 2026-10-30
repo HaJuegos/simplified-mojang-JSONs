@@ -7,7 +7,6 @@ import { MoLang } from "../../../utils/MoLang";
  * @author HaJuegos - 29-10-2026
  */
 export const ArmorStandAnimationControllers = createRPAnimController({
-    formatVersion: FormatVersionAnimControllerList.MostRecent,
     animControllers: [
         {
             idController: "armor_stand.pose",

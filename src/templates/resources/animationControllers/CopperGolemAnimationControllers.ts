@@ -7,7 +7,6 @@ import { MoLang } from "../../../utils/MoLang";
  * @author HaJuegos - 29-10-2026
  */
 export const CopperGolemAnimationControllers = createRPAnimController({
-    formatVersion: FormatVersionAnimControllerList.MostRecent,
     animControllers: [
         {
             idController: "copper_golem.idle",

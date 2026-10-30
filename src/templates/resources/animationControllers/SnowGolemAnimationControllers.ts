@@ -7,7 +7,6 @@ import { MoLang } from "../../../utils/MoLang";
  * @author HaJuegos - 29-10-2026
  */
 export const SnowGolemAnimationControllers = createRPAnimController({
-    formatVersion: FormatVersionAnimControllerList.MostRecent,
     animControllers: [
         {
             idController: "snowgolem.move.v1.8",

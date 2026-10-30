@@ -7,7 +7,6 @@ import { MoLang } from "../../../utils/MoLang";
  * @author HaJuegos - 29-10-2026
  */
 export const TridentAnimation = createRPAnimation({
-    formatVersion: FormatVersionListAnims.MostRecent,
     animations: [
         {
             idAnimation: "trident.wield_first_person",

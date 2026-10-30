@@ -7,7 +7,6 @@ import { MoLang } from "../../../utils/MoLang";
  * @author HaJuegos - 29-10-2026
  */
 export const ShieldAnimation = createRPAnimation({
-    formatVersion: FormatVersionListAnims.MostRecent,
     animations: [
         {
             idAnimation: "shield.wield_main_hand_first_person",

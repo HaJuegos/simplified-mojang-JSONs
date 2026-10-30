@@ -6,7 +6,6 @@ import { FormatVersionAnimControllerList } from "../../../types/behaviors/animCo
  * @author HaJuegos - 29-10-2026
  */
 export const HappyGhastAnimationControllers = createRPAnimController({
-    formatVersion: FormatVersionAnimControllerList.MostRecent,
     animControllers: [
         {
             idController: "happy_ghast.move",

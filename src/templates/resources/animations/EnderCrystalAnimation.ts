@@ -7,7 +7,6 @@ import { MoLang } from "../../../utils/MoLang";
  * @author HaJuegos - 29-10-2026
  */
 export const EnderCrystalAnimation = createRPAnimation({
-    formatVersion: FormatVersionListAnims.MostRecent,
     animations: [
         {
             idAnimation: "ender_crystal.move",

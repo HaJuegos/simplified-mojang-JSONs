@@ -3,9 +3,10 @@ import { FormatVersionListAnims } from "../../../types/resources/animations/Anim
 
 /**
  * Plantilla vanilla de animaciones para la sobreescritura de las mismas. Sus datos base ya están definidos.
+ * @deprecated Ya no se usa en la actualidad. Se mantiene por compatibilidad. Usa la version normal.
  * @author HaJuegos - 29-10-2026
  */
-export const EndermanAnimationV10 = createRPAnimation({
+export const EndermanAnimationV1 = createRPAnimation({
     formatVersion: FormatVersionListAnims.v1_8_0,
     animations: [
         {

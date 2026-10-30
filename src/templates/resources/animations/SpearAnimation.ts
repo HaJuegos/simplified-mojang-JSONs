@@ -6,7 +6,6 @@ import { FormatVersionListAnims } from "../../../types/resources/animations/Anim
  * @author HaJuegos - 29-10-2026
  */
 export const SpearAnimation = createRPAnimation({
-    formatVersion: FormatVersionListAnims.MostRecent,
     animations: [
         {
             idAnimation: "spear.held_first_person",

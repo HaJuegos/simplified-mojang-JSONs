@@ -6,7 +6,6 @@ import { FormatVersionAnimControllerList } from "../../../types/behaviors/animCo
  * @author HaJuegos - 29-10-2026
  */
 export const TripodCameraAnimationControllers = createRPAnimController({
-    formatVersion: FormatVersionAnimControllerList.MostRecent,
     animControllers: [
         {
             idController: "tripod_camera.base_pose",

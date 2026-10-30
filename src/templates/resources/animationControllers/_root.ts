@@ -33,7 +33,7 @@ export { MagmaCubeAnimationControllers } from "./MagmaCubeAnimationControllers";
 export { MooshroomAnimationControllers } from "./MooshroomAnimationControllers";
 export { NautilusAnimationControllers } from "./NautilusAnimationControllers";
 export { OcelotAnimationControllers } from "./OcelotAnimationControllers";
-export { OcelotAnimationControllersV10 } from "./OcelotAnimationControllersV10";
+export { OcelotAnimationControllersV1 } from "./OcelotAnimationControllersV1";
 export { PandaAnimationControllers } from "./PandaAnimationControllers";
 export { ParrotAnimationControllers } from "./ParrotAnimationControllers";
 export { PersonaAnimationControllers } from "./PersonaAnimationControllers";
@@ -52,7 +52,7 @@ export { SilverfishAnimationControllers } from "./SilverfishAnimationControllers
 export { SkeletonAnimationControllers } from "./SkeletonAnimationControllers";
 export { SnifferAnimationControllers } from "./SnifferAnimationControllers";
 export { SnowGolemAnimationControllers } from "./SnowGolemAnimationControllers";
-export { SnowGolemAnimationControllersV10 } from "./SnowGolemAnimationControllersV10";
+export { SnowGolemAnimationControllersV1 } from "./SnowGolemAnimationControllersV1";
 export { SpearAnimationControllers } from "./SpearAnimationControllers";
 export { SpiderAnimationControllers } from "./SpiderAnimationControllers";
 export { SulfurCubeAnimationControllers } from "./SulfurCubeAnimationControllers";
