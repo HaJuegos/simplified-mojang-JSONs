@@ -20,6 +20,7 @@ export { BPTradingTemplates } from "./templates/behaviors/trading";
 export { RPAnimationTemplates } from "./templates/resources/animations";
 export { RPAnimationControllerTemplates } from "./templates/resources/animationControllers";
 export { RPAttachableTemplates } from "./templates/resources/attachables";
+export { RPClientEntityTemplates } from "./templates/resources/entity";
 
 
 // Exportacion de plantillas para la creacion custom.
@@ -46,6 +47,7 @@ export { createRPManifest } from "./builders/resources/ManifestTemplateBuilder";
 export { createRPAnimation } from "./builders/resources/animations/AnimationTemplateBuilder";
 export { createRPAnimController } from "./builders/resources/animControllers/AnimControllerTemplateBuilder";
 export { createRPAttachable } from "./builders/resources/attachables/AttachableTemplateBuilder";
+export { createRPEntityClient } from "./builders/resources/entities/EntityTemplateBuilder";
 
 
 // Tipados necesarios para las plantillas de creacion custom.
@@ -72,6 +74,7 @@ export type { RPManifestDefinition } from "./types/resources/ManifestTemplate";
 export type { RPAnimationDefinition, RPAnimationOverride } from "./types/resources/animations/AnimationTemplate";
 export type { RPAnimControllerDefinition, RPAnimControllerOverride } from "./types/resources/animControllers/AnimControllerTemplate";
 export type { RPAttachableDefinition, RPAttachableOverride } from "./types/resources/attachables/AttachableTemplate";
+export type { RPEntityClientDefinition, RPEntityClientOverride } from "./types/resources/entity/EntityTemplate";
 
 
 // Tipados necesarios externos
@@ -80,6 +83,7 @@ export { SpawnCategoryEntities, FormatVersionEntities } from "./types/behaviors/
 
 export { FormatVersionListAnims } from "./types/resources/animations/AnimationTemplate";
 export { FormatVersionAttachList } from "./types/resources/attachables/AttachableTemplate";
+export { FormatVersionListEntities } from "./types/resources/entity/EntityTemplate";
 
 
 // Otras exportaciones de la API.

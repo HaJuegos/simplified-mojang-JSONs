@@ -1,3 +1,4 @@
+import { MoLang } from "../../../utils/MoLang";
 import { MoLangValue } from "../../MoLang";
 import { GeometryVanillaKeys, GeometryVanillaValues, MaterialVanillaKeys, MaterialVanillaValues, ScriptsParamsAnim, SpawnEggColorIndexParams } from "../attachables/AttachableTemplate";
 
@@ -15,8 +16,13 @@ export {
  * @author HaJuegos - 30-10-2026
  */
 enum FormatVersionListEntities {
-    MostRecent = "1.10.0",
-    V1_8_0 = "1.8.0"
+    MostRecent = "1.26.0",
+    MostStable = "1.10.0",
+    V1_17_10 = "1.17.10",
+    V1_16_0 = "1.16.0",
+    V1_12_0 = "1.12.0",
+    V1_8_0 = "1.8.0",
+    V1_2_6 = "1.2.6",
 }
 
 /**
@@ -110,6 +116,10 @@ type RPEntityClientOverride<
     readonly add?: EntityClientParams;
 };
 
+type RenderControllerTypes = string | {
+    [key: string]: string | MoLang;
+};
+
 /**
  * Parametros para la creacion de un nuevo Client Entity.
  * @interface EntityClientParams
@@ -154,7 +164,7 @@ interface EntityClientParams<
      * (Opcional) Lista de controladores de render que tiene la entidad.
      * @type {string[]}
      */
-    renderControllers: string[];
+    renderControllers: RenderControllerTypes[];
 
     /**
      * (Opcional) Parametros pre-spawn de la entidad para ajustar animaciones a ejecutar.
@@ -190,7 +200,7 @@ interface EntityClientParams<
      * (Opcional) Lista de sonidos que tiene la entidad.
      * @type {?string[]}
      */
-    soundEffects?: string[];
+    soundEffects?: Record<string, string>;
 
     /**
      * (Opcional) Parametros adiccionales para el generador de la entidad con sus respectivos colores generados a base de una plantilla, o sino, una textura custom.
@@ -239,35 +249,35 @@ interface ScriptsParamsAnimEntity<
      * (Opcional) Escalado de la entidad por su coordenada x.
      * @type {?(string | MoLangValue | number)}
      */
-    scalex?: string | MoLangValue | number;
+    scaleX?: string | MoLangValue | number;
 
     /**
      * (Opcional) Escalado de la entidad por su coordenada y.
      * @type {?(string | MoLangValue | number)}
      */
-    scaley?: string | MoLangValue | number;
+    scaleY?: string | MoLangValue | number;
 
     /**
      * (Opcional) Escalado de la entidad por su coordenada z.
      * @type {?(string | MoLangValue | number)}
      */
-    scalez?: string | MoLangValue | number;
+    scaleZ?: string | MoLangValue | number;
 
     /**
      * (Opcional) Si se establece, la entidad ya no renderiza los objectos que tenga en la mano.
      * @type {?boolean}
      */
-    hideHeldItems?: boolean;
+    hideHeldItems?: boolean | string | MoLangValue;
 
     /**
      * (Opcional) Si se establece, las animaciones y efectos que no se esten renderizando, se ejecutaran igualmente fuera de pantalla.
      * @type {?boolean}
      */
-    shouldUpdateBonesAndEffectsOffscreen?: boolean;
+    shouldUpdateBonesAndEffectsOffscreen?: boolean | string | MoLangValue;
 
     /**
      * (Opcional) Si se establece, las animaciones que no se esten renderizando, se ejecutaran igualmente fuera de pantalla.
      * @type {?boolean}
      */
-    shouldUpdateEffectsOffscreen?: boolean;
+    shouldUpdateEffectsOffscreen?: boolean | string | MoLangValue;
 }

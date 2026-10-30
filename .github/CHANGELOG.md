@@ -19,6 +19,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Creating vanilla template files for animation controllers, from JSON to TS.
 - Creating vanilla template files for attachables, from JSON to TS.
 - The base template for creating an Client Entity in an RP is created.
+- Creating vanilla template files for an Client Entity, from JSON to TS.
 
 ## [0.0.9] - 2026-10-27
 

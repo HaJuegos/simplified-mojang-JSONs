@@ -13,7 +13,7 @@ export class ResourceEntityBuilder {
      * @type {FormatVersionListEntities}
      * @private
      */
-    private entityVersion: FormatVersionListEntities = FormatVersionListEntities.MostRecent;
+    private entityVersion: FormatVersionListEntities = FormatVersionListEntities.MostStable;
 
     /**
      * ID de la entity a crea en cuestion.

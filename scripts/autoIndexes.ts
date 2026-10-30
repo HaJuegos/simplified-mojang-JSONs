@@ -70,6 +70,7 @@ class GenerateAutoIndexs {
         { dir: "src/templates/resources/animations", namespace: "RPAnimationTemplates", kind: "const" },
         { dir: "src/templates/resources/animationControllers", namespace: "RPAnimationControllerTemplates", kind: "const" },
         { dir: "src/templates/resources/attachables", namespace: "RPAttachableTemplates", kind: "const" },
+        { dir: "src/templates/resources/entity", namespace: "RPClientEntityTemplates", kind: "const" },
     ];
 
     /**

@@ -302,7 +302,7 @@ type SpawnEggColorIndexParams = {
      * (Opcional) Color hexadecimal del generador en su textura base.
      * @type {?string}
      */
-    baseColour: string;
+    baseColor: string;
 
     /**
      * (Opcional) Color hexadecimal del generador en su textura por encima de la base.
