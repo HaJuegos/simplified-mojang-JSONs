@@ -20,6 +20,10 @@ export class FinalRPAttachableTemplateBuilder extends ResourceAttachableBuilder 
     public constructor (def: RPAttachableDefinition, over: RPAttachableOverride) {
         super(def.idAttach);
 
+        if (def.formatVersion) {
+            this.setVersionAttachable(def.formatVersion);
+        }
+
         let finalData: AttachableBaseParams = structuredClone(def.attachable);
 
         if (over.clearAllData) {

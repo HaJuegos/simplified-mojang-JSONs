@@ -17,7 +17,9 @@ export { BPRecipeTemplates } from "./templates/behaviors/recipes";
 export { BPSpawnRuleTemplates } from "./templates/behaviors/spawnRules";
 export { BPTradingTemplates } from "./templates/behaviors/trading";
 
-export { RPAnimationsTemplates } from "./templates/resources/animations";
+export { RPAnimationTemplates } from "./templates/resources/animations";
+export { RPAnimationControllerTemplates } from "./templates/resources/animationControllers";
+export { RPAttachableTemplates } from "./templates/resources/attachables";
 
 
 // Exportacion de plantillas para la creacion custom.

@@ -1,3 +1,4 @@
+import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { MoLangValue } from "../../MoLang";
 
 export {
@@ -54,6 +55,12 @@ type MaterialVanillaValues = "agent" | "allay" | "alpha_block" | "alpha_block_co
 interface RPAttachableDefinition<
     Params extends string = string
 > {
+    /**
+     * (Opcional) Format version en cuestion a cambiar de la plantilla base.
+     * @type {?FormatVersionAttachList}
+     */
+    formatVersion?: FormatVersionAttachList;
+
     /**
      * ID del Attachable en concreto a crear.
      * @type {string}
@@ -142,6 +149,12 @@ type RPAttachableOverride<
 interface AttachableBaseParams<
     TAnimations extends string = string
 > {
+    /**
+     * (Opcional) Item en concreto a considerar y su valor en MoLang para identificar el owner a poner el Attachable.
+     * @type {?Record<string | MinecraftItemTypes, string | MoLangValue>}
+     */
+    item?: Record<string | MinecraftItemTypes, string | MoLangValue>;
+
     /**
      * (Opcional) Version del engine previa a considerar. Por compatibilidad a datos previos o versiones antiguas.
      * @type {?FormatVersionAttachList}
@@ -252,7 +265,7 @@ interface ScriptsParamsAnim<
      * (Opcional) Lista de animaciones a ejecutar cuando el Attachable sea visible.
      * @type {?NoInfer<TAnimations>[]}
      */
-    animate?: NoInfer<TAnimations>[];
+    animate?: (NoInfer<TAnimations> | Partial<Record<NoInfer<TAnimations>, string | MoLangValue>>)[];
 }
 
 /**
