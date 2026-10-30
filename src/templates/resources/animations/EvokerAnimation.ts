@@ -17,11 +17,11 @@ export const EvokerAnimation = createRPAnimation({
                     scale: 0.0
                 },
                 leftarm: {
-                    rotation: ["math.cos(query.life_time * 763.4) * 14.3239 - this", "-this", "-135.0 - this"],
+                    rotation: [`math.cos(${MoLang.lifeTime()} * 763.4) * 14.3239 - this`, "-this", "-135.0 - this"],
                     scale: 1.0
                 },
                 rightarm: {
-                    rotation: ["math.cos(query.life_time * 763.4) * 14.3239 - this", "-this", "135.0 - this"],
+                    rotation: [`math.cos(${MoLang.lifeTime()} * 763.4) * 14.3239 - this`, "-this", "135.0 - this"],
                     scale: 1.0
                 }
             }
@@ -32,11 +32,11 @@ export const EvokerAnimation = createRPAnimation({
             bones: {
                 leftarm: {
                     position: ["5.0 - this", 0.0, "-this"],
-                    rotation: ["math.cos(query.life_time * 763.4) * 14.3239 - this", "-this", "-135.0 - this"]
+                    rotation: [`math.cos(${MoLang.lifeTime()} * 763.4) * 14.3239 - this`, "-this", "-135.0 - this"]
                 },
                 rightarm: {
                     position: ["-5.0 - this", 0.0, "-this"],
-                    rotation: ["math.cos(query.life_time * 763.4) * 14.3239 - this", "-this", "135.0 - this"]
+                    rotation: [`math.cos(${MoLang.lifeTime()} * 763.4) * 14.3239 - this`, "-this", "135.0 - this"]
                 }
             }
         },
@@ -73,10 +73,10 @@ export const EvokerAnimation = createRPAnimation({
             loop: true,
             bones: {
                 leftLeg: {
-                    rotation: ["(math.cos(query.anim_time * 38.17) * 40.0) - this", "-this", 0.0]
+                    rotation: [`(math.cos(${MoLang.animTime()} * 38.17) * 40.0) - this`, "-this", 0.0]
                 },
                 rightLeg: {
-                    rotation: ["(math.cos(query.anim_time * 38.17 + 180) * 40.0) - this", "-this", 0.0]
+                    rotation: [`(math.cos(${MoLang.animTime()} * 38.17 + 180) * 40.0) - this`, "-this", 0.0]
                 }
             }
         }

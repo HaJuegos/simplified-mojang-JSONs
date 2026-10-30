@@ -34,7 +34,7 @@ export const SpearAnimationControllers = createRPAnimController({
                 default: {
                     transitions: [
                         {
-                            hit: "c.owning_entity->query.ticks_since_last_kinetic_weapon_hit >= 0.0 && c.owning_entity->query.ticks_since_last_kinetic_weapon_hit <= 5.0"
+                            hit: `c.owning_entity->${MoLang.ticksSinceLastKineticWeaponHit()} >= 0.0 && c.owning_entity->${MoLang.ticksSinceLastKineticWeaponHit()} <= 5.0`
                         }
                     ]
                 },

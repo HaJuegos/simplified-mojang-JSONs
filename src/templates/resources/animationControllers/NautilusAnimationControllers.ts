@@ -15,8 +15,8 @@ export const NautilusAnimationControllers = createRPAnimController({
             states: {
                 swimming: {
                     animations: [
-                        { breathe: "math.min(1.0, math.lerp(0.75, 1.5, query.modified_move_speed))" },
-                        { swim: "query.has_rider ? 0.0 : math.min(1.0, math.lerp(0.0, 6.0, query.modified_move_speed))" },
+                        { breathe: `math.min(1.0, math.lerp(0.75, 1.5, ${MoLang.modifiedMoveSpeed()}))` },
+                        { swim: `${MoLang.hasRider()} ? 0.0 : math.min(1.0, math.lerp(0.0, 6.0, ${MoLang.modifiedMoveSpeed()}))` },
                         "look_at_target"
                     ],
                     particleEffects: [

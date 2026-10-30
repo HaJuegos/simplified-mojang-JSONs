@@ -1,5 +1,6 @@
 import { createRPAnimation } from "../../../builders/resources/animations/AnimationTemplateBuilder";
 import { FormatVersionListAnims } from "../../../types/resources/animations/AnimationTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla de animaciones para la sobreescritura de las mismas. Sus datos base ya están definidos.
@@ -16,7 +17,7 @@ export const LookAtTargetAnimation = createRPAnimation({
                     relativeTo: {
                         rotation: "entity"
                     },
-                    rotation: ["query.target_x_rotation - this", "query.target_y_rotation - this", 0.0]
+                    rotation: [`${MoLang.targetXRotation()} - this`, `${MoLang.targetYRotation()} - this`, 0.0]
                 }
             }
         }

@@ -81,14 +81,14 @@ export const PlayerAnimation = createRPAnimation({
             bones: {
                 leftarm: {
                     rotation: [
-                        "-90.0 + query.target_x_rotation - query.is_sneaking * 15.0 - this",
+                        `-90.0 + ${MoLang.targetXRotation()} - ${MoLang.isSneaking()} * 15.0 - this`,
                         `27.5 + ${MoLang.targetYRotation()}`,
                         0.0
                     ]
                 },
                 rightarm: {
                     rotation: [
-                        "-90.0 + query.target_x_rotation - query.is_sneaking * 15.0 - this",
+                        `-90.0 + ${MoLang.targetXRotation()} - ${MoLang.isSneaking()} * 15.0 - this`,
                         `-5.0 + ${MoLang.targetYRotation()}`,
                         0.0
                     ]
@@ -104,7 +104,7 @@ export const PlayerAnimation = createRPAnimation({
             bones: {
                 cape: {
                     position: [0.0, MoLang.getRootLocatorOffset("armor_offset.default_neck", 1), 0.0],
-                    rotation: ["math.lerp(0.0, -126.0, query.cape_flap_amount) - 6.0", 0.0, 0.0]
+                    rotation: [`math.lerp(0.0, -126.0, ${MoLang.capeFlapAmount()}) - 6.0`, 0.0, 0.0]
                 }
             }
         },
@@ -131,15 +131,15 @@ export const PlayerAnimation = createRPAnimation({
             bones: {
                 leftarm: {
                     rotation: [
-                        "query.is_swimming ? 0.0 : -93.0 + query.target_x_rotation - query.is_sneaking * 27.0 -this",
-                        "query.is_swimming ? 0.0 : 42.0 + math.clamp(query.target_y_rotation, -45.0, 5.0) -this",
+                        `${MoLang.isSwimming()} ? 0.0 : -93.0 + ${MoLang.targetXRotation()} - ${MoLang.isSneaking()} * 27.0 -this`,
+                        `${MoLang.isSwimming()} ? 0.0 : 42.0 + math.clamp(${MoLang.targetYRotation()}, -45.0, 5.0) -this`,
                         `${MoLang.isSneaking()} * -15.0`
                     ]
                 },
                 rightarm: {
                     rotation: [
-                        "query.is_swimming ? 0.0 : -93.0 + query.target_x_rotation - query.is_sneaking * 27.0 -this",
-                        "query.is_swimming ? 0.0 : math.clamp(query.target_y_rotation, -60.0, 45.0) -this",
+                        `${MoLang.isSwimming()} ? 0.0 : -93.0 + ${MoLang.targetXRotation()} - ${MoLang.isSneaking()} * 27.0 -this`,
+                        `${MoLang.isSwimming()} ? 0.0 : math.clamp(${MoLang.targetYRotation()}, -60.0, 45.0) -this`,
                         0.0
                     ]
                 }
@@ -154,8 +154,8 @@ export const PlayerAnimation = createRPAnimation({
                 },
                 rightarm: {
                     rotation: [
-                        "v.tp_melee_spear_base_arm_rotation_x + q.target_x_rotation - q.is_sneaking * 27.0 - this + v.tp_melee_spear_attack_arm_rotation_x",
-                        "math.clamp(q.target_y_rotation, -60.0, 45.0) - this - v.attack_body_rot_y",
+                        `v.tp_melee_spear_base_arm_rotation_x + ${MoLang.targetXRotation()} - ${MoLang.isSneaking()} * 27.0 - this + v.tp_melee_spear_attack_arm_rotation_x`,
+                        `math.clamp(${MoLang.targetYRotation()}, -60.0, 45.0) - this - v.attack_body_rot_y`,
                         0.0
                     ]
                 },
@@ -561,10 +561,10 @@ export const PlayerAnimation = createRPAnimation({
             overridePreviousAnimation: true,
             bones: {
                 leftleg: {
-                    rotation: ["math.lerp(0.0, math.cos(query.life_time * 390.0 + 180.0) * 17.2, variable.swim_amount)", -0.1, -0.1]
+                    rotation: [`math.lerp(0.0, math.cos(${MoLang.lifeTime()} * 390.0 + 180.0) * 17.2, variable.swim_amount)`, -0.1, -0.1]
                 },
                 rightleg: {
-                    rotation: ["math.lerp(0.0, math.cos(query.life_time * 390.0) * 17.2, variable.swim_amount)", 0.1, 0.1]
+                    rotation: [`math.lerp(0.0, math.cos(${MoLang.lifeTime()} * 390.0) * 17.2, variable.swim_amount)`, 0.1, 0.1]
                 }
             }
         },
@@ -574,10 +574,10 @@ export const PlayerAnimation = createRPAnimation({
             overridePreviousAnimation: true,
             bones: {
                 leftleg: {
-                    rotation: ["math.lerp(0.0, math.cos(query.life_time * 390.0) * 17.2, variable.swim_amount)", -0.1, -0.1]
+                    rotation: [`math.lerp(0.0, math.cos(${MoLang.lifeTime()} * 390.0) * 17.2, variable.swim_amount)`, -0.1, -0.1]
                 },
                 rightleg: {
-                    rotation: ["math.lerp(0.0, math.cos(query.life_time * 390.0) * 17.2, variable.swim_amount)", 0.1, 0.1]
+                    rotation: [`math.lerp(0.0, math.cos(${MoLang.lifeTime()} * 390.0) * 17.2, variable.swim_amount)`, 0.1, 0.1]
                 }
             }
         },
@@ -650,14 +650,14 @@ export const PlayerAnimation = createRPAnimation({
             bones: {
                 leftleg: {
                     rotation: [
-                        "math.lerp(0.0, math.cos(query.modified_distance_moved * 30.0 + 180.0) * 17.2, variable.swim_amount)",
+                        `math.lerp(0.0, math.cos(${MoLang.modifiedDistanceMoved()} * 30.0 + 180.0) * 17.2, variable.swim_amount)`,
                         -0.1,
                         -0.1
                     ]
                 },
                 rightleg: {
                     rotation: [
-                        "math.lerp(0.0, math.cos(query.modified_distance_moved * 30.0) * 17.2, variable.swim_amount)",
+                        `math.lerp(0.0, math.cos(${MoLang.modifiedDistanceMoved()} * 30.0) * 17.2, variable.swim_amount)`,
                         0.1,
                         0.1
                     ]

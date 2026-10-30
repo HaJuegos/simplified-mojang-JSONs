@@ -272,7 +272,7 @@ export const ArmorStandAnimation = createRPAnimation({
                     rotation: ["-this + 246", "-this", "-this + 89"]
                 },
                 rightitem: {
-                    rotation: ["-this", "query.get_equipped_item_name == 'shield' ? -this + 90 : -this + 180", "-this"]
+                    rotation: ["-this", `${MoLang.getEquippedItemName()} == 'shield' ? -this + 90 : -this + 180`, "-this"]
                 },
                 rightleg: {
                     rotation: ["-this + 8", "-this + 20", "-this + 4"]

@@ -106,7 +106,7 @@ export const FoxAnimation = createRPAnimation({
                 },
                 head: {
                     position: [1.8, -0.4, -2.0],
-                    rotation: [0.0, -115.0, "math.cos(query.anim_time * 160.0) + 90 -this"]
+                    rotation: [0.0, -115.0, `math.cos(${MoLang.animTime()} * 160.0) + 90 -this`]
                 },
                 tail: {
                     position: [0.0, 0.0, 1.5],
@@ -130,7 +130,7 @@ export const FoxAnimation = createRPAnimation({
             bones: {
                 body: {
                     position: [0.0, -1.8, 0.0],
-                    rotation: [0.0, "math.cos(query.life_time * 20.0 * 53.7) * 5.0 -this", 0.0]
+                    rotation: [0.0, `math.cos(${MoLang.lifeTime()} * 20.0 * 53.7) * 5.0 -this`, 0.0]
                 },
                 head: {
                     position: [0.0, -0.8, 0.0],
@@ -157,7 +157,7 @@ export const FoxAnimation = createRPAnimation({
                     rotation: [0.0, 0.0, 0.0]
                 },
                 tail: {
-                    rotation: [0.0, "math.cos(query.life_time * 20.0 * 53.7) * 10.0 -this", 0.0]
+                    rotation: [0.0, `math.cos(${MoLang.lifeTime()} * 20.0 * 53.7) * 10.0 -this`, 0.0]
                 }
             }
         },

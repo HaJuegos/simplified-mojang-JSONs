@@ -27,7 +27,7 @@ export const HoglinAnimation = createRPAnimation({
                     relativeTo: {
                         rotation: "entity"
                     },
-                    rotation: [0, "query.target_y_rotation - this", 0]
+                    rotation: [0, `${MoLang.targetYRotation()} - this`, 0]
                 }
             }
         },

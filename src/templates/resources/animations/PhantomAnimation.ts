@@ -26,22 +26,22 @@ export const PhantomAnimation = createRPAnimation({
             animationLength: 2.417,
             bones: {
                 tail: {
-                    rotation: ["-5.0 * Math.cos(297.9380535 * query.anim_time) - 5.0", 0.0, 0.0]
+                    rotation: [`-5.0 * Math.cos(297.9380535 * ${MoLang.animTime()}) - 5.0`, 0.0, 0.0]
                 },
                 tailtip: {
-                    rotation: ["-5.0 * Math.cos(297.9380535 * query.anim_time) - 5.0", 0.0, 0.0]
+                    rotation: [`-5.0 * Math.cos(297.9380535 * ${MoLang.animTime()}) - 5.0`, 0.0, 0.0]
                 },
                 wing0: {
-                    rotation: [0.0, 0.0, "16.0 * Math.cos(148.9690267 * query.anim_time)"]
+                    rotation: [0.0, 0.0, `16.0 * Math.cos(148.9690267 * ${MoLang.animTime()})`]
                 },
                 wing1: {
-                    rotation: [0.0, 0.0, "-16.0 * Math.cos(148.9690267 * query.anim_time)"]
+                    rotation: [0.0, 0.0, `-16.0 * Math.cos(148.9690267 * ${MoLang.animTime()})`]
                 },
                 wingtip0: {
-                    rotation: [0.0, 0.0, "16.0 * Math.cos(148.9690267 * query.anim_time)"]
+                    rotation: [0.0, 0.0, `16.0 * Math.cos(148.9690267 * ${MoLang.animTime()})`]
                 },
                 wingtip1: {
-                    rotation: [0.0, 0.0, "-16.0 * Math.cos(148.9690267 * query.anim_time)"]
+                    rotation: [0.0, 0.0, `-16.0 * Math.cos(148.9690267 * ${MoLang.animTime()})`]
                 }
             },
             soundEffects: {

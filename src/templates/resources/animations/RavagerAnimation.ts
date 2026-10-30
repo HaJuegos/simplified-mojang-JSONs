@@ -15,7 +15,7 @@ export const RavagerAnimation = createRPAnimation({
             bones: {
                 mouth: {
                     rotation: [
-                        "math.sin(math.min(query.anim_time / (variable.bite_anim_duration / 2.0f), 1.0f) * 180.0f) * 40.0f",
+                        `math.sin(math.min(${MoLang.animTime()} / (variable.bite_anim_duration / 2.0f), 1.0f) * 180.0f) * 40.0f`,
                         0.0,
                         0.0
                     ]
@@ -24,7 +24,7 @@ export const RavagerAnimation = createRPAnimation({
                     position: [
                         0.0,
                         0.0,
-                        "-math.sin(math.min(query.anim_time / variable.bite_anim_duration, 1.0f) * 180.0f) * variable.bite_neck_length"
+                        `-math.sin(math.min(${MoLang.animTime()} / variable.bite_anim_duration, 1.0f) * 180.0f) * variable.bite_neck_length`
                     ]
                 }
             }

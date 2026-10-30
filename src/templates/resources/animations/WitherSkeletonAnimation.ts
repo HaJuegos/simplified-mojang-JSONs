@@ -1,5 +1,6 @@
 import { createRPAnimation } from "../../../builders/resources/animations/AnimationTemplateBuilder";
 import { FormatVersionListAnims } from "../../../types/resources/animations/AnimationTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla de animaciones para la sobreescritura de las mismas. Sus datos base ya están definidos.
@@ -14,16 +15,16 @@ export const WitherSkeletonAnimation = createRPAnimation({
             bones: {
                 leftarm: {
                     rotation: [
-                        "-90 - ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4) - (math.sin(query.life_time * 76.776372) * 2.865) - this",
+                        `-90 - ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4) - (math.sin(${MoLang.lifeTime()} * 76.776372) * 2.865) - this`,
                         "5.73 - ((math.sin(variable.attack_time * 180.0) * 57.3) * 0.6) - this",
-                        "math.cos(query.life_time * 103.13244) * -2.865 - 2.865 - this"
+                        `math.cos(${MoLang.lifeTime()} * 103.13244) * -2.865 - 2.865 - this`
                     ]
                 },
                 rightarm: {
                     rotation: [
-                        "-90 - ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4) + (math.sin(query.life_time * 76.776372) * 2.865) - this",
+                        `-90 - ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4) + (math.sin(${MoLang.lifeTime()} * 76.776372) * 2.865) - this`,
                         "(math.sin(variable.attack_time * 180.0) * 57.3) * 0.6 - 5.73 - this",
-                        "math.cos(query.life_time * 103.13244) * 2.865 + 2.865 - this"
+                        `math.cos(${MoLang.lifeTime()} * 103.13244) * 2.865 + 2.865 - this`
                     ]
                 }
             }

@@ -1,5 +1,6 @@
 import { createRPAnimation } from "../../../builders/resources/animations/AnimationTemplateBuilder";
 import { FormatVersionListAnims } from "../../../types/resources/animations/AnimationTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla de animaciones para la sobreescritura de las mismas. Sus datos base ya están definidos.
@@ -15,7 +16,7 @@ export const WolfAnimations = createRPAnimation({
                 tail: {
                     rotation: [
                         0.0,
-                        "query.is_angry ? -this : (math.cos(query.modified_distance_moved * 38.17) * query.modified_move_speed * 80.22 - this)",
+                        `${MoLang.isAngry()} ? -this : (math.cos(${MoLang.modifiedDistanceMoved()} * 38.17) * ${MoLang.modifiedMoveSpeed()} * 80.22 - this)`,
                         0.0
                     ]
                 }
@@ -39,7 +40,7 @@ export const WolfAnimations = createRPAnimation({
                     rotation: [
                         0.0,
                         0.0,
-                        "(query.is_interested ? (query.head_roll_angle * 57.3) : 0) + (query.is_shaking_wetness ? variable.head_rot_z : 0) - this"
+                        `(${MoLang.isInterested()} ? (${MoLang.headRollAngle()} * 57.3) : 0) + (${MoLang.isShakingWetness()} ? variable.head_rot_z : 0) - this`
                     ]
                 }
             }
@@ -50,28 +51,28 @@ export const WolfAnimations = createRPAnimation({
             bones: {
                 leg0: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17) * 80.22 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17) * 80.22 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
                 },
                 leg1: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17 + 180) * 80.22 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17 + 180) * 80.22 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
                 },
                 leg2: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17 + 180) * 80.22 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17 + 180) * 80.22 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
                 },
                 leg3: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17) * 80.22 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17) * 80.22 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
@@ -192,7 +193,7 @@ export const WolfAnimations = createRPAnimation({
             loop: true,
             bones: {
                 tail: {
-                    rotation: ["query.tail_angle * 57.3 - this", 0.0, "variable.tail_rot_z - this"]
+                    rotation: [`${MoLang.tailAngle()} * 57.3 - this`, 0.0, "variable.tail_rot_z - this"]
                 }
             }
         }

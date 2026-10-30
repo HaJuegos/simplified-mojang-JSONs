@@ -94,7 +94,7 @@ export const ParrotAnimation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("wing_flap")} * 0.3`, 0.0]
                 },
                 tail: {
-                    rotation: ["60.0 + math.cos(query.anim_time * 38.17) * 17.0 - this", 0.0, 0.0]
+                    rotation: [`60.0 + math.cos(${MoLang.animTime()} * 38.17) * 17.0 - this`, 0.0, 0.0]
                 },
                 wing0: {
                     rotation: [0.0, 0.0, `-5.0 - ${MoLang.variable("wing_flap")} * 57.3`]

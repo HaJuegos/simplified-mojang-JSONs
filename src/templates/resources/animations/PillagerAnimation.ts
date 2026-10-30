@@ -1,5 +1,6 @@
 import { createRPAnimation } from "../../../builders/resources/animations/AnimationTemplateBuilder";
 import { FormatVersionListAnims } from "../../../types/resources/animations/AnimationTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla de animaciones para la sobreescritura de las mismas. Sus datos base ya están definidos.
@@ -30,15 +31,15 @@ export const PillagerAnimation = createRPAnimation({
             bones: {
                 leftarm: {
                     rotation: [
-                        "-85.94 + query.target_x_rotation -this",
-                        "34.38 + math.clamp(query.target_y_rotation, -45, 25) -this",
+                        `-85.94 + ${MoLang.targetXRotation()} -this`,
+                        `34.38 + math.clamp(${MoLang.targetYRotation()}, -45, 25) -this`,
                         0.0
                     ]
                 },
                 rightarm: {
                     rotation: [
-                        "-90.0 + 5.73 + query.target_x_rotation -this",
-                        "-17.19 + math.clamp(query.target_y_rotation, -25, 45) -this",
+                        `-90.0 + 5.73 + ${MoLang.targetXRotation()} -this`,
+                        `-17.19 + math.clamp(${MoLang.targetYRotation()}, -25, 45) -this`,
                         0.0
                     ]
                 }

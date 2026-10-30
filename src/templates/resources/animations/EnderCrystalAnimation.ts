@@ -14,7 +14,7 @@ export const EnderCrystalAnimation = createRPAnimation({
             loop: true,
             bones: {
                 outerglass: {
-                    position: [0.0, "16.0 + Math.sin(query.life_time * 230.0 + variable.time_offset) * 8.0", 0.0],
+                    position: [0.0, `16.0 + Math.sin(${MoLang.lifeTime()} * 230.0 + variable.time_offset) * 8.0`, 0.0],
                     rotation: [39.2, `14.5 + (${MoLang.lifeTime()} * -60.0 + ${MoLang.variable("time_offset")})`, -39.2]
                 },
                 innerglass: {

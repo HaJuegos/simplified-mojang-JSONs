@@ -22,28 +22,28 @@ export const AgentAnimation = createRPAnimation({
                 },
                 leftArm: {
                     rotation: [
-                        "((-0.2 + 1.5 * (math.abs(math.mod(query.modified_distance_moved, 13) - 6.5) - 3.25) / 3.25) * query.modified_move_speed) * 57.3 - variable.agent.armxrotationfactor",
+                        `((-0.2 + 1.5 * (math.abs(math.mod(${MoLang.modifiedDistanceMoved()}, 13) - 6.5) - 3.25) / 3.25) * ${MoLang.modifiedMoveSpeed()}) * 57.3 - variable.agent.armxrotationfactor`,
                         0,
                         `-${MoLang.variable("agent.armzrotation")}`
                     ]
                 },
                 leftLeg: {
                     rotation: [
-                        "((-1.5 * (math.abs(math.mod(query.modified_distance_moved, 13) - 6.5) - 3.25) / 3.25) * query.modified_move_speed) * 57.3 + (variable.agent.ishovering * variable.agent.legxrotationfactor)",
+                        `((-1.5 * (math.abs(math.mod(${MoLang.modifiedDistanceMoved()}, 13) - 6.5) - 3.25) / 3.25) * ${MoLang.modifiedMoveSpeed()}) * 57.3 + (variable.agent.ishovering * variable.agent.legxrotationfactor)`,
                         0,
                         0
                     ]
                 },
                 rightArm: {
                     rotation: [
-                        "((-0.2 - 1.5 * (math.abs(math.mod(query.modified_distance_moved, 13) - 6.5) - 3.25) / 3.25) * query.modified_move_speed) * 57.3 + variable.agent.armxrotationfactor",
+                        `((-0.2 - 1.5 * (math.abs(math.mod(${MoLang.modifiedDistanceMoved()}, 13) - 6.5) - 3.25) / 3.25) * ${MoLang.modifiedMoveSpeed()}) * 57.3 + variable.agent.armxrotationfactor`,
                         0,
                         MoLang.variable("agent.armzrotation")
                     ]
                 },
                 rightLeg: {
                     rotation: [
-                        "((1.5 * (math.abs(math.mod(query.modified_distance_moved, 13) - 6.5) - 3.25) / 3.25) * query.modified_move_speed) * 57.3 - (variable.agent.ishovering * variable.agent.legxrotationfactor)",
+                        `((1.5 * (math.abs(math.mod(${MoLang.modifiedDistanceMoved()}, 13) - 6.5) - 3.25) / 3.25) * ${MoLang.modifiedMoveSpeed()}) * 57.3 - (variable.agent.ishovering * variable.agent.legxrotationfactor)`,
                         0,
                         0
                     ]
@@ -57,7 +57,7 @@ export const AgentAnimation = createRPAnimation({
             bones: {
                 rightArm: {
                     rotation: [
-                        "(-2.0 + 1.5 * (math.abs(math.mod(variable.agent.swinganimationtick - query.frame_alpha, variable.agent.swinganimationduration) - variable.agent.swinganimationduration * 0.5) - variable.agent.swinganimationduration * 0.25) / (variable.agent.swinganimationduration * 0.25)) * 57.3",
+                        `(-2.0 + 1.5 * (math.abs(math.mod(variable.agent.swinganimationtick - ${MoLang.frameAlpha()}, variable.agent.swinganimationduration) - variable.agent.swinganimationduration * 0.5) - variable.agent.swinganimationduration * 0.25) / (variable.agent.swinganimationduration * 0.25)) * 57.3`,
                         0,
                         0
                     ]

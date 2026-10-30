@@ -133,7 +133,7 @@ export const OcelotAnimationsV10 = createRPAnimation({
                 tail2: {
                     position: [0.0, 4.0, 2.0],
                     rotation: [
-                        "99.0 + 45.0 * math.cos(query.modified_distance_moved * 57.3) * query.modified_move_speed - this",
+                        `99.0 + 45.0 * math.cos(${MoLang.modifiedDistanceMoved()} * 57.3) * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]

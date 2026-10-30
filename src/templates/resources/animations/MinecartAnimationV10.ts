@@ -20,7 +20,7 @@ export const MinecartAnimationV10 = createRPAnimation({
                         `${MoLang.variable("rail_offset.z")} / ${MoLang.modelScale()}`
                     ],
                     rotation: [
-                        "variable.hurt > 0 ? -Math.sin(variable.hurt * 360 / (Math.pi * 2)) * variable.hurt * (((20 * 2 - query.structural_integrity) - query.frame_alpha) < 0 ? 0: (20 * 2 - query.structural_integrity) - query.frame_alpha) / 10 * query.hurt_direction : 0",
+                        `variable.hurt > 0 ? -Math.sin(variable.hurt * 360 / (Math.pi * 2)) * variable.hurt * (((20 * 2 - ${MoLang.structuralIntegrity()}) - ${MoLang.frameAlpha()}) < 0 ? 0: (20 * 2 - ${MoLang.structuralIntegrity()}) - ${MoLang.frameAlpha()}) / 10 * ${MoLang.hurtDirection()} : 0`,
                         0.0,
                         `-${MoLang.variable("rail_rotation.z")}`
                     ]

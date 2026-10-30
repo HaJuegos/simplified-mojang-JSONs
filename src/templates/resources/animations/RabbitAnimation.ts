@@ -1,5 +1,6 @@
 import { createRPAnimation } from "../../../builders/resources/animations/AnimationTemplateBuilder";
 import { FormatVersionListAnims } from "../../../types/resources/animations/AnimationTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla de animaciones para la sobreescritura de las mismas. Sus datos base ya están definidos.
@@ -35,10 +36,10 @@ export const RabbitAnimation = createRPAnimation({
             loop: true,
             bones: {
                 earleft: {
-                    rotation: ["query.target_x_rotation - this", "query.target_y_rotation - this + 15.0", 0.0]
+                    rotation: [`${MoLang.targetXRotation()} - this`, `${MoLang.targetYRotation()} - this + 15.0`, 0.0]
                 },
                 earright: {
-                    rotation: ["query.target_x_rotation - this", "query.target_y_rotation - this - 15.0", 0.0]
+                    rotation: [`${MoLang.targetXRotation()} - this`, `${MoLang.targetYRotation()} - this - 15.0`, 0.0]
                 },
                 frontlegleft: {
                     rotation: ["variable.jump_rotation * -40.0 - 11.0 - this", 0.0, 0.0]
@@ -53,7 +54,7 @@ export const RabbitAnimation = createRPAnimation({
                     rotation: ["variable.jump_rotation * 50.0 - 21.0 - this", 0.0, 0.0]
                 },
                 nose: {
-                    rotation: ["query.target_x_rotation - this", "query.target_y_rotation - this", 0.0]
+                    rotation: [`${MoLang.targetXRotation()} - this`, `${MoLang.targetYRotation()} - this`, 0.0]
                 },
                 rearfootleft: {
                     rotation: ["variable.jump_rotation * 50.0 - this", 0.0, 0.0]

@@ -24,8 +24,8 @@ export const PolarBearAnimation = createRPAnimation({
             loop: true,
             bones: {
                 body: {
-                    position: [0.0, "-9 - 2 * query.standing_scale - this", 0.0],
-                    rotation: ["(-(query.standing_scale) * 63) - this", 0.0, 0.0]
+                    position: [0.0, `-9 - 2 * ${MoLang.standingScale()} - this`, 0.0],
+                    rotation: [`(-(${MoLang.standingScale()}) * 63) - this`, 0.0, 0.0]
                 },
                 leg0: {
                     position: [0.0, `-1 * ${MoLang.standingScale()}`, `6 * ${MoLang.standingScale()}`],
@@ -36,10 +36,10 @@ export const PolarBearAnimation = createRPAnimation({
                     rotation: [`${MoLang.standingScale()} * 63`, 0.0, 0.0]
                 },
                 leg2: {
-                    rotation: ["(query.standing_scale > 1) ? (query.standing_scale * 81) - this : 0", 0.0, 0.0]
+                    rotation: [`(${MoLang.standingScale()} > 1) ? (${MoLang.standingScale()} * 81) - this : 0`, 0.0, 0.0]
                 },
                 leg3: {
-                    rotation: ["(query.standing_scale > 1) ? (query.standing_scale * 81) - this : 0", 0.0, 0.0]
+                    rotation: [`(${MoLang.standingScale()} > 1) ? (${MoLang.standingScale()} * 81) - this : 0`, 0.0, 0.0]
                 }
             }
         }

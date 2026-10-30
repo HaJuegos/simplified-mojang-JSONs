@@ -1,5 +1,6 @@
 import { createRPAnimation } from "../../../builders/resources/animations/AnimationTemplateBuilder";
 import { FormatVersionListAnims } from "../../../types/resources/animations/AnimationTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla de animaciones para la sobreescritura de las mismas. Sus datos base ya están definidos.
@@ -14,9 +15,9 @@ export const WitchAnimation = createRPAnimation({
             bones: {
                 nose: {
                     rotation: [
-                        "(variable.isholdingitem ? -25.7831 : (math.sin(query.life_time * 57.296) * 4.5)) - this",
+                        `(variable.isholdingitem ? -25.7831 : (math.sin(${MoLang.lifeTime()} * 57.296) * 4.5)) - this`,
                         0.0,
-                        "(math.cos(query.life_time * 57.296) * 2.5) - this"
+                        `(math.cos(${MoLang.lifeTime()} * 57.296) * 2.5) - this`
                     ]
                 }
             }

@@ -1,5 +1,6 @@
 import { createRPAnimation } from "../../../builders/resources/animations/AnimationTemplateBuilder";
 import { FormatVersionListAnims } from "../../../types/resources/animations/AnimationTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla de animaciones para la sobreescritura de las mismas. Sus datos base ya están definidos.
@@ -14,7 +15,7 @@ export const LlamaSpitAnimation = createRPAnimation({
             bones: {
                 body: {
                     position: [0.0, -15.0, 0.0],
-                    rotation: [0.0, "query.target_y_rotation - 90.0 - this", "query.target_x_rotation - this"]
+                    rotation: [0.0, `${MoLang.targetYRotation()} - 90.0 - this`, `${MoLang.targetXRotation()} - this`]
                 }
             }
         }

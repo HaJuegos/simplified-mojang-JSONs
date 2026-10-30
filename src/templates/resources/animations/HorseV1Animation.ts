@@ -428,7 +428,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },
@@ -436,7 +436,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },
@@ -444,7 +444,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },
@@ -452,7 +452,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },
@@ -528,7 +528,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },
@@ -536,7 +536,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },
@@ -544,7 +544,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },
@@ -552,7 +552,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },
@@ -578,7 +578,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },
@@ -586,7 +586,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },
@@ -594,7 +594,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },
@@ -602,7 +602,7 @@ export const HorseV1Animation = createRPAnimation({
                     position: [0.0, `${MoLang.variable("stand_anim")} * 11.0`, `${MoLang.variable("stand_anim")} * 7.0`],
                     rotation: [
                         "variable.stand_anim * (15.0 + variable.head_x_rot) + variable.base_head_angle - this",
-                        "(variable.stand_anim + variable.inverse_max_stand_eat) * query.head_y_rotation(20) - this",
+                        `(variable.stand_anim + variable.inverse_max_stand_eat) * ${MoLang.headYRotation(20)} - this`,
                         0.0
                     ]
                 },

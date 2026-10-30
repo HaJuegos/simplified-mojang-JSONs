@@ -30,15 +30,15 @@ export const PiglinAnimation = createRPAnimation({
             bones: {
                 leftarm: {
                     rotation: [
-                        "-85.94 + query.target_x_rotation -this",
-                        "34.38 + math.clamp(query.target_y_rotation, -45, 25) -this",
+                        `-85.94 + ${MoLang.targetXRotation()} -this`,
+                        `34.38 + math.clamp(${MoLang.targetYRotation()}, -45, 25) -this`,
                         0.0
                     ]
                 },
                 rightarm: {
                     rotation: [
-                        "-90.0 + 5.73 + query.target_x_rotation -this",
-                        "-17.19 + math.clamp(query.target_y_rotation, -25, 45) -this",
+                        `-90.0 + 5.73 + ${MoLang.targetXRotation()} -this`,
+                        `-17.19 + math.clamp(${MoLang.targetYRotation()}, -25, 45) -this`,
                         0.0
                     ]
                 }
@@ -126,10 +126,10 @@ export const PiglinAnimation = createRPAnimation({
             loop: true,
             bones: {
                 leftear: {
-                    rotation: [0.0, 0.0, "Math.sin(query.time_stamp * 30) * 10"]
+                    rotation: [0.0, 0.0, `Math.sin(${MoLang.timeStamp()} * 30) * 10`]
                 },
                 rightear: {
-                    rotation: [0.0, 0.0, "Math.cos(query.time_stamp * 30) * 10"]
+                    rotation: [0.0, 0.0, `Math.cos(${MoLang.timeStamp()} * 30) * 10`]
                 }
             }
         },
@@ -138,22 +138,22 @@ export const PiglinAnimation = createRPAnimation({
             loop: true,
             bones: {
                 leftear: {
-                    rotation: [0.0, 0.0, "Math.sin(query.time_stamp * 30) * 10"]
+                    rotation: [0.0, 0.0, `Math.sin(${MoLang.timeStamp()} * 30) * 10`]
                 },
                 rightear: {
-                    rotation: [0.0, 0.0, "Math.cos(query.time_stamp * 30) * 10"]
+                    rotation: [0.0, 0.0, `Math.cos(${MoLang.timeStamp()} * 30) * 10`]
                 },
                 head: {
-                    position: ["Math.sin(query.time_stamp * 10)", "Math.sin(query.time_stamp * 40)", 0.0]
+                    position: [`Math.sin(${MoLang.timeStamp()} * 10)`, `Math.sin(${MoLang.timeStamp()} * 40)`, 0.0]
                 },
                 rightarm: {
-                    rotation: [0.0, 0.0, "70 + Math.cos(query.time_stamp * 40) * 10"]
+                    rotation: [0.0, 0.0, `70 + Math.cos(${MoLang.timeStamp()} * 40) * 10`]
                 },
                 leftarm: {
-                    rotation: [0.0, 0.0, "-70 - Math.cos(query.time_stamp * 40) * 10"]
+                    rotation: [0.0, 0.0, `-70 - Math.cos(${MoLang.timeStamp()} * 40) * 10`]
                 },
                 body: {
-                    position: [0.0, "Math.sin(query.time_stamp * 40) * 0.35", 0.0]
+                    position: [0.0, `Math.sin(${MoLang.timeStamp()} * 40) * 0.35`, 0.0]
                 }
             }
         }

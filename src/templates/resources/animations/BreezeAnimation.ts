@@ -1,5 +1,6 @@
 import { createRPAnimation } from "../../../builders/resources/animations/AnimationTemplateBuilder";
 import { FormatVersionListAnims } from "../../../types/resources/animations/AnimationTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla de animaciones para la sobreescritura de las mismas. Sus datos base ya están definidos.
@@ -15,7 +16,7 @@ export const BreezeAnimation = createRPAnimation({
             particleEffects: {
                 "0.0": {
                     effect: "ground_particles",
-                    preEffectScript: "variable.ground_particle_amount = 1; variable.ground_particle_initial_speed = math.random( 2, 3 ); variable.ground_particle_texture_coordinate = query.surface_particle_texture_coordinate; variable.ground_particle_texture_size = query.surface_particle_texture_size; variable.ground_particle_color = query.surface_particle_color;"
+                    preEffectScript: `variable.ground_particle_amount = 1; variable.ground_particle_initial_speed = math.random( 2, 3 ); variable.ground_particle_texture_coordinate = ${MoLang.surfaceParticleTextureCoordinate()}; variable.ground_particle_texture_size = ${MoLang.surfaceParticleTextureSize()}; variable.ground_particle_color = ${MoLang.surfaceParticleColor()};`
                 }
             }
         },
@@ -26,7 +27,7 @@ export const BreezeAnimation = createRPAnimation({
             particleEffects: {
                 "0.0": {
                     effect: "ground_particles",
-                    preEffectScript: "variable.ground_particle_amount = 5; variable.ground_particle_initial_speed = math.random( 3, 4 ); variable.ground_particle_texture_coordinate = query.surface_particle_texture_coordinate; variable.ground_particle_texture_size = query.surface_particle_texture_size; variable.ground_particle_color = query.surface_particle_color;"
+                    preEffectScript: `variable.ground_particle_amount = 5; variable.ground_particle_initial_speed = math.random( 3, 4 ); variable.ground_particle_texture_coordinate = ${MoLang.surfaceParticleTextureCoordinate()}; variable.ground_particle_texture_size = ${MoLang.surfaceParticleTextureSize()}; variable.ground_particle_color = ${MoLang.surfaceParticleColor()};`
                 }
             }
         },
@@ -255,7 +256,7 @@ export const BreezeAnimation = createRPAnimation({
             particleEffects: {
                 "0.75": {
                     effect: "ground_particles",
-                    preEffectScript: "variable.ground_particle_amount = math.round(math.random( 3, 4)); variable.ground_particle_initial_speed = math.random( 5, 6 ); variable.ground_particle_texture_coordinate = query.surface_particle_texture_coordinate; variable.ground_particle_texture_size = query.surface_particle_texture_size; variable.ground_particle_color = query.surface_particle_color;"
+                    preEffectScript: `variable.ground_particle_amount = math.round(math.random( 3, 4)); variable.ground_particle_initial_speed = math.random( 5, 6 ); variable.ground_particle_texture_coordinate = ${MoLang.surfaceParticleTextureCoordinate()}; variable.ground_particle_texture_size = ${MoLang.surfaceParticleTextureSize()}; variable.ground_particle_color = ${MoLang.surfaceParticleColor()};`
                 }
             }
         },

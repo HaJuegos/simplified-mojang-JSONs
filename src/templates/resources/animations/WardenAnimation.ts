@@ -906,7 +906,7 @@ export const WardenAnimation = createRPAnimation({
             particleEffects: {
                 "0.0": {
                     effect: "digging",
-                    preEffectScript: "variable.dig_particle_texture_coordinate = query.surface_particle_texture_coordinate; variable.dig_particle_texture_size = query.surface_particle_texture_size; variable.dig_particle_color = query.surface_particle_color;"
+                    preEffectScript: `variable.dig_particle_texture_coordinate = ${MoLang.surfaceParticleTextureCoordinate()}; variable.dig_particle_texture_size = ${MoLang.surfaceParticleTextureSize()}; variable.dig_particle_color = ${MoLang.surfaceParticleColor()};`
                 }
             },
             soundEffects: {
@@ -1370,7 +1370,7 @@ export const WardenAnimation = createRPAnimation({
             particleEffects: {
                 "0.0": {
                     effect: "digging",
-                    preEffectScript: "variable.dig_particle_texture_coordinate = query.surface_particle_texture_coordinate; variable.dig_particle_texture_size = query.surface_particle_texture_size; variable.dig_particle_color = query.surface_particle_color;"
+                    preEffectScript: `variable.dig_particle_texture_coordinate = ${MoLang.surfaceParticleTextureCoordinate()}; variable.dig_particle_texture_size = ${MoLang.surfaceParticleTextureSize()}; variable.dig_particle_color = ${MoLang.surfaceParticleColor()};`
                 }
             }
         },

@@ -32,7 +32,7 @@ export const CamelHuskAnimationControllers = createRPAnimController({
                 },
                 moving: {
                     animations: [
-                        { moving: "math.min(1.0, math.lerp(0.4, 1.25, query.modified_move_speed))" }
+                        { moving: `math.min(1.0, math.lerp(0.4, 1.25, ${MoLang.modifiedMoveSpeed()}))` }
                     ],
                     transitions: [
                         { idling: `!${MoLang.variable("moving")}` },

@@ -54,10 +54,10 @@ export const VillagerAnimation = createRPAnimation({
             loop: true,
             bones: {
                 leg0: {
-                    rotation: ["(math.cos(query.anim_time * 38.17) * 40.0) - this", "-this", 0.0]
+                    rotation: [`(math.cos(${MoLang.animTime()} * 38.17) * 40.0) - this`, "-this", 0.0]
                 },
                 leg1: {
-                    rotation: ["(math.cos(query.anim_time * 38.17 + 180) * 40.0) - this", "-this", 0.0]
+                    rotation: [`(math.cos(${MoLang.animTime()} * 38.17 + 180) * 40.0) - this`, "-this", 0.0]
                 }
             }
         },

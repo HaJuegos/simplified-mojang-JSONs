@@ -65,7 +65,7 @@ export const GoatAnimation = createRPAnimation({
         {
             idAnimation: "goat.ram_attack",
             loop: true,
-            animTimeUpdate: "Math.max(query.anim_time + (variable.should_bow_head ? query.delta_time : -query.delta_time * 4), 0)",
+            animTimeUpdate: `Math.max(${MoLang.animTime()} + (variable.should_bow_head ? ${MoLang.deltaTime()} : -${MoLang.deltaTime()} * 4), 0)`,
             bones: {
                 head: {
                     rotation: {

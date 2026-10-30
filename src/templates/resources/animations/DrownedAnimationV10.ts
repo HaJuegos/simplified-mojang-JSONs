@@ -38,27 +38,27 @@ export const DrownedAnimationV10 = createRPAnimation({
             bones: {
                 leftarm: {
                     rotation: [
-                        "math.lerp(this, -180.0, variable.swim_amount) - (variable.swim_amount * ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4)) - (variable.swim_amount * (math.sin(query.life_time * 76.776372) * 2.865)) - this",
+                        `math.lerp(this, -180.0, variable.swim_amount) - (variable.swim_amount * ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4)) - (variable.swim_amount * (math.sin(${MoLang.lifeTime()} * 76.776372) * 2.865)) - this`,
                         "math.lerp(this, -14.325, variable.swim_amount) - this",
-                        "math.lerp(this, 14.325, variable.swim_amount) - (variable.swim_amount * (math.cos(query.life_time * 103.13244) * 2.865 + 2.865)) - this"
+                        `math.lerp(this, 14.325, variable.swim_amount) - (variable.swim_amount * (math.cos(${MoLang.lifeTime()} * 103.13244) * 2.865 + 2.865)) - this`
                     ]
                 },
                 leftleg: {
                     rotation: [
-                        "math.lerp(this, math.cos(query.life_time * 390.0 + 180.0) * 0.3, variable.swim_amount) - this",
+                        `math.lerp(this, math.cos(${MoLang.lifeTime()} * 390.0 + 180.0) * 0.3, variable.swim_amount) - this`,
                         0.0,
                         0.0
                     ]
                 },
                 rightarm: {
                     rotation: [
-                        "math.lerp(this, -180.0, variable.swim_amount) - (variable.swim_amount * ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4)) + (variable.swim_amount * (math.sin(query.life_time * 76.776372) * 2.865)) - this",
+                        `math.lerp(this, -180.0, variable.swim_amount) - (variable.swim_amount * ((math.sin(variable.attack_time * 180.0) * 57.3) * 1.2 - (math.sin((1.0 - (1.0 - variable.attack_time) * (1.0 - variable.attack_time)) * 180.0) * 57.3) * 0.4)) + (variable.swim_amount * (math.sin(${MoLang.lifeTime()} * 76.776372) * 2.865)) - this`,
                         "math.lerp(this, 14.325, variable.swim_amount) - this",
-                        "math.lerp(this, -14.325, variable.swim_amount) + (variable.swim_amount * (math.cos(query.life_time * 103.13244) * 2.865 + 2.865)) - this"
+                        `math.lerp(this, -14.325, variable.swim_amount) + (variable.swim_amount * (math.cos(${MoLang.lifeTime()} * 103.13244) * 2.865 + 2.865)) - this`
                     ]
                 },
                 rightleg: {
-                    rotation: ["math.lerp(this, math.cos(query.life_time * 390.0) * 0.3, variable.swim_amount)", 0.0, 0.0]
+                    rotation: [`math.lerp(this, math.cos(${MoLang.lifeTime()} * 390.0) * 0.3, variable.swim_amount)`, 0.0, 0.0]
                 },
                 root: {
                     position: [0.0, "variable.swim_amount * -10.0 - this", "variable.swim_amount * 9.0 - this"],

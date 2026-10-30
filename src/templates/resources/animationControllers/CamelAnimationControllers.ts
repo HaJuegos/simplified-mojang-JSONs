@@ -33,8 +33,8 @@ export const CamelAnimationControllers = createRPAnimController({
                 moving: {
                     animations: [
                         {
-                            moving: "math.min(1.0, math.lerp(0.4, 1.25, query.modified_move_speed)) && !query.is_baby",
-                            baby_moving: "math.min(1.0, math.lerp(0.4, 1.25, query.modified_move_speed)) && query.is_baby"
+                            moving: `math.min(1.0, math.lerp(0.4, 1.25, ${MoLang.modifiedMoveSpeed()})) && !${MoLang.isBaby()}`,
+                            baby_moving: `math.min(1.0, math.lerp(0.4, 1.25, ${MoLang.modifiedMoveSpeed()})) && ${MoLang.isBaby()}`
                         }
                     ],
                     transitions: [

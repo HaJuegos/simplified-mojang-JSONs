@@ -32,28 +32,28 @@ export const TurtleAnimation = createRPAnimation({
                 leg0: {
                     rotation: [
                         "-this",
-                        "math.clamp(math.cos(query.anim_time * variable.timemultiplier * variable.legspeedmultiplier * 57.3 + 180) * variable.backlegmultiplier * query.modified_move_speed * 57.3, -90.0, 90.0) - this",
+                        `math.clamp(math.cos(${MoLang.animTime()} * variable.timemultiplier * variable.legspeedmultiplier * 57.3 + 180) * variable.backlegmultiplier * ${MoLang.modifiedMoveSpeed()} * 57.3, -90.0, 90.0) - this`,
                         "-this"
                     ]
                 },
                 leg1: {
                     rotation: [
                         "-this",
-                        "math.clamp(math.cos(query.anim_time * variable.timemultiplier * variable.legspeedmultiplier * 57.3) * variable.backlegmultiplier * query.modified_move_speed * 57.3, -90.0, 90.0) - this",
+                        `math.clamp(math.cos(${MoLang.animTime()} * variable.timemultiplier * variable.legspeedmultiplier * 57.3) * variable.backlegmultiplier * ${MoLang.modifiedMoveSpeed()} * 57.3, -90.0, 90.0) - this`,
                         "-this"
                     ]
                 },
                 leg2: {
                     rotation: [
                         "-this",
-                        "query.is_laying_egg ? math.cos(query.life_time * 1146.0 + 180) * 90.0 : math.clamp(math.cos(query.anim_time * variable.timemultiplier * variable.legspeedmultiplier * 57.3 + 180) * variable.frontlegmultiplier * query.modified_move_speed * 57.3, -90.0, 90.0) - this",
+                        `${MoLang.isLayingEgg()} ? math.cos(${MoLang.lifeTime()} * 1146.0 + 180) * 90.0 : math.clamp(math.cos(${MoLang.animTime()} * variable.timemultiplier * variable.legspeedmultiplier * 57.3 + 180) * variable.frontlegmultiplier * ${MoLang.modifiedMoveSpeed()} * 57.3, -90.0, 90.0) - this`,
                         "-this"
                     ]
                 },
                 leg3: {
                     rotation: [
                         "-this",
-                        "query.is_laying_egg ? math.cos(query.life_time * 1146.0) * 90.0 : math.clamp(math.cos(query.anim_time * variable.timemultiplier * variable.legspeedmultiplier * 57.3) * variable.frontlegmultiplier * query.modified_move_speed * 57.3, -90.0, 90.0) - this",
+                        `${MoLang.isLayingEgg()} ? math.cos(${MoLang.lifeTime()} * 1146.0) * 90.0 : math.clamp(math.cos(${MoLang.animTime()} * variable.timemultiplier * variable.legspeedmultiplier * 57.3) * variable.frontlegmultiplier * ${MoLang.modifiedMoveSpeed()} * 57.3, -90.0, 90.0) - this`,
                         "-this"
                     ]
                 }
@@ -66,14 +66,14 @@ export const TurtleAnimation = createRPAnimation({
             bones: {
                 leg0: {
                     rotation: [
-                        "math.clamp(math.cos(query.anim_time * 22.92) * query.modified_move_speed * 28.65, -90.0, 90.0) - this",
+                        `math.clamp(math.cos(${MoLang.animTime()} * 22.92) * ${MoLang.modifiedMoveSpeed()} * 28.65, -90.0, 90.0) - this`,
                         "-this",
                         "-this"
                     ]
                 },
                 leg1: {
                     rotation: [
-                        "math.clamp(math.cos(query.anim_time * 22.92 + 180) * query.modified_move_speed * 28.65, -90.0, 90.0) - this",
+                        `math.clamp(math.cos(${MoLang.animTime()} * 22.92 + 180) * ${MoLang.modifiedMoveSpeed()} * 28.65, -90.0, 90.0) - this`,
                         "-this",
                         "-this"
                     ]
@@ -82,14 +82,14 @@ export const TurtleAnimation = createRPAnimation({
                     rotation: [
                         "-this",
                         "-this",
-                        "math.clamp(math.cos(query.anim_time * 22.92 + 180) * query.modified_move_speed * 28.65, -90.0, 90.0) - this"
+                        `math.clamp(math.cos(${MoLang.animTime()} * 22.92 + 180) * ${MoLang.modifiedMoveSpeed()} * 28.65, -90.0, 90.0) - this`
                     ]
                 },
                 leg3: {
                     rotation: [
                         "-this",
                         "-this",
-                        "math.clamp(math.cos(query.anim_time * 22.92) * query.modified_move_speed * 28.65, -90.0, 90.0) - this"
+                        `math.clamp(math.cos(${MoLang.animTime()} * 22.92) * ${MoLang.modifiedMoveSpeed()} * 28.65, -90.0, 90.0) - this`
                     ]
                 }
             }

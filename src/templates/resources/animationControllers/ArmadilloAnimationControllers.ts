@@ -39,8 +39,8 @@ export const ArmadilloAnimationControllers = createRPAnimController({
                 walking: {
                     animations: [
                         {
-                            walk: "math.min(1.4, math.lerp(0.2, 2.4, query.modified_move_speed)) * !query.is_baby",
-                            baby_walk: "math.min(1.4, math.lerp(0.2, 2.4, query.modified_move_speed)) * query.is_baby"
+                            walk: `math.min(1.4, math.lerp(0.2, 2.4, ${MoLang.modifiedMoveSpeed()})) * !${MoLang.isBaby()}`,
+                            baby_walk: `math.min(1.4, math.lerp(0.2, 2.4, ${MoLang.modifiedMoveSpeed()})) * ${MoLang.isBaby()}`
                         }
                     ],
                     transitions: [

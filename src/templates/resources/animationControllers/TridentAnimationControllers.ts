@@ -16,8 +16,8 @@ export const TridentAnimationControllers = createRPAnimController({
                 first_person: {
                     animations: [
                         "wield_first_person",
-                        { wield_first_person_raise: "query.main_hand_item_use_duration > 0.0f" },
-                        { wield_first_person_raise_shake: "query.main_hand_item_use_duration > 0.0f" },
+                        { wield_first_person_raise: `${MoLang.mainHandItemUseDuration()} > 0.0f` },
+                        { wield_first_person_raise_shake: `${MoLang.mainHandItemUseDuration()} > 0.0f` },
                         { wield_first_person_riptide: `${MoLang.canDamageNearbyMobs()} > 0.0` }
                     ],
                     transitions: [
@@ -27,7 +27,7 @@ export const TridentAnimationControllers = createRPAnimController({
                 third_person: {
                     animations: [
                         "wield_third_person",
-                        { wield_third_person_raise: "query.main_hand_item_use_duration > 0.0f || query.has_target" }
+                        { wield_third_person_raise: `${MoLang.mainHandItemUseDuration()} > 0.0f || ${MoLang.hasTarget()}` }
                     ],
                     transitions: [
                         { first_person: MoLang.context("is_first_person") }

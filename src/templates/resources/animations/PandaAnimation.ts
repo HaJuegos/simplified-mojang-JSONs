@@ -28,23 +28,23 @@ export const PandaAnimation = createRPAnimation({
             loop: true,
             bones: {
                 body: {
-                    position: [0.0, "-7.67 * query.lie_amount -10 - this", 0.0],
-                    rotation: ["query.lie_amount * -180 - this", 0.0, 0.0]
+                    position: [0.0, `-7.67 * ${MoLang.lieAmount()} -10 - this`, 0.0],
+                    rotation: [`${MoLang.lieAmount()} * -180 - this`, 0.0, 0.0]
                 },
                 head: {
-                    rotation: ["(query.lie_amount * 90) - this", 0.0, 0.0]
+                    rotation: [`(${MoLang.lieAmount()} * 90) - this`, 0.0, 0.0]
                 },
                 leg0: {
-                    rotation: ["math.sin(query.life_time * 206.28) * -17.2 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 206.28) * -17.2 - this`, 0.0, 0.0]
                 },
                 leg1: {
-                    rotation: ["math.sin(query.life_time * 263.58) * 17.2 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 263.58) * 17.2 - this`, 0.0, 0.0]
                 },
                 leg2: {
-                    rotation: ["math.sin(query.life_time * 172) * 17.2 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 172) * 17.2 - this`, 0.0, 0.0]
                 },
                 leg3: {
-                    rotation: ["math.sin(query.life_time * 229.2) * -17.2 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 229.2) * -17.2 - this`, 0.0, 0.0]
                 }
             }
         },
@@ -53,23 +53,23 @@ export const PandaAnimation = createRPAnimation({
             loop: true,
             bones: {
                 body: {
-                    position: [0.0, "-10.55 * query.lie_amount -10 - this", 0.0],
-                    rotation: ["query.lie_amount * -180 - this", 0.0, 0.0]
+                    position: [0.0, `-10.55 * ${MoLang.lieAmount()} -10 - this`, 0.0],
+                    rotation: [`${MoLang.lieAmount()} * -180 - this`, 0.0, 0.0]
                 },
                 head: {
-                    rotation: ["(query.lie_amount * 90) - this", 0.0, 0.0]
+                    rotation: [`(${MoLang.lieAmount()} * 90) - this`, 0.0, 0.0]
                 },
                 leg0: {
-                    rotation: ["math.sin(query.life_time * 206.28) * -17.2 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 206.28) * -17.2 - this`, 0.0, 0.0]
                 },
                 leg1: {
-                    rotation: ["math.sin(query.life_time * 263.58) * 17.2 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 263.58) * 17.2 - this`, 0.0, 0.0]
                 },
                 leg2: {
-                    rotation: ["math.sin(query.life_time * 172) * 17.2 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 172) * 17.2 - this`, 0.0, 0.0]
                 },
                 leg3: {
-                    rotation: ["math.sin(query.life_time * 229.2) * -17.2 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 229.2) * -17.2 - this`, 0.0, 0.0]
                 }
             }
         },
@@ -81,19 +81,19 @@ export const PandaAnimation = createRPAnimation({
                     rotation: [`(${MoLang.rollCounter()} / 32) * 360`, 0.0, 0.0]
                 },
                 head: {
-                    rotation: ["(this * -118) + query.roll_counter - this", 0.0, 0.0]
+                    rotation: [`(this * -118) + ${MoLang.rollCounter()} - this`, 0.0, 0.0]
                 },
                 leg0: {
-                    rotation: ["math.sin(query.life_time * 60 * 0.5 * 57.3) * 8.6 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 60 * 0.5 * 57.3) * 8.6 - this`, 0.0, 0.0]
                 },
                 leg1: {
-                    rotation: ["math.sin(query.life_time * 60 * 0.5 * 57.3) * -8.6 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 60 * 0.5 * 57.3) * -8.6 - this`, 0.0, 0.0]
                 },
                 leg2: {
-                    rotation: ["math.sin(query.life_time * 60 * 0.5 * 57.3) * -8.6 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 60 * 0.5 * 57.3) * -8.6 - this`, 0.0, 0.0]
                 },
                 leg3: {
-                    rotation: ["math.sin(query.life_time * 60 * 0.5 * 57.3) * 8.6 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 60 * 0.5 * 57.3) * 8.6 - this`, 0.0, 0.0]
                 }
             }
         },
@@ -105,19 +105,19 @@ export const PandaAnimation = createRPAnimation({
                     rotation: [`(${MoLang.rollCounter()} / 32) * 360`, 0.0, 0.0]
                 },
                 head: {
-                    rotation: ["(this * -118) + query.roll_counter - this", 0.0, 0.0]
+                    rotation: [`(this * -118) + ${MoLang.rollCounter()} - this`, 0.0, 0.0]
                 },
                 leg0: {
-                    rotation: ["math.sin(query.life_time * 60 * 0.95 * 57.3) * 8.6 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 60 * 0.95 * 57.3) * 8.6 - this`, 0.0, 0.0]
                 },
                 leg1: {
-                    rotation: ["math.sin(query.life_time * 60 * 0.95 * 57.3) * -8.6 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 60 * 0.95 * 57.3) * -8.6 - this`, 0.0, 0.0]
                 },
                 leg2: {
-                    rotation: ["math.sin(query.life_time * 60 * 0.95 * 57.3) * -8.6 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 60 * 0.95 * 57.3) * -8.6 - this`, 0.0, 0.0]
                 },
                 leg3: {
-                    rotation: ["math.sin(query.life_time * 60 * 0.95 * 57.3) * 8.6 - this", 0.0, 0.0]
+                    rotation: [`math.sin(${MoLang.lifeTime()} * 60 * 0.95 * 57.3) * 8.6 - this`, 0.0, 0.0]
                 }
             }
         },
@@ -128,14 +128,14 @@ export const PandaAnimation = createRPAnimation({
                 body: {
                     position: [0.0, "-2.15 -10 -this", 0.0],
                     rotation: [
-                        "(query.is_scared * math.cos(query.life_time * 71.62) * 16.2) + (query.sit_amount * -90) - this",
+                        `(${MoLang.isScared()} * math.cos(${MoLang.lifeTime()} * 71.62) * 16.2) + (${MoLang.sitAmount()} * -90) - this`,
                         0.0,
                         0.0
                     ]
                 },
                 head: {
                     rotation: [
-                        "query.is_eating ? (90.0 + 11.5 * math.sin(query.life_time * 750)) : (query.sit_amount * (100 - this)) - this",
+                        `${MoLang.isEating()} ? (90.0 + 11.5 * math.sin(${MoLang.lifeTime()} * 750)) : (${MoLang.sitAmount()} * (100 - this)) - this`,
                         0.0,
                         0.0
                     ]
@@ -147,10 +147,10 @@ export const PandaAnimation = createRPAnimation({
                     rotation: [0.0, 0.0, "-32.7 - this"]
                 },
                 leg2: {
-                    rotation: ["(query.is_eating ? (-23 - (16.5 * math.sin(query.life_time * 750))) : 0) - this", 0.0, -15.0]
+                    rotation: [`(${MoLang.isEating()} ? (-23 - (16.5 * math.sin(${MoLang.lifeTime()} * 750))) : 0) - this`, 0.0, -15.0]
                 },
                 leg3: {
-                    rotation: ["(query.is_eating ? (-23 - (16.5 * math.sin(query.life_time * 750))) : 0) - this", 0.0, 15.0]
+                    rotation: [`(${MoLang.isEating()} ? (-23 - (16.5 * math.sin(${MoLang.lifeTime()} * 750))) : 0) - this`, 0.0, 15.0]
                 }
             }
         },
@@ -168,7 +168,7 @@ export const PandaAnimation = createRPAnimation({
                 },
                 head: {
                     rotation: [
-                        "query.is_eating ? (90.0 + 11.5 * math.sin(query.life_time * 750)) : (query.sit_amount * (100 - this)) - this",
+                        `${MoLang.isEating()} ? (90.0 + 11.5 * math.sin(${MoLang.lifeTime()} * 750)) : (${MoLang.sitAmount()} * (100 - this)) - this`,
                         0.0,
                         0.0
                     ]
@@ -180,10 +180,10 @@ export const PandaAnimation = createRPAnimation({
                     rotation: [0.0, 0.0, "-32.7 - this"]
                 },
                 leg2: {
-                    rotation: ["(query.is_eating ? (-23 - (16.5 * math.sin(query.life_time * 750))) : 0) - this", 0.0, -15.0]
+                    rotation: [`(${MoLang.isEating()} ? (-23 - (16.5 * math.sin(${MoLang.lifeTime()} * 750))) : 0) - this`, 0.0, -15.0]
                 },
                 leg3: {
-                    rotation: ["(query.is_eating ? (-23 - (16.5 * math.sin(query.life_time * 750))) : 0) - this", 0.0, 15.0]
+                    rotation: [`(${MoLang.isEating()} ? (-23 - (16.5 * math.sin(${MoLang.lifeTime()} * 750))) : 0) - this`, 0.0, 15.0]
                 }
             }
         },
@@ -193,7 +193,7 @@ export const PandaAnimation = createRPAnimation({
             bones: {
                 head: {
                     rotation: [
-                        "(query.sneeze_counter < 15) ? (-45 * (query.sneeze_counter / 14)) : (-45 + (9 * (query.sneeze_counter - 15)) - this)",
+                        `(${MoLang.sneezeCounter()} < 15) ? (-45 * (${MoLang.sneezeCounter()} / 14)) : (-45 + (9 * (${MoLang.sneezeCounter()} - 15)) - this)`,
                         0.0,
                         0.0
                     ]
@@ -207,15 +207,15 @@ export const PandaAnimation = createRPAnimation({
                 head: {
                     rotation: [
                         0.0,
-                        "(math.sin(query.life_time * 327.6) * 20) - this",
-                        "(math.sin(query.life_time * 327.6) * 20) - this"
+                        `(math.sin(${MoLang.lifeTime()} * 327.6) * 20) - this`,
+                        `(math.sin(${MoLang.lifeTime()} * 327.6) * 20) - this`
                     ]
                 },
                 leg2: {
-                    rotation: ["(math.sin(query.life_time * 343.8) * -43) - this", 0.0, 0.0]
+                    rotation: [`(math.sin(${MoLang.lifeTime()} * 343.8) * -43) - this`, 0.0, 0.0]
                 },
                 leg3: {
-                    rotation: ["(math.sin(query.life_time * 343.8) * 43) - this", 0.0, 0.0]
+                    rotation: [`(math.sin(${MoLang.lifeTime()} * 343.8) * 43) - this`, 0.0, 0.0]
                 }
             }
         }

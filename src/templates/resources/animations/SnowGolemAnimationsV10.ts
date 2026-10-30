@@ -15,19 +15,19 @@ export const SnowGolemAnimationsV10 = createRPAnimation({
             bones: {
                 arm1: {
                     position: [
-                        "(math.cos(query.target_y_rotation * 0.25) * 5) - this",
+                        `(math.cos(${MoLang.targetYRotation()} * 0.25) * 5) - this`,
                         0.0,
-                        "(math.sin(query.target_y_rotation * 0.25) * -5) - this"
+                        `(math.sin(${MoLang.targetYRotation()} * 0.25) * -5) - this`
                     ],
                     rotation: [0.0, `(${MoLang.targetYRotation()} * 0.25)`, 57.3]
                 },
                 arm2: {
                     position: [
-                        "(math.cos(query.target_y_rotation * 0.25) * -5) - this",
+                        `(math.cos(${MoLang.targetYRotation()} * 0.25) * -5) - this`,
                         0.0,
-                        "(math.sin(query.target_y_rotation * 0.25) * 5) - this"
+                        `(math.sin(${MoLang.targetYRotation()} * 0.25) * 5) - this`
                     ],
-                    rotation: [0.0, "((query.target_y_rotation * 0.25) + 180) - this", -57.3]
+                    rotation: [0.0, `((${MoLang.targetYRotation()} * 0.25) + 180) - this`, -57.3]
                 }
             }
         },

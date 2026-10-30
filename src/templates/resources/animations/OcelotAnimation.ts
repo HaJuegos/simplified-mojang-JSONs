@@ -1,5 +1,6 @@
 import { createRPAnimation } from "../../../builders/resources/animations/AnimationTemplateBuilder";
 import { FormatVersionListAnims } from "../../../types/resources/animations/AnimationTemplate";
+import { MoLang } from "../../../utils/MoLang";
 
 /**
  * Plantilla vanilla de animaciones para la sobreescritura de las mismas. Sus datos base ya están definidos.
@@ -60,7 +61,7 @@ export const OcelotAnimation = createRPAnimation({
                 backlegl: {
                     position: [0.0, "1.0 - this", 0.0],
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
@@ -68,7 +69,7 @@ export const OcelotAnimation = createRPAnimation({
                 backlegr: {
                     position: [0.0, "1.0 - this", 0.0],
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17 + 180.0) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17 + 180.0) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
@@ -79,7 +80,7 @@ export const OcelotAnimation = createRPAnimation({
                 frontlegl: {
                     position: [0.0, "1.0 - this", 0.0],
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17 + 180.0) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17 + 180.0) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
@@ -87,7 +88,7 @@ export const OcelotAnimation = createRPAnimation({
                 frontlegr: {
                     position: [0.0, "1.0 - this", 0.0],
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
@@ -100,7 +101,7 @@ export const OcelotAnimation = createRPAnimation({
                 },
                 tail2: {
                     rotation: [
-                        "62.0 + math.cos(query.modified_distance_moved * 57.3) * 27.0 * query.modified_move_speed - this",
+                        `62.0 + math.cos(${MoLang.modifiedDistanceMoved()} * 57.3) * 27.0 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
@@ -113,28 +114,28 @@ export const OcelotAnimation = createRPAnimation({
             bones: {
                 backlegl: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
                 },
                 backlegr: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17 + 17.19) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17 + 17.19) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
                 },
                 frontlegl: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17 + 197.19) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17 + 197.19) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
                 },
                 frontlegr: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17 + 180.0) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17 + 180.0) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
@@ -144,7 +145,7 @@ export const OcelotAnimation = createRPAnimation({
                 },
                 tail2: {
                     rotation: [
-                        "62.0 + math.cos(query.modified_distance_moved * 57.3) * 18.0 * query.modified_move_speed - this",
+                        `62.0 + math.cos(${MoLang.modifiedDistanceMoved()} * 57.3) * 18.0 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
@@ -157,28 +158,28 @@ export const OcelotAnimation = createRPAnimation({
             bones: {
                 backlegl: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
                 },
                 backlegr: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17 + 180.0) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17 + 180.0) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
                 },
                 frontlegl: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17 + 180.0) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17 + 180.0) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
                 },
                 frontlegr: {
                     rotation: [
-                        "math.cos(query.modified_distance_moved * 38.17) * 57.3 * query.modified_move_speed - this",
+                        `math.cos(${MoLang.modifiedDistanceMoved()} * 38.17) * 57.3 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]
@@ -188,7 +189,7 @@ export const OcelotAnimation = createRPAnimation({
                 },
                 tail2: {
                     rotation: [
-                        "62.0 + math.cos(query.modified_distance_moved * 57.3) * 45.0 * query.modified_move_speed - this",
+                        `62.0 + math.cos(${MoLang.modifiedDistanceMoved()} * 57.3) * 45.0 * ${MoLang.modifiedMoveSpeed()} - this`,
                         0.0,
                         0.0
                     ]

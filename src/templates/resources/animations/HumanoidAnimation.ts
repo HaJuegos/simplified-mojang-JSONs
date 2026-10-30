@@ -64,14 +64,14 @@ export const HumanoidAnimation = createRPAnimation({
             bones: {
                 leftarm: {
                     rotation: [
-                        "query.target_x_rotation - 90.0 - math.sin(query.life_time * 76.8) * 2.865 - this",
+                        `${MoLang.targetXRotation()} - 90.0 - math.sin(${MoLang.lifeTime()} * 76.8) * 2.865 - this`,
                         `${MoLang.targetYRotation()} + 28.65`,
                         `-(${MoLang.cos(`${MoLang.lifeTime()} * 103.2`)} * 2.865) - 2.865`
                     ]
                 },
                 rightarm: {
                     rotation: [
-                        "query.target_x_rotation - 90.0 + math.sin(query.life_time * 76.8) * 2.865 - this",
+                        `${MoLang.targetXRotation()} - 90.0 + math.sin(${MoLang.lifeTime()} * 76.8) * 2.865 - this`,
                         `${MoLang.targetYRotation()} - 5.73`,
                         `(${MoLang.cos(`${MoLang.lifeTime()} * 103.2`)} * 2.865) + 2.865`
                     ]
@@ -274,7 +274,7 @@ export const HumanoidAnimation = createRPAnimation({
             loop: true,
             bones: {
                 head: {
-                    rotation: ["math.lerp(query.target_x_rotation, -45.0, variable.swim_amount)", MoLang.targetYRotation(), 0.0]
+                    rotation: [`math.lerp(${MoLang.targetXRotation()}, -45.0, variable.swim_amount)`, MoLang.targetYRotation(), 0.0]
                 }
             }
         },
@@ -362,38 +362,38 @@ export const HumanoidAnimation = createRPAnimation({
                     rotation: {
                         "0.7": {
                             post: [
-                                "math.lerp(this, 11.25 * math.mod(query.modified_distance_moved, 26.0), variable.leftarmswim_amount)",
+                                `math.lerp(this, 11.25 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.leftarmswim_amount)`,
                                 "math.lerp(this, 180.0, variable.leftarmswim_amount)",
-                                "math.lerp(this, 72.77 + 13.4 * math.mod(query.modified_distance_moved, 26.0), variable.leftarmswim_amount)"
+                                `math.lerp(this, 72.77 + 13.4 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.leftarmswim_amount)`
                             ],
                             pre: [
                                 "math.lerp(this, 0.0, variable.leftarmswim_amount)",
                                 "math.lerp(this, 180.0, variable.leftarmswim_amount)",
-                                "math.lerp(this, 180.0 - 0.01877 * (-65.0 * math.mod(query.modified_distance_moved, 26.0) + math.mod(query.modified_distance_moved, 26.0) * math.mod(query.modified_distance_moved, 26.0)), variable.leftarmswim_amount)"
+                                `math.lerp(this, 180.0 - 0.01877 * (-65.0 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0) + math.mod(${MoLang.modifiedDistanceMoved()}, 26.0) * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0)), variable.leftarmswim_amount)`
                             ]
                         },
                         "1.1": [
-                            "math.lerp(this, 11.25 * math.mod(query.modified_distance_moved, 26.0), variable.leftarmswim_amount)",
+                            `math.lerp(this, 11.25 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.leftarmswim_amount)`,
                             "math.lerp(this, 180.0, variable.leftarmswim_amount)",
-                            "math.lerp(this, 72.77 + 13.4 * math.mod(query.modified_distance_moved, 26.0), variable.leftarmswim_amount)"
+                            `math.lerp(this, 72.77 + 13.4 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.leftarmswim_amount)`
                         ],
                         "1.3": {
                             post: [
-                                "math.lerp(this, 90.0 - (22.5 * math.mod(query.modified_distance_moved, 26.0)), variable.leftarmswim_amount)",
+                                `math.lerp(this, 90.0 - (22.5 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0)), variable.leftarmswim_amount)`,
                                 "math.lerp(this, 180.0, variable.leftarmswim_amount)",
                                 "math.lerp(this, 180.0, variable.leftarmswim_amount)"
                             ],
                             pre: [
-                                "math.lerp(this, 11.25 * math.mod(query.modified_distance_moved, 26.0), variable.leftarmswim_amount)",
+                                `math.lerp(this, 11.25 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.leftarmswim_amount)`,
                                 "math.lerp(this, 180.0, variable.leftarmswim_amount)",
-                                "math.lerp(this, 72.77 + 13.4 * math.mod(query.modified_distance_moved, 26.0), variable.leftarmswim_amount)"
+                                `math.lerp(this, 72.77 + 13.4 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.leftarmswim_amount)`
                             ]
                         }
                     }
                 },
                 leftleg: {
                     rotation: [
-                        "math.lerp(this, math.cos(query.modified_distance_moved * 19.5 + 180.0) * 17.2, variable.leftarmswim_amount) - this",
+                        `math.lerp(this, math.cos(${MoLang.modifiedDistanceMoved()} * 19.5 + 180.0) * 17.2, variable.leftarmswim_amount) - this`,
                         -0.1,
                         -0.1
                     ]
@@ -402,38 +402,38 @@ export const HumanoidAnimation = createRPAnimation({
                     rotation: {
                         "0.7": {
                             post: [
-                                "math.lerp(this, 11.25 * math.mod(query.modified_distance_moved, 26.0), variable.rightarmswim_amount)",
+                                `math.lerp(this, 11.25 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.rightarmswim_amount)`,
                                 "math.lerp(this, 180.0, variable.rightarmswim_amount)",
-                                "math.lerp(this, 72.77 + 13.4 * math.mod(query.modified_distance_moved, 26.0), variable.rightarmswim_amount)"
+                                `math.lerp(this, 72.77 + 13.4 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.rightarmswim_amount)`
                             ],
                             pre: [
                                 "math.lerp(this, 0.0, variable.rightarmswim_amount)",
                                 "math.lerp(this, 180.0, variable.rightarmswim_amount)",
-                                "math.lerp(this, -0.1019 * (-65.0 * math.mod(query.modified_distance_moved, 26.0) + math.mod(query.modified_distance_moved, 26.0) * math.mod(query.modified_distance_moved, 26.0)), variable.rightarmswim_amount)"
+                                `math.lerp(this, -0.1019 * (-65.0 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0) + math.mod(${MoLang.modifiedDistanceMoved()}, 26.0) * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0)), variable.rightarmswim_amount)`
                             ]
                         },
                         "1.1": [
-                            "math.lerp(this, 11.25 * math.mod(query.modified_distance_moved, 26.0), variable.rightarmswim_amount)",
+                            `math.lerp(this, 11.25 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.rightarmswim_amount)`,
                             "math.lerp(this, 180.0, variable.rightarmswim_amount)",
-                            "math.lerp(this, 72.77 + 13.4 * math.mod(query.modified_distance_moved, 26.0), variable.rightarmswim_amount)"
+                            `math.lerp(this, 72.77 + 13.4 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.rightarmswim_amount)`
                         ],
                         "1.3": {
                             post: [
-                                "math.lerp(this, 90.0 - (22.5 * math.mod(query.modified_distance_moved, 26.0)), variable.rightarmswim_amount)",
+                                `math.lerp(this, 90.0 - (22.5 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0)), variable.rightarmswim_amount)`,
                                 "math.lerp(this, 180.0, variable.rightarmswim_amount)",
                                 "math.lerp(this, 180.0, variable.rightarmswim_amount)"
                             ],
                             pre: [
-                                "math.lerp(this, 11.25 * math.mod(query.modified_distance_moved, 26.0), variable.rightarmswim_amount)",
+                                `math.lerp(this, 11.25 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.rightarmswim_amount)`,
                                 "math.lerp(this, 180.0, variable.rightarmswim_amount)",
-                                "math.lerp(this, 72.77 + 13.4 * math.mod(query.modified_distance_moved, 26.0), variable.rightarmswim_amount)"
+                                `math.lerp(this, 72.77 + 13.4 * math.mod(${MoLang.modifiedDistanceMoved()}, 26.0), variable.rightarmswim_amount)`
                             ]
                         }
                     }
                 },
                 rightleg: {
                     rotation: [
-                        "math.lerp(this, math.cos(query.modified_distance_moved * 19.5) * 17.2, variable.leftarmswim_amount) - this",
+                        `math.lerp(this, math.cos(${MoLang.modifiedDistanceMoved()} * 19.5) * 17.2, variable.leftarmswim_amount) - this`,
                         0.1,
                         0.1
                     ]
@@ -459,8 +459,8 @@ export const HumanoidAnimation = createRPAnimation({
             bones: {
                 rightarm: {
                     rotation: [
-                        "v.tp_melee_spear_base_arm_rotation_x + q.target_x_rotation - q.is_sneaking * 27.0 - this",
-                        "math.clamp(q.target_y_rotation, -60.0, 45.0) - this",
+                        `v.tp_melee_spear_base_arm_rotation_x + ${MoLang.targetXRotation()} - ${MoLang.isSneaking()} * 27.0 - this`,
+                        `math.clamp(${MoLang.targetYRotation()}, -60.0, 45.0) - this`,
                         0.0
                     ]
                 },
@@ -475,15 +475,15 @@ export const HumanoidAnimation = createRPAnimation({
             bones: {
                 leftarm: {
                     rotation: [
-                        "v.tp_melee_spear_base_arm_rotation_x + q.target_x_rotation - q.is_sneaking * 27.0 - this",
-                        "math.clamp(q.target_y_rotation, -60.0, 45.0) - this",
+                        `v.tp_melee_spear_base_arm_rotation_x + ${MoLang.targetXRotation()} - ${MoLang.isSneaking()} * 27.0 - this`,
+                        `math.clamp(${MoLang.targetYRotation()}, -60.0, 45.0) - this`,
                         0.0
                     ]
                 },
                 rightarm: {
                     rotation: [
-                        "v.tp_melee_spear_base_arm_rotation_x + q.target_x_rotation - q.is_sneaking * 27.0 - this",
-                        "math.clamp(q.target_y_rotation, -60.0, 45.0) - this",
+                        `v.tp_melee_spear_base_arm_rotation_x + ${MoLang.targetXRotation()} - ${MoLang.isSneaking()} * 27.0 - this`,
+                        `math.clamp(${MoLang.targetYRotation()}, -60.0, 45.0) - this`,
                         0.0
                     ]
                 },
@@ -498,8 +498,8 @@ export const HumanoidAnimation = createRPAnimation({
             bones: {
                 rightarm: {
                     rotation: [
-                        "v.tp_melee_spear_base_arm_rotation_x + q.target_x_rotation - q.is_sneaking * 27.0 - this + v.tp_melee_spear_use_arm_rotation_x",
-                        "math.clamp(q.target_y_rotation, -60.0, 45.0) - this + v.tp_melee_spear_use_arm_rotation_y",
+                        `v.tp_melee_spear_base_arm_rotation_x + ${MoLang.targetXRotation()} - ${MoLang.isSneaking()} * 27.0 - this + v.tp_melee_spear_use_arm_rotation_x`,
+                        `math.clamp(${MoLang.targetYRotation()}, -60.0, 45.0) - this + v.tp_melee_spear_use_arm_rotation_y`,
                         MoLang.variable("tp_melee_spear_use_arm_rotation_z")
                     ]
                 },
@@ -515,15 +515,15 @@ export const HumanoidAnimation = createRPAnimation({
             bones: {
                 leftarm: {
                     rotation: [
-                        "v.tp_melee_spear_base_arm_rotation_x + q.target_x_rotation - q.is_sneaking * 27.0 - this + v.tp_melee_spear_use_arm_rotation_x",
-                        "math.clamp(q.target_y_rotation, -60.0, 45.0) - this - v.tp_melee_spear_use_arm_rotation_y",
+                        `v.tp_melee_spear_base_arm_rotation_x + ${MoLang.targetXRotation()} - ${MoLang.isSneaking()} * 27.0 - this + v.tp_melee_spear_use_arm_rotation_x`,
+                        `math.clamp(${MoLang.targetYRotation()}, -60.0, 45.0) - this - v.tp_melee_spear_use_arm_rotation_y`,
                         MoLang.variable("tp_melee_spear_use_arm_rotation_z")
                     ]
                 },
                 rightarm: {
                     rotation: [
-                        "v.tp_melee_spear_base_arm_rotation_x + q.target_x_rotation - q.is_sneaking * 27.0 - this + v.tp_melee_spear_use_arm_rotation_x",
-                        "math.clamp(q.target_y_rotation, -60.0, 45.0) - this + v.tp_melee_spear_use_arm_rotation_y",
+                        `v.tp_melee_spear_base_arm_rotation_x + ${MoLang.targetXRotation()} - ${MoLang.isSneaking()} * 27.0 - this + v.tp_melee_spear_use_arm_rotation_x`,
+                        `math.clamp(${MoLang.targetYRotation()}, -60.0, 45.0) - this + v.tp_melee_spear_use_arm_rotation_y`,
                         MoLang.variable("tp_melee_spear_use_arm_rotation_z")
                     ]
                 },

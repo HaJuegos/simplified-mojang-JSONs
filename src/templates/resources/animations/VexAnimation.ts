@@ -28,10 +28,10 @@ export const VexAnimation = createRPAnimation({
                     }
                 },
                 leftwing: {
-                    rotation: ["27.0 - this", "-(15.0 + math.cos(query.life_time * 916.8) * 9.0) - this", "-45.0 - this"]
+                    rotation: ["27.0 - this", `-(15.0 + math.cos(${MoLang.lifeTime()} * 916.8) * 9.0) - this`, "-45.0 - this"]
                 },
                 rightwing: {
-                    rotation: ["27.0 - this", "15.0 + math.cos(query.life_time * 916.8) * 9.0 - this", "45.0 - this"]
+                    rotation: ["27.0 - this", `15.0 + math.cos(${MoLang.lifeTime()} * 916.8) * 9.0 - this`, "45.0 - this"]
                 },
                 rightItem: {
                     scale: 0.7
@@ -48,16 +48,16 @@ export const VexAnimation = createRPAnimation({
             bones: {
                 rightarm: {
                     rotation: [
-                        "variable.empty_handed ? -70.0 - this : (query.is_item_equipped(0) ? 210.0 - this : this)",
-                        "variable.empty_handed ? this : (query.is_item_equipped(0) ? 15.0 - this : this)",
-                        "variable.empty_handed ? this : (query.is_item_equipped(0) ? -25.0 - 32.34 - this : this)"
+                        `variable.empty_handed ? -70.0 - this : (${MoLang.isItemEquipped(0)} ? 210.0 - this : this)`,
+                        `variable.empty_handed ? this : (${MoLang.isItemEquipped(0)} ? 15.0 - this : this)`,
+                        `variable.empty_handed ? this : (${MoLang.isItemEquipped(0)} ? -25.0 - 32.34 - this : this)`
                     ]
                 },
                 leftarm: {
                     rotation: [
-                        "variable.empty_handed ? -70.0 - this : (query.is_item_equipped(1) ? 210.0 - this : this)",
-                        "variable.empty_handed ? this : (query.is_item_equipped(1) ? -15.0 - this : this)",
-                        "variable.empty_handed ? this : (query.is_item_equipped(1) ? 25.0 + 32.34 - this : this)"
+                        `variable.empty_handed ? -70.0 - this : (${MoLang.isItemEquipped(1)} ? 210.0 - this : this)`,
+                        `variable.empty_handed ? this : (${MoLang.isItemEquipped(1)} ? -15.0 - this : this)`,
+                        `variable.empty_handed ? this : (${MoLang.isItemEquipped(1)} ? 25.0 + 32.34 - this : this)`
                     ]
                 }
             }

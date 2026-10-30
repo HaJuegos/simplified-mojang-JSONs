@@ -15,14 +15,14 @@ export const IronGolemAnimation = createRPAnimation({
             bones: {
                 arm0: {
                     rotation: [
-                        "-114 + ((1.5 * math.abs(math.mod(variable.attack_animation_tick - query.frame_alpha, 10) - 5) - 2.5) / 5) * 57.3",
+                        `-114 + ((1.5 * math.abs(math.mod(variable.attack_animation_tick - ${MoLang.frameAlpha()}, 10) - 5) - 2.5) / 5) * 57.3`,
                         0.0,
                         0.0
                     ]
                 },
                 arm1: {
                     rotation: [
-                        "-114 + ((1.5 * math.abs(math.mod(variable.attack_animation_tick - query.frame_alpha, 10) - 5) - 2.5) / 5) * 57.3",
+                        `-114 + ((1.5 * math.abs(math.mod(variable.attack_animation_tick - ${MoLang.frameAlpha()}, 10) - 5) - 2.5) / 5) * 57.3`,
                         0.0,
                         0.0
                     ]
@@ -55,10 +55,10 @@ export const IronGolemAnimation = createRPAnimation({
             loop: true,
             bones: {
                 arm0: {
-                    rotation: ["((math.abs(math.mod(query.modified_distance_moved, 13) - 6.5) - 3.25) / 2.25) * 30.0", 0.0, 0.0]
+                    rotation: [`((math.abs(math.mod(${MoLang.modifiedDistanceMoved()}, 13) - 6.5) - 3.25) / 2.25) * 30.0`, 0.0, 0.0]
                 },
                 arm1: {
-                    rotation: ["((math.abs(math.mod(query.modified_distance_moved, 13) - 6.5) - 3.25) / 2.25) * -30.0", 0.0, 0.0]
+                    rotation: [`((math.abs(math.mod(${MoLang.modifiedDistanceMoved()}, 13) - 6.5) - 3.25) / 2.25) * -30.0`, 0.0, 0.0]
                 }
             }
         },
@@ -85,10 +85,10 @@ export const IronGolemAnimation = createRPAnimation({
             loop: true,
             bones: {
                 body: {
-                    rotation: [0.0, 0.0, "2.0 * (math.abs(math.mod(query.modified_distance_moved + 6, 13.0) - 6.5) - 3.25)"]
+                    rotation: [0.0, 0.0, `2.0 * (math.abs(math.mod(${MoLang.modifiedDistanceMoved()} + 6, 13.0) - 6.5) - 3.25)`]
                 },
                 head: {
-                    rotation: [0.0, 0.0, "2.0 * (math.abs(math.mod(query.modified_distance_moved + 6, 13.0) - 6.5) - 3.25)"]
+                    rotation: [0.0, 0.0, `2.0 * (math.abs(math.mod(${MoLang.modifiedDistanceMoved()} + 6, 13.0) - 6.5) - 3.25)`]
                 },
                 leg0: {
                     rotation: [`(${MoLang.cos(`${MoLang.modifiedDistanceMoved()} * 38.17`)} * 40.0)`, 0.0, 0.0]

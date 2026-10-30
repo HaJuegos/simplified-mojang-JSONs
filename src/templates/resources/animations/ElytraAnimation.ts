@@ -38,7 +38,7 @@ export const ElytraAnimation = createRPAnimation({
                 left_wing: {
                     position: [2, 2, -2],
                     rotation: [
-                        "variable.ratio = (query.position_delta(1) < 0) ? 1 - math.pow(-query.movement_direction(1), 1.5) : 1; return math.lerp(15, 20, variable.ratio);",
+                        `variable.ratio = (${MoLang.positionDelta(1)} < 0) ? 1 - math.pow(-${MoLang.movementDirection(1)}, 1.5) : 1; return math.lerp(15, 20, variable.ratio);`,
                         0,
                         "math.lerp(-15, -90, variable.ratio)"
                     ],
@@ -47,7 +47,7 @@ export const ElytraAnimation = createRPAnimation({
                 right_wing: {
                     position: [-2, 2, -2],
                     rotation: [
-                        "variable.ratio = (query.position_delta(1) < 0) ? 1 - math.pow(-query.movement_direction(1), 1.5) : 1; return math.lerp(15, 20, variable.ratio);",
+                        `variable.ratio = (${MoLang.positionDelta(1)} < 0) ? 1 - math.pow(-${MoLang.movementDirection(1)}, 1.5) : 1; return math.lerp(15, 20, variable.ratio);`,
                         0,
                         "math.lerp(15, 90, variable.ratio)"
                     ],

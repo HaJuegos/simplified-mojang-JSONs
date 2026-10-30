@@ -14,7 +14,7 @@ export const BatAnimation = createRPAnimation({
             loop: true,
             bones: {
                 Head: {
-                    rotation: [MoLang.targetXRotation(), "180.0f - query.target_y_rotation", 180],
+                    rotation: [MoLang.targetXRotation(), `180.0f - ${MoLang.targetYRotation()}`, 180],
                     position: [0, 0.3, 0]
                 },
                 body: {
