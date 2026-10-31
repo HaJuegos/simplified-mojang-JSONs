@@ -22,6 +22,7 @@ export { RPAnimationControllerTemplates } from "./templates/resources/animationC
 export { RPAttachableTemplates } from "./templates/resources/attachables";
 export { RPClientEntityTemplates } from "./templates/resources/entity";
 export { RPFogTemplates } from "./templates/resources/fogs";
+export { RPMaterialTemplates } from "./templates/resources/materials";
 
 
 // Exportacion de plantillas para la creacion custom.
@@ -50,6 +51,7 @@ export { createRPAnimController } from "./builders/resources/animControllers/Ani
 export { createRPAttachable } from "./builders/resources/attachables/AttachableTemplateBuilder";
 export { createRPEntityClient } from "./builders/resources/entities/EntityTemplateBuilder";
 export { createRPFog } from "./builders/resources/fogs/FogTemplateBuilder";
+export { createRPEntityMaterial } from "./builders/resources/materials/entity/MaterialEntityTemplateBuilder";
 
 
 // Tipados necesarios para las plantillas de creacion custom.
@@ -78,6 +80,7 @@ export type { RPAnimControllerDefinition, RPAnimControllerOverride } from "./typ
 export type { RPAttachableDefinition, RPAttachableOverride } from "./types/resources/attachables/AttachableTemplate";
 export type { RPEntityClientDefinition, RPEntityClientOverride } from "./types/resources/entity/EntityTemplate";
 export type { RPFogDefinition, RPFogOverride } from "./types/resources/fogs/FogTemplate";
+export type { RPEntityMaterialDefinition, RPEntityMaterialOverride } from "./types/resources/materials/entity/MaterialEntityTemplates";
 
 
 // Tipados necesarios externos
