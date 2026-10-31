@@ -72,6 +72,7 @@ class GenerateAutoIndexs {
         { dir: "src/templates/resources/attachables", namespace: "RPAttachableTemplates", kind: "const" },
         { dir: "src/templates/resources/entity", namespace: "RPClientEntityTemplates", kind: "const" },
         { dir: "src/templates/resources/fogs", namespace: "RPFogTemplates", kind: "const" },
+        { dir: "src/templates/resources/materials", namespace: "RPMaterialTemplates", kind: "const", recursive: true },
     ];
 
     /**
