@@ -116,6 +116,10 @@ type RPEntityClientOverride<
     readonly add?: EntityClientParams;
 };
 
+/**
+ * Tipado general para asignar una lista de render controllers ya sea por un array o con condiciones.
+ * @author HaJuegos - 30-10-2026
+ */
 type RenderControllerTypes = string | {
     [key: string]: string | MoLang;
 };
