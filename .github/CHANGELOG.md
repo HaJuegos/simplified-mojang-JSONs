@@ -22,6 +22,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - Creating vanilla template files for an Client Entity, from JSON to TS.
 - The base template for creating an Fog in an RP is created.
 - Creating vanilla template files for an Fog, from JSON to TS.
+- The base template for creating an entity.material in an RP is created.
 
 ## [0.0.9] - 2026-10-27
 

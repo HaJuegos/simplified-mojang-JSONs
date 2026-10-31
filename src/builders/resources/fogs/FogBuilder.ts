@@ -1,4 +1,5 @@
 import { DistanceFogParams, FormatVersionListFog, VolumetricFogParams } from "../../../types/resources/fogs/FogTemplate";
+import { SnakeCase } from "../../../utils/SnakeCase";
 
 /**
  * Clase principal para la construccion de un nuevo fog con sus parametros fijos establecidos.
@@ -111,7 +112,7 @@ export class ResourceFogBuilder {
             },
         };
 
-        const finalObj = Object.freeze(preFog);
+        const finalObj = Object.freeze(SnakeCase.deepSnakeCase(preFog));
         const JSONtxt = JSON.stringify(finalObj, null, 4);
 
         return stringify ? JSONtxt : finalObj;
