@@ -21,6 +21,7 @@ export { RPAnimationTemplates } from "./templates/resources/animations";
 export { RPAnimationControllerTemplates } from "./templates/resources/animationControllers";
 export { RPAttachableTemplates } from "./templates/resources/attachables";
 export { RPClientEntityTemplates } from "./templates/resources/entity";
+export { RPFogTemplates } from "./templates/resources/fogs";
 
 
 // Exportacion de plantillas para la creacion custom.
@@ -48,6 +49,7 @@ export { createRPAnimation } from "./builders/resources/animations/AnimationTemp
 export { createRPAnimController } from "./builders/resources/animControllers/AnimControllerTemplateBuilder";
 export { createRPAttachable } from "./builders/resources/attachables/AttachableTemplateBuilder";
 export { createRPEntityClient } from "./builders/resources/entities/EntityTemplateBuilder";
+export { createRPFog } from "./builders/resources/fogs/FogTemplateBuilder";
 
 
 // Tipados necesarios para las plantillas de creacion custom.
@@ -75,6 +77,7 @@ export type { RPAnimationDefinition, RPAnimationOverride } from "./types/resourc
 export type { RPAnimControllerDefinition, RPAnimControllerOverride } from "./types/resources/animControllers/AnimControllerTemplate";
 export type { RPAttachableDefinition, RPAttachableOverride } from "./types/resources/attachables/AttachableTemplate";
 export type { RPEntityClientDefinition, RPEntityClientOverride } from "./types/resources/entity/EntityTemplate";
+export type { RPFogDefinition, RPFogOverride } from "./types/resources/fogs/FogTemplate";
 
 
 // Tipados necesarios externos
@@ -84,6 +87,7 @@ export { SpawnCategoryEntities, FormatVersionEntities } from "./types/behaviors/
 export { FormatVersionListAnims } from "./types/resources/animations/AnimationTemplate";
 export { FormatVersionAttachList } from "./types/resources/attachables/AttachableTemplate";
 export { FormatVersionListEntities } from "./types/resources/entity/EntityTemplate";
+export { FormatVersionListFog } from "./types/resources/fogs/FogTemplate";
 
 
 // Otras exportaciones de la API.

@@ -1,3 +1,5 @@
+import { RGB } from "@minecraft/server";
+
 export {
     RPFogDefinition,
     RPFogOverride,
@@ -207,10 +209,71 @@ interface BaseTypeDistanceParams {
     renderDistanceType: "render" | "fixed";
 
     /**
-     * (Opcional) Si se establece, transformaran gradualmente la distancia de la fog por el bioma actual.
+     * (Opcional) Parametros que transformaran gradualmente la distancia de la fog por el bioma actual.
      * @type {?boolean}
      */
-    transitionFog?: boolean;
+    transitionFog?: TransitionFogParams;
+}
+
+/**
+ * Parametros base principales para la transformacion gradual de la distancia de la fog por el bioma acutal.
+ * @interface TransitionFogParams
+ * @author HaJuegos - 31-10-2026
+ */
+interface TransitionFogParams {
+    /**
+     * (Opcional) Fog inicial que transformara lentamente la distancia del fog sobre el agua propia del bioma cuando el jugador se sumerja en agua.
+     * @type {{ fogColor: string; fogEnd: number; fogStart: number; renderDistanceType: "fixed" | "render"; }}
+     */
+    initFog: {
+        /**
+         * Distancia en bloques donde la fog comienza. Afectado por el render del jugador.
+         * @type {number}
+         */
+        fogStart: number;
+
+        /**
+         * Distancia en bloques donde la fog termina. Afectado por el render del jugador.
+         * @type {number}
+         */
+        fogEnd: number;
+
+        /**
+         * Color hexadecimal del color que tomara el fog en concreto.
+         * @type {string}
+         */
+        fogColor: string;
+
+        /**
+         * Formato en como se va a renderizar inicialmente la fog en concreto. "fixed" se refiere a que la distancia se mide en bloques y "render" se multiplica por la distancia de renderizado actual.
+         * @type {"render" | "fixed"}
+         */
+        renderDistanceType: "render" | "fixed";
+    };
+
+    /**
+     * (Opcional) Tiempo que tardara en completarse la transicion de la fog.
+     * @type {number}
+     */
+    maxSeconds: number;
+
+    /**
+     * (Opcional) Tiempo de avance de la transicion de la niebla despues de midSeconds.
+     * @type {number}
+     */
+    midPercent: number;
+
+    /**
+     * (Opcional) Tiempo que tarda en alcanzarse un determinado porcentaje de avance en la transicion de la niebla.
+     * @type {number}
+     */
+    midSeconds: number;
+
+    /**
+     * (Opcional) Tiempo minimo de la transicion de la niebla.
+     * @type {number}
+     */
+    minPercent: number;
 }
 
 
@@ -310,7 +373,7 @@ type HenyeyTypes = {
      * Valor que controla la distribucion de la luz dispersa en bloques, numeros o animaciones de tipo "0.1": number.
      * @type {(number | Record<string, number>)}
      */
-    henyey_greenstein_g: number | Record<string, number>;
+    henyeyGreensteinG: number | Record<string, number>;
 };
 
 /**
@@ -367,11 +430,11 @@ interface MediaCoefficientBaseParams {
      * (Opcional) El color de la luz que emite el bloque en formato hexadecimal.
      * @type {?string}
      */
-    absorption?: string;
+    absorption?: string | [number, number, number];
 
     /**
      * (Opcional) El color de la luz que emite el bloque en formato hexadecimal.
      * @type {?string}
      */
-    scattering?: string;
+    scattering?: string | [number, number, number];
 }
