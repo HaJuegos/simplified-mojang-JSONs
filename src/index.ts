@@ -23,6 +23,7 @@ export { RPAttachableTemplates } from "./templates/resources/attachables";
 export { RPClientEntityTemplates } from "./templates/resources/entity";
 export { RPFogTemplates } from "./templates/resources/fogs";
 export { RPMaterialTemplates } from "./templates/resources/materials";
+export { RPRenderControllerTemplates } from "./templates/resources/renderControllers";
 
 
 // Exportacion de plantillas para la creacion custom.
@@ -52,6 +53,7 @@ export { createRPAttachable } from "./builders/resources/attachables/AttachableT
 export { createRPEntityClient } from "./builders/resources/entities/EntityTemplateBuilder";
 export { createRPFog } from "./builders/resources/fogs/FogTemplateBuilder";
 export { createRPEntityMaterial } from "./builders/resources/materials/entity/MaterialEntityTemplateBuilder";
+export { createRPRenderController } from "./builders/resources/renderControllers/RenderControllerTemplateBuilder";
 
 
 // Tipados necesarios para las plantillas de creacion custom.
@@ -81,6 +83,7 @@ export type { RPAttachableDefinition, RPAttachableOverride } from "./types/resou
 export type { RPEntityClientDefinition, RPEntityClientOverride } from "./types/resources/entity/EntityTemplate";
 export type { RPFogDefinition, RPFogOverride } from "./types/resources/fogs/FogTemplate";
 export type { RPEntityMaterialDefinition, RPEntityMaterialOverride } from "./types/resources/materials/entity/MaterialEntityTemplates";
+export type { RPRenderControllerDefinition, RPRenderControllerOverride } from "./types/resources/renderControllers/RenderControllerTemplate";
 
 
 // Tipados necesarios externos
@@ -91,6 +94,7 @@ export { FormatVersionListAnims } from "./types/resources/animations/AnimationTe
 export { FormatVersionAttachList } from "./types/resources/attachables/AttachableTemplate";
 export { FormatVersionListEntities } from "./types/resources/entity/EntityTemplate";
 export { FormatVersionListFog } from "./types/resources/fogs/FogTemplate";
+export { FormatVersionRenderList } from "./types/resources/renderControllers/RenderControllerTemplate";
 
 
 // Otras exportaciones de la API.
