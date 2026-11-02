@@ -190,8 +190,8 @@ export class MoLang {
      * @public
      * @static
      */
-    public static armorColorSlot(slot: MoLangValue): string {
-        return this.queryFunction("armor_color_slot", slot);
+    public static armorColorSlot(...slot: MoLangValue[]): string {
+        return this.queryFunction("armor_color_slot", ...slot);
     }
 
     /**

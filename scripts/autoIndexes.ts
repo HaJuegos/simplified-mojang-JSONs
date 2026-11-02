@@ -73,6 +73,7 @@ class GenerateAutoIndexs {
         { dir: "src/templates/resources/entity", namespace: "RPClientEntityTemplates", kind: "const" },
         { dir: "src/templates/resources/fogs", namespace: "RPFogTemplates", kind: "const" },
         { dir: "src/templates/resources/materials", namespace: "RPMaterialTemplates", kind: "const", recursive: true },
+        { dir: "src/templates/resources/renderControllers", namespace: "RPRenderControllerTemplates", kind: "const" },
     ];
 
     /**

@@ -169,7 +169,7 @@ interface RenderControllerBaseParams {
      * Lista de materiales a renderizar en concreto por huesos o todos.
      * @type {(MaterialDefinition | MoLangValue)[]}
      */
-    materials: (MaterialDefinition | MoLangValue)[];
+    materials: MaterialDefinition[];
 
     /**
      * Lista de texturas a renderizar en concreto. 
@@ -181,7 +181,7 @@ interface RenderControllerBaseParams {
      * (Opcional) Lista de partes visibles por condiciones a tiempo real en formato MoLang.
      * @type {?Record<string, MoLangValue>[]}
      */
-    partVisibility?: Record<string, MoLangValue>[];
+    partVisibility?: MaterialDefinition[];
 
     /**
      * (Opcional) Parametros de animacion UV a las texturas renderizadas.
@@ -239,8 +239,8 @@ interface RenderControllerBaseParams {
 }
 
 interface MaterialDefinition {
-    "*": MaterialTypeValidator;
-    [key: string]: MaterialTypeValidator;
+    readonly "*"?: MaterialTypeValidator | MoLangValue | boolean;
+    [key: string]: MaterialTypeValidator | MoLangValue | boolean | undefined;
 }
 
 interface ArraysDefinition {
