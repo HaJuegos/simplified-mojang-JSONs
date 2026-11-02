@@ -45,8 +45,30 @@ class FinalRPAnimControllerBuilderTemplate extends FinalAnimControllerBuilderTem
                 };
 
                 for (const [stateId, partial] of Object.entries(edit.states ?? {}) as [string, any][]) {
-                    if (ctrl.states[stateId] && partial) {
-                        Object.assign(ctrl.states[stateId], partial);
+                    if (!ctrl.states[stateId]) {
+                        ctrl.states[stateId] = partial;
+                    } else if (partial) {
+                        for (const [prop, val] of Object.entries(partial)) {
+                            const targetProp = (ctrl.states[stateId] as any)[prop];
+
+                            if (Array.isArray(targetProp) && Array.isArray(val)) {
+                                const existingKeys = new Set(targetProp.map(x => JSON.stringify(x)));
+                                const merged = [...targetProp];
+
+                                for (const item of val) {
+                                    const serialized = JSON.stringify(item);
+
+                                    if (!existingKeys.has(serialized)) {
+                                        merged.push(item);
+                                        existingKeys.add(serialized);
+                                    }
+                                }
+
+                                (ctrl.states[stateId] as any)[prop] = merged;
+                            } else {
+                                (ctrl.states[stateId] as any)[prop] = val;
+                            }
+                        }
                     }
                 }
             }
@@ -99,7 +121,19 @@ class FinalRPAnimControllerBuilderTemplate extends FinalAnimControllerBuilderTem
         }
 
         if (over.add?.animControllers) {
-            controllers.push(...structuredClone([...over.add.animControllers]));
+            for (const newCtrl of over.add.animControllers) {
+                const existing = controllers.find(c => c.idController === newCtrl.idController);
+
+                if (existing) {
+                    existing.initialState = newCtrl.initialState || existing.initialState;
+                    existing.states = {
+                        ...existing.states,
+                        ...newCtrl.states
+                    };
+                } else {
+                    controllers.push(structuredClone(newCtrl));
+                }
+            }
         }
 
         return { ...def, animControllers: controllers };
