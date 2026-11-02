@@ -4,6 +4,7 @@ import { MoLangValue } from "../../MoLang";
 export {
     RPAnimControllerDefinition,
     RPAnimControllerOverride,
+    RPNoExtraStates,
 
     ParticleEffectParams,
     SoundEffectParams,
@@ -20,6 +21,30 @@ export {
  * @author HaJuegos - 27-10-2026
  */
 interface RPAnimControllerDefinition extends BPAnimControllerFinalDefinition<RPAnimControllerParamsBase[]> { }
+
+/**
+ * Tipado general auxiliar para prevenir la eliminacion o keys adiccionales que no estan permitidas en el tipado general de la plantilla base.
+ * @template {readonly unknown[]} C Controlador a considerar.
+ * @author HaJuegos - 03-11-2026
+ */
+type RPNoExtraControllers<C extends readonly unknown[]> = {
+    [I in keyof C]: C[I] extends { states: infer S; } ? {
+        states: {
+            [N in keyof S]: {
+                [P in keyof S[N]]: P extends keyof RPAditionalAnimControllerStates ? unknown : never;
+            };
+        };
+    } : unknown;
+};
+
+/**
+ * Tipado auxiliar que bloquea la posibilidad de agregar keys que no son parte de la definicion base de la plantilla base.
+ * @template {RPAnimControllerDefinition} T Plantilla con definiciones base a considerar.
+ * @author HaJuegos - 03-11-2026
+ */
+type RPNoExtraStates<T extends RPAnimControllerDefinition> = {
+    animControllers: RPNoExtraControllers<T["animControllers"]>;
+};
 
 /**
  * Tipado auxiliar general para mapear los states de un controlador fijados en una plantilla base de un RP por ID.
@@ -61,8 +86,12 @@ type RPControllerEdit<S> = {
      * @type {?{ [K in keyof S]?: Partial<RPAditionalAnimControllerStates> }}
      */
     states?: {
-        [K in keyof S]?: Partial<RPAditionalAnimControllerStates>
+        [K in keyof S]?: Partial<RPAditionalAnimControllerStates>;
+    } & {
+        [K in Exclude<string, keyof S>]?: never;
     };
+} & {
+    [K in Exclude<string, "initialState" | "states">]?: never;
 };
 
 /**
@@ -70,7 +99,7 @@ type RPControllerEdit<S> = {
  * @template S Estados definidos en el controlador de la plantilla base.
  * @author HaJuegos - 28-10-2026
  */
-type RPControllerRemoverEdit<S> = true | {
+type RPControllerRemoverEdit<S> = true | ({
     /**
      * (Opcional) Si es true, elimina el estado inicial del controlador.
      * @type {?true}
@@ -85,8 +114,12 @@ type RPControllerRemoverEdit<S> = true | {
         [K in keyof S]?: true | {
             [P in keyof S[K]]?: S[K][P] extends readonly (infer U)[] ? true | readonly U[] : true;
         };
+    } & {
+        [K in Exclude<string, keyof S>]?: never;
     };
-};
+} & {
+    [K in Exclude<string, "initialState" | "states">]?: never;
+});
 
 /**
  * Lista de parametros para la post-edicion de una plantilla base de controladores de animacion en un RP.
@@ -122,6 +155,8 @@ type RPAnimControllerOverride<
      */
     changeControllers?: {
         [K in keyof TBase]?: RPControllerEdit<TBase[K]['states']>;
+    } & {
+        [K in Exclude<string, keyof TBase>]?: never;
     };
 
     /**
@@ -130,6 +165,8 @@ type RPAnimControllerOverride<
      */
     remove?: {
         [K in keyof TBase]?: RPControllerRemoverEdit<TBase[K]['states']>;
+    } & {
+        [K in Exclude<string, keyof TBase>]?: never;
     };
 
     /**
@@ -162,7 +199,7 @@ interface RPAditionalAnimControllerStates extends AnimControllerStatesTypes {
      * (Opcional) Una version abreviada de "blend_out" que simplemente establece el tiempo que tardara en desvanecerse la animacion si se interrumpe.
      * @type {?number}
      */
-    blendransition?: number;
+    blendTransition?: number;
 
     /**
      * (Opcional) Si se establece, se fusiona una transicion a otro estado, anima cada eje de Euler mediante la rotacion mas corta, en lugar de por valor.

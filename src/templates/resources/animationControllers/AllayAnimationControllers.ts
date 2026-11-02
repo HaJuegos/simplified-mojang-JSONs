@@ -1,5 +1,4 @@
 import { createRPAnimController } from "../../../builders/resources/animControllers/AnimControllerTemplateBuilder";
-import { FormatVersionAnimControllerList } from "../../../types/behaviors/animContollers/AnimControllerTemplate";
 import { MoLang } from "../../../utils/MoLang";
 
 /**

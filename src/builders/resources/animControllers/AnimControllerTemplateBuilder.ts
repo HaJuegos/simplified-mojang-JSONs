@@ -1,4 +1,4 @@
-import { RPAnimControllerDefinition, RPAnimControllerOverride, RPAnimControllerParamsBase, RPControllersMap } from "../../../types/resources/animControllers/AnimControllerTemplate";
+import { RPAnimControllerDefinition, RPAnimControllerOverride, RPAnimControllerParamsBase, RPControllersMap, RPNoExtraStates } from "../../../types/resources/animControllers/AnimControllerTemplate";
 import { FinalAnimControllerBuilderTemplate } from "../../behaviors/animControllers/AnimControllerTemplateBuilder";
 
 /**
@@ -108,7 +108,7 @@ class FinalRPAnimControllerBuilderTemplate extends FinalAnimControllerBuilderTem
                             const toRemove = new Set(val.map(key));
 
                             target[prop] = target[prop].filter((x: unknown) => {
-                                !toRemove.has(key(x));
+                                return !toRemove.has(key(x));
                             });
 
                             if (target[prop].length == 0) {
@@ -150,7 +150,7 @@ class FinalRPAnimControllerBuilderTemplate extends FinalAnimControllerBuilderTem
  */
 export function createRPAnimController<
     const TDef extends RPAnimControllerDefinition
->(def: TDef) {
+>(def: TDef & RPNoExtraStates<TDef>) {
     return (over: RPAnimControllerOverride<RPControllersMap<TDef['animControllers']>> = {}) => {
         return new FinalRPAnimControllerBuilderTemplate(def, over).finalBuild();
     };
