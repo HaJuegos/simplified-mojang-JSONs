@@ -62,6 +62,57 @@ type RPAnimationsMap<T extends readonly { idAnimation: string; }[]> = {
 };
 
 /**
+ * Tipado auxiliar general para los tipos de valores de cada seccion que se puede editar por ID de una animacion.
+ * @author HaJuegos - 03-11-2026
+ */
+type RPAnimationSections = {
+    bones: BoneAnimationParams[string];
+    particleEffects: ParticleEffectsParams[string];
+    soundEffects: SoundEffectsParams[string];
+};
+
+/**
+ * Tipado auxiliar general para editar una animacion existente en la plantilla base.
+ * @template A Animacion de la plantilla base a editar en cuestion.
+ * @author HaJuegos - 03-11-2026
+ */
+type RPAnimationEdit<A> = {
+    [P in Exclude<keyof AnimationParams, 'idAnimation'>]?: P extends keyof RPAnimationSections ? P extends keyof A
+    ? {
+        [K in keyof NonNullable<A[P]>]?: RPAnimationSections[P];
+    } : never : AnimationParams[P];
+};
+
+/**
+ * Tipado auxiliar general para agregar datos nuevos a una animacion existente en la plantilla base, ordenados por su ID.
+ * @template {Record<string, { idAnimation: string; }>} TBase Mapa de animaciones de la plantilla base.
+ * @author HaJuegos - 03-11-2026
+ */
+type RPAnimationDataAdd<TBase extends Record<string, { idAnimation: string; }>> = {
+    [K in keyof TBase]?: {
+        /**
+         * (Opcional) Huesos nuevos a agregar a la animacion con este ID.
+         * @type {?BoneAnimationParams}
+         */
+        bones?: BoneAnimationParams;
+
+        /**
+         * (Opcional) Particulas nuevas a agregar a la animacion con este ID.
+         * @type {?ParticleEffectsParams}
+         */
+        particleEffects?: ParticleEffectsParams;
+
+        /**
+         * (Opcional) Sonidos nuevos a agregar a la animacion con este ID.
+         * @type {?SoundEffectsParams}
+         */
+        soundEffects?: SoundEffectsParams;
+    };
+} & {
+    idAnimation?: never;
+};
+
+/**
  * Tipado auxiliar general para mostrar el mapeo para las edicions de los valores post-edicion.
  * @template A Tipados en concreto a considerar.
  * @author HaJuegos - 29-10-2026 
@@ -79,20 +130,48 @@ type RPAnimationRemoverEdit<A> = true | {
 type RPAnimationOverride<
     TBase extends Record<string, { idAnimation: string; }> = Record<string, AnimationParams>
 > = {
+    /**
+     * Si se define, elimina todos los datos de la plantilla base dejando un archivo vacio.
+     * @type {true}
+     */
     clearAllData: true;
+
+    /**
+     * (Opcional) Lista de nuevas animaciones a agregar.
+     * @type {?{readonly animations?: AnimationParams[];}}
+     */
     add?: {
         readonly animations?: AnimationParams[];
     };
 } | {
+    /**
+     * (Opcional) Si se define, elimina todos los datos de la plantilla base dejando un archivo vacio.
+     * @type {?false | undefined}
+     */
     clearAllData?: false | undefined;
+
+    /**
+     * (Opcional) Lista de modificaciones de la plantilla base a editar.
+     * @type {?{[K in keyof TBase]?: RPAnimationEdit<TBase[K]>;}}
+     */
     changeAnimations?: {
-        [K in keyof TBase]?: Partial<Omit<AnimationParams, 'idAnimation'>>
+        [K in keyof TBase]?: RPAnimationEdit<TBase[K]>;
     };
+
+    /**
+     * (Opcional) Lista de parametros y datos en concreto o especificos a eliminar de la plantilla base.
+     * @type {?{[K in keyof TBase]?: RPAnimationRemoverEdit<TBase[K]>;}}
+     */
     remove?: {
-        [K in keyof TBase]?: RPAnimationRemoverEdit<TBase[K]>
+        [K in keyof TBase]?: RPAnimationRemoverEdit<TBase[K]>;
     };
+
+    /**
+     * (Opcional) Lista de parametros y datos en concreto o especificos a añadir en la plantilla base sin modificarlo enteramente. O sino tambien, meter completamente datos nuevos.
+     * @type {?{readonly animations?: (AnimationParams | RPAnimationDataAdd<TBase>)[];}}
+     */
     add?: {
-        readonly animations?: AnimationParams[];
+        readonly animations?: (AnimationParams | RPAnimationDataAdd<TBase>)[];
     };
 };
 

@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 
 - General fixes for post-editing changes to animation controllers.
+- General fixes for post-editing changes to animations.
 
 ## [0.0.13] - 2026-11-2
 

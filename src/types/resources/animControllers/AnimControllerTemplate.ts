@@ -26,13 +26,15 @@ interface RPAnimControllerDefinition extends BPAnimControllerFinalDefinition<rea
  * @author HaJuegos - 03-11-2026
  */
 type RPNoExtraControllers<C extends readonly unknown[]> = {
-    [I in keyof C]: C[I] extends { states: infer S; } ? {
+    [I in keyof C]: C[I] extends { idController: infer Id; initialState: infer Init; states: infer S; } ? {
+        idController: Id;
+        initialState: Init;
         states: {
             [N in keyof S]: {
-                [P in keyof S[N]]: P extends keyof RPAditionalAnimControllerStates ? unknown : never;
+                [P in keyof S[N]]: P extends keyof RPAditionalAnimControllerStates ? S[N][P] : never;
             };
         };
-    } : unknown;
+    } : C[I];
 };
 
 /**

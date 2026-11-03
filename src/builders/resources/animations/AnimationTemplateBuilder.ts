@@ -93,7 +93,20 @@ export class FinalRPAnimationTemplateBuilder extends ResourceAnimationBuilder {
         }
 
         if (over.add?.animations) {
-            anims.push(...structuredClone([...over.add.animations]));
+            for (const item of over.add.animations as any[]) {
+                if ('idAnimation' in item) {
+                    anims.push(structuredClone(item));
+                    continue;
+                }
+
+                for (const [id, extra] of Object.entries(item) as [string, any][]) {
+                    const anim = anims.find(a => a.idAnimation === id);
+
+                    if (anim && extra) {
+                        merge(anim, structuredClone(extra));
+                    }
+                }
+            }
         }
 
         this.setAnimations(anims);
