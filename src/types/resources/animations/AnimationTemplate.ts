@@ -5,6 +5,7 @@ export {
     FormatVersionListAnims,
     RPAnimationDefinition,
     RPAnimationOverride,
+    RPNoExtraAnimations,
 
     RPAnimationsMap,
     AnimationParams,
@@ -39,6 +40,17 @@ interface RPAnimationDefinition {
      */
     animations: readonly AnimationParams[];
 }
+
+/**
+ * Tipado general auxiliar para prevenir la eliminacion o keys adiccionales que no estan permitidas en el tipado general de la plantilla base.
+ * @template {readonly AnimationParams[]} T Animacion a considerar.
+ * @author HaJuegos - 03-11-2026
+ */
+type RPNoExtraAnimations<T extends readonly AnimationParams[]> = {
+    [I in keyof T]: {
+        [P in keyof T[I]]: P extends keyof AnimationParams ? unknown : never;
+    };
+};
 
 /**
  * Tipado general para mapear la lista de animaciones con sus parametros en concreto.

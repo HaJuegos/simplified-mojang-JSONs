@@ -1,4 +1,4 @@
-import { AnimationParams, RPAnimationDefinition, RPAnimationOverride, RPAnimationsMap } from "../../../types/resources/animations/AnimationTemplate";
+import { AnimationParams, RPAnimationDefinition, RPAnimationOverride, RPAnimationsMap, RPNoExtraAnimations } from "../../../types/resources/animations/AnimationTemplate";
 import { ResourceAnimationBuilder } from "./AnimationBuilder";
 
 /**
@@ -120,7 +120,7 @@ export class FinalRPAnimationTemplateBuilder extends ResourceAnimationBuilder {
  */
 export function createRPAnimation<
     const TAnims extends readonly AnimationParams[]
->(def: { formatVersion?: RPAnimationDefinition['formatVersion']; animations: TAnims; }) {
+>(def: { formatVersion?: RPAnimationDefinition['formatVersion']; animations: TAnims & RPNoExtraAnimations<TAnims>; }) {
     return (over: RPAnimationOverride<RPAnimationsMap<TAnims>> = {}) => {
         return new FinalRPAnimationTemplateBuilder(def, over).finalBuild();
     };
