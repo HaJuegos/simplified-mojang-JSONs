@@ -1,3 +1,4 @@
+import { BPAnimControllerFinalDefinition } from "../../../types/behaviors/animContollers/AnimControllerTemplate";
 import { RPAnimControllerDefinition, RPAnimControllerOverride, RPAnimControllerParamsBase, RPControllersMap, RPNoExtraStates } from "../../../types/resources/animControllers/AnimControllerTemplate";
 import { FinalAnimControllerBuilderTemplate } from "../../behaviors/animControllers/AnimControllerTemplateBuilder";
 
@@ -24,12 +25,12 @@ class FinalRPAnimControllerBuilderTemplate extends FinalAnimControllerBuilderTem
      * Metodo auxiliar que construye la definicion de la plantilla fija reconstruida en un resouce pack para ser recursivo.
      * @param {RPAnimControllerDefinition} def Definiciones de la plantilla fija construida.
      * @param {RPAnimControllerOverride<any>} over Definiciones post-edicion de la plantilla fija construida.
-     * @returns {RPAnimControllerDefinition} Devuelve la definicion fija final con los parametros asignados recursivos adaptados para la construccion final de la plantilla definitiva.
-     * @author HaJuegos - 27-10-2026 
+     * @returns {BPAnimControllerFinalDefinition<RPAnimControllerParamsBase[]>} Devuelve la definicion fija final con los parametros asignados recursivos adaptados para la construccion final de la plantilla definitiva.
+     * @author HaJuegos - 03-11-2026
      * @private
      * @static
      */
-    private static applyOverride(def: RPAnimControllerDefinition, over: RPAnimControllerOverride<any>): RPAnimControllerDefinition {
+    private static applyOverride(def: RPAnimControllerDefinition, over: RPAnimControllerOverride<any>): BPAnimControllerFinalDefinition<RPAnimControllerParamsBase[]> {
         let controllers: RPAnimControllerParamsBase[] = structuredClone([...def.animControllers]);
 
         if (over.clearAllData) {
@@ -121,17 +122,26 @@ class FinalRPAnimControllerBuilderTemplate extends FinalAnimControllerBuilderTem
         }
 
         if (over.add?.animControllers) {
-            for (const newCtrl of over.add.animControllers) {
-                const existing = controllers.find(c => c.idController === newCtrl.idController);
+            for (const item of over.add.animControllers as any[]) {
+                if ('idController' in item) {
+                    const existing = controllers.find(c => c.idController === item.idController);
 
-                if (existing) {
-                    existing.initialState = newCtrl.initialState || existing.initialState;
-                    existing.states = {
-                        ...existing.states,
-                        ...newCtrl.states
-                    };
-                } else {
-                    controllers.push(structuredClone(newCtrl));
+                    if (existing) {
+                        existing.initialState = item.initialState || existing.initialState;
+                        existing.states = { ...existing.states, ...structuredClone(item.states) };
+                    } else {
+                        controllers.push(structuredClone(item));
+                    }
+
+                    continue;
+                }
+
+                for (const [id, newStates] of Object.entries(item) as [string, any][]) {
+                    const ctrl = controllers.find(c => c.idController === id);
+
+                    if (!ctrl) continue;
+
+                    ctrl.states = { ...ctrl.states, ...structuredClone(newStates.states) };
                 }
             }
         }

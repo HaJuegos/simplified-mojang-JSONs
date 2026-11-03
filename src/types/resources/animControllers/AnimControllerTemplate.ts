@@ -12,15 +12,13 @@ export {
     RPAnimControllerParamsBase,
 };
 
-
-
 /**
  * Lista de parametros principales para la creacion de un controlador de animacion en un RP.
  * @interface RPAnimControllerDefinition
- * @extends {BPAnimControllerFinalDefinition<string, RPAditionalAnimControllerStates>}
- * @author HaJuegos - 27-10-2026
+ * @extends {BPAnimControllerFinalDefinition<readonly RPAnimControllerParamsBase[]>}
+ * @author HaJuegos - 03-11-2026
  */
-interface RPAnimControllerDefinition extends BPAnimControllerFinalDefinition<RPAnimControllerParamsBase[]> { }
+interface RPAnimControllerDefinition extends BPAnimControllerFinalDefinition<readonly RPAnimControllerParamsBase[]> { }
 
 /**
  * Tipado general auxiliar para prevenir la eliminacion o keys adiccionales que no estan permitidas en el tipado general de la plantilla base.
@@ -70,6 +68,21 @@ type RPControllersMap<
     };
 
 /**
+ * Tipado auxiliar general para las ediciones de un estado existente en la plantilla base. 
+ * @template {string} TNames Nombres de los estados existentes en el controlador de la plantilla base.
+ * @author HaJuegos - 03-11-2026
+ */
+type RPStateEdit<TNames extends string> = Partial<
+    Omit<RPAditionalAnimControllerStates, 'transitions'>
+> & {
+    /**
+     * (Opcional) Transiciones hacia otros estados del controlador.
+     * @type {?Partial<Record<TNames | 'default', MoLangValue | string>>[]}
+     */
+    transitions?: Partial<Record<TNames | 'default', MoLangValue | string>>[];
+};
+
+/**
  * Tipado auxiliar general para permitir los parametros para editar un controlador de la plantilla base en post-edicion.
  * @template S Estados definidos en el controlador de la plantilla base.
  * @author HaJuegos - 28-10-2026
@@ -83,15 +96,11 @@ type RPControllerEdit<S> = {
 
     /**
      * (Opcional) Estados de la plantilla base a modificar, solo los datos indicados seran cambiados.
-     * @type {?{ [K in keyof S]?: Partial<RPAditionalAnimControllerStates> }}
+     * @type {?{[K in keyof S]?: RPStateEdit<Extract<keyof S, string>>;}}
      */
     states?: {
-        [K in keyof S]?: Partial<RPAditionalAnimControllerStates>;
-    } & {
-        [K in Exclude<string, keyof S>]?: never;
+        [K in keyof S]?: RPStateEdit<Extract<keyof S, string>>;
     };
-} & {
-    [K in Exclude<string, "initialState" | "states">]?: never;
 };
 
 /**
@@ -99,7 +108,7 @@ type RPControllerEdit<S> = {
  * @template S Estados definidos en el controlador de la plantilla base.
  * @author HaJuegos - 28-10-2026
  */
-type RPControllerRemoverEdit<S> = true | ({
+type RPControllerRemoverEdit<S> = true | {
     /**
      * (Opcional) Si es true, elimina el estado inicial del controlador.
      * @type {?true}
@@ -108,18 +117,31 @@ type RPControllerRemoverEdit<S> = true | ({
 
     /**
      * (Opcional) Estados a eliminar por completo (true) o propiedades/elementos concretos dentro de estos.
-     * @type {?{[K in keyof S]?: true | { [P in keyof S[K]]?: S[K][P] extends readonly (infer U)[] ? true | readonly U[] : true; }; }}
+     * @type {?{[K in keyof S]?: true | {[P in keyof S[K]]?: S[K][P] extends readonly (infer U)[] ? true | readonly U[] : true;};}}
      */
     states?: {
         [K in keyof S]?: true | {
             [P in keyof S[K]]?: S[K][P] extends readonly (infer U)[] ? true | readonly U[] : true;
         };
-    } & {
-        [K in Exclude<string, keyof S>]?: never;
+    };
+};
+
+/**
+ * Tipado auxiliar general que agrega estados nuevos a un controlador existente en la plantilla base.
+ * @template {RPBase} TBase Mapa de controladores de la plantilla base, usado para sugerir sus IDs. 
+ * @author HaJuegos - 03-11-2026
+ */
+type RPControllerStatesAdd<TBase extends RPBase> = {
+    [K in keyof TBase]?: {
+        /**
+         * Estaos nuevos a agregar al controlador con este ID.
+         * @type {Record<string, RPAditionalAnimControllerStates>}
+         */
+        states: Record<string, RPAditionalAnimControllerStates>;
     };
 } & {
-    [K in Exclude<string, "initialState" | "states">]?: never;
-});
+    idController?: never;
+};
 
 /**
  * Lista de parametros para la post-edicion de una plantilla base de controladores de animacion en un RP.
@@ -151,22 +173,18 @@ type RPAnimControllerOverride<
 
     /**
      * (Opcional) Controladores de la plantilla base a editar, ordenados por su ID.
-     * @type {?{ [K in keyof TBase]?: RPControllerEdit<TBase[K]['states']> }}
+     * @type {?{[K in keyof TBase]?: RPControllerEdit<TBase[K]['states']>;}}
      */
     changeControllers?: {
         [K in keyof TBase]?: RPControllerEdit<TBase[K]['states']>;
-    } & {
-        [K in Exclude<string, keyof TBase>]?: never;
     };
 
     /**
      * (Opcional) Controladores o datos de la plantilla base a eliminar, ordenados por su ID.
-     * @type {?{ [K in keyof TBase]?: RPControllerRemoverEdit<TBase[K]['states']> }}
+     * @type {?{[K in keyof TBase]?: RPControllerRemoverEdit<TBase[K]['states']>;}}
      */
     remove?: {
         [K in keyof TBase]?: RPControllerRemoverEdit<TBase[K]['states']>;
-    } & {
-        [K in Exclude<string, keyof TBase>]?: never;
     };
 
     /**
@@ -174,7 +192,7 @@ type RPAnimControllerOverride<
      * @type {?{ readonly animControllers?: RPAnimControllerParamsBase[] }}
      */
     add?: {
-        readonly animControllers?: RPAnimControllerParamsBase[];
+        readonly animControllers?: (RPAnimControllerParamsBase | RPControllerStatesAdd<TBase>)[];
     };
 };
 
