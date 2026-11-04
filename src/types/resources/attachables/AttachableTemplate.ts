@@ -16,6 +16,7 @@ export {
     ScriptsParamsAnim,
 
     SpawnEggColorIndexParams,
+    RPNoExtraAttachable,
 };
 
 /**
@@ -98,6 +99,30 @@ type RPAttachableRemoverEdit<A> = true | {
 };
 
 /**
+ * Tipado auxiliar general de keys que existen en la plantilla base.
+ * @template T Definiciones del Attachable a considerar.
+ * @author HaJuegos - 03-11-2026
+ */
+type RPNoExtraAttachable<T> = {
+    [P in keyof T]: P extends keyof AttachableBaseParams ? P extends 'scripts' ? {
+        [S in keyof T[P]]: S extends keyof ScriptsParamsAnim ? unknown : never;
+    } : unknown : never;
+};
+
+/**
+ * Tipado auxiliar general para editar solo los datos que ya existen en la plantilla base.
+ * @template {AttachableBaseParams} TBase Plantilla base definida a considerar.
+ * @author HaJuegos - 03-11-2026
+ */
+type RPAttachableChange<TBase extends AttachableBaseParams> = {
+    [K in keyof AttachableBaseParams as K extends keyof TBase ? K : never]?: NonNullable<AttachableBaseParams[K]> extends readonly unknown[] ? AttachableBaseParams[K] : K extends 'spawnEgg' ? SpawnEggColorIndexParams : K extends 'scripts' ? {
+        [P in keyof ScriptsParamsAnim as P extends keyof NonNullable<TBase['scripts']> ? P : never]?: ScriptsParamsAnim[P];
+    } : NonNullable<AttachableBaseParams[K]> extends object ? {
+        [P in keyof NonNullable<TBase[K & keyof TBase]>]?: NonNullable<AttachableBaseParams[K]>[keyof NonNullable<AttachableBaseParams[K]>];
+    } : AttachableBaseParams[K];
+};
+
+/**
  * Parametros principales para las modificaciones de la plantilla base post-edicion una vez creada.
  * @template {AttachableBaseParams} TBase Valores de la plantilla base a tomar.
  * @author HaJuegos - 29-10-2026
@@ -127,9 +152,9 @@ type RPAttachableOverride<
 
     /**
      * (Opcional) Valores a cambiar en concreto de la plantilla base en post-edicion.
-     * @type {?Partial<TBase>}
+     * @type {?RPAttachableChange<TBase>}
      */
-    changeAttachable?: Partial<TBase>;
+    changeAttachable?: RPAttachableChange<TBase>;
 
     /**
      * (Opcional) Valores a eliminar en concreto de la plantilla base en post-edicion. Puede ser todo un sector entero o un valor en especifico.
@@ -139,10 +164,10 @@ type RPAttachableOverride<
 
     /**
      * (Opcional) Datos adiccionales a implementar en la plantilla base sin modificar la misma.
-     * @type {?{ readonly attachable?: AttachableBaseParams; }}
+     * @type {?{readonly attachable?: Partial<AttachableBaseParams>;}}
      */
     add?: {
-        readonly attachable?: AttachableBaseParams;
+        readonly attachable?: Partial<AttachableBaseParams>;
     };
 };
 

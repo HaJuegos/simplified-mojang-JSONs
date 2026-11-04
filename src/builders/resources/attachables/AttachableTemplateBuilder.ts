@@ -1,4 +1,4 @@
-import { AttachableBaseParams, RPAttachableDefinition, RPAttachableOverride } from "../../../types/resources/attachables/AttachableTemplate";
+import { AttachableBaseParams, RPAttachableDefinition, RPAttachableOverride, RPNoExtraAttachable } from "../../../types/resources/attachables/AttachableTemplate";
 import { ResourceAttachableBuilder } from "./AttachableBuilder";
 
 /**
@@ -134,9 +134,12 @@ export class FinalRPAttachableTemplateBuilder extends ResourceAttachableBuilder 
  * @export
  */
 export function createRPAttachable<
-    const Params extends string
->(def: RPAttachableDefinition<Params>) {
-    return (over: RPAttachableOverride<AttachableBaseParams<Params>> = {}) => {
-        return new FinalRPAttachableTemplateBuilder(def as RPAttachableDefinition, over as unknown as RPAttachableOverride);
+    const Params extends string,
+    const TAttach extends AttachableBaseParams<Params>
+>(def: {
+    formatVersion?: RPAttachableDefinition['formatVersion']; idAttach: string; attachable: TAttach & RPNoExtraAttachable<TAttach> & { animations?: Record<Params, string>; };
+}) {
+    return (over: RPAttachableOverride<TAttach> = {}) => {
+        return new FinalRPAttachableTemplateBuilder(def, over as RPAttachableOverride);
     };
 }
