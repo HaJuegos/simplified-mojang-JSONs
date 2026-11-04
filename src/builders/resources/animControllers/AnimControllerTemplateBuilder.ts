@@ -128,7 +128,7 @@ class FinalRPAnimControllerBuilderTemplate extends FinalAnimControllerBuilderTem
 
                     if (existing) {
                         existing.initialState = item.initialState || existing.initialState;
-                        existing.states = { ...existing.states, ...structuredClone(item.states) };
+                        existing.states = FinalRPAnimControllerBuilderTemplate.mergeStates(existing.states, structuredClone(item.states));
                     } else {
                         controllers.push(structuredClone(item));
                     }
@@ -141,12 +141,58 @@ class FinalRPAnimControllerBuilderTemplate extends FinalAnimControllerBuilderTem
 
                     if (!ctrl) continue;
 
-                    ctrl.states = { ...ctrl.states, ...structuredClone(newStates.states) };
+                    ctrl.states = FinalRPAnimControllerBuilderTemplate.mergeStates(ctrl.states, structuredClone(newStates.states));
                 }
             }
         }
 
         return { ...def, animControllers: controllers };
+    }
+
+    /**
+     * Metodo auxiliar que combina las propiedades de un estado evitando duplicados en sus arrays.
+     * @param {Record<string, any>} base Estado base a considerar.
+     * @param {Record<string, any>} patch Propiedades a convinar.
+     * @returns {Record<string, any>} Devuelve el estado nuevo totalmente convinado.
+     * @author HaJuegos - 04-11-2026 
+     * @private
+     * @static
+     */
+    private static mergeState(base: Record<string, any>, patch: Record<string, any>): Record<string, any> {
+        const out = { ...base };
+
+        for (const [k, v] of Object.entries(patch)) {
+            const cur = out[k];
+
+            if (Array.isArray(cur) && Array.isArray(v)) {
+                const seen = new Set(cur.map(x => JSON.stringify(x)));
+
+                out[k] = [...cur, ...v.filter(x => !seen.has(JSON.stringify(x)))];
+            } else {
+                out[k] = v;
+            }
+        }
+
+        return out;
+    }
+
+    /**
+     * Metodo auxiliar que combina los estados de un controlador fusionando los existente y añadiendo los nuevos.
+     * @param {Record<string, any>} base Estados base a considerar.
+     * @param {Record<string, any>} patch Estados a combinar.
+     * @returns {Record<string, any>} Devuelve el nuevo estado con los datos combinados.
+     * @author HaJuegos - 04-11-2026 
+     * @private
+     * @static
+     */
+    private static mergeStates(base: Record<string, any>, patch: Record<string, any>): Record<string, any> {
+        const out = { ...base };
+
+        for (const [id, state] of Object.entries(patch)) {
+            out[id] = out[id] ? FinalRPAnimControllerBuilderTemplate.mergeState(out[id], state) : state;
+        }
+
+        return out;
     }
 }
 
