@@ -7,7 +7,8 @@ export {
     RPEntityClientOverride,
 
     FormatVersionListEntities,
-    EntityClientParams
+    EntityClientParams,
+    RPNoExtraEntity,
 };
 
 /**
@@ -70,6 +71,30 @@ type RemoverEdit<A> = true | {
 };
 
 /**
+ * Tipado auxiliar general que bloquea los keys que no existan en la plantilla base.
+ * @template T Definicion de las plantillas base.
+ * @author HaJuegos - 03-11-2026
+ */
+type RPNoExtraEntity<T> = {
+    [P in keyof T]: P extends keyof EntityClientParams ? P extends 'scripts' ? {
+        [S in keyof T[P]]: S extends keyof ScriptsParamsAnimEntity ? unknown : never;
+    } : unknown : never;
+};
+
+/**
+ * Tipado general auxiliar general para editar solo los datos que ya existen en la plantilla base.
+ * @template {EntityClientParams} TBase La plantilla base definida a considerar.
+ * @author HaJuegos - 03-11-2026
+ */
+type RPEntityClientChange<TBase extends EntityClientParams> = {
+    [K in keyof EntityClientParams as K extends keyof TBase ? K : never]?: NonNullable<EntityClientParams[K]> extends readonly unknown[] ? EntityClientParams[K] : K extends 'spawnEgg' ? SpawnEggColorIndexParams : K extends 'scripts' ? {
+        [P in keyof ScriptsParamsAnimEntity as P extends keyof NonNullable<TBase['scripts']> ? P : never]?: ScriptsParamsAnimEntity[P];
+    } : NonNullable<EntityClientParams[K]> extends object ? {
+        [P in keyof NonNullable<TBase[K & keyof TBase]>]?: NonNullable<EntityClientParams[K]>[keyof NonNullable<EntityClientParams[K]>];
+    } : EntityClientParams[K];
+};
+
+/**
  * Parametros para la definicion o ediciones post-edicion de la plantilla base de un client entity.
  * @template {EntityClientParams} TBase Definiciones de la plantilla base a considerar.
  * @author HaJuegos - 30-10-2026
@@ -100,7 +125,7 @@ type RPEntityClientOverride<
      * (Opcional) Valores a modificar de la plantilla base definida.
      * @type {?Partial<TBase>}
      */
-    changeEntity?: Partial<TBase>;
+    changeEntity?: RPEntityClientChange<TBase>;
 
     /**
      * (Opcional) Valores a eliminar por separado o completo de la plantilla base definida.
@@ -113,7 +138,7 @@ type RPEntityClientOverride<
      * @type {?EntityClientParams}
      * @readonly
      */
-    readonly add?: EntityClientParams;
+    readonly add?: Partial<EntityClientParams>;
 };
 
 /**

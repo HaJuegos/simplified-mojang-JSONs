@@ -1,4 +1,4 @@
-import { EntityClientParams, RPEntityClientDefinition, RPEntityClientOverride } from "../../../types/resources/entity/EntityTemplate";
+import { EntityClientParams, RPEntityClientDefinition, RPEntityClientOverride, RPNoExtraEntity } from "../../../types/resources/entity/EntityTemplate";
 import { ResourceEntityBuilder } from "./EntityBuilder";
 
 /**
@@ -38,7 +38,7 @@ export class FinalRPEntityTemplateBuilder extends ResourceEntityBuilder {
             }
 
             if (over.add) {
-                finalData = this.deepMerge(finalData, over.add);
+                finalData = this.mergeAdd(finalData, over.add);
             }
         }
 
@@ -115,6 +115,35 @@ export class FinalRPEntityTemplateBuilder extends ResourceEntityBuilder {
     }
 
     /**
+     * Metodo auxiliar que integra el añadido de datos adiccionales a la plantilla base en el post-edicion.
+     * @template T Datos a considerar en cuestion.
+     * @param {T} base Base principal de datos a considerar.
+     * @param {unknown} patch Rutas de datos a considerar.
+     * @returns {T} Devuelve el nuevo objecto formateado correcto para la plantilla definitiva.
+     * @author HaJuegos - 03-11-2026 
+     * @private
+     */
+    private mergeAdd<T>(base: T, patch: unknown): T {
+        if (Array.isArray(base) && Array.isArray(patch)) {
+            const seen = new Set(base.map(x => JSON.stringify(x)));
+
+            return [...base, ...patch.filter(p => !seen.has(JSON.stringify(p)))] as T;
+        }
+
+        if (!this.isObj(base) || !this.isObj(patch)) {
+            return (patch ?? base) as T;
+        }
+
+        const out: Record<string, unknown> = { ...base };
+
+        for (const [k, v] of Object.entries(patch)) {
+            out[k] = k in out ? this.mergeAdd(out[k], v) : structuredClone(v);
+        }
+
+        return out as T;
+    }
+
+    /**
      * Metodo final principal que convierte toda la plantilla definitiva en un JSON en texto estructurado.
      * @returns {string} Devuelve el JSON final en su estructura definitiva.
      * @author HaJuegos - 29-10-2026
@@ -128,15 +157,17 @@ export class FinalRPEntityTemplateBuilder extends ResourceEntityBuilder {
 /**
  * Funcion principal de fabrica para la creacion defintiva de un nuevo client entity de un RP. Definiendo la plantilla base para luego, permitir las ediciones post-edicion de la misma y finalmente permitiendo exportarlo a JSON en su correcto formato.
  * @template {string} Params Parametros de la plantilla base a considerar.
- * @param {RPEntityClientDefinition<Params>} def Definiciones base en concreto para la plantilla base.
- * @returns {(over?: any) => FinalRPEntityTemplateBuilder} Devuelve la funcion auxiliar que permite la post-edicion de la plantilla base definida y despues, permite tambien la exportacion final a JSON.
- * @author HaJuegos - 30-10-2026
+ * @template {EntityClientParams<Params>} TParams Datos establecidos en la plantilla base a considerar. 
+ * @param {({ formatVersion?: RPEntityClientDefinition['formatVersion']; idEntity: string; params: TParams & RPNoExtraEntity<TParams> & { animations?: Record<Params, string>; }; })} def Definiciones base en concreto para la plantilla base.
+ * @returns {(over?: RPEntityClientOverride<...>) => FinalRPEntityTemplateBuilder} Devuelve la funcion auxiliar que permite la post-edicion de la plantilla base definida y despues, permite tambien la exportacion final a JSON.
+ * @author HaJuegos - 03-11-2026
  * @export
  */
 export function createRPEntityClient<
-    const Params extends string
->(def: RPEntityClientDefinition<Params>) {
-    return (over: RPEntityClientOverride<EntityClientParams<Params>> = {}) => {
-        return new FinalRPEntityTemplateBuilder(def as RPEntityClientDefinition, over as unknown as RPEntityClientOverride);
+    const Params extends string,
+    const TParams extends EntityClientParams<Params>
+>(def: { formatVersion?: RPEntityClientDefinition['formatVersion']; idEntity: string; params: TParams & RPNoExtraEntity<TParams> & { animations?: Record<Params, string>; }; }) {
+    return (over: RPEntityClientOverride<TParams> = {}) => {
+        return new FinalRPEntityTemplateBuilder(def, over as RPEntityClientOverride);
     };
 }
