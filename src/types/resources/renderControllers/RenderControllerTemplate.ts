@@ -47,15 +47,48 @@ interface RPRenderControllerDefinition {
 type RenderMetaKeys = "idRender";
 
 /**
+ * Tipado general auxiliar que permite aplicaar parches profundos a las propiedades.
+ * @template T Tipo de dato base a parchear.
+ * @author HaJuegos - 05-11-2026
+ */
+type DeepRenderPatch<T> = T extends readonly (infer U)[]
+    ? T | readonly (DeepRenderPatch<U> | string)[] | { [K in keyof T as K extends number ? K : never]?: DeepRenderPatch<T[K]> | string }
+    : T extends object
+    ? { [K in keyof T]?: DeepRenderPatch<T[K]> }
+    : T | string;
+
+/**
  * Tipado auxiliar que define la estructura para la modificacion de los parametros de un render existente.
  * @template {RenderControllerBaseParams} R Render controller considerados para la modificacion.
  * @author HaJuegos - 31-10-2026
  */
 type RenderChange<R extends RenderControllerBaseParams> = {
     [Item in R as Item["idRender"]]?: {
-        [K in Exclude<keyof Item, RenderMetaKeys>]?: K extends keyof RenderControllerBaseParams ? RenderControllerBaseParams[K] : never
+        [K in Exclude<keyof Item, RenderMetaKeys>]?: K extends keyof Item ? DeepRenderPatch<Item[K]> : never
     }
 };
+
+/**
+ * Tipado general auxiliar que define la estructura para añadir nuevos renders completos.
+ * @template {RenderControllerBaseParams} R Renders base a considerar para la edicion.
+ * @author HaJuegos - 05-11-2026
+ */
+type RenderAdd<R extends RenderControllerBaseParams> = (RenderControllerBaseParams | {
+    [Item in R as Item["idRender"]]?: {
+        [K in Exclude<keyof Item, RenderMetaKeys>]?: K extends keyof Item ? DeepRenderPatch<Item[K]> : never
+    }
+})[];
+
+/**
+ * Tipado general auxiliar recursivo para permitir la eliinacion profunda de propiedades.
+ * @template T Tipo de dato base a depurar.
+ * @typedef {DeepRemove}
+ */
+type DeepRemove<T> = T extends readonly (infer U)[]
+    ? U[] | Record<number, true | DeepRemove<U>>
+    : T extends object
+    ? true | { [K in keyof T]?: DeepRemove<T[K]> }
+    : true;
 
 /**
  * Tipado auxiliar para definir la estructura de eliminacion de propiedades o elementos dentro de un render.
@@ -63,8 +96,8 @@ type RenderChange<R extends RenderControllerBaseParams> = {
  * @author HaJuegos - 31-10-2026
  */
 type RenderRemove<R extends RenderControllerBaseParams> = {
-    [Item in R as Item["idRender"]]?: true | {
-        [K in Exclude<keyof Item, RenderMetaKeys>]?: true | (Item[K] extends readonly (infer E)[] ? E[] : never)
+    [Item in R as Item["idRender"]]?: {
+        [K in Exclude<keyof Item, RenderMetaKeys>]?: DeepRemove<Item[K]>
     }
 };
 
@@ -84,10 +117,10 @@ type RPRenderControllerOverride<
 
     /**
      * (Opcional) Lista de render controllers a definir en concreto adiccionandolo a la plantilla base.
-     * @type {?RenderControllerBaseParams[]}
+     * @type {?RenderAdd<TBase["renderControllers"][number]>}
      * @readonly
      */
-    readonly add?: RenderControllerBaseParams[];
+    readonly add?: RenderAdd<TBase["renderControllers"][number]>;
 } | {
     /**
      * (Opcional) Si se define, la plantilla base se limpiara completamente dejando un archivo completamente vacio.
@@ -111,10 +144,10 @@ type RPRenderControllerOverride<
 
     /**
      * (Opcional) Lista de render controllers a definir en concreto adiccionandolo a la plantilla base.
-     * @type {?RenderControllerBaseParams[]}
+     * @type {?RenderAdd<TBase["renderControllers"][number]>}
      * @readonly
      */
-    readonly add?: RenderControllerBaseParams[];
+    readonly add?: RenderAdd<TBase["renderControllers"][number]>;
 };
 
 /**

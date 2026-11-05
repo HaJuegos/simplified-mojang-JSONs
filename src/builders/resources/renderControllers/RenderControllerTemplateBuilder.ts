@@ -23,18 +23,20 @@ export class FinalRPRenderControllerTemplateBuilder extends ResourceRenderContro
         let finalRenders: RenderControllerBaseParams[] = structuredClone(def.renderControllers);
 
         if (over.clearAllData) {
-            finalRenders = over.add ? structuredClone(over.add) : ([] as RenderControllerBaseParams[]);
+            finalRenders = over.add ? this.fixAdd(over.add) : ([] as RenderControllerBaseParams[]);
         } else {
-            if (over.changeRender) {
-                this.deepMerge(finalRenders, over.changeRender);
+            if (over.remove) {
+                const rm = over.remove as Record<string, unknown>;
+
+                finalRenders = finalRenders.map((r) => (r.idRender in rm ? this.applyRemove(r, rm[r.idRender]) : r)).filter((r) => r !== undefined);
             }
 
-            if (over.remove) {
-                this.applyRemove(finalRenders, over.remove);
+            if (over.changeRender) {
+                this.applyChange(finalRenders, over.changeRender);
             }
 
             if (over.add) {
-                this.deepMerge(finalRenders, over.add);
+                this.applyAdd(finalRenders, over.add);
             }
         }
 
@@ -61,7 +63,11 @@ export class FinalRPRenderControllerTemplateBuilder extends ResourceRenderContro
      * @author HaJuegos - 29-10-2026 
      * @private
      */
-    private deepMerge<T>(base: T, patch: unknown) {
+    private deepMerge<T>(base: T, patch: unknown): T {
+        if (Array.isArray(base) && Array.isArray(patch)) {
+            return [...base, ...patch] as unknown as T;
+        }
+
         if (!this.isObj(base) || !this.isObj(patch)) {
             return (patch ?? base) as T;
         };
@@ -69,10 +75,104 @@ export class FinalRPRenderControllerTemplateBuilder extends ResourceRenderContro
         const out: Record<string, unknown> = { ...base };
 
         for (const [k, v] of Object.entries(patch)) {
-            out[k] = this.isObj(v) && this.isObj(out[k]) ? this.deepMerge(out[k], v) : v;
+            out[k] = (this.isObj(v) && this.isObj(out[k])) || (Array.isArray(out[k]) && Array.isArray(v)) ? this.deepMerge(out[k], v) : v;
         }
 
         return out as T;
+    }
+
+    /**
+     * Metodo auxiliar que aplica las modificaciones post-edicion del render controller con las bases existentes.
+     * @param {RenderControllerBaseParams[]} renders Lista de bases a modificar.
+     * @param {Record<string, unknown>} patch Objecto con los cambios a aplicar para el render.
+     * @returns {void}
+     * @author HaJuegos - 05-11-2026 
+     * @private
+     */
+    private applyChange(renders: RenderControllerBaseParams[], patch: Record<string, unknown>): void {
+        for (const [idRender, changes] of Object.entries(patch)) {
+            const target = renders.find((r) => r.idRender == idRender);
+
+            if (target && this.isObj(changes)) {
+                for (const [prop, val] of Object.entries(changes)) {
+                    const targetValue = target[prop as keyof RenderControllerBaseParams];
+
+                    if (Array.isArray(targetValue) && this.isObj(val)) {
+                        const arr = targetValue as unknown as any[];
+
+                        for (const [idxStr, itemVal] of Object.entries(val)) {
+                            const idx = Number(idxStr);
+
+                            if (!Number.isInteger(idx) || idx < 0 || idx >= arr.length) {
+                                continue;
+                            }
+
+                            arr[idx] = this.deepMerge(arr[idx], itemVal);
+                        }
+                    } else if (this.isObj(targetValue) && this.isObj(val)) {
+                        (target as unknown as Record<string, unknown>)[prop] = this.deepMerge(targetValue, val);
+                    } else {
+                        (target as unknown as Record<string, unknown>)[prop] = val;
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Metodo auxiliar que procesa e integra elementos adicionales, ya sea añadeindo nuevos renders completos o extendiendo los que ya estan definidos.
+     * @param {RenderControllerBaseParams[]} renders Lista de renders donde se integraran los elementos.
+     * @param {Array<RenderControllerBaseParams | Record<string, unknown>>} addItems Lista de nuevos renders o ediciones a procesar.
+     * @returns {void}
+     * @author HaJuegos - 05-11-2026
+     * @private
+     */
+    private applyAdd(renders: RenderControllerBaseParams[], addItems: Array<RenderControllerBaseParams | Record<string, unknown>>): void {
+        for (const item of addItems) {
+            if (!this.isObj(item)) continue;
+
+            if ("idRender" in item && typeof item.idRender === "string") {
+                renders.push(item as unknown as RenderControllerBaseParams);
+            } else {
+                for (const [idRender, changes] of Object.entries(item)) {
+                    const target = renders.find(r => r.idRender == idRender);
+
+                    if (target && this.isObj(changes)) {
+                        for (const [prop, val] of Object.entries(changes)) {
+                            const targetValue = target[prop as keyof RenderControllerBaseParams];
+
+                            if (Array.isArray(targetValue) && Array.isArray(val)) {
+                                const targetArr = targetValue as unknown as any[];
+
+                                targetArr.push(...val);
+                            } else if (this.isObj(targetValue) && this.isObj(val)) {
+                                (target as unknown as Record<string, unknown>)[prop] = this.deepMerge(targetValue, val);
+                            } else {
+                                (target as unknown as Record<string, unknown>)[prop] = val;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * Metodo auxiliar que filtra y extrae unicamente los renders completos nuevos especificados en la seccion de adicion cuando se limpian todos los datos previos.
+     * @param {Array<RenderControllerBaseParams | Record<string, unknown>>} addItems Lista de elementos mixtos de adicion.
+     * @returns {RenderControllerBaseParams[]} Devuelve la lista filtrada conteniendo solo los ernder completos validos.
+     * @author HaJuegos - 05-11-2026
+     * @private
+     */
+    private fixAdd(addItems: Array<RenderControllerBaseParams | Record<string, unknown>>): RenderControllerBaseParams[] {
+        const renders: RenderControllerBaseParams[] = [];
+
+        for (const item of addItems) {
+            if (this.isObj(item) && "idRender" in item && typeof item.idRender == "string") {
+                renders.push(item as unknown as RenderControllerBaseParams);
+            }
+        }
+        return renders;
     }
 
     /**
@@ -87,6 +187,23 @@ export class FinalRPRenderControllerTemplateBuilder extends ResourceRenderContro
     private applyRemove<T>(base: T, rm: unknown): T {
         if (rm === true) {
             return undefined as T;
+        }
+
+        if (Array.isArray(base) && this.isObj(rm)) {
+            const arr = [...base] as unknown as any[];
+            const indices = Object.keys(rm).map(Number).filter(idx => Number.isInteger(idx) && idx >= 0 && idx < arr.length).sort((a, b) => b - a);
+
+            for (const idx of indices) {
+                const val = (rm as Record<number, unknown>)[idx];
+
+                if (val === true) {
+                    arr.splice(idx, 1);
+                } else {
+                    arr[idx] = this.applyRemove(arr[idx], val);
+                }
+            }
+
+            return arr as unknown as T;
         }
 
         if (Array.isArray(base) && Array.isArray(rm)) {
