@@ -188,9 +188,9 @@ interface MaterialPropertiesParams {
 
     /**
      * (Opcional) Funcion de prueba de profundidad utilizada en el buffer Z.
-     * @type {?("Equal" | "LessEqual")}
+     * @type {?("Equal" | "LessEqual" | "Always")}
      */
-    depthFunc?: "Equal" | "LessEqual";
+    depthFunc?: "Equal" | "LessEqual" | "Always";
 
     /**
      * (Opcional) Factor de mezcla de origen para operaciones de transparencia.

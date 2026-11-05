@@ -40,7 +40,7 @@ export class ResourceMaterialEntityBuilder {
     protected convertToJSON(stringify: true): string;
     protected convertToJSON(stringify?: false): Record<string, unknown>;
     protected convertToJSON(stringify?: boolean): string | Record<string, unknown> {
-        const materials: Record<string, unknown> = {};
+        const materials: Record<string, unknown> = { version: "1.0.0" };
 
         for (const { idMaterial, idMaterialReference, variants, ...rest } of this.materialsData ?? []) {
             const finalId = idMaterialReference ? `${idMaterial}:${idMaterialReference}` : idMaterial;
