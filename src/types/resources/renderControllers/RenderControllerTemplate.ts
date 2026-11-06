@@ -51,19 +51,10 @@ type RenderMetaKeys = "idRender";
  * @template T Tipo de dato base a parchear.
  * @author HaJuegos - 05-11-2026
  */
-type DeepRenderPatch<T> = T extends readonly (infer U)[] ? T | readonly (DeepRenderPatch<U> | string)[] | {
-    [K in keyof T as K extends number ? K : never]?: DeepRenderPatch<T[K]> | string
-} : T extends object ? {
-    [K in keyof T]?: DeepRenderPatch<T[K]>
-} : T | string;
-
-/**
- * Tipado general auxiliar para ampliar la inyeccion de claves nuevas que no existan en la base definida.
- * @template T 
- * @author HaJuegos - 05-11-2026
- */
-type RenderAddPatch<T> = T extends readonly (infer U)[] ? readonly (RenderAddPatch<U> | string)[] | Record<number, RenderAddPatch<U> | string> : T extends object
-    ? Partial<{ [K in keyof T]?: RenderAddPatch<T[K]> }> & Record<string, unknown>
+type DeepRenderPatch<T> = T extends readonly (infer U)[]
+    ? Record<number, DeepRenderPatch<U>>
+    : T extends object
+    ? { [K in keyof T]?: DeepRenderPatch<T[K]> }
     : T | string;
 
 /**
@@ -78,18 +69,29 @@ type RenderChange<R extends RenderControllerBaseParams> = {
 };
 
 /**
+ * Lista de valores que son considerados arrays que permiten datos libres en la plantilla nueva y/o a modificar.
+ * @author HaJuegos - 06-11-2026
+ */
+type RenderAddListKeys = "arrays" | "materials" | "textures" | "partVisibility";
+
+/**
+ * Tipado general auxiliar para ampliar la inyeccion de claves nuevas que no existan en la base definida.
+ * @template {RenderControllerBaseParams} T Valores de las claves base a considerar.
+ * @author HaJuegos - 06-11-2026
+ */
+type RenderAddPatch<T extends RenderControllerBaseParams> =
+    Partial<Pick<RenderControllerBaseParams, RenderAddListKeys>> & {
+        [K in Exclude<keyof RenderControllerBaseParams, RenderMetaKeys | RenderAddListKeys | keyof T>]?: RenderControllerBaseParams[K]
+    };
+
+/**
  * Tipado general auxiliar que define la estructura para añadir nuevos renders completos.
  * @template {RenderControllerBaseParams} R Renders base a considerar para la edicion.
- * @author HaJuegos - 05-11-2026
+ * @author HaJuegos - 06-11-2026
  */
 type RenderAdd<R extends RenderControllerBaseParams> = Array<
-    RenderControllerBaseParams | {
-        [Item in R as Item["idRender"]]?: (
-            Partial<{
-                [K in Exclude<keyof Item, RenderMetaKeys>]: K extends keyof Item ? RenderAddPatch<Item[K]> : never
-            }> & Record<string, unknown>
-        )
-    }
+    RenderControllerBaseParams
+    | ({ [Item in R as Item["idRender"]]?: RenderAddPatch<Item> } & { [K in keyof RenderControllerBaseParams]?: never })
 >;
 
 /**
@@ -98,7 +100,7 @@ type RenderAdd<R extends RenderControllerBaseParams> = Array<
  * @typedef {DeepRemove}
  */
 type DeepRemove<T> = T extends readonly (infer U)[]
-    ? U[] | Record<number, true | DeepRemove<U>>
+    ? true | U[] | Record<number, true | DeepRemove<U>>
     : T extends object
     ? true | { [K in keyof T]?: DeepRemove<T[K]> }
     : true;
