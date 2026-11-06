@@ -97,17 +97,41 @@ export class FinalRPRenderControllerTemplateBuilder extends ResourceRenderContro
                 for (const [prop, val] of Object.entries(changes)) {
                     const targetValue = target[prop as keyof RenderControllerBaseParams];
 
-                    if (Array.isArray(targetValue) && this.isObj(val)) {
+                    if (Array.isArray(targetValue) && (Array.isArray(val) || this.isObj(val))) {
                         const arr = targetValue as unknown as any[];
 
-                        for (const [idxStr, itemVal] of Object.entries(val)) {
-                            const idx = Number(idxStr);
+                        if (Array.isArray(val)) {
+                            for (let i = 0; i < val.length; i++) {
+                                const itemVal = val[i];
 
-                            if (!Number.isInteger(idx) || idx < 0 || idx >= arr.length) {
-                                continue;
+                                if (i < arr.length) {
+                                    if (this.isObj(arr[i]) && this.isObj(itemVal)) {
+                                        arr[i] = this.deepMerge(arr[i], itemVal);
+                                    } else {
+                                        arr[i] = itemVal;
+                                    }
+                                } else {
+                                    arr.push(itemVal);
+                                }
                             }
+                        } else {
+                            for (const [idxStr, itemVal] of Object.entries(val)) {
+                                const idx = Number(idxStr);
 
-                            arr[idx] = this.deepMerge(arr[idx], itemVal);
+                                if (!Number.isInteger(idx) || idx < 0) {
+                                    continue;
+                                }
+
+                                if (idx < arr.length) {
+                                    if (this.isObj(arr[idx]) && this.isObj(itemVal)) {
+                                        arr[idx] = this.deepMerge(arr[idx], itemVal);
+                                    } else {
+                                        arr[idx] = itemVal;
+                                    }
+                                } else {
+                                    arr.push(itemVal);
+                                }
+                            }
                         }
                     } else if (this.isObj(targetValue) && this.isObj(val)) {
                         (target as unknown as Record<string, unknown>)[prop] = this.deepMerge(targetValue, val);
