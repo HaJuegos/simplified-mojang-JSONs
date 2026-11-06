@@ -75,12 +75,33 @@ type RenderChange<R extends RenderControllerBaseParams> = {
 type RenderAddListKeys = "arrays" | "materials" | "textures" | "partVisibility";
 
 /**
+ * Tipado general auxiliar que obtiene los valores disponibles definidos en un array definidos por su key en un render controller.
+ * @template T Estructura del render a considerar.
+ * @template {keyof ArraysDefinition} S Indetificacion del array dentro de la misma definicion.
+ * @author HaJuegos - 06-11-2026
+ */
+type ExistingArrayNames<T, S extends keyof ArraysDefinition> = T extends { arrays: infer A; }
+    ? S extends keyof A ? keyof A[S] & string : never
+    : never;
+
+/**
+ * Tipado general auxiliar que permite extender los arrays existentes en un render controller, conservando sus propiedades originales y validando los valores de las claves definidas.
+ * @template T Estructura del render controller a considerar. 
+ * @author HaJuegos - 06-11-2026
+ */
+type RenderAddArrays<T> = {
+    [S in keyof ArraysDefinition]?: { [K in ExistingArrayNames<T, S>]?: NonNullable<ArraysDefinition[S]>[ArrayTypeValidator] } & NonNullable<ArraysDefinition[S]>
+};
+
+/**
  * Tipado general auxiliar para ampliar la inyeccion de claves nuevas que no existan en la base definida.
  * @template {RenderControllerBaseParams} T Valores de las claves base a considerar.
  * @author HaJuegos - 06-11-2026
  */
 type RenderAddPatch<T extends RenderControllerBaseParams> =
-    Partial<Pick<RenderControllerBaseParams, RenderAddListKeys>> & {
+    Partial<Pick<RenderControllerBaseParams, Exclude<RenderAddListKeys, "arrays">>> & {
+        arrays?: RenderAddArrays<T>;
+    } & {
         [K in Exclude<keyof RenderControllerBaseParams, RenderMetaKeys | RenderAddListKeys | keyof T>]?: RenderControllerBaseParams[K]
     };
 
