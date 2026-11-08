@@ -20,7 +20,9 @@ export class FinalRPEntityTemplateBuilder extends ResourceEntityBuilder {
     public constructor (def: RPEntityClientDefinition, over: RPEntityClientOverride) {
         super(def.idEntity);
 
-        if (def.formatVersion) {
+        if (over.setFormatVersion) {
+            this.setVersionEntity(over.setFormatVersion);
+        } else {
             this.setVersionEntity(def.formatVersion);
         }
 

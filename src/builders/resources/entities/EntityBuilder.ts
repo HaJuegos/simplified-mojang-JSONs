@@ -47,7 +47,7 @@ export class ResourceEntityBuilder {
      * @author HaJuegos - 30-10-2026 
      * @protected
      */
-    protected setVersionEntity(newVersion: FormatVersionListEntities): this {
+    protected setVersionEntity(newVersion: FormatVersionListEntities = FormatVersionListEntities.MostStable): this {
         this.entityVersion = newVersion;
 
         return this;
@@ -78,13 +78,25 @@ export class ResourceEntityBuilder {
     protected convertToJSON(stringify?: boolean): string | Record<string, unknown> {
         const { scripts, spawnEgg, ...rest } = this.entityData ?? {};
 
+        const scriptKeyOver: Record<string, string> = {
+            scaleX: "scaleX",
+            scaleY: "scaleY",
+            scaleZ: "scaleZ"
+        };
+
+        const mapScripts = (obj: object) => {
+            return Object.fromEntries(
+                Object.entries(obj).map(([k, v]) => [scriptKeyOver[k] ?? SnakeCase.toSnakeCase(k), v])
+            );
+        };
+
         const preEntity = {
             format_version: this.entityVersion,
             "minecraft:client_entity": {
                 description: {
                     identifier: this.idEntity,
                     ...SnakeCase.shallowSnakeCase(rest),
-                    ...(scripts && { scripts: SnakeCase.shallowSnakeCase(scripts) }),
+                    ...(scripts && { scripts: mapScripts(scripts) }),
                     ...(spawnEgg && { spawn_egg: SnakeCase.shallowSnakeCase(spawnEgg) }),
                 }
             }

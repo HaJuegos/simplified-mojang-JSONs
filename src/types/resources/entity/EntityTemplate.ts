@@ -109,6 +109,12 @@ type RPEntityClientOverride<
     clearAllData: true;
 
     /**
+     * (Opcional) Establece a la entidad una version del format version a modificar.
+     * @type {?FormatVersionListEntities}
+     */
+    setFormatVersion?: FormatVersionListEntities;
+
+    /**
      * (Opcional) Datos adiccionales que se integran a la plantilla base sin modificarla.
      * @type {?EntityClientParams}
      * @readonly
@@ -120,6 +126,12 @@ type RPEntityClientOverride<
      * @type {true}
      */
     clearAllData?: false | undefined;
+
+    /**
+     * (Opcional) Establece a la entidad una version del format version a modificar.
+     * @type {?FormatVersionListEntities}
+     */
+    setFormatVersion?: FormatVersionListEntities;
 
     /**
      * (Opcional) Valores a modificar de la plantilla base definida.

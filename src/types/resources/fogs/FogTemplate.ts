@@ -427,14 +427,14 @@ interface MediaCoefficientsParams {
  */
 interface MediaCoefficientBaseParams {
     /**
-     * (Opcional) El color de la luz que emite el bloque en formato hexadecimal.
+     * El color de la luz que emite el bloque en formato hexadecimal.
      * @type {?string}
      */
-    absorption?: string | [number, number, number];
+    absorption: string | [number, number, number];
 
     /**
-     * (Opcional) El color de la luz que emite el bloque en formato hexadecimal.
+     * El color de la luz que emite el bloque en formato hexadecimal.
      * @type {?string}
      */
-    scattering?: string | [number, number, number];
+    scattering: string | [number, number, number];
 }

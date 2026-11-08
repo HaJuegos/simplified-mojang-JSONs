@@ -64,6 +64,21 @@ export class ResourceAnimationBuilder {
     protected convertToJSON(stringify: true): string;
     protected convertToJSON(stringify?: false): Record<string, unknown>;
     protected convertToJSON(stringify?: boolean): string | Record<string, unknown> {
+        const keyFramesKeys = new Set(["lerpMode", "relativeTo"]);
+
+        const snakeKeyframes = (v: unknown): unknown => {
+            if (Array.isArray(v)) return v.map(snakeKeyframes);
+
+            if (v && typeof v === "object") {
+                return Object.fromEntries(
+                    Object.entries(v).filter(([, val]) => val !== undefined)
+                        .map(([k, val]) => [keyFramesKeys.has(k) ? SnakeCase.toSnakeCase(k) : k, snakeKeyframes(val)])
+                );
+            }
+
+            return v;
+        };
+
         const mapCases = (obj: object) => {
             return SnakeCase.shallowSnakeCase(Object.fromEntries(
                 Object.entries(obj).filter(([, v]) => v !== undefined)
@@ -83,7 +98,7 @@ export class ResourceAnimationBuilder {
                 ...mapCases(rest),
                 ...(bones && {
                     bones: Object.fromEntries(Object.entries(bones).map(([id, b]) => {
-                        return [id, mapCases(b)];
+                        return [id, snakeKeyframes(mapCases(b))];
                     }))
                 }),
                 ...(particleEffects && { particle_effects: mapEach(particleEffects) }),
