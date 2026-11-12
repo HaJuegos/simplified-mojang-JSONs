@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.0.22] - 2026-11-12
+
+### Added
+
+- Recursive changes to existing data in the base template are added during post-editing of the “add” parameter in BP Entities.
+
 ## [0.0.21] - 2026-11-9
 
 ### Added

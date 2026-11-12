@@ -76,7 +76,7 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
             }
         }
 
-        this.addUnique(comps, over.add?.components, `${where} add.components`, "components");
+        this.addMerge(comps, over.add?.components, `${where} add.components`);
 
         const compsGroups: Record<string, BPEntityComponentsMap> = {};
 
@@ -129,7 +129,7 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
         for (const [id, list] of Object.entries(over.add?.componentsGroups ?? {})) {
             compsGroups[id] ??= {};
 
-            this.addUnique(compsGroups[id], list, `${where} add.componentsGroups."${id}"`, `componentsGroups."${id}"`);
+            this.addMerge(compsGroups[id], list, `${where} add.componentsGroups."${id}"`);
         }
 
         const baseEvents = over.clearAllData ? {} : this.patchMap(def.events, over.events, `${where} events`, BPEntityDefaultEventsNames);
@@ -153,9 +153,12 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
 
         for (const [name, event] of Object.entries(over.add?.events ?? {})) {
             if (!over.clearAllData && name in events) {
-                throw new Error(`${where} add.events: el evento "${name}" ya existe en la plantilla base. Usa events para reemplazarlo de la plantilla base.`);
+                const seq = (e: any) => (Object.keys(e).length == 1 && Array.isArray(e.sequence)) ? e.sequence : [e];
+
+                events[name] = { sequence: [...seq(events[name]), ...seq(event)] } as LooseEvents[string];
+            } else {
+                events[name] = event;
             }
-            events[name] = event;
         }
 
         this.validateEvents(events, Object.keys(compsGroups), where, !def.id.startsWith("minecraft:"));
@@ -237,27 +240,53 @@ export class FinalEntityBuilderTemplate extends BehaviorEntityBuilder {
     }
 
     /**
-     * Metodo auxiliar que agrega componentes a una lista de mapas objectivo garantizando que no existan previamente.
-     * @param {BPEntityComponentsMap} target Mapa destino donde se insertaran los nuevos componentes.
-     * @param {(readonly BPEntityComponent[] | undefined)} list Lista de componentes a incorporar. 
+     * Metodo auxiliar que agrega componentes a un mapa objectivo. Si el componente ya existe en el mapa, fusiona sus datos con los del nuevo en vez de reemplazarlo.
+     * @param {BPEntityComponentsMap} target Mapa destiono a considerar. 
+     * @param {(readonly BPEntityComponent[] | undefined)} list Lista de componentes a incorporar.
      * @param {string} where Contexto u origen de la ejecucion para mensajes de error.
-     * @param {string} replaceWith Sugerencia del metodo o alternativa recomendada cuando ya existe la clave.
      * @returns {void}
      * 
-     * @throws {Error} Marcara error si, algun componente de la lista colisiona con una clave existente en el parametro target.
-     * @throws {Error} Marcara error si, la lista contiene componente duplicados entre si.
+     * @throws {Error} Marcara error si, la lista contiene componentes duplicados entre si.
      * 
-     * @author HaJuegos - 01-10-2026
+     * @author HaJuegos - 12-11-2026 
      * @private
      */
-    private addUnique(target: BPEntityComponentsMap, list: readonly BPEntityComponent[] | undefined, where: string, replaceWith: string): void {
+    private addMerge(target: BPEntityComponentsMap, list: readonly BPEntityComponent[] | undefined, where: string): void {
         for (const [id, comp] of Object.entries(this.byID(list, where))) {
-            if (id in target) {
-                throw new Error(`${where}: "${id}" ya existe. Usa ${replaceWith} para reemplazarlo.`);
+            target[id] = id in target ? this.mergeComp(target[id], comp) : comp;
+        }
+    }
+
+    /**
+     * Metodo auxiliar que fusiona dos componentes con el mismo ID en uno solo. Los objectos se mezclan de forma recursiva.
+     * @param {BPEntityComponent} a Componente existente en la plantilla base.
+     * @param {BPEntityComponent} b Componente nuevo con los datos adiccionales a fusionar.
+     * @returns {BPEntityComponent} Devuelve un componente con el mismo ID cuyo build contiene los datos fusionados.
+     * @returns {void}
+     * @author HaJuegos - 12-11-2026 
+     * @private
+     */
+    private mergeComp(a: BPEntityComponent, b: BPEntityComponent): BPEntityComponent {
+        const id = a.idComp;
+        const merge = (x: any, y: any): any => {
+            if (Array.isArray(x) && Array.isArray(y)) {
+                return [...x, ...y];
+            };
+
+            if (x && y && typeof x == "object" && typeof y == "object" && !Array.isArray(x) && !Array.isArray(y)) {
+                const out = { ...x };
+
+                for (const k of Object.keys(y)) {
+                    out[k] = k in x ? merge(x[k], y[k]) : y[k];
+                };
+
+                return out;
             }
 
-            target[id] = comp;
-        }
+            return y;
+        };
+
+        return { idComp: id, build: () => ({ [id]: merge(a.build()[id], b.build()[id]) }) } as unknown as BPEntityComponent;
     }
 
     /**

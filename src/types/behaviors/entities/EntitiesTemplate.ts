@@ -371,14 +371,14 @@ type BPEntitiesTemplateOverride<
 
             /**
              * (Opcional) Lista de componentes fijos a añadir a la plantilla base.
-             * @type {?BPEntityComponent[]}
+             * @type {?AC & NoDupes<AC>;}
              */
-            components?: AC & NoDupes<AC, Extract<keyof ByID<C>, string>>;
+            components?: AC & NoDupes<AC>;
 
             /**
              * (Opcional) Lista de eventos a añadir a la plantilla base.
-             * @type {?BPEntityEventsMap}
+             * @type {?{ [K in keyof Ev]?: BPEntityEvents<NoInfer<GroupNames<GC> | GroupNames<AG>>> } & BPEntityEventsMap<NoInfer<GroupNames<GC> | GroupNames<AG>>>}
              */
-            events?: BPEntityEventsMap<NoInfer<GroupNames<GC> | GroupNames<AG>>>;
+            events?: { [K in keyof Ev]?: BPEntityEvents<NoInfer<GroupNames<GC> | GroupNames<AG>>> } & BPEntityEventsMap<NoInfer<GroupNames<GC> | GroupNames<AG>>>;
         };
     };
