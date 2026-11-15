@@ -89,6 +89,7 @@ export type { RPRenderControllerDefinition, RPRenderControllerOverride } from ".
 // Tipados necesarios externos
 export { FormatVersionAnimControllerList } from "./types/behaviors/animContollers/AnimControllerTemplate";
 export { SpawnCategoryEntities, FormatVersionEntities } from "./types/behaviors/entities/EntitiesEnums";
+export { TypeRecipesVanillaEnums } from "./types/behaviors/recipes/RecipeTemplate";
 
 export { FormatVersionListAnims } from "./types/resources/animations/AnimationTemplate";
 export { FormatVersionAttachList } from "./types/resources/attachables/AttachableTemplate";
