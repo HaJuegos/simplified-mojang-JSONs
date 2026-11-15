@@ -31,6 +31,12 @@ enum TypeRecipesVanillaEnums {
 }
 
 /**
+ * Tipado general de un ID de item para una receta y su autocompletado.
+ * @author HaJuegos - 15-11-2026
+ */
+type ItemId = MinecraftItemTypes | (string & {});
+
+/**
  * Tipados generales de todos los tags disponibles en el caso de cocinarse algo.
  * @author HaJuegos - 11-10-2026
  */
@@ -109,10 +115,10 @@ type RecipeTypesLoadMaps = {
  */
 type BPRecipeDefinition<
     T extends TypeRecipesVanillaEnums = TypeRecipesVanillaEnums
-> = {
+> = T extends T ? {
     idRecipe: string;
     typeRecipe: T;
-} & RecipeTypesLoadMaps[T];
+} & RecipeTypesLoadMaps[T] : never;
 
 /**
  * Tipado general base para la modificacion y validacion post-edicion de una plantilla base.
@@ -330,9 +336,9 @@ interface RecipeShaped<TPattern extends readonly string[] = RecipeShapedPattern>
 
     /**
      * Datos de los items y su patron correspondiente de la forma.
-     * @type {(Record<GetPatternKeys<TPattern>, ItemDataGivesTypes | string>)}
+     * @type {(Record<[GetPatternKeys<TPattern>] extends [never] ? string : GetPatternKeys<TPattern>, ItemDataGivesTypes | ItemId>)}
      */
-    key: Record<GetPatternKeys<TPattern>, ItemDataGivesTypes | string>;
+    key: Record<[GetPatternKeys<TPattern>] extends [never] ? string : GetPatternKeys<TPattern>, ItemDataGivesTypes | ItemId>;
 
     /**
      * ID del item a dar en concreto una vez la forma este correctamente.

@@ -1,4 +1,4 @@
-import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { MinecraftEntityTypes, MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
@@ -83,12 +83,12 @@ export const GoatTemplate = createBPEntity({
                             filters: EntityFilters.allOf(
                                 EntityFilters.hasComponent("minecraft:is_baby", "self", "!="),
                                 EntityFilters.isFamily("player", "other"),
-                                EntityFilters.hasEquipment("bucket:0", "hand", "other")
+                                EntityFilters.hasEquipment(MinecraftItemTypes.Bucket, "hand", "other")
                             )
                         },
                         useItem: true,
                         swing: true,
-                        transformToItem: "bucket:1",
+                        transformToItem: MinecraftItemTypes.Bucket,
                         playSounds: ["milk_suspiciously"],
                         interactText: "action.interact.milk"
                     }
@@ -103,12 +103,12 @@ export const GoatTemplate = createBPEntity({
                             filters: EntityFilters.allOf(
                                 EntityFilters.hasComponent("minecraft:is_baby", "self", "!="),
                                 EntityFilters.isFamily("player", "other"),
-                                EntityFilters.hasEquipment("bucket:0", "hand", "other")
+                                EntityFilters.hasEquipment(MinecraftItemTypes.Bucket, "hand", "other")
                             )
                         },
                         useItem: true,
                         swing: true,
-                        transformToItem: "bucket:1",
+                        transformToItem: MinecraftItemTypes.Bucket,
                         playSounds: ["milk.screamer"],
                         interactText: "action.interact.milk"
                     }

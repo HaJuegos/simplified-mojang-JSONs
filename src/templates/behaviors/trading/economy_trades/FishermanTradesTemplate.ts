@@ -1,3 +1,4 @@
+import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { createBPTrading } from "../../../../builders/behaviors/trading/TradingTemplateBuilder";
 import { EntityFilters } from "../../../../utils/EntityFilters";
 
@@ -65,7 +66,7 @@ export const FishermanTradesTemplate = createBPTrading({
                             ],
                             gives: [
                                 {
-                                    item: "minecraft:bucket:2",
+                                    item: MinecraftItemTypes.CodBucket,
                                     quantity: 1
                                 }
                             ],

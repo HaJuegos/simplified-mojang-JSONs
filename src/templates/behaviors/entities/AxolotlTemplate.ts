@@ -1,4 +1,4 @@
-import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { MinecraftEntityTypes, MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
@@ -62,7 +62,7 @@ export const AxolotlTemplate = createBPEntity({
                 feedItemsToGrow: [
                     {
                         item: "tropical_fish_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     }
                 ],
                 pauseGrowItems: ["golden_dandelion"],
@@ -94,7 +94,7 @@ export const AxolotlTemplate = createBPEntity({
                 breedItems: [
                     {
                         item: "tropical_fish_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     }
                 ],
                 breedsWith: {

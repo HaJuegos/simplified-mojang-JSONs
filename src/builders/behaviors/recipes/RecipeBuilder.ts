@@ -251,7 +251,13 @@ export class BehaviorRecipeBuilder {
 
         preRecipe[this.typeRecipe] = recipeBody;
 
-        const finalObj = Object.freeze(SnakeCase.deepSnakeCase(preRecipe) as Record<string, unknown>);
+        const snaked = SnakeCase.deepSnakeCase(preRecipe) as Record<string, any>;
+
+        if (this.typeRecipe == TypeRecipesVanillaEnums.RecipeShaped && this.recipeShaped) {
+            snaked[this.typeRecipe].key = this.recipeShaped.key;
+        }
+
+        const finalObj = Object.freeze(snaked as Record<string, unknown>);
         const JSONtxt = JSON.stringify(finalObj, null, 4);
 
         return stringify ? JSONtxt : finalObj;

@@ -1,4 +1,4 @@
-import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { MinecraftEntityTypes, MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
@@ -152,22 +152,22 @@ export const ZombieNautilusTemplate = createBPEntity({
                     {
                         healAmount: 2,
                         item: "pufferfish_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     {
                         healAmount: 4,
                         item: "cod_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     {
                         healAmount: 4,
                         item: "salmon_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     {
                         healAmount: 2,
                         item: "tropical_fish_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     {
                         healAmount: 4,
@@ -316,7 +316,7 @@ export const ZombieNautilusTemplate = createBPEntity({
                 tameItems: [
                     {
                         item: "pufferfish_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     "pufferfish"
                 ]

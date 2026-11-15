@@ -219,7 +219,7 @@ export const ParchedTemplate = createBPEntity({
             table: "loot_tables/entities/skeleton_gear.json"
         }),
         new BPEntityComponents.SetExperienceReward({
-            onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0)`
+            onDeath: `${MoLang.lastHitByPlayer()} ? 5 + (${MoLang.equipmentCount()} * Math.Random(1,3)) : 0`
         }),
         new BPEntityComponents.SetHealth({
             max: 16,

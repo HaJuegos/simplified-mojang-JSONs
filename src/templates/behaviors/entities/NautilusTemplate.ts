@@ -1,4 +1,4 @@
-import { MinecraftEntityTypes } from "@minecraft/vanilla-data";
+import { MinecraftEntityTypes, MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { createBPEntity } from "../../../builders/behaviors/entities/EntityTemplateBuilder";
 import { FormatVersionEntities, SpawnCategoryEntities } from "../../../types/behaviors/entities/EntitiesEnums";
 import { BPEntityComponents } from "../../../components/behaviors/entities";
@@ -35,19 +35,19 @@ export const NautilusTemplate = createBPEntity({
                 feedItemsToGrow: [
                     {
                         item: "pufferfish_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     {
                         item: "cod_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     {
                         item: "salmon_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     {
                         item: "tropical_fish_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     "pufferfish",
                     "fish",
@@ -96,19 +96,19 @@ export const NautilusTemplate = createBPEntity({
                 breedItems: [
                     {
                         item: "pufferfish_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     {
                         item: "cod_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     {
                         item: "salmon_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     {
                         item: "tropical_fish_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     "pufferfish",
                     "fish",
@@ -160,7 +160,7 @@ export const NautilusTemplate = createBPEntity({
                 tameItems: [
                     {
                         item: "pufferfish_bucket",
-                        resultItem: "water_bucket:0"
+                        resultItem: MinecraftItemTypes.WaterBucket
                     },
                     "pufferfish"
                 ],
@@ -199,22 +199,22 @@ export const NautilusTemplate = createBPEntity({
                 items: [
                     {
                         item: "pufferfish_bucket",
-                        resultItem: "water_bucket:0",
+                        resultItem: MinecraftItemTypes.WaterBucket,
                         healAmount: 2
                     },
                     {
                         item: "cod_bucket",
-                        resultItem: "water_bucket:0",
+                        resultItem: MinecraftItemTypes.WaterBucket,
                         healAmount: 4
                     },
                     {
                         item: "salmon_bucket",
-                        resultItem: "water_bucket:0",
+                        resultItem: MinecraftItemTypes.WaterBucket,
                         healAmount: 4
                     },
                     {
                         item: "tropical_fish_bucket",
-                        resultItem: "water_bucket:0",
+                        resultItem: MinecraftItemTypes.WaterBucket,
                         healAmount: 2
                     },
                     {

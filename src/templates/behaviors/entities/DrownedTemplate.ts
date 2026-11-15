@@ -244,7 +244,7 @@ export const DrownedTemplate = createBPEntity({
             canPickupAnyItem: true,
             excludedItems: [
                 {
-                    item: "minecraft:glow_ink_sac"
+                    name: "minecraft:glow_ink_sac"
                 },
                 {
                     tags: `${MoLang.allTags('minecraft:is_spear')}`

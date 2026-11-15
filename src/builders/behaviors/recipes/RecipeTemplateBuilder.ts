@@ -132,9 +132,9 @@ export class FinalRecipeBuilderTemplate extends BehaviorRecipeBuilder {
  * @export
  */
 export function createBPRecipe<
-    const T extends TypeRecipesVanillaEnums
->(def: BPRecipeDefinition<T>) {
-    return (over: BPRecipeOverrideDefinition<T> = {}): FinalRecipeBuilderTemplate => {
-        return new FinalRecipeBuilderTemplate(def as unknown as BPRecipeDefinition<any>, over as unknown as BPRecipeOverrideDefinition<any>);
+    const Definition extends BPRecipeDefinition
+>(def: Definition) {
+    return (over: BPRecipeOverrideDefinition<Definition["typeRecipe"]> = {}): FinalRecipeBuilderTemplate => {
+        return new FinalRecipeBuilderTemplate(def, over);
     };
 }

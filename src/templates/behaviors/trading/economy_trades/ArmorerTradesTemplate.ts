@@ -1,3 +1,4 @@
+import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { createBPTrading } from "../../../../builders/behaviors/trading/TradingTemplateBuilder";
 
 /**
@@ -208,7 +209,7 @@ export const ArmorerTradesTemplate = createBPTrading({
                         {
                             wants: [
                                 {
-                                    item: "minecraft:bucket:10",
+                                    item: MinecraftItemTypes.LavaBucket,
                                     quantity: 1,
                                     priceMultiplier: 0.05
                                 }

@@ -1,8 +1,6 @@
-import { MinecraftItemTypes } from "@minecraft/vanilla-data";
 import { BehaviorEntityComponentBuilder } from "../../../builders/behaviors/entities/EntityCompsBuilder";
 import { BPComponent } from "../../../types/behaviors/entities/EntitiesComps";
-import { MoLangValue } from "../../../types/MoLang";
-import { EntityFilter, EntityFilterTrigger, TargetItemsTypes } from "../../../types/EntityFilters";
+import { EntityFilterTrigger, TargetItemsTypes } from "../../../types/EntityFilters";
 
 interface BehaviorPickupItemsData extends BPComponent {
     priority: number;

@@ -429,6 +429,7 @@ interface EntityAttackableTargetPriorityFilters extends EntityAttackableTargetFi
  * @author HaJuegos - 24-09-2026
  */
 interface TargetItemsTypes {
+    name?: string | MinecraftItemTypes;
     item?: string | MinecraftItemTypes;
     itemTag?: string;
     tags?: MoLangValue;
