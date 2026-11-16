@@ -1,6 +1,6 @@
 {
     "name": "simplified-mojang-jsons",
-    "version": "0.0.24",
+    "version": "0.0.25",
     "description": "An API in TypeScript for creating and managing the JSON configuration of vanilla and custom Minecraft Bedrock entities using type system support, OOP, and a more organized and reusable structure.",
     "type": "module",
     "main": "./dist/index.js",
@@ -29,8 +29,8 @@
         "LICENSE.md"
     ],
     "scripts": {
-        "build": "node scripts/clean.mjs && node scripts/bundle.mjs && tsc --emitDeclarationOnly",
-        "typecheck": "tsc --noEmit",
+        "build": "node scripts/clean.mjs && node scripts/bundle.mjs && tsc --emitDeclarationOnly && node scripts/fixDts.mjs",
+        "typecheck": "tsc --noEmit && tsc --noEmit -p scripts",
         "generatepaths": "tsx scripts/autoIndexes.ts",
         "exportjson": "tsx scripts/exporttojson.ts",
         "prepublishOnly": "pnpm build"
